@@ -1,0 +1,27 @@
+		[Bài tập] Mô tả thuật toán có cấu trúc điều kiện
+
+
+		Begin
+			Input DIEM
+				DIEM = a
+			   
+			If a > 75 		
+				Display " Xếp loại A"		
+			Esle 
+				If 60 < a < 75
+					Display " Xếp loại B"
+				Esle
+				     If 45 < a < 60
+						Display "Xếp loại C"
+			   	     Esle	
+					   If 35 < a < 45	
+						Display "Xếp loại D "
+					   Esle a < 35 
+						  Display " Xếp loại E"
+					   End If
+				     End If 	
+				End If	
+			End If
+		End
+						
+					
