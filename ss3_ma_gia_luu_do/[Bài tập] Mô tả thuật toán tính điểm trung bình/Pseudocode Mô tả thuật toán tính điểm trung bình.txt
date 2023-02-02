@@ -1,0 +1,9 @@
+  Pseudo tính điểm trung bình 3 môn Toán, Lý, Hóa:
+
+  Begin 
+	Input a, b, c
+		Average =(a+b+c) /3
+	Display "Average"
+  End
+		
+		
