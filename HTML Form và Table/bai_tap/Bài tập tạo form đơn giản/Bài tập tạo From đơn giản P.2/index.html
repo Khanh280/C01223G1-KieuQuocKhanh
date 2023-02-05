@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<style>
+
+
+    #groupform {
+        background-color: rgb(247, 239, 163);
+        width: 600px;
+    }
+
+
+    h3 {
+        background-color: rgba(129, 255, 213, 0.846);
+        width: 600px;
+        height: 30px;
+        line-height: 30px;
+        margin-left: px;
+    }
+
+    #fullname {
+        margin-left: 16px;
+    }
+
+    #date {
+        margin-left: 12.5px;
+    }
+
+    #sex {
+        margin-left: 20px;
+    }
+
+    #address {
+        margin-left: 33px;
+    }
+
+    #class {
+        margin-left: 53px;
+    }
+
+    #email {
+        margin-left: 40px;
+    }
+
+    #phone {
+        margin-left: 10px
+    }
+
+    #submit {
+        margin-left: 80px;
+    }
+
+</style>
+<body>
+
+
+<form name="dangkyhocvien">
+    <fieldset id="groupform">
+        <h3>Đăng ký học viên</h3>
+        <br>
+        <label> Họ và tên
+            <input type="text" name="fullname" id="fullname" >
+        </label>
+        <br>
+        <br>
+        <label> Ngày sinh
+            <input type="text" name="date" id="date" >
+        </label>
+        <br>
+        <br>
+        Giới tính
+        <input type="radio" name="sex" id="sex"> Nam
+        <input type="radio" name="sex" id="sex" > Nữ
+        <br>
+        <br>
+
+        <label>Địa chỉ
+            <input type="text" name="address" id="address" >
+        </label>
+        <br>
+        <br>
+
+        <label> Lớp
+            <select id="class" >
+                <option value="">-Chọn Lớp-</option>
+                <option value="C1022G1">C1022G1</option>
+                <option value="C1122G1">C1122G1</option>
+                <option value="C1222G1">C1222G1</option>
+                <option value="C0123G1">C0123G1</option>
+                <option value="C0223G1">C0223G1</option>
+            </select>
+        </label>
+        <br>
+        <br>
+        <label> Email
+            <input type="text" name="email" value="" id="email" >
+        </label>
+        <br>
+        <br>
+        <label> Điện thoại
+            <input type="text" name="phone" value=""  id="phone" >
+        </label>
+        <br>
+        <br>
+
+        <input type="submit" value="Đăng ký" id="submit" >
+        <input type="reset" value=" Nhập lại" id="reset" >
+    </fieldset>
+</form>
+
+
+
+</body>
+</html>

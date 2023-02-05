@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title> Tạo Form đơn </title>giản
+</head>
+<style>
+    form {
+        width: 500px;
+
+    }
+
+    fieldset {
+        background-color: #fff;
+        margin-left: 35px;
+        margin-top: 40px;
+
+    }
+
+    h1 {
+        background: rgb(255, 81, 0);
+        width: 600px;
+        text-align: center;
+        color: #fff;
+    }
+
+    #container {
+        margin-left: 50%;
+        transform:translateX(-50%)
+
+    }
+
+    #hoten {
+        color: blue;
+    }
+    #email {
+        color: blue;
+        margin-left: 23px;
+    }
+
+    p {
+        color: blue;
+    }
+
+    #sothich {
+        color:orange;
+        margin-left: 60px;
+        margin-top: -35px;
+        width: 300px;
+    }
+
+</style>
+<body>
+
+<form>
+    <fieldset>
+
+        <h1>Sở thích của bạn</h1>
+
+        <div id="container">
+            <label id="hoten" >Họ và tên
+            <input type="text" name="yourname"  placeholder="Nhập đầy đủ họ tên" >
+            </label>
+            <br>
+            <br>
+            <label id="email" > Email
+            <input type="text" name="email"  placeholder="Nhập email" >
+            </label>
+            <br>
+
+            <p> Sở thích</p>
+            <div id="sothich">
+
+                <input type="checkbox" name="hobby">Thể thao
+                <input type="checkbox" name="hobby">Âm nhạc
+                <input type="checkbox" name="hobby">Đọc sách
+                <br>
+
+
+
+                <input type="checkbox" name="hobby">Lướt web
+                <input type="checkbox" name="hobby">Chơi game
+                <input type="checkbox" name="hobby">Điện ảnh
+                <br>
+
+
+
+                <input type="checkbox" name="hobby">Du lịch
+                <br>
+                <br>
+                <input type="submit" value="Gửi thông tin">
+                <input type="reset"  value="Nhập lại">
+
+            </div>
+        </div>
+    </fieldset>
+</form>
+
+</body>
+</html>
