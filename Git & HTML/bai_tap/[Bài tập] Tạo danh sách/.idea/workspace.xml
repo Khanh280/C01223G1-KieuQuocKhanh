@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="8e0c0118-093a-4142-b6eb-77d8829c588b" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../[Bài tập] Tạo trang CV cá nhân/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../[Bài tập] Tạo trang CV cá nhân/.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../[Bài tập] Tạo trang CV cá nhân/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../[Bài tập] Tạo trang CV cá nhân/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../[Bài tập] Tạo trang CV cá nhân/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/../[Bài tập] Tạo trang CV cá nhân/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../HTML Form và Table/bai_tap/Bài tập tạo From đơn giản/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/../../../HTML Form và Table/bai_tap/Bài tập tạo From đơn giản/index.html" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="HTML File" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../../.." />
+  </component>
+  <component name="ProjectId" id="2LIqjw5jo5En9Gl0YRqBVSQRztJ" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="DefaultHtmlFileTemplate" value="HTML File" />
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="8e0c0118-093a-4142-b6eb-77d8829c588b" name="Default Changelist" comment="" />
+      <created>1675569082521</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1675569082521</updated>
+      <workItem from="1675569083791" duration="20000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="2" />
+  </component>
+</project>

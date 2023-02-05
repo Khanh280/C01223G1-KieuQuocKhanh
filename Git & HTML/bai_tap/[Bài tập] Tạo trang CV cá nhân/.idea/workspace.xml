@@ -1,17 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="98ecd976-832b-48cd-b9e5-66d97295e454" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/index.html" afterDir="false" />
-    </list>
+    <list default="true" id="98ecd976-832b-48cd-b9e5-66d97295e454" name="Default Changelist" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="Git.Settings">
-    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../../.." />
   </component>
   <component name="ProjectId" id="2LDPtpl4TH90E1IdFmUr2wrBXjo" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
@@ -23,6 +20,14 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../../HTML Form và Table/bai_tap/Bài tập tạo From đơn giản" />
+    <property name="node.js.detected.package.eslint" value="true" />
+    <property name="node.js.detected.package.tslint" value="true" />
+    <property name="node.js.path.for.package.eslint" value="project" />
+    <property name="node.js.path.for.package.tslint" value="project" />
+    <property name="node.js.selected.package.eslint" value="(autodetect)" />
+    <property name="node.js.selected.package.tslint" value="(autodetect)" />
+    <property name="settings.editor.selected.configurable" value="project.propVCSSupport.Mappings" />
   </component>
   <component name="SvnConfiguration">
     <configuration />
@@ -36,10 +41,31 @@
       <updated>1675402897774</updated>
       <workItem from="1675402899736" duration="31000" />
       <workItem from="1675402935820" duration="65000" />
+      <workItem from="1675403949403" duration="19000" />
+      <workItem from="1675405688379" duration="133000" />
+      <workItem from="1675406001931" duration="148000" />
+      <workItem from="1675406344752" duration="39000" />
+      <workItem from="1675408877378" duration="165000" />
+      <workItem from="1675412575033" duration="3000" />
+      <workItem from="1675418675647" duration="55000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="2" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="513" y="285" key="#Scopes" timestamp="1675405744004">
+      <screen x="0" y="0" width="1440" height="852" />
+    </state>
+    <state x="513" y="285" key="#Scopes/0.0.1440.852@0.0.1440.852" timestamp="1675405744004" />
+    <state x="566" y="195" key="FileChooserDialogImpl" timestamp="1675418729445">
+      <screen x="0" y="0" width="1440" height="852" />
+    </state>
+    <state x="566" y="195" key="FileChooserDialogImpl/0.0.1440.852@0.0.1440.852" timestamp="1675418729445" />
+    <state x="174" y="101" key="SettingsEditor" timestamp="1675405697306">
+      <screen x="0" y="0" width="1440" height="852" />
+    </state>
+    <state x="174" y="101" key="SettingsEditor/0.0.1440.852@0.0.1440.852" timestamp="1675405697306" />
   </component>
 </project>
