@@ -1,22 +1,23 @@
    	[Bài tập] Mô tả thuật toán tìm giá trị lớn nhất trong một dãy số
 
-		Begin 	
-			Input n
-			      i < n
-			Input a1, a2, a3,...ai
+		BEGIN 	
+			INPUT n
+			      
+			INPUT a1, a2, a3,...ai
 				max=a1
 				i = 2
 				
-			While 
-			Do If  i > N
-				Display "Giá trị lớn nhất là max"
-			   Esle
-				 If ai > max
-				    max=ai
-				    i= i+1
-				 End If	
-			   End If	
+			WHILE (i < n)
+				DO 
+				   IF  i > N
+					DISPLAY "Giá trị lớn nhất là max"
+			  	   ESLE
+					 IF ai > max
+				    		max=ai
+				    		i= i+1
+				 	 END IF	
+			   	   END IF	
 
-			End Do
-		End
+				END DO
+		END
 				

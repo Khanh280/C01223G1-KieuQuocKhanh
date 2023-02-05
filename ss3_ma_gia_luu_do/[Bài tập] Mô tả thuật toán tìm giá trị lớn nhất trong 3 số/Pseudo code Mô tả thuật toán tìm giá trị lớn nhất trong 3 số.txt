@@ -1,19 +1,19 @@
 	[Bài tập] Mô tả thuật toán tìm giá trị lớn nhất trong 3 số
 
 
-	Begin 
-		Input a, b, c
+	BEGIN 
+		INPUT a, b, c
 		     
-			If a > b, c
-				Display " a là giá trị lớn nhất"
-			Esle 
-				If b > c
-					Display " b là giá trị lớn nhất"
-				Esle
-					Display " c là giá trị lớn nhất"
-				End If
-			End If
-	End
+			IF a > b AND a > c
+				DISPLAY " a là giá trị lớn nhất"
+			ESLE 
+				IF b > c
+					DISPLAY " b là giá trị lớn nhất"
+				ESLE
+					DISPLAY " c là giá trị lớn nhất"
+				END IF
+			END IF
+	END
 					
 				
 			
