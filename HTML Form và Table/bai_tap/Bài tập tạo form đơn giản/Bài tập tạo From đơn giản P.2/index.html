@@ -29,7 +29,7 @@
         margin-left: 12.5px;
     }
 
-    #sex {
+    #gender {
         margin-left: 20px;
     }
 
@@ -57,7 +57,7 @@
 <body>
 
 
-<form name="dangkyhocvien">
+<form action="/C0123G1" method="POST" name="dangkyhocvien">
     <fieldset id="groupform">
         <h3>Đăng ký học viên</h3>
         <br>
@@ -72,8 +72,8 @@
         <br>
         <br>
         Giới tính
-        <input type="radio" name="sex" id="sex"> Nam
-        <input type="radio" name="sex" id="sex" > Nữ
+        <input type="radio" name="gender" id="gender" value="Nam"> Nam
+        <input type="radio" name="gender" id="gender" Value="Nữ"> Nữ
         <br>
         <br>
 
@@ -106,8 +106,9 @@
         <br>
         <br>
 
-        <input type="submit" value="Đăng ký" id="submit" >
-        <input type="reset" value=" Nhập lại" id="reset" >
+
+        <button type="submit" name="Đăng ký" id="submit" >Đăng ký</button>
+        <button type="reset" name="Nhập lại" id="reset" >Nhập lại</button>
     </fieldset>
 </form>
 

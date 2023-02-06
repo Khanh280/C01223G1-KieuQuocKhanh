@@ -50,47 +50,49 @@
     }
 
 </style>
+<!-- C0123G1-Kiều Quốc Khánh -->
 <body>
 
-<form>
+<form action="/C0123G1" method="POST">
     <fieldset>
 
         <h1>Sở thích của bạn</h1>
 
         <div id="container">
             <label id="hoten" >Họ và tên
-            <input type="text" name="yourname"  placeholder="Nhập đầy đủ họ tên" >
+                <input type="text" name="yourname"  placeholder="Nhập đầy đủ họ tên" >
             </label>
             <br>
             <br>
             <label id="email" > Email
-            <input type="text" name="email"  placeholder="Nhập email" >
+                <input type="email" name="email"  placeholder="Nhập email" >
             </label>
             <br>
 
             <p> Sở thích</p>
             <div id="sothich">
 
-                <input type="checkbox" name="hobby">Thể thao
-                <input type="checkbox" name="hobby">Âm nhạc
-                <input type="checkbox" name="hobby">Đọc sách
+                <input type="checkbox" name="hobby" value="Thể thao">Thể thao
+                <input type="checkbox" name="hobby" value="Âm nhạc">Âm nhạc
+                <input type="checkbox" name="hobby" value="Đọc sách">Đọc sách
                 <br>
 
 
 
-                <input type="checkbox" name="hobby">Lướt web
-                <input type="checkbox" name="hobby">Chơi game
-                <input type="checkbox" name="hobby">Điện ảnh
+                <input type="checkbox" name="hobby" value="Lướt web">Lướt web
+                <input type="checkbox" name="hobby" value="Chơi game">Chơi game
+                <input type="checkbox" name="hobby" value="Điện ảnh">Điện ảnh
                 <br>
 
 
 
-                <input type="checkbox" name="hobby">Du lịch
+                <input type="checkbox" name="hobby" value="Du lịch">Du lịch
                 <br>
                 <br>
-                <input type="submit" value="Gửi thông tin">
-                <input type="reset"  value="Nhập lại">
-
+                <!-- <input type="submit" value="Gửi thông tin">
+                <input type="reset"  value="Nhập lại"> -->
+                <button type="submit" value="Gửi thông tin">Gửi thông tin</button>
+                <button type="reset"  value="Nhập Lại">Nhập lại</button>
             </div>
         </div>
     </fieldset>
