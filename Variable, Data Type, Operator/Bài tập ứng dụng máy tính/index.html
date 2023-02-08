@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ứng dụng máy tính</title>
+
+</head>
+
+<body>
+
+
+
+<input type="number" id="numb1" placeholder="Nhập số thứ nhất vào đây">
+<input type="number" id="numb2" placeholder="Nhập số thứ hai vào đây">
+<button onclick="plus()">Cộng</button>
+<button onclick="except()">Trừ</button>
+<h3> Result:</h3>
+<div id="Result">Đây là kết quả</div>
+
+
+<script>
+
+
+    function plus() {
+        let numb1 = document.getElementById("numb1").value;
+        let numb2 = document.getElementById("numb2").value;
+        let Result = Number(numb1) + Number(numb2) ;
+
+
+        document.getElementById("Result").innerHTML = Result;
+
+    }
+
+    function except() {
+        let numb1 = document.getElementById("numb1").value;
+        let numb2 = document.getElementById("numb2").value;
+        let Result = Number(numb1) - Number(numb2);
+
+        document.getElementById("Result").innerHTML = Result;
+
+    }
+</script>
+
+</form>
+
+</body>
+</html>
+
