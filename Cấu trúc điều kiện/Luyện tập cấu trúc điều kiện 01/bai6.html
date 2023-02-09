@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bài 6: Tính hoa hồng nhận được tuỳ theo mức doanh số bán hàng</title>
+    <scrip src="main.js"></scrip>
+</head>
+
+<body>
+
+<h3>Bài 6: Tính hoa hồng nhận được tuỳ theo mức doanh số bán hàng</h3>
+<input type="text" id="turnover" placeholder="Nhập doanh thu tháng">
+<button onclick="Roseclick()">Kết Quả</button>
+<p id="KetQua6"></p>
+
+
+
+
+<script>
+
+    function Roseclick() {
+
+        var turnover  = document.getElementById("turnover").value;
+        var Rose ;
+
+        if ( turnover < 10000000 ) {
+            Rose ="Hoa hồng của bạn là 3%: " + ((Number(turnover) * 3) / 100) + "Đ" ;
+        } else  if ( turnover < 30000000) {
+            Rose = "Hoa hồng của bạn là 5%: " + ((Number(turnover) * 5) / 100) + "Đ" ;
+        } else {
+            Rose = "Hoa hồng của bạn là 8%: " + ((Number(turnover) * 8) / 100) + "Đ" ;
+        }
+        document.getElementById("KetQua6").innerHTML = Rose ;
+    }
+
+
+</script>
+</body>
+</html>

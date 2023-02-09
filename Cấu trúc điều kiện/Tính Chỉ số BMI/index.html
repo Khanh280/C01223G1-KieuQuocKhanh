@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ứng dụng máy tính</title>
+    <scrip src="main.js"></scrip>
+</head>
+
+<body>
+
+
+<h1> Tính chỉ số cân nặng</h1>
+<b> Nhập cân nặng: (kg)</b>
+<input type="text" id="weight" >
+<br>
+<br>
+<b> Nhập chiều cao: (m)</b>
+<input type="text" id="height">
+<br>
+<button onclick="onClick()">Kết Quả</button>
+<br>
+<br>
+<br>
+<br>
+<p id="Result" ></p>
+
+<script>
+
+
+    function  onClick() {
+
+        let weight = document.getElementById("weight").value;
+        let height = document.getElementById("height").value;
+        let BMI = Number(weight) / Math.pow(height , 2) ;
+
+
+        if ( BMI < 18.5) {
+            Result = "Chỉ số BMI là:"  + BMI + "Underweight";
+        } else  if ( BMI < 25.0) {
+            Result = "Chỉ số BMI là:"  + BMI + "Normal" ;
+        } else if ( BMI < 30.0 ) {
+            Result = "Chỉ số BMI là:" + BMI + "Overweight" ;
+        } else {
+            Result = "Chỉ số BMI là:"  + BMI + "Obese";
+        }
+
+        document.getElementById("Result").innerHTML = Result ;
+    }
+
+
+</script>
+<!-- C0123G1-Kiều Quốc Khánh -->
+</body>
+</html>
+

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bài 2: Nhập tuổi và in ra kết quả nếu tuổi học sinh đó không đủ điều kiện vào học lớp 10</title>
+    <scrip src="main.js"></scrip>
+</head>
+
+<body>
+
+<div>
+    <h3> Bài 2: Nhập tuổi và in ra kết quả nếu tuổi học sinh đó không đủ điều kiện vào học lớp 10.</h3>
+    <input type="text" id="tuoi" placeholder="Nhập tuổi">
+    <button onclick="kiemTraTuoi()">Kiểm Tra Tuổi</button>
+    <p id="KetQua2"></p>
+</div>
+
+<script>
+    function kiemTraTuoi() {
+        var tuoi = document.getElementById("tuoi").value;
+        var KetQua2 ;
+
+        if ( tuoi <= 15 ){
+            KetQua2 = "Số tuổi: " + tuoi + " không đủ điều kiện vào học lớp 10";
+        } else {
+            KetQua2 = "Số tuổi: " + tuoi + " đủ điều kiện vào học lớp 10";
+
+        }
+
+        document.getElementById("KetQua2").innerHTML = KetQua2 ;
+    }
+</script>
+</body>
+</html>

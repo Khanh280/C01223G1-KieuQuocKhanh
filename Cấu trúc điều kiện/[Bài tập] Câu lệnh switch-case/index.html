@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ứng dụng máy tính</title>
+    <scrip src="main.js"></scrip>
+</head>
+
+<body>
+
+<h1> Kiểm tra số ngày trong tháng</h1>
+<br>
+<br>
+
+<input type="number" min="1" max="12" id="day" placeholder="Nhập số ngày">
+<button onclick="onClick()">Checkk</button>
+
+<p id="Result">Đây là nơi hiển thị kết quả </p>
+
+<script>
+    function onClick() {
+        let thang_1 = "1";
+        let thang_2 = "2";
+        let thang_3 ="3";
+        let thang_4="4";
+        let thang_5="5";
+        let thang_6="6";
+        let thang_7="7";
+        let thang_8="8";
+        let thang_9="9";
+        let thang_10="10"
+        let thang_11="11";
+        let thang_12="12";
+
+        let day = document.getElementById("day").value;
+
+
+
+        switch ( day ) {
+            case thang_1:
+            case thang_3:
+            case thang_5:
+            case thang_7:
+            case thang_8:
+            case thang_10:
+
+                document.getElementById("Result").innerHTML = "Tháng" + day + ": có 31 ngày"
+                break;
+            case thang_2:
+
+                document.getElementById("Result").innerHTML = "Tháng" + day + ": có 28 hoặc ngày"
+                break;
+            case thang_4:
+            case thang_6:
+            case thang_9:
+            case thang_11:
+            case thang_12:
+
+                document.getElementById("Result").innerHTML = "Tháng" + day + ": có 30 ngày"
+
+                break;
+            default :
+                document.getElementById("Result").innerHTML = "Vui lòng nhập lại" ;
+        }
+    }
+
+</script>
+
+
+<!-- C0123G1-Kiều Quốc Khánh -->
+</body>
+</html>
+

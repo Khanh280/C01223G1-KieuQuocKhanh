@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ứng dụng máy tính</title>
+    <scrip src="main.js"></scrip>
+</head>
+
+<body>
+
+<h3>Bài 5: Xếp hạng học lực của học sinh dựa trên các điểm bài kiểm tra, điểm thi giữa kỳ, điểm thi cuối kỳ</h3>
+<input type="text" id="motTiet" placeholder="Điểm bài kiểm tra 1 tiết">
+<input type="text" id="GiuaKy" placeholder="Điểm bài thi giữa kỳ">
+<input type="text" id="CuoiKy" placeholder="Điểm bài thi cuối kỳ">
+
+<button onclick="Enter()">Kết Quả</button>
+<p id="KetQua5"></p>
+<script>
+
+    function Enter() {
+
+        let exam1 = document.getElementById("motTiet").value;
+        let exam2 = document.getElementById("GiuaKy").value;
+        let exam3 = document.getElementById("CuoiKy").value;
+        let GPA = (Number(exam1) + Number(exam2) + Number(exam3) ) / 3 ;
+
+        if ( GPA < 3 ) {
+            KetQua5 = "Với " + GPA + " điểm bạn được xếp loại Kém";
+        } else if ( GPA < 5) {
+            KetQua5 = "Với " + GPA + " điểm bạn được xếp loại Yếu";
+        } else if ( GPA < 6.5 ) {
+            KetQua5 = "Với " + GPA + " điểm bạn được xếp loại Trung Bình";
+        } else if ( GPA < 8.5 ) {
+            KetQua5 = "Với " + GPA + " điểm bạn được xếp loại Khá";
+        } else if ( GPA <= 10 ) {
+            KetQua5 = "Với " + GPA + " điểm bạn được xếp loại Giỏi" ;
+        }
+
+        document.getElementById("KetQua5").innerHTML = KetQua5 ;
+
+    }
+
+
+</script>
+</body>
+</html>
