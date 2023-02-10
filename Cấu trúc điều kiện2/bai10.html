@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cấu trúc điều kiện 2</title>
+    <scrip src="main.js"></scrip>
+</head>
+
+<body>
+
+<h3>Viết chương trình tính giá điện.</h3>
+
+<input type="text" id="inputkWh" placeholder="Nhập lượng điện tiêu thụ kWh">
+<button onclick="Enter()">Tính</button>
+<p id="Result"></p>
+
+<script>
+
+    function Enter() {
+
+        let kWh = +document.getElementById("inputkWh").value;
+        let result ;
+
+        if ( kWh < 50  ) {
+            result = kWh * 1.678 + "VND";
+        } else if ( kWh < 100 ) {
+            result = kWh * 1.734 + "VND";
+        } else if ( kWh < 200 ){
+            result = kWh * 2.014 + "VND";
+        } else if ( kWh < 300 ){
+            result = kWh * 2.536 + "VND";
+        } else if ( kWh < 400) {
+            result = kWh * 2.834 + "VND";
+        } else {
+            result = kWh * 2.927 + "VND";
+        }
+
+        document.getElementById("Result").innerHTML = result ;
+
+    }
+
+</script>
+
+<!-- C0123G1-Kiều Quốc Khánh -->
+</body>
+</html>
+

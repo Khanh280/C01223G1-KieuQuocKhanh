@@ -13,40 +13,39 @@
 <body>
 <!--C0123-Kiều Quốc Khánh-->
 <table>
-    <th><label for="Amount">Amount</label></th>
-    <th>Form Curency</th>
-    <th>To Currency</th>
-
     <tr>
-        <td>
-            <input type="text" id="Amount" value=""/>
-        </td>
-
-        <td>
+        <th>
+            <label for="Amount">Amount</label>
+        </th>
+        <th>From Currency</th>
+        <th>To Currency</th>
+        <th></th>
+    </tr>
+    <tr>
+        <th>
+            <input type="text" id="Amount" />
+        </th>
+        <th>
             <select id="Form">
                 <option value="VND">VND</option>
                 <option value="USD">USD</option>
             </select>
-        </td>
-
-        <td>
+        </th>
+        <th>
             <select id="To">
                 <option value="VND">VND</option>
                 <option value="USD">USD</option>
             </select>
-        </td>
-
-        <td>
-            <button onclick="onClick()" value="Convert">Convert</button>
-        </td>
+        </th>
+        <th>
+            <button onclick="ChangeMoney()">Convert</button>
+        </th>
     </tr>
-
 </table>
-<p id="Result"></p>
-
+<p id="Result" >Result: </p>
 <script>
 
-    function onClick() {
+    function ChangeMoney() {
         var Amount = document.getElementById("Amount").value;
         var Form = document.getElementById("Form").value;
         var To = document.getElementById("To").value;

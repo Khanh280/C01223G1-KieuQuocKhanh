@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cấu trúc điều kiện 2</title>
+    <scrip src="main.js"></scrip>
+</head>
+
+<body>
+<h3>Bài 6: Giải phương trình bậc 1.</h3>
+<input type="number" id="a" placeholder="Nhập a">
+<input type="number" id="b" placeholder="Nhập b">
+<button onclick="Enter()">Enter</button>
+<p id="display"></p>
+
+<script>
+
+    function Enter() {
+
+        let numbA = parseInt(document.getElementById("a").value);
+        let numbB = parseInt(document.getElementById("b").value);
+        let x = -(Number(numbB) / Number(numbA)) ;
+        let result ;
+
+        if ( numbA === 0 ){
+            if ( numbB === 0){
+                result =  "Phương trình vô số nghiệm";
+            } else {
+                result = " Phương trình vô nghiệm";
+            }
+        } else {
+
+            result = " Phương trình có nghiệm là: " + x ;
+        }
+
+
+        document.getElementById("display").innerHTML = result ;
+
+    }
+
+</script>
+
+
+<!-- C0123G1-Kiều Quốc Khánh -->
+</body>
+</html>

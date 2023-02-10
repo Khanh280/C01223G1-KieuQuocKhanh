@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cấu trúc điều kiện 2</title>
+    <scrip src="main.js"></scrip>
+</head>
+
+<body>
+
+<h3>Bài 3: Tính diện tích hình vuông khi biết cạnh a.</h3>
+<br>
+<input type="text" id="Length" placeholder="Nhập độ dài cạnh a">
+<button onclick="Enter()">Enter</button>
+<p id="area"></p>
+
+
+<script>
+    function Enter() {
+
+        let Length = parseInt(document.getElementById("Length").value);
+        let area = Math.pow(Number(Length), 2) ;
+
+        area = "Diện tích hình vuông là: " + area + " m<sup>2</sup>" ;
+        document.getElementById("area").innerHTML = area ;
+
+    }
+</script>
+
+<!-- C0123G1-Kiều Quốc Khánh -->
+</body>
+</html>
+

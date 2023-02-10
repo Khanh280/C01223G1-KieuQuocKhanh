@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cấu trúc điều kiện 2</title>
+
+</head>
+
+<body>
+
+<h3>Bài 9: Kiểm tra xem 3 số thực (a,b,c) nhập vào có phải là cạnh của một tam giác.</h3>
+<input type="text" id="LengthA" placeholder="Nhập độ dài cạnh a">
+<input type="text" id="LengthB" placeholder="Nhập độ dài cạnh b">
+<input type="text" id="LengthC" placeholder="Nhập độ dài cạnh c">
+<button onclick="Enter()">Enter</button>
+<p id="Result"></p>
+
+<script>
+
+    function Enter() {
+
+        let lengthA = parseFloat(document.getElementById("LengthA").value);
+        let lengthB = parseFloat(document.getElementById("LengthB").value);
+        let lengthC = parseFloat(document.getElementById("LengthC").value);
+        let result ;
+
+        if ( lengthA > 0 && lengthB > 0 && lengthC > 0 ){
+            if ( (lengthA + lengthB) > lengthC){
+                result = "Với a= " + lengthA + " b= " + lengthB + " c=" + lengthC + " sẽ là một tam giác";
+            } else if ( (lengthB + lengthC) > lengthA ){
+                result = "Với a= " + lengthA + " b= " + lengthB + " c=" + lengthC + " sẽ là một tam giác";
+
+            } else if ((lengthA + lengthC) > lengthB )  {
+                result = "Với a= " + lengthA + " b= " + lengthB + " c=" + lengthC + " sẽ là một tam giác";
+            } else {
+                result = "Với a= " + lengthA + " b= " + lengthB + " c=" + lengthC + " không là một tam giác";
+
+            }
+        } else {
+            result = "Với a= " + lengthA + " b= " + lengthB + " c=" + lengthC + " không là một tam giác";
+        }
+        document.getElementById("Result").innerHTML = result ;
+    }
+</script>
+
+<!-- C0123G1-Kiều Quốc Khánh -->
+</body>
+</html>
+

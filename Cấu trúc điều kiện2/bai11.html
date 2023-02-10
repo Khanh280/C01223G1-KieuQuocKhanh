@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cấu trúc điều kiện 2</title>
+    <scrip src="main.js"></scrip>
+</head>
+
+<body>
+
+<h3>Bài 11: Viết chương trình tính thuế thu nhập cá nhân.</h3>
+<input type="text" id="income" placeholder="Nhập thu nhập cá nhân ">
+<button onclick="Enter()">Tính Thuế</button>
+<p id="Result"></p>
+
+<script>
+
+    function Enter() {
+
+        let inCome = parseInt(document.getElementById("income").value);
+        let result ;
+
+        if ( inCome >= 50000000 ) {
+            result = "Với mức thu nhập là " + inCome + " VND mức thuế phải nộp là 20% : " + ( (inCome * 20) / 100 ) + " VND";
+        } else if ( inCome >= 30000000) {
+            result = "Với mức thu nhập là " + inCome + " VND mức thuế phải nộp là 10% : " + ( (inCome * 10) / 100 ) + " VND";
+        } else if ( inCome >= 15000000) {
+            result = "Với mức thu nhập là " + inCome + " VND mức thuế phải nộp là 7% : " + ( (inCome * 7) / 100 ) + " VND";
+        } else if ( inCome >= 10000000 ) {
+            result = "Với mức thu nhập là " + inCome + " VND mức thuế phải nộp là 3% : " + ( (inCome * 3) / 100 ) + " VND";
+        } else {
+            result = "Với mức thu nhập là " + inCome + " VND bạn không phải đóng thuế";
+        }
+
+
+        document.getElementById("Result").innerHTML = result ;
+
+    }
+
+</script>
+
+<!-- C0123G1-Kiều Quốc Khánh -->
+</body>
+</html>
+

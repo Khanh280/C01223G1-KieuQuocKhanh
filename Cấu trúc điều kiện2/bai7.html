@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cấu trúc điều kiện 2</title>
+    <scrip src="main.js"></scrip>
+</head>
+
+<body>
+<h3>Bài 7: Giải phương trình bậc 2.</h3>
+<input type="number" id="a" placeholder="Nhap a">
+<input type="number" id="b" placeholder="Nhap b">
+<input type="number" id="c" placeholder="Nhap c">
+<button onclick="Enter()">Enter</button>
+<p id="ketqua"></p>
+
+
+
+
+<script>
+
+    function Enter() {
+
+        let numbA = parseInt(document.getElementById("a").value);
+        let numbB = parseInt(document.getElementById("b").value);
+        let numbC = parseInt(document.getElementById("c").value);
+        let delta = Math.pow(numbB, 2) - 4*numbA*numbC ;
+        let x1 ;
+        let x2 ;
+        let result ;
+
+        if ( delta < 0 ) {
+            result = "Phuong trinh vo nghiem";
+        } else if ( delta === 0){
+            result = " Phuong trinh co nghiem kep la: x1,x2 = "
+                + ( x1=x2= (- numbB / 2 * numbA));
+        } else {
+            result = "Phuong trinh bac 2 co 2 nghiem" +
+                ( x1 = (-numbB + Math.sqrt(delta)) / (2 * numbA)) + " Va "
+                + ( x2 = (-numbB - Math.sqrt(delta)) / (2 * numbA)) ;
+        }
+
+        document.getElementById("ketqua").innerHTML = result ;
+
+    }
+
+</script>
+
+
+<!-- C0123G1-Kiều Quốc Khánh -->
+</body>
+</html>
