@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Bài 4: Nhập 3 số nguyên và tìm giá trị lớn nhất của ba số nguyên đó</title>
-    <scrip src="main.js"></scrip>
+
 </head>
 
 <body>
@@ -22,26 +22,27 @@
 <script>
     function KetQua4() {
 
-        var numb1 = document.getElementById("numb1").value;
-        var numb2 = document.getElementById("numb2").value;
-        var numb3 = document.getElementById("numb3").value;
-        var KetQua4 ;
+        let numb1 = parseInt(document.getElementById("numb1").value);
+        let numb2 = parseInt(document.getElementById("numb2").value);
+        let numb3 = parseInt(document.getElementById("numb3").value);
+        let result ;
 
         if ( numb1 > numb2 ){
             if ( numb2 > numb3 ){
-                KetQua4 = numb1 + " là số lớn nhất";
+                result = numb1 + " là số lớn nhất";
             } else if ( numb1 > numb3 ) {
-                KetQua4 = numb1 + " là số lớn nhất";
+                result = numb1 + " là số lớn nhất";
             } else {
-                KetQua4 = numb3 + " là số lớn nhất";
+                result = numb3 + " là số lớn nhất";
             }
-        } else if ( numb2 > numb3 ) {
-            KetQua4 = numb2 + " là số lớn nhất";
+        } else if ( numb1 > numb3 ) {
+            result = numb2 + " là số lớn nhất";
+        }else if ( numb2 > numb3) {
+            result = numb2 + " là số lớn nhất";
         } else {
-            KetQua4 = numb3 + " là số lớn nhất";
+            result = numb3 + " là số lớn nhất";
         }
-
-        document.getElementById("KetQua4").innerHTML = KetQua4 ;
+        document.getElementById("KetQua4").innerHTML = result ;
     }
 
 </script>

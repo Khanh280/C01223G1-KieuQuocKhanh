@@ -21,44 +21,44 @@
 
 <script>
     function onClick() {
-        let thang_1 = "1";
-        let thang_2 = "2";
-        let thang_3 ="3";
-        let thang_4="4";
-        let thang_5="5";
-        let thang_6="6";
-        let thang_7="7";
-        let thang_8="8";
-        let thang_9="9";
-        let thang_10="10"
-        let thang_11="11";
-        let thang_12="12";
+        let january = 1;
+        let february = 2;
+        let march =3;
+        let april =4;
+        let may =5;
+        let june =6;
+        let july =7;
+        let august =8;
+        let september =9;
+        let october =10;
+        let november =11;
+        let december =12;
 
-        let day = document.getElementById("day").value;
+        let day = parseInt(document.getElementById("day").value);
 
 
 
         switch ( day ) {
-            case thang_1:
-            case thang_3:
-            case thang_5:
-            case thang_7:
-            case thang_8:
-            case thang_10:
+            case january:
+            case march:
+            case may:
+            case july:
+            case august:
+            case october:
 
-                document.getElementById("Result").innerHTML = "Tháng" + day + ": có 31 ngày"
+                document.getElementById("Result").innerHTML = "Tháng" + day + ": có 31 ngày";
                 break;
-            case thang_2:
+            case february:
 
-                document.getElementById("Result").innerHTML = "Tháng" + day + ": có 28 hoặc ngày"
+                document.getElementById("Result").innerHTML = "Tháng" + day + ": có 28 hoặc 29 ngày";
                 break;
-            case thang_4:
-            case thang_6:
-            case thang_9:
-            case thang_11:
-            case thang_12:
+            case april:
+            case june:
+            case september:
+            case november:
+            case december:
 
-                document.getElementById("Result").innerHTML = "Tháng" + day + ": có 30 ngày"
+                document.getElementById("Result").innerHTML = "Tháng" + day + ": có 30 ngày";
 
                 break;
             default :

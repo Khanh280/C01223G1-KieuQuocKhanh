@@ -23,17 +23,17 @@
         // Bài 1
         function kiemTra() {
 
-            let a = document.getElementById("a").value;
-            let b = document.getElementById("b").value;
-            let KetQua1 ;
+            let numbA = document.getElementById("a").value;
+            let numbB = document.getElementById("b").value;
+            let result ;
 
-            if ( a % b === 0) {
-                KetQua1 = a + " " + "chia hết cho " + " " + b ;
+            if ( numbA % numbB === 0) {
+                result = numbA + " " + "chia hết cho " + " " + numbB ;
             } else {
-                KetQua1 = a + " " + "không chia hết cho" + " " + b;
+                result = numbA + " " + "không chia hết cho" + " " + numbB;
             }
 
-            document.getElementById("KetQua1").innerHTML = KetQua1 ;
+            document.getElementById("KetQua1").innerHTML = result ;
 
         }
         // Bài 1

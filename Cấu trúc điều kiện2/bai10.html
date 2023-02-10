@@ -20,21 +20,21 @@
 
     function Enter() {
 
-        let kWh = +document.getElementById("inputkWh").value;
+        let kwh = +document.getElementById("inputkWh").value;
         let result ;
 
-        if ( kWh < 50  ) {
-            result = kWh * 1.678 + "VND";
-        } else if ( kWh < 100 ) {
-            result = kWh * 1.734 + "VND";
-        } else if ( kWh < 200 ){
-            result = kWh * 2.014 + "VND";
-        } else if ( kWh < 300 ){
-            result = kWh * 2.536 + "VND";
-        } else if ( kWh < 400) {
-            result = kWh * 2.834 + "VND";
+        if ( kwh < 50  ) {
+            result = kwh * 1.678 + "VND";
+        } else if ( kwh < 100 ) {
+            result = kwh * 1.734 + "VND";
+        } else if ( kwh < 200 ){
+            result = kwh * 2.014 + "VND";
+        } else if ( kwh < 300 ){
+            result = kwh * 2.536 + "VND";
+        } else if ( kwh < 400) {
+            result = kwh * 2.834 + "VND";
         } else {
-            result = kWh * 2.927 + "VND";
+            result = kwh * 2.927 + "VND";
         }
 
         document.getElementById("Result").innerHTML = result ;

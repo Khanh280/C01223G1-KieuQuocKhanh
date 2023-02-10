@@ -33,20 +33,20 @@
 
         let weight = document.getElementById("weight").value;
         let height = document.getElementById("height").value;
-        let BMI = Number(weight) / Math.pow(height , 2) ;
+        let bmi = Number(weight) / Math.pow(height , 2) ;
 
 
-        if ( BMI < 18.5) {
-            Result = "Chỉ số BMI là:"  + BMI + "Underweight";
-        } else  if ( BMI < 25.0) {
-            Result = "Chỉ số BMI là:"  + BMI + "Normal" ;
-        } else if ( BMI < 30.0 ) {
-            Result = "Chỉ số BMI là:" + BMI + "Overweight" ;
+        if ( bmi < 18.5) {
+            result = "Chỉ số BMI là: "  + bmi + " Underweight";
+        } else  if ( bmi < 25.0) {
+            result = "Chỉ số BMI là: "  + bmi + " Normal" ;
+        } else if ( bmi < 30.0 ) {
+            result = "Chỉ số BMI là: " + bmi + " Overweight" ;
         } else {
-            Result = "Chỉ số BMI là:"  + BMI + "Obese";
+            result = "Chỉ số BMI là: "  + bmi + " Obese";
         }
 
-        document.getElementById("Result").innerHTML = Result ;
+        document.getElementById("Result").innerHTML = result ;
     }
 
 

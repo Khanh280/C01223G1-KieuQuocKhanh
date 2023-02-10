@@ -19,17 +19,17 @@
 
 <script>
     function kiemTraTuoi() {
-        var tuoi = document.getElementById("tuoi").value;
-        var KetQua2 ;
+        var age = parseInt(document.getElementById("tuoi").value);
+        var result ;
 
-        if ( tuoi <= 15 ){
-            KetQua2 = "Số tuổi: " + tuoi + " không đủ điều kiện vào học lớp 10";
+        if ( age <= 15 ){
+            result = "Số tuổi: " + age + " không đủ điều kiện vào học lớp 10";
         } else {
-            KetQua2 = "Số tuổi: " + tuoi + " đủ điều kiện vào học lớp 10";
+            result = "Số tuổi: " + age+ " đủ điều kiện vào học lớp 10";
 
         }
 
-        document.getElementById("KetQua2").innerHTML = KetQua2 ;
+        document.getElementById("KetQua2").innerHTML = result ;
     }
 </script>
 </body>
