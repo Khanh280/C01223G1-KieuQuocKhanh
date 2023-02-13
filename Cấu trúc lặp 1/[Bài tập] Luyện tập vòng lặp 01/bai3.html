@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bai tap Cau truc lap</title>
+</head>
+
+
+<body>
+
+<h1>Bài 3: Hiển thị ra 20 số trong dãy fibonacci đầu tiên</h1>
+
+<script>
+
+    let f0 = 0;
+    let f1 = 1;
+    let fc ;
+
+    // document.write(f0 + "," + f1 + ",");
+
+    for ( i=0; i< 20 ; i++){
+        fc = f0 + f1;
+        f0 = f1;
+        f1 = fc;
+        document.write(fc + ", ");
+
+    }
+
+
+
+
+</script>
+
+</body>
+</html>
