@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bai tap Cau truc lap</title>
+</head>
+
+
+<body>
+
+<h1>Bài 8:Tro choi doan so</h1>
+<button onclick="start()">Chơi</button>
+<script>
+
+    function start(){
+
+        let numbIn = +prompt("Nhập số trong khoảng bạn muốn đoán:");
+        let numbRandom = Math.floor(Math.random() * numbIn);
+        console.log(numbRandom);
+        let numbCheck = +prompt("Nhập số bạn muốn đoán");
+        let count =0; // So luot duoc choi lai
+
+        while ( numbIn != numbRandom){
+            count++;
+            if ( count == 4 ){
+                alert("Bạn hết số luọt đoán");
+                break;
+            } else if ( numbCheck == numbRandom){
+                alert("Chúc mừng");
+                break;
+            } else if ( numbCheck < numbRandom){
+                alert("Số bạn đoán đang nhỏ hơn");
+            } else {
+                alert("Số bạn đoán đang lớn hơn");
+            }
+            if(count == 3){
+                alert("Bạn hết số luọt đoán");
+                break;
+            }
+            numbCheck = prompt("Nhập số bạn muốn đoán");
+        }
+    }
+
+
+</script>
+<!-- C0123G1-Kiều Quốc Khánh -->
+</body>
+</html>
