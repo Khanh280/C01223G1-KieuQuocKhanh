@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>[Bài tập] Sử dụng các hàm có sẵn của mảng</title>
+</head>
+
+<input type="text" id="numbIn" placeholder="Nhập một chuỗi số ">
+<button onclick="Enter()">Enter</button>
+<p id="ketqua"></p>
+
+<body>
+
+
+<script>
+
+    function Enter() {
+        let numberIn = document.getElementById("numbIn").value;
+        let str = numberIn.toString();
+        let result = [str[0]];
+
+        for ( let i=1; i < str.length; i++ ){
+            if ( (str[i-1] % 2 === 0) && (str[i] % 2 === 0) ) {
+                result.push('-', str[i]);
+            } else{
+                result.push(str[i]);
+            }
+        }
+        document.getElementById("ketqua").innerHTML = result.join("");
+    }
+
+</script>
+<!-- C0123G1-Kiều Quốc Khánh -->
+</body>
+</html>

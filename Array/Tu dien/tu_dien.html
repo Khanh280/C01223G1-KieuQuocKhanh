@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>[Bài tập] Từ điển</title>
+</head>
+
+<input type="text" id="searchgg" placeholder="Nhap tu dien">
+<button onclick="Enter()">Dich</button>
+<p id="ketqua"></p>
+
+<body>
+
+<script>
+
+    function Enter(){
+        let engArray = ["hello", "apple","banana","book", "pen","color","background"];
+        let vieArray = ["Xin chào", "Táo","Chuối","Sách", "bút", "Màu sắc","Nền"];
+        let search = document.getElementById("searchgg").value;
+        let count = 0;
+        let result = "";
+
+        for ( let i=0 ; i < engArray.length; i++){
+            if ( search == engArray[i]){
+                count = i;
+                for ( let j=0 ; j < vieArray.length; j++){
+                    if ( count == j){
+                        result = vieArray[j];
+                    }
+                }
+            }
+        }
+        document.getElementById("ketqua").innerHTML = result ;
+    }
+</script>
+<!-- C0123G1-Kiều Quốc Khánh -->
+</body>
+</html>
