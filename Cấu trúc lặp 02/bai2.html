@@ -18,10 +18,10 @@
     function Enter(){
 
         let n = +document.getElementById("numbIn").value;
-        let sum=1;
+        let factorial=1;
 
         for ( let i = 1; i <= n; i++) {
-            sum = sum * i;
+            factorial = factorial * i;
         }
         document.getElementById("result").innerHTML = "Số giai thừa của " + n + " là: " +sum ;
     }
