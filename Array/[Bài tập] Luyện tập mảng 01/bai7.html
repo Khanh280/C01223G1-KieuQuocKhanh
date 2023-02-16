@@ -6,15 +6,14 @@
 </head>
 <body>
 <h1>Bai 7:</h1>
+
 <script>
     let arrInt = [1,2,3,12,42,5,7,13,56,100];
     let v = +prompt("Nhap so nguyen");
     let result = [];
-    let j;
 
     for ( let i=0; i < arrInt.length; i++){
        if ( v == arrInt[i]){
-           result = (arrInt[i] = arrInt[i+1]);
            arrInt.push(0);
            continue;
        } else {
