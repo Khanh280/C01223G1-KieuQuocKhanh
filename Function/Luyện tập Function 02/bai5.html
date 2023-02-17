@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>[Bài tập] Function </title>
+</head>
+
+<body>
+
+<h1>[Bài tập] Luyện tập tạo và sử dụng hàm 02.</h1>
+
+<input type="number" id="numb1" placeholder="Nhập số nguyên bất kỳ ">
+<input type="number" id="numb2" placeholder="Nhập số nguyên bất kỳ ">
+<input type="number" id="numb3" placeholder="Nhập số nguyên bất kỳ ">
+<button onclick="Enter()">Enter</button>
+<p id="ketqua"></p>
+<script>
+
+    function Enter() {
+        let number1 = +document.getElementById("numb1").value;
+        let number2 = +document.getElementById("numb2").value;
+        let number3 = +document.getElementById("numb3").value;
+        let result;
+
+        function integer(a, b, c) {
+            if ( a > b){
+                if ( b > c){
+                    result = c + " Là số nguyên nhỏ nhất";
+                } else {
+                    result = b + " Là số nguyên nhỏ nhất";
+                }
+            } else if ( a < c){
+                result = a + " Là số nguyên nhỏ nhất";
+            } else {
+                result = c + " Là số nguyên nhỏ nhất";
+            }
+        }
+        integer(number1, number2, number3);
+        document.getElementById("ketqua").innerHTML = result;
+    }
+</script>
+<!-- C0123G1-Kiều Quốc Khánh -->
+</body>
+
+</html>
