@@ -1,18 +1,19 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>[Bài tập] Từ điển</title>
+    <title>[Bài tập] Function </title>
 </head>
-
-<input type="text" id="searchgg" placeholder="Nhap tu dien">
-<button onclick="Enter()">Dich</button>
-<p id="ketqua"></p>
 
 <body>
 
+<h1>[Bài tập] Luyện tập tạo và sử dụng hàm 01: Bai 4.</h1>
+<input type="text" id="searchgg" placeholder="Nhap tu dien">
+<button onclick="Enter()">Dich</button>
+<p id="ketqua"></p>
 <script>
 
     function Enter(){
@@ -23,13 +24,11 @@
         let result = "";
 
         for ( let i=0 ; i < engArray.length; i++){
-            if ( search == engArray[i]){
+            if ( search === engArray[i]){
                 count = i;
                 for ( let j=0 ; j < vieArray.length; j++){
                     if ( count == j){
                         result = vieArray[j];
-                    } else {
-                        result = str + " Khong co trong tu dien";
                     }
                 }
             }
@@ -39,4 +38,5 @@
 </script>
 <!-- C0123G1-Kiều Quốc Khánh -->
 </body>
+
 </html>
