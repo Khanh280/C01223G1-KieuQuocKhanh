@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>[Bài tập] Function </title>
+</head>
+
+<body>
+
+<h1>Bài 6: Viết hàm nhận vào một số,
+    kiểm tra xem nếu số đưa vào có phải là nguyên dương không.
+    Nếu là nguyên dương trả về true, ngược lại trả về false.
+</h1>
+<input type="text" id="numb" placeholder="Nhập so nguyen ">
+<button onclick="checkNumberInt()">Check</button>
+<p id="ketqua"></p>
+<script>
+
+    function checkNumberInt() {
+        let integer = +document.getElementById("numb").value;
+        if (integer >= 0) {
+            result = true;
+        } else {
+            result = false;
+        }
+        document.getElementById("ketqua").innerHTML = result;
+    }
+
+</script>
+<!-- C0123G1-Kiều Quốc Khánh -->
+</body>
+
+</html>

@@ -10,29 +10,28 @@
 
 <body>
 
-<h1>[Bài tập] Luyện tập tạo và sử dụng hàm 02.</h1>
-
+<h1>Bài 5: Viết hàm nhận vào 3 số nguyên bất kỳ, trả về số nguyên có giá trị nhỏ nhất.</h1>
 <input type="number" id="numb1" placeholder="Nhập số nguyên bất kỳ ">
 <input type="number" id="numb2" placeholder="Nhập số nguyên bất kỳ ">
 <input type="number" id="numb3" placeholder="Nhập số nguyên bất kỳ ">
-<button onclick="Enter()">Enter</button>
+<button onclick="checkNumber()">Check</button>
 <p id="ketqua"></p>
 <script>
 
-    function Enter() {
+    function checkNumber() {
         let number1 = +document.getElementById("numb1").value;
         let number2 = +document.getElementById("numb2").value;
         let number3 = +document.getElementById("numb3").value;
         let result;
 
         function integer(a, b, c) {
-            if ( a > b){
-                if ( b > c){
+            if (a > b) {
+                if (b > c) {
                     result = c + " Là số nguyên nhỏ nhất";
                 } else {
                     result = b + " Là số nguyên nhỏ nhất";
                 }
-            } else if ( a < c){
+            } else if (a < c) {
                 result = a + " Là số nguyên nhỏ nhất";
             } else {
                 result = c + " Là số nguyên nhỏ nhất";

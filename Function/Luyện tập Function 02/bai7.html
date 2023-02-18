@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>[Bài tập] Function </title>
+</head>
+
+<body>
+
+<h1>
+    Bài 7: Viết hàm truyền vào 2 số nguyên bất kì, thực hiện đổi chỗ hai số nguyên đó.
+</h1>
+<input type="text" id="numb" placeholder="Nhập hai so nguyen bat ky">
+<button onclick="checkNumberInt()">Check</button>
+<p id="ketqua"></p>
+<script>
+
+    function checkNumberInt() {
+        let integer = document.getElementById("numb").value;
+        for (let i = 0; i < integer.length; i++) {
+            result.unshift(integer[i]);
+        }
+        document.getElementById("ketqua").innerHTML = result.join("");
+    }
+
+</script>
+<!-- C0123G1-Kiều Quốc Khánh -->
+</body>
+
+</html>

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>[Bài tập] Function </title>
+</head>
+
+<body>
+
+<h1>
+    Bài 9: Viết hàm truyền vào một mảng ký tự, và một ký tự bất kỳ,
+    kiểm tra xem ký tự bất kỳ đó có nằm trong mảng không.
+    Nếu có trả về số lần xuất hiện của ký tự đó, nếu không trả về -1.
+</h1>
+<input type="text" id="arrIn" placeholder="Nhập mảng ký tự bất kỳ">
+<input type="text" id="arrRan" oninput="checkCharactersRandom()" placeholder="Nhập ký tự bất kỳ">
+<!-- <button onclick="checkCharactersRandom()">Check</button> -->
+<!-- ^Có thể thay thế thuộc tính oninput ở dòng 19. -->
+<p id="ketqua"></p>
+<script>
+
+    function checkCharactersRandom() {
+        let arrOne = document.getElementById("arrIn").value;
+        let random = document.getElementById("arrRan").value;
+        let arrTwo = [];
+        let count = 0;
+
+        for (let i = 0; i < arrOne.length; i++) {
+            arrTwo.push(arrOne[i]);
+        }
+        for (let j = 0; j < arrTwo.length; j++) {
+            if (random == arrTwo[j]) {
+                count += 1;
+                result = "Số lần xuất hiện của " + random + " trong mảng ký tự là: " + count;
+            }
+        }
+        if (count == 0) {
+            result = random + " không xuất hiện trong mảng ký tự: -1";
+        }
+        document.getElementById("ketqua").innerHTML = result;
+    }
+
+</script>
+<!-- C0123G1-Kiều Quốc Khánh -->
+</body>
+
+</html>
