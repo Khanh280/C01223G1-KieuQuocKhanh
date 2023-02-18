@@ -5,28 +5,38 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>[*Bài tập] Luyện tập mảng 01</title>
+    <title>[Bài tập] Function </title>
 </head>
 
 <body>
 
-<h1>Bài 6:</h1>
+<h1>[Bài tập] Luyện tập tạo và sử dụng hàm 02.</h1>
+
 <script>
 
-    let arr = [1, 3, 4, 6, 9, 10, 23, 42, 100, 7];
-    let v = prompt("Nhap so");
-    let count = 0;
+    function Enter() {
 
-    for (let i = 0; i < arr.length; i++) {
-        if (v == arr[i]) {
-            document.write(v + " is in the array");
-            count = 1;
-            break;
+        let result = [];
+        for (let u = 1; u <= 10; u++) {
+            let arr = +prompt("Nhap so nguyen thu " + u);
+            result.push(arr);
+        }
+
+        let v = +prompt("Nhap son nguyen de kiem tra");
+        let count = 0;
+
+        for (let i = 0; i < result.length; i++) {
+            count++;
+            if (v === result[i]) {
+                document.write(v + " is in the array");
+                break;
+            }
+            if (count == result.length) {
+                document.write(v + " not is in the array");
+            }
         }
     }
-    if (count == 0) {
-        document.write(v + " is not in the array");
-    }
+    Enter();
 
 </script>
 <!-- C0123G1-Kiều Quốc Khánh -->
