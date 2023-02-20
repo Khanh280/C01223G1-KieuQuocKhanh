@@ -19,9 +19,16 @@
 <script>
 
     function checkNumberInt() {
-        let integer = document.getElementById("numb").value;
-        for (let i = 0; i < integer.length; i++) {
-            result.unshift(integer[i]);
+        let integer = +document.getElementById("numb").value;
+        let integer1 = integer.toString();
+        let result = [];
+
+        if (!isNaN(integer)) {
+            for (let i = 0; i < integer1.length; i++) {
+                result.unshift(integer1[i]);
+            }
+        } else {
+            result.push("Vui long chi nhap so nguyen");
         }
         document.getElementById("ketqua").innerHTML = result.join("");
     }
