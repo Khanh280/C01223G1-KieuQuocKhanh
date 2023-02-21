@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>[Bài tập] Lập Trình Hướng Đối Tượng(OOP)</title>
+</head>
+
+<body>
+
+<h1>[Bài tập] Xây dựng lớp mô tả Temperature</h1>
+<script>
+
+    class Temperature {
+
+        constructor(Celsius) {
+            this.Celsius = Celsius;
+        }
+
+        getCelsius() {
+            return this.Celsius;
+        }
+        getFahrenheit() {
+            return ((9 / 5) * this.Celsius) + 32;
+        }
+        getKelvin() {
+            return this.Celsius + 273.15;
+        }
+    };
+
+    let celsiusIn = +prompt("Nhập độ C để chuyển đổi");
+    let temperature = new Temperature(celsiusIn);
+    let Fahrenheit = temperature.getFahrenheit();
+    let kelvin = temperature.getKelvin();
+
+    document.write(temperature.getCelsius() + " độ C " +
+        "<br/>" + "Chuyển sang độ F: " + Fahrenheit +
+        "<br/>" + " Chuyển sang độ Kelvin: " + kelvin);
+
+</script>
+<!-- C0123G1-Kiều Quốc Khánh -->
+</body>
+
+</html>

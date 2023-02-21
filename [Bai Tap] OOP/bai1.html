@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>[Bài tập] Lập Trình Hướng Đối Tượng(OOP)</title>
+</head>
+
+<body>
+
+<h1>
+    [Bài tập] Xây dựng lớp mô tả hình chữ nhật.
+</h1>
+<canvas id="rectangle" width="500" height="300px" style="border:1px solid  #333"></canvas>
+<script>
+
+    class Rectangle {
+
+        constructor(height, width, color) {
+            this.height = height;
+            this.width = width;
+            this.color = color;
+        }
+
+        getHeight() {
+            return this.height;
+        }
+        getWidth() {
+            return this.width;
+        }
+        getArea() {
+            return this.height * this.width;
+        }
+        getChuvi() {
+            return (this.height + this.width) * 2;
+        }
+        getCanvas() {
+            let canvas = document.getElementById("rectangle");
+            let canvasRectangle = canvas.getContext("2d");
+            canvasRectangle.fillStyle = this.color;
+            canvasRectangle.fillRect(50, 50, this.height, this.width);
+        }
+    };
+
+    let a = +prompt("Nhap chieu dai cua hinh chu nhat");
+    let b = +prompt("Nhap chieu rong cua hinh chu nhat");
+    let c = prompt("Nhap ma mau ban muon");
+    let rectangle1 = new Rectangle(a, b, c);
+    let area = rectangle1.getArea();
+    let chuVi = rectangle1.getChuvi();
+    let height =rectangle1.getHeight();
+    rectangle1.getCanvas();
+    document.write("<br/>" + "Dien tich hinh chu nhat la: " + area +
+        "<br/>" + "Chu vi hinh chu nhat la: " + chuVi);
+</script>
+<!-- C0123G1-Kiều Quốc Khánh -->
+</body>
+
+</html>
