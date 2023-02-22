@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>[Bài tập] Lập Trình Hướng Đối Tượng(OOP)</title>
+</head>
+
+<body>
+
+<div>
+    <h1>[Bài tập] Xây dựng lớp mô tả Temperature</h1>
+    <button onclick="turnOn()">Bật</button>
+    <button onclick="turnOff()">Tắt</button>
+    <p id="result"></p>
+</div>
+<script>
+
+    class ElectricLamp {
+
+        constructor(status) {
+            this.status = status;
+        }
+
+        getStatus() {
+            return this.status;
+        }
+
+        turnOn() {
+            return "Đèn đang được bật";
+        }
+        turnOff() {
+            return "Đèn đã được tắt";
+        }
+    };
+
+    class SwitchButton {
+
+        constructor(status, lamp) {
+            this.status = status;
+            this.lamp = lamp;
+        }
+
+        getStatus() {
+            return this.status;
+        }
+        setStatus(status) {
+            this.status = status;
+        }
+
+        connectToLamp(ElectricLamp) {
+            if (ElectricLamp.getStatus()) {
+                return ElectricLamp.turnOn();
+            } else {
+                return ElectricLamp.turnOff();
+            }
+        }
+
+        switchOn() {
+            this.status = true;
+            return this.status;
+        }
+        switchOff() {
+            this.status = false;
+            return this.status;
+        }
+    };
+
+    let buttonOn = new SwitchButton(true, "Đèn đang được bật");
+    let buttonOff = new SwitchButton(false, "Đèn đã được tắt");
+    let onLamp = new ElectricLamp(true);
+    let offLamp = new ElectricLamp(false);
+
+    function turnOn() {
+        if (buttonOn.switchOn() === true) {
+            document.getElementById("result").innerHTML = buttonOn.connectToLamp(onLamp);
+        }
+    }
+
+    function turnOff() {
+        if (buttonOff.switchOff() !== true) {
+            document.getElementById("result").innerHTML = buttonOff.connectToLamp(offLamp);
+        }
+    }
+
+</script>
+<!-- C0123G1-Kiều Quốc Khánh -->
+</body>
+
+</html>

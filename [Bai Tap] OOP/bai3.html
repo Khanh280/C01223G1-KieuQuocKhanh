@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>[Bài tập] Lập Trình Hướng Đối Tượng(OOP)</title>
+</head>
+
+<body>
+
+<h1>[Bài tập] Phát triển ứng dụng nhỏ mô phỏng câu chuyện Adam và Eva</h1>
+<button onclick="adamEat()">Adam Eat</button>
+
+<p id="adam">
+    <br />
+    <br />
+    <br />
+</p>
+<button onclick="evaEat()">Eva Eat</button>
+
+<p id="eva"></p>
+<script>
+    class Apple {
+
+        constructor(weight) {
+            this.weight = weight;
+        }
+
+        getWeight() {
+            return this.weight;
+        }
+
+        setWeight(weight) {
+            this.weight = weight;
+        }
+
+        isEmpty() {
+            if (this.weight <= 0) {
+                return true;
+            } else {
+                return false;
+            }
+        }
+        decreaseApple() {
+            if (this.isEmpty()) {
+                return "Hết Táo rồi nha";
+            } else {
+                this.weight--;
+            }
+        }
+    };
+
+    class Human {
+
+        contructor(name, gender, weight) {
+            this.namne = name;
+            this.gender = gender;
+            this.weight = weight;
+        }
+
+        getName() {
+            return this.name;
+        }
+
+        setName(name) {
+            this.name = name;
+        }
+        isMale() {
+            if (this.gender == 1) {
+                return true;
+            } else {
+                return false;
+            }
+        }
+        getGender() {
+            if (this.isMale()) {
+                return "Male";
+            } else {
+                return "Female"
+            }
+        }
+        setGender(gender) {
+            this.gender = gender;
+        }
+
+        getWeight() {
+            return this.weight;
+        }
+        setWeight(weight) {
+            this.weight = weight;
+        }
+
+        say(string) {
+            alert(string);
+        }
+        eatApple(Apple) {
+            if (Apple.getWeight() > 0) {
+                Apple.decreaseApple();
+                this.Weight++;
+            } else {
+                alert("Hết Táo rồi nha");
+            }
+        }
+        checkApple() {
+            return Apple.isEmty();
+        }
+    }
+    // let AppleTree = +prompt("Nhập số lượng Táo");
+    let adam = new Human("Adam", 1, 65);
+    let eva = new Human("Eva", 2, 55);
+    let apple1 = new Apple(10); // let apple1 = new Apple(AppleTree)
+
+    function adamEat() {
+        adam.eatApple(apple1);
+        document.getElementById("adam").innerHTML = "Adam ăn Táo" + "<br/>" + " Táo còn:" + "<br/>" +
+            apple1.getWeight() + " don vi " + "<br/>" + "Khối lượng của Adam la: " + adam.getWeight();
+    }
+    function evaEat() {
+        eva.eatApple(apple1);
+        document.getElementById("eva").innerHTML = "Eva ăn Táo" + "<br/>" + " Táo còn :" + "<br/>" +
+            apple1.getWeight() + " don vi " + "<br/>" + "Khối lượng của Eva la: " + eva.getWeight();
+    }
+
+</script>
+<!-- C0123G1-Kiều Quốc Khánh -->
+</body>
+
+</html>

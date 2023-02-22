@@ -16,6 +16,11 @@
     class Temperature {
 
         constructor(Celsius) {
+            while (Celsius < -273) {
+                {
+                    Celsius = prompt("Nhiệt độ phải lớn hơn -273,mời nhập lại");
+                }
+            }
             this.Celsius = Celsius;
         }
 
