@@ -11,9 +11,8 @@
 <body>
 
 <div>
-    <h1>[Bài tập] Phát triển chương trình thể hiện sự tương tác giữa hai đối tượng: công tắc và bóng đèn</h1>
-    <button onclick="turnOn()">Bật</button>
-    <button onclick="turnOff()">Tắt</button>
+    <h1>Phát triển chương trình thể hiện sự tương tác giữa hai đối tượng: công tắc và bóng đèn</h1>
+    <button id="switchBtn" onclick="switchButton()">Tắt</button>
     <p id="result"></p>
 </div>
 <script>
@@ -29,12 +28,14 @@
         }
 
         turnOn() {
-            return "Đèn đang được bật";
+            document.getElementById("result").innerHTML = ("Đèn đang được Bật");
         }
+
         turnOff() {
-            return "Đèn đã được tắt";
+            document.getElementById("result").innerHTML = ("Đèn đang được Tắt");
+
         }
-    };
+    }
 
     class SwitchButton {
 
@@ -46,43 +47,43 @@
         getStatus() {
             return this.status;
         }
+
         setStatus(status) {
             this.status = status;
         }
 
-        connectToLamp(ElectricLamp) {
-            if (ElectricLamp.getStatus()) {
-                return ElectricLamp.turnOn();
-            } else {
-                return ElectricLamp.turnOff();
-            }
+        connectToLamp(electricLamp) {
+            this.lamp = electricLamp;
         }
 
         switchOn() {
             this.status = true;
-            return this.status;
+            this.lamp.turnOn();
         }
+
         switchOff() {
             this.status = false;
-            return this.status;
+            this.lamp.turnOff();
         }
     };
 
-    let buttonOn = new SwitchButton(true, "Đèn đang được bật");
-    let buttonOff = new SwitchButton(false, "Đèn đã được tắt");
-    let onLamp = new ElectricLamp(true);
-    let offLamp = new ElectricLamp(false);
+    let buttonSwitch = new SwitchButton(false);
+    let lamp = new ElectricLamp(false);
+    buttonSwitch.connectToLamp(lamp);
 
     function turnOn() {
-        if (buttonOn.switchOn() === true) {
-            document.getElementById("result").innerHTML = buttonOn.connectToLamp(onLamp);
-        }
+        buttonSwitch.switchOn();
     }
 
     function turnOff() {
-        if (buttonOff.switchOff() !== true) {
-            document.getElementById("result").innerHTML = buttonOff.connectToLamp(offLamp);
-        }
+        buttonSwitch.switchOff();
+
+    }
+
+    let flag = true;
+    function switchButton() {
+        const btn = document.getElementById("switchBtn");
+        flag ? (turnOn(), flag = false, btn.innerText = "Tắt") : (turnOff(), flag = true, btn.innerText = "Bật");
     }
 
 </script>

@@ -14,9 +14,9 @@
 <button onclick="adamEat()">Adam Eat</button>
 
 <p id="adam">
-    <br />
-    <br />
-    <br />
+    <br/>
+    <br/>
+    <br/>
 </p>
 <button onclick="evaEat()">Eva Eat</button>
 
@@ -43,6 +43,7 @@
                 return false;
             }
         }
+
         decreaseApple() {
             if (this.isEmpty()) {
                 return "Hết Táo rồi nha";
@@ -54,7 +55,7 @@
 
     class Human {
 
-        contructor(name, gender, weight) {
+        constructor(name, gender, weight) {
             this.namne = name;
             this.gender = gender;
             this.weight = weight;
@@ -67,6 +68,7 @@
         setName(name) {
             this.name = name;
         }
+
         isMale() {
             if (this.gender == 1) {
                 return true;
@@ -74,6 +76,7 @@
                 return false;
             }
         }
+
         getGender() {
             if (this.isMale()) {
                 return "Male";
@@ -81,6 +84,7 @@
                 return "Female"
             }
         }
+
         setGender(gender) {
             this.gender = gender;
         }
@@ -88,6 +92,7 @@
         getWeight() {
             return this.weight;
         }
+
         setWeight(weight) {
             this.weight = weight;
         }
@@ -95,18 +100,21 @@
         say(string) {
             alert(string);
         }
+
         eatApple(Apple) {
             if (Apple.getWeight() > 0) {
                 Apple.decreaseApple();
-                this.Weight++;
+                this.weight++;
             } else {
                 alert("Hết Táo rồi nha");
             }
         }
+
         checkApple() {
             return Apple.isEmty();
         }
     }
+
     // let AppleTree = +prompt("Nhập số lượng Táo");
     let adam = new Human("Adam", 1, 65);
     let eva = new Human("Eva", 2, 55);
@@ -117,6 +125,7 @@
         document.getElementById("adam").innerHTML = "Adam ăn Táo" + "<br/>" + " Táo còn:" + "<br/>" +
             apple1.getWeight() + " don vi " + "<br/>" + "Khối lượng của Adam la: " + adam.getWeight();
     }
+
     function evaEat() {
         eva.eatApple(apple1);
         document.getElementById("eva").innerHTML = "Eva ăn Táo" + "<br/>" + " Táo còn :" + "<br/>" +
