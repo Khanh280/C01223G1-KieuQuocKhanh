@@ -15,21 +15,17 @@
 <input type="number" min="1" max="120" id="age" placeholder="Nhập số tuổi">
 <button onclick="Enter()">Enter</button>
 <p id="area"></p>
-
-
 <script>
     function Enter() {
         let age = document.getElementById("age").value;
         let result ;
 
-
-        if ( age == parseInt(age) && age <= 120 ) {
+        if (age == parseInt(age) && age <= 120) {
             result = age + " là tuổi của bạn";
         } else {
             age == parseFloat(age);
             result = age + " không phải là tuổi của bạn";
         }
-
         document.getElementById("area").innerHTML = result ;
     }
 </script>

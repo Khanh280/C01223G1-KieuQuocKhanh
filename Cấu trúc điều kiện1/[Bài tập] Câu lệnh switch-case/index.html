@@ -14,7 +14,7 @@
 <br>
 <br>
 
-<input type="number" min="1" max="12" id="day" placeholder="Nhập số ngày">
+<input type="number" min="1" max="12" id="day" placeholder="Nhập số thang">
 <button onclick="onClick()">Checkk</button>
 
 <p id="Result">Đây là nơi hiển thị kết quả </p>
@@ -33,10 +33,7 @@
         let october =10;
         let november =11;
         let december =12;
-
         let day = parseInt(document.getElementById("day").value);
-
-
 
         switch ( day ) {
             case january:
@@ -45,30 +42,27 @@
             case july:
             case august:
             case october:
-
                 document.getElementById("Result").innerHTML = "Tháng" + day + ": có 31 ngày";
                 break;
-            case february:
 
+            case february:
                 document.getElementById("Result").innerHTML = "Tháng" + day + ": có 28 hoặc 29 ngày";
                 break;
+
             case april:
             case june:
             case september:
             case november:
             case december:
-
                 document.getElementById("Result").innerHTML = "Tháng" + day + ": có 30 ngày";
-
                 break;
+
             default :
                 document.getElementById("Result").innerHTML = "Vui lòng nhập lại" ;
         }
     }
 
 </script>
-
-
 <!-- C0123G1-Kiều Quốc Khánh -->
 </body>
 </html>

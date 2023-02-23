@@ -10,10 +10,11 @@
 
 <body>
 
-<h3>Bài 12: Viết chương trình tính lãi ngân hàng (lãi mẹ đẻ lãi con) khi biết số tiền ban đầu, số  tháng cho vay và lãi xuất hàng tháng.</h3>
-<p> So thang cho vay la 12, lai suat hang thang la 2%</p>
+<h3>Bài 12: Viết chương trình tính lãi ngân hàng (lãi mẹ đẻ lãi con) khi biết số tiền ban đầu, số tháng cho vay và lãi
+    xuất hàng tháng.
+</h3>
 <h5> Số tiền cho vay:</h5>
-<input type="number" id="money" placeholder="Nhập số tiền bạn vay" >
+<input type="number" id="money" placeholder="Nhập số tiền bạn vay">
 <h5>Số tháng có thể vay: </h5>
 <input type="number" id="month" placeholder="Nhập số tháng">
 <h5>Lãi suất tháng(%): </h5>
@@ -29,61 +30,52 @@
         let money = parseFloat(document.getElementById("money").value);
         let month = parseFloat(document.getElementById("month").value);
         let interest = parseFloat(document.getElementById("laiSuat").value);
-        let result ;
+        let result;
 
-
-        switch (month){
+        switch (month) {
             case 1:
-                result ="Với " + month + " tháng lãi suất " + interest + "% thì số tiền lãi nhận được là:" + money * Math.pow(( 1 + ( (interest * 1) / 100) ) , month) ;
+                result = "Với " + month + " tháng lãi suất " + interest + "% thì số tiền lãi nhận được là:" + money * Math.pow((1 + ((interest * 1) / 100)), month);
                 break;
             case 2:
-                result ="Với " + month + " tháng lãi suất " + interest + "% thì số tiền lãi nhận được là:" + money * Math.pow(( 1 + ( (interest * 1) / 100) ) , month) ;
+                result = "Với " + month + " tháng lãi suất " + interest + "% thì số tiền lãi nhận được là:" + money * Math.pow((1 + ((interest * 1) / 100)), month);
                 break;
             case 3:
-                result ="Với " + month + " tháng lãi suất " + interest + "% thì số tiền lãi nhận được là:" + money * Math.pow(( 1 + ( (interest * 1) / 100) ) , month) ;
+                result = "Với " + month + " tháng lãi suất " + interest + "% thì số tiền lãi nhận được là:" + money * Math.pow((1 + ((interest * 1) / 100)), month);
                 break;
             case 4:
-                result ="Với " + month + " tháng lãi suất " + interest + "% thì số tiền sau lãi nhận được là:" + money * Math.pow(( 1 + ( (interest * 1) / 100) ) , month) ;
+                result = "Với " + month + " tháng lãi suất " + interest + "% thì số tiền sau lãi nhận được là:" + money * Math.pow((1 + ((interest * 1) / 100)), month);
                 break;
             case 5:
-                result ="Với " + month + " tháng lãi suất " + interest + "% thì số tiền sau lãi nhận được là:" + money * Math.pow(( 1 + ( (interest * 1) / 100) ) , month) ;
+                result = "Với " + month + " tháng lãi suất " + interest + "% thì số tiền sau lãi nhận được là:" + money * Math.pow((1 + ((interest * 1) / 100)), month);
                 break;
             case 6:
-                result ="Với " + month + " tháng lãi suất " + interest + "% thì số tiền sau lãi nhận được là:" + money * Math.pow(( 1 + ( (interest * 1) / 100) ) , month) ;
+                result = "Với " + month + " tháng lãi suất " + interest + "% thì số tiền sau lãi nhận được là:" + money * Math.pow((1 + ((interest * 1) / 100)), month);
                 break;
             case 7:
-                result ="Với " + month + " tháng lãi suất " + interest + "% thì số tiền sau lãi nhận được là:" + money * Math.pow(( 1 + ( (interest * 1) / 100) ) , month) ;
+                result = "Với " + month + " tháng lãi suất " + interest + "% thì số tiền sau lãi nhận được là:" + money * Math.pow((1 + ((interest * 1) / 100)), month);
                 break;
             case 8:
-                result ="Với " + month + " tháng lãi suất " + interest + "% thì số tiền sau lãi nhận được là:" + money * Math.pow(( 1 + ( (interest * 1) / 100) ) , month) ;
+                result = "Với " + month + " tháng lãi suất " + interest + "% thì số tiền sau lãi nhận được là:" + money * Math.pow((1 + ((interest * 1) / 100)), month);
                 break;
             case 9:
-                result ="Với " + month + " tháng lãi suất " + interest + "% thì số tiền sau lãi nhận được là:" + money * Math.pow(( 1 + ( (interest * 1) / 100) ) , month) ;
+                result = "Với " + month + " tháng lãi suất " + interest + "% thì số tiền sau lãi nhận được là:" + money * Math.pow((1 + ((interest * 1) / 100)), month);
                 break;
             case 10:
-                result ="Với " + month + " tháng lãi suất " + interest + "% thì số tiền sau lãi nhận được là:" + money * Math.pow(( 1 + ( (interest * 1) / 100) ) , month) ;
+                result = "Với " + month + " tháng lãi suất " + interest + "% thì số tiền sau lãi nhận được là:" + money * Math.pow((1 + ((interest * 1) / 100)), month);
                 break;
             case 11:
-                result ="Với " + month + " tháng lãi suất " + interest + "% thì số tiền sau lãi nhận được là:" + money * Math.pow(( 1 + ( (interest * 1) / 100) ) , month) ;
+                result = "Với " + month + " tháng lãi suất " + interest + "% thì số tiền sau lãi nhận được là:" + money * Math.pow((1 + ((interest * 1) / 100)), month);
                 break;
             case 12:
-                result ="Với " + month + " tháng lãi suất " + interest + "% thì số tiền sau lãi nhận được là:" + money * Math.pow(( 1 + ( (interest * 1) / 100) ) , month) ;
+                result = "Với " + month + " tháng lãi suất " + interest + "% thì số tiền sau lãi nhận được là:" + money * Math.pow((1 + ((interest * 1) / 100)), month);
                 break;
             default :
-                result ="Với " + month + " tháng lãi suất " + interest + "% thì số tiền sau lãi nhận được là:" + money * Math.pow(( 1 + ( (interest * 1) / 100) ) , month) ;
-
+                result = "Với " + month + " tháng lãi suất " + interest + "% thì số tiền sau lãi nhận được là:" + money * Math.pow((1 + ((interest * 1) / 100)), month);
         }
-
-
-
-
-
-        document.getElementById("ketqua").innerHTML = result ;
-
+        document.getElementById("ketqua").innerHTML = result;
     }
 
 </script>
-
 
 
 <!-- C0123G1-Kiều Quốc Khánh -->

@@ -28,13 +28,11 @@
 
 <script>
 
-
     function  onClick() {
 
         let weight = document.getElementById("weight").value;
         let height = document.getElementById("height").value;
         let bmi = Number(weight) / Math.pow(height , 2) ;
-
 
         if ( bmi < 18.5) {
             result = "Chỉ số BMI là: "  + bmi + " Underweight";
@@ -48,7 +46,6 @@
 
         document.getElementById("Result").innerHTML = result ;
     }
-
 
 </script>
 <!-- C0123G1-Kiều Quốc Khánh -->
