@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>On Tap</title>
+</head>
+
+<body>
+
+<h3>Bai 5</h3>
+<script>
+
+    let N = prompt("Nhập độ dài mảng");
+    let arr = [];
+    let arr1 = [];
+    let count = 0;
+
+    function checkNumber() {
+        for (let i = 0; i < N; i++) {
+            arr[i] = +prompt("Nhập phần tử thứ " + (i + 1));
+        }
+        for (let i = 1; i < arr.length; i++) {
+            if (arr[0] === arr[i]) {
+                count++;
+            }
+        }
+    }
+    checkNumber();
+    if (count === 0) {
+        document.write(arr);
+    } else {
+        alert("Vui long nhap cac phan tu khong trung");
+        checkNumber();
+        document.write(arr);
+    }
+
+</script>
+<!-- C0123G1-Kiều Quốc Khánh -->
+</body>
+
+</html>

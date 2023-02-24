@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>On Tap</title>
+</head>
+
+<body>
+
+<h3>Bai 4</h3>
+<script>
+
+    let N = prompt("Nhập độ dài mảng");
+    let arr = [];
+    let count = 0;
+
+    for (let i = 0; i < N; i++) {
+        arr[i] = +prompt("Nhập phần tử thứ " + (i + 1));
+    }
+    document.write("Mảng bạn nhập vào là: " + arr + "<br/>");
+
+    for (let i = 0; i < arr.length; i++) {
+        if (arr[i] !== arr[arr.length - i - 1]) {
+            document.write("NO")
+            break;
+        } else {
+            count++;
+        }
+        if (count >= (arr.length / 2)) {
+            document.write("OK");
+            break;
+        }
+    }
+
+</script>
+<!-- C0123G1-Kiều Quốc Khánh -->
+</body>
+
+</html>
