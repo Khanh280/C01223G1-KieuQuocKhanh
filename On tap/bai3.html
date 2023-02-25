@@ -7,34 +7,45 @@
 <body>
 <h3>Bai 3</h3>
 <script>
-    function checkUpDown(arr) {
-        let count1 = 0;
-        let count2 = 0;
-        for (let i = 0; i < arr.length; i++) {
-            let n = arr[0]-arr[1];
-            let m = arr[1]-arr[0];
-            if (arr[i] - arr[i + 1] === n) {
-                count1++;
-            } else if (arr[i+1] - arr[i] === m) {
-                count2++;
-            }
-        }
-        if (count1 === arr.length - 1 || count2 === arr.length - 1) {
-            document.write("True");
-            return true;
-        } else {
-            document.write("False");
-            return false;
-        }
-    }
-
-    let n = +prompt("Nhập số lượng phần tử: ");
+    let n = +prompt("Nhap do dai phan tu trong mang");
     let arr = [];
     for (let i = 0; i < n; i++) {
-        arr[i] = +prompt("Nhập phần thử thứ " + (i + 1));
+        arr[i] = +prompt("Nhap phan tu");
     }
-    document.write("Mảng các phần tử: " + arr + "<br>");
-    checkUpDown(arr);
+
+    // function checkNumber(arr) {
+    //     let kc = arr[0] - arr[1];
+    //     if (kc === 0) {
+    //         return false;
+    //     }
+    //     let flag = false;
+    //     for (let i = 0; i < arr.length - 1; i++) {
+    //         if ((arr[i] - arr[i + 1]) === kc) {
+    //             flag = true;
+    //         } else {
+    //             return flag = false;
+    //         }
+    //     }
+    //     return flag;
+    // }
+
+    function checkNumber(arr){
+        let a = arr[0]- arr[1];
+        if ( a === 0){
+            return false;
+        }
+        let flag = false;
+        for ( let i=0; i<arr.length-1 ; i++){
+            if ( arr[i] - arr[i+1] === a ){
+                flag = true;
+            } else {
+                return flag=false;
+            }
+        }
+        return flag;
+    }
+    document.write("Mang arr = [ " + arr + " ]" + "<br>");
+    document.write("" + checkNumber(arr));
 </script>
 </body>
 </html>
