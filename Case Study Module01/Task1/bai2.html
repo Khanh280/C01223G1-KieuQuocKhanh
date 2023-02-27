@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Case Study</title>
+</head>
+
+<body>
+
+<h3>Task 1. Bài 2 </h3>
+<input type="text" id="checkCharacters" placeholder="Nhập chữ cái">
+<button onclick="checkCharacters()">Check</button>
+<script>
+
+    function checkCharacters() {
+
+        let characters = document.getElementById("checkCharacters").value;
+        let o = "o";
+        let u = "u";
+        let i = "i";
+        let a = "a";
+        let e = "e";
+        let o1 = "O";
+        let u1 = "U";
+        let i1 = "I";
+        let a1 = "A";
+        let e1= "E";
+        let result;
+
+        switch (characters) {
+            case o:
+            case u:
+            case i:
+            case a:
+            case e:
+            case o1:
+            case u1:
+            case i1:
+            case a1:
+            case e1:
+                alert("Ký tự bạn nhập vào là nguyên âm");
+                break;
+            default:
+                alert("Ký tự bạn nhập vào là phụ âm");
+        }
+    }
+
+</script>
+<!-- C0123G1-Kiều Quốc Khánh -->
+</body>
+
+</html>

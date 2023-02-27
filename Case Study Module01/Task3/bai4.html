@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Case Study</title>
+</head>
+
+<body>
+<h3>Task 3. Bài 4 </h3>
+<p id="display"></p>
+<input type="text" id="water" oninput="payWater()" placeholder="Nhập thứ tự nước bạn chọn">
+<input type="number" min="1" value="1" id="amount" placeholder="Nhập số lượng">
+<button onclick="payWater()">Tính tiền</button>
+<p id="result"></p>
+<script>
+    let result;
+    let flag = true;
+    do {
+        document.getElementById("display").innerHTML = ("Quẹo lựa nước uống ở đây:" + "<br/>" +
+            "1. Cafe" + "<br/>" +
+            "2. Cam vắt" + "<br/>" +
+            "3. Nước ép cà rốt" + "<br/>" +
+            "4. Nước ép cà chua" + "<br/>" +
+            "5. Nước lọc" + "<br/>" +
+            "6. Nước dừa" + "<br/>" +
+            "7. Không chọn");
+        flag = false;
+    } while (flag);
+
+    function payWater() {
+
+        let checkWater = +document.getElementById("water").value;
+        let amount = +document.getElementById("amount").value;
+        let cafe = 1;
+        let orange = 2;
+        let carot = 3;
+        let tomato = 4;
+        let water = 5;
+        let coconut = 6;
+        let noChon = 7;
+
+        switch (checkWater) {
+            case cafe:
+                if (amount > 0) {
+                    result = amount * 15 + " ngàn đồng";
+                }
+                break;
+            case orange:
+                if (amount > 0) {
+                    result = amount * 25 + " ngàn đồng";
+                }
+                break;
+            case carot:
+                if (amount > 0) {
+                    result = amount * 25 + " ngàn đồng";
+                }
+                break;
+            case tomato:
+                if (amount > 0) {
+                    result = amount * 25 + " ngàn đồng";
+                }
+                break;
+            case water:
+                if (amount > 0) {
+                    result = amount * 10 + " ngàn đồng";
+                }
+                break;
+            case coconut:
+                if (amount > 0) {
+                    result = amount * 30 + " ngàn đồng";
+                }
+                break;
+            case noChon:
+        }
+
+        if (checkWater !== 7) {
+            document.getElementById("result").innerHTML = "Tổng số tiền bạn phải trả cho " + amount + " ly là " + result;
+        } else {
+            document.getElementById("result").innerHTML = "Bạn đã không chọn món nào.";
+        }
+    }
+
+</script>
+<!-- C0123G1-Kiều Quốc Khánh -->
+</body>
+
+</html>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Case Study</title>
+</head>
+
+<body>
+
+<h3>Task 3. Bài 1 </h3>
+<script>
+
+    let n = prompt("Nhập độ dài mảng số nguyên");
+    let a = [];
+    let b = [];
+    let fc = 0;
+    let f0 = 0;
+    let f1 = 0;
+
+    for (let i = 0; i < n; i++) {
+        a[i] = +prompt("Nhập số nguyên thứ " + (i + 1));
+    }
+    for (let i = 0; i < a.length; i++) {
+        fc = f0 + a[i];
+        f0 = fc;
+        f1 = a[i + 1];
+        b.push(fc);
+    }
+    document.write("Mảng được tạo ra là: b=[" + b + "]");
+
+</script>
+<!-- C0123G1-Kiều Quốc Khánh -->
+</body>
+
+</html>

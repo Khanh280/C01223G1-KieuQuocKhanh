@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Case Study</title>
+</head>
+
+<body>
+
+<h3>Task 1. Bài 1 </h3>
+<input type="text" id="nhanvien" placeholder="Nhập lương nhân viên">
+<button onclick="payRoll()">Tính</button>
+<p id="result"></p>
+<p id="result1"></p>
+<script>
+
+    function payRoll(){
+
+        let salary = +document.getElementById("nhanvien").value;
+        let result;
+        if (salary < 7) {
+            result = (salary * 5) / 100;
+        } else if ( salary < 15 ){
+            result = (salary * 10) / 100;
+        } else {
+            result = (salary * 20) / 100;
+        }
+        document.getElementById("result").innerHTML = "Số thuế nhân viên phải nộp là: " + result + " triệu đồng.";
+        document.getElementById("result1").innerHTML = "Số lương thực nhận của nhân viên là: " + (salary - result) + " triệu đồng.";
+    }
+
+</script>
+<!-- C0123G1-Kiều Quốc Khánh -->
+</body>
+
+</html>

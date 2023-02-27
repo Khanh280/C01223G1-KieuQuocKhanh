@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Case Study</title>
+</head>
+
+<body>
+<h1> Task4: Bài 2.</h1>
+<script>
+    // Cach 1
+    let str = prompt("Nhập xâu ký tự");
+    let arrStr = [];
+    for (let i = 0; i < str.length; i++) {
+        arrStr.push(str[i]);
+    }
+
+    let count = 0;
+    let newArr = [];
+    for (let i = 0; i < arrStr.length; i++) {
+        if ((arrStr.indexOf(arrStr[i]) !== -1) && (arrStr.indexOf(arrStr[i])) !== newArr.indexOf(arrStr[i])) {
+            newArr.push(arrStr[i]);
+            count++;
+        }
+    }
+    document.write("Mảng bạn nhập vào có " + count + " ký tự khác nhau là: " + newArr);
+    // Cach 2
+    // let lengthStr = prompt("Nhập do dai xau ky tu A");
+    // let arrStr1 = [];
+    // let arrStr11 = [];
+    // let count=0;
+    //
+    // for (let i = 0; i < lengthStr; i++) {
+    //     arrStr1[i] = prompt("Nhap ky tu thu " + (i+1) + " cua A");
+    // }
+    //
+    // for (let i=0; i< arrStr1.length; i++){
+    //     if (arrStr11.indexOf(arrStr1[i]) === -1){
+    //         arrStr11.push(arrStr1[i]);
+    //         count++;
+    //     }
+    // }
+    // document.write(" So ky tu khac nhau trong mang la " + count);
+
+</script>
+<!-- C0123G1-Kiều Quốc Khánh -->
+</body>
+
+</html>

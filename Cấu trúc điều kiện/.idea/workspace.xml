@@ -2,7 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="1b35a914-1bd5-4ecc-97d9-91220c992b3e" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/Luyện tập cấu trúc điều kiện 01/.idea/workspace.xml" beforeDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Case Study Module01/Task1/bai2.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Case Study Module01/Task3/bai1.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Case Study Module01/Task3/bai3.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Case Study Module01/Task3/bai4.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Case Study Module01/Task4/bai1.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -35,6 +39,7 @@
       <option name="presentableId" value="Default" />
       <updated>1677119009538</updated>
       <workItem from="1677119010883" duration="85000" />
+      <workItem from="1677321210183" duration="6000" />
     </task>
     <servers />
   </component>
@@ -42,9 +47,9 @@
     <option name="version" value="2" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="501" y="181" key="FileChooserDialogImpl" timestamp="1677119095490">
+    <state x="501" y="181" key="FileChooserDialogImpl" timestamp="1677321214708">
       <screen x="0" y="0" width="1440" height="852" />
     </state>
-    <state x="501" y="181" key="FileChooserDialogImpl/0.0.1440.852@0.0.1440.852" timestamp="1677119095490" />
+    <state x="501" y="181" key="FileChooserDialogImpl/0.0.1440.852@0.0.1440.852" timestamp="1677321214708" />
   </component>
 </project>

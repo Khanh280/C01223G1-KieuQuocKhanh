@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Case Study</title>
+</head>
+
+<body>
+
+<script>
+
+    let str = prompt("Nhập xâu ký tự");
+    let upper = "QWERTYUIOPASDFGHJKLZXCVBNM";
+    let str1 = [];
+    let khoangChan = " ";
+
+    for (let i = 0; i < str.length; i++) {
+        str1.push(str[i]);
+    }
+
+    let arrStr = [];
+    for (let i = 0; i < str1.length; i++) {
+        if (str1[i] === khoangChan && str1[i + 1] === khoangChan) {
+            str1.splice(i, 0);
+        }
+        if (upper.indexOf(str1[i]) !== -1) {
+            arrStr.push(str1[i].toLowerCase());
+        } else {
+            arrStr.push(str1[i]);
+        }
+    }
+    // document.write(arrStr.join(""));
+    let arrStr1 = [];
+    for (let i = 0; i < arrStr.length; i++) {
+        if (i === 0) {
+            arrStr1.push(arrStr[i].toUpperCase());
+        } else if (arrStr[i - 1] === khoangChan) {
+            arrStr1.push(arrStr[i].toUpperCase());
+        } else {
+            arrStr1.push(arrStr[i]);
+        }
+    }
+    document.write(arrStr1.join(""));
+    //Chưa tìm được từ dài nhất trong xâu
+</script>
+<!-- C0123G1-Kiều Quốc Khánh -->
+</body>
+
+</html>
