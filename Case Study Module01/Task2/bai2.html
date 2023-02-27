@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Case Study</title>
+</head>
+<body>
+<h3>Task2. Bai2</h3>
+<script>
+    let n = parseInt(prompt('Nhap gia tri N'));
+    for (let i = 0; i < n; i++) {
+        for (let j = n - 1; j > i; j--) {
+            document.write("#");
+        }
+        for (let k = 0; k < (i + 1) * 2 - 1; k++) {
+            document.write("*");
+        }
+        document.writeln("<br>");
+    }
+</script>
+</body>
+</html>

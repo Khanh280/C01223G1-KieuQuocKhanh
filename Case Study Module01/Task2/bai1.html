@@ -2,9 +2,22 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Case Study</title>
 </head>
 <body>
-
+    <h3>Task2. Bai1</h3>
+    <script>
+        let number = parseInt(prompt('Nhap chieu cao h'));
+        for (let i = 0; i < number; i++) {
+            for (let j = 0; j < number; j++) {
+                if (j === 0 || i === j || i === number - 1) {
+                    document.write(" * ");
+                } else {
+                    document.write("&nbsp&nbsp  ");
+                }
+            }
+            document.write("<br>");
+        }
+    </script>
 </body>
 </html>

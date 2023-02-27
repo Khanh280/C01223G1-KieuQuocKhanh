@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Case Study</title>
+</head>
+<body>
+<h3>Task2. Bai3</h3>
+<script>
+    let n = parseInt(prompt('Nhap gia tri N'));
+    for (let i = 1; i <= n; i++) {
+        for (let j = n; j > i; j--) {
+            document.write("#");
+        }
+        for (let k = 1; k <= i * 2 - 1; k++) {
+            if (k === 1|| k=== i * 2 - 1 || i===n || i===1){
+                document.write("*");
+            }else {
+                document.write("&nbsp&nbsp");
+            }
+        }
+        document.writeln("<br>");
+    }
+</script>
+</body>
+</html>

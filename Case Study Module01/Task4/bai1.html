@@ -21,29 +21,33 @@
         str1.push(str[i]);
     }
 
-    let arrStr = [];
-    for (let i = 0; i < str1.length; i++) {
-        if (str1[i] === khoangChan && str1[i + 1] === khoangChan) {
-            str1.splice(i, 0);
+    function checkCharacters(){
+        let arrStr = [];
+        for (let i = 0; i < str1.length; i++) {
+            if (str1[i] === khoangChan && str1[i + 1] === khoangChan) {
+                str1.splice(i, 1);
+            }
+            if (upper.indexOf(str1[i]) !== -1) {
+                arrStr.push(str1[i].toLowerCase());
+            } else {
+                arrStr.push(str1[i]);
+            }
         }
-        if (upper.indexOf(str1[i]) !== -1) {
-            arrStr.push(str1[i].toLowerCase());
-        } else {
-            arrStr.push(str1[i]);
+        // document.write(arrStr.join(""));
+        let arrStr1 = [];
+        for (let i = 0; i < arrStr.length; i++) {
+            if (i === 0) {
+                arrStr1.push(arrStr[i].toUpperCase());
+            } else if (arrStr[i - 1] === khoangChan) {
+                arrStr1.push(arrStr[i].toUpperCase());
+            } else {
+                arrStr1.push(arrStr[i]);
+            }
         }
+        document.write(arrStr1.join(""));
+        console.log(arrStr1);
     }
-    // document.write(arrStr.join(""));
-    let arrStr1 = [];
-    for (let i = 0; i < arrStr.length; i++) {
-        if (i === 0) {
-            arrStr1.push(arrStr[i].toUpperCase());
-        } else if (arrStr[i - 1] === khoangChan) {
-            arrStr1.push(arrStr[i].toUpperCase());
-        } else {
-            arrStr1.push(arrStr[i]);
-        }
-    }
-    document.write(arrStr1.join(""));
+    checkCharacters();
     //Chưa tìm được từ dài nhất trong xâu
 </script>
 <!-- C0123G1-Kiều Quốc Khánh -->
