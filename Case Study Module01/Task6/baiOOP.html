@@ -7,105 +7,182 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Case Study</title>
 </head>
+<style>
+    div {
+        text-align: center;
+    }
+
+    button:hover {
+        background-color: #888585;
+        color: #fff;
+        cursor: pointer;
+    }
+
+    button {
+        border: 1px solid #aeedcd;
+    }
+
+    table {
+        margin: auto;
+    }
+
+    tr {
+        text-align: center;
+    }
+</style>
 
 <body>
-<h3>Task 3. Bài 4 </h3>
-<p id="display"></p>
-<input type="text" id="water"  placeholder="Nhập thứ tự nước bạn chọn">
-<input type="number" min="1" value="1" id="amount" placeholder="Nhập số lượng">
-<button onclick="addWater()">Thêm vào giỏ hàng</button>
-<button onclick="payWater()">Tính tiền</button>
-<p id="result"></p>
-<p> Giỏ hàng hiện có: </p>
-<p id="repo"></p>
-<p id="pay"></p>
+<div>
+    <button onclick="createStudent()">Thêm mới học viên</button>
+    <button onclick="updateStudent()">Sửa thông tin học viên</button>
+    <button onclick="deleteStudent()">Xóa học viên</button>
+</div>
+<hr>
+<div id="tableStudentList"></div>
+<script>
 
-    <script>
-        let result;
-        let amount;
-        let total=0;
-        let nameWater =0;
-        let flag = true;
+    class CodeGymStudent {
+
+        constructor(maHocVien, name, classes, email, birthday, module) {
+            this.maHocVien = maHocVien;
+            this.name = name;
+            this.classes = classes;
+            this.email = email;
+            this.birthday = birthday;
+            this.module = module;
+        }
+    }
+
+    let student1 = new CodeGymStudent("HV-0001", "Kiều Quốc Khánh", "C0123G1", "khanhabcdef@gmail.com", "28/08/2001", " 01 ");
+    let studentList = [];
+    studentList.push(student1);
+
+    function displayStudentList(studentList) {
+
+        let table = "<table width='650px' border='1' style=' border-collapse: collapse'> ";
+        table += "<tr>" +
+            "<th> Mã học viên </th>" +
+            "<th> Họ và tên </th>" +
+            "<th> Lớp </th>" +
+            "<th> Email </th>" +
+            "<th> Ngày sinh </th>" +
+            "<th> Module </th>" +
+            "</tr>";
+
+        for (let i = 0; i < studentList.length; i++) {
+            table += "<tr>" +
+                "<td>" + studentList[i].maHocVien + "</td>" +
+                "<td>" + studentList[i].name + "</td>" +
+                "<td>" + studentList[i].classes + "</td>" +
+                "<td>" + studentList[i].email + "</td>" +
+                "<td>" + studentList[i].birthday + "</td>" +
+                "<td>" + studentList[i].module + "</td>" +
+                "</tr>";
+
+        }
+        table += "</table>";
+        document.getElementById("tableStudentList").innerHTML = table;
+    }
+
+    displayStudentList(studentList);
+
+    function deleteStudent() {
+        let count = 0;
+        let maHocVien = prompt("Nhập mã học viên");
+        for (let i = 0; i < studentList.length; i++) {
+            if (maHocVien === studentList[i].maHocVien) {
+                let confirmDelete = confirm("Bạn có muốn xóa học viên mã số " + maHocVien + " không?");
+                if (confirmDelete) {
+                    studentList.splice(i, 1);
+                    alert("Bạn đã xóa thành công ");
+                    displayStudentList(studentList);
+                    break;
+                } else {
+                    alert("Bạn đã không xóa");
+                }
+                count++;
+            }
+            if (count === studentList.length) {
+                alert("Mã học viên không tồn tại");
+            }
+        }
+
+    }
+
+    function createStudent() {
+
+        let flag;
         do {
-            document.getElementById("display").innerHTML = ("Quẹo lựa nước uống ở đây:" + "<br/>" +
-                "1. Cafe" + "<br/>" +
-                "2. Cam vắt" + "<br/>" +
-                "3. Nước ép cà rốt" + "<br/>" +
-                "4. Nước ép cà chua" + "<br/>" +
-                "5. Nước lọc" + "<br/>" +
-                "6. Nước dừa" + "<br/>" +
-                "7. Không chọn");
-            flag = false;
-        } while (flag);
-        function addWater() {
-            let checkWater = +document.getElementById("water").value;
-            amount = +document.getElementById("amount").value;
-            let cafe = 1;
-            let orange = 2;
-            let carot = 3;
-            let tomato = 4;
-            let water = 5;
-            let coconut = 6;
-            let noChon = 7;
-
-            switch (checkWater) {
-                case cafe:
-                    if (amount > 0) {
-                        result = amount * 15 ;
-                        nameWater =" Caffe " ;
+            let empty = " ";
+            let empty1 = "";
+            flag = true;
+            let maHocVien = prompt("Nhập mã học viên");
+            if ((maHocVien[0] === "H" && maHocVien[1] === "V")) {
+                for (let i = 0; i < studentList.length + 1; i++) {
+                    if ((maHocVien !== studentList[i].maHocVien) && maHocVien.length === 7) {// Error cần fix thêm
+                        let name = prompt("Nhập họ và tên");
+                        let classes = prompt("Nhập lớp");
+                        let email = prompt("Nhập Email");
+                        let birthday = prompt("Nhập ngày sinh");
+                        let module = prompt("Nhập module");
+                        if ((name === empty || name === empty1) || (classes === empty || classes === empty1) || (email === empty || email === empty1) ||
+                            (birthday === empty || birthday === empty1) || (module === empty || module === empty1)) {
+                            flag = false;
+                            alert("Vui lòng không để trống thông tin. Vui lòng nhập lại");
+                        } else {
+                            let newStudent = new CodeGymStudent(maHocVien, name, classes, email, birthday, module);
+                            studentList.push(newStudent);
+                            break;
+                        }
+                    } else {
+                        flag = false;
+                        alert("Ma hoc vien da ton tai hoac chua nhap du ma so")
                     }
-                    break;
-                case orange:
-                    if (amount > 0) {
-                        result =  amount * 25;
-                        nameWater =" Cam vắt " ;
-                    }
-                    break;
-                case carot:
-                    if (amount > 0) {
-                        result =  amount * 25 ;
-                        nameWater = " Nước ép cà rốt" ;
-                    }
-                    break;
-                case tomato:
-                    if (amount > 0) {
-                        result =  amount * 25 ;
-                        nameWater = " Nước ép cà chua ";
-                    }
-                    break;
-                case water:
-                    if (amount > 0) {
-                        result = amount * 10 ;
-                        nameWater = " Nước lọc ";
-                    }
-                    break;
-                case coconut:
-                    if (amount > 0) {
-                        result =  amount * 30;
-                        nameWater = " Nước dừa " ;
-                    }
-                    break;
-                case noChon:
-                    result = "Bạn đã không chọn món";
-            }
-            if (checkWater === 7) {
-                alert("Bạn đã không thêm món");
-            } else  if (checkWater > 0 && checkWater < 7) {
-                document.getElementById("repo").innerHTML +=nameWater + " (SL " +  amount + ") : " +  result  + " ngàn đồng. <br/>";
-            }
-            total +=  result;
-        }
-
-        function payWater() {
-            if ( total > 0){
-                document.getElementById("pay").innerHTML = "Tổng số tiền phải thanh toán là: " + total + " ngàn đồng.";
+                }
             } else {
-                document.getElementById("pay").innerHTML = "Chưa có gì để tính hết...";
+                flag = false;
+                alert("Ma hoc vien phai bat dau bang HV-")
+            }
+        } while (!flag);
+        displayStudentList(studentList);
+    }
+
+    function updateStudent() {
+        let count = 0;
+        let empty = " ";
+        let empty1 = "";
+        let flag;
+        let maHocVien = prompt("Nhập mã học viên");
+        for (let i = 0; i < studentList.length; i++) {
+            if (maHocVien === studentList[i].maHocVien) {
+                do {
+                    flag = true;
+                    let name = prompt(" Nhập họ và tên");
+                    let classes = prompt("Nhập lớp");
+                    let email = prompt("Nhập Email");
+                    let birthday = prompt("Nhập ngày sinh");
+                    let module = prompt("Nhập module");
+                    if ((name === empty || name === empty1) || (classes === empty || classes === empty1) || (email === empty || email === empty1) ||
+                        (birthday === empty || birthday === empty1) || (module === empty || module === empty1)) {
+                        flag = false;
+                        alert("Vui lòng không để trống thông tin. Vui lòng nhập lại");
+                    } else {
+                        let newStudent = new CodeGymStudent(maHocVien, name, classes, email, birthday, module);
+                        studentList[i] = newStudent;
+                    }
+                } while (!flag);
+                displayStudentList(studentList);
+            } else {
+                count++;
+            }
+            if (count === studentList.length) {
+                alert("Mã học viên không tồn tại");
             }
         }
+    }
 
-    </script>
-    <!-- C0123G1-Kiều Quốc Khánh -->
+</script>
+<!-- C0123G1-Kiều Quốc Khánh -->
 </body>
 
 </html>
