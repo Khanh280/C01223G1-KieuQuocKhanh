@@ -9,45 +9,35 @@
 </head>
 
 <body>
-<h1> Task4: Bài 2.</h1>
+<h1> Task5: Bài 1.</h1>
 <script>
 
-    // let lengthStr = prompt("Nhập do dai xau ky tu A va B");
+    let str1 = prompt("Hãy nhập xâu ky tự để kiểm tra");
+    let str2 = prompt("Hãy nhập xâu ky tự để kiểm tra");
+    let arr1 = [];
+    let arr2 = [];
+    let newArr = [];
+    let count = 0;
 
-    // let arrStr1 = [];
-    // let arrStr2 = [];
-    // let arrStr11 = [];
-    // let arrStr22 = [];
+    for (let i = 0; i < str1.length; i++) {
+        arr1.push(str1[i]);
+    }
 
-    // for (let i = 0; i < lengthStr; i++) {
-    //     arrStr1[i] = prompt("Nhap ky tu thu " + (i+1) + " cua A");
-    // }
-    // // for (let i = 0; i < lengthStr; i++) {
-    // //     arrStr2[i] = prompt("Nhap ky tu thu " + (i+1) + " cua B");
-    // // }
-    // for (let i=0; i< arrStr1.length; i++){
-    //     // if( arrStr1[i] === arrStr1[i+1]){
-    //     //     arrStr11.unshift(arrStr1[i+1]);
-    //     //     arrStr11.splice((i),1);
-    //     // } else {
-    //     //     arrStr11.push(arrStr1[i]);
-    //     //     // arrStr11.push(arrStr1[i]);
-    //     // }
-    //     // if( arrStr2[i] === arrStr2[i+1]){
-    //     //     arrStr22.unshit(arrStr2[i+1]);
-    //     //     arrStr11.splice((i+1),1);
-    //     // } else {
-    //     //     arrStr22.push(arrStr2[i]);
-    //     //     // arrStr22.push(arrStr2[i]);
-    //     // }
-    //         if (arrStr11.indexOf(arrStr1[i]) === -1){
-    //             arrStr11.push(arrStr1[i]);
-    //             count++;
-    //         }
-    // }
-    // document.write(arrStr11 + "<br/>");
-    // // document.write(arrStr22);
-    // // console.log(arrStr2);
+    for (let j = 0; j < str2.length; j++) {
+        arr2.push(str2[j]);
+    }
+
+    for (let k = 0; k < arr1.length; k++) {
+        for (let v = 0; v < arr2.length; v++) {
+            if (arr1[k] === arr2[v]) {
+                newArr.push(arr2[v]);
+                arr2.splice(v, 1);
+                count++;
+                break;
+            }
+        }
+    }
+    document.write("Số lượng ký tự chung của 2 xâu " + str1 + " và " + str2 + " là " + count + ". Gồm: " + newArr);
 
 </script>
 <!-- C0123G1-Kiều Quốc Khánh -->

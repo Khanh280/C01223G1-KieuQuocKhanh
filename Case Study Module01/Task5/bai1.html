@@ -1,10 +1,46 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Case Study</title>
 </head>
-<body>
 
+<body>
+<h4>Task5: Bài 1.</h4>
+<p id="result">Các số chẵn trong mảng gồm :</p>
+<script>
+
+    let m = +prompt("Nhập đôj dài mảng 2 chiều");
+    let n = +prompt("Nhập độ dài mảng con");
+    let arr = [];
+
+    function totalArr() {
+
+        for (let i = 0; i < m; i++) {
+            arr[i] = [];
+            for (let j = 0; j < n; j++) {
+                arr[i][j] = +prompt("Nhập phần tử thứ " + (j + 1) + " của mảng " + (i + 1));
+            }
+        }
+
+        let total = 0;
+        for (let i = 0; i < arr.length; i++) {
+            for (let j = 0; j < arr[i].length; j++) {
+                if (arr[i][j] % 2 === 0) {
+                    document.getElementById("result").innerHTML += " " + arr[i][j] + ",";
+                    total += arr[i][j];
+                }
+            }
+        }
+        document.write("Tổng các số chẵn là: " + total);
+    }
+    totalArr();
+
+</script>
+<!-- C0123G1-Kiều Quốc Khánh -->
 </body>
+
 </html>

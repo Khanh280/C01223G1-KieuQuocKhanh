@@ -12,43 +12,50 @@
 
 <script>
 
-    let str = prompt("Nhập xâu ký tự");
-    let upper = "QWERTYUIOPASDFGHJKLZXCVBNM";
-    let str1 = [];
-    let khoangChan = " ";
+    function checkCharacters() {
+        let strCharacters = prompt("Nhập xâu ký tự");
+        let arrCharacters = [];
+        let empty = " ";
 
-    for (let i = 0; i < str.length; i++) {
-        str1.push(str[i]);
-    }
+        for (let i = 0; i < strCharacters.length; i++) {
+            arrCharacters.push(strCharacters[i]);
+        }
 
-    function checkCharacters(){
-        let arrStr = [];
-        for (let i = 0; i < str1.length; i++) {
-            if (str1[i] === khoangChan && str1[i + 1] === khoangChan) {
-                str1.splice(i, 1);
-            }
-            if (upper.indexOf(str1[i]) !== -1) {
-                arrStr.push(str1[i].toLowerCase());
-            } else {
-                arrStr.push(str1[i]);
+        let arrLowwerAndDeleteEmpty = [];
+        for (let i = 1; i <= arrCharacters.length; i++) {
+            if (arrCharacters[i - 1] !== empty && strCharacters[i] === empty) {
+                arrLowwerAndDeleteEmpty.push(strCharacters[i - 1].toLowerCase());
+                arrLowwerAndDeleteEmpty.push(strCharacters[i].toLowerCase());
+            } else if (arrCharacters[i - 1] !== empty && arrCharacters[i] !== empty) {
+                arrLowwerAndDeleteEmpty.push(strCharacters[i - 1].toLowerCase());
             }
         }
-        // document.write(arrStr.join(""));
-        let arrStr1 = [];
-        for (let i = 0; i < arrStr.length; i++) {
+        document.write(" Trước khi chuẩn hoá : <br/>" + arrCharacters.join(""));
+
+        let arrUpper = [];
+        for (let i = 0; i < arrLowwerAndDeleteEmpty.length; i++) {
             if (i === 0) {
-                arrStr1.push(arrStr[i].toUpperCase());
-            } else if (arrStr[i - 1] === khoangChan) {
-                arrStr1.push(arrStr[i].toUpperCase());
+                arrUpper.push(arrLowwerAndDeleteEmpty[i].toUpperCase());
+            } else if (arrLowwerAndDeleteEmpty[i - 1] === empty) {
+                arrUpper.push(arrLowwerAndDeleteEmpty[i].toUpperCase());
             } else {
-                arrStr1.push(arrStr[i]);
+                arrUpper.push(arrLowwerAndDeleteEmpty[i]);
             }
         }
-        document.write(arrStr1.join(""));
-        console.log(arrStr1);
+        document.write("<br/>" + " sau khi chuẩn hoá : <br/>" + arrUpper.join(""));
+        console.log(arrUpper);// Check khoảng cách giữa các từ
+
+        let longArr = arrUpper.join("").toString().split(" ");
+        let maxLong = longArr[0];
+        for (let i = 0; i < longArr.length; i++) {
+            if (maxLong.length < longArr[i].length) {
+                maxLong = longArr[i];
+            }
+        }
+        document.write("<br/>" + "Từ dài nhất trong xâu là: " + maxLong);
     }
     checkCharacters();
-    //Chưa tìm được từ dài nhất trong xâu
+
 </script>
 <!-- C0123G1-Kiều Quốc Khánh -->
 </body>
