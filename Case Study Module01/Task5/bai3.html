@@ -13,40 +13,42 @@
 <p id="countInteger"></p>
 <script>
 
-    let m = +prompt("Mảng 2 chiều gồm 3 mảng con. Nhập độ dài của mảng con");
-    let arr1 = [];
-    let arr2 = [];
-    let arr3 = [];
-    let arr = [arr1, arr2, arr3];
+    function maxAndMinNumber() {
+        let m = +prompt("Mảng 2 chiều gồm 3 mảng con. Nhập độ dài của mảng con");
+        let arr1 = [];
+        let arr2 = [];
+        let arr3 = [];
+        let arr = [arr1, arr2, arr3];
 
-    for (let i = 0; i < m; i++) {
-        arr1[i] = +prompt("Nhập phần tử thứ " + (i + 1) + " của mảng 1");
-    }
+        for (let i = 0; i < m; i++) {
+            arr1[i] = +prompt("Nhập phần tử thứ " + (i + 1) + " của mảng 1");
+        }
 
-    for (let i = 0; i < m; i++) {
-        arr2[i] = +prompt("Nhập phần tử thứ " + (i + 1) + " của mảng 2");
-    }
+        for (let i = 0; i < m; i++) {
+            arr2[i] = +prompt("Nhập phần tử thứ " + (i + 1) + " của mảng 2");
+        }
 
-    for (let i = 0; i < m; i++) {
-        arr3[i] = +prompt("Nhập phần tử thứ " + (i + 1) + " của mảng 3");
-    }
-    // document.write(arr);
-    let max = arr[0][0];
-    let min = arr[0][0];
-    let countInteger = 0;
+        for (let i = 0; i < m; i++) {
+            arr3[i] = +prompt("Nhập phần tử thứ " + (i + 1) + " của mảng 3");
+        }
+        // document.write(arr);
+        let max = arr[0][0];
+        let min = arr[0][0];
+        let countInteger = 0;
 
-    for (let i = 0; i < arr.length; i++) {
-        for (let j = 0; j < arr[i].length; j++) {
-            if (max < arr[i][j]) {
-                max = arr[i][j];
-            }
-            if (min > arr[i][j]) {
-                min = arr[i][j];
+        for (let i = 0; i < arr.length; i++) {
+            for (let j = 0; j < arr[i].length; j++) {
+                if (max < arr[i][j]) {
+                    max = arr[i][j];
+                }
+                if (min > arr[i][j]) {
+                    min = arr[i][j];
+                }
             }
         }
-    }
-    document.write(" Trong mảng bạn nhập Array=[" + "[" + arr1 + "], " + " [" + arr2 + "], " + " [" + arr3 + "] ] <br/>" + "Giá trị lớn nhất và nhỏ nhất trong mảng 2 chiều là: Max = " + max + " Min = " + min);
+        document.write(" Trong mảng bạn nhập Array=[" + "[" + arr1 + "], " + " [" + arr2 + "], " + " [" + arr3 + "] ] <br/>" + "Giá trị lớn nhất và nhỏ nhất trong mảng 2 chiều là: Max = " + max + " Min = " + min);
 
+    }
 </script>
 <!-- C0123G1-Kiều Quốc Khánh -->
 </body>
