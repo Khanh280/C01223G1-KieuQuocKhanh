@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Case Study</title>
+</head>
+<style>
+    div {
+        margin-left: 50%;
+        transform:translate(-50%);
+    }
+    table {
+        width: 500px;
+        height: 500px;
+        border-collapse: collapse;
+    }
+
+    #logo {
+        height: 100px;
+        background-image: url(https://d92mrp7hetgfk.cloudfront.net/images/sites/misc/CodeGym_square/original.png?1595884317);
+        background-repeat: no-repeat;
+        background-size: 103px 103px;
+    }
+
+    #headding {
+        text-align: center;
+    }
+
+    h1 {
+        text-align: center;
+    }
+
+    td {
+        text-align: center;
+        padding-top: 15px;
+    }
+
+    #display {
+        text-align: center;
+        line-height: 50%;
+    }
+    button:hover {
+        background-color: #696bdcd1;
+        color: #fff;
+        border: 1px solid #92d7d4;
+        cursor: pointer;
+    }
+    a {
+        color: black;
+    }
+</style>
+
+<body>
+
+<div>
+    <table border="1">
+        <tr>
+            <th style="width: 100px;" id="logo"></th>
+            <th> Hệ thống quản lý CaseStudy CodeGym </th>
+        </tr>
+
+        <tr>
+            <td>
+                <button onclick="task1()"> Task1 </button> <br /><br />
+                <button onclick="task2()"> Task2 </button> <br /><br />
+                <button onclick="task3()"> Task3 </button> <br /><br />
+                <button onclick="task4()"> Task4 </button> <br /><br />
+                <button onclick="task5()"> Task5 </button> <br /><br />
+            </td>
+            <td id="display"></td>
+        </tr>
+    </table>
+
+</div>
+
+
+<script>
+    function task1() {
+        let bai1 = "<button>" + " <a href='https://github.com/Khanh280/C0123G1-KieuQuocKhanh/blob/main/Case%20Study%20Module01/Task1/bai1.html' target='_blank'> Bài 1</a>" + "</button>";
+        let bai2 = "<button>" + " <a href='https://github.com/Khanh280/C0123G1-KieuQuocKhanh/blob/main/Case%20Study%20Module01/Task1/bai2.html' target='_blank'> Bài 2</a>" + "</button>";
+        document.getElementById("display").innerHTML = bai1 + "<br/><br/><br/>" + bai2;
+    }
+    function task2() {
+        let bai1 = "<button>" + " <a href='https://github.com/Khanh280/C0123G1-KieuQuocKhanh/blob/main/Case%20Study%20Module01/Task2/bai1.html' target='_blank'> Bài 1</a>" + "</button>";
+        let bai2 = "<button>" + " <a href='https://github.com/Khanh280/C0123G1-KieuQuocKhanh/blob/main/Case%20Study%20Module01/Task2/bai2.html' target='_blank'> Bài 2</a>" + "</button>";
+        document.getElementById("display").innerHTML = bai1 + "<br/><br/><br/>" + bai2;
+    } function task3() {
+        let bai1 = "<button>" + " <a href='https://github.com/Khanh280/C0123G1-KieuQuocKhanh/blob/main/Case%20Study%20Module01/Task3/bai1.html' target='_blank'> Bài 1</a>" + "</button>";
+        let bai2 = "<button>" + " <a href='https://github.com/Khanh280/C0123G1-KieuQuocKhanh/blob/main/Case%20Study%20Module01/Task3/bai2.html' target='_blank'> Bài 2</a>" + "</button>";
+        document.getElementById("display").innerHTML = bai1 + "<br/><br/><br/>" + bai2;
+    } function task4() {
+        let bai1 = "<button>" + " <a href='https://github.com/Khanh280/C0123G1-KieuQuocKhanh/blob/main/Case%20Study%20Module01/Task4/bai1.html' target='_blank'> Bài 1</a>" + "</button>";
+        let bai2 = "<button>" + " <a href='https://github.com/Khanh280/C0123G1-KieuQuocKhanh/blob/main/Case%20Study%20Module01/Task4/bai2.html' target='_blank'> Bài 2</a>" + "</button>";
+        document.getElementById("display").innerHTML = bai1 + "<br/><br/><br/>" + bai2;
+    } function task5() {
+        let bai1 = "<button>" + " <a href='https://github.com/Khanh280/C0123G1-KieuQuocKhanh/blob/main/Case%20Study%20Module01/Task5/bai1.html' target='_blank'> Bài 1</a>" + "</button>";
+        let bai2 = "<button>" + " <a href='https://github.com/Khanh280/C0123G1-KieuQuocKhanh/blob/main/Case%20Study%20Module01/Task5/bai2.html' target='_blank'> Bài 2</a>" + "</button>";
+        document.getElementById("display").innerHTML = bai1 + "<br/><br/><br/>" + bai2;
+    }
+
+</script>
+<!-- C0123G1-Kiều Quốc Khánh -->
+</body>
+
+</html>

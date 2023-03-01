@@ -12,9 +12,13 @@
         text-align: center;
     }
 
+    h1 {
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
     button:hover {
-        background-color: #888585;
-        color: #fff;
+        background-image: linear-gradient(0, rgba(116, 243, 224, 0.825), rgba(103, 241, 182, 0.753));
+        color: #000;
         cursor: pointer;
     }
 
@@ -33,152 +37,165 @@
 
 <body>
 <div>
-    <button onclick="createStudent()">Thêm mới học viên</button>
+    <h1>Xây dựng hệ thống quản lý học viên <br /> CODEGYM</h1>
+</div>
+<div>
+    <button onclick="creatStudent()">Thêm mới học viên</button>
     <button onclick="updateStudent()">Sửa thông tin học viên</button>
     <button onclick="deleteStudent()">Xóa học viên</button>
 </div>
 <hr>
-<div id="tableStudentList"></div>
+<div id="tableStudent"></div>
 <script>
 
     class CodeGymStudent {
 
-        constructor(maHocVien, name, classes, email, birthday, module) {
+        constructor(maHocVien, nameStudent, gender, classes, email, birthDay, module) {
             this.maHocVien = maHocVien;
-            this.name = name;
+            this.nameStudent = nameStudent;
             this.classes = classes;
             this.email = email;
-            this.birthday = birthday;
+            this.birthDay = birthDay;
             this.module = module;
+            this.gender = gender;
         }
+
     }
 
-    let student1 = new CodeGymStudent("HV-0001", "Kiều Quốc Khánh", "C0123G1", "khanhabcdef@gmail.com", "28/08/2001", " 01 ");
+    let student1 = new CodeGymStudent("HV-0001", "Kieu Quoc Khanh", "Nam", "C0123G1", "khanhgazz@gmail.com", "28/08/2001", "01");
     let studentList = [];
     studentList.push(student1);
 
     function displayStudentList(studentList) {
 
-        let table = "<table width='650px' border='1' style=' border-collapse: collapse'> ";
+        let table = "<table border='1px' style=' border-collapse: collapse'width='750px' >";
         table += "<tr>" +
             "<th> Mã học viên </th>" +
             "<th> Họ và tên </th>" +
+            "<th> Giới tính </th>" +
             "<th> Lớp </th>" +
             "<th> Email </th>" +
             "<th> Ngày sinh </th>" +
             "<th> Module </th>" +
             "</tr>";
-
         for (let i = 0; i < studentList.length; i++) {
             table += "<tr>" +
                 "<td>" + studentList[i].maHocVien + "</td>" +
-                "<td>" + studentList[i].name + "</td>" +
+                "<td>" + studentList[i].nameStudent + "</td>" +
+                "<td>" + studentList[i].gender + "</td>" +
                 "<td>" + studentList[i].classes + "</td>" +
                 "<td>" + studentList[i].email + "</td>" +
-                "<td>" + studentList[i].birthday + "</td>" +
+                "<td>" + studentList[i].birthDay + "</td>" +
                 "<td>" + studentList[i].module + "</td>" +
                 "</tr>";
-
         }
-        table += "</table>";
-        document.getElementById("tableStudentList").innerHTML = table;
-    }
 
+        table += "</table>";
+        document.getElementById("tableStudent").innerHTML = table;
+    }
     displayStudentList(studentList);
 
     function deleteStudent() {
+
         let count = 0;
-        let maHocVien = prompt("Nhập mã học viên");
+        let maHocVien = prompt("Nhập mã học viên cần xóa");
         for (let i = 0; i < studentList.length; i++) {
             if (maHocVien === studentList[i].maHocVien) {
-                let confirmDelete = confirm("Bạn có muốn xóa học viên mã số " + maHocVien + " không?");
+                let confirmDelete = confirm("Bạn có muốn xóa học viên " + maHocVien + " không?")
                 if (confirmDelete) {
                     studentList.splice(i, 1);
-                    alert("Bạn đã xóa thành công ");
+                    alert("Bạn đã xóa thành công học viên " + maHocVien);
                     displayStudentList(studentList);
                     break;
-                } else {
-                    alert("Bạn đã không xóa");
                 }
+            } else {
                 count++;
             }
             if (count === studentList.length) {
                 alert("Mã học viên không tồn tại");
             }
         }
-
-    }
-
-    function createStudent() {
-
-        let flag;
-        do {
-            let empty = " ";
-            let empty1 = "";
-            flag = true;
-            let maHocVien = prompt("Nhập mã học viên");
-            if ((maHocVien[0] === "H" && maHocVien[1] === "V")) {
-                for (let i = 0; i < studentList.length + 1; i++) {
-                    if ((maHocVien !== studentList[i].maHocVien) && maHocVien.length === 7) {// Error cần fix thêm
-                        let name = prompt("Nhập họ và tên");
-                        let classes = prompt("Nhập lớp");
-                        let email = prompt("Nhập Email");
-                        let birthday = prompt("Nhập ngày sinh");
-                        let module = prompt("Nhập module");
-                        if ((name === empty || name === empty1) || (classes === empty || classes === empty1) || (email === empty || email === empty1) ||
-                            (birthday === empty || birthday === empty1) || (module === empty || module === empty1)) {
-                            flag = false;
-                            alert("Vui lòng không để trống thông tin. Vui lòng nhập lại");
-                        } else {
-                            let newStudent = new CodeGymStudent(maHocVien, name, classes, email, birthday, module);
-                            studentList.push(newStudent);
-                            break;
-                        }
-                    } else {
-                        flag = false;
-                        alert("Ma hoc vien da ton tai hoac chua nhap du ma so")
-                    }
-                }
-            } else {
-                flag = false;
-                alert("Ma hoc vien phai bat dau bang HV-")
-            }
-        } while (!flag);
-        displayStudentList(studentList);
     }
 
     function updateStudent() {
         let count = 0;
-        let empty = " ";
-        let empty1 = "";
         let flag;
-        let maHocVien = prompt("Nhập mã học viên");
-        for (let i = 0; i < studentList.length; i++) {
-            if (maHocVien === studentList[i].maHocVien) {
-                do {
-                    flag = true;
-                    let name = prompt(" Nhập họ và tên");
+        do {
+            flag = true;
+            let empty = "";
+            let empty1 = " ";
+            let maHocVien = prompt("Nhập mã học viên cần chỉnh sửa");
+            for (let i = 0; i < studentList.length; i++) {
+                if (maHocVien === studentList[i].maHocVien) {
+                    let nameStudent = prompt("Nhập họ và tên");
+                    let gender = prompt("Nhập giới tính")
                     let classes = prompt("Nhập lớp");
                     let email = prompt("Nhập Email");
                     let birthday = prompt("Nhập ngày sinh");
-                    let module = prompt("Nhập module");
-                    if ((name === empty || name === empty1) || (classes === empty || classes === empty1) || (email === empty || email === empty1) ||
-                        (birthday === empty || birthday === empty1) || (module === empty || module === empty1)) {
+                    let module = prompt("Nhập Module");
+                    if ((nameStudent === empty || nameStudent === empty1) || (gender === empty || gender === empty1) || (classes === empty || classes === empty1) ||
+                        (email === empty || email === empty1) || (birthday === empty || birthday === empty1) || (module === empty || module === empty1)) {
                         flag = false;
-                        alert("Vui lòng không để trống thông tin. Vui lòng nhập lại");
                     } else {
-                        let newStudent = new CodeGymStudent(maHocVien, name, classes, email, birthday, module);
-                        studentList[i] = newStudent;
+                        let updateStudent = new CodeGymStudent(maHocVien, nameStudent, gender, classes, email, birthday, module);
+                        studentList[i] = (updateStudent);
+                        break;
                     }
-                } while (!flag);
-                displayStudentList(studentList);
+                } else {
+                    count++;
+                }
+                if (count === studentList.length) {
+                    flag = false;
+                    alert("Mã học viên không tồn tại");
+                }
+            }
+        } while (!flag)
+        displayStudentList(studentList)
+    }
+
+    function creatStudent() {
+
+        let flag;
+        do {
+            flag = true;
+            let empty = "";
+            let empty1 = " ";
+            let count = 0;
+            let maHocVien = prompt("Nhập mã học viên");
+            if (maHocVien[0] === "H" && maHocVien[1] === "V") {
+                for (let i = 0; i < studentList.length; i++) {
+                    if (maHocVien === studentList[i].maHocVien) {
+                        count++;
+                    } else {
+                        count = 0;
+                    }
+                }
+                if (count === 0 && maHocVien.length === 7) {
+                    let nameStudent = prompt("Nhập họ và tên");
+                    let gender = prompt("Nhập giới tính")
+                    let classes = prompt("Nhập lớp");
+                    let email = prompt("Nhập Email");
+                    let birthday = prompt("Nhập ngày sinh");
+                    let module = prompt("Nhập Module");
+                    if ((nameStudent === empty || nameStudent === empty1) || (gender === empty || gender === empty1) || (classes === empty || classes === empty1) ||
+                        (email === empty || email === empty1) || (birthday === empty || birthday === empty1) || (module === empty || module === empty1)) {
+                        flag = false;
+                    } else {
+                        let newStudent = new CodeGymStudent(maHocVien, nameStudent, gender, classes, email, birthday, module);
+                        studentList.push(newStudent);
+                        break;
+                    }
+                } else {
+                    flag = false;
+                    alert("Mã học viên không đúng hoặc đã tồn tại");
+                    break;
+                }
             } else {
-                count++;
+                flag = false;
+                alert("Mã học viên cần bắt đầu bằng HV-XXXX ( XXXX là mã số)");
             }
-            if (count === studentList.length) {
-                alert("Mã học viên không tồn tại");
-            }
-        }
+        } while (!flag);
+        displayStudentList(studentList);
     }
 
 </script>
