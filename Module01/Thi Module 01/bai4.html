@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title> Thi module 1</title>
+</head>
+<body>
+<h1>Danh sach benh nhan</h1>
+<script>
+
+    class BenhNhan {
+
+        constructor(stt, name, age, address, phoneNumber) {
+            this.stt = stt;
+            this.name = name;
+            this.age = age;
+            this.address = address;
+            this.phoneNumber = phoneNumber;
+        }
+
+        getStt() {
+            return this.stt;
+        }
+
+        getName() {
+            return this.name;
+        }
+
+        getAge() {
+            return this.age;
+        }
+
+        getAddress() {
+            return this.address;
+        }
+
+        getPhoneNumber() {
+            return this.phoneNumber;
+        }
+
+        setStt(stt) {
+            this.stt = stt;
+        }
+
+        setName(name) {
+            this.name = name;
+        }
+
+        setAge(age) {
+            this.age = age;
+        }
+
+        setAddress(address) {
+            this.address = address;
+        }
+
+        setPhoneNumber(phoneNumber) {
+            this.phoneNumber =  phoneNumber;
+        }
+
+    }
+
+    let benhNhan1 = new BenhNhan("1", "Nguyen Le Hoang Oanh", "20", "Quang Nam", "0923434564");
+    let benhNhan2 = new BenhNhan("2", "Nguyen Tran Canh", "30", "Quang Nam", "0923434324");
+    let benhNhan3 = new BenhNhan("3", "Hoang Thanh Hung", "15", "Quang Nam", "0923434235");
+    let benhNhan4 = new BenhNhan("4", "Tran Le Quyen", "19", "Quang Nam", "0923434748");
+
+    let danhSachBenhNhan = [];
+    danhSachBenhNhan.push(benhNhan1);
+    danhSachBenhNhan.push(benhNhan2);
+    danhSachBenhNhan.push(benhNhan3);
+    danhSachBenhNhan.push(benhNhan4);
+
+    function hienThiDanhSach() {
+        let table = "<table border='1' style=' border-collapse: collapse' >";
+        table += "<tr>" +
+            "<th> STT </th>" +
+            "<th> Ho va ten </th>" +
+            "<th> Tuoi </th>" +
+            "<th> Dia chi </th>" +
+            "<th> So dien thoai</th>" +
+            "</tr>";
+        for (let i = 0; i < danhSachBenhNhan.length; i++) {
+            table += "<tr>" +
+                "<td>" + danhSachBenhNhan[i].stt + "</td>" +
+                "<td>" + danhSachBenhNhan[i].name + "</td>" +
+                "<td>" + danhSachBenhNhan[i].age + "</td>" +
+                "<td>" + danhSachBenhNhan[i].address + "</td>" +
+                "<td>" + danhSachBenhNhan[i].phoneNumber + "</td>" +
+                "</tr>";
+        }
+        table += "<table>";
+        document.write(table);
+    }
+
+    hienThiDanhSach();
+</script>
+
+</body>
+</html>

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Thi Module 01</title>
+</head>
+<body>
+<script>
+
+    function checkIndex(n) {
+
+        let arr = [];
+        for (let i = 0; i < n; i++) {
+            arr[i] = +prompt("Nhap phan tu thu " + i + " cua mang ");
+        }
+
+        let max = arr[0];
+        let min = arr[0];
+        let indexMax = 0;
+        let indexMin = 0;
+        for (let i = 1; i < arr.length; i++) {
+            if (max < arr[i]) {
+                max = arr[i];
+                indexMax = i;
+            }
+            if (min > arr[i]) {
+                min = arr[i];
+                indexMin = i;
+            }
+        }
+
+        let arr1 = [];
+        arr1.push(indexMin);
+        arr1.push(indexMax);
+        result = arr1;
+        return result;
+    }
+
+    let n = +prompt("Nhap do dai mang A");
+    let result;
+    checkIndex(n);
+    document.write("[" + result + "]");
+
+</script>
+</body>
+</html>

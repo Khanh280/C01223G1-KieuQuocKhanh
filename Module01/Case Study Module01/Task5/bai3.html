@@ -14,22 +14,15 @@
 <script>
 
     function maxAndMinNumber() {
-        let m = +prompt("Mảng 2 chiều gồm 3 mảng con. Nhập độ dài của mảng con");
-        let arr1 = [];
-        let arr2 = [];
-        let arr3 = [];
-        let arr = [arr1, arr2, arr3];
+        let m = +prompt("Mảng 2 chiều  Nhập độ dài của mảng");
+        let n = +prompt("Nhap do dai mang con");
+        let arr =[];
 
-        for (let i = 0; i < m; i++) {
-            arr1[i] = +prompt("Nhập phần tử thứ " + (i + 1) + " của mảng 1");
-        }
-
-        for (let i = 0; i < m; i++) {
-            arr2[i] = +prompt("Nhập phần tử thứ " + (i + 1) + " của mảng 2");
-        }
-
-        for (let i = 0; i < m; i++) {
-            arr3[i] = +prompt("Nhập phần tử thứ " + (i + 1) + " của mảng 3");
+        for (let i=0; i<m ; i++){
+            arr[i]=[];
+            for ( let j=0; j<n; j++){
+                arr[i][j] = +prompt("Nhap phan tu thu " + j + " cua mang " + (i+1));
+            }
         }
         // document.write(arr);
         let max = arr[0][0];
@@ -46,9 +39,9 @@
                 }
             }
         }
-        document.write(" Trong mảng bạn nhập Array=[" + "[" + arr1 + "], " + " [" + arr2 + "], " + " [" + arr3 + "] ] <br/>" + "Giá trị lớn nhất và nhỏ nhất trong mảng 2 chiều là: Max = " + max + " Min = " + min);
-
+        document.write(" Trong mảng bạn nhập Array=[ "+ arr + " ] Giá trị lớn nhất và nhỏ nhất trong mảng 2 chiều là: Max = " + max + " Min = " + min);
     }
+    maxAndMinNumber()
 </script>
 <!-- C0123G1-Kiều Quốc Khánh -->
 </body>

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Thi Module 01</title>
+</head>
+<body>
+<p id="result"> So uoc la: </p>
+<script>
+
+    function checkInteger() {
+        let flag;
+        do {
+            flag = true;
+            let n = +prompt("Nhap 1 so nguyen");
+            if (n < 0 || isNaN(n)) {
+                flag = false;
+                alert("Vui long nhap so nguyen lon hon 0. Nhap lai");
+            } else {
+                for (let i = 1; i <= n; i++) {
+                    if (n % i === 0) {
+                        document.getElementById("result").innerHTML += i + " ";
+                    }
+                }
+            }
+        } while (!flag)
+    }
+
+    checkInteger();
+</script>
+</body>
+</html>

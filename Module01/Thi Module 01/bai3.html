@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title> Thi Module 01 </title>
+</head>
+<body>
+<script>
+
+    function checkInteger(m) {
+
+        for (let i = 0; i < m; i++) {
+            arr[i] = +prompt("Nhap so nguyen thu " + i + " cua mang");
+        }
+
+        let n = +prompt("Nhap so nguyen n de check");
+        let newArr = [];
+        for (let i = 0; i < arr.length; i++) {
+            if (newArr.indexOf(arr[i]) === -1) {
+                newArr.push(arr[i]);
+            }
+        }
+
+        let count = 0;
+        for (let i = 0; i < newArr.length; i++) {
+            if (newArr[i] % n === 0) {
+                document.write(newArr[i] + "<br/>");
+                count++;
+            }
+        }
+        document.write(" So luong phan tu khac nhau trong mang chia het cho " + n + " la: " + count);
+    }
+    let m = +prompt("Nhap do dai mang so nguyen");
+    let arr = [];
+    checkInteger(m);
+
+</script>
+
+</body>
+</html>
