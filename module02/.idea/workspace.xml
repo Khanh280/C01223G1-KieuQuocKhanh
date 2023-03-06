@@ -1,21 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
   <component name="ChangeListManager">
     <list default="true" id="43f64375-b3de-4fae-83d0-9f4130853951" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/introduction_to_java/bai_tap/DisplayHello.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/introduction_to_java/bai_tap/NumberToString.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/module2.iml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/uiDesigner.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Introduction_to_Java/src/ChuyenDoiTienTe.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Introduction_to_Java/src/DisplayHello.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Introduction_to_Java/src/NumberToString.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/module02/introduction_to_java/bai_tap/NumberToString.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/module02/introduction_to_java/bai_tap/NumberToString.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/introduction_to_java/bai_tap/NumberToString.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/introduction_to_java/bai_tap/NumberToString.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/loop_java/abc.txt" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="DaemonCodeAnalyzer">
+    <disable_hints>
+      <file url="file://$PROJECT_DIR$/src/introduction_to_java/bai_tap/NumberToString.java" />
+    </disable_hints>
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -27,8 +30,14 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
   </component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/src/introduction_to_java/bai_tap/NumberToString.java" root0="SKIP_HIGHLIGHTING" />
+  </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProblemsViewState">
+    <option name="selectedTabId" value="CurrentFile" />
   </component>
   <component name="ProjectId" id="2Mcm22isSILojmY0RARW7z9zAnu" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
@@ -36,18 +45,18 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;
   }
-}]]></component>
-  <component name="RunManager">
+}</component>
+  <component name="RunManager" selected="Application.NumberToString">
     <configuration name="ChuyenDoiTienTe" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="introduction_to_java.bai_tap.ChuyenDoiTienTe" />
       <module name="module02" />
@@ -61,8 +70,22 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="NumberToString" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="introduction_to_java.bai_tap.NumberToString" />
+      <module name="module02" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="introduction_to_java.bai_tap.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.NumberToString" />
         <item itemvalue="Application.ChuyenDoiTienTe" />
       </list>
     </recent_temporary>
@@ -75,7 +98,8 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1678075035255</updated>
-      <workItem from="1678075036388" duration="325000" />
+      <workItem from="1678075036388" duration="3161000" />
+      <workItem from="1678079499283" duration="11653000" />
     </task>
     <servers />
   </component>
@@ -85,11 +109,27 @@
   <component name="Vcs.Log.Tabs.Properties">
     <option name="TAB_STATES">
       <map>
+        <entry key="9727eba9-e3f6-4258-a7fc-6638fe51a1a7">
+          <value>
+            <State>
+              <option name="CUSTOM_BOOLEAN_PROPERTIES">
+                <map>
+                  <entry key="Show.Git.Branches" value="true" />
+                </map>
+              </option>
+            </State>
+          </value>
+        </entry>
         <entry key="MAIN">
           <value>
             <State />
           </value>
         </entry>
+      </map>
+    </option>
+    <option name="OPEN_GENERIC_TABS">
+      <map>
+        <entry key="9727eba9-e3f6-4258-a7fc-6638fe51a1a7" value="TOOL_WINDOW" />
       </map>
     </option>
   </component>
