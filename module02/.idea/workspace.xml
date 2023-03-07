@@ -5,8 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="43f64375-b3de-4fae-83d0-9f4130853951" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/src/Array_java/TongDuongCheo.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Array_java/TotalColArray.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/loop_java/DisplayFirstPrimes.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/loop_java/DisplayFirstPrimes.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/module02/loop_java/DisplayFirstPrimes.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/module02/loop_java/DisplayFirstPrimes.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -56,39 +58,13 @@
     &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;
   }
 }</component>
-  <component name="RunManager" selected="Application.DisplayFirstPrimes">
-    <configuration name="AddElementArray" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="Array_java.AddElementArray" />
-      <module name="module02" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="Array_java.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
+  <component name="RunManager" selected="Application.TongDuongCheo">
     <configuration name="DisplayFirstPrimes" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="loop_java.DisplayFirstPrimes" />
       <module name="module02" />
       <extension name="coverage">
         <pattern>
           <option name="PATTERN" value="loop_java.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="GopMang" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="Array_java.GopMang" />
-      <module name="module02" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="Array_java.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -122,13 +98,39 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="TongDuongCheo" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="Array_java.TongDuongCheo" />
+      <module name="module02" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="Array_java.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="TotalColArray" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="Array_java.TotalColArray" />
+      <module name="module02" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="Array_java.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.TongDuongCheo" />
+        <item itemvalue="Application.TotalColArray" />
         <item itemvalue="Application.DisplayFirstPrimes" />
         <item itemvalue="Application.MinValueInArray" />
         <item itemvalue="Application.PhanTuLonNhat" />
-        <item itemvalue="Application.GopMang" />
-        <item itemvalue="Application.AddElementArray" />
       </list>
     </recent_temporary>
   </component>
@@ -147,7 +149,9 @@
       <workItem from="1678158158932" duration="6249000" />
       <workItem from="1678166223062" duration="2784000" />
       <workItem from="1678170360932" duration="11114000" />
-      <workItem from="1678181982766" duration="592000" />
+      <workItem from="1678181982766" duration="1940000" />
+      <workItem from="1678194194795" duration="3426000" />
+      <workItem from="1678200564165" duration="1537000" />
     </task>
     <servers />
   </component>
