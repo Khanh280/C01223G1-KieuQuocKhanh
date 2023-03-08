@@ -5,10 +5,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="43f64375-b3de-4fae-83d0-9f4130853951" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/Array_java/TongDuongCheo.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Array_java/TotalColArray.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Array_java/CounterCharacters.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/module02/loop_java/DisplayFirstPrimes.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/module02/loop_java/DisplayFirstPrimes.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/module02/Array_java/TongDuongCheo.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/module02/Array_java/TongDuongCheo.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/module02/Array_java/TotalColArray.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/module02/Array_java/TotalColArray.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Array_java/TongDuongCheo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Array_java/TongDuongCheo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Array_java/TotalColArray.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Array_java/TotalColArray.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/introduction_to_java/bai_tap/NumberToString.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/introduction_to_java/bai_tap/NumberToString.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -48,6 +51,10 @@
   </component>
   <component name="PropertiesComponent">{
   &quot;keyToString&quot;: {
+    &quot;Downloaded.Files.Path.Enabled&quot;: &quot;false&quot;,
+    &quot;Repository.Attach.Annotations&quot;: &quot;false&quot;,
+    &quot;Repository.Attach.JavaDocs&quot;: &quot;false&quot;,
+    &quot;Repository.Attach.Sources&quot;: &quot;false&quot;,
     &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
@@ -58,7 +65,20 @@
     &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;
   }
 }</component>
-  <component name="RunManager" selected="Application.TongDuongCheo">
+  <component name="RunManager" selected="Application.NumberToString">
+    <configuration name="CounterCharacters" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="Array_java.CounterCharacters" />
+      <module name="module02" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="Array_java.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="DisplayFirstPrimes" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="loop_java.DisplayFirstPrimes" />
       <module name="module02" />
@@ -72,25 +92,12 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="MinValueInArray" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="Array_java.MinValueInArray" />
+    <configuration name="NumberToString" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="introduction_to_java.bai_tap.NumberToString" />
       <module name="module02" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="Array_java.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="PhanTuLonNhat" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="Array_java.PhanTuLonNhat" />
-      <module name="module02" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="Array_java.*" />
+          <option name="PATTERN" value="introduction_to_java.bai_tap.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -126,11 +133,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.NumberToString" />
+        <item itemvalue="Application.CounterCharacters" />
         <item itemvalue="Application.TongDuongCheo" />
         <item itemvalue="Application.TotalColArray" />
         <item itemvalue="Application.DisplayFirstPrimes" />
-        <item itemvalue="Application.MinValueInArray" />
-        <item itemvalue="Application.PhanTuLonNhat" />
       </list>
     </recent_temporary>
   </component>
@@ -151,7 +158,12 @@
       <workItem from="1678170360932" duration="11114000" />
       <workItem from="1678181982766" duration="1940000" />
       <workItem from="1678194194795" duration="3426000" />
-      <workItem from="1678200564165" duration="1537000" />
+      <workItem from="1678200564165" duration="2588000" />
+      <workItem from="1678236883155" duration="29000" />
+      <workItem from="1678242475247" duration="5220000" />
+      <workItem from="1678253235371" duration="1118000" />
+      <workItem from="1678255087314" duration="47000" />
+      <workItem from="1678257142577" duration="6722000" />
     </task>
     <servers />
   </component>
@@ -184,5 +196,25 @@
         <entry key="9727eba9-e3f6-4258-a7fc-6638fe51a1a7" value="TOOL_WINDOW" />
       </map>
     </option>
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/introduction_to_java/bai_tap/NumberToString.java</url>
+          <line>136</line>
+          <option name="timeStamp" value="2" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-method">
+          <url>file://$PROJECT_DIR$/src/introduction_to_java/bai_tap/NumberToString.java</url>
+          <line>6</line>
+          <properties class="introduction_to_java.bai_tap.NumberToString" method="main">
+            <option name="EMULATED" value="true" />
+            <option name="WATCH_EXIT" value="false" />
+          </properties>
+          <option name="timeStamp" value="4" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>
