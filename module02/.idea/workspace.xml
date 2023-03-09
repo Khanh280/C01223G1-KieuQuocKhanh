@@ -5,13 +5,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="43f64375-b3de-4fae-83d0-9f4130853951" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/Array_java/CounterCharacters.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Class_and_oop_java/Fan.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Class_and_oop_java/QuadraticEquation.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Class_and_oop_java/Rectangle.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Class_and_oop_java/StopWatch.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Class_and_oop_java/VeHinhThoi.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/module02/Array_java/TongDuongCheo.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/module02/Array_java/TongDuongCheo.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/module02/Array_java/TotalColArray.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/module02/Array_java/TotalColArray.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Array_java/TongDuongCheo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Array_java/TongDuongCheo.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Array_java/TotalColArray.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Array_java/TotalColArray.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/introduction_to_java/bai_tap/NumberToString.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/introduction_to_java/bai_tap/NumberToString.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -65,13 +64,13 @@
     &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;
   }
 }</component>
-  <component name="RunManager" selected="Application.NumberToString">
-    <configuration name="CounterCharacters" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="Array_java.CounterCharacters" />
+  <component name="RunManager" selected="Application.Fan1">
+    <configuration name="Fan1" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="Class_and_oop_java.Fan1" />
       <module name="module02" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="Array_java.*" />
+          <option name="PATTERN" value="Class_and_oop_java.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -79,12 +78,12 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="DisplayFirstPrimes" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="loop_java.DisplayFirstPrimes" />
+    <configuration name="QuadraticEquation (2)" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="Class_and_oop_java.QuadraticEquation" />
       <module name="module02" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="loop_java.*" />
+          <option name="PATTERN" value="Class_and_oop_java.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -92,12 +91,12 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="NumberToString" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="introduction_to_java.bai_tap.NumberToString" />
+    <configuration name="QuadraticEquation (3)" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="Class_and_oop_java.QuadraticEquation" />
       <module name="module02" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="introduction_to_java.bai_tap.*" />
+          <option name="PATTERN" value="Class_and_oop_java.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -105,12 +104,12 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="TongDuongCheo" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="Array_java.TongDuongCheo" />
+    <configuration name="QuadraticEquation" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="Class_and_oop_java.QuadraticEquation" />
       <module name="module02" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="Array_java.*" />
+          <option name="PATTERN" value="Class_and_oop_java.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -118,12 +117,12 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="TotalColArray" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="Array_java.TotalColArray" />
+    <configuration name="StopWatch" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="Class_and_oop_java.StopWatch" />
       <module name="module02" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="Array_java.*" />
+          <option name="PATTERN" value="Class_and_oop_java.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -133,11 +132,11 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.NumberToString" />
-        <item itemvalue="Application.CounterCharacters" />
-        <item itemvalue="Application.TongDuongCheo" />
-        <item itemvalue="Application.TotalColArray" />
-        <item itemvalue="Application.DisplayFirstPrimes" />
+        <item itemvalue="Application.Fan1" />
+        <item itemvalue="Application.StopWatch" />
+        <item itemvalue="Application.QuadraticEquation" />
+        <item itemvalue="Application.QuadraticEquation (3)" />
+        <item itemvalue="Application.QuadraticEquation (2)" />
       </list>
     </recent_temporary>
   </component>
@@ -164,6 +163,12 @@
       <workItem from="1678253235371" duration="1118000" />
       <workItem from="1678255087314" duration="47000" />
       <workItem from="1678257142577" duration="6722000" />
+      <workItem from="1678282253560" duration="2012000" />
+      <workItem from="1678287341756" duration="1443000" />
+      <workItem from="1678323193358" duration="168000" />
+      <workItem from="1678330359086" duration="6983000" />
+      <workItem from="1678338565608" duration="2284000" />
+      <workItem from="1678343155086" duration="8930000" />
     </task>
     <servers />
   </component>
@@ -216,5 +221,10 @@
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
+  </component>
+  <component name="com.intellij.coverage.CoverageDataManagerImpl">
+    <SUITE FILE_PATH="coverage/module02$QuadraticEquation__1_.ic" NAME="QuadraticEquation (1) Coverage Results" MODIFIED="1678331618609" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>Class_and_oop_java.*</FILTER>
+    </SUITE>
   </component>
 </project>
