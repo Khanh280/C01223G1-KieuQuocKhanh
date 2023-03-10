@@ -1,4 +1,4 @@
-package Class_and_oop_java;
+package class_and_oop_java;
 
 public class Fan {
     final int SLOW = 1, MEDIUM = 2, FAST = 3;

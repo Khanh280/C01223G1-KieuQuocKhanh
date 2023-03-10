@@ -66,11 +66,11 @@
 }</component>
   <component name="RunManager" selected="Application.Fan1">
     <configuration name="Fan1" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="Class_and_oop_java.Fan1" />
+      <option name="MAIN_CLASS_NAME" value="class_and_oop_java.Fan1" />
       <module name="module02" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="Class_and_oop_java.*" />
+          <option name="PATTERN" value="class_and_oop_java.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -105,11 +105,37 @@
       </method>
     </configuration>
     <configuration name="QuadraticEquation" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="Class_and_oop_java.QuadraticEquation" />
+      <option name="MAIN_CLASS_NAME" value="class_and_oop_java.QuadraticEquation" />
       <module name="module02" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="Class_and_oop_java.*" />
+          <option name="PATTERN" value="class_and_oop_java.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="QuadraticEquation" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="class_and_oop_java.QuadraticEquation" />
+      <module name="module02" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="class_and_oop_java.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="QuadraticEquation" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="class_and_oop_java.QuadraticEquation" />
+      <module name="module02" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="class_and_oop_java.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -118,11 +144,11 @@
       </method>
     </configuration>
     <configuration name="StopWatch" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="Class_and_oop_java.StopWatch" />
+      <option name="MAIN_CLASS_NAME" value="class_and_oop_java.StopWatch" />
       <module name="module02" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="Class_and_oop_java.*" />
+          <option name="PATTERN" value="class_and_oop_java.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>

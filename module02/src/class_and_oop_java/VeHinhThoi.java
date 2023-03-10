@@ -1,4 +1,4 @@
-package Class_and_oop_java;
+package class_and_oop_java;
 
 public class VeHinhThoi {
     public static void main(String[] args) {
