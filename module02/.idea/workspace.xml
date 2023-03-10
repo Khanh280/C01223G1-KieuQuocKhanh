@@ -5,12 +5,32 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="43f64375-b3de-4fae-83d0-9f4130853951" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/Class_and_oop_java/Fan.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Class_and_oop_java/QuadraticEquation.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Class_and_oop_java/Rectangle.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Class_and_oop_java/StopWatch.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Class_and_oop_java/VeHinhThoi.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/access_modifier_static/circle/Circle.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/access_modifier_static/circle/TestCircle.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/access_modifier_static/student/Student.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/access_modifier_static/student/Test.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/danh_sach_hoc_sinh/CodeGymStudent.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/danh_sach_hoc_sinh/MainMenu.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/danh_sach_hoc_sinh/StudentManeger.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/module02/Array_java/AddElementArray.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/module02/Array_java/AddElementArray.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/module02/Array_java/CounterCharacters.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/module02/Array_java/CounterCharacters.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/module02/Array_java/DeleteElementArray.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/module02/Array_java/DeleteElementArray.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/module02/Array_java/GopMang.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/module02/Array_java/GopMang.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/module02/Array_java/MinValueInArray.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/module02/Array_java/MinValueInArray.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/module02/Array_java/PhanTuLonNhat.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/module02/Array_java/PhanTuLonNhat.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/module02/Array_java/TongDuongCheo.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/module02/Array_java/TongDuongCheo.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/module02/Array_java/TotalColArray.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/module02/Array_java/TotalColArray.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/module02/Class_and_oop_java/Fan.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/module02/Class_and_oop_java/Fan.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/module02/Class_and_oop_java/Fan1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/module02/Class_and_oop_java/Fan1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/module02/Class_and_oop_java/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/module02/Class_and_oop_java/Main.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/module02/Class_and_oop_java/QuadraticEquation.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/module02/Class_and_oop_java/QuadraticEquation.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/module02/Class_and_oop_java/QuadraticEquation1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/module02/Class_and_oop_java/QuadraticEquation1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/module02/Class_and_oop_java/Rectangle.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/module02/Class_and_oop_java/Rectangle.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/module02/Class_and_oop_java/StopWatch.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/module02/Class_and_oop_java/StopWatch.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/module02/Class_and_oop_java/StopWatchSetting.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/module02/Class_and_oop_java/StopWatchSetting.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/module02/Class_and_oop_java/VeHinhThoi.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/module02/Class_and_oop_java/VeHinhThoi.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -33,7 +53,7 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
   </component>
   <component name="HighlightingSettingsPerFile">
-    <setting file="file://$PROJECT_DIR$/src/Array_java/GopMang.java" root0="SKIP_INSPECTION" />
+    <setting file="file://$PROJECT_DIR$/src/array_java/GopMang.java" root0="SKIP_INSPECTION" />
     <setting file="file://$PROJECT_DIR$/src/introduction_to_java/bai_tap/NumberToString.java" root0="SKIP_HIGHLIGHTING" />
   </component>
   <component name="MarkdownSettingsMigration">
@@ -48,29 +68,31 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;Downloaded.Files.Path.Enabled&quot;: &quot;false&quot;,
-    &quot;Repository.Attach.Annotations&quot;: &quot;false&quot;,
-    &quot;Repository.Attach.JavaDocs&quot;: &quot;false&quot;,
-    &quot;Repository.Attach.Sources&quot;: &quot;false&quot;,
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;last_opened_file_path&quot;: &quot;D:/Codegym/bai_tap/module02&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Downloaded.Files.Path.Enabled": "false",
+    "Repository.Attach.Annotations": "false",
+    "Repository.Attach.JavaDocs": "false",
+    "Repository.Attach.Sources": "false",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "last_opened_file_path": "D:/Codegym/bai_tap/module02",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "settings.editor.selected.configurable": "preferences.pluginManager"
   }
-}</component>
-  <component name="RunManager" selected="Application.Fan1">
-    <configuration name="Fan1" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="class_and_oop_java.Fan1" />
+}]]></component>
+  <component name="RunManager" selected="Application.MainMenu">
+    <configuration name="AddElementArray" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="array_java.AddElementArray" />
       <module name="module02" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="class_and_oop_java.*" />
+          <option name="PATTERN" value="array_java.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -78,12 +100,12 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="QuadraticEquation (2)" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="Class_and_oop_java.QuadraticEquation" />
+    <configuration name="MainMenu" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="danh_sach_hoc_sinh.MainMenu" />
       <module name="module02" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="Class_and_oop_java.*" />
+          <option name="PATTERN" value="danh_sach_hoc_sinh.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -91,12 +113,12 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="QuadraticEquation (3)" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="Class_and_oop_java.QuadraticEquation" />
+    <configuration name="Test" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="access_modifier_static.student.Test" />
       <module name="module02" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="Class_and_oop_java.*" />
+          <option name="PATTERN" value="access_modifier_static.student.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -104,12 +126,12 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="QuadraticEquation" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="class_and_oop_java.QuadraticEquation" />
+    <configuration name="TestCircle" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="access_modifier_static.circle.student.circle.TestCircle" />
       <module name="module02" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="class_and_oop_java.*" />
+          <option name="PATTERN" value="access_modifier_static.circle.student.circle.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -117,12 +139,12 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="QuadraticEquation" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="class_and_oop_java.QuadraticEquation" />
+    <configuration name="TestCircle" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="access_modifier_static.circle.TestCircle" />
       <module name="module02" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="class_and_oop_java.*" />
+          <option name="PATTERN" value="access_modifier_static.circle.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -130,12 +152,12 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="QuadraticEquation" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="class_and_oop_java.QuadraticEquation" />
+    <configuration name="TestCircle" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="access_modifier_static.circle.TestCircle" />
       <module name="module02" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="class_and_oop_java.*" />
+          <option name="PATTERN" value="access_modifier_static.circle.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -143,12 +165,12 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="StopWatch" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="class_and_oop_java.StopWatch" />
+    <configuration name="access_modifier_static.circle.TestCircle" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="access_modifier_static.circle.TestCircle" />
       <module name="module02" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="class_and_oop_java.*" />
+          <option name="PATTERN" value="access_modifier_static.circle.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -158,11 +180,11 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.Fan1" />
-        <item itemvalue="Application.StopWatch" />
-        <item itemvalue="Application.QuadraticEquation" />
-        <item itemvalue="Application.QuadraticEquation (3)" />
-        <item itemvalue="Application.QuadraticEquation (2)" />
+        <item itemvalue="Application.MainMenu" />
+        <item itemvalue="Application.Test" />
+        <item itemvalue="Application.access_modifier_static.circle.TestCircle" />
+        <item itemvalue="Application.TestCircle" />
+        <item itemvalue="Application.AddElementArray" />
       </list>
     </recent_temporary>
   </component>
@@ -195,6 +217,10 @@
       <workItem from="1678330359086" duration="6983000" />
       <workItem from="1678338565608" duration="2284000" />
       <workItem from="1678343155086" duration="8930000" />
+      <workItem from="1678417448979" duration="6353000" />
+      <workItem from="1678425134589" duration="2782000" />
+      <workItem from="1678429560019" duration="1058000" />
+      <workItem from="1678432797777" duration="10453000" />
     </task>
     <servers />
   </component>
