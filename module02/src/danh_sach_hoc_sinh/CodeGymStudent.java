@@ -1,7 +1,7 @@
 package danh_sach_hoc_sinh;
 
 public class CodeGymStudent {
-    public int id;
+    private int id;
     private String name;
     private String classes;
 
@@ -38,10 +38,9 @@ public class CodeGymStudent {
 
     @Override
     public String toString() {
-        return "CodeGymStudent{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
-                ", classes='" + classes + '\'' +
-                '}';
+        return "Id=" + id +
+                " - Name='" + name + '\'' +
+                " - Classes='" + classes + '\'' +
+                "\n--------------------------------------------";
     }
 }
