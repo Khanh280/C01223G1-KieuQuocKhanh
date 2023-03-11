@@ -6,7 +6,6 @@
   <component name="ChangeListManager">
     <list default="true" id="43f64375-b3de-4fae-83d0-9f4130853951" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/module02/danh_sach_hoc_sinh/CodeGymStudent.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/module02/danh_sach_hoc_sinh/CodeGymStudent.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/module02/danh_sach_hoc_sinh/MainMenu.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/module02/danh_sach_hoc_sinh/MainMenu.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/module02/danh_sach_hoc_sinh/StudentManeger.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/module02/danh_sach_hoc_sinh/StudentManeger.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/danh_sach_hoc_sinh/CodeGymStudent.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/danh_sach_hoc_sinh/CodeGymStudent.java" afterDir="false" />
@@ -68,19 +67,6 @@
   }
 }</component>
   <component name="RunManager" selected="Application.MainMenu">
-    <configuration name="AddElementArray" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="array_java.AddElementArray" />
-      <module name="module02" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="array_java.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <configuration name="MainMenu" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="danh_sach_hoc_sinh.MainMenu" />
       <module name="module02" />
@@ -159,13 +145,26 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="test.MainMenu" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="test.MainMenu" />
+      <module name="module02" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="test.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <recent_temporary>
       <list>
         <item itemvalue="Application.MainMenu" />
+        <item itemvalue="Application.test.MainMenu" />
         <item itemvalue="Application.Test" />
         <item itemvalue="Application.access_modifier_static.circle.TestCircle" />
         <item itemvalue="Application.TestCircle" />
-        <item itemvalue="Application.AddElementArray" />
       </list>
     </recent_temporary>
   </component>
@@ -204,7 +203,8 @@
       <workItem from="1678432797777" duration="10453000" />
       <workItem from="1678452751536" duration="4738000" />
       <workItem from="1678461599202" duration="1061000" />
-      <workItem from="1678522539749" duration="1430000" />
+      <workItem from="1678522539749" duration="7451000" />
+      <workItem from="1678534752218" duration="4466000" />
     </task>
     <servers />
   </component>
@@ -245,16 +245,6 @@
           <url>file://$PROJECT_DIR$/src/introduction_to_java/bai_tap/NumberToString.java</url>
           <line>136</line>
           <option name="timeStamp" value="2" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/danh_sach_hoc_sinh/MainMenu.java</url>
-          <line>6</line>
-          <option name="timeStamp" value="7" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/danh_sach_hoc_sinh/MainMenu.java</url>
-          <line>48</line>
-          <option name="timeStamp" value="8" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-method">
           <url>file://$PROJECT_DIR$/src/introduction_to_java/bai_tap/NumberToString.java</url>

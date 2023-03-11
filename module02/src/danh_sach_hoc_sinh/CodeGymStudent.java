@@ -38,9 +38,9 @@ public class CodeGymStudent {
 
     @Override
     public String toString() {
-        return "Id=" + id +
+        return "| Id=" + id +
                 " - Name='" + name + '\'' +
-                " - Classes='" + classes + '\'' +
+                " - Classes='" + classes + '\'' + " |"+
                 "\n--------------------------------------------";
     }
 }

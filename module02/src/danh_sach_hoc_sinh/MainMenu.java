@@ -20,7 +20,7 @@ public class MainMenu {
                    "\n5. Exit");
            String str = sc.nextLine();
            flag = true;
-           if ( !str.equals("")){
+           if ( !str.equals("") && str.matches("-?\\d+")){
                int choose = Integer.parseInt(str);
                switch (choose) {
                        case 1:
@@ -38,7 +38,7 @@ public class MainMenu {
                            break;
                        case 5:
                            flag = false;
-                           System.out.print("Exit.....");
+                           System.out.print("Exit........");
                            break;
                    }
            } else{
