@@ -18,30 +18,30 @@ public class MainMenu {
                    "\n3. Delete" +
                    "\n4. Edit" +
                    "\n5. Exit");
-           String str = sc.nextLine();
+
            flag = true;
-           if ( !str.equals("") && str.matches("-?\\d+")){
-               int choose = Integer.parseInt(str);
+           try {
+               int choose = Integer.parseInt(sc.nextLine());
                switch (choose) {
-                       case 1:
-                           System.out.println("---------------CodeGymStudent---------------");
-                           studentManeger.display();
-                           break;
-                       case 2:
-                           studentManeger.add();
-                           break;
-                       case 3:
-                           studentManeger.delete();
-                           break;
-                       case 4:
-                           studentManeger.edit();
-                           break;
-                       case 5:
-                           flag = false;
-                           System.out.print("Exit........");
-                           break;
-                   }
-           } else{
+                   case 1:
+                       System.out.println("---------------CodeGymStudent---------------");
+                       studentManeger.display();
+                       break;
+                   case 2:
+                       studentManeger.add();
+                       break;
+                   case 3:
+                       studentManeger.delete();
+                       break;
+                   case 4:
+                       studentManeger.edit();
+                       break;
+                   case 5:
+                       flag = false;
+                       System.out.print("Exit........");
+                       break;
+               }
+           } catch (Exception e) {
                System.out.println("Vui lòng chọn đúng chức năng. ");
            }
        } while(flag);

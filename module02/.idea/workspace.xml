@@ -5,10 +5,34 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="43f64375-b3de-4fae-83d0-9f4130853951" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/case_study_furama/controllers/FuramaController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/case_study_furama/controllers/MainRunResort.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/inheritance_oop/circle_and_cylinder/Circle.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/inheritance_oop/circle_and_cylinder/CircleTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/inheritance_oop/circle_and_cylinder/Cylinder.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/inheritance_oop/circle_and_cylinder/CylinderTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/inheritance_oop/point2d_point3d/Point2d.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/inheritance_oop/point2d_point3d/Point2dTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/inheritance_oop/point2d_point3d/Point3d.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/inheritance_oop/point2d_point3d/Point3dTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/inheritance_oop/point_and_moveable_point/MoveablePoint.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/inheritance_oop/point_and_moveable_point/MoveablePointTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/inheritance_oop/point_and_moveable_point/Point.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/inheritance_oop/point_and_moveable_point/PointTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/inheritance_oop/triangle/Shape.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/inheritance_oop/triangle/Triangle.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/inheritance_oop/triangle/TriangleTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/polymephism/Animal/Animal.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/polymephism/Animal/Cat.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/polymephism/Animal/Dog.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/polymephism/shape/Circle.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/polymephism/shape/CircleTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/polymephism/shape/Rectanle.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/polymephism/shape/RectanleTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/polymephism/shape/ShapeTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/module02/danh_sach_hoc_sinh/MainMenu.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/module02/danh_sach_hoc_sinh/MainMenu.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/module02/danh_sach_hoc_sinh/StudentManeger.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/module02/danh_sach_hoc_sinh/StudentManeger.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/danh_sach_hoc_sinh/CodeGymStudent.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/danh_sach_hoc_sinh/CodeGymStudent.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/danh_sach_hoc_sinh/MainMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/danh_sach_hoc_sinh/MainMenu.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/danh_sach_hoc_sinh/StudentManeger.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/danh_sach_hoc_sinh/StudentManeger.java" afterDir="false" />
     </list>
@@ -80,12 +104,12 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="Test" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="access_modifier_static.student.Test" />
+    <configuration name="MoveablePointTest" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="inheritance_oop.point_and_moveable_point.MoveablePointTest" />
       <module name="module02" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="access_modifier_static.student.*" />
+          <option name="PATTERN" value="inheritance_oop.point_and_moveable_point.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -93,12 +117,12 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="TestCircle" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="access_modifier_static.circle.student.circle.TestCircle" />
+    <configuration name="Point3dTest" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="inheritance_oop.point2d_point3d.Point3dTest" />
       <module name="module02" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="access_modifier_static.circle.student.circle.*" />
+          <option name="PATTERN" value="inheritance_oop.point2d_point3d.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -106,12 +130,12 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="TestCircle" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="access_modifier_static.circle.TestCircle" />
+    <configuration name="PointTest" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="inheritance_oop.point_and_moveable_point.PointTest" />
       <module name="module02" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="access_modifier_static.circle.*" />
+          <option name="PATTERN" value="inheritance_oop.point_and_moveable_point.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -119,38 +143,12 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="TestCircle" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="access_modifier_static.circle.TestCircle" />
+    <configuration name="TriangleTest" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="inheritance_oop.triangle.TriangleTest" />
       <module name="module02" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="access_modifier_static.circle.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="access_modifier_static.circle.TestCircle" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="access_modifier_static.circle.TestCircle" />
-      <module name="module02" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="access_modifier_static.circle.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="test.MainMenu" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="test.MainMenu" />
-      <module name="module02" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="test.*" />
+          <option name="PATTERN" value="inheritance_oop.triangle.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -161,10 +159,10 @@
     <recent_temporary>
       <list>
         <item itemvalue="Application.MainMenu" />
-        <item itemvalue="Application.test.MainMenu" />
-        <item itemvalue="Application.Test" />
-        <item itemvalue="Application.access_modifier_static.circle.TestCircle" />
-        <item itemvalue="Application.TestCircle" />
+        <item itemvalue="Application.TriangleTest" />
+        <item itemvalue="Application.MoveablePointTest" />
+        <item itemvalue="Application.PointTest" />
+        <item itemvalue="Application.Point3dTest" />
       </list>
     </recent_temporary>
   </component>
@@ -204,7 +202,18 @@
       <workItem from="1678452751536" duration="4738000" />
       <workItem from="1678461599202" duration="1061000" />
       <workItem from="1678522539749" duration="7451000" />
-      <workItem from="1678534752218" duration="4466000" />
+      <workItem from="1678534752218" duration="8233000" />
+      <workItem from="1678594509701" duration="588000" />
+      <workItem from="1678598689978" duration="334000" />
+      <workItem from="1678614805444" duration="2485000" />
+      <workItem from="1678625058886" duration="4654000" />
+      <workItem from="1678629811627" duration="678000" />
+      <workItem from="1678634332361" duration="312000" />
+      <workItem from="1678676770537" duration="6387000" />
+      <workItem from="1678684622325" duration="662000" />
+      <workItem from="1678685397085" duration="29000" />
+      <workItem from="1678685549130" duration="13000" />
+      <workItem from="1678689222726" duration="7807000" />
     </task>
     <servers />
   </component>
