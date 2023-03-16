@@ -13,7 +13,7 @@ public class ResizeableTest {
         shapes[1] = rectanle;
         shapes[2] = square;
         System.out.println("Chưa tăng kích thước: ");
-        for (int i=0; i<shapes.length; i++) {
+        for (int i = 0; i < shapes.length; i++) {
             System.out.println(shapes[i]);
         }
         Scanner sc = new Scanner(System.in);
@@ -22,8 +22,8 @@ public class ResizeableTest {
         circle.resize(a);
         rectanle.resize(a);
         square.resize(a);
-        System.out.println("Đã tăng: " + a + " phần trăm." );
-        for (Shape s:shapes) {
+        System.out.println("Đã tăng: " + a + " phần trăm.");
+        for (Shape s : shapes) {
             System.out.println(s);
         }
     }
