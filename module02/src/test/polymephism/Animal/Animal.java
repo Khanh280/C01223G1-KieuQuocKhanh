@@ -1,7 +1,5 @@
 package test.polymephism.Animal;
 
-public class Animal {
-    public void makeSound() {
-        System.out.println("Soud");
-    }
+public abstract class Animal {
+    public abstract void makeSound();
 }

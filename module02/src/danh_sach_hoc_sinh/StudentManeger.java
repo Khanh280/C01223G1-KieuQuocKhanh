@@ -30,6 +30,9 @@ public class StudentManeger {
                 } else if (id > 0 && id == students[i].getId()) {
                     System.out.println("Id đã tồn tại.");
                     break;
+                } else {
+                    System.out.println("Id > 0 & Id phải là số.");
+                    break;
                 }
             }
         } catch (Exception e) {

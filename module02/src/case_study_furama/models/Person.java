@@ -12,7 +12,7 @@ abstract class Person {
     protected Person(){
     }
 
-    public Person(int horse, String name, String birthDay, String gender, int id, String phoneNumber, String email) {
+    protected Person(int horse, String name, String birthDay, String gender, int id, String phoneNumber, String email) {
         this.horse = horse;
         this.name = name;
         this.birthDay = birthDay;
@@ -22,59 +22,72 @@ abstract class Person {
         this.email = email;
     }
 
-    public int getHorse() {
+    protected int getHorse() {
         return horse;
     }
 
-    public void setHorse(int horse) {
+    protected void setHorse(int horse) {
         this.horse = horse;
     }
 
-    public String getName() {
+    protected String getName() {
         return name;
     }
 
-    public void setName(String name) {
+    protected void setName(String name) {
         this.name = name;
     }
 
-    public String getBirthDay() {
+    protected String getBirthDay() {
         return birthDay;
     }
 
-    public void setBirthDay(String birthDay) {
+    protected void setBirthDay(String birthDay) {
         this.birthDay = birthDay;
     }
 
-    public String getGender() {
+    protected String getGender() {
         return gender;
     }
 
-    public void setGender(String gender) {
+    protected void setGender(String gender) {
         this.gender = gender;
     }
 
-    public int getId() {
+    protected int getId() {
         return id;
     }
 
-    public void setId(int id) {
+    protected void setId(int id) {
         this.id = id;
     }
 
-    public String getPhoneNumber() {
+    protected String getPhoneNumber() {
         return phoneNumber;
     }
 
-    public void setPhoneNumber(String phoneNumber) {
+    protected void setPhoneNumber(String phoneNumber) {
         this.phoneNumber = phoneNumber;
     }
 
-    public String getEmail() {
+    protected String getEmail() {
         return email;
     }
 
-    public void setEmail(String email) {
+    protected void setEmail(String email) {
         this.email = email;
+    }
+
+    @Override
+    public String toString() {
+        return "Person{" +
+                "horse=" + horse +
+                ", name='" + name + '\'' +
+                ", birthDay='" + birthDay + '\'' +
+                ", gender='" + gender + '\'' +
+                ", id=" + id +
+                ", phoneNumber='" + phoneNumber + '\'' +
+                ", email='" + email + '\'' +
+                '}';
     }
 }

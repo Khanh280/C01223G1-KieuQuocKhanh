@@ -10,5 +10,6 @@ public class Main {
         Animal animal2 = new Cat();
         animal1.makeSound();
         animal2.makeSound();
+
     }
 }

@@ -5,36 +5,37 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="43f64375-b3de-4fae-83d0-9f4130853951" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/case_study_furama/controllers/FuramaController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/case_study_furama/controllers/MainRunResort.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/inheritance_oop/circle_and_cylinder/Circle.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/inheritance_oop/circle_and_cylinder/CircleTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/inheritance_oop/circle_and_cylinder/Cylinder.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/inheritance_oop/circle_and_cylinder/CylinderTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/inheritance_oop/point2d_point3d/Point2d.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/inheritance_oop/point2d_point3d/Point2dTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/inheritance_oop/point2d_point3d/Point3d.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/inheritance_oop/point2d_point3d/Point3dTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/inheritance_oop/point_and_moveable_point/MoveablePoint.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/inheritance_oop/point_and_moveable_point/MoveablePointTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/inheritance_oop/point_and_moveable_point/Point.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/inheritance_oop/point_and_moveable_point/PointTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/inheritance_oop/triangle/Shape.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/inheritance_oop/triangle/Triangle.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/inheritance_oop/triangle/TriangleTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/polymephism/Animal/Animal.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/polymephism/Animal/Cat.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/polymephism/Animal/Dog.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/polymephism/shape/Circle.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/polymephism/shape/CircleTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/polymephism/shape/Rectanle.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/polymephism/shape/RectanleTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/polymephism/shape/ShapeTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/array_list_linkded_list/array_list/ArrayList.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/array_list_linkded_list/array_list/Main.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/array_list_linkded_list/linked_list/LinkedList.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/array_list_linkded_list/linked_list/Main.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/array_list_linkded_list/linked_list/Node.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/case_study_furama/data/FuramaData.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/clean_code/TennisGame.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/clean_code/TennisGameTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/module02/danh_sach_hoc_sinh/MainMenu.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/module02/danh_sach_hoc_sinh/MainMenu.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/danh_sach_hoc_sinh/MainMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/danh_sach_hoc_sinh/MainMenu.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/module02.iml" beforeDir="false" afterPath="$PROJECT_DIR$/module02.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/module02/case_study_furama/controllers/FuramaController.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/module02/case_study_furama/controllers/FuramaController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/module02/case_study_furama/controllers/MainRunResort.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/module02/danh_sach_hoc_sinh/StudentManeger.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/module02/danh_sach_hoc_sinh/StudentManeger.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/module02/test/polymephism/Animal/Animal.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/module02/test/polymephism/Animal/Animal.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/module02/test/polymephism/Animal/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/module02/test/polymephism/Animal/Main.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/abtract_class_and_interface/demo/Main.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/abtract_class_and_interface/demo/Person.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/abtract_class_and_interface/demo/Student.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/case_study_furama/controllers/FuramaController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/case_study_furama/controllers/FuramaController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/case_study_furama/controllers/MainRunResort.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/case_study_furama/models/Customer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/case_study_furama/models/Customer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/case_study_furama/models/Employee.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/case_study_furama/models/Employee.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/case_study_furama/models/Facility.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/case_study_furama/models/Facility.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/case_study_furama/models/House.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/case_study_furama/models/House.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/case_study_furama/models/Person.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/case_study_furama/models/Person.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/case_study_furama/models/Room.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/case_study_furama/models/Room.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/case_study_furama/models/Villa.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/case_study_furama/models/Villa.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/danh_sach_hoc_sinh/StudentManeger.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/danh_sach_hoc_sinh/StudentManeger.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/polymephism/Animal/Animal.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/polymephism/Animal/Animal.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/polymephism/Animal/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/polymephism/Animal/Main.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -49,6 +50,7 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
+        <option value="Interface" />
         <option value="Class" />
       </list>
     </option>
@@ -90,13 +92,13 @@
     &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;
   }
 }</component>
-  <component name="RunManager" selected="Application.MainMenu">
-    <configuration name="MainMenu" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="danh_sach_hoc_sinh.MainMenu" />
+  <component name="RunManager" selected="Application.array_list_linkded_list.linked_list.Main">
+    <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="array_list_linkded_list.array_list.Main" />
       <module name="module02" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="danh_sach_hoc_sinh.*" />
+          <option name="PATTERN" value="array_list_linkded_list.array_list.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -104,12 +106,12 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="MoveablePointTest" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="inheritance_oop.point_and_moveable_point.MoveablePointTest" />
+    <configuration name="array_list_linkded_list.linked_list.Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="array_list_linkded_list.linked_list.Main" />
       <module name="module02" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="inheritance_oop.point_and_moveable_point.*" />
+          <option name="PATTERN" value="array_list_linkded_list.linked_list.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -117,52 +119,27 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="Point3dTest" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="inheritance_oop.point2d_point3d.Point3dTest" />
+    <configuration name="TennisGameTest.checkAllScores" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="module02" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="inheritance_oop.point2d_point3d.*" />
+          <option name="PATTERN" value="clean_code.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="PointTest" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="inheritance_oop.point_and_moveable_point.PointTest" />
-      <module name="module02" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="inheritance_oop.point_and_moveable_point.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="TriangleTest" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="inheritance_oop.triangle.TriangleTest" />
-      <module name="module02" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="inheritance_oop.triangle.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
+      <option name="PACKAGE_NAME" value="clean_code" />
+      <option name="MAIN_CLASS_NAME" value="clean_code.TennisGameTest" />
+      <option name="METHOD_NAME" value="checkAllScores" />
+      <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.MainMenu" />
-        <item itemvalue="Application.TriangleTest" />
-        <item itemvalue="Application.MoveablePointTest" />
-        <item itemvalue="Application.PointTest" />
-        <item itemvalue="Application.Point3dTest" />
+        <item itemvalue="Application.array_list_linkded_list.linked_list.Main" />
+        <item itemvalue="Application.Main" />
+        <item itemvalue="JUnit.TennisGameTest.checkAllScores" />
       </list>
     </recent_temporary>
   </component>
@@ -214,6 +191,20 @@
       <workItem from="1678685397085" duration="29000" />
       <workItem from="1678685549130" duration="13000" />
       <workItem from="1678689222726" duration="7807000" />
+      <workItem from="1678700613161" duration="1841000" />
+      <workItem from="1678710096822" duration="4984000" />
+      <workItem from="1678762834872" duration="9057000" />
+      <workItem from="1678775342057" duration="784000" />
+      <workItem from="1678780544182" duration="5594000" />
+      <workItem from="1678786925189" duration="50000" />
+      <workItem from="1678795065933" duration="4208000" />
+      <workItem from="1678805080725" duration="1365000" />
+      <workItem from="1678849213201" duration="6517000" />
+      <workItem from="1678857420548" duration="492000" />
+      <workItem from="1678858302838" duration="1446000" />
+      <workItem from="1678863080507" duration="1217000" />
+      <workItem from="1678865996904" duration="2875000" />
+      <workItem from="1678882195706" duration="7584000" />
     </task>
     <servers />
   </component>

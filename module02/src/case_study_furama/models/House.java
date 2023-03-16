@@ -1,36 +1,69 @@
 package case_study_furama.models;
 
 public class House extends Facility {
-    private String roomStandards;// Tieu chuan phong
-    private int numberFloors;// so tang`
+//    private String roomStandards;// Tieu chuan phong
+//    private int numberFloors;// so tang`
 
-    public House() {
+    protected String roomStandards(String roomStandards){
+        return null;
     }
 
-    public House(String roomStandards, int numberFloors) {
-        this.roomStandards = roomStandards;
-        this.numberFloors = numberFloors;
+    protected int numberFloors(int numberFloors){
+        return 0;
+    }
+    @Override
+    protected String serviceName(String serviceName) {
+        return null;
     }
 
-    public House(String servicename, double areaUsed, double rentalCost, int maximumPeople, String rentalType, String roomStandards, int numberFloors) {
-        super(servicename, areaUsed, rentalCost, maximumPeople, rentalType);
-        this.roomStandards = roomStandards;
-        this.numberFloors = numberFloors;
+    @Override
+    protected double areaUsed(double areaUsed) {
+        return 0;
     }
 
-    public String getRoomStandards() {
-        return roomStandards;
+    @Override
+    protected int rentalCost(int rentalCost) {
+        return 0;
     }
 
-    public void setRoomStandards(String roomStandards) {
-        this.roomStandards = roomStandards;
+    @Override
+    protected int maximumPeople(int maximumPeople) {
+        return 0;
     }
 
-    public int getNumberFloors() {
-        return numberFloors;
+    @Override
+    protected String rentalType(String rentalType) {
+        return null;
     }
 
-    public void setNumberFloors(int numberFloors) {
-        this.numberFloors = numberFloors;
-    }
+
+//    public House() {
+//    }
+//
+//    public House(String roomStandards, int numberFloors) {
+//        this.roomStandards = roomStandards;
+//        this.numberFloors = numberFloors;
+//    }
+//
+//    public House(String servicename, double areaUsed, int rentalCost, int maximumPeople, String rentalType, String roomStandards, int numberFloors) {
+//        super(servicename, areaUsed, rentalCost, maximumPeople, rentalType);
+//        this.roomStandards = roomStandards;
+//        this.numberFloors = numberFloors;
+//    }
+//
+//    public String getRoomStandards() {
+//        return roomStandards;
+//    }
+//
+//    public void setRoomStandards(String roomStandards) {
+//        this.roomStandards = roomStandards;
+//    }
+//
+//    public int getNumberFloors() {
+//        return numberFloors;
+//    }
+//
+//    public void setNumberFloors(int numberFloors) {
+//        this.numberFloors = numberFloors;
+//    }
 }
