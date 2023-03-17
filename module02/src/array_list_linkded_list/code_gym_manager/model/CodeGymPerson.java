@@ -1,9 +1,9 @@
-package array_list_linkded_list.code_gym_manager;
+package array_list_linkded_list.code_gym_manager.model;
 
 public class CodeGymPerson {
     private int id;
     private String name;
-    private String birtDay;
+    private String birthDay;
     private String gender;
 
     protected CodeGymPerson(){
@@ -13,7 +13,7 @@ public class CodeGymPerson {
     protected CodeGymPerson(int id, String name, String birtDay, String gender) {
         this.id = id;
         this.name = name;
-        this.birtDay = birtDay;
+        this.birthDay = birtDay;
         this.gender = gender;
     }
 
@@ -33,12 +33,12 @@ public class CodeGymPerson {
         this.name = name;
     }
 
-    public String getBirtDay() {
-        return birtDay;
+    public String getBirthDay() {
+        return birthDay;
     }
 
-    public void setBirtDay(String birtDay) {
-        this.birtDay = birtDay;
+    public void setBirthDay(String birthDay) {
+        this.birthDay = birthDay;
     }
 
     public String getGender() {
@@ -54,7 +54,7 @@ public class CodeGymPerson {
         return "CodeGymPerson{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
-                ", birtDay='" + birtDay + '\'' +
+                ", birtDay='" + birthDay + '\'' +
                 ", gender='" + gender + '\'' +
                 '}';
     }

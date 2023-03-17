@@ -1,4 +1,4 @@
-package array_list_linkded_list.code_gym_manager;
+package array_list_linkded_list.code_gym_manager.model;
 
 public class Student extends CodeGymPerson {
     private String classes;
@@ -7,8 +7,8 @@ public class Student extends CodeGymPerson {
     public Student() {
     }
 
-    public Student(int id, String name, String birtDay, String gender, String classes, int point) {
-        super(id, name, birtDay, gender);
+    public Student(int id, String name, String birthDay, String gender, String classes, int point) {
+        super(id, name, birthDay, gender);
         this.classes = classes;
         this.point = point;
     }
@@ -34,7 +34,7 @@ public class Student extends CodeGymPerson {
         return " CodeGymPerson { " +
                 "id=" + this.getId() +
                 ", name='" + this.getName() + '\'' +
-                ", birtDay='" + this.getBirtDay() + '\'' +
+                ", birtDay='" + this.getBirthDay() + '\'' +
                 ", gender='" + this.getGender() + '\'' +
                 "classes='" + classes + '\'' +
                 ", point=" + point +
