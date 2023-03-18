@@ -1,4 +1,4 @@
-package array_list_linkded_list.code_gym_manager.model;
+package code_gym_manager.model;
 
 public class CodeGymPerson {
     private int id;
@@ -6,7 +6,7 @@ public class CodeGymPerson {
     private String birthDay;
     private String gender;
 
-    protected CodeGymPerson(){
+    protected CodeGymPerson() {
 
     }
 

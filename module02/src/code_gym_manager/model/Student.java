@@ -1,4 +1,4 @@
-package array_list_linkded_list.code_gym_manager.model;
+package code_gym_manager.model;
 
 public class Student extends CodeGymPerson {
     private String classes;
@@ -31,13 +31,11 @@ public class Student extends CodeGymPerson {
 
     @Override
     public String toString() {
-        return " CodeGymPerson { " +
-                "id=" + this.getId() +
-                ", name='" + this.getName() + '\'' +
-                ", birtDay='" + this.getBirthDay() + '\'' +
-                ", gender='" + this.getGender() + '\'' +
-                "classes='" + classes + '\'' +
-                ", point=" + point +
-                '}';
+        return " Id = " + this.getId() +
+                " Name = '" + this.getName() + '\'' +
+                " BirtDay = '" + this.getBirthDay() + '\'' +
+                " Gender = '" + this.getGender() + '\'' +
+                " Classes = '" + classes + '\'' +
+                " Point = " + point;
     }
 }
