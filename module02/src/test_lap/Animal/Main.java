@@ -1,8 +1,4 @@
-package test.polymephism.Animal;
-
-import test.polymephism.Animal.Animal;
-import test.polymephism.Animal.Cat;
-import test.polymephism.Animal.Dog;
+package test_lap.Animal;
 
 public class Main {
     public static void main(String[] args) {

@@ -1,4 +1,4 @@
-package test.polymephism.shape;
+package test_lap.shape;
 
 public class Shape {
     String color = "green";

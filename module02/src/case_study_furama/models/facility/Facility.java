@@ -1,4 +1,4 @@
-package case_study_furama.models;
+package case_study_furama.models.facility;
 
 abstract class Facility {
     private String serviceName;// ten dich vu
@@ -48,12 +48,20 @@ abstract class Facility {
         this.maximumPeople = maximumPeople;
     }
 
-    public String getRentalType() {
-        return rentalType;
-    }
+    public abstract String getRentalType();
 
     public void setRentalType(String rentalType) {
         this.rentalType = rentalType;
     }
 
+    @Override
+    public String toString() {
+        return "Facility{" +
+                "serviceName='" + serviceName + '\'' +
+                ", areaUsed=" + areaUsed +
+                ", rentalCost=" + rentalCost +
+                ", maximumPeople=" + maximumPeople +
+                ", rentalType='" + rentalType + '\'' +
+                '}';
+    }
 }

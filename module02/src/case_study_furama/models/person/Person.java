@@ -1,4 +1,4 @@
-package case_study_furama.models;
+package case_study_furama.models.person;
 
 abstract class Person {
     private int horse;// ma~
@@ -22,59 +22,59 @@ abstract class Person {
         this.email = email;
     }
 
-    protected int getHorse() {
+    public int getHorse() {
         return horse;
     }
 
-    protected void setHorse(int horse) {
+    public void setHorse(int horse) {
         this.horse = horse;
     }
 
-    protected String getName() {
+    public String getName() {
         return name;
     }
 
-    protected void setName(String name) {
+    public void setName(String name) {
         this.name = name;
     }
 
-    protected String getBirthDay() {
+    public String getBirthDay() {
         return birthDay;
     }
 
-    protected void setBirthDay(String birthDay) {
+    public void setBirthDay(String birthDay) {
         this.birthDay = birthDay;
     }
 
-    protected String getGender() {
+    public String getGender() {
         return gender;
     }
 
-    protected void setGender(String gender) {
+    public void setGender(String gender) {
         this.gender = gender;
     }
 
-    protected int getId() {
+    public int getId() {
         return id;
     }
 
-    protected void setId(int id) {
+    public void setId(int id) {
         this.id = id;
     }
 
-    protected String getPhoneNumber() {
+    public String getPhoneNumber() {
         return phoneNumber;
     }
 
-    protected void setPhoneNumber(String phoneNumber) {
+    public void setPhoneNumber(String phoneNumber) {
         this.phoneNumber = phoneNumber;
     }
 
-    protected String getEmail() {
+    public String getEmail() {
         return email;
     }
 
-    protected void setEmail(String email) {
+    public void setEmail(String email) {
         this.email = email;
     }
 

@@ -1,4 +1,4 @@
-package case_study_furama.models;
+package case_study_furama.models.facility;
 
 public class Villa extends Facility {
     private String roomStandards;// Tieu chuan phong
@@ -18,14 +18,17 @@ public class Villa extends Facility {
     }
 
     @Override
+    public String getRentalType() {
+        return null;
+    }
+
+    @Override
     public String toString() {
         return "Villa{}";
     }
 
-    public Villa(String roomStandards, double poolArea, int numberFloors) {
-        this.roomStandards = roomStandards;
-        this.poolArea = poolArea;
-        this.numberFloors = numberFloors;
+    public Villa() {
+
     }
 
     public Villa(String servicename, double areaUsed, int rentalCost, int maximumPeople, String rentalType, String roomStandards, double poolArea, int numberFloors) {

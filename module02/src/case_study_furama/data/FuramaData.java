@@ -1,29 +1,32 @@
 package case_study_furama.data;
 
+import java.util.ArrayList;
+
 public class FuramaData {
-    public static String[] degreeList = new String[4];
+    public FuramaData(){}
+    public static ArrayList<String> degreeList = new ArrayList<>();
     static {
-        degreeList[0] = "Trung cap";
-        degreeList[1] = "Cao dang";
-        degreeList[2] = "Dai hoc";
-        degreeList[3] = "Sau dai hoc";
+        degreeList.add("Trung cap");
+        degreeList.add("Cao dang");
+        degreeList.add("Dai hoc");
+        degreeList.add("Sau dai hoc");
     }
-    public static String[] locationList = new String[6];
+    public static ArrayList<String> locationList = new ArrayList<>();
     static {
-        locationList[0] = "Le Tan";
-        locationList[1] = "Phuc Vu";
-        locationList[2] = "Chuyen Vien";
-        locationList[3] = "Giam Sat";
-        locationList[4] = "Quan Ly";
-        locationList[5] = "Giam Doc";
+        locationList.add("Le Tan");
+        locationList.add("Phuc Vu");
+        locationList.add("Chuyen Vien");
+        locationList.add("Giam Sat");
+        locationList.add("Quan Ly");
+        locationList.add("Giam Doc");
     }
 
-    public static String[] guestTypeList = new String[5];
+    public static ArrayList<String> guestTypeList = new ArrayList<>();
     static {
-        guestTypeList[0] = "Diamond";
-        guestTypeList[1] = "Platinium";
-        guestTypeList[2] = "Gold";
-        guestTypeList[3] = "Silver";
-        guestTypeList[4] = "Member";
+        guestTypeList.add("Diamond");
+        guestTypeList.add("Platinium");
+        guestTypeList.add("Gold");
+        guestTypeList.add("Silver");
+        guestTypeList.add("Member");
     }
 }

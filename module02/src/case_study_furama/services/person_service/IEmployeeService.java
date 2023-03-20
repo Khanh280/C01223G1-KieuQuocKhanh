@@ -1,4 +1,4 @@
-package case_study_furama.services.service_person;
+package case_study_furama.services.person_service;
 
 public interface IEmployeeService {
     void addEmployee();

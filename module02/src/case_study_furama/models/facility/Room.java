@@ -1,4 +1,6 @@
-package case_study_furama.models;
+package case_study_furama.models.facility;
+
+import case_study_furama.models.facility.Facility;
 
 public class Room extends Facility {
     private String freeService;//dich vu mien phi
@@ -7,6 +9,11 @@ public class Room extends Facility {
         return null;
     }
     public Room() {
+    }
+
+    @Override
+    public String getRentalType() {
+        return null;
     }
 
     public Room(String freeService) {

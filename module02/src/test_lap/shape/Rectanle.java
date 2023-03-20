@@ -1,4 +1,4 @@
-package test.polymephism.shape;
+package test_lap.shape;
 
 public class Rectanle extends Shape {
     double width = 1.0;

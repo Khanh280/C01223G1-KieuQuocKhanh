@@ -1,4 +1,6 @@
-package case_study_furama.models;
+package case_study_furama.models.facility;
+
+import case_study_furama.models.facility.Facility;
 
 public class House extends Facility {
     private String roomStandards;// Tieu chuan phong
@@ -13,6 +15,11 @@ public class House extends Facility {
     }
 
     public House() {
+    }
+
+    @Override
+    public String getRentalType() {
+        return null;
     }
 
     public House(String roomStandards, int numberFloors) {

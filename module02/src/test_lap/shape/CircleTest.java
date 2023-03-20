@@ -1,4 +1,4 @@
-package test.polymephism.shape;
+package test_lap.shape;
 
 public class CircleTest {
     public static void main(String[] args) {

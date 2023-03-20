@@ -1,6 +1,4 @@
-package test.polymephism.Animal;
-
-import test.polymephism.Animal.Animal;
+package test_lap.Animal;
 
 public class Cat extends Animal {
     @Override
