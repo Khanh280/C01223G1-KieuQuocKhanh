@@ -31,11 +31,6 @@ public class Student extends CodeGymPerson {
 
     @Override
     public String toString() {
-        return " Id = " + this.getId() +
-                " Name = '" + this.getName() + '\'' +
-                " BirtDay = '" + this.getBirthDay() + '\'' +
-                " Gender = '" + this.getGender() + '\'' +
-                " Classes = '" + classes + '\'' +
-                " Point = " + point;
+        return "| "+ this.getId() +"  |    "+ this.getName() +"   |  "+ this.getBirthDay() +"  | "+ this.getGender() +" |   "+ classes +"  | "+ point +" |";
     }
 }

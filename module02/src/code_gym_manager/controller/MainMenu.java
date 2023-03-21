@@ -82,12 +82,17 @@ public class MainMenu {
                 int choose = Integer.parseInt(sc.nextLine());
                 switch (choose) {
                     case 1:
-                        System.out.println("--------CODE GYM INTRUCTOR--------");
+                        System.out.println("--------------------CODE GYM INTRUCTOR-----------------");
+                        System.out.println("+---+----------+-------------+--------+--------+------+");
                         intructorService.displayIntructortList();
                         break;
                     case 2:
-                        System.out.println("--------CODE GYM STUDENT--------");
+                        System.out.println("--------------------CODE GYM STUDENT-------------------");
+                        System.out.println("+----+----------+-------------+-----------+--------+------+");
+                        System.out.println("| ID |    Tên   |  Ngày Sinh  | Giới Tính |   Lớp  | Điểm |");
+                        System.out.println("+----+----------+-------------+-----------+--------+------+");
                         studentService.displayStudentList();
+                        System.out.println("+----+----------+-------------+-----------+--------+------+");
                         break;
                     case 3:
                         flag = false;
