@@ -1,5 +1,7 @@
 package user_arrray_list_and_linked_list_in_java.service;
 
+import user_arrray_list_and_linked_list_in_java.models.AscendingByPrice;
+import user_arrray_list_and_linked_list_in_java.models.DescendingByPrice;
 import user_arrray_list_and_linked_list_in_java.models.Product;
 
 import java.util.*;
@@ -12,6 +14,7 @@ public class ProductService extends Product implements IServiceProduct {
         products.add(new Product(1, "Iphone 13Pro Max 512 Gb", "23 củ", "Apple", 1));
         products.add(new Product(2, "Iphone 12Pro Max 512 Gb", "20 củ", "Apple", 1));
         products.add(new Product(3, "Iphone 11Pro Max 512 Gb", "15 củ", "Apple", 1));
+        products.add(new Product(4, "Iphone 14Pro Max 512 Gb", "50 củ", "Apple", 1));
     }
 
     static Product product = new Product();
@@ -176,14 +179,14 @@ public class ProductService extends Product implements IServiceProduct {
             switch (choose) {
                 case 1:
                     System.out.println("----------DANH SÁCH SẢN PHẨM----------");
-                    Collections.sort(products, new Product());
+                    Collections.sort(products, new AscendingByPrice());
                     for (int i = 0; i < products.size(); i++) {
                         System.out.println(products.get(i));
                     }
                     break;
                 case 2:
                     System.out.println("----------DANH SÁCH SẢN PHẨM----------");
-                    Collections.reverse(products);
+                    Collections.sort(products, new DescendingByPrice());
                     for (int i = 0; i < products.size(); i++) {
                         System.out.println(products.get(i));
                     }

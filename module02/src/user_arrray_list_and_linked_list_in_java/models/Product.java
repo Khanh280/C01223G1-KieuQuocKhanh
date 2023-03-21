@@ -2,7 +2,7 @@ package user_arrray_list_and_linked_list_in_java.models;
 
 import java.util.Comparator;
 
-public class Product implements Comparator<Product> {
+public class Product {
     private int id;
     private String nameProduct;
     private String price;
@@ -71,13 +71,4 @@ public class Product implements Comparator<Product> {
                 " Number of products ='" + numberOfProducts + '\'';
     }
 
-    @Override
-    public int compare(Product o1, Product o2) {
-        return o1.price.compareTo(o2.price);
-    }
-
-    @Override
-    public Comparator reversed() {
-        return Comparator.super.reversed();
-    }
 }
