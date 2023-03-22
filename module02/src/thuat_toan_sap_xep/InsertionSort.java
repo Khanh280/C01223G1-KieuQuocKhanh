@@ -4,17 +4,21 @@ import java.util.Arrays;
 
 public class InsertionSort {
     public static void main(String[] args) {
-        int[] array = {1,4,9,2,0,34,2,66,3};
+        int[] array = {1, 4, 9, 2, 0, 34, 2, 66, 3};
+        insertionSort(array);
+    }
+
+    public static void insertionSort(int[] list) {
         int pos, x;
-        for(int i = 1; i < array.length; i++){ //đoạn array[0] đã sắp xếp
-            x = array[i];
+        for (int i = 1; i < list.length; i++) {
+            x = list[i];
             pos = i;
-            while(pos > 0 && array[pos-1] > x){
-                array[pos] = array[pos-1]; // đổi chỗ
+            while (pos > 0 && list[pos - 1] > x) {
+                list[pos] = list[pos - 1];
                 pos--;
             }
-            array[pos] = x;
+            list[pos] = x;
         }
-        System.out.println(Arrays.toString(array));
+        System.out.println(Arrays.toString(list));
     }
 }

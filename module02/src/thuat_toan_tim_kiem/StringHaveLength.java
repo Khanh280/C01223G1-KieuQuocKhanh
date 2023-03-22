@@ -15,7 +15,7 @@ public class StringHaveLength {
             String result = "";
             int max = 0;
             for (int j = i; j < chars.length; j++) {
-                if (max <= chars[j]) {
+                if (max < chars[j]) {
                     max = chars[j];
                     result += chars[j];
                 }
