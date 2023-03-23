@@ -1,7 +1,7 @@
 package case_study_furama.controllers;
 
 
-import case_study_furama.models.person.Employee;
+import case_study_furama.services.facility_service.impl_service.FacilityServiceImpl;
 import case_study_furama.services.person_service.impl_service.CustomerServiceImpl;
 import case_study_furama.services.person_service.impl_service.EmployeeServiceImpl;
 
@@ -9,8 +9,9 @@ import java.util.Scanner;
 
 public class FuramaController {
     static Scanner sc = new Scanner(System.in);
-    static EmployeeServiceImpl employee = new EmployeeServiceImpl();
-    static CustomerServiceImpl customerService = new CustomerServiceImpl();
+    static EmployeeServiceImpl employeeServiceImpl = new EmployeeServiceImpl();
+    static CustomerServiceImpl customerServiceServiceImpl = new CustomerServiceImpl();
+    static FacilityServiceImpl facilityServiceServiceImpl = new FacilityServiceImpl();
 
     public static void displayMainMenu() {
         boolean flag;
@@ -67,16 +68,16 @@ public class FuramaController {
                 switch (choose) {
                     case 1:
                         System.out.println("------------------------------FURAMA EMPLOYEE------------------------------");
-                        employee.displayListEmployee();
+                        employeeServiceImpl.displayListEmployee();
                         break;
                     case 2:
-                        employee.addEmployee();
+                        employeeServiceImpl.addEmployee();
                         break;
                     case 3:
-                        employee.editEmployee();
+                        employeeServiceImpl.editEmployee();
                         break;
                     case 4:
-                        employee.deleteEmployee();
+                        employeeServiceImpl.deleteEmployee();
                         break;
                     case 5:
                         flag = false;
@@ -103,16 +104,16 @@ public class FuramaController {
                 switch (choose) {
                     case 1:
                         System.out.println("------------------------------FURAMA CUSTOMER------------------------------");
-                        customerService.displayListCustomer();
+                        customerServiceServiceImpl.displayListCustomer();
                         break;
                     case 2:
-                        customerService.addCustomer();
+                        customerServiceServiceImpl.addCustomer();
                         break;
                     case 3:
-                        customerService.editCustomer();
+                        customerServiceServiceImpl.editCustomer();
                         break;
                     case 4:
-                        customerService.deleteCustomer();
+                        customerServiceServiceImpl.deleteCustomer();
                         break;
                     case 5:
                         flag = false;
@@ -137,10 +138,13 @@ public class FuramaController {
                 int choose = Integer.parseInt(sc.nextLine());
                 switch (choose) {
                     case 1:
+                        facilityServiceServiceImpl.displayListFacility();
                         break;
                     case 2:
+                        facilityServiceServiceImpl.addNewFacility();
                         break;
                     case 3:
+                        facilityServiceServiceImpl.displayListFacilityMaintrnance();
                         break;
                     case 4:
                         flag = false;

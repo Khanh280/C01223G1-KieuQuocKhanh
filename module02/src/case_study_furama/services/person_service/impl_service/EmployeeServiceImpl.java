@@ -59,7 +59,7 @@ public class EmployeeServiceImpl extends Employee implements IEmployeeService {
                 employee = new Employee(horse, name, birthDay, gender, id, phoneNumber, email, degree, location, salary);
                 employees.add(employee);
             }
-        } catch (Exception e) {
+        }catch (Exception e) {
             System.out.println("Thông tin nhân viên không hợp lệ vui lòng nhập lại.");
         }
     }

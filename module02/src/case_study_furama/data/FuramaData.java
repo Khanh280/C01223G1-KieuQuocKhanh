@@ -29,4 +29,13 @@ public class FuramaData {
         guestTypeList.add("Silver");
         guestTypeList.add("Member");
     }
+    public static ArrayList<String> rentalType = new ArrayList<>();
+    static {
+        rentalType.add("Nam");
+        rentalType.add("Thang");
+        rentalType.add("Ngay");
+    }
+    public static ArrayList<String> roomStandards = new ArrayList<>();
+//    static
+
 }

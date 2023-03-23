@@ -1,6 +1,6 @@
 package case_study_furama.models.facility;
 
-abstract class Facility {
+public abstract class Facility {
     private String serviceName;// ten dich vu
     private double areaUsed; // dien tich su dung
     private int rentalCost; //chi phi thue
