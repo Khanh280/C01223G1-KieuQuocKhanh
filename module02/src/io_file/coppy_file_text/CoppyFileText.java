@@ -9,6 +9,7 @@ public class CoppyFileText {
         List<String> stringList = new ArrayList<>();
         FileReader fileReader = null;
         BufferedReader bufferedReader = null;
+
         File file = new File(nameFile);
         if (!file.exists()) {
             throw new FileNotFoundException("Tập tin không tồn tại.");
@@ -18,9 +19,20 @@ public class CoppyFileText {
         String string = null;
         while ((string = bufferedReader.readLine()) != null) {
             stringList.add(string);
+
         }
         bufferedReader.close();
         fileReader.close();
+        int count=0;
+        for (int i = 0; i < stringList.size(); i++) {
+            String[] str= stringList.get(i).split("");
+            for (int j = 0; j < str.length; j++) {
+                if (!str[j].equals(" ")){
+                    count++;
+                }
+            }
+        }
+        System.out.println("Tổng số ký tự trong file: " + count);
         return stringList;
     }
 
