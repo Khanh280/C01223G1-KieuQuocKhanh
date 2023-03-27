@@ -5,28 +5,6 @@ public class Villa extends Facility {
     private double poolArea; // dien tich ho boi
     private int numberFloors;// so tang`
 
-    protected String roomStandards(String roomStandards){
-        return roomStandards;
-    }
-
-    protected double poolArea(double poolArea){
-        return 0;
-    }
-
-    protected int numberFloors( int numberFloors){
-        return 0;
-    }
-
-    @Override
-    public String getRentalType() {
-        return null;
-    }
-
-    @Override
-    public String toString() {
-        return "Villa{}";
-    }
-
     public Villa() {
 
     }
@@ -36,6 +14,18 @@ public class Villa extends Facility {
         this.roomStandards = roomStandards;
         this.poolArea = poolArea;
         this.numberFloors = numberFloors;
+    }
+
+    protected String roomStandards(String roomStandards) {
+        return roomStandards;
+    }
+
+    protected double poolArea(double poolArea) {
+        return 0;
+    }
+
+    protected int numberFloors(int numberFloors) {
+        return 0;
     }
 
     public String getRoomStandards() {
@@ -60,5 +50,30 @@ public class Villa extends Facility {
 
     public void setNumberFloors(int numberFloors) {
         this.numberFloors = numberFloors;
+    }
+
+    @Override
+    public String toString() {
+        return "Villa{" +
+                "serviceName='" + this.getServicename() + '\'' +
+                ", areaUsed=" + this.getAreaUsed() +
+                ", rentalCost=" + this.getRentalCost() +
+                ", maximumPeople=" + this.getMaximumPeople() +
+                ", rentalType='" + this.getRentalType() + '\'' +
+                 "roomStandards='" + this.getRoomStandards() + '\'' +
+                ", poolArea=" + this.getPoolArea() +
+                ", numberFloors=" + this.getNumberFloors() +
+                '}';
+    }
+
+    public String getInfoToFile() {
+        return this.getServicename() +
+                "," + this.getAreaUsed() +
+                "," + this.getRentalCost() +
+                "," + this.getMaximumPeople() +
+                "," + this.getRentalType() +
+                "," + this.getRoomStandards() +
+                "," + this.getPoolArea() +
+                "," + this.getNumberFloors();
     }
 }

@@ -3,13 +3,15 @@ package case_study_furama.services.person_service.impl_service;
 import case_study_furama.data.FuramaData;
 import case_study_furama.models.person.Employee;
 import case_study_furama.services.person_service.IEmployeeService;
+import case_study_furama.utils.ReadAndWriteDataEmployee;
 
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 public class EmployeeServiceImpl extends Employee implements IEmployeeService {
     static Scanner scanner = new Scanner(System.in);
-    static ArrayList<Employee> employees = new ArrayList<>();
+    static List<Employee> employees = new ArrayList<>();
     static Employee employee = new Employee();
 
     @Override
@@ -18,6 +20,7 @@ public class EmployeeServiceImpl extends Employee implements IEmployeeService {
             int count = 0;
             System.out.print("Nhập mã nhân viên: ");
             int horse = Integer.parseInt(scanner.nextLine());
+            employees = ReadAndWriteDataEmployee.readFileToList();
             for (int i = 0; i < employees.size(); i++) {
                 if (horse == employees.get(i).getHorse()) {
                     System.out.println("Mã nhân viên đã tồn tại.");
@@ -58,8 +61,9 @@ public class EmployeeServiceImpl extends Employee implements IEmployeeService {
                 long salary = getSalary(chooseDegree, chooseLocation);
                 employee = new Employee(horse, name, birthDay, gender, id, phoneNumber, email, degree, location, salary);
                 employees.add(employee);
+                ReadAndWriteDataEmployee.writeEmployeeToFile(employees, false);
             }
-        }catch (Exception e) {
+        } catch (Exception e) {
             System.out.println("Thông tin nhân viên không hợp lệ vui lòng nhập lại.");
         }
     }
@@ -108,6 +112,7 @@ public class EmployeeServiceImpl extends Employee implements IEmployeeService {
                     long salary = getSalary(chooseDegree, chooseLocation);
                     employee = new Employee(horse, name, birthDay, gender, id, phoneNumber, email, degree, location, salary);
                     employees.set(i, employee);
+                    ReadAndWriteDataEmployee.writeEmployeeToFile(employees, false);
                     return;
                 } else {
                     count++;
@@ -123,6 +128,7 @@ public class EmployeeServiceImpl extends Employee implements IEmployeeService {
 
     @Override
     public void displayListEmployee() {
+        employees = ReadAndWriteDataEmployee.readFileToList();
         for (int i = 0; i < employees.size(); i++) {
             System.out.println(employees.get(i));
         }
@@ -139,15 +145,22 @@ public class EmployeeServiceImpl extends Employee implements IEmployeeService {
                     System.out.println("Bạn xác nhận xóa nhân viên " + employees.get(i).getName() +
                             "\n1. Yes." +
                             "\n2. No.");
-                    int choose = Integer.parseInt(scanner.nextLine());
+                    String choose = scanner.nextLine();
                     switch (choose) {
-                        case 1:
+                        case "1":
                             employees.remove(i);
                             System.out.println("Bạn đã xóa thành công nhân viên có mã " + horse);
-                            break;
-                        case 2:
+                            if (employees.size() == 0) {
+                                ReadAndWriteDataEmployee.writeEmployeeToFile(null, false);
+                            } else {
+                                ReadAndWriteDataEmployee.writeEmployeeToFile(employees, false);
+                            }
+                            return;
+                        case "2":
                             System.out.println("Bạn đã không xóa.");
                             break;
+                        default:
+                            System.out.println("Vui lòng chọn lại.");
                     }
                     return;
                 } else {

@@ -1,4 +1,4 @@
-package io_file.coppy_file_text;
+package io_text_file.coppy_file_text;
 
 import java.io.*;
 import java.util.ArrayList;

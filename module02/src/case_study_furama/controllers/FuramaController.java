@@ -135,20 +135,22 @@ public class FuramaController {
                     "\n3. Display list facility maintenance" +
                     "\n4. Return main menu");
             try {
-                int choose = Integer.parseInt(sc.nextLine());
+                String choose = sc.nextLine();
                 switch (choose) {
-                    case 1:
+                    case "1":
                         facilityServiceServiceImpl.displayListFacility();
                         break;
-                    case 2:
+                    case "2":
                         facilityServiceServiceImpl.addNewFacility();
                         break;
-                    case 3:
+                    case "3":
                         facilityServiceServiceImpl.displayListFacilityMaintrnance();
                         break;
-                    case 4:
+                    case "4":
                         flag = false;
                         break;
+                    default:
+                        System.out.println("Vui long chon lai.");
                 }
             } catch (Exception e) {
                 System.out.println("Selection error...");

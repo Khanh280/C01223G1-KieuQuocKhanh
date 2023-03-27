@@ -1,4 +1,4 @@
-package io_file.read_file_csv;
+package io_text_file.read_file_csv;
 
 public class Country {
     private int id;

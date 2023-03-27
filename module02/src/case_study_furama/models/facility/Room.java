@@ -1,7 +1,5 @@
 package case_study_furama.models.facility;
 
-import case_study_furama.models.facility.Facility;
-
 public class Room extends Facility {
     private String freeService;//dich vu mien phi
 
@@ -31,5 +29,25 @@ public class Room extends Facility {
 
     public void setFreeService(String freeService) {
         this.freeService = freeService;
+    }
+
+    @Override
+    public String toString() {
+        return "Room{" +
+                "serviceName='" + this.getServicename() + '\'' +
+                ", areaUsed=" + this.getAreaUsed() +
+                ", rentalCost=" + this.getRentalCost() +
+                ", maximumPeople=" + this.getMaximumPeople() +
+                ", rentalType='" + this.getRentalType() + '\'' +
+                "freeService='" + this.getFreeService()+ '\'' +
+                '}';
+    }
+    public String getInfoToFile() {
+        return this.getServicename() +
+                "," + this.getAreaUsed() +
+                "," + this.getRentalCost() +
+                "," + this.getMaximumPeople() +
+                "," + this.getRentalType() +
+                "," + this.getFreeService() ;
     }
 }

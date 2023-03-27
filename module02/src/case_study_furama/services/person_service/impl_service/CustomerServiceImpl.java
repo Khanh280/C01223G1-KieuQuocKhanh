@@ -3,6 +3,8 @@ package case_study_furama.services.person_service.impl_service;
 import case_study_furama.data.FuramaData;
 import case_study_furama.models.person.Customer;
 import case_study_furama.services.person_service.ICustomerService;
+import case_study_furama.utils.ReadAndWriteDataCustomer;
+import case_study_furama.utils.ReadAndWriteDataEmployee;
 
 import java.util.LinkedList;
 import java.util.Scanner;
@@ -18,8 +20,9 @@ public class CustomerServiceImpl extends Customer implements ICustomerService {
             int count = 0;
             System.out.print("Nhập mã khách hàng: ");
             int horse = Integer.parseInt(scanner.nextLine());
-            for (Customer c : customers) {
-                if (horse == c.getId()) {
+            customers = ReadAndWriteDataCustomer.readFileToList();
+            for (int i = 0; i < customers.size(); i++) {
+                if (horse == customers.get(i).getHorse()) {
                     System.out.println("Mã khách hàng đã tồn tại: ");
                     return;
                 } else {
@@ -51,6 +54,7 @@ public class CustomerServiceImpl extends Customer implements ICustomerService {
                 String address = scanner.nextLine();
                 customer = new Customer(horse, name, birthDay, gender, id, phoneNumber, email, guestType, address);
                 customers.add(customer);
+                ReadAndWriteDataCustomer.writeCustomerToFile(customers, false);
             }
         } catch (Exception e) {
             System.out.println("Mã khách hàng không hợp lệ.");
@@ -63,8 +67,9 @@ public class CustomerServiceImpl extends Customer implements ICustomerService {
             int count = 0;
             System.out.print("Nhập mã khách hàng: ");
             int horse = Integer.parseInt(scanner.nextLine());
-            for (Customer c : customers) {
-                if (horse == c.getId()) {
+            customers = ReadAndWriteDataCustomer.readFileToList();
+            for (int i = 0; i < customers.size(); i++) {
+                if (horse == customers.get(i).getHorse()) {
                     System.out.print("Nhập tên: ");
                     String name = scanner.nextLine();
                     System.out.print("Nhập ngày sinh: ");
@@ -77,7 +82,7 @@ public class CustomerServiceImpl extends Customer implements ICustomerService {
                     String phoneNumber = scanner.nextLine();
                     System.out.print("Nhập email: ");
                     String email = scanner.nextLine();
-                    System.out.print("Nhập loại khách hàng: " +
+                    System.out.println("Nhập loại khách hàng: " +
                             "\n1. Diamond" +
                             "\n2. Platinium" +
                             "\n3. Gold" +
@@ -88,7 +93,8 @@ public class CustomerServiceImpl extends Customer implements ICustomerService {
                     System.out.print("Nhập địa chỉ: ");
                     String address = scanner.nextLine();
                     customer = new Customer(horse, name, birthDay, gender, id, phoneNumber, email, guestType, address);
-                    customers.set(customers.indexOf(c), customer);
+                    customers.set(i, customer);
+                    ReadAndWriteDataCustomer.writeCustomerToFile(customers, false);
                     return;
                 } else {
                     count++;
@@ -104,41 +110,51 @@ public class CustomerServiceImpl extends Customer implements ICustomerService {
 
     @Override
     public void displayListCustomer() {
-        for (Customer c : customers) {
-            System.out.println(c);
+        customers = ReadAndWriteDataCustomer.readFileToList();
+        for (int i = 0; i < customers.size(); i++) {
+            System.out.println(customers.get(i));
+            ;
         }
     }
 
     @Override
     public void deleteCustomer() {
-        try{
-            int count=0;
+        try {
+            int count = 0;
             System.out.println("Nhập mã khách hàng bạn muốn xóa: ");
             int horse = Integer.parseInt(scanner.nextLine());
-            for (Customer c: customers) {
-                if ( horse == c.getId()){
-                    System.out.println("Bạn xác nhận xóa khách hàng " + c.getName() +
+            for (int i = 0; i < customers.size(); i++) {
+                if (horse == customers.get(i).getHorse()) {
+                    System.out.println("Bạn xác nhận xóa khách hàng " + customers.get(i).getName() +
                             "\n1. Yes." +
                             "\n2. No.");
-                    int choose = Integer.parseInt(scanner.nextLine());
+                    String choose = scanner.nextLine();
                     switch (choose) {
-                        case 1:
-                            customers.remove(c.getId());
-                            System.out.println("Bạn đã xóa thành công.");
+                        case "1":
+                            customers.remove(i);
+                            System.out.println("Bạn đã xóa thành công khách hàng có mã: " + horse);
+                            if (customers.size() == 0) {
+                                ReadAndWriteDataCustomer.writeCustomerToFile(null, false);
+                            } else {
+                                ReadAndWriteDataCustomer.writeCustomerToFile(customers, false);
+                            }
                             break;
-                        case 2:
+                        case "2":
                             System.out.println("Bạn đã không xóa.");
                             break;
+                        default:
+                            System.out.println("Vui lòng chọn lại.");
                     }
                     return;
                 } else {
                     count++;
                 }
-                if ( count == customers.size()){
+                if (count == customers.size()) {
                     System.out.println("Mã khách hàng không tồn tại.");
                 }
             }
-        } catch (Exception e){
+        } catch (
+                Exception e) {
             System.out.println("Mã khách hàng không tồn tại.");
         }
     }

@@ -49,4 +49,8 @@ public class Customer extends Person {
                 "|Guest Type = '" + this.getGuestType() + '\'' +
                 "|Address = '" + this.getAddress();
     }
+    public String getInfoToCsv() {
+        return this.getHorse() + "," + this.getName() + "," + this.getBirthDay() + "," + this.getGender() + "," + this.getId() + "," +
+                this.getPhoneNumber() + "," + this.getEmail() + "," + this.getGuestType() + "," + this.getAddress();
+    }
 }

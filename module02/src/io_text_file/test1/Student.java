@@ -1,4 +1,4 @@
-package io_file.test1;
+package io_text_file.test1;
 
 public class Student {
     private String name;

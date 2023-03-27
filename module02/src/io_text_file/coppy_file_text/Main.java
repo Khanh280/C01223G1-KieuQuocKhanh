@@ -1,6 +1,5 @@
-package io_file.coppy_file_text;
+package io_text_file.coppy_file_text;
 
-import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;

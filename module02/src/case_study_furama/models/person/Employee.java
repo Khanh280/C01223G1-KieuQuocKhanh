@@ -6,32 +6,6 @@ public class Employee extends Person {
     private String location; // vi tri
     private long salary; // luong
 
-//    protected String degree(String chooseDegree){
-//        String degree = null;
-//        switch (chooseDegree) {
-//            case 1:
-//                degree = " Trung cap ";
-//                break;
-//            case 2:
-//                degree = " Cao dang ";
-//                break;
-//            case 3:
-//                degree = " Dai hoc ";
-//                break;
-//            case 4:
-//                degree = " Sau dai hoc ";
-//                break;
-//        }
-//        return degree;
-//    }
-//
-//    protected String location(String location){
-//        return null;
-//    }
-//
-//    protected long salary(long salary){
-//        return 0;
-//    }
     public Employee() {
     }
 
@@ -41,7 +15,6 @@ public class Employee extends Person {
         this.location = location;
         this.salary = salary;
     }
-
 
 
     public String getDegree() {
@@ -70,7 +43,7 @@ public class Employee extends Person {
 
     @Override
     public String toString() {
-        return  "|Horse=" + this.getHorse() +
+        return "|Horse=" + this.getHorse() +
                 "|Name='" + this.getName() + '\'' +
                 "|BirthDay='" + this.getBirthDay() + '\'' +
                 "|Gender='" + this.getGender() + '\'' +
@@ -80,5 +53,10 @@ public class Employee extends Person {
                 "|Egree='" + this.getDegree() + '\'' +
                 "|Location='" + this.getLocation() + '\'' +
                 "|Salary=" + this.getSalary() + " |";
+    }
+
+    public String getInfoToCsv() {
+        return this.getHorse() + "," + this.getName() + "," + this.getBirthDay() + "," + this.getGender() + "," + this.getId() + "," +
+                this.getPhoneNumber() + "," + this.getEmail() + "," + this.getDegree() + "," + this.getLocation() + "," + this.getSalary();
     }
 }

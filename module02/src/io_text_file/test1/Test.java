@@ -1,4 +1,4 @@
-package io_file.test1;
+package io_text_file.test1;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;

@@ -7,7 +7,9 @@ public abstract class Facility {
     private int maximumPeople; // so luong khach toi da
     private String rentalType; // kieu thue(nam, thang hoac ngay)
 
-    protected  Facility(){}
+    protected  Facility(){
+
+    }
     protected Facility(String serviceName, double areaUsed, int rentalCost, int maximumPeople, String rentalType) {
         this.serviceName = serviceName;
         this.areaUsed = areaUsed;
@@ -32,7 +34,7 @@ public abstract class Facility {
         this.areaUsed = areaUsed;
     }
 
-    public double getRentalCost() {
+    public int getRentalCost() {
         return rentalCost;
     }
 
@@ -48,7 +50,9 @@ public abstract class Facility {
         this.maximumPeople = maximumPeople;
     }
 
-    public abstract String getRentalType();
+    public String getRentalType() {
+        return rentalType;
+    }
 
     public void setRentalType(String rentalType) {
         this.rentalType = rentalType;

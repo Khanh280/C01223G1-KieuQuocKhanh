@@ -1,4 +1,4 @@
-package io_file.test2;
+package io_text_file.test2;
 
 import java.io.BufferedReader;
 import java.io.FileReader;

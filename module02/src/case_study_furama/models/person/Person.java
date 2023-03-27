@@ -1,6 +1,6 @@
 package case_study_furama.models.person;
 
-abstract class Person {
+public abstract class Person {
     private int horse;// ma~
     private String name; // ho ten
     private String birthDay;// ngay sinh
