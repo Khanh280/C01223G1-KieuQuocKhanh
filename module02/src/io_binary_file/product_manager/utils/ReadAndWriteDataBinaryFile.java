@@ -7,7 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ReadAndWriteDataBinaryFile {
-    private static final String PRODUCT_LIST_PATH = "src\\io_binary_file\\coppy_file_binary\\data\\product_list.dat";
+    private static final String PRODUCT_LIST_PATH = "src\\io_binary_file\\product_manager\\data\\product_list.dat";
 
     public static void writeProductToFile(List<Product> productList, boolean append) {
         File file = new File(PRODUCT_LIST_PATH);
