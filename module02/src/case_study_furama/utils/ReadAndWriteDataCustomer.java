@@ -37,11 +37,11 @@ public class ReadAndWriteDataCustomer {
             String readLine = null;
             while ((readLine=bufferedReader.readLine()) != null){
                 String[] elementCustomer = readLine.split(",");
-                int horse = Integer.parseInt(elementCustomer[0]);
+                String horse = elementCustomer[0];
                 String name = elementCustomer[1];
                 String birthDay = elementCustomer[2];
                 String gender = elementCustomer[3];
-                int id = Integer.parseInt(elementCustomer[4]);
+                String id = elementCustomer[4];
                 String phoneNumber = elementCustomer[5];
                 String email = elementCustomer[6];
                 String guestType = elementCustomer[7];

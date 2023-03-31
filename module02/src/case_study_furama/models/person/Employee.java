@@ -4,12 +4,12 @@ package case_study_furama.models.person;
 public class Employee extends Person {
     private String degree; // trinh do chuyen mon
     private String location; // vi tri
-    private long salary; // luong
+    private String salary; // luong
 
     public Employee() {
     }
 
-    public Employee(int horse, String name, String birthDay, String gender, int id, String phoneNumber, String email, String degree, String location, long salary) {
+    public Employee(String horse, String name, String birthDay, String gender, String id, String phoneNumber, String email, String degree, String location, String salary) {
         super(horse, name, birthDay, gender, id, phoneNumber, email);
         this.degree = degree;
         this.location = location;
@@ -33,11 +33,11 @@ public class Employee extends Person {
         this.location = location;
     }
 
-    public long getSalary() {
+    public String getSalary() {
         return salary;
     }
 
-    public void setSalary(long salary) {
+    public void setSalary(String salary) {
         this.salary = salary;
     }
 

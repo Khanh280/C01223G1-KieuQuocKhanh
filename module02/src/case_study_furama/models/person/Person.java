@@ -1,18 +1,18 @@
 package case_study_furama.models.person;
 
 public abstract class Person {
-    private int horse;// ma~
+    private String horse;// ma~
     private String name; // ho ten
     private String birthDay;// ngay sinh
     private String gender;// gioi tinh
-    private int id; // so cmnd
+    private String id; // so cmnd
     private String phoneNumber;
     private String email;
 
     protected Person(){
     }
 
-    protected Person(int horse, String name, String birthDay, String gender, int id, String phoneNumber, String email) {
+    protected Person(String horse, String name, String birthDay, String gender, String id, String phoneNumber, String email) {
         this.horse = horse;
         this.name = name;
         this.birthDay = birthDay;
@@ -22,11 +22,11 @@ public abstract class Person {
         this.email = email;
     }
 
-    public int getHorse() {
+    public String getHorse() {
         return horse;
     }
 
-    public void setHorse(int horse) {
+    public void setHorse(String horse) {
         this.horse = horse;
     }
 
@@ -54,11 +54,11 @@ public abstract class Person {
         this.gender = gender;
     }
 
-    public int getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(String id) {
         this.id = id;
     }
 

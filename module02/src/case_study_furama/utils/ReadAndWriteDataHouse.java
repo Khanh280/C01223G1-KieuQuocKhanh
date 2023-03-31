@@ -17,7 +17,7 @@ public class ReadAndWriteDataHouse {
             fileWriter = new FileWriter(file);
             bufferedWriter = new BufferedWriter(fileWriter);
             for (int i = 0; i < houses.size(); i++) {
-                bufferedWriter.write(houses.get(i).getInfoToFile());
+                bufferedWriter.write(houses.get(i).getInfoToCSV());
                 bufferedWriter.newLine();
             }
             bufferedWriter.close();
@@ -39,12 +39,12 @@ public class ReadAndWriteDataHouse {
             while ((readLine = bufferedReader.readLine()) != null) {
                 String[] elementHouse = readLine.split(",");
                 String servicename = elementHouse[0];
-                double areaUsed = Double.parseDouble(elementHouse[1]);
-                int rentalCost = Integer.parseInt(elementHouse[2]);
-                int maximumPeople = Integer.parseInt(elementHouse[3]);
+                String areaUsed = elementHouse[1];
+                String rentalCost = elementHouse[2];
+                String maximumPeople = elementHouse[3];
                 String rentalType = elementHouse[4];
                 String roomStandards = elementHouse[5];
-                int numberFloors = Integer.parseInt(elementHouse[6]);
+                String numberFloors = elementHouse[6];
                 House house = new House(servicename, areaUsed, rentalCost, maximumPeople, rentalType, roomStandards, numberFloors);
                 houses.add(house);
             }

@@ -17,7 +17,7 @@ public class ReadAndWriteDataRoom {
             fileWriter = new FileWriter(file,append);
             bufferedWriter = new BufferedWriter(fileWriter);
             for (int i = 0; i < roomList.size(); i++) {
-                bufferedWriter.write(roomList.get(i).getInfoToFile());
+                bufferedWriter.write(roomList.get(i).getInfoToCSV());
                 bufferedWriter.newLine();
             }
             bufferedWriter.close();
@@ -39,9 +39,9 @@ public class ReadAndWriteDataRoom {
             while ((readLine = bufferedReader.readLine()) != null){
                 String[] elementRoom = readLine.split(",");
                 String serviceName = elementRoom[0];
-                double areaUsed = Double.parseDouble(elementRoom[1]);
-                int rentalCost = Integer.parseInt(elementRoom[2]);
-                int maximunPeople = Integer.parseInt(elementRoom[3]);
+                String areaUsed =elementRoom[1];
+                String rentalCost = elementRoom[2];
+                String maximunPeople = elementRoom[3];
                 String rentalType = elementRoom[4];
                 String freeService = elementRoom[5];
                 Room room = new Room(serviceName,areaUsed,rentalCost,maximunPeople,rentalType,freeService);

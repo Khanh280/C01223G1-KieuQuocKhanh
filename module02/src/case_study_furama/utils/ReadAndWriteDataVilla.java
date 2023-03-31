@@ -19,7 +19,7 @@ public class ReadAndWriteDataVilla {
             fileWriter = new FileWriter(file,append);
             bufferedWriter = new BufferedWriter(fileWriter);
             for (int i = 0; i < villas.size() ; i++) {
-                bufferedWriter.write(villas.get(i).getInfoToFile());
+                bufferedWriter.write(villas.get(i).getInfoToCSV());
                 bufferedWriter.newLine();
             }
             bufferedWriter.close();
@@ -41,13 +41,13 @@ public class ReadAndWriteDataVilla {
             while ((readLine = bufferedReader.readLine()) != null){
                 String[] elementVilla = readLine.split(",");
                 String serviceName = elementVilla[0];
-                double areaUsed = Double.parseDouble(elementVilla[1]);
-                int rentalCost = Integer.parseInt(elementVilla[2]);
-                int maximumPeople = Integer.parseInt(elementVilla[3]);
+                String areaUsed = elementVilla[1];
+                String rentalCost = elementVilla[2];
+                String maximumPeople = elementVilla[3];
                 String rentalType = elementVilla[4];
                 String roomStandards = elementVilla[5];
-                double poolArea = Double.parseDouble(elementVilla[6]);
-                int numberFloors = Integer.parseInt(elementVilla[7]);
+                String poolArea = elementVilla[6];
+                String numberFloors = elementVilla[7];
                 Villa villa = new Villa(serviceName,areaUsed,rentalCost,maximumPeople,rentalType,roomStandards,poolArea,numberFloors);
                 villas.add(villa);
             }

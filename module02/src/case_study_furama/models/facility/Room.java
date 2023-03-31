@@ -3,22 +3,14 @@ package case_study_furama.models.facility;
 public class Room extends Facility {
     private String freeService;//dich vu mien phi
 
-    protected String freeService(String freeService){
-        return null;
-    }
     public Room() {
-    }
-
-    @Override
-    public String getRentalType() {
-        return null;
     }
 
     public Room(String freeService) {
         this.freeService = freeService;
     }
 
-    public Room(String servicename, double areaUsed, int rentalCost, int maximumPeople, String rentalType, String freeService) {
+    public Room(String servicename, String areaUsed, String rentalCost, String maximumPeople, String rentalType, String freeService) {
         super(servicename, areaUsed, rentalCost, maximumPeople, rentalType);
         this.freeService = freeService;
     }
@@ -33,21 +25,21 @@ public class Room extends Facility {
 
     @Override
     public String toString() {
-        return "Room{" +
-                "serviceName='" + this.getServicename() + '\'' +
-                ", areaUsed=" + this.getAreaUsed() +
-                ", rentalCost=" + this.getRentalCost() +
-                ", maximumPeople=" + this.getMaximumPeople() +
-                ", rentalType='" + this.getRentalType() + '\'' +
-                "freeService='" + this.getFreeService()+ '\'' +
-                '}';
+        return "|ServiceName= " + this.getServicename() +
+                "| Area Used= " + this.getAreaUsed() +
+                "| Rental Cost= " + this.getRentalCost() +
+                "| Maximum People= " + this.getMaximumPeople() +
+                "| Rental Type= " + this.getRentalType() +
+                "| Free Service= " + this.getFreeService();
     }
-    public String getInfoToFile() {
+
+    @Override
+    public String getInfoToCSV() {
         return this.getServicename() +
                 "," + this.getAreaUsed() +
                 "," + this.getRentalCost() +
                 "," + this.getMaximumPeople() +
                 "," + this.getRentalType() +
-                "," + this.getFreeService() ;
+                "," + this.getFreeService();
     }
 }

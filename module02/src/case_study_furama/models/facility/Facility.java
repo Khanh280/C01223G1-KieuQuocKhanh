@@ -1,16 +1,17 @@
 package case_study_furama.models.facility;
 
-public abstract class Facility {
+public abstract class Facility implements Comparable<Facility> {
     private String serviceName;// ten dich vu
-    private double areaUsed; // dien tich su dung
-    private int rentalCost; //chi phi thue
-    private int maximumPeople; // so luong khach toi da
+    private String areaUsed; // dien tich su dung
+    private String rentalCost; //chi phi thue
+    private String maximumPeople; // so luong khach toi da
     private String rentalType; // kieu thue(nam, thang hoac ngay)
 
-    protected  Facility(){
+    protected Facility() {
 
     }
-    protected Facility(String serviceName, double areaUsed, int rentalCost, int maximumPeople, String rentalType) {
+
+    protected Facility(String serviceName, String areaUsed, String rentalCost, String maximumPeople, String rentalType) {
         this.serviceName = serviceName;
         this.areaUsed = areaUsed;
         this.rentalCost = rentalCost;
@@ -26,27 +27,27 @@ public abstract class Facility {
         this.serviceName = serviceName;
     }
 
-    public double getAreaUsed() {
+    public String getAreaUsed() {
         return areaUsed;
     }
 
-    public void setAreaUsed(double areaUsed) {
+    public void setAreaUsed(String areaUsed) {
         this.areaUsed = areaUsed;
     }
 
-    public int getRentalCost() {
+    public String getRentalCost() {
         return rentalCost;
     }
 
-    public void setRentalCost(int rentalCost) {
+    public void setRentalCost(String rentalCost) {
         this.rentalCost = rentalCost;
     }
 
-    public int getMaximumPeople() {
+    public String getMaximumPeople() {
         return maximumPeople;
     }
 
-    public void setMaximumPeople(int maximumPeople) {
+    public void setMaximumPeople(String maximumPeople) {
         this.maximumPeople = maximumPeople;
     }
 
@@ -68,4 +69,11 @@ public abstract class Facility {
                 ", rentalType='" + rentalType + '\'' +
                 '}';
     }
+
+    @Override
+    public int compareTo(Facility o) {
+        return this.getServicename().compareTo(o.getServicename());
+    }
+
+    public abstract String getInfoToCSV();
 }

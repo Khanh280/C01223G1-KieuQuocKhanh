@@ -38,16 +38,16 @@ public class ReadAndWriteDataEmployee {
             String readLine = null;
             while ((readLine = bufferedReader.readLine()) != null) {
                 String[] elementEmployee = readLine.split(",");
-                int horse = Integer.parseInt(elementEmployee[0]);
+                String horse = elementEmployee[0];
                 String name = elementEmployee[1];
                 String birthDay = elementEmployee[2];
                 String gender = elementEmployee[3];
-                int id = Integer.parseInt(elementEmployee[4]);
+                String id = elementEmployee[4];
                 String phoneNumber = elementEmployee[5];
                 String email = elementEmployee[6];
                 String degree = elementEmployee[7];
                 String location = elementEmployee[8];
-                long salary = Long.parseLong(elementEmployee[9]);
+                String salary = String.valueOf(Long.parseLong(elementEmployee[9]));
                 Employee employee = new Employee(horse, name, birthDay, gender, id, phoneNumber, email, degree, location, salary);
                 employees.add(employee);
             }

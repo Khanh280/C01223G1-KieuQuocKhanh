@@ -35,7 +35,11 @@ public class FuramaData {
         rentalType.add("Thang");
         rentalType.add("Ngay");
     }
-    public static ArrayList<String> roomStandards = new ArrayList<>();
-//    static
+    public static ArrayList<String> typeService = new ArrayList<>();
+    static {
+        typeService.add("Villa");
+        typeService.add("Room");
+        typeService.add("House");
+    }
 
 }

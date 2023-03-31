@@ -3,26 +3,13 @@ package case_study_furama.models.facility;
 
 public class House extends Facility {
     private String roomStandards;// Tieu chuan phong
-    private int numberFloors;// so tang`
-
-    protected String roomStandards(String roomStandards) {
-        return null;
-    }
-
-    protected int numberFloors(int numberFloors) {
-        return 0;
-    }
-
-    @Override
-    public String getRentalType() {
-        return null;
-    }
+    private String numberFloors;// so tang`
 
     public House() {
 
     }
 
-    public House(String servicename, double areaUsed, int rentalCost, int maximumPeople, String rentalType, String roomStandards, int numberFloors) {
+    public House(String servicename, String areaUsed, String rentalCost, String maximumPeople, String rentalType, String roomStandards, String numberFloors) {
         super(servicename, areaUsed, rentalCost, maximumPeople, rentalType);
         this.roomStandards = roomStandards;
         this.numberFloors = numberFloors;
@@ -36,28 +23,27 @@ public class House extends Facility {
         this.roomStandards = roomStandards;
     }
 
-    public int getNumberFloors() {
+    public String getNumberFloors() {
         return numberFloors;
     }
 
-    public void setNumberFloors(int numberFloors) {
+    public void setNumberFloors(String numberFloors) {
         this.numberFloors = numberFloors;
     }
 
     @Override
     public String toString() {
-        return "House{" +
-                "serviceName='" + this.getServicename() + '\'' +
-                ", areaUsed=" + this.getAreaUsed() +
-                ", rentalCost=" + this.getRentalCost() +
-                ", maximumPeople=" + this.getMaximumPeople() +
-                ", rentalType='" + this.getRentalType() + '\'' +
-                "roomStandards='" + this.getRoomStandards() + '\'' +
-                ", numberFloors=" + this.getNumberFloors() +
-                '}';
+        return "|Service Name= " + this.getServicename() +
+                "| Area Used= " + this.getAreaUsed() +
+                "| Rental Cost= " + this.getRentalCost() +
+                "| Maximum People= " + this.getMaximumPeople() +
+                "| Rental Type= " + this.getRentalType() +
+                "| Room Standards= " + this.getRoomStandards() +
+                "| Number Floors=" + this.getNumberFloors();
     }
 
-    public String getInfoToFile() {
+    @Override
+    public String getInfoToCSV() {
         return this.getServicename() +
                 "," + this.getAreaUsed() +
                 "," + this.getRentalCost() +

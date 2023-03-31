@@ -2,33 +2,43 @@ package case_study_furama.services.person_service.impl_service;
 
 import case_study_furama.data.FuramaData;
 import case_study_furama.models.person.Customer;
+import case_study_furama.repository.impl_repository.CustomerRepository;
 import case_study_furama.services.person_service.ICustomerService;
 import case_study_furama.utils.ReadAndWriteDataCustomer;
-import case_study_furama.utils.ReadAndWriteDataEmployee;
 
 import java.util.LinkedList;
+import java.util.List;
 import java.util.Scanner;
+import java.util.regex.Pattern;
 
 public class CustomerServiceImpl extends Customer implements ICustomerService {
-    static LinkedList<Customer> customers = new LinkedList<>();
+    static List<Customer> customers = new LinkedList<>();
     static Customer customer = new Customer();
+    static CustomerRepository customerRepository = new CustomerRepository();
     static Scanner scanner = new Scanner(System.in);
+    static final String ID_REGEX = "^[0-9]+$";
 
     @Override
     public void addCustomer() {
-        try {
-            int count = 0;
+        String horse;
+        boolean checkId;
+        int count = 0;
+        do {
             System.out.print("Nhập mã khách hàng: ");
-            int horse = Integer.parseInt(scanner.nextLine());
-            customers = ReadAndWriteDataCustomer.readFileToList();
-            for (int i = 0; i < customers.size(); i++) {
-                if (horse == customers.get(i).getHorse()) {
-                    System.out.println("Mã khách hàng đã tồn tại: ");
-                    return;
-                } else {
-                    count++;
-                }
+            horse = scanner.nextLine();
+            checkId = Pattern.matches(ID_REGEX, horse);
+            System.out.println(checkId ? "" : "Mã khách hàng không hợp lệ.");
+        } while (!checkId);
+        customers = ReadAndWriteDataCustomer.readFileToList();
+        for (int i = 0; i < customers.size(); i++) {
+            if (horse.equals(customers.get(i).getHorse())) {
+                System.out.println("Mã khách hàng đã tồn tại: ");
+                return;
+            } else {
+                count++;
             }
+        }
+        try {
             if (count == customers.size()) {
                 System.out.print("Nhập tên: ");
                 String name = scanner.nextLine();
@@ -37,7 +47,7 @@ public class CustomerServiceImpl extends Customer implements ICustomerService {
                 System.out.print("Nhâpj giới tính: ");
                 String gender = scanner.nextLine();
                 System.out.print("Nhập số CMND: ");
-                int id = Integer.parseInt(scanner.nextLine());
+                String id = scanner.nextLine();
                 System.out.print("Nhập số điện thoại: ");
                 String phoneNumber = scanner.nextLine();
                 System.out.print("Nhập email: ");
@@ -54,7 +64,7 @@ public class CustomerServiceImpl extends Customer implements ICustomerService {
                 String address = scanner.nextLine();
                 customer = new Customer(horse, name, birthDay, gender, id, phoneNumber, email, guestType, address);
                 customers.add(customer);
-                ReadAndWriteDataCustomer.writeCustomerToFile(customers, false);
+                customerRepository.addCustomer(customers);
             }
         } catch (Exception e) {
             System.out.println("Mã khách hàng không hợp lệ.");
@@ -66,10 +76,10 @@ public class CustomerServiceImpl extends Customer implements ICustomerService {
         try {
             int count = 0;
             System.out.print("Nhập mã khách hàng: ");
-            int horse = Integer.parseInt(scanner.nextLine());
+            String horse = scanner.nextLine();
             customers = ReadAndWriteDataCustomer.readFileToList();
             for (int i = 0; i < customers.size(); i++) {
-                if (horse == customers.get(i).getHorse()) {
+                if (horse.equals(customers.get(i).getHorse())) {
                     System.out.print("Nhập tên: ");
                     String name = scanner.nextLine();
                     System.out.print("Nhập ngày sinh: ");
@@ -77,7 +87,7 @@ public class CustomerServiceImpl extends Customer implements ICustomerService {
                     System.out.print("Nhập giới tính: ");
                     String gender = scanner.nextLine();
                     System.out.print("Nhập số CMND: ");
-                    int id = Integer.parseInt(scanner.nextLine());
+                    String id = scanner.nextLine();
                     System.out.print("Nhập số điện thoại: ");
                     String phoneNumber = scanner.nextLine();
                     System.out.print("Nhập email: ");
@@ -94,7 +104,7 @@ public class CustomerServiceImpl extends Customer implements ICustomerService {
                     String address = scanner.nextLine();
                     customer = new Customer(horse, name, birthDay, gender, id, phoneNumber, email, guestType, address);
                     customers.set(i, customer);
-                    ReadAndWriteDataCustomer.writeCustomerToFile(customers, false);
+                    customerRepository.editCustomer(customers);
                     return;
                 } else {
                     count++;
@@ -110,7 +120,7 @@ public class CustomerServiceImpl extends Customer implements ICustomerService {
 
     @Override
     public void displayListCustomer() {
-        customers = ReadAndWriteDataCustomer.readFileToList();
+        customers = customerRepository.displayListCustomer();
         for (int i = 0; i < customers.size(); i++) {
             System.out.println(customers.get(i));
             ;
@@ -122,9 +132,9 @@ public class CustomerServiceImpl extends Customer implements ICustomerService {
         try {
             int count = 0;
             System.out.println("Nhập mã khách hàng bạn muốn xóa: ");
-            int horse = Integer.parseInt(scanner.nextLine());
+            String horse = scanner.nextLine();
             for (int i = 0; i < customers.size(); i++) {
-                if (horse == customers.get(i).getHorse()) {
+                if (horse.equals(customers.get(i).getHorse())) {
                     System.out.println("Bạn xác nhận xóa khách hàng " + customers.get(i).getName() +
                             "\n1. Yes." +
                             "\n2. No.");
@@ -133,12 +143,8 @@ public class CustomerServiceImpl extends Customer implements ICustomerService {
                         case "1":
                             customers.remove(i);
                             System.out.println("Bạn đã xóa thành công khách hàng có mã: " + horse);
-                            if (customers.size() == 0) {
-                                ReadAndWriteDataCustomer.writeCustomerToFile(null, false);
-                            } else {
-                                ReadAndWriteDataCustomer.writeCustomerToFile(customers, false);
-                            }
-                            break;
+                            customerRepository.deleteCustomer(customers);
+                            return;
                         case "2":
                             System.out.println("Bạn đã không xóa.");
                             break;

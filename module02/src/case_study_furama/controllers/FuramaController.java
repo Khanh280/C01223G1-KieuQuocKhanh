@@ -1,6 +1,9 @@
 package case_study_furama.controllers;
 
 
+import case_study_furama.models.Booking;
+import case_study_furama.services.booking_service.impl_booking.BookingServiceImpl;
+import case_study_furama.services.contact_service.impl_contracts.ContractsServiceImpl;
 import case_study_furama.services.facility_service.impl_service.FacilityServiceImpl;
 import case_study_furama.services.person_service.impl_service.CustomerServiceImpl;
 import case_study_furama.services.person_service.impl_service.EmployeeServiceImpl;
@@ -12,7 +15,8 @@ public class FuramaController {
     static EmployeeServiceImpl employeeServiceImpl = new EmployeeServiceImpl();
     static CustomerServiceImpl customerServiceServiceImpl = new CustomerServiceImpl();
     static FacilityServiceImpl facilityServiceServiceImpl = new FacilityServiceImpl();
-
+    static BookingServiceImpl bookingServiceIml = new BookingServiceImpl();
+    static ContractsServiceImpl contractsServiceIml = new ContractsServiceImpl();
     public static void displayMainMenu() {
         boolean flag;
         do {
@@ -134,7 +138,6 @@ public class FuramaController {
                     "\n2. Add new facility" +
                     "\n3. Display list facility maintenance" +
                     "\n4. Return main menu");
-            try {
                 String choose = sc.nextLine();
                 switch (choose) {
                     case "1":
@@ -152,9 +155,6 @@ public class FuramaController {
                     default:
                         System.out.println("Vui long chon lai.");
                 }
-            } catch (Exception e) {
-                System.out.println("Selection error...");
-            }
         } while (flag);
     }
 
@@ -173,14 +173,19 @@ public class FuramaController {
                 int choose = Integer.parseInt(sc.nextLine());
                 switch (choose) {
                     case 1:
+                        bookingServiceIml.addBooking();
                         break;
                     case 2:
+                        bookingServiceIml.displayBookingList();
                         break;
                     case 3:
+                        contractsServiceIml.createNewContract();
                         break;
                     case 4:
+                        contractsServiceIml.displayListContract();
                         break;
                     case 5:
+                        contractsServiceIml.editContract();
                         break;
                     case 6:
                         flag = false;

@@ -1,23 +1,25 @@
 package case_study_furama.models;
 
-public class Booking {
+import java.util.Objects;
+
+public class Booking implements Comparable<Booking> {
     private String bookingHorse; // ma booking
     private String startDate;// ngay b bat dau
     private String endtDate; //ngay ket thuc
     private String guestHorse;// ma~ khach hang
-    private String serviceName; // ten dich vu
+    private String serviceHorse; // ma~ dich vu
     private String serviceType; // loai dich vu
 
-    protected Booking(){
+    public Booking() {
     }
 
-    public Booking(String bookingHorse, String startDate, String endtDate, String guestHorse, String serviceName, String serviceType) {
+    public Booking(String guestHorse, String serviceName, String serviceType, String bookingHorse, String startDate, String endtDate) {
+        this.guestHorse = guestHorse;
+        this.serviceHorse = serviceName;
+        this.serviceType = serviceType;
         this.bookingHorse = bookingHorse;
         this.startDate = startDate;
         this.endtDate = endtDate;
-        this.guestHorse = guestHorse;
-        this.serviceName = serviceName;
-        this.serviceType = serviceType;
     }
 
     public String getHorseBooking() {
@@ -53,11 +55,11 @@ public class Booking {
     }
 
     public String getServiceName() {
-        return serviceName;
+        return serviceHorse;
     }
 
     public void setServiceName(String serviceName) {
-        this.serviceName = serviceName;
+        this.serviceHorse = serviceName;
     }
 
     public String getServiceType() {
@@ -66,5 +68,43 @@ public class Booking {
 
     public void setServiceType(String serviceType) {
         this.serviceType = serviceType;
+    }
+
+    @Override
+    public String toString() {
+        return "Booking{" +
+                ", guestHorse='" + guestHorse + '\'' +
+                ", serviceHorse='" + serviceHorse + '\'' +
+                ", serviceType='" + serviceType + '\'' +
+                "bookingHorse='" + bookingHorse + '\'' +
+                ", startDate='" + startDate + '\'' +
+                ", endtDate='" + endtDate + '\'' +
+                '}';
+    }
+
+    public String getInfoToCsv() {
+        return guestHorse + "," + serviceHorse + "," + serviceType + "," + bookingHorse + "," + startDate + "," + endtDate;
+    }
+
+    @Override
+    public int compareTo(Booking o) {
+        int result = o.startDate.compareTo(this.startDate);
+        if (result == 0) {
+            result = o.endtDate.compareTo(this.endtDate);
+        }
+        return result;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Booking booking = (Booking) o;
+        return Objects.equals(bookingHorse, booking.bookingHorse) && Objects.equals(startDate, booking.startDate) && Objects.equals(endtDate, booking.endtDate) && Objects.equals(guestHorse, booking.guestHorse) && Objects.equals(serviceHorse, booking.serviceHorse) && Objects.equals(serviceType, booking.serviceType);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(bookingHorse, startDate, endtDate, guestHorse, serviceHorse, serviceType);
     }
 }

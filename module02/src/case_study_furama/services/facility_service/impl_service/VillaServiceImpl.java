@@ -2,42 +2,37 @@ package case_study_furama.services.facility_service.impl_service;
 
 import case_study_furama.data.FuramaData;
 import case_study_furama.models.facility.Villa;
+import case_study_furama.repository.IVillaRepository;
+import case_study_furama.repository.impl_repository.VillaRepositoryImpl;
 import case_study_furama.services.facility_service.IVillaService;
+import case_study_furama.services.person_service.CheckRegexService;
 import case_study_furama.utils.ReadAndWriteDataVilla;
 
 import java.util.*;
+import java.util.regex.Pattern;
 
 public class VillaServiceImpl extends Villa implements IVillaService {
     static List<Villa> villas = new ArrayList<>();
     static Villa villa = new Villa();
+    static IVillaRepository villaReppository = new VillaRepositoryImpl();
     static Scanner scanner = new Scanner(System.in);
 
+
     @Override
-    public void addVilla() {
+    public Villa addVilla() {
         villas = ReadAndWriteDataVilla.readFileToList();
-        System.out.print("Nhap ten Villa: ");
-        String serviceName = scanner.nextLine();
-        System.out.print("Nhap dien tich su dung: ");
-        double areaUsed = Double.parseDouble(scanner.nextLine());
-        System.out.print("Chi phi thue: ");
-        int rentalCost = Integer.parseInt(scanner.nextLine());
-        System.out.print("So luong khach toi da: ");
-        int maximunPeople = Integer.parseInt(scanner.nextLine());
-        System.out.print("Kieu thue: " +
-                "\n1. Nam." +
-                "\n2. Thang." +
-                "\n3. Ngay.");
-        int choose = Integer.parseInt(scanner.nextLine());
-        String rentalType = FuramaData.rentalType.get(choose - 1);
-        System.out.print("Tieu chuan phong: ");
-        String roomStandards = scanner.nextLine();
-        System.out.print("Dien tich ho boi: ");
-        double poolArea = Double.parseDouble(scanner.nextLine());
-        System.out.print("So tang: ");
-        int numberFloors = Integer.parseInt(scanner.nextLine());
+        String serviceName = CheckRegexService.checkVillaName();
+        String areaUsed = CheckRegexService.checkAreaUser();
+        String rentalCost = CheckRegexService.checkRentalCost();
+        String maximunPeople = CheckRegexService.checkMaximunPeople();
+        String rentalType = CheckRegexService.checkRentalType();
+        String roomStandards = CheckRegexService.checkRoomStandards();
+        String poolArea = CheckRegexService.checkAreaPool();
+        String numberFloors = CheckRegexService.checkNumberFloors();
         villa = new Villa(serviceName, areaUsed, rentalCost, maximunPeople, rentalType, roomStandards, poolArea, numberFloors);
         villas.add(villa);
-        ReadAndWriteDataVilla.writeVillaToFile(villas, false);
+        villaReppository.addVilla(villas);
+        return villa;
     }
 
     @Override
@@ -83,7 +78,7 @@ public class VillaServiceImpl extends Villa implements IVillaService {
 
     @Override
     public void displayVillaList() {
-        villas = ReadAndWriteDataVilla.readFileToList();
+        villas = villaReppository.displayVillaList();
         for (int i = 0; i < villas.size(); i++) {
             System.out.println(villas.get(i));
         }
