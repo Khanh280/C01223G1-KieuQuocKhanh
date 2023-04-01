@@ -1,11 +1,10 @@
 package case_study_furama.services.facility_service.impl_service;
 
-import case_study_furama.data.FuramaData;
 import case_study_furama.models.facility.House;
 import case_study_furama.repository.IHouseRepository;
 import case_study_furama.repository.impl_repository.HouseRepositoryImpl;
 import case_study_furama.services.facility_service.IHouseService;
-import case_study_furama.services.person_service.CheckRegexService;
+import case_study_furama.services.CheckRegexService;
 
 import java.util.ArrayList;
 import java.util.List;

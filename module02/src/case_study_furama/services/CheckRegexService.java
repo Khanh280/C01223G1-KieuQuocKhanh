@@ -1,4 +1,4 @@
-package case_study_furama.services.person_service;
+package case_study_furama.services;
 
 import case_study_furama.data.FuramaData;
 import case_study_furama.models.facility.House;

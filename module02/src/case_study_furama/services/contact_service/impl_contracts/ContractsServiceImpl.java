@@ -2,11 +2,10 @@ package case_study_furama.services.contact_service.impl_contracts;
 
 import case_study_furama.models.Booking;
 import case_study_furama.models.Contract;
-import case_study_furama.repository.IBookingRepository;
 import case_study_furama.repository.IContractsRepository;
 import case_study_furama.repository.impl_repository.ContrcatsRepositoryImpl;
 import case_study_furama.services.contact_service.IContractsService;
-import case_study_furama.services.person_service.CheckRegexService;
+import case_study_furama.services.CheckRegexService;
 import case_study_furama.utils.ReadAndWriteDataBooking;
 
 import java.util.*;

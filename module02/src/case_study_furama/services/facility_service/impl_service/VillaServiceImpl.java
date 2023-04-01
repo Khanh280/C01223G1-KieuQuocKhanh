@@ -4,7 +4,7 @@ import case_study_furama.models.facility.Villa;
 import case_study_furama.repository.IVillaRepository;
 import case_study_furama.repository.impl_repository.VillaRepositoryImpl;
 import case_study_furama.services.facility_service.IVillaService;
-import case_study_furama.services.person_service.CheckRegexService;
+import case_study_furama.services.CheckRegexService;
 import case_study_furama.utils.ReadAndWriteDataVilla;
 
 import java.util.*;

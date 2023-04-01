@@ -11,7 +11,7 @@ import case_study_furama.services.facility_service.IFacilityService;
 import case_study_furama.services.facility_service.IVillaService;
 import case_study_furama.services.facility_service.impl_service.FacilityServiceImpl;
 import case_study_furama.services.facility_service.impl_service.VillaServiceImpl;
-import case_study_furama.services.person_service.CheckRegexService;
+import case_study_furama.services.CheckRegexService;
 import case_study_furama.utils.ReadAndWriteDataBooking;
 import case_study_furama.utils.ReadAndWriteDataCustomer;
 
