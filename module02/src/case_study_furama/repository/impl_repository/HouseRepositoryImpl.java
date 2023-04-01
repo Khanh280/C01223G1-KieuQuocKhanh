@@ -9,9 +9,10 @@ import java.util.List;
 
 public class HouseRepositoryImpl implements IHouseRepository {
     List<House> houses = new ArrayList<>();
+
     @Override
     public void addHouse(List<House> houses) {
-        ReadAndWriteDataHouse.writeHouseToFile(houses,false);
+        ReadAndWriteDataHouse.writeHouseToFile(houses, false);
     }
 
     @Override

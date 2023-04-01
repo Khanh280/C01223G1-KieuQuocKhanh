@@ -7,7 +7,10 @@ import java.util.List;
 
 public interface ICustomerRepository {
     void addCustomer(List<Customer> customers);
+
     void editCustomer(List<Customer> customers);
+
     List<Customer> displayListCustomer();
-    void deleteCustomer( List<Customer> customers);
+
+    void deleteCustomer(List<Customer> customers);
 }

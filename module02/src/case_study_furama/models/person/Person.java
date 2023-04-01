@@ -9,7 +9,7 @@ public abstract class Person {
     private String phoneNumber;
     private String email;
 
-    protected Person(){
+    protected Person() {
     }
 
     protected Person(String horse, String name, String birthDay, String gender, String id, String phoneNumber, String email) {
@@ -80,14 +80,12 @@ public abstract class Person {
 
     @Override
     public String toString() {
-        return "Person{" +
-                "horse=" + horse +
-                ", name='" + name + '\'' +
-                ", birthDay='" + birthDay + '\'' +
-                ", gender='" + gender + '\'' +
-                ", id=" + id +
-                ", phoneNumber='" + phoneNumber + '\'' +
-                ", email='" + email + '\'' +
-                '}';
+        return "|Horse = " + horse +
+                "|Name = " + name +
+                "|BirthDay = " + birthDay +
+                "|Gender = " + gender +
+                "|Id = " + id +
+                "|PhoneNumber = " + phoneNumber +
+                "|Email = " + email + "|";
     }
 }

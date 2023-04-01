@@ -22,11 +22,12 @@ public class Booking implements Comparable<Booking> {
         this.endtDate = endtDate;
     }
 
-    public String getHorseBooking() {
+
+    public String getBookingHorse() {
         return bookingHorse;
     }
 
-    public void setHorseBooking(String bookingHorse) {
+    public void setBookingHorse(String bookingHorse) {
         this.bookingHorse = bookingHorse;
     }
 
@@ -54,12 +55,12 @@ public class Booking implements Comparable<Booking> {
         this.guestHorse = guestHorse;
     }
 
-    public String getServiceName() {
+    public String getServiceHorse() {
         return serviceHorse;
     }
 
-    public void setServiceName(String serviceName) {
-        this.serviceHorse = serviceName;
+    public void setServiceHorse(String serviceHorse) {
+        this.serviceHorse = serviceHorse;
     }
 
     public String getServiceType() {
@@ -72,18 +73,16 @@ public class Booking implements Comparable<Booking> {
 
     @Override
     public String toString() {
-        return "Booking{" +
-                ", guestHorse='" + guestHorse + '\'' +
-                ", serviceHorse='" + serviceHorse + '\'' +
-                ", serviceType='" + serviceType + '\'' +
-                "bookingHorse='" + bookingHorse + '\'' +
-                ", startDate='" + startDate + '\'' +
-                ", endtDate='" + endtDate + '\'' +
-                '}';
+        return "|guestHorse = " + guestHorse +
+                "|ServiceHorse = " + serviceHorse +
+                "|ServiceType = " + serviceType +
+                "|bookingHorse = " + bookingHorse +
+                "|StartDate = " + startDate +
+                "|EndtDate = " + endtDate + "|";
     }
 
     public String getInfoToCsv() {
-        return guestHorse + "," + serviceHorse + "," + serviceType + "," + bookingHorse + "," + startDate + "," + endtDate;
+        return guestHorse + "," + serviceType + "," + serviceHorse + "," + bookingHorse + "," + startDate + "," + endtDate;
     }
 
     @Override

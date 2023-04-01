@@ -42,14 +42,14 @@ public class Villa extends Facility {
 
     @Override
     public String toString() {
-        return "|Service Name= " + this.getServicename() +
-                "| Area Used= " + this.getAreaUsed() +
-                "| Rental Cost= " + this.getRentalCost() +
-                "| Maximum People= " + this.getMaximumPeople() +
-                "| Rental Type= " + this.getRentalType() +
-                "| Room Standards= " + this.getRoomStandards() +
-                "| Pool Area= " + this.getPoolArea() +
-                "| Number Floors= " + this.getNumberFloors();
+        return "|Service Name = " + this.getServicename() +
+                "|Area Used = " + this.getAreaUsed() +
+                "|Rental Cost = " + this.getRentalCost() +
+                "|Maximum People = " + this.getMaximumPeople() +
+                "|Rental Type = " + this.getRentalType() +
+                "|Room Standards = " + this.getRoomStandards() +
+                "|Pool Area = " + this.getPoolArea() +
+                "|Number Floors = " + this.getNumberFloors() + "|";
     }
 
     @Override

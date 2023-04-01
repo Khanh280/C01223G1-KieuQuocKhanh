@@ -25,8 +25,9 @@ public class FacilityServiceImpl implements IFacilityService {
     static Villa villa = new Villa();
     static House house = new House();
     static Room room = new Room();
-    public static void display(TypeService typeService){
-        if(typeService == TypeService.VILLA){
+
+    public static void display(TypeService typeService) {
+        if (typeService == TypeService.VILLA) {
             System.out.println("---------------------------------------VILLA LIST--------------------------------------");
             villaService.displayVillaList();
         } else if (typeService == TypeService.ROOM) {
@@ -55,15 +56,15 @@ public class FacilityServiceImpl implements IFacilityService {
         switch (choose) {
             case "1":
                 villa = villaService.addVilla();
-                facilityRepository.addNewFacility(villa);
+//                facilityRepository.addNewFacility(villa);
                 break;
             case "2":
                 house = houseService.addHouse();
-                facilityRepository.addNewFacility(house);
+//                facilityRepository.addNewFacility(house);
                 break;
             case "3":
                 room = roomService.addRoom();
-                facilityRepository.addNewFacility(room);
+//                facilityRepository.addNewFacility(room);
                 break;
             case "4":
                 break;

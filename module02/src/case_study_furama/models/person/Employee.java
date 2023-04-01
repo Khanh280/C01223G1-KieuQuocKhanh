@@ -43,16 +43,16 @@ public class Employee extends Person {
 
     @Override
     public String toString() {
-        return "|Horse=" + this.getHorse() +
-                "|Name='" + this.getName() + '\'' +
-                "|BirthDay='" + this.getBirthDay() + '\'' +
-                "|Gender='" + this.getGender() + '\'' +
-                "|Id=" + this.getId() +
-                "|PhoneNumber='" + this.getPhoneNumber() + '\'' +
-                "|Email='" + this.getEmail() + '\'' +
-                "|Egree='" + this.getDegree() + '\'' +
-                "|Location='" + this.getLocation() + '\'' +
-                "|Salary=" + this.getSalary() + " |";
+        return "|Horse = " + this.getHorse() +
+                "|Name = " + this.getName() +
+                "|BirthDay = " + this.getBirthDay() +
+                "|Gender = " + this.getGender() +
+                "|Id = " + this.getId() +
+                "|PhoneNumber = " + this.getPhoneNumber() +
+                "|Email = " + this.getEmail() +
+                "|Egree = " + this.getDegree() +
+                "|Location = " + this.getLocation() +
+                "|Salary = " + this.getSalary() + "|";
     }
 
     public String getInfoToCsv() {

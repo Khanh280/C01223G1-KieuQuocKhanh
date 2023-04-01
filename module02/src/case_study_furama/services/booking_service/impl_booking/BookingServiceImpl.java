@@ -31,41 +31,43 @@ public class BookingServiceImpl implements IBookingService {
     public void addBooking() {
         bookingList = ReadAndWriteDataBooking.readFileToSet();
         customers = ReadAndWriteDataCustomer.readFileToList();
-        System.out.println("--------DANH SACH KHACH HANG--------");
+        System.out.println("--------DANH SÁCH KHÁCH HÀNG--------");
         for (int i = 0; i < customers.size(); i++) {
-            System.out.println(customers.get(i).getName() + " | Ma khach hang = " + customers.get(i).getHorse());
+            System.out.println(customers.get(i).getName() + " | Mã khách hàng = " + customers.get(i).getHorse());
         }
-        System.out.print("Chon ma khach hang: ");
-        String guestHorse = scanner.nextLine();
+        System.out.print("Chọn mã khách hàng: ");
+        String guestHorse = CheckRegexService.checkGuestHorse();
         String choose = CheckRegexService.checkServiceType();
         FacilityServiceImpl.display(chooseSeerviceType(choose));
         String serviceType = FuramaData.typeService.get(Integer.parseInt(choose) - 1);
         String serviceHorse = checkServiceType(serviceType);
-        System.out.print("Nhap ma booking: ");
-        String bookingHorse = scanner.nextLine();
-        System.out.print("Nhap ngay bat dau: ");
-        String startDate = scanner.nextLine();
-        System.out.print("Nhap ngay ket thuc: ");
-        String endDate = scanner.nextLine();
+        System.out.print("Nhập mã booking: ");
+        String bookingHorse = CheckRegexService.checkHorseBooking();
+        System.out.print("Ngày bắt đầu: ");
+        String startDate = CheckRegexService.checkDate();
+        System.out.print("Ngày kết thúc: ");
+        String endDate = CheckRegexService.checkDate();
         booking = new Booking(guestHorse, serviceHorse, serviceType, bookingHorse, startDate, endDate);
         bookingList.add(booking);
-        bookingRepository.addBookingRepository(bookingList);
+        bookingRepository.addBookingRepository(bookingList, booking);
     }
 
-    public String checkServiceType(String serviceType){
+
+
+    public String checkServiceType(String serviceType) {
         String serviceHorse = null;
-        switch (serviceType){
+        switch (serviceType) {
             case "Villa":
-                serviceHorse = CheckRegexService.checkVillaName();
+                serviceHorse = CheckRegexService.checkVillaHorse();
                 break;
             case "Room":
-                serviceHorse = CheckRegexService.checkRoomName();
+                serviceHorse = CheckRegexService.checkRoomHorse();
                 break;
             case "House":
-                serviceHorse = CheckRegexService.checkHouseName();
+                serviceHorse = CheckRegexService.checkHouseHorse();
                 break;
         }
-        return  serviceHorse;
+        return serviceHorse;
     }
 
     public TypeService chooseSeerviceType(String choose) {

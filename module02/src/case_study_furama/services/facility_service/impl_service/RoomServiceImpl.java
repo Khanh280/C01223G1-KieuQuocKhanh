@@ -25,7 +25,6 @@ public class RoomServiceImpl extends Room implements IRoomService {
         String areaUsed = CheckRegexService.checkAreaUser();
         String rentalCost = CheckRegexService.checkRentalCost();
         String maximunPeople = CheckRegexService.checkMaximunPeople();
-
         String rentalType = CheckRegexService.checkRentalType();
         System.out.print("Dịch vụ miễn phí đi kèm: ");
         String freeService = scanner.nextLine();

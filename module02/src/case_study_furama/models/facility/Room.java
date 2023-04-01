@@ -25,12 +25,12 @@ public class Room extends Facility {
 
     @Override
     public String toString() {
-        return "|ServiceName= " + this.getServicename() +
-                "| Area Used= " + this.getAreaUsed() +
-                "| Rental Cost= " + this.getRentalCost() +
-                "| Maximum People= " + this.getMaximumPeople() +
-                "| Rental Type= " + this.getRentalType() +
-                "| Free Service= " + this.getFreeService();
+        return "|ServiceName = " + this.getServicename() +
+                "|Area Used = " + this.getAreaUsed() +
+                "|Rental Cost = " + this.getRentalCost() +
+                "|Maximum People = " + this.getMaximumPeople() +
+                "|Rental Type = " + this.getRentalType() +
+                "|Free Service = " + this.getFreeService() + "|";
     }
 
     @Override

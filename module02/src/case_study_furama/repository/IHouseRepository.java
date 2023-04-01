@@ -6,7 +6,10 @@ import java.util.List;
 
 public interface IHouseRepository {
     void addHouse(List<House> houses);
+
     void editHouseList();
+
     void deleteHouse();
+
     List<House> displayHouseList();
 }

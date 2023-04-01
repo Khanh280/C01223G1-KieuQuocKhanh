@@ -36,11 +36,11 @@ public class FacilityRepositoryImpl implements IFacilityRepository {
     public void addNewFacility(Facility facility) {
         mapFacility = ReadAndWriteDataFacility.readFileToMap();
         if (facility instanceof Villa) {
-            addVillaToFileFacility(mapFacility, (Villa) facility);
+            addFacilytyToFile(mapFacility, (Villa) facility);
         } else if (facility instanceof Room) {
-            addVillaToFileFacility(mapFacility, (Room) facility);
+            addFacilytyToFile(mapFacility, (Room) facility);
         } else if (facility instanceof House) {
-            addVillaToFileFacility(mapFacility, (House) facility);
+            addFacilytyToFile(mapFacility, (House) facility);
         }
     }
 
@@ -50,7 +50,7 @@ public class FacilityRepositoryImpl implements IFacilityRepository {
         return mapFacility;
     }
 
-    public static void addVillaToFileFacility(Map<Facility, Integer> mapFacility, Facility facility) {
+    public static void addFacilytyToFile(Map<Facility, Integer> mapFacility, Facility facility) {
         if (mapFacility.size() == 0) {
             mapFacility.put(facility, 1);
         } else {

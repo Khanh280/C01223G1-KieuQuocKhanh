@@ -1,23 +1,23 @@
 package case_study_furama.utils;
 
-import case_study_furama.models.Booking;
+import case_study_furama.models.Contract;
 
 import java.io.*;
-import java.util.Set;
-import java.util.TreeSet;
+import java.util.ArrayList;
+import java.util.List;
 
-public class ReadAndWriteDataBooking {
-    private static final String BOOKING_LIST_PATH = "src\\case_study_furama\\data\\booking.csv";
+public class ReadAndWriteDataContracts {
+    private static final String CONTRACTS_LIST_PATH = "src\\case_study_furama\\data\\contract.csv";
 
-    public static void writeSetToFile(Set<Booking> bookingSet) {
-        File file = new File(BOOKING_LIST_PATH);
+    public static void writeListToFile(List<Contract> contractList, boolean append) {
+        File file = new File(CONTRACTS_LIST_PATH);
         FileWriter fileWriter = null;
         BufferedWriter bufferedWriter = null;
         try {
             fileWriter = new FileWriter(file);
             bufferedWriter = new BufferedWriter(fileWriter);
-            for (Booking b : bookingSet) {
-                bufferedWriter.write(b.getInfoToCsv());
+            for (int i = 0; i < contractList.size(); i++) {
+                bufferedWriter.write(contractList.get(i).getInfoToCsv());
                 bufferedWriter.newLine();
             }
         } catch (IOException e) {
@@ -34,9 +34,9 @@ public class ReadAndWriteDataBooking {
         }
     }
 
-    public static Set<Booking> readFileToSet() {
-        Set<Booking> bookingList = new TreeSet<>();
-        File file = new File(BOOKING_LIST_PATH);
+    public static List<Contract> readFileToList() {
+        List<Contract> contractList = new ArrayList<>();
+        File file = new File(CONTRACTS_LIST_PATH);
         FileReader fileReader = null;
         BufferedReader bufferedReader = null;
         try {
@@ -44,15 +44,14 @@ public class ReadAndWriteDataBooking {
             bufferedReader = new BufferedReader(fileReader);
             String readLine = null;
             while ((readLine = bufferedReader.readLine()) != null) {
-                String[] elementBooking = readLine.split(",");
-                String guestHorse = elementBooking[0];
-                String serviceName = elementBooking[1];
-                String serviceType = elementBooking[2];
-                String bookingHorse = elementBooking[3];
-                String startDate = elementBooking[4];
-                String endtDate = elementBooking[5];
-                Booking booking = new Booking(guestHorse, serviceName, serviceType, bookingHorse, startDate, endtDate);
-                bookingList.add(booking);
+                String[] elementContracts = readLine.split(",");
+                String contractNumber = elementContracts[0];
+                String bookingHorse = elementContracts[1];
+                String predepositAmount = elementContracts[2];
+                String sumMoneyPay = elementContracts[3];
+                String guestHorse = elementContracts[4];
+                Contract contract = new Contract(contractNumber, bookingHorse, predepositAmount, sumMoneyPay, guestHorse);
+                contractList.add(contract);
             }
         } catch (IOException e) {
             throw new RuntimeException(e);
@@ -66,6 +65,7 @@ public class ReadAndWriteDataBooking {
                 throw new RuntimeException(e);
             }
         }
-        return bookingList;
+        return contractList;
     }
+
 }

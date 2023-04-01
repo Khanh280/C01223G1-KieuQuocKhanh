@@ -6,7 +6,10 @@ import java.util.List;
 
 public interface IVillaRepository {
     void addVilla(List<Villa> villas);
+
     void editVillaList();
+
     void deleteVilla();
+
     List<Villa> displayVillaList();
 }

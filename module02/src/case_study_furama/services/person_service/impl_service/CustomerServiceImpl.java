@@ -44,7 +44,7 @@ public class CustomerServiceImpl extends Customer implements ICustomerService {
                 String name = scanner.nextLine();
                 System.out.print("Nhập ngày sinh: ");
                 String birthDay = scanner.nextLine();
-                System.out.print("Nhâpj giới tính: ");
+                System.out.print("Nhập giới tính: ");
                 String gender = scanner.nextLine();
                 System.out.print("Nhập số CMND: ");
                 String id = scanner.nextLine();

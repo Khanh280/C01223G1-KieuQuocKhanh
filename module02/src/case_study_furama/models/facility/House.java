@@ -33,13 +33,13 @@ public class House extends Facility {
 
     @Override
     public String toString() {
-        return "|Service Name= " + this.getServicename() +
-                "| Area Used= " + this.getAreaUsed() +
-                "| Rental Cost= " + this.getRentalCost() +
-                "| Maximum People= " + this.getMaximumPeople() +
-                "| Rental Type= " + this.getRentalType() +
-                "| Room Standards= " + this.getRoomStandards() +
-                "| Number Floors=" + this.getNumberFloors();
+        return "|Service Name = " + this.getServicename() +
+                "|Area Used = " + this.getAreaUsed() +
+                "|Rental Cost = " + this.getRentalCost() +
+                "|Maximum People = " + this.getMaximumPeople() +
+                "|Rental Type = " + this.getRentalType() +
+                "|Room Standards = " + this.getRoomStandards() +
+                "|Number Floors =" + this.getNumberFloors() + "|";
     }
 
     @Override

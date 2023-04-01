@@ -16,22 +16,17 @@ public class HouseServiceImpl extends House implements IHouseService {
     static List<House> houses = new ArrayList<>();
     static IHouseRepository houseRepository = new HouseRepositoryImpl();
     static House house = new House();
+
     @Override
     public House addHouse() {
-        System.out.print("Nhập tên House: ");
         String serviceName = CheckRegexService.checkHouseName();
-        System.out.print("Nhập diện tích sử dụng: ");
         String areaUsed = CheckRegexService.checkAreaUser();
-        System.out.print("Chi phí thuê: ");
         String rentalCost = CheckRegexService.checkRentalCost();
-        System.out.print("Số lượng khách tối đa: ");
         String maximunPeople = CheckRegexService.checkMaximunPeople();
         String rentalType = CheckRegexService.checkRentalType();
-        System.out.print("Tiêu chuẩn phòng: ");
         String roomStandards = CheckRegexService.checkRoomStandards();
-        System.out.println("Số tầng");
         String numberFloors = CheckRegexService.checkNumberFloors();
-        house = new House(serviceName,areaUsed,rentalCost,maximunPeople,rentalType, roomStandards,numberFloors);
+        house = new House(serviceName, areaUsed, rentalCost, maximunPeople, rentalType, roomStandards, numberFloors);
         houses.add(house);
         houseRepository.addHouse(houses);
         return house;

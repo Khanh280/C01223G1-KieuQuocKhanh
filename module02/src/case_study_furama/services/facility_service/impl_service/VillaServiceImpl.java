@@ -1,6 +1,5 @@
 package case_study_furama.services.facility_service.impl_service;
 
-import case_study_furama.data.FuramaData;
 import case_study_furama.models.facility.Villa;
 import case_study_furama.repository.IVillaRepository;
 import case_study_furama.repository.impl_repository.VillaRepositoryImpl;
@@ -9,13 +8,11 @@ import case_study_furama.services.person_service.CheckRegexService;
 import case_study_furama.utils.ReadAndWriteDataVilla;
 
 import java.util.*;
-import java.util.regex.Pattern;
 
 public class VillaServiceImpl extends Villa implements IVillaService {
     static List<Villa> villas = new ArrayList<>();
     static Villa villa = new Villa();
     static IVillaRepository villaReppository = new VillaRepositoryImpl();
-    static Scanner scanner = new Scanner(System.in);
 
 
     @Override

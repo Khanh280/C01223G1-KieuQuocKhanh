@@ -39,16 +39,17 @@ public class Customer extends Person {
 
     @Override
     public String toString() {
-        return  "|Horse = " + this.getHorse() +
-                "|Name = '" + this.getName() + '\'' +
-                "|BirthDay = '" + this.getBirthDay() + '\'' +
-                "|Gender = '" + this.getGender() + '\'' +
+        return "|Horse = " + this.getHorse() +
+                "|Name = " + this.getName() +
+                "|BirthDay = " + this.getBirthDay() +
+                "|Gender = " + this.getGender() +
                 "|Id = " + this.getId() +
-                "|PhoneNumber = '" + this.getPhoneNumber() + '\'' +
-                "|Email = '" + this.getEmail() + '\'' +
-                "|Guest Type = '" + this.getGuestType() + '\'' +
-                "|Address = '" + this.getAddress();
+                "|PhoneNumber = " + this.getPhoneNumber() +
+                "|Email = " + this.getEmail() +
+                "|Guest Type = " + this.getGuestType() +
+                "|Address = " + this.getAddress() + "|";
     }
+
     public String getInfoToCsv() {
         return this.getHorse() + "," + this.getName() + "," + this.getBirthDay() + "," + this.getGender() + "," + this.getId() + "," +
                 this.getPhoneNumber() + "," + this.getEmail() + "," + this.getGuestType() + "," + this.getAddress();

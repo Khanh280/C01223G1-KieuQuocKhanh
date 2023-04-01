@@ -9,9 +9,10 @@ import java.util.List;
 
 public class VillaRepositoryImpl implements IVillaRepository {
     List<Villa> villas = new ArrayList<>();
+
     @Override
     public void addVilla(List<Villa> villas) {
-        ReadAndWriteDataVilla.writeVillaToFile(villas,false);
+        ReadAndWriteDataVilla.writeVillaToFile(villas, false);
     }
 
     @Override
@@ -25,7 +26,7 @@ public class VillaRepositoryImpl implements IVillaRepository {
     }
 
     @Override
-    public List<Villa>  displayVillaList() {
+    public List<Villa> displayVillaList() {
         villas = ReadAndWriteDataVilla.readFileToList();
         return villas;
     }
