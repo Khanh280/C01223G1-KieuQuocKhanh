@@ -1,5 +1,7 @@
 package case_study_furama.models;
 
+import java.util.Objects;
+
 public class Contract {
     private String contractNumber;// ma hop dong
     private String bookingHorse;// ma booking
@@ -71,4 +73,16 @@ public class Contract {
         return contractNumber + "," + bookingHorse + "," + predepositAmount + "," + sumMoneyPay + "," + guestHorse;
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Contract contract = (Contract) o;
+        return Objects.equals(contractNumber, contract.contractNumber) && Objects.equals(bookingHorse, contract.bookingHorse) && Objects.equals(predepositAmount, contract.predepositAmount) && Objects.equals(sumMoneyPay, contract.sumMoneyPay) && Objects.equals(guestHorse, contract.guestHorse);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(contractNumber, bookingHorse, predepositAmount, sumMoneyPay, guestHorse);
+    }
 }

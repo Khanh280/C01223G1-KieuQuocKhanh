@@ -1,18 +1,15 @@
 package case_study_furama.services;
 
 import case_study_furama.data.FuramaData;
+import case_study_furama.models.Booking;
+import case_study_furama.models.Contract;
 import case_study_furama.models.facility.House;
 import case_study_furama.models.facility.Room;
 import case_study_furama.models.facility.Villa;
 import case_study_furama.models.person.Customer;
-import case_study_furama.utils.ReadAndWriteDataCustomer;
-import case_study_furama.utils.ReadAndWriteDataHouse;
-import case_study_furama.utils.ReadAndWriteDataRoom;
-import case_study_furama.utils.ReadAndWriteDataVilla;
+import case_study_furama.utils.*;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Scanner;
+import java.util.*;
 import java.util.regex.Pattern;
 
 public class CheckRegexService {
@@ -24,7 +21,7 @@ public class CheckRegexService {
     static final String HOUSE_HORSE_REGEX = "^(SV)(HO)-[0-9]{4}$";
     static final String ROOM_HORSE_REGEX = "^(SV)(RO)-[0-9]{4}$";
     static final String HORSE_BOOKING_REGEX = "^[A-Z]{2,}[a-z0-9]+$";
-    static final String NUMBER_FLOORS_PEOPLE_REGEX = "^[1-9][0-9]+$";
+    static final String NUMBER_FLOORS_PEOPLE_REGEX = "^[1-9]([0-9]+)?$";
     static final String STANDARDS_REGEX = "^[A-Z][A-Za-z]+$";
     static final String NUMBER_INTEGER_REGEX = "^[1-9][0-9]+$";
     static final String RENTAL_TYPE_REGEX = "^[1-3]$";
@@ -33,29 +30,52 @@ public class CheckRegexService {
     static List<Room> roomList = new ArrayList<>();
     static List<House> houseList = new ArrayList<>();
     static List<Customer> customers = new ArrayList<>();
+    static Set<Booking> bookingList = new TreeSet<>();
 
-    public static String checkGuestHorse() {
+    public static String checkGuestHorse(String bookingHorse) {
+        bookingList = ReadAndWriteDataBooking.readFileToSet();
         String guestHorse;
-        int count = 0;
         boolean flag;
         do {
             flag = true;
+            int count = 0;
             guestHorse = scanner.nextLine();
-            customers = ReadAndWriteDataCustomer.readFileToList();
-            for (int i = 0; i < customers.size(); i++) {
-                if (customers.get(i).getHorse().equals(guestHorse)) {
+            for (Booking b : bookingList) {
+                if (b.getGuestHorse().equals(guestHorse) && b.getBookingHorse().equals(bookingHorse)) {
                     return guestHorse;
                 } else {
                     count++;
                 }
             }
-            if (count == customers.size()) {
+            if (count == bookingList.size()) {
                 flag = false;
-                System.out.print("Ma khach hang hien khong ton tai.Nhap lai:");
+                System.out.print("Mã khách hàng không trùng khớp với mã Booking.\nNhập lại:");
             }
         } while (!flag);
         return guestHorse;
     }
+
+    public static String checkGuestHorseBookingByContracts() {
+        customers = ReadAndWriteDataCustomer.readFileToList();
+        String guestHorse;
+        boolean flag;
+        do {
+            flag = true;
+            int count = 0;
+            guestHorse = scanner.nextLine();
+            for (int i = 0; i < customers.size(); i++) {
+                if (!customers.get(i).getHorse().equals(guestHorse)) {
+                    count++;
+                }
+            }
+            if (count == customers.size()) {
+                flag = false;
+                System.out.print("Mã khách hàng không tồn tại.\nNhập lại:");
+            }
+        } while (!flag);
+        return guestHorse;
+    }
+
     public static String checkHorseBooking() {
         String horseBooking;
         boolean check;
@@ -64,6 +84,48 @@ public class CheckRegexService {
             check = Pattern.matches(HORSE_BOOKING_REGEX, horseBooking);
             if (!check) {
                 System.out.print("Mã không hợp lệ");
+            }
+        } while (!check);
+        return horseBooking;
+    }
+
+    public static String checkHorseBookingByContracts(Queue<Booking> bookingQueue, List<Contract> contractList) {
+        bookingList = ReadAndWriteDataBooking.readFileToSet();
+        String horseBooking;
+        boolean check;
+        do {
+            int count = 0;
+            horseBooking = scanner.nextLine();
+            check = Pattern.matches(HORSE_BOOKING_REGEX, horseBooking);
+            if (!check) {
+                System.out.print("Mã không hợp lệ");
+            } else {
+                for (int i = 0; i < contractList.size(); i++) {
+                    if (contractList.get(i).getBookingHorse().equals(horseBooking)) {
+                        check = false;
+                        System.out.println("Mã Booking đã được tạo hợp đồng.");
+                        break;
+                    }
+                }
+                for (Booking b : bookingList) {
+                    if (!b.getBookingHorse().equals(horseBooking)) {
+                        count++;
+                    }
+                }
+                if (count == bookingList.size()) {
+                    check = false;
+                    System.out.print("Mã không tồn tại ");
+                } else if (bookingQueue.peek() != null) {
+                    if (horseBooking.equals(bookingQueue.peek().getBookingHorse())) {
+                        bookingQueue.poll();
+                    } else {
+                        check = false;
+                        System.out.println("Mã Booking phải theo thứ tự");
+                        for (Booking b : bookingQueue) {
+                            System.out.println(b);
+                        }
+                    }
+                }
             }
         } while (!check);
         return horseBooking;
@@ -95,6 +157,7 @@ public class CheckRegexService {
         } while (!check);
         return birthDay;
     }
+
     public static String checkVillaHorse() {
         villaList = ReadAndWriteDataVilla.readFileToList();
         String serviceName;
@@ -114,7 +177,7 @@ public class CheckRegexService {
                 }
                 if (count == villaList.size()) {
                     check = false;
-                    System.out.println("Mã dịch vụ không tồn .");
+                    System.out.println("Mã dịch vụ không tồn tại .");
                 }
             }
         } while (!check);
@@ -140,7 +203,7 @@ public class CheckRegexService {
                 }
                 if (count == roomList.size()) {
                     check = false;
-                    System.out.println("Mã dịch vụ không tồn .");
+                    System.out.println("Mã dịch vụ không tồn  .");
                 }
             }
         } while (!check);
@@ -166,12 +229,13 @@ public class CheckRegexService {
                 }
                 if (count == houseList.size()) {
                     check = false;
-                    System.out.println("Mã dịch vụ không tồn .");
+                    System.out.println("Mã dịch vụ không tồn tại .");
                 }
             }
         } while (!check);
         return serviceName;
     }
+
     public static String checkVillaName() {
         String serviceName;
         boolean check;

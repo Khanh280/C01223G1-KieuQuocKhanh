@@ -13,9 +13,9 @@ public class Booking implements Comparable<Booking> {
     public Booking() {
     }
 
-    public Booking(String guestHorse, String serviceName, String serviceType, String bookingHorse, String startDate, String endtDate) {
+    public Booking(String guestHorse, String serviceType,String serviceHorse, String bookingHorse, String startDate, String endtDate) {
         this.guestHorse = guestHorse;
-        this.serviceHorse = serviceName;
+        this.serviceHorse = serviceHorse;
         this.serviceType = serviceType;
         this.bookingHorse = bookingHorse;
         this.startDate = startDate;
@@ -73,9 +73,9 @@ public class Booking implements Comparable<Booking> {
 
     @Override
     public String toString() {
-        return "|guestHorse = " + guestHorse +
-                "|ServiceHorse = " + serviceHorse +
+        return "|GuestHorse = " + guestHorse +
                 "|ServiceType = " + serviceType +
+                "|ServiceHorse = " + serviceHorse +
                 "|bookingHorse = " + bookingHorse +
                 "|StartDate = " + startDate +
                 "|EndtDate = " + endtDate + "|";

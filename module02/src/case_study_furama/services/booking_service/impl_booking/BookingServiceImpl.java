@@ -36,7 +36,7 @@ public class BookingServiceImpl implements IBookingService {
             System.out.println(customers.get(i).getName() + " | Mã khách hàng = " + customers.get(i).getHorse());
         }
         System.out.print("Chọn mã khách hàng: ");
-        String guestHorse = CheckRegexService.checkGuestHorse();
+        String guestHorse = CheckRegexService.checkGuestHorseBookingByContracts();
         String choose = CheckRegexService.checkServiceType();
         FacilityServiceImpl.display(chooseSeerviceType(choose));
         String serviceType = FuramaData.typeService.get(Integer.parseInt(choose) - 1);
@@ -47,7 +47,7 @@ public class BookingServiceImpl implements IBookingService {
         String startDate = CheckRegexService.checkDate();
         System.out.print("Ngày kết thúc: ");
         String endDate = CheckRegexService.checkDate();
-        booking = new Booking(guestHorse, serviceHorse, serviceType, bookingHorse, startDate, endDate);
+        booking = new Booking(guestHorse, serviceType, serviceHorse, bookingHorse, startDate, endDate);
         bookingList.add(booking);
         bookingRepository.addBookingRepository(bookingList, booking);
     }
