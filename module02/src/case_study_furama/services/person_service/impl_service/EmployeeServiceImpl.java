@@ -21,13 +21,13 @@ public class EmployeeServiceImpl extends Employee implements IEmployeeService {
 
     @Override
     public void addEmployee() {
-        System.out.print("Nhập mã nhân viên: ");
+        System.out.print("Enter Employee Code: ");
         String horse = CheckRegexService.checkHorse();
         int count = 0;
         employees = ReadAndWriteDataEmployee.readFileToList();
         for (int i = 0; i < employees.size(); i++) {
             if (horse.equals(employees.get(i).getHorse())) {
-                System.out.println("Mã nhân viên đã tồn tại.");
+                System.out.println("Employee code already exists.");
                 return;
             } else {
                 count++;
@@ -37,22 +37,22 @@ public class EmployeeServiceImpl extends Employee implements IEmployeeService {
             if (count == employees.size()) {
                 String name = CheckRegexService.checkName();
                 String birthDay = CheckRegexService.checkBirthDay();
-                System.out.print("Nhập giới tính: ");
+                System.out.print("Enter Gender: ");
                 String gender = scanner.nextLine();
-                System.out.print("Nhập số CMND: ");
+                System.out.print("Enter ID: ");
                 String id = scanner.nextLine();
-                System.out.print("Nhập số điện thoại: ");
+                System.out.print("Enter Phone Number: ");
                 String phoneNumber = scanner.nextLine();
-                System.out.print("Nhập email: ");
+                System.out.print("Enter Email: ");
                 String email = scanner.nextLine();
-                System.out.println("Chọn trình độ chuyên môn: " +
+                System.out.println("Choose Gegree: " +
                         "\n1. Trung cấp." +
                         "\n2. Cao đẳng." +
                         "\n3. Đại học." +
                         "\n4. Sau đại học.");
                 int chooseDegree = Integer.parseInt(scanner.nextLine());
                 String degree = FuramaData.degreeList.get(chooseDegree - 1);
-                System.out.println("Chọn vị trí: " +
+                System.out.println("Choose Location: " +
                         "\n1. Lễ tân." +
                         "\n2. Phục vụ." +
                         "\n3. Chuyên viên." +
@@ -67,7 +67,7 @@ public class EmployeeServiceImpl extends Employee implements IEmployeeService {
                 employeeRepository.addEmployee(employees);
             }
         } catch (Exception e) {
-            System.out.println("Thông tin nhân viên không hợp lệ vui lòng nhập lại.");
+            System.out.println("Invalid employee information please re-enter.");
         }
     }
 
@@ -78,29 +78,29 @@ public class EmployeeServiceImpl extends Employee implements IEmployeeService {
 
     @Override
     public void editEmployee() {
-        try {
-            int count = 0;
-            employees = employeeRepository.displayListEmployee();
-            System.out.print("Nhập mã nhân viên: ");
-            String horse = scanner.nextLine();
-            for (int i = 0; i < employees.size(); i++) {
-                if (horse.equals(employees.get(i).getHorse())) {
-                    boolean flag;
-                    do {
-                        flag = true;
-                        System.out.print("Chọn thông tin muốn sữa: " +
-                                "\n1. Ten" +
-                                "\n2. Ngay sinh" +
-                                "\n3. Gioi tinh" +
-                                "\n4. CMND" +
-                                "\n5. So dien thoai" +
-                                "\n6. Email" +
-                                "\n7. Trinh do chuyen mon" +
-                                "\n8. Vi tri" +
-                                "\n9. Luong" +
-                                "\n0. Thoat"+
-                                "\nChọn chức năng: ");
-                        String choose = scanner.nextLine();
+        int count = 0;
+        employees = employeeRepository.displayListEmployee();
+        System.out.print("Enter Employee Code: ");
+        String horse = scanner.nextLine();
+        for (int i = 0; i < employees.size(); i++) {
+            if (horse.equals(employees.get(i).getHorse())) {
+                boolean flag;
+                do {
+                    flag = true;
+                    System.out.print("Select the information you want to edit: " +
+                            "\n1. Name" +
+                            "\n2. Birth Day" +
+                            "\n3. Gender" +
+                            "\n4. ID" +
+                            "\n5. Phone Number" +
+                            "\n6. Email" +
+                            "\n7. Degrre" +
+                            "\n8. Location" +
+                            "\n9. Salary" +
+                            "\n0. Exit" +
+                            "\nEnter choose: ");
+                    String choose = scanner.nextLine();
+                    try {
                         switch (choose) {
                             case "1":
                                 employees.get(i).setName(CheckRegexService.checkName());
@@ -121,24 +121,24 @@ public class EmployeeServiceImpl extends Employee implements IEmployeeService {
                                 employees.get(i).setEmail(scanner.nextLine());
                                 break;
                             case "7":
-                                System.out.print("Chọn trình độ chuyên môn: " +
+                                System.out.print("Choose Degree: " +
                                         "\n1. Trung cấp." +
                                         "\n2. Cao đẳng." +
                                         "\n3. Đại học." +
-                                        "\n4. Sau đại học."+
-                                        "\nChọn trình độ: ");
+                                        "\n4. Sau đại học." +
+                                        "\nEnter choose: ");
                                 int chooseDegree = Integer.parseInt(scanner.nextLine());
                                 employees.get(i).setDegree(FuramaData.degreeList.get(chooseDegree - 1));
                                 break;
                             case "8":
-                                System.out.print("Chọn vị trí: " +
+                                System.out.print("Choose Location: " +
                                         "\n1. Lễ tân." +
                                         "\n2. Phục vụ." +
                                         "\n3. Chuyên viên." +
                                         "\n4. Giám sát." +
                                         "\n5. Quản lý." +
-                                        "\n6. Giám đốc."+
-                                        "\nChọn vị trí: ");
+                                        "\n6. Giám đốc." +
+                                        "\nEnter choose: ");
                                 int chooseLocation = Integer.parseInt(scanner.nextLine());
                                 employees.get(i).setLocation(FuramaData.locationList.get(chooseLocation - 1));
                                 break;
@@ -149,20 +149,20 @@ public class EmployeeServiceImpl extends Employee implements IEmployeeService {
                                 flag = false;
                                 break;
                             default:
-                                System.out.println("Vui lòng chọn đúng thông tin muốn sửa.");
+                                System.out.println("Please select the correct information you want to correct.");
                         }
-                        employeeRepository.editEmployee(employees);
-                    } while (flag);
-                    return;
-                } else {
-                    count++;
-                }
-                if (count == employees.size()) {
-                    System.out.println("Mã nhân viên không tồn tại.");
-                }
+                    } catch (Exception e) {
+                        System.out.println("Invalid employee information please re-enter.");
+                    }
+                    employeeRepository.editEmployee(employees);
+                } while (flag);
+                return;
+            } else {
+                count++;
             }
-        } catch (Exception e) {
-            System.out.println("Thông tin nhân viên không hợp lệ vui lòng nhập lại.");
+            if (count == employees.size()) {
+                System.out.println("Employee Code doesn't exist.");
+            }
         }
     }
 
@@ -176,37 +176,38 @@ public class EmployeeServiceImpl extends Employee implements IEmployeeService {
 
     @Override
     public void deleteEmployee() {
-        try {
-            int count = 0;
-            employees = employeeRepository.displayListEmployee();
-            System.out.print("Nhập mã nhân viên: ");
-            String horse = scanner.nextLine();
-            for (int i = 0; i < employees.size(); i++) {
-                if (horse.equals(employees.get(i).getHorse())) {
-                    System.out.println("Bạn xác nhận xóa nhân viên " + employees.get(i).getName() + "\n1. Yes." + "\n2. No.");
+        int count = 0;
+        employees = employeeRepository.displayListEmployee();
+        System.out.print("Enter Employee Code: ");
+        String horse = scanner.nextLine();
+        for (int i = 0; i < employees.size(); i++) {
+            if (horse.equals(employees.get(i).getHorse())) {
+                boolean flag;
+                do {
+                    flag = true;
+                    System.out.println("You confirm the employee's deletion " + employees.get(i).getName() + "\n1. Yes." + "\n2. No.");
                     String choose = scanner.nextLine();
                     switch (choose) {
                         case "1":
                             employees.remove(i);
-                            System.out.println("Bạn đã xóa thành công nhân viên có mã " + horse);
+                            System.out.println("You've successfully removed the employee whose code " + horse);
                             employeeRepository.deleteEmployee(employees);
                             return;
                         case "2":
-                            System.out.println("Bạn đã không xóa.");
+                            System.out.println("You didn't delete.");
                             break;
                         default:
-                            System.out.println("Vui lòng chọn lại.");
+                            flag = false;
+                            System.out.println("Please select again.");
                     }
-                    return;
-                } else {
-                    count++;
-                }
-                if (count == employees.size()) {
-                    System.out.println("Mã nhân viên không tồn tại.");
-                }
+                } while (!flag);
+                return;
+            } else {
+                count++;
             }
-        } catch (Exception e) {
-            System.out.println("Mã nhân viên không đúng.");
+            if (count == employees.size()) {
+                System.out.println("Employee Code doesn't exist.");
+            }
         }
     }
 }

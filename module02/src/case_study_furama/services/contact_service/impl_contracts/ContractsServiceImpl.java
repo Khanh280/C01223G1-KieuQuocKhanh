@@ -48,15 +48,15 @@ public class ContractsServiceImpl implements IContractsService {
 
     @Override
     public void createNewContract() {
-        System.out.print("Nhập mã hợp đồng: ");
+        System.out.print("Enter Code Contracts: ");
         String contractNumber = CheckRegexService.checkHorseBooking();
-        System.out.print("Nhập mã Booking: ");
+        System.out.print("Enter Code Booking: ");
         String bookingHorse = CheckRegexService.checkHorseBookingByContracts(bookingQueue, contractList);
-        System.out.print("Số tiền cọc trước: ");
+        System.out.print("Advance deposit amount: ");
         String predepositAmount = scanner.nextLine();
-        System.out.print("Tổng số tiền thanh toán: ");
+        System.out.print("Total payment amount: ");
         String sumMoneyPay = scanner.nextLine();
-        System.out.print("Mã khách hàng: ");
+        System.out.print("Enter Customer code: ");
         String guestHorse = CheckRegexService.checkGuestHorse(bookingHorse);
         contract = new Contract(contractNumber, bookingHorse, predepositAmount, sumMoneyPay, guestHorse);
         contractList.add(contract);
@@ -76,18 +76,18 @@ public class ContractsServiceImpl implements IContractsService {
     @Override
     public void editContract() {
         contractList = contractsRepository.displayListContractRepository();
-        System.out.println("Nhập mã hợp đồng: ");
+        System.out.print("Enter Code Contracts: ");
         String contractNumber = scanner.nextLine();
         int count=0;
         for (int i = 0; i < contractList.size(); i++) {
             if (contractNumber.equals(contractList.get(i).getContractNumber())) {
-                System.out.print("Nhập mã Booking: ");
+                System.out.print("Enter Code Booking: ");
                 String bookingHorse = CheckRegexService.checkHorseBookingEditContracts();
-                System.out.print("Số tiền cọc trước: ");
+                System.out.print("Advance deposit amount: ");
                 String predepositAmount = scanner.nextLine();
-                System.out.print("Tổng số tiền thanh toán: ");
+                System.out.print("Total payment amount: ");
                 String sumMoneyPay = scanner.nextLine();
-                System.out.print("Mã khách hàng: ");
+                System.out.print("Enter Customer code: ");
                 String guestHorse = CheckRegexService.checkGuestHorse(bookingHorse);
                 contract = new Contract(contractNumber, bookingHorse, predepositAmount, sumMoneyPay, guestHorse);
                 contractList.set(i, contract);
@@ -96,7 +96,7 @@ public class ContractsServiceImpl implements IContractsService {
                 count++;
             }
             if(count == contractList.size()){
-                System.out.println("Mã hợp đồng không tồn tại.");
+                System.out.println("The contract code does not exist.");
             }
         }
     }

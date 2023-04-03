@@ -50,7 +50,7 @@ public class CheckRegexService {
             }
             if (count == bookingList.size()) {
                 flag = false;
-                System.out.print("Mã khách hàng không trùng khớp với mã Booking.\nNhập lại:");
+                System.out.print("The customer Code doesn't match the Booking code.\nRe-import:");
             }
         } while (!flag);
         return guestHorse;
@@ -63,7 +63,7 @@ public class CheckRegexService {
         do {
             flag = true;
             int count = 0;
-            System.out.print("Chọn mã khách hàng: ");
+            System.out.print("Enter guest Code: ");
             guestHorse = scanner.nextLine();
             for (int i = 0; i < customers.size(); i++) {
                 if (!customers.get(i).getHorse().equals(guestHorse)) {
@@ -72,7 +72,7 @@ public class CheckRegexService {
             }
             if (count == customers.size()) {
                 flag = false;
-                System.out.print("Mã khách hàng không tồn tại.\nNhập lại:");
+                System.out.print("The client Code does not exist.\nRe-import:");
             }
         } while (!flag);
         return guestHorse;
@@ -82,11 +82,11 @@ public class CheckRegexService {
         String horseBooking;
         boolean check;
         do {
-            System.out.print("Nhập mã booking: ");
+            System.out.print("Enter Code Booking: ");
             horseBooking = scanner.nextLine();
             check = Pattern.matches(HORSE_BOOKING_REGEX, horseBooking);
             if (!check) {
-                System.out.print("Mã không hợp lệ");
+                System.out.print("Invalid code");
             }
         } while (!check);
         return horseBooking;
@@ -101,7 +101,7 @@ public class CheckRegexService {
             horseBooking = scanner.nextLine();
             check = Pattern.matches(HORSE_BOOKING_REGEX, horseBooking);
             if (!check) {
-                System.out.print("Mã không hợp lệ");
+                System.out.print("Invalid booking code");
             } else {
                 for (Booking b : bookingList) {
                     if (!b.getBookingHorse().equals(horseBooking)) {
@@ -112,7 +112,7 @@ public class CheckRegexService {
                 }
                 if (count == bookingList.size()) {
                     check = false;
-                    System.out.print("Mã không tồn tại ");
+                    System.out.print("The booking code does not exist");
                 }
             }
         } while (!check);
@@ -128,12 +128,12 @@ public class CheckRegexService {
             horseBooking = scanner.nextLine();
             check = Pattern.matches(HORSE_BOOKING_REGEX, horseBooking);
             if (!check) {
-                System.out.print("Mã không hợp lệ");
+                System.out.print("Invalid booking code");
             } else {
                 for (int i = 0; i < contractList.size(); i++) {
                     if (contractList.get(i).getBookingHorse().equals(horseBooking)) {
                         check = false;
-                        System.out.println("Mã Booking đã được tạo hợp đồng.");
+                        System.out.println("The Booking code has been contracted.");
                         break;
                     }
                 }
@@ -144,13 +144,13 @@ public class CheckRegexService {
                 }
                 if (count == bookingList.size()) {
                     check = false;
-                    System.out.print("Mã không tồn tại ");
+                    System.out.print("The booking code does not exist");
                 } else if (bookingQueue.peek() != null) {
                     if (horseBooking.equals(bookingQueue.peek().getBookingHorse())) {
                         bookingQueue.poll();
                     } else {
                         check = false;
-                        System.out.println("Mã Booking phải theo thứ tự");
+                        System.out.println("Booking codes must be in order");
                         for (Booking b : bookingQueue) {
                             System.out.println(b);
                         }
@@ -168,7 +168,7 @@ public class CheckRegexService {
             date = scanner.nextLine();
             check = Pattern.matches(DATE_BOOKING, date);
             if (!check) {
-                System.out.println("Ngày không hợp lệ.");
+                System.out.println("Invalid date.");
             }
         } while (!check);
         return date;
@@ -178,11 +178,11 @@ public class CheckRegexService {
         String birthDay;
         boolean check;
         do {
-            System.out.print("Nhập ngày sinh: ");
+            System.out.print("Enter Birth Day: ");
             birthDay = scanner.nextLine();
             check = Pattern.matches(BIRTHDAY_REGEX, birthDay);
             if (!check) {
-                System.out.println("Ngày sinh không hợp lệ.");
+                System.out.println("Invalid Birth Day.");
             }
         } while (!check);
         return birthDay;
@@ -194,11 +194,11 @@ public class CheckRegexService {
         boolean check;
         do {
             int count = 0;
-            System.out.println("Nhập mã Villa: ");
+            System.out.println("Enter code Villa(SVVL-XXXX): ");
             serviceName = scanner.nextLine();
             check = Pattern.matches(VILLA_HORSE_REGEX, serviceName);
             if (!check) {
-                System.out.println("Mã dịch vụ không hợp lệ.");
+                System.out.println("Invalid service code.");
             } else {
                 for (int i = 0; i < villaList.size(); i++) {
                     if (!villaList.get(i).getServicename().equals(serviceName)) {
@@ -207,7 +207,7 @@ public class CheckRegexService {
                 }
                 if (count == villaList.size()) {
                     check = false;
-                    System.out.println("Mã dịch vụ không tồn tại .");
+                    System.out.println("Service code does not exist.");
                 }
             }
         } while (!check);
@@ -220,11 +220,11 @@ public class CheckRegexService {
         boolean check;
         do {
             int count = 0;
-            System.out.println("Nhập mã Room: ");
+            System.out.println("Enter Code Room(SVRO-XXXX): ");
             serviceName = scanner.nextLine();
             check = Pattern.matches(ROOM_HORSE_REGEX, serviceName);
             if (!check) {
-                System.out.println("Mã dịch vụ không hợp lệ.");
+                System.out.println("Invalid service code.");
             } else {
                 for (int i = 0; i < roomList.size(); i++) {
                     if (!roomList.get(i).getServicename().equals(serviceName)) {
@@ -233,7 +233,7 @@ public class CheckRegexService {
                 }
                 if (count == roomList.size()) {
                     check = false;
-                    System.out.println("Mã dịch vụ không tồn  .");
+                    System.out.println("Service code does not exist.");
                 }
             }
         } while (!check);
@@ -246,11 +246,11 @@ public class CheckRegexService {
         boolean check;
         do {
             int count = 0;
-            System.out.println("Nhập mã House: ");
+            System.out.println("Enter Code House(SVHO-XXXX): ");
             serviceName = scanner.nextLine();
             check = Pattern.matches(HOUSE_HORSE_REGEX, serviceName);
             if (!check) {
-                System.out.println("Mã dịch vụ không hợp lệ.");
+                System.out.println("Invalid service code.");
             } else {
                 for (int i = 0; i < houseList.size(); i++) {
                     if (!houseList.get(i).getServicename().equals(serviceName)) {
@@ -259,7 +259,7 @@ public class CheckRegexService {
                 }
                 if (count == houseList.size()) {
                     check = false;
-                    System.out.println("Mã dịch vụ không tồn tại .");
+                    System.out.println("Service code does not exist.");
                 }
             }
         } while (!check);
@@ -270,11 +270,11 @@ public class CheckRegexService {
         String serviceName;
         boolean check;
         do {
-            System.out.println("Nhập mã Villa: ");
+            System.out.println("Enter Code Villa(SVVL-XXXX): ");
             serviceName = scanner.nextLine();
             check = Pattern.matches(VILLA_HORSE_REGEX, serviceName);
             if (!check) {
-                System.out.println("Mã dịch vụ không hợp lệ.");
+                System.out.println("Invalid service code.");
             }
         } while (!check);
         return serviceName;
@@ -284,11 +284,11 @@ public class CheckRegexService {
         String serviceName;
         boolean check;
         do {
-            System.out.println("Nhập mã Room: ");
+            System.out.println("Enter Code Room(SVRO-XXXX): ");
             serviceName = scanner.nextLine();
             check = Pattern.matches(ROOM_HORSE_REGEX, serviceName);
             if (!check) {
-                System.out.println("Mã dịch vụ không hợp lệ.");
+                System.out.println("Invalid service code.");
             }
         } while (!check);
         return serviceName;
@@ -298,12 +298,11 @@ public class CheckRegexService {
         String serviceName;
         boolean check;
         do {
-            int count = 0;
-            System.out.println("Nhập mã House: ");
+            System.out.println("Enter Code House(SVHO-XXXX): ");
             serviceName = scanner.nextLine();
             check = Pattern.matches(HOUSE_HORSE_REGEX, serviceName);
             if (!check) {
-                System.out.println("Mã dịch vụ không hợp lệ.");
+                System.out.println("Invalid service code.");
             }
         } while (!check);
         return serviceName;
@@ -313,11 +312,11 @@ public class CheckRegexService {
         String areaUsed;
         boolean check;
         do {
-            System.out.println("Nhập diện tích sử dụng: ");
+            System.out.println("User Area: ");
             areaUsed = scanner.nextLine();
             check = Pattern.matches(AREA_USER_AND_POOL_REGEX, areaUsed);
             if (!check) {
-                System.out.println("Diện tích phải lớn hơn 30m2.");
+                System.out.println("The user area must be greater than 30m2.");
             }
         } while (!check);
         return areaUsed;
@@ -327,11 +326,11 @@ public class CheckRegexService {
         String rentalCost;
         boolean check;
         do {
-            System.out.println("Chi phí thuê: ");
+            System.out.println("Rental Cost: ");
             rentalCost = scanner.nextLine();
             check = Pattern.matches(NUMBER_INTEGER_REGEX, rentalCost);
             if (!check) {
-                System.out.println("Chi phí thuê không hợp lệ.");
+                System.out.println("Invalid Rental Cost.");
             }
         } while (!check);
         return rentalCost;
@@ -341,11 +340,11 @@ public class CheckRegexService {
         String maximunPeople;
         boolean check;
         do {
-            System.out.println("Số lượng khách tối đa: ");
+            System.out.println("Maximum People: ");
             maximunPeople = scanner.nextLine();
             check = Pattern.matches(MAXIMUM_PEOPLE_REGEX, maximunPeople);
             if (!check) {
-                System.out.println("Số lượng khách không hợp lệ.");
+                System.out.println("Invalid Maximum People( 0 < People < 20 ).");
             }
         } while (!check);
         return maximunPeople;
@@ -355,11 +354,11 @@ public class CheckRegexService {
         String roomStandards;
         boolean check;
         do {
-            System.out.println("Tiêu chuẩn phòng: ");
+            System.out.println("Room Standars: ");
             roomStandards = scanner.nextLine();
             check = Pattern.matches(STANDARDS_REGEX, roomStandards);
             if (!check) {
-                System.out.println("Tiêu chuẩn phòng không hợp lệ.");
+                System.out.println("Invalid Room Standars.");
             }
         } while (!check);
         return roomStandards;
@@ -369,11 +368,11 @@ public class CheckRegexService {
         String poolArea;
         boolean check;
         do {
-            System.out.println("Diện tích hồ bơi: ");
+            System.out.println("Enter Pool Area: ");
             poolArea = scanner.nextLine();
             check = Pattern.matches(AREA_USER_AND_POOL_REGEX, poolArea);
             if (!check) {
-                System.out.println("Diện tích hồ bơi phải lớn hơn 30m2.");
+                System.out.println("The pool area must be greater than 30m2.");
             }
         } while (!check);
         return poolArea;
@@ -383,11 +382,11 @@ public class CheckRegexService {
         String numberFloors;
         boolean check;
         do {
-            System.out.println("Số tầng: ");
+            System.out.println("Enter Number Floors: ");
             numberFloors = scanner.nextLine();
             check = Pattern.matches(NUMBER_FLOORS_PEOPLE_REGEX, numberFloors);
             if (!check) {
-                System.out.println("Số tầng không hợp lệ.");
+                System.out.println("Invalid Number Floors.");
             }
         } while (!check);
         return numberFloors;
@@ -398,14 +397,14 @@ public class CheckRegexService {
         String choose;
         boolean check;
         do {
-            System.out.println("Kiểu thuê: " +
-                    "\n1. Năm." +
-                    "\n2. Tháng." +
-                    "\n3. Ngày.");
+            System.out.println("Rental Type: " +
+                    "\n1. Year." +
+                    "\n2. Month." +
+                    "\n3. Date.");
             choose = scanner.nextLine();
             check = Pattern.matches(RENTAL_TYPE_REGEX, choose);
             if (!check) {
-                System.out.println("Kiểu thuê không hợp lệ.");
+                System.out.println("Invalid rental type.");
             }
         } while (!check);
         rentalType = FuramaData.rentalType.get(Integer.parseInt(choose) - 1);
@@ -416,39 +415,41 @@ public class CheckRegexService {
         String choose;
         boolean check;
         do {
-            System.out.println("Loại dịch vụ: " +
+            System.out.println("Service Type: " +
                     "\n1. Villa" +
                     "\n2. Room" +
                     "\n3. House");
             choose = scanner.nextLine();
             check = Pattern.matches(RENTAL_TYPE_REGEX, choose);
             if (!check) {
-                System.out.println("Loại dịch vụ không hợp lệ.");
+                System.out.println("Invalid service type.");
             }
         } while (!check);
         return choose;
     }
-    public static String checkName(){
+
+    public static String checkName() {
         String name;
         boolean check;
-        do{
-            System.out.print("Nhập tên: ");
+        do {
+            System.out.print("Enter Name: ");
             name = scanner.nextLine();
-            check = Pattern.matches(NAME_REGEX,name);
-            if(!check){
-                System.out.println("Tên không hợp lệ.\nNhập lại:");
+            check = Pattern.matches(NAME_REGEX, name);
+            if (!check) {
+                System.out.println("Invalid name.\nRe-import:");
             }
-        }while (!check);
+        } while (!check);
         return name;
     }
-    public static String checkHorse(){
+
+    public static String checkHorse() {
         String horse;
         boolean checkId;
         do {
             horse = scanner.nextLine();
             checkId = Pattern.matches(ID_REGEX, horse);
-            if(!checkId){
-                System.out.println("Mã không hợp lệ.\nNhập lại:");
+            if (!checkId) {
+                System.out.println("Invalid code.\nRe-import:");
             }
         } while (!checkId);
         return horse;

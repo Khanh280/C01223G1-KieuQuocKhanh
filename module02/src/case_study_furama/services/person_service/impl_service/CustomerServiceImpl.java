@@ -20,12 +20,13 @@ public class CustomerServiceImpl extends Customer implements ICustomerService {
 
     @Override
     public void addCustomer() {
+        System.out.print("Enter Horse: ");
         String horse = CheckRegexService.checkHorse();
         int count = 0;
         customers = ReadAndWriteDataCustomer.readFileToList();
         for (int i = 0; i < customers.size(); i++) {
             if (horse.equals(customers.get(i).getHorse())) {
-                System.out.println("Mã khách hàng đã tồn tại: ");
+                System.out.println("Customer Code already exists: ");
                 return;
             } else {
                 count++;
@@ -35,15 +36,15 @@ public class CustomerServiceImpl extends Customer implements ICustomerService {
             if (count == customers.size()) {
                 String name = CheckRegexService.checkName();
                 String birthDay = CheckRegexService.checkBirthDay();
-                System.out.print("Nhập giới tính: ");
+                System.out.print("Enter Gender: ");
                 String gender = scanner.nextLine();
-                System.out.print("Nhập số CMND: ");
+                System.out.print("Enter ID: ");
                 String id = scanner.nextLine();
-                System.out.print("Nhập số điện thoại: ");
+                System.out.print("ENter Phone Number: ");
                 String phoneNumber = scanner.nextLine();
-                System.out.print("Nhập email: ");
+                System.out.print("Enter Email: ");
                 String email = scanner.nextLine();
-                System.out.println("Nhập loại khách hàng: " +
+                System.out.println("Enter a customer type: " +
                         "\n1. Diamond" +
                         "\n2. Platinium" +
                         "\n3. Gold" +
@@ -51,41 +52,41 @@ public class CustomerServiceImpl extends Customer implements ICustomerService {
                         "\n5. Member");
                 int chooseGuestType = Integer.parseInt(scanner.nextLine());
                 String guestType = FuramaData.guestTypeList.get(chooseGuestType - 1);
-                System.out.print("Nhập địa chỉ: ");
+                System.out.print("Enter Address: ");
                 String address = scanner.nextLine();
                 customer = new Customer(horse, name, birthDay, gender, id, phoneNumber, email, guestType, address);
                 customers.add(customer);
                 customerRepository.addCustomer(customers);
             }
         } catch (Exception e) {
-            System.out.println("Mã khách hàng không hợp lệ.");
+            System.out.println("Invalid Customer Code.");
         }
     }
 
     @Override
     public void editCustomer() {
-        try {
-            int count = 0;
-            System.out.print("Nhập mã khách hàng: ");
-            String horse = scanner.nextLine();
-            customers = ReadAndWriteDataCustomer.readFileToList();
-            for (int i = 0; i < customers.size(); i++) {
-                if (horse.equals(customers.get(i).getHorse())) {
-                    boolean flag;
-                    do {
-                        flag = true;
-                        System.out.print("Chọn thông tin muốn sữa: " +
-                                "\n1. Ten" +
-                                "\n2. Ngay sinh" +
-                                "\n3. Gioi tinh" +
-                                "\n4. CMND" +
-                                "\n5. So dien thoai" +
-                                "\n6. Email" +
-                                "\n7. Loại khách hàng" +
-                                "\n8. Dịa chỉ" +
-                                "\n0. Thoat" +
-                                "\nChọn chức năng: ");
-                        String choose = scanner.nextLine();
+        int count = 0;
+        System.out.print("Enter your customer code: ");
+        String horse = scanner.nextLine();
+        customers = ReadAndWriteDataCustomer.readFileToList();
+        for (int i = 0; i < customers.size(); i++) {
+            if (horse.equals(customers.get(i).getHorse())) {
+                boolean flag;
+                do {
+                    flag = true;
+                    System.out.print("Select the information you want to edit: " +
+                            "\n1. Name" +
+                            "\n2. Birth Day" +
+                            "\n3. Gender" +
+                            "\n4. ID" +
+                            "\n5. Phone Number" +
+                            "\n6. Email" +
+                            "\n7. Type of customer" +
+                            "\n8. Address" +
+                            "\n0. Exit" +
+                            "\nChoose: ");
+                    String choose = scanner.nextLine();
+                    try {
                         switch (choose) {
                             case "1":
                                 customers.get(i).setName(scanner.nextLine());
@@ -106,13 +107,13 @@ public class CustomerServiceImpl extends Customer implements ICustomerService {
                                 customers.get(i).setEmail(scanner.nextLine());
                                 break;
                             case "7":
-                                System.out.println("Nhập loại khách hàng: " +
+                                System.out.println("Enter a customer type: " +
                                         "\n1. Diamond" +
                                         "\n2. Platinium" +
                                         "\n3. Gold" +
                                         "\n4. Silver" +
                                         "\n5. Member" +
-                                        "\nChọn: ");
+                                        "\nChoose: ");
                                 int chooseGuestType = Integer.parseInt(scanner.nextLine());
                                 customers.get(i).setGuestType(FuramaData.guestTypeList.get(chooseGuestType - 1));
                                 break;
@@ -123,20 +124,20 @@ public class CustomerServiceImpl extends Customer implements ICustomerService {
                                 flag = false;
                                 break;
                             default:
-                                System.out.println("Vui lòng chọn đúng thông tin muốn sửa.");
+                                System.out.println("Please select the correct information you want to correct.");
                         }
-                        customerRepository.editCustomer(customers);
-                    } while (flag);
-                    return;
-                } else {
-                    count++;
-                }
-                if (count == customers.size()) {
-                    System.out.println("Mã khách hàng không tồn tại.");
-                }
+                    } catch (Exception e) {
+                        System.out.println("Invalid customer information please re-enter.");
+                    }
+                    customerRepository.editCustomer(customers);
+                } while (flag);
+                return;
+            } else {
+                count++;
             }
-        } catch (Exception e) {
-            System.out.println("Mã khách hàng không tồn tại.");
+            if (count == customers.size()) {
+                System.out.println("Customer Code does not exist.");
+            }
         }
     }
 
@@ -151,39 +152,40 @@ public class CustomerServiceImpl extends Customer implements ICustomerService {
 
     @Override
     public void deleteCustomer() {
-        try {
-            int count = 0;
-            System.out.println("Nhập mã khách hàng bạn muốn xóa: ");
-            String horse = scanner.nextLine();
-            for (int i = 0; i < customers.size(); i++) {
-                if (horse.equals(customers.get(i).getHorse())) {
-                    System.out.println("Bạn xác nhận xóa khách hàng " + customers.get(i).getName() +
+
+        int count = 0;
+        System.out.println("Enter the customer ID you want to remove: ");
+        String horse = scanner.nextLine();
+        for (int i = 0; i < customers.size(); i++) {
+            if (horse.equals(customers.get(i).getHorse())) {
+                boolean flag;
+                do {
+                    flag = true;
+                    System.out.println("You confirm customer deletion " + customers.get(i).getName() +
                             "\n1. Yes." +
                             "\n2. No.");
                     String choose = scanner.nextLine();
                     switch (choose) {
                         case "1":
                             customers.remove(i);
-                            System.out.println("Bạn đã xóa thành công khách hàng có mã: " + horse);
+                            System.out.println("You've successfully removed a customer with code: " + horse);
                             customerRepository.deleteCustomer(customers);
                             return;
                         case "2":
-                            System.out.println("Bạn đã không xóa.");
+                            System.out.println("You didn't delete.");
                             break;
                         default:
-                            System.out.println("Vui lòng chọn lại.");
+                            flag = false;
+                            System.out.println("Please select again.");
                     }
-                    return;
-                } else {
-                    count++;
-                }
-                if (count == customers.size()) {
-                    System.out.println("Mã khách hàng không tồn tại.");
-                }
+                } while (!flag);
+                return;
+            } else {
+                count++;
             }
-        } catch (
-                Exception e) {
-            System.out.println("Mã khách hàng không tồn tại.");
+            if (count == customers.size()) {
+                System.out.println("Customer Code does not exist.");
+            }
         }
     }
 }

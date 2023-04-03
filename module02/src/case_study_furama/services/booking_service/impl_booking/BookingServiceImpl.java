@@ -7,10 +7,7 @@ import case_study_furama.models.person.Customer;
 import case_study_furama.repository.IBookingRepository;
 import case_study_furama.repository.impl_repository.BookingRepositoryImpl;
 import case_study_furama.services.booking_service.IBookingService;
-import case_study_furama.services.facility_service.IFacilityService;
-import case_study_furama.services.facility_service.IVillaService;
 import case_study_furama.services.facility_service.impl_service.FacilityServiceImpl;
-import case_study_furama.services.facility_service.impl_service.VillaServiceImpl;
 import case_study_furama.utils.CheckRegexService;
 import case_study_furama.utils.ReadAndWriteDataBooking;
 import case_study_furama.utils.ReadAndWriteDataCustomer;
@@ -27,9 +24,9 @@ public class BookingServiceImpl implements IBookingService {
     public void addBooking() {
         bookingList = ReadAndWriteDataBooking.readFileToSet();
         customers = ReadAndWriteDataCustomer.readFileToList();
-        System.out.println("--------DANH SÁCH KHÁCH HÀNG--------");
+        System.out.println("--------CUSTOMER LIST--------");
         for (int i = 0; i < customers.size(); i++) {
-            System.out.println(customers.get(i).getName() + " | Mã khách hàng = " + customers.get(i).getHorse());
+            System.out.println(customers.get(i).getName() + " | Cumstomer code = " + customers.get(i).getHorse());
         }
         String guestHorse = CheckRegexService.checkGuestHorseBookingByContracts();
         String choose = CheckRegexService.checkServiceType();
@@ -37,9 +34,9 @@ public class BookingServiceImpl implements IBookingService {
         String serviceType = FuramaData.typeService.get(Integer.parseInt(choose) - 1);
         String serviceHorse = checkServiceType(serviceType);
         String bookingHorse = CheckRegexService.checkHorseBooking();
-        System.out.print("Ngày bắt đầu: ");
+        System.out.print("Start Date: ");
         String startDate = CheckRegexService.checkDate();
-        System.out.print("Ngày kết thúc: ");
+        System.out.print("End Date: ");
         String endDate = CheckRegexService.checkDate();
         booking = new Booking(guestHorse, serviceType, serviceHorse, bookingHorse, startDate, endDate);
         bookingList.add(booking);
@@ -73,7 +70,7 @@ public class BookingServiceImpl implements IBookingService {
                 case "3":
                     return TypeService.HOUSE;
                 default:
-                    System.out.print("Hãy chọn loại dịch vụ.");
+                    System.out.print("Select your service type.");
 //                    flag = false;
             }
         } while (true);

@@ -47,7 +47,7 @@ public class FacilityServiceImpl implements IFacilityService {
 
     @Override
     public void addNewFacility() {
-        System.out.println("Chọn dịch vụ muốn thêm: " +
+        System.out.println("Choose Service Add: " +
                 "\n1. Add new Villa." +
                 "\n2. Add new House." +
                 "\n3. Add new Room." +
@@ -56,20 +56,17 @@ public class FacilityServiceImpl implements IFacilityService {
         switch (choose) {
             case "1":
                 villa = villaService.addVilla();
-//                facilityRepository.addNewFacility(villa);
                 break;
             case "2":
                 house = houseService.addHouse();
-//                facilityRepository.addNewFacility(house);
                 break;
             case "3":
                 room = roomService.addRoom();
-//                facilityRepository.addNewFacility(room);
                 break;
             case "4":
                 break;
             default:
-                System.out.println("Vui lòng chọn lại.");
+                System.out.println("Please select again.");
         }
     }
 
