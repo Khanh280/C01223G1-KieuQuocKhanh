@@ -1,4 +1,4 @@
-package case_study_furama.services;
+package case_study_furama.utils;
 
 import case_study_furama.data.FuramaData;
 import case_study_furama.models.Booking;
@@ -7,14 +7,13 @@ import case_study_furama.models.facility.House;
 import case_study_furama.models.facility.Room;
 import case_study_furama.models.facility.Villa;
 import case_study_furama.models.person.Customer;
-import case_study_furama.utils.*;
 
 import java.util.*;
 import java.util.regex.Pattern;
 
 public class CheckRegexService {
-    static final String BIRTHDAY_REGEX = "^([0-2][0-9]|3[01])/((0[1-9])|1[0-2])/((19((2[4-9])|([3-9][0-9])))|200[0-5])$";
-    static final String DATE_BOOKING = "^(([0-2][0-9]|3[01])/(0[0-9]|1[0-2])/(20(2[3-9])))$";
+    static final String BIRTHDAY_REGEX = "^((0[1-9]|[12][0-9])|3[01])/((0[1-9])|(1[0-2]))/((19((2[4-9])|([3-9][0-9])))|200[0-5])$";
+    static final String DATE_BOOKING = "^(((0[1-9])|[12][0-9])|3[01])/((0[1-9])|1[0-2])/([2-9]((0[2-9][3-9])|[1-9][0-9][0-9]))$";
     static final String AREA_USER_AND_POOL_REGEX = "^((([3-9][0-9]+)|[1-9][0-9][0-9]+)(?:\\.\\d+)?)$";
     static final String MAXIMUM_PEOPLE_REGEX = "^((1[0-9])|[1-9])$";
     static final String VILLA_HORSE_REGEX = "^(SV)(VL)-[0-9]{4}$";
@@ -24,7 +23,9 @@ public class CheckRegexService {
     static final String NUMBER_FLOORS_PEOPLE_REGEX = "^[1-9]([0-9]+)?$";
     static final String STANDARDS_REGEX = "^[A-Z][A-Za-z]+$";
     static final String NUMBER_INTEGER_REGEX = "^[1-9][0-9]+$";
+    static final String NAME_REGEX = "^(([A-Z][a-z]*)(\\s([A-Z][a-z]*)))(\\s([A-Z][a-z]*))*$";
     static final String RENTAL_TYPE_REGEX = "^[1-3]$";
+    static final String ID_REGEX = "^[A-Z0-9]+$";
     static Scanner scanner = new Scanner(System.in);
     static List<Villa> villaList = new ArrayList<>();
     static List<Room> roomList = new ArrayList<>();
@@ -62,6 +63,7 @@ public class CheckRegexService {
         do {
             flag = true;
             int count = 0;
+            System.out.print("Chọn mã khách hàng: ");
             guestHorse = scanner.nextLine();
             for (int i = 0; i < customers.size(); i++) {
                 if (!customers.get(i).getHorse().equals(guestHorse)) {
@@ -80,10 +82,38 @@ public class CheckRegexService {
         String horseBooking;
         boolean check;
         do {
+            System.out.print("Nhập mã booking: ");
             horseBooking = scanner.nextLine();
             check = Pattern.matches(HORSE_BOOKING_REGEX, horseBooking);
             if (!check) {
                 System.out.print("Mã không hợp lệ");
+            }
+        } while (!check);
+        return horseBooking;
+    }
+
+    public static String checkHorseBookingEditContracts() {
+        bookingList = ReadAndWriteDataBooking.readFileToSet();
+        String horseBooking;
+        boolean check;
+        do {
+            int count = 0;
+            horseBooking = scanner.nextLine();
+            check = Pattern.matches(HORSE_BOOKING_REGEX, horseBooking);
+            if (!check) {
+                System.out.print("Mã không hợp lệ");
+            } else {
+                for (Booking b : bookingList) {
+                    if (!b.getBookingHorse().equals(horseBooking)) {
+                        count++;
+                    } else {
+                        return horseBooking;
+                    }
+                }
+                if (count == bookingList.size()) {
+                    check = false;
+                    System.out.print("Mã không tồn tại ");
+                }
             }
         } while (!check);
         return horseBooking;
@@ -393,10 +423,34 @@ public class CheckRegexService {
             choose = scanner.nextLine();
             check = Pattern.matches(RENTAL_TYPE_REGEX, choose);
             if (!check) {
-                System.out.println("Kiểu thuê không hợp lệ.");
+                System.out.println("Loại dịch vụ không hợp lệ.");
             }
         } while (!check);
         return choose;
     }
-
+    public static String checkName(){
+        String name;
+        boolean check;
+        do{
+            System.out.print("Nhập tên: ");
+            name = scanner.nextLine();
+            check = Pattern.matches(NAME_REGEX,name);
+            if(!check){
+                System.out.println("Tên không hợp lệ.\nNhập lại:");
+            }
+        }while (!check);
+        return name;
+    }
+    public static String checkHorse(){
+        String horse;
+        boolean checkId;
+        do {
+            horse = scanner.nextLine();
+            checkId = Pattern.matches(ID_REGEX, horse);
+            if(!checkId){
+                System.out.println("Mã không hợp lệ.\nNhập lại:");
+            }
+        } while (!checkId);
+        return horse;
+    }
 }

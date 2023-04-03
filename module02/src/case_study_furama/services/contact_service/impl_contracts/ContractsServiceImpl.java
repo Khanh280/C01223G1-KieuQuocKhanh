@@ -5,7 +5,7 @@ import case_study_furama.models.Contract;
 import case_study_furama.repository.IContractsRepository;
 import case_study_furama.repository.impl_repository.ContrcatsRepositoryImpl;
 import case_study_furama.services.contact_service.IContractsService;
-import case_study_furama.services.CheckRegexService;
+import case_study_furama.utils.CheckRegexService;
 import case_study_furama.utils.ReadAndWriteDataBooking;
 import case_study_furama.utils.ReadAndWriteDataContracts;
 
@@ -51,7 +51,7 @@ public class ContractsServiceImpl implements IContractsService {
         System.out.print("Nhập mã hợp đồng: ");
         String contractNumber = CheckRegexService.checkHorseBooking();
         System.out.print("Nhập mã Booking: ");
-        String bookingHorse = CheckRegexService.checkHorseBookingByContracts(bookingQueue,contractList);
+        String bookingHorse = CheckRegexService.checkHorseBookingByContracts(bookingQueue, contractList);
         System.out.print("Số tiền cọc trước: ");
         String predepositAmount = scanner.nextLine();
         System.out.print("Tổng số tiền thanh toán: ");
@@ -60,12 +60,14 @@ public class ContractsServiceImpl implements IContractsService {
         String guestHorse = CheckRegexService.checkGuestHorse(bookingHorse);
         contract = new Contract(contractNumber, bookingHorse, predepositAmount, sumMoneyPay, guestHorse);
         contractList.add(contract);
+        Collections.sort(contractList);
         contractsRepository.createNewContractRepository(contractList);
     }
 
     @Override
     public void displayListContract() {
         contractList = contractsRepository.displayListContractRepository();
+        System.out.println("---------------------------CONTRACTS LIST---------------------------");
         for (int i = 0; i < contractList.size(); i++) {
             System.out.println(contractList.get(i));
         }
@@ -76,10 +78,11 @@ public class ContractsServiceImpl implements IContractsService {
         contractList = contractsRepository.displayListContractRepository();
         System.out.println("Nhập mã hợp đồng: ");
         String contractNumber = scanner.nextLine();
+        int count=0;
         for (int i = 0; i < contractList.size(); i++) {
             if (contractNumber.equals(contractList.get(i).getContractNumber())) {
                 System.out.print("Nhập mã Booking: ");
-                String bookingHorse = CheckRegexService.checkHorseBooking();
+                String bookingHorse = CheckRegexService.checkHorseBookingEditContracts();
                 System.out.print("Số tiền cọc trước: ");
                 String predepositAmount = scanner.nextLine();
                 System.out.print("Tổng số tiền thanh toán: ");
@@ -89,6 +92,11 @@ public class ContractsServiceImpl implements IContractsService {
                 contract = new Contract(contractNumber, bookingHorse, predepositAmount, sumMoneyPay, guestHorse);
                 contractList.set(i, contract);
                 contractsRepository.editContractRepository(contractList);
+            }else{
+                count++;
+            }
+            if(count == contractList.size()){
+                System.out.println("Mã hợp đồng không tồn tại.");
             }
         }
     }

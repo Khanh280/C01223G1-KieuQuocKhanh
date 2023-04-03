@@ -6,6 +6,7 @@ import case_study_furama.services.contact_service.impl_contracts.ContractsServic
 import case_study_furama.services.facility_service.impl_service.FacilityServiceImpl;
 import case_study_furama.services.person_service.impl_service.CustomerServiceImpl;
 import case_study_furama.services.person_service.impl_service.EmployeeServiceImpl;
+import case_study_furama.services.promotion.PromotionServiceImpl;
 
 import java.util.Scanner;
 
@@ -16,12 +17,13 @@ public class FuramaController {
     static FacilityServiceImpl facilityServiceServiceImpl = new FacilityServiceImpl();
     static BookingServiceImpl bookingServiceIml = new BookingServiceImpl();
     static ContractsServiceImpl contractsServiceIml = new ContractsServiceImpl();
+    static PromotionServiceImpl promotionService = new PromotionServiceImpl();
 
     public static void displayMainMenu() {
         boolean flag;
         do {
             flag = true;
-            System.out.println("Select." +
+            System.out.println("---FURAMA MANAGEMENT---" +
                     "\n1. Employee Management" +
                     "\n2. Customer Management" +
                     "\n3. Facility Management" +
@@ -59,7 +61,7 @@ public class FuramaController {
         boolean flag;
         do {
             flag = true;
-            System.out.println("List Employees." +
+            System.out.println("---Employees Management---" +
                     "\n1. Display list Employees" +
                     "\n2. Add new Employee" +
                     "\n3. Edit Employee" +
@@ -93,7 +95,7 @@ public class FuramaController {
         boolean flag;
         do {
             flag = true;
-            System.out.println("Customer Management" +
+            System.out.println("---Customer Management---" +
                     "\n1. Display list customers" +
                     "\n2. Add new customer" +
                     "\n3. Edit customer" +
@@ -127,7 +129,7 @@ public class FuramaController {
         boolean flag;
         do {
             flag = true;
-            System.out.println("Facility Management " +
+            System.out.println("---Facility Management---" +
                     "\n1. Display list facility" +
                     "\n2. Add new facility" +
                     "\n3. Display list facility maintenance" +
@@ -156,7 +158,7 @@ public class FuramaController {
         boolean flag;
         do {
             flag = true;
-            System.out.println("Booking Management " +
+            System.out.println("---Booking Management---" +
                     "\n1. Add new booking " +
                     "\n2. Display list booking" +
                     "\n3. Create new contract" +
@@ -193,13 +195,14 @@ public class FuramaController {
         boolean flag;
         do {
             flag = true;
-            System.out.println("Promotion Management  " +
+            System.out.println("------Promotion Management------" +
                     "\n1. Display list customers use service" +
                     "\n2. Display list customers get voucher" +
                     "\n3. Return main menu");
             String choose = scanner.nextLine();
             switch (choose) {
                 case "1":
+                    promotionService.displayCustomerListUserService();
                     break;
                 case "2":
                     break;

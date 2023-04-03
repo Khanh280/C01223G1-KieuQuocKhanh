@@ -4,6 +4,7 @@ import case_study_furama.data.FuramaData;
 import case_study_furama.models.person.Customer;
 import case_study_furama.repository.impl_repository.CustomerRepository;
 import case_study_furama.services.person_service.ICustomerService;
+import case_study_furama.utils.CheckRegexService;
 import case_study_furama.utils.ReadAndWriteDataCustomer;
 
 import java.util.LinkedList;
@@ -16,19 +17,11 @@ public class CustomerServiceImpl extends Customer implements ICustomerService {
     static Customer customer = new Customer();
     static CustomerRepository customerRepository = new CustomerRepository();
     static Scanner scanner = new Scanner(System.in);
-    static final String ID_REGEX = "^[0-9]+$";
 
     @Override
     public void addCustomer() {
-        String horse;
-        boolean checkId;
+        String horse = CheckRegexService.checkHorse();
         int count = 0;
-        do {
-            System.out.print("Nhập mã khách hàng: ");
-            horse = scanner.nextLine();
-            checkId = Pattern.matches(ID_REGEX, horse);
-            System.out.println(checkId ? "" : "Mã khách hàng không hợp lệ.");
-        } while (!checkId);
         customers = ReadAndWriteDataCustomer.readFileToList();
         for (int i = 0; i < customers.size(); i++) {
             if (horse.equals(customers.get(i).getHorse())) {
@@ -40,10 +33,8 @@ public class CustomerServiceImpl extends Customer implements ICustomerService {
         }
         try {
             if (count == customers.size()) {
-                System.out.print("Nhập tên: ");
-                String name = scanner.nextLine();
-                System.out.print("Nhập ngày sinh: ");
-                String birthDay = scanner.nextLine();
+                String name = CheckRegexService.checkName();
+                String birthDay = CheckRegexService.checkBirthDay();
                 System.out.print("Nhập giới tính: ");
                 String gender = scanner.nextLine();
                 System.out.print("Nhập số CMND: ");
@@ -80,31 +71,62 @@ public class CustomerServiceImpl extends Customer implements ICustomerService {
             customers = ReadAndWriteDataCustomer.readFileToList();
             for (int i = 0; i < customers.size(); i++) {
                 if (horse.equals(customers.get(i).getHorse())) {
-                    System.out.print("Nhập tên: ");
-                    String name = scanner.nextLine();
-                    System.out.print("Nhập ngày sinh: ");
-                    String birthDay = scanner.nextLine();
-                    System.out.print("Nhập giới tính: ");
-                    String gender = scanner.nextLine();
-                    System.out.print("Nhập số CMND: ");
-                    String id = scanner.nextLine();
-                    System.out.print("Nhập số điện thoại: ");
-                    String phoneNumber = scanner.nextLine();
-                    System.out.print("Nhập email: ");
-                    String email = scanner.nextLine();
-                    System.out.println("Nhập loại khách hàng: " +
-                            "\n1. Diamond" +
-                            "\n2. Platinium" +
-                            "\n3. Gold" +
-                            "\n4. Silver" +
-                            "\n5. Member");
-                    int chooseGuestType = Integer.parseInt(scanner.nextLine());
-                    String guestType = FuramaData.guestTypeList.get(chooseGuestType - 1);
-                    System.out.print("Nhập địa chỉ: ");
-                    String address = scanner.nextLine();
-                    customer = new Customer(horse, name, birthDay, gender, id, phoneNumber, email, guestType, address);
-                    customers.set(i, customer);
-                    customerRepository.editCustomer(customers);
+                    boolean flag;
+                    do {
+                        flag = true;
+                        System.out.print("Chọn thông tin muốn sữa: " +
+                                "\n1. Ten" +
+                                "\n2. Ngay sinh" +
+                                "\n3. Gioi tinh" +
+                                "\n4. CMND" +
+                                "\n5. So dien thoai" +
+                                "\n6. Email" +
+                                "\n7. Loại khách hàng" +
+                                "\n8. Dịa chỉ" +
+                                "\n0. Thoat" +
+                                "\nChọn chức năng: ");
+                        String choose = scanner.nextLine();
+                        switch (choose) {
+                            case "1":
+                                customers.get(i).setName(scanner.nextLine());
+                                break;
+                            case "2":
+                                customers.get(i).setBirthDay(scanner.nextLine());
+                                break;
+                            case "3":
+                                customers.get(i).setGender(scanner.nextLine());
+                                break;
+                            case "4":
+                                customers.get(i).setId(scanner.nextLine());
+                                break;
+                            case "5":
+                                customers.get(i).setPhoneNumber(scanner.nextLine());
+                                break;
+                            case "6":
+                                customers.get(i).setEmail(scanner.nextLine());
+                                break;
+                            case "7":
+                                System.out.println("Nhập loại khách hàng: " +
+                                        "\n1. Diamond" +
+                                        "\n2. Platinium" +
+                                        "\n3. Gold" +
+                                        "\n4. Silver" +
+                                        "\n5. Member" +
+                                        "\nChọn: ");
+                                int chooseGuestType = Integer.parseInt(scanner.nextLine());
+                                customers.get(i).setGuestType(FuramaData.guestTypeList.get(chooseGuestType - 1));
+                                break;
+                            case "8":
+                                customers.get(i).setAddress(scanner.nextLine());
+                                break;
+                            case "0":
+                                flag = false;
+                                break;
+                            default:
+                                System.out.println("Vui lòng chọn đúng thông tin muốn sửa.");
+                        }
+                        customerRepository.editCustomer(customers);
+                    } while (flag);
                     return;
                 } else {
                     count++;

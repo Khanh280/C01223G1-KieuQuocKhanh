@@ -77,9 +77,10 @@ public class FacilityServiceImpl implements IFacilityService {
     public void displayListFacilityMaintrnance() {
         mapFacility = facilityRepository.displayListFacilityMaintrnance();
         Set<Facility> set = mapFacility.keySet();
+        System.out.println("----------------------------------------------------------------FACILITY MAINTENANCE LIST----------------------------------------------------------------");
         for (Facility s : set) {
             if (mapFacility.get(s) >= 5) {
-                System.out.println(s + " | Đã sử dụng " + mapFacility.get(s) + " lần, cần bảo trì.");
+                System.out.println(s);
             }
         }
     }

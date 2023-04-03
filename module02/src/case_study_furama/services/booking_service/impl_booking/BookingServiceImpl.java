@@ -11,7 +11,7 @@ import case_study_furama.services.facility_service.IFacilityService;
 import case_study_furama.services.facility_service.IVillaService;
 import case_study_furama.services.facility_service.impl_service.FacilityServiceImpl;
 import case_study_furama.services.facility_service.impl_service.VillaServiceImpl;
-import case_study_furama.services.CheckRegexService;
+import case_study_furama.utils.CheckRegexService;
 import case_study_furama.utils.ReadAndWriteDataBooking;
 import case_study_furama.utils.ReadAndWriteDataCustomer;
 
@@ -22,10 +22,6 @@ public class BookingServiceImpl implements IBookingService {
     static List<Customer> customers = new ArrayList<>();
     static Booking booking = new Booking();
     static IBookingRepository bookingRepository = new BookingRepositoryImpl();
-    static IFacilityService facilityService = new FacilityServiceImpl();
-    static IVillaService villaService = new VillaServiceImpl();
-    Scanner scanner = new Scanner(System.in);
-
 
     @Override
     public void addBooking() {
@@ -35,13 +31,11 @@ public class BookingServiceImpl implements IBookingService {
         for (int i = 0; i < customers.size(); i++) {
             System.out.println(customers.get(i).getName() + " | Mã khách hàng = " + customers.get(i).getHorse());
         }
-        System.out.print("Chọn mã khách hàng: ");
         String guestHorse = CheckRegexService.checkGuestHorseBookingByContracts();
         String choose = CheckRegexService.checkServiceType();
         FacilityServiceImpl.display(chooseSeerviceType(choose));
         String serviceType = FuramaData.typeService.get(Integer.parseInt(choose) - 1);
         String serviceHorse = checkServiceType(serviceType);
-        System.out.print("Nhập mã booking: ");
         String bookingHorse = CheckRegexService.checkHorseBooking();
         System.out.print("Ngày bắt đầu: ");
         String startDate = CheckRegexService.checkDate();
@@ -51,8 +45,6 @@ public class BookingServiceImpl implements IBookingService {
         bookingList.add(booking);
         bookingRepository.addBookingRepository(bookingList, booking);
     }
-
-
 
     public String checkServiceType(String serviceType) {
         String serviceHorse = null;
@@ -82,15 +74,16 @@ public class BookingServiceImpl implements IBookingService {
                     return TypeService.HOUSE;
                 default:
                     System.out.print("Hãy chọn loại dịch vụ.");
-                    flag = false;
+//                    flag = false;
             }
-        } while (!flag);
-        return null;
+        } while (true);
+//        return null;
     }
 
     @Override
     public void displayBookingList() {
         bookingList = bookingRepository.displayBookingListRepository();
+        System.out.println("---------------------------BOOKING LIST---------------------------");
         for (Booking b : bookingList) {
             System.out.println(b);
         }

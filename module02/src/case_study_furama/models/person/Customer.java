@@ -1,6 +1,6 @@
 package case_study_furama.models.person;
 
-public class Customer extends Person {
+public class Customer extends Person implements Comparable<Customer>{
     private String guestType; // loai khach hang
     private String address; // dia chi de ap dung chinh sach phuc vu
 
@@ -53,5 +53,10 @@ public class Customer extends Person {
     public String getInfoToCsv() {
         return this.getHorse() + "," + this.getName() + "," + this.getBirthDay() + "," + this.getGender() + "," + this.getId() + "," +
                 this.getPhoneNumber() + "," + this.getEmail() + "," + this.getGuestType() + "," + this.getAddress();
+    }
+
+    @Override
+    public int compareTo(Customer o) {
+        return this.getHorse().compareTo(o.getHorse());
     }
 }

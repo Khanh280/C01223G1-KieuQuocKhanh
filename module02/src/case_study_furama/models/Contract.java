@@ -2,7 +2,7 @@ package case_study_furama.models;
 
 import java.util.Objects;
 
-public class Contract {
+public class Contract implements Comparable<Contract> {
     private String contractNumber;// ma hop dong
     private String bookingHorse;// ma booking
     private String predepositAmount; // so tien coc truoc
@@ -84,5 +84,10 @@ public class Contract {
     @Override
     public int hashCode() {
         return Objects.hash(contractNumber, bookingHorse, predepositAmount, sumMoneyPay, guestHorse);
+    }
+
+    @Override
+    public int compareTo(Contract o) {
+        return this.contractNumber.compareTo(o.contractNumber);
     }
 }
