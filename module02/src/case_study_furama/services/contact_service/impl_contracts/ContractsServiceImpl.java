@@ -50,6 +50,9 @@ public class ContractsServiceImpl implements IContractsService {
     public void createNewContract() {
         System.out.print("Enter Code Contracts: ");
         String contractNumber = CheckRegexService.checkHorseBooking();
+        for (Booking b:bookingQueue) {
+            System.out.println(b);
+        }
         System.out.print("Enter Code Booking: ");
         String bookingHorse = CheckRegexService.checkHorseBookingByContracts(bookingQueue, contractList);
         System.out.print("Advance deposit amount: ");

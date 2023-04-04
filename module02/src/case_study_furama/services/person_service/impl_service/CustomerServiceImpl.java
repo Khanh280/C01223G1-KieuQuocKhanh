@@ -25,7 +25,7 @@ public class CustomerServiceImpl extends Customer implements ICustomerService {
         int count = 0;
         customers = ReadAndWriteDataCustomer.readFileToList();
         for (int i = 0; i < customers.size(); i++) {
-            if (horse.equals(customers.get(i).getHorse())) {
+            if (customers.get(i).getHorse().equals(horse)) {
                 System.out.println("Customer Code already exists: ");
                 return;
             } else {

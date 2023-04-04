@@ -76,7 +76,7 @@ public class Booking implements Comparable<Booking> {
         return "|GuestHorse = " + guestHorse +
                 "|ServiceType = " + serviceType +
                 "|ServiceHorse = " + serviceHorse +
-                "|bookingHorse = " + bookingHorse +
+                "|BookingHorse = " + bookingHorse +
                 "|StartDate = " + startDate +
                 "|EndtDate = " + endDate + "|";
     }
@@ -116,7 +116,9 @@ public class Booking implements Comparable<Booking> {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Booking booking = (Booking) o;
-        return Objects.equals(bookingHorse, booking.bookingHorse) && Objects.equals(startDate, booking.startDate) && Objects.equals(endDate, booking.endDate) && Objects.equals(guestHorse, booking.guestHorse) && Objects.equals(serviceHorse, booking.serviceHorse) && Objects.equals(serviceType, booking.serviceType);
+        return Objects.equals(bookingHorse, booking.bookingHorse) && Objects.equals(startDate, booking.startDate)
+                && Objects.equals(endDate, booking.endDate) && Objects.equals(guestHorse, booking.guestHorse)
+                && Objects.equals(serviceHorse, booking.serviceHorse) && Objects.equals(serviceType, booking.serviceType);
     }
 
     @Override

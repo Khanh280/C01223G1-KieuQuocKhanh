@@ -82,7 +82,6 @@ public class CheckRegexService {
         String horseBooking;
         boolean check;
         do {
-            System.out.print("Enter Code Booking: ");
             horseBooking = scanner.nextLine();
             check = Pattern.matches(HORSE_BOOKING_REGEX, horseBooking);
             if (!check) {

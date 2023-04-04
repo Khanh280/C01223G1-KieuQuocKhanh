@@ -57,6 +57,10 @@ public class Customer extends Person implements Comparable<Customer>{
 
     @Override
     public int compareTo(Customer o) {
-        return this.getHorse().compareTo(o.getHorse());
+        int result = this.getHorse().compareTo(o.getHorse());
+        if(result ==0){
+            result = this.getId().compareTo(o.getId());
+        }
+        return result;
     }
 }

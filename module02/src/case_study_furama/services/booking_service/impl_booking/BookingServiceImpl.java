@@ -33,6 +33,7 @@ public class BookingServiceImpl implements IBookingService {
         FacilityServiceImpl.display(chooseSeerviceType(choose));
         String serviceType = FuramaData.typeService.get(Integer.parseInt(choose) - 1);
         String serviceHorse = checkServiceType(serviceType);
+        System.out.print("Enter Code Booking: ");
         String bookingHorse = CheckRegexService.checkHorseBooking();
         System.out.print("Start Date: ");
         String startDate = CheckRegexService.checkDate();

@@ -29,7 +29,7 @@ public class FuramaController {
                     "\n3. Facility Management" +
                     "\n4. Booking Management" +
                     "\n5. Promotion Management" +
-                    "\n6. Exit");
+                    "\n0. Exit");
             String choose = scanner.nextLine();
             switch (choose) {
                 case "1":
@@ -47,7 +47,7 @@ public class FuramaController {
                 case "5":
                     promotionManagement();
                     break;
-                case "6":
+                case "0":
                     System.out.println("Exit........");
                     flag = false;
                     break;
@@ -66,7 +66,7 @@ public class FuramaController {
                     "\n2. Add new Employee" +
                     "\n3. Edit Employee" +
                     "\n4. Delete Employee" +
-                    "\n5. Return main menu");
+                    "\n0. Return main menu");
             String choose = scanner.nextLine();
             switch (choose) {
                 case "1":
@@ -82,7 +82,7 @@ public class FuramaController {
                 case "4":
                     employeeServiceImpl.deleteEmployee();
                     break;
-                case "5":
+                case "0":
                     flag = false;
                     break;
                 default:
@@ -100,7 +100,7 @@ public class FuramaController {
                     "\n2. Add new customer" +
                     "\n3. Edit customer" +
                     "\n4. Delete customer" +
-                    "\n5. Return main menu");
+                    "\n0. Return main menu");
             String choose = scanner.nextLine();
             switch (choose) {
                 case "1":
@@ -116,7 +116,7 @@ public class FuramaController {
                 case "4":
                     customerServiceServiceImpl.deleteCustomer();
                     break;
-                case "5":
+                case "0":
                     flag = false;
                     break;
                 default:
@@ -133,7 +133,7 @@ public class FuramaController {
                     "\n1. Display list facility" +
                     "\n2. Add new facility" +
                     "\n3. Display list facility maintenance" +
-                    "\n4. Return main menu");
+                    "\n0. Return main menu");
             String choose = scanner.nextLine();
             switch (choose) {
                 case "1":
@@ -145,7 +145,7 @@ public class FuramaController {
                 case "3":
                     facilityServiceServiceImpl.displayListFacilityMaintrnance();
                     break;
-                case "4":
+                case "0":
                     flag = false;
                     break;
                 default:
@@ -164,7 +164,7 @@ public class FuramaController {
                     "\n3. Create new contract" +
                     "\n4. Display list contracts" +
                     "\n5. Edit contracts" +
-                    "\n6. Return main menu");
+                    "\n0. Return main menu");
             String choose = scanner.nextLine();
             switch (choose) {
                 case "1":
@@ -182,7 +182,7 @@ public class FuramaController {
                 case "5":
                     contractsServiceIml.editContract();
                     break;
-                case "6":
+                case "0":
                     flag = false;
                     break;
                 default:
@@ -198,15 +198,20 @@ public class FuramaController {
             System.out.println("------Promotion Management------" +
                     "\n1. Display list customers use service" +
                     "\n2. Display list customers get voucher" +
-                    "\n3. Return main menu");
+                    "\n3. Add customers get voucher" +
+                    "\n0. Return main menu");
             String choose = scanner.nextLine();
             switch (choose) {
                 case "1":
                     promotionService.displayCustomerListUserService();
                     break;
                 case "2":
+                    promotionService.displayCustomerListGetVoucher();
                     break;
                 case "3":
+                    promotionService.addVoucher();
+                    break;
+                case "0":
                     flag = false;
                     break;
                 default:
