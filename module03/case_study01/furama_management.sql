@@ -1,5 +1,5 @@
--- create database furama_management;
--- use furama_management;
+create database furama_management;
+use furama_management;
 create table vi_tri(
 ma_vi_tri int primary key,
 ten_vi_tri varchar(45)
