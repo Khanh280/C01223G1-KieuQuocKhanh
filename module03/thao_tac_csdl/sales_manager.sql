@@ -1,5 +1,5 @@
-CREATE DATABASE a;
-USE a;
+CREATE DATABASE sales_manager;
+USE sales_manager;
 CREATE TABLE customers(
 customer_id INT PRIMARY KEY,
 customer_name VARCHAR(50) NOT NULL,
