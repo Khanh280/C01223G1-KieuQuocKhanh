@@ -1,17 +1,9 @@
-<<<<<<< HEAD
 CREATE DATABASE furama_management;
-use furama_management;
+USE furama_management;
 CREATE TABLE vi_tri(
 	ma_vi_tri INT PRIMARY KEY,
 	ten_vi_tri VARCHAR(45)
-=======
-create database furama_management;
-use furama_management;
-create table vi_tri(
-ma_vi_tri int primary key,
-ten_vi_tri varchar(45)
->>>>>>> c32fd8b0653400119134c94502f7aaccee1314d9
-);
+    );
 
 CREATE TABLE trinh_do(
 	ma_trinh_do INT PRIMARY KEY,
@@ -145,7 +137,8 @@ INSERT INTO dich_vu VALUES
 	(5, 'House Princess 02', 10000, 4000000, 5, 'normal', 'Có thêm bếp nướng', null, 2, null, 3, 2),
 	(6, 'Room Twin 02', 3000, 900000, 2, 'normal', 'Có tivi', null, null, '1 Xe máy', 4, 3);
 
-INSERT INTO hop_dong VALUES (1, "2020-12-08", "2020-12-08", 0, 3, 1, 3),
+INSERT INTO hop_dong 
+VALUES (1, "2020-12-08", "2020-12-08", 0, 3, 1, 3),
 	(2, "2020-07-14", "2020-07-21", 200000, 7, 3, 1),
 	(3, "2021-03-15", "2021-03-17", 500000, 3, 4, 2),
 	(4, "2021-01-14", "2021-01-18", 1000000, 7, 5, 5),
@@ -158,7 +151,6 @@ INSERT INTO hop_dong VALUES (1, "2020-12-08", "2020-12-08", 0, 3, 1, 3),
 	(11, "2021-04-25", "2021-04-25", 0, 2, 2, 1),
 	(12, "2021-05-25", "2021-05-27", 0, 7, 10, 1);
 
-<<<<<<< HEAD
 INSERT INTO dich_vu_di_kem VALUES (1, "Karaoke", 100000, "giờ", 'tiện nghi,hiện tại'),
 	(2, "thuê xe máy", 10000, "chiếc", 'hỏng 1 xe'),
 	(3, "thuê xe đạp", 20000, "chiếc", 'tốt'),
@@ -183,33 +175,38 @@ SELECT * FROM khach_hang WHERE (round(datediff(curdate(), ngay_sinh) / 365, 0)) 
 AND(dia_chi LIKE"%Đà Năng%"OR dia_chi LIKE"%Quảng Trị%");
 
 -- Task4
-=======
-insert into hop_dong values(1,"2020-12-08","2020-12-08",0,3,1,3),
-(2,"2020-07-14","2020-07-21",200000,7,3,1),
-(3,"2021-03-15","2021-03-17",500000,3,4,2),
-(4,"2021-01-14","2021-01-18",1000000,7,5,5),
-(5,"2021-07-14","2021-07-15",0,7,2,6),
-(6,"2021-06-01","2021-06-03",600000,7,7,6),
-(7,"2021-09-02","2021-09-05",700000,7,4,4),
-(8,"2021-06-17","2021-06-18",1000000,3,4,1),
-(9,"2020-11-19","2020-11-19",0,3,4,3),
-(10,"2021-04-12","2021-04-14",0,10,3,5),
-(11,"2021-04-25","2021-04-25",0,2,2,1),
-(12,"2021-05-25","2021-05-27",0,7,10,1)
-;
-insert into hop_dong_chi_tiet values(1,5,2,4),
-(2,8,2,5),
-(3,15,2,6),
-(4,1,3,1),
-(5,11,3,2),
-(6,1,1,3),
-(7,2,1,2),
-(8,2,12,2);
-insert into dich_vu_di_kem values(1,"Karaoke",100000,"giờ",'tiện nghi,hiện tại'),
-(2,"thuê xe máy",10000,"chiếc",'hỏng 1 xe'),
-(3,"thuê xe đạp",20000,"chiếc",'tốt'),
-(4,"Buffet buổi sáng",15000,"suất",'đầy đủ đồ ăn, tráng miệng'),
-(5,"Buffet buổi trưa",90000,"suất",'đầy đủ đồ ăn, tráng miệng'),
-(6,"Buffet buổi tối",16000,"suất",'đầy đủ đồ ăn, tráng miệng')
-;
->>>>>>> c32fd8b0653400119134c94502f7aaccee1314d9
+
+SELECT kh.*, COUNT(kh.ho_ten) AS so_lan_dat_phong
+FROM khach_hang AS kh
+INNER JOIN hop_dong AS hd ON kh.ma_khach_hang = hd.ma_khach_hang
+INNER JOIN loai_khach AS lk ON kh.ma_loai_khach = lk.ma_loai_khach
+WHERE lk.ten_loai_khach = "Diamond"
+GROUP BY hd.ma_khach_hang
+ORDER BY so_lan_dat_phong;
+
+-- Task5
+SELECT kh.ma_khach_hang, kh.ho_ten, lk.ten_loai_khach, hd.ma_hop_dong, dv.ten_dich_vu, hd.ngay_lam_hop_dong, hd.ngay_ket_thuc, SUM(dv.chi_phi_thue + (hdct.so_luong * dvdk.gia)) AS tong_tien
+FROM khach_hang AS kh
+LEFT JOIN hop_dong AS hd ON kh.ma_khach_hang = hd.ma_khach_hang
+LEFT JOIN dich_vu AS dv ON hd.ma_dich_vu = dv.ma_dich_vu
+LEFT JOIN hop_dong_chi_tiet AS hdct ON hd.ma_hop_dong = hdct.ma_hop_dong
+LEFT JOIN dich_vu_di_kem AS dvdk ON hdct.ma_dich_vu_di_kem = dvdk.ma_dich_vu_di_kem
+LEFT JOIN loai_khach AS lk ON kh.ma_loai_khach = lk.ma_loai_khach
+GROUP BY kh.ma_khach_hang, kh.ho_ten, lk.ten_loai_khach, hd.ma_hop_dong, dv.ten_dich_vu, hd.ngay_lam_hop_dong, hd.ngay_ket_thuc;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
