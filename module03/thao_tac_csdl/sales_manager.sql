@@ -1,5 +1,5 @@
-CREATE DATABASE sales_manager;
-USE sales_manager;
+CREATE DATABASE a;
+USE a;
 CREATE TABLE customers(
 customer_id INT PRIMARY KEY,
 customer_name VARCHAR(50) NOT NULL,
@@ -12,7 +12,7 @@ CREATE TABLE `order`(
     customer_id INT,
     FOREIGN KEY(customer_id) REFERENCES customers(customer_id),
     order_date DATE NOT NULL,
-    order_total_price DOUBLE NOT NULL
+    order_total_price DOUBLE 
 ); 
 
 CREATE TABLE product(
@@ -30,7 +30,7 @@ FOREIGN KEY(product_id) REFERENCES product(product_id),
 order_detail_qty INT CHECK (order_detail_qty>0)
 );
 
-INSERT INTO customers (customer_id, customer_name, sustomer_age) 
+INSERT INTO customers (customer_id, customer_name, customer_age) 
 VALUES (1,"Minh Quan",10),
 	   (2,"Ngoc Anh",20),
 	   (3,"Hong Ha",30);
