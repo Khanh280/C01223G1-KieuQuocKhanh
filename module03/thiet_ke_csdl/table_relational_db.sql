@@ -3,12 +3,8 @@ use quan_ly_don_hang;
 CREATE TABLE nha_cung_cap(
 ma_nha_cung_cap INT PRIMARY KEY,
 ten_nha_cung_cap VARCHAR(50)  NOT NULL,
-dia_chi VARCHAR(50) NOT NULL
-);
-CREATE TABLE so_dien_thoai(
-so_dien_thoai VARCHAR(11) NOT NULL,
-ma_nha_cung_cap INT NOT NULL,
-FOREIGN KEY (ma_nha_cung_cap) REFERENCES nha_cung_cap(ma_nha_cung_cap)
+dia_chi VARCHAR(50) NOT NULL,
+so_dien_thoai VARCHAR(11) PRIMARY KEY,
 );
 CREATE TABLE phieu_xuat(
 ma_phieu_xuat INT PRIMARY KEY ,
