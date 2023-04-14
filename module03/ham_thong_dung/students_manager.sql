@@ -57,26 +57,6 @@ VALUES (1, 1, 8, 1),
        (1, 2, 10, 2),
        (2, 3, 12, 1);
 
--- Hiển thị tất cả các sinh viên có tên bắt đầu bảng ký tự ‘h’
-SELECT * FROM student WHERE student_name LIKE "h%";  
-
--- Hiển thị các thông tin lớp học có thời gian bắt đầu vào tháng 12.
-SELECT * FROM class WHERE month(start_date) = 12;
-
--- Hiển thị tất cả các thông tin môn học có credit trong khoảng từ 3-5.
-SELECT * FROM `subject` WHERE credit BETWEEN 3 AND 5;
-
--- Thay đổi mã lớp(ClassID) của sinh viên có tên ‘Hung’ là 2.
-SET SQL_SAFE_UPDATES =0;
-UPDATE student SET class_id = 2 WHERE student_name = "Hung";
-SET SQL_SAFE_UPDATES =1;
-
--- Hiển thị các thông tin: StudentName, SubName, Mark. Dữ liệu sắp xếp theo điểm thi (mark) giảm dần. nếu trùng sắp theo tên tăng dần.
-SELECT student_name, sub_name, mark 
-FROM student AS st
-INNER JOIN mark m ON st.student_id = m.student_id
-INNER JOIN `subject` AS su ON m.sub_id = su.sub_id
-ORDER BY m.mark, st.student_name ASC;
 
 -- Hiển thị tất cả các thông tin môn học (bảng subject) có credit lớn nhất.
 SELECT * 
@@ -97,12 +77,3 @@ WHERE m.mark =( SELECT MAX(m.mark) AS max_point FROM mark AS m);
  INNER JOIN mark AS m ON s.student_id = m.student_id 
  GROUP BY s.student_id
  ORDER BY diem_trung_binh DESC;
-
-
-
-
-
-
-
-
-
