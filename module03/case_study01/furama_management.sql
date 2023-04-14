@@ -185,14 +185,18 @@ GROUP BY hd.ma_khach_hang
 ORDER BY so_lan_dat_phong;
 
 -- Task5
-SELECT kh.ma_khach_hang, kh.ho_ten, lk.ten_loai_khach, hd.ma_hop_dong, dv.ten_dich_vu, hd.ngay_lam_hop_dong, hd.ngay_ket_thuc, SUM(dv.chi_phi_thue + (hdct.so_luong * dvdk.gia)) AS tong_tien
+ SELECT kh.ma_khach_hang, kh.ho_ten, lk.ten_loai_khach, hd.ma_hop_dong, dv.ten_dich_vu, hd.ngay_lam_hop_dong, hd.ngay_ket_thuc , (dv.chi_phi_thue + (ifnull(hdct.so_luong, 0) * ifnull(dvdk.gia,0))) AS tong_tien 
+--  SELECT *
 FROM khach_hang AS kh
 LEFT JOIN hop_dong AS hd ON kh.ma_khach_hang = hd.ma_khach_hang
 LEFT JOIN dich_vu AS dv ON hd.ma_dich_vu = dv.ma_dich_vu
 LEFT JOIN hop_dong_chi_tiet AS hdct ON hd.ma_hop_dong = hdct.ma_hop_dong
 LEFT JOIN dich_vu_di_kem AS dvdk ON hdct.ma_dich_vu_di_kem = dvdk.ma_dich_vu_di_kem
 LEFT JOIN loai_khach AS lk ON kh.ma_loai_khach = lk.ma_loai_khach
-GROUP BY kh.ma_khach_hang, kh.ho_ten, lk.ten_loai_khach, hd.ma_hop_dong, dv.ten_dich_vu, hd.ngay_lam_hop_dong, hd.ngay_ket_thuc;
+GROUP BY kh.ma_khach_hang, kh.ho_ten, lk.ten_loai_khach, hd.ma_hop_dong, dv.ten_dich_vu, hd.ngay_lam_hop_dong, hd.ngay_ket_thuc,tong_tien;
+
+
+
 
 
 
