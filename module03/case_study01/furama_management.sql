@@ -195,22 +195,49 @@ LEFT JOIN dich_vu_di_kem AS dvdk ON hdct.ma_dich_vu_di_kem = dvdk.ma_dich_vu_di_
 LEFT JOIN loai_khach AS lk ON kh.ma_loai_khach = lk.ma_loai_khach
 GROUP BY kh.ma_khach_hang, kh.ho_ten, lk.ten_loai_khach, hd.ma_hop_dong, dv.ten_dich_vu, hd.ngay_lam_hop_dong, hd.ngay_ket_thuc,tong_tien;
 
+-- Task6 
+SELECT dv.ma_dich_vu, dv.ten_dich_vu, dv.dien_tich, dv.chi_phi_thue, ldv.ten_loai_dich_vu 
+FROM dich_vu AS dv 
+INNER JOIN loai_dich_vu AS ldv ON dv.ma_loai_dich_vu = ldv.ma_loai_dich_vu 
+WHERE dv.ma_dich_vu NOT IN (
+    SELECT DISTINCT hd.ma_dich_vu 
+    FROM hop_dong AS hd 
+    WHERE YEAR(hd.ngay_lam_hop_dong) = 2021 AND QUARTER(hd.ngay_lam_hop_dong) = 1
+) ;
 
+-- Task7
 
+SELECT dv.ma_dich_vu, dv.ten_dich_vu, dv.dien_tich,dv.so_nguoi_toi_da, dv.chi_phi_thue, ldv.ten_loai_dich_vu 
+FROM dich_vu AS dv 
+INNER JOIN loai_dich_vu AS ldv ON dv.ma_loai_dich_vu = ldv.ma_loai_dich_vu 
+WHERE  dv.ma_dich_vu IN (
+SELECT DISTINCT hd.ma_dich_vu
+FROM  hop_dong AS hd
+WHERE year(hd.ngay_lam_hop_dong) = 2020) 
+AND dv.ma_dich_vu NOT IN (
+SELECT DISTINCT hd.ma_dich_vu
+FROM  hop_dong AS hd
+WHERE year(hd.ngay_lam_hop_dong) = 2021);
 
+-- Task8 8.	Hiển thị thông tin ho_ten khách hàng có trong hệ thống, với yêu cầu ho_ten không trùng nhau.
+-- Học viên sử dụng theo 3 cách khác nhau để thực hiện yêu cầu trên.
+-- Cach1
+SELECT ho_ten
+FROM khach_hang
+GROUP BY ho_ten;
+-- Cach2
+SELECT DISTINCT ho_ten
+FROM khach_hang;
 
+-- Task9 Thực hiện thống kê doanh thu theo tháng, nghĩa là tương ứng với mỗi tháng trong năm 2021 thì sẽ có bao nhiêu khách hàng thực hiện đặt phòng.
 
-
-
-
-
-
-
-
-
-
-
-
-
+ SELECT month(hd.ngay_lam_hop_dong), SUM(dv.chi_phi_thue + (ifnull(hdct.so_luong, 0) * ifnull(dvdk.gia,0))) AS tong_tien 
+--  SELECT *
+FROM khach_hang AS kh
+LEFT JOIN hop_dong AS hd ON kh.ma_khach_hang = hd.ma_khach_hang
+LEFT JOIN dich_vu AS dv ON hd.ma_dich_vu = dv.ma_dich_vu
+LEFT JOIN hop_dong_chi_tiet AS hdct ON hd.ma_hop_dong = hdct.ma_hop_dong
+LEFT JOIN dich_vu_di_kem AS dvdk ON hdct.ma_dich_vu_di_kem = dvdk.ma_dich_vu_di_kem
+GROUP BY month(hd.ngay_lam_hop_dong);
 
 

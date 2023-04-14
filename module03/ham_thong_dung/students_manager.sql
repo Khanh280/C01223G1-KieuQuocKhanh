@@ -57,7 +57,6 @@ VALUES (1, 1, 8, 1),
        (1, 2, 10, 2),
        (2, 3, 12, 1);
 
-
 -- Hiển thị tất cả các thông tin môn học (bảng subject) có credit lớn nhất.
 SELECT * 
 FROM `subject`
