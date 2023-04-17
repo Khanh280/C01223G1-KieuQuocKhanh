@@ -25,7 +25,7 @@ credit TINYINT NOT NULL DEFAULT  1 CHECK (credit >=1),
 `status` BIT DEFAULT 1
 );
 
-CREATE TABLE mark(
+CREATE TABLE marks(
     mark_id    INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
     sub_id     INT NOT NULL,
     student_id INT NOT NULL,
@@ -52,7 +52,7 @@ INSERT INTO `subject` VALUES (1, 'CF', 5, 1),
        (2, 'C', 6, 1),
        (3, 'HDJ', 5, 1),
        (4, 'RDBMS', 10, 1);
-INSERT INTO mark (sub_id, student_id, mark, exam_times)
+INSERT INTO marks (sub_id, student_id, mark, exam_times)
 VALUES (1, 1, 8, 1),
        (1, 2, 10, 2),
        (2, 3, 12, 1);
@@ -74,6 +74,6 @@ SET SQL_SAFE_UPDATES =1;
 -- Hiển thị các thông tin: StudentName, SubName, Mark. Dữ liệu sắp xếp theo điểm thi (mark) giảm dần. nếu trùng sắp theo tên tăng dần.
 SELECT student_name, sub_name, mark 
 FROM student AS st
-INNER JOIN mark m ON st.student_id = m.student_id
+INNER JOIN marks m ON st.student_id = m.student_id
 INNER JOIN `subject` AS su ON m.sub_id = su.sub_id
 ORDER BY m.mark, st.student_name ASC;

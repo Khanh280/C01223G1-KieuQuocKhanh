@@ -188,7 +188,7 @@ ORDER BY so_lan_dat_phong;
 -- Task5 5.	Hiển thị ma_khach_hang, ho_ten, ten_loai_khach, ma_hop_dong, ten_dich_vu, ngay_lam_hop_dong, ngay_ket_thuc,
 -- tong_tien (Với tổng tiền được tính theo công thức như sau: Chi Phí Thuê + Số Lượng * Giá, với Số Lượng và Giá là từ bảng dich_vu_di_kem, hop_dong_chi_tiet)
 -- cho tất cả các khách hàng đã từng đặt phòng. (những khách hàng nào chưa từng đặt phòng cũng phải hiển thị ra).
- SELECT kh.ma_khach_hang, kh.ho_ten, lk.ten_loai_khach, hd.ma_hop_dong, dv.ten_dich_vu, hd.ngay_lam_hop_dong, hd.ngay_ket_thuc , (dv.chi_phi_thue + (ifnull(hdct.so_luong, 0) * ifnull(dvdk.gia,0))) AS tong_tien 
+ SELECT kh.ma_khach_hang, kh.ho_ten, lk.ten_loai_khach, hd.ma_hop_dong, dv.ten_dich_vu, hd.ngay_lam_hop_dong, hd.ngay_ket_thuc , SUM(ifnull(dv.chi_phi_thue,0) + (ifnull(hdct.so_luong, 0) * ifnull(dvdk.gia,0))) AS tong_tien 
 --  SELECT *
 FROM khach_hang AS kh
 LEFT JOIN hop_dong AS hd ON kh.ma_khach_hang = hd.ma_khach_hang
@@ -196,7 +196,7 @@ LEFT JOIN dich_vu AS dv ON hd.ma_dich_vu = dv.ma_dich_vu
 LEFT JOIN hop_dong_chi_tiet AS hdct ON hd.ma_hop_dong = hdct.ma_hop_dong
 LEFT JOIN dich_vu_di_kem AS dvdk ON hdct.ma_dich_vu_di_kem = dvdk.ma_dich_vu_di_kem
 LEFT JOIN loai_khach AS lk ON kh.ma_loai_khach = lk.ma_loai_khach
-GROUP BY kh.ma_khach_hang, kh.ho_ten, lk.ten_loai_khach, hd.ma_hop_dong, dv.ten_dich_vu, hd.ngay_lam_hop_dong, hd.ngay_ket_thuc,tong_tien;
+GROUP BY kh.ma_khach_hang, kh.ho_ten, lk.ten_loai_khach, hd.ma_hop_dong, dv.ten_dich_vu, hd.ngay_lam_hop_dong, hd.ngay_ket_thuc ;
 
 -- Task6 Hiển thị ma_dich_vu, ten_dich_vu, dien_tich, chi_phi_thue, ten_loai_dich_vu của tất cả các loại
 -- dịch vụ chưa từng được khách hàng thực hiện đặt từ quý 1 của năm 2021 (Quý 1 là tháng 1, 2, 3).
@@ -275,24 +275,18 @@ INNER JOIN nhan_vien AS nv ON hd.ma_nhan_vien = nv.ma_nhan_vien
 INNER JOIN khach_hang AS kh ON hd.ma_khach_hang = kh.ma_khach_hang
 INNER JOIN dich_vu AS dv ON hd.ma_dich_vu = dv.ma_dich_vu
 LEFT JOIN hop_dong_chi_tiet AS hdct ON hd.ma_hop_dong = hdct.ma_hop_dong
-LEFT JOIN dich_vu_di_kem AS dvdk ON hdct.ma_dich_vu_di_kem = dvdk.ma_dich_vu_di_kem
 WHERE
 hd.ma_dich_vu IN (
 SELECT hd.ma_dich_vu
 FROM dich_vu AS dv
 INNER JOIN hop_dong AS hd ON dv.ma_dich_vu = hd.ma_dich_vu
 WHERE year(hd.ngay_lam_hop_dong) = 2020 AND quarter(hd.ngay_lam_hop_dong) = 4)
-AND
- hd.ma_dich_vu NOT IN (
-SELECT hd.ma_dich_vu
-FROM dich_vu AS dv
-INNER JOIN hop_dong AS hd ON dv.ma_dich_vu = hd.ma_dich_vu
-WHERE year(hd.ngay_lam_hop_dong) = 2021 AND (quarter(hd.ngay_lam_hop_dong) = 1 OR quarter(hd.ngay_lam_hop_dong) =2)
-)
- GROUP BY hd.ma_hop_dong
+AND NOT ( year(hd.ngay_lam_hop_dong) = 2021 AND (quarter(hd.ngay_lam_hop_dong) = 1 OR quarter(hd.ngay_lam_hop_dong) =2) )
+GROUP BY hd.ma_hop_dong
 ;
 
--- Task13.	Hiển thị thông tin các Dịch vụ đi kèm được sử dụng nhiều nhất bởi các Khách hàng đã đặt phòng. (Lưu ý là có thể có nhiều dịch vụ có số lần sử dụng nhiều như nhau).
+-- Task13.	Hiển thị thông tin các Dịch vụ đi kèm được sử dụng nhiều nhất bởi các Khách hàng đã đặt phòng.
+-- (Lưu ý là có thể có nhiều dịch vụ có số lần sử dụng nhiều như nhau).
 SELECT dvdk.ma_dich_vu_di_kem,dvdk.ten_dich_vu_di_kem, SUM(hdct.so_luong) AS so_luong_dich_vu_di_kem
 FROM dich_vu_di_kem AS dvdk
 INNER JOIN hop_dong_chi_tiet AS hdct ON dvdk.ma_dich_vu_di_kem = hdct.ma_dich_vu_di_kem
@@ -321,7 +315,7 @@ SELECT dvdk.ten_dich_vu_di_kem
 FROM dich_vu_di_kem AS dvdk
 INNER JOIN hop_dong_chi_tiet AS hdct ON dvdk.ma_dich_vu_di_kem = hdct.ma_dich_vu_di_kem
 GROUP BY hdct.ma_dich_vu_di_kem
-HAVING COUNT(*) =1); -- count(*) = 1 sẽ đếm hdct.ma_dich_vu_di_kem bên phía hop_dong_chi_tiet nếu chỉ xuất hiện 1 lần thì sẽ trả về 
+HAVING COUNT(*) =1); -- count(*) = 1 sẽ đếm số lần trên những dữ liệu vừa được trả về và group by theo hdct.ma_dich_vu_di_kem nếu chỉ xuất hiện 1 lần thì sẽ trả về 
 
 
 -- Task15.	Hiển thi thông tin của tất cả nhân viên bao gồm ma_nhan_vien, ho_ten, ten_trinh_do, ten_bo_phan,
@@ -334,10 +328,49 @@ INNER JOIN bo_phan AS bp ON nv.ma_bo_phan = bp.ma_bo_phan
 INNER JOIN trinh_do AS td ON nv.ma_trinh_do = td.ma_trinh_do
 WHERE (year(hd.ngay_lam_hop_dong ) BETWEEN 2020 AND 2021)
 GROUP BY hd.ma_nhan_vien 
-HAVING COUNT(hd.ma_nhan_vien) <=3  
+HAVING COUNT(hd.ma_nhan_vien) <=3;
 
+-- Task16.	Xóa những Nhân viên chưa từng lập được hợp đồng nào từ năm 2019 đến năm 2021.
 
+-- Tạo 1 bản tạm để lưu danh sách các nhân viên sẽ bị xóa 
+CREATE TEMPORARY TABLE tmp_nv_xoa AS
+SELECT nv.ma_nhan_vien
+FROM nhan_vien AS nv
+WHERE nv.ma_nhan_vien NOT IN (
+    SELECT ma_nhan_vien
+    FROM hop_dong AS hd
+    WHERE YEAR(hd.ngay_lam_hop_dong) BETWEEN 2019 AND 2021
+    GROUP BY ma_nhan_vien
+);
 
+-- Xóa nhân viên dựa trên dữ liệu từ bản tạm trên
+DELETE FROM nhan_vien
+WHERE ma_nhan_vien IN (
+    SELECT ma_nhan_vien
+    FROM tmp_nv_xoa
+);
+-- Nghien cuu dung trigger de xoa sau
+-- Task17.	Cập nhật thông tin những khách hàng có ten_loai_khach từ Platinum lên Diamond,
+-- chỉ cập nhật những khách hàng đã từng đặt phòng với Tổng Tiền thanh toán trong năm 2021 là lớn hơn 10.000.000 VNĐ.
 
+SELECT kh.*,SUM(dv.chi_phi_thue + (IFNULL(hdct.so_luong,0) * IFNULL(dvdk.gia,0) )) AS tong_tien
+FROM hop_dong AS hd
+INNER JOIN khach_hang AS kh ON hd.ma_khach_hang = kh.ma_khach_hang
+lEFT JOIN hop_dong_chi_tiet As hdct ON hd.ma_hop_dong = hdct.ma_hop_dong
+LEFT JOIN dich_vu AS dv ON hd.ma_dich_vu = dv.ma_dich_vu
+LEFT JOIN dich_vu_di_kem As dvdk On hdct.ma_dich_vu_di_kem = dvdk.ma_dich_vu_di_kem
+LEFT JOIN loai_khach AS lk ON kh.ma_loai_khach = lk.ma_loai_khach
+WHERE lk.ten_loai_khach = "Platinium" AND YEAR(hd.ngay_lam_hop_dong ) = 2021
+GROUP BY hd.ma_hop_dong
+HAVING tong_tien > 1000000;
 
+-- Task18 
 
+CREATE VIEW view_khach_hang AS (
+SELECT kh.*, hd.ma_hop_dong,hd.tien_dat_coc, hd.ngay_lam_hop_dong, hd.ngay_ket_thuc, hd.ma_nhan_vien, hd.ma_dich_vu
+FROM khach_hang AS kh
+INNER JOIN hop_dong AS hd ON kh.ma_khach_hang = hd.ma_khach_hang
+WHERE YEAR(hd.ngay_lam_hop_dong) < 2021 
+);
+DROP VIEW view_khach_hang;
+SELECT * FROM view_khach_hang
