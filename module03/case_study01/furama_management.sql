@@ -85,7 +85,7 @@ CREATE TABLE hop_dong(
 	ngay_ket_thuc DATETIME,
 	tien_dat_coc DOUBLE,
 	ma_nhan_vien INT, FOREIGN KEY(ma_nhan_vien)REFERENCES nhan_vien(ma_nhan_vien),
-	ma_khach_hang INT, FOREIGN KEY(ma_khach_hang)REFERENCES khach_hang(ma_khach_hang),
+	ma_khach_hang INT, FOREIGN KEY(ma_khach_hang)REFERENCES khach_hang(ma_khach_hang) ON DELETE SET NULL,
 	ma_dich_vu INT, FOREIGN KEY(ma_dich_vu)REFERENCES dich_vu(ma_dich_vu)
 );
 
@@ -188,8 +188,8 @@ ORDER BY so_lan_dat_phong;
 -- Task5 5.	Hiển thị ma_khach_hang, ho_ten, ten_loai_khach, ma_hop_dong, ten_dich_vu, ngay_lam_hop_dong, ngay_ket_thuc,
 -- tong_tien (Với tổng tiền được tính theo công thức như sau: Chi Phí Thuê + Số Lượng * Giá, với Số Lượng và Giá là từ bảng dich_vu_di_kem, hop_dong_chi_tiet)
 -- cho tất cả các khách hàng đã từng đặt phòng. (những khách hàng nào chưa từng đặt phòng cũng phải hiển thị ra).
- SELECT kh.ma_khach_hang, kh.ho_ten, lk.ten_loai_khach, hd.ma_hop_dong, dv.ten_dich_vu, hd.ngay_lam_hop_dong, hd.ngay_ket_thuc , SUM(ifnull(dv.chi_phi_thue,0) + (ifnull(hdct.so_luong, 0) * ifnull(dvdk.gia,0))) AS tong_tien 
---  SELECT *
+ SELECT kh.ma_khach_hang, kh.ho_ten, lk.ten_loai_khach, hd.ma_hop_dong, dv.ten_dich_vu, hd.ngay_lam_hop_dong, hd.ngay_ket_thuc ,
+(ifnull(dv.chi_phi_thue,0) + SUM( (ifnull(hdct.so_luong, 0) * ifnull(dvdk.gia,0) ) )) AS tong_tien 
 FROM khach_hang AS kh
 LEFT JOIN hop_dong AS hd ON kh.ma_khach_hang = hd.ma_khach_hang
 LEFT JOIN dich_vu AS dv ON hd.ma_dich_vu = dv.ma_dich_vu
@@ -331,46 +331,66 @@ GROUP BY hd.ma_nhan_vien
 HAVING COUNT(hd.ma_nhan_vien) <=3;
 
 -- Task16.	Xóa những Nhân viên chưa từng lập được hợp đồng nào từ năm 2019 đến năm 2021.
-
--- Tạo 1 bản tạm để lưu danh sách các nhân viên sẽ bị xóa 
-CREATE TEMPORARY TABLE tmp_nv_xoa AS
-SELECT nv.ma_nhan_vien
-FROM nhan_vien AS nv
-WHERE nv.ma_nhan_vien NOT IN (
+DELETE FROM nhan_vien
+WHERE ma_nhan_vien NOT IN (
     SELECT ma_nhan_vien
     FROM hop_dong AS hd
     WHERE YEAR(hd.ngay_lam_hop_dong) BETWEEN 2019 AND 2021
     GROUP BY ma_nhan_vien
-);
+);-- Nghien cuu dung trigger de xoa sau
 
--- Xóa nhân viên dựa trên dữ liệu từ bản tạm trên
-DELETE FROM nhan_vien
-WHERE ma_nhan_vien IN (
-    SELECT ma_nhan_vien
-    FROM tmp_nv_xoa
-);
--- Nghien cuu dung trigger de xoa sau
 -- Task17.	Cập nhật thông tin những khách hàng có ten_loai_khach từ Platinum lên Diamond,
 -- chỉ cập nhật những khách hàng đã từng đặt phòng với Tổng Tiền thanh toán trong năm 2021 là lớn hơn 10.000.000 VNĐ.
 
-SELECT kh.*,SUM(dv.chi_phi_thue + (IFNULL(hdct.so_luong,0) * IFNULL(dvdk.gia,0) )) AS tong_tien
+CREATE VIEW v_update_khach_hang AS 
+SELECT hd.ma_khach_hang, (dv.chi_phi_thue +  SUM(IFNULL(dvdk.gia,0) * IFNULL(hdct.so_luong,0))) AS tong_tien
 FROM hop_dong AS hd
+LEFT JOIN hop_dong_chi_tiet AS hdct ON hd.ma_hop_dong = hdct.ma_hop_dong
+INNER JOIN dich_vu AS dv ON hd.ma_dich_vu = dv.ma_dich_vu
+LEFT JOIN dich_vu_di_kem AS dvdk ON hdct.ma_dich_vu_di_kem = dvdk.ma_dich_vu_di_kem
 INNER JOIN khach_hang AS kh ON hd.ma_khach_hang = kh.ma_khach_hang
-lEFT JOIN hop_dong_chi_tiet As hdct ON hd.ma_hop_dong = hdct.ma_hop_dong
-LEFT JOIN dich_vu AS dv ON hd.ma_dich_vu = dv.ma_dich_vu
-LEFT JOIN dich_vu_di_kem As dvdk On hdct.ma_dich_vu_di_kem = dvdk.ma_dich_vu_di_kem
-LEFT JOIN loai_khach AS lk ON kh.ma_loai_khach = lk.ma_loai_khach
-WHERE lk.ten_loai_khach = "Platinium" AND YEAR(hd.ngay_lam_hop_dong ) = 2021
-GROUP BY hd.ma_hop_dong
-HAVING tong_tien > 1000000;
+INNER JOIN loai_khach AS lk ON kh.ma_loai_khach = lk.ma_loai_khach
+WHERE YEAR(hd.ngay_lam_hop_dong) = 2021 AND lk.ten_loai_khach = "Platinium"
+GROUP BY hd.ma_khach_hang,dv.chi_phi_thue  
+HAVING tong_tien > 1000000; -- Em nghĩ đề bài sai, Tổng Tiền thanh toán trong năm 2021 là lớn hơn 1.000.000 VNĐ thay vì 10.000.000 VNĐ .
 
--- Task18 
+UPDATE khach_hang SET ma_loai_khach = 1 WHERE ma_khach_hang IN (SELECT ma_khach_hang FROM v_update_khach_hang);
 
-CREATE VIEW view_khach_hang AS (
-SELECT kh.*, hd.ma_hop_dong,hd.tien_dat_coc, hd.ngay_lam_hop_dong, hd.ngay_ket_thuc, hd.ma_nhan_vien, hd.ma_dich_vu
-FROM khach_hang AS kh
-INNER JOIN hop_dong AS hd ON kh.ma_khach_hang = hd.ma_khach_hang
-WHERE YEAR(hd.ngay_lam_hop_dong) < 2021 
+-- Task18.	Xóa những khách hàng có hợp đồng trước năm 2021 (chú ý ràng buộc giữa các bảng).
+
+SET FOREIGN_KEY_CHECKS = 1;
+DELETE FROM khach_hang 
+WHERE ma_khach_hang IN(
+SELECT hd.ma_khach_hang 
+FROM hop_dong AS hd
+WHERE YEAR(hd.ngay_lam_hop_dong) < 2021);
+
+-- Task19.Cập nhật giá cho các dịch vụ đi kèm được sử dụng trên 10 lần trong năm 2020 lên gấp đôi.
+
+CREATE VIEW v_so_lan_dung_dich_vu AS
+SELECT  hdct.ma_dich_vu_di_kem,SUM(hdct.so_luong) AS so_lan_su_dung
+FROM hop_dong_chi_tiet AS hdct
+INNER JOIN hop_dong AS hd ON hdct.ma_hop_dong = hd.ma_hop_dong
+WHERE YEAR(hd.ngay_lam_hop_dong) = 2020
+GROUP BY hdct.ma_dich_vu_di_kem
+HAVING so_lan_su_dung >=10
+ORDER BY so_lan_su_dung DESC;
+
+UPDATE dich_vu_di_kem SET gia = (gia * 2) 
+WHERE ma_dich_vu_di_kem  IN (
+SELECT sl.ma_dich_vu_di_kem from v_so_lan_dung_dich_vu AS sl
 );
-DROP VIEW view_khach_hang;
-SELECT * FROM view_khach_hang
+
+
+-- Task20.	Hiển thị thông tin của tất cả các nhân viên và khách hàng có trong hệ thống, 
+-- thông tin hiển thị bao gồm id (ma_nhan_vien, ma_khach_hang), ho_ten, email, so_dien_thoai, ngay_sinh, dia_chi.
+
+SELECT nv.ma_nhan_vien AS id , nv.ho_ten, nv.email, nv.so_dien_thoai, nv.ngay_sinh, nv.dia_chi
+FROM nhan_vien As nv
+UNION ALL 
+SELECT kh.ma_khach_hang, kh.ho_ten, kh.email, kh.so_dien_thoai, kh.ngay_sinh, kh.dia_chi
+FROM khach_hang As kh;
+
+
+
+
