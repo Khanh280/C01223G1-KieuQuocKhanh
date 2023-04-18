@@ -253,15 +253,12 @@ GROUP BY month(hd.ngay_lam_hop_dong);
 
 --  Task 10 Hiển thị thông tin tương ứng với từng hợp đồng thì đã sử dụng bao nhiêu dịch vụ đi kèm. Kết quả hiển thị bao gồm ma_hop_dong,
 -- ngay_lam_hop_dong, ngay_ket_thuc, tien_dat_coc, so_luong_dich_vu_di_kem (được tính dựa trên việc sum so_luong ở dich_vu_di_kem).
-SELECT hd.ma_hop_dong AS 'Mã  hợp đồng' , hd.ngay_lam_hop_dong AS 'Ngày làm hợp đồng' ,hd.ngay_ket_thuc AS 'Ngày kết thúc', 
-hd.tien_dat_coc AS 'Tiền cọc', SUM(IFNULL(hdct.so_luong ,0)) AS 'Số lượng hợp dịch vụ đi kèm '
-FROM hop_dong AS hd
-INNER JOIN hop_dong_chi_tiet AS hdct ON  hd.ma_hop_dong = hdct.ma_hop_dong
-INNER JOIN dich_vu_di_kem AS dvdk ON hdct.ma_dich_vu_di_kem = dvdk.ma_dich_vu_di_kem
+SELECT hd.ma_hop_dong, hd.ngay_lam_hop_dong, hd.ngay_ket_thuc, hd.tien_dat_coc, SUM(hdct.so_luong) AS tong
+FROM hop_dong As hd 
+LEFT JOIN hop_dong_chi_tiet As hdct ON hd.ma_hop_dong = hdct.ma_hop_dong
 GROUP BY hd.ma_hop_dong;
 
 -- Task11.	Hiển thị thông tin các dịch vụ đi kèm đã được sử dụng bởi những khách hàng có ten_loai_khach là “Diamond” và có dia_chi ở “Vinh” hoặc “Quảng Ngãi”.
-
 SELECT dvdk.* 
 FROM dich_vu_di_kem AS dvdk
 INNER JOIN hop_dong_chi_tiet AS hdct ON dvdk.ma_dich_vu_di_kem = hdct.ma_dich_vu_di_kem
@@ -359,7 +356,7 @@ INNER JOIN loai_khach AS lk ON kh.ma_loai_khach = lk.ma_loai_khach
 WHERE YEAR(hd.ngay_lam_hop_dong) = 2021 AND lk.ten_loai_khach = "Platinium"
 GROUP BY hd.ma_khach_hang,dv.chi_phi_thue  
 HAVING tong_tien > 1000000; -- Em nghĩ đề bài sai, Tổng Tiền thanh toán trong năm 2021 là lớn hơn 1.000.000 VNĐ thay vì 10.000.000 VNĐ .
-
+SET SQL_SAFE_UPDATES =1;
 UPDATE khach_hang SET ma_loai_khach = 1 WHERE ma_khach_hang IN (SELECT ma_khach_hang FROM v_update_khach_hang);
 
 -- Task18.	Xóa những khách hàng có hợp đồng trước năm 2021 (chú ý ràng buộc giữa các bảng).
