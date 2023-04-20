@@ -1,0 +1,24 @@
+div {
+    width: 700px;
+    height: 500px;
+    text-align: justify;
+}
+hr {
+    margin-top: -20px;
+}
+
+div p {
+    text-indent: 30px;
+    font-size: 20px;
+    font-weight: lighter;
+}
+a{
+    color: #065ac1;
+    text-decoration: none;
+}
+#sub-heading {
+    margin-top: -10px;
+}
+
+
+
