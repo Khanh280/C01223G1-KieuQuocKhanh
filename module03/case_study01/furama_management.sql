@@ -26,7 +26,8 @@ CREATE TABLE nhan_vien(
 	dia_chi VARCHAR(45),
 	ma_vi_tri INT, FOREIGN KEY(ma_vi_tri)REFERENCES vi_tri(ma_vi_tri),
 	ma_trinh_do INT, FOREIGN KEY(ma_trinh_do)REFERENCES trinh_do(ma_trinh_do),
-	ma_bo_phan INT, FOREIGN KEY(ma_bo_phan)REFERENCES bo_phan(ma_bo_phan)
+	ma_bo_phan INT, FOREIGN KEY(ma_bo_phan)REFERENCES bo_phan(ma_bo_phan),
+    is_delete BIT(1) DEFAULT 0
 );
 
 CREATE TABLE loai_khach(
@@ -38,12 +39,13 @@ CREATE TABLE khach_hang(
 	ma_khach_hang INT PRIMARY KEY,
 	ho_ten VARCHAR(45),
 	ngay_sinh DATE,
-	gioi_ting BIT(1),
+	gioi_tinh BIT(1),
 	so_cmnd VARCHAR(45),
 	so_dien_thoai VARCHAR(45),
 	email VARCHAR(45),
 	dia_chi VARCHAR(45),
-	ma_loai_khach INT, FOREIGN KEY(ma_loai_khach)REFERENCES loai_khach(ma_loai_khach)
+	ma_loai_khach INT, FOREIGN KEY(ma_loai_khach)REFERENCES loai_khach(ma_loai_khach),
+	is_delete BIT(1) DEFAULT 0
 );
 
 CREATE TABLE loai_dich_vu(
@@ -85,22 +87,24 @@ CREATE TABLE hop_dong(
 	ngay_ket_thuc DATETIME,
 	tien_dat_coc DOUBLE,
 	ma_nhan_vien INT, FOREIGN KEY(ma_nhan_vien)REFERENCES nhan_vien(ma_nhan_vien),
-	ma_khach_hang INT, FOREIGN KEY(ma_khach_hang)REFERENCES khach_hang(ma_khach_hang) ON DELETE SET NULL,
-	ma_dich_vu INT, FOREIGN KEY(ma_dich_vu)REFERENCES dich_vu(ma_dich_vu)
+	ma_khach_hang INT, FOREIGN KEY(ma_khach_hang)REFERENCES khach_hang(ma_khach_hang),
+	ma_dich_vu INT, FOREIGN KEY(ma_dich_vu)REFERENCES dich_vu(ma_dich_vu),
+	is_delete BIT(1) DEFAULT 0
 );
 
 CREATE TABLE hop_dong_chi_tiet(
 	ma_hop_dong_chi_tiet INT PRIMARY KEY,
 	so_luong INT,
 	ma_hop_dong INT, FOREIGN KEY(ma_hop_dong)REFERENCES hop_dong(ma_hop_dong),
-	ma_dich_vu_di_kem INT, FOREIGN KEY(ma_dich_vu_di_kem)REFERENCES dich_vu_di_kem(ma_dich_vu_di_kem)
+	ma_dich_vu_di_kem INT, FOREIGN KEY(ma_dich_vu_di_kem)REFERENCES dich_vu_di_kem(ma_dich_vu_di_kem),
+	is_delete BIT(1) DEFAULT 0
 );
 
 -- Task1 Thêm data chho các TABLE
 INSERT INTO vi_tri VALUES (1, "Quản Lý"),(2, "Nhân Viên");
 INSERT INTO trinh_do VALUES (1, "Trung Cấp"),(2, "Cao Đẳng"),(3, "Đại Học"),(4, "Sau Đại Học");
 INSERT INTO bo_phan VALUES (1, "Sale-Marketing"),(2, "Hành chính"),(3, "Phục vụ"),(4, "Quản lý");
-INSERT INTO nhan_vien VALUES
+INSERT INTO nhan_vien (ma_nhan_vien, ho_ten, ngay_sinh, so_cmnd, luong, so_dien_thoai, email, dia_chi, ma_vi_tri, ma_trinh_do, ma_bo_phan) VALUES
 	(1, "Nguyễn Văn An", "1970-11-07", "456231786", "10000000", "0901234121", "annguyen@gmail.com", "295 Nguyễn Tất Thành, Đà Nẵng", 1, 3, 1),
 	(2, "Lê Văn Bình", "1997-04-09", "654231234", "7000000", "0934212314", "binhlv@gmail.com", "22 Yên Bái, Đà Nẵng", 1, 2, 2),
 	(3, "Hồ Thị Yến", "1995-12-12", "999231723", "14000000", "0412352315", "thiyen@gmail.com", "K234/11 Điện Biên Phủ, Gia Lai", 1, 3, 2),
@@ -113,7 +117,8 @@ INSERT INTO nhan_vien VALUES
 	(10, 'Nguyễn Công Đạo', '1994-01-08', '755434343', 8000000, '0988767111', 'nguyencongdao12@gmail.com', '6 Hoà Khánh, Đồng Nai', 2, 3, 2);
 
 INSERT INTO loai_khach VALUES (1, "Diamond"),(2, "Platinium"),(3, "Gold"),(4, "Silver"),(5, "Member");
-INSERT INTO khach_hang VALUES
+INSERT INTO khach_hang (ma_khach_hang, ho_ten, ngay_sinh, gioi_tinh , so_cmnd, so_dien_thoai, email, dia_chi, ma_loai_khach)
+ VALUES
 	(1, 'Nguyễn Thị Hào', '1970-11-07', 0, '643431213', '0945423362', 'thihao07@gmail.com', '23 Nguyễn Hoàng, Đà Nẵng', 5),
 	(2, 'Phạm Xuân Diệu', '1992-08-08', 1, '865342123', '0954333333', 'xuandieu92@gmail.com', 'K77/22 Thái Phiên, Quảng Trị', 3),
 	(3, 'Trương Đình Nghệ', '1990-02-27', 1, '488645199', '0373213122', 'nghenhan2702@gmail.com', 'K323/12 Ông Ích Khiêm, Vinh', 1),
@@ -136,8 +141,7 @@ INSERT INTO dich_vu VALUES
 	(4, 'Villa No Beach Front', 22000, 9000000, 8, 'normal', 'Có hồ bơi', 300, 3, null, 3, 1),
 	(5, 'House Princess 02', 10000, 4000000, 5, 'normal', 'Có thêm bếp nướng', null, 2, null, 3, 2),
 	(6, 'Room Twin 02', 3000, 900000, 2, 'normal', 'Có tivi', null, null, '1 Xe máy', 4, 3);
-
-INSERT INTO hop_dong 
+INSERT INTO hop_dong (ma_hop_dong, ngay_lam_hop_dong, ngay_ket_thuc, tien_dat_coc, ma_nhan_vien, ma_khach_hang, ma_dich_vu)
 VALUES (1, "2020-12-08", "2020-12-08", 0, 3, 1, 3),
 	(2, "2020-07-14", "2020-07-21", 200000, 7, 3, 1),
 	(3, "2021-03-15", "2021-03-17", 500000, 3, 4, 2),
@@ -157,8 +161,8 @@ INSERT INTO dich_vu_di_kem VALUES (1, "Karaoke", 100000, "giờ", 'tiện nghi,h
 	(4, "Buffet buổi sáng", 15000, "suất", 'đầy đủ đồ ăn, tráng miệng'),
 	(5, "Buffet buổi trưa", 90000, "suất", 'đầy đủ đồ ăn, tráng miệng'),
 	(6, "Buffet buổi tối", 16000, "suất", 'đầy đủ đồ ăn, tráng miệng');
-
-INSERT INTO hop_dong_chi_tiet VALUES (1, 5, 2, 4),
+INSERT INTO hop_dong_chi_tiet (ma_hop_dong_chi_tiet, so_luong, ma_hop_dong, ma_dich_vu_di_kem )
+VALUES (1, 5, 2, 4),
 	(2, 8, 2, 5),
 	(3, 15, 2, 6),
 	(4, 1, 3, 1),
@@ -394,6 +398,180 @@ UNION ALL
 SELECT kh.ma_khach_hang, kh.ho_ten, kh.email, kh.so_dien_thoai, kh.ngay_sinh, kh.dia_chi
 FROM khach_hang As kh;
 
+-- Them data cho phan nang cao
+INSERT INTO nhan_vien (ma_nhan_vien, ho_ten, ngay_sinh, so_cmnd, luong, so_dien_thoai, email, dia_chi, ma_vi_tri, ma_trinh_do, ma_bo_phan)
+ VALUES
+	(11, "Kiều Quốc Khánh", "2001-08-28", "456231786", "10000000", "0901234121", "khanhkieu098@gmail.com", "295 Hải Châu, Đà Nẵng", 1, 3, 1),
+	(12, "Huỳnh Đức Định", "2002-03-23", "456231786", "10000000", "0901234121", "ducdinh03@gmail.com", "32 Hải Châu, Đà Nẵng", 1, 3, 1);
 
+INSERT INTO hop_dong (ma_hop_dong, ngay_lam_hop_dong, ngay_ket_thuc, tien_dat_coc, ma_nhan_vien, ma_khach_hang, ma_dich_vu)
+ VALUES 
+(13, "2019-12-12", "2019-12-21", 0, 11, 8, 3),
+(14, "2019-12-12", "2019-12-25", 1000000, 12, 7, 2);
+
+-- Task 21:	Tạo khung nhìn có tên là v_nhan_vien để lấy được thông tin của tất cả các 
+-- nhân viên có địa chỉ là “Hải Châu” và đã từng lập hợp đồng cho một hoặc 
+CREATE VIEW v_nhan_vien AS (
+	SELECT nv.* 
+    FROM nhan_vien AS nv
+    INNER JOIN hop_dong AS hd ON nv.ma_nhan_vien = hd.ma_nhan_vien 
+    WHERE nv.dia_chi LIKE "%Hải Châu%" AND hd.ngay_lam_hop_dong LIKE "%2019-12-12%" 
+);
+DROP view v_nhan_vien;
+SELECT * FROM  v_nhan_vien;
+
+-- Task 22:	Thông qua khung nhìn v_nhan_vien thực hiện cập nhật địa chỉ thành “Liên Chiểu” 
+-- đối với tất cả các nhân viên được nhìn thấy bởi khung nhìn này.
+
+UPDATE nhan_vien, v_nhan_vien 
+SET nhan_vien.dia_chi = "Liên Chiểu, Đà Nẵng" 
+WHERE nhan_vien.ma_nhan_vien = v_nhan_vien.ma_nhan_vien;
+
+-- Task 23.	Tạo Stored Procedure sp_xoa_khach_hang dùng để xóa thông tin của 
+-- một khách hàng nào đó với ma_khach_hang được truyền vào như là 1 tham số của sp_xoa_khach_hang.
+
+DELIMITER //
+CREATE PROCEDURE sp_xoa_khach_hang (IN sp_ma_khach_hang INT)
+BEGIN
+	UPDATE khach_hang SET is_delete = 1 WHERE ma_khach_hang = sp_ma_khach_hang;
+	UPDATE hop_dong SET is_delete = 1 WHERE ma_khach_hang = sp_ma_khach_hang;
+	UPDATE hop_dong_chi_tiet SET is_delete = 1 WHERE ma_hop_dong IN (
+		SELECT DISTINCT hd.ma_hop_dong
+        FROM hop_dong AS hd
+        WHERE hd.ma_khach_hang = sp_ma_khach_hang
+    );
+END //
+DELIMITER ;
+drop PROCEDURE sp_xoa_khach_hang;
+CALL sp_xoa_khach_hang(2);
+
+-- Task 24.	Tạo Stored Procedure sp_them_moi_hop_dong dùng để thêm mới vào bảng hop_dong với yêu cầu sp_them_moi_hop_dong 
+-- phải thực hiện kiểm tra tính hợp lệ của dữ liệu bổ sung, với nguyên tắc không được trùng khóa chính và
+-- đảm bảo toàn vẹn tham chiếu đến các bảng liên quan.
+DELIMITER //
+CREATE PROCEDURE sp_them_moi_hop_dong (
+	IN sp_ma_hop_dong INT,
+	sp_ngay_lam_hop_dong DATETIME,
+	sp_ngay_ket_thuc DATETIME,
+	sp_tien_dat_coc DOUBLE,
+	sp_ma_nhan_vien INT,
+	sp_ma_khach_hang INT,
+	sp_ma_dich_vu INT)
+BEGIN
+	INSERT INTO hop_dong (ma_hop_dong, ngay_lam_hop_dong, ngay_ket_thuc, tien_dat_coc, ma_nhan_vien, ma_khach_hang, ma_dich_vu)
+	VALUES (sp_ma_hop_dong, sp_ngay_lam_hop_dong, sp_ngay_ket_thuc, sp_tien_dat_coc, sp_ma_nhan_vien, sp_ma_khach_hang, sp_ma_dich_vu);
+END //
+DELIMITER ;
+CALL sp_them_moi_hop_dong(16, "2023-04-30", "2023-05-03", 100000, 11, 4, 2);
+
+-- Task 25.	Tạo Trigger có tên tr_xoa_hop_dong khi xóa bản ghi trong bảng hop_dong thì hiển thị tổng số lượng bản ghi còn lại có trong bảng hop_dong ra giao diện console của database.
+-- Lưu ý: Đối với MySQL thì sử dụng SIGNAL hoặc ghi log thay cho việc ghi ở console.
+-- Trigger tự động lưu số lượng còn lại của hợp đồng sau khi xóa hop_dong ( xóa logic = PROCEDURE sp_hop_dong ) 
+DELIMITER //
+CREATE TRIGGER tr_xoa_hop_dong 
+	AFTER UPDATE ON hop_dong
+    FOR EACH ROW
+BEGIN
+	DROP TEMPORARY TABLE IF EXISTS t_bang_ghi_con_lai;
+	CREATE TEMPORARY TABLE t_bang_ghi_con_lai ( 
+	SELECT COUNT(hd.ma_hop_dong) AS tong_ban_ghi_con_lai
+    FROM hop_dong AS hd
+    WHERE hd.is_delete =0
+    GROUP BY hd.is_delete)
+    ;
+END //
+DELIMITER ;
+ DROP TRIGGER tr_xoa_hop_dong;
+ -- SP gọi để xóa hop_dong ( xóa logic )
+DELIMITER //
+CREATE PROCEDURE sp_hop_dong(IN sp_ma_hop_dong INT)
+BEGIN
+	UPDATE hop_dong SET is_delete = 1 WHERE ma_hop_dong = sp_ma_hop_dong;
+	UPDATE hop_dong_chi_tiet SET is_delete = 1 WHERE ma_hop_dong = sp_ma_hop_dong;
+END //
+DELIMITER ;
+
+CALL sp_hop_dong(15);
+-- Số lượng còn lại sẽ được lưu vào bảng tạm và truy vấn ra 
+SELECT * FROM t_bang_ghi_con_lai;
+
+-- Task 26.	Tạo Trigger có tên tr_cap_nhat_hop_dong khi cập nhật ngày kết thúc hợp đồng, cần kiểm tra xem thời gian cập nhật có phù hợp hay không, với quy tắc sau:
+-- Ngày kết thúc hợp đồng phải lớn hơn ngày làm hợp đồng ít nhất là 2 ngày. Nếu dữ liệu hợp lệ thì cho phép cập nhật, nếu dữ liệu không hợp lệ thì in ra thông báo 
+-- “Ngày kết thúc hợp đồng phải lớn hơn ngày làm hợp đồng ít nhất là 2 ngày” trên console của database.
+-- Lưu ý: Đối với MySQL thì sử dụng SIGNAL hoặc ghi log thay cho việc ghi ở console.
+
+CREATE TABLE `history_error` (
+ `error` VARCHAR(1000),
+ time_eror DATETIME DEFAULT CURRENT_TIMESTAMP
+);
+
+DROP TRIGGER tr_cap_nhat_hop_dong ;
+DELIMITER //
+CREATE TRIGGER tr_cap_nhat_hop_dong
+    BEFORE UPDATE
+    ON hop_dong
+    FOR EACH ROW
+BEGIN
+    IF DATEDIFF(NEW.ngay_ket_thuc, OLD.ngay_lam_hop_dong) < 2 THEN
+		INSERT INTO `history_error` (`error`) VALUES ("Ngày kết thúc hợp đồng phải lớn hơn ngày làm hợp đồng ít nhất là 2 ngày");
+        SET NEW.ngay_ket_thuc = OLD.ngay_ket_thuc;
+    END IF;
+END; //
+DELIMITER ;
+
+UPDATE hop_dong SET ngay_ket_thuc = "2023-05-30" WHERE ma_hop_dong = 15;
+SELECT * FROM hop_dong;
+
+
+
+-- Task 27.	Tạo Function thực hiện yêu cầu sau:
+-- a.	Tạo Function func_dem_dich_vu: Đếm các dịch vụ đã được sử dụng với tổng tiền là > 2.000.000 VNĐ.
+-- b.	Tạo Function func_tinh_thoi_gian_hop_dong: Tính khoảng thời gian dài nhất tính từ lúc bắt đầu làm hợp đồng đến 
+-- lúc kết thúc hợp đồng mà khách hàng đã thực hiện thuê dịch vụ (lưu ý chỉ xét các khoảng thời gian dựa vào từng lần làm hợp đồng thuê dịch vụ,
+-- không xét trên toàn bộ các lần làm hợp đồng). Mã của khách hàng được truyền vào như là 1 tham số của function này.
+-- a: 
+DELIMITER //
+CREATE FUNCTION func_dem_dich_vu ()
+RETURNS INT
+DETERMINISTIC 
+BEGIN
+	DECLARE dem_dich_vu INT;
+	SELECT COUNT(dv.ma_dich_vu) INTO dem_dich_vu FROM dich_vu AS dv
+    WHERE dv.chi_phi_thue > 2000000;
+    RETURN dem_dich_vu;
+END //
+DELIMITER ;
+DROP FUNCTION func_dem_dich_vu;
+SELECT func_dem_dich_vu() AS dich_vu_da_dung;
+
+-- b:
+DELIMITER //
+CREATE FUNCTION func_tinh_thoi_gian_hop_dong (func_ma_khach_hang INT)
+RETURNS INT
+DETERMINISTIC 
+BEGIN
+	DECLARE dem_dich_vu INT;
+	SELECT 
+    MAX(DATEDIFF(hd.ngay_ket_thuc, hd.ngay_lam_hop_dong))
+INTO dem_dich_vu FROM
+    hop_dong AS hd
+WHERE
+    hd.ma_khach_hang = func_ma_khach_hang;
+    RETURN dem_dich_vu;
+END //
+DELIMITER ;
+SELECT FUNC_TINH_THOI_GIAN_HOP_DONG(4) AS so_ngay_dai_nhat;
+-- Task 28.	Tạo Stored Procedure sp_xoa_dich_vu_va_hd_room để tìm các dịch vụ được thuê bởi khách hàng với loại dịch vụ là “Room” từ đầu năm 2015 
+
+DELIMITER //
+	CREATE PROCEDURE sp_xoa_dich_vu_va_hd_room (IN sp_nam_lam_hop_dong INT)
+    BEGIN
+		SELECT DISTINCT dv.*
+        FROM dich_vu AS dv
+        INNER JOIN loai_dich_vu AS ldv ON dv.ma_loai_dich_vu = ldv.ma_loai_dich_vu AND ldv.ten_loai_dich_vu = "Room"
+        INNER JOIN hop_dong AS hd ON dv.ma_dich_vu = hd.ma_dich_vu AND YEAR(hd.ngay_lam_hop_dong) = sp_nam_lam_hop_dong;
+    END //
+DELIMITER ;
+CALL sp_xoa_dich_vu_va_hd_room(2020);
 
 
