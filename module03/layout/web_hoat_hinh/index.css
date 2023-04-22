@@ -46,7 +46,8 @@
     .col-l-12 {
         width: 100%;
     }
-    #header-link #nav-list-link{
+
+    #header-link #nav-list-link {
         display: none;
     }
 }
@@ -99,38 +100,64 @@
     .col-m-12 {
         width: 100%;
     }
-    #header-link #nav-list-link{
+
+    #header-link #nav-list-link {
         display: none;
     }
+
     body #content {
         display: block;
         height: 700px;
         margin-bottom: 50px;
     }
+
     #content #left-content {
         height: 50%;
     }
-    #content #left-content .content-left{
+
+    #content #left-content .content-left {
         height: 70%;
     }
 }
-@media only screen and (max-width: 609px){
-    #header-link ul .link-page{
+
+@media only screen and (max-width: 609px) {
+    #header-link ul .link-page {
         display: none;
     }
-    #header-link #nav-list-link{
+
+    #header-link #nav-list-link {
         display: inline;
-        border: none;
         height: 100%;
         background-color: rgb(229, 229, 229);
     }
-    #header-link #nav-list-link .drop-link a{
+
+    #header-link #nav-list-link .drop-link a {
         text-decoration: none;
     }
+
     #header-link #nav-list-link .drop-link:not(:last-child)::after {
         display: none;
     }
+    #nav-list-link li {
+        display: none;
+        background-color: rgb(229, 229, 229);
+    }
+    #nav-list-link .drop-link {
+        width:200px;
+    }
+    #header-link #bt, .drop-link a {
+        color: #474747;
+    }
+    
+    #nav-list-link:hover #bt ~ li {
+        display:block;
+    }
+    #nav-list-link #bt ~ li:hover {
+        background-color: rgb(255, 255, 255);
+        color: aliceblue;
+    }
 }
+
 * {
     padding: 0px;
     margin: 0px;
@@ -185,12 +212,15 @@
 #content #left-content {
     overflow: scroll;
 }
+
 #left-content {
     height: 100%;
 }
-#right-content{
+
+#right-content {
     height: 100%;
 }
+
 .content-left {
     height: 40%;
     margin-top: 5%;
@@ -217,7 +247,10 @@ p {
     height: 60%;
     margin: 20px 5px 0px 5px;
 }
-
+#right-content1 {
+    height: 60%;
+    margin: 20px 5px 0px 5px;
+}
 #footer {
     position: fixed;
     bottom: 0px;
