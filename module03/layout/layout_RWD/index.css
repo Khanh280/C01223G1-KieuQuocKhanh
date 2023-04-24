@@ -290,10 +290,10 @@
 }
 
 #main {
-    height: 500px;
+    min-height: 100vh;
     margin-top: 50px;
 }
-
+  
 .row1 {
     height: 50%;
     width: 100%;
@@ -321,6 +321,7 @@
 
 .left ul li a {
     text-decoration: none;
+    color: rgb(40, 124, 220);
 }
 
 .right .right-1,
@@ -349,7 +350,7 @@
 #footer {
     position: fixed;
     bottom: 0px;
-    background-color: rgb(33, 29, 29);
+    background-color: rgb(122, 121, 121);
     height: 50px;
     justify-content: center;
     align-items: center;
