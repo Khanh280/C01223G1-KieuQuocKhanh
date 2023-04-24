@@ -165,13 +165,13 @@
 }
 
 #header {
+    position: sticky;
+    top: 0px;
     height: 50px;
     background-image: linear-gradient(180deg, rgb(222 249 244), rgb(255 250 245));
 }
 
 #header-link {
-    position: sticky;
-    top: 0px;
     margin-top: 5px;
     height: 50px;
     background-color: rgb(229, 229, 229);
