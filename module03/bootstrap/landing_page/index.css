@@ -1,0 +1,67 @@
+#title-slide {
+    position: absolute;
+    display: inline-block;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    width: 40%;
+    top: 50%;
+    text-align: center;
+}
+
+#card-title {
+    position: absolute;
+    border: 0px;
+    background: none;
+    align-items: center;
+    margin-left: 10vh;
+    margin-top: 2vh;
+    width: 50%;
+}
+#header-nav {
+    display: flex;
+    align-items: center;
+    position: fixed;
+    right: 0px;
+    height: 10vh;
+}
+#title-content {
+    height: 90%;
+    margin-top: 5%;
+}
+.title-link a {
+    text-decoration: none;
+    color: #000;
+    margin-left: 5px;
+}
+.title-link:hover a{
+    text-decoration: underline;
+}
+.title-link:hover .sub-icon {
+    margin-left: 5px;
+    text-decoration: none;
+}
+.link-create a{
+    text-decoration: none;
+    color: #0067b8;
+}
+.link-create:hover a{
+    text-decoration: underline;
+}
+@media only screen and (max-width: 768px){
+    #card-title {
+        position: relative;
+        display: flex;
+        margin-left:0px;
+        margin-top: 5vh;
+        justify-content: center;
+        width: 100%;
+        text-align: center;
+    }
+    #list-title {
+        justify-content: center;
+    }
+}
+/* #test:hover {
+    transform: translate(.25em,0);
+} */
