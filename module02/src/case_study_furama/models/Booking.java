@@ -91,13 +91,13 @@ public class Booking implements Comparable<Booking> {
         String[] elementStartDateThis = this.startDate.split("/");
         String[] elementEndDateO = o.endDate.split("/");
         String[] elementEndDateThis = this.endDate.split("/");
-
         int result = elementStartDateO[2].compareTo(elementStartDateThis[2]);
         if (result == 0) {
             result = elementStartDateO[1].compareTo(elementStartDateThis[1]);
             if (result == 0) {
                 result = elementStartDateO[0].compareTo(elementStartDateThis[0]);
             }
+            // Neu ngay bat dau bang nhau thi tiep tuc so sanh ngay ket thuc
             if (result == 0) {
                 result = elementEndDateO[2].compareTo(elementEndDateThis[2]);
                 if (result == 0) {
