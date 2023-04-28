@@ -8,6 +8,7 @@ import javax.servlet.*;
 import javax.servlet.http.*;
 import javax.servlet.annotation.*;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 @WebServlet(name = "ProductServlet", value = "/product-servlet")
@@ -44,14 +45,15 @@ public class ProductServlet extends HttpServlet {
                 request.getRequestDispatcher("/list_product.jsp").forward(request,response);
                 break;
             case "search":
+                List<Product> productListSearch = new ArrayList<>();
                 String productName = request.getParameter("productName");
                 for (int i = 0; i < productList.size(); i++) {
                     if(productName.equals(productList.get(i).getProductName())){
-                        request.setAttribute("productList",productList.get(i));
-                        request.getRequestDispatcher("/list_product.jsp").forward(request,response);
-                        break;
+                        productListSearch.add(productList.get(i));
                     }
                 }
+                request.setAttribute("productList",productListSearch);
+                request.getRequestDispatcher("/list_product.jsp").forward(request,response);
         }
     }
 
