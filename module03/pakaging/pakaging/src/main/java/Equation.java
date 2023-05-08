@@ -1,5 +1,3 @@
-package equation;
-
 public class Equation {
     public static void equation(double a, double b, double c) {
         double delta = b * b - 4 * a * c;
