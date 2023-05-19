@@ -13,6 +13,13 @@ public class DictionaryServiceImpl implements IDictionaryService{
     IDictionaryRepository dictionaryRepository = new DictionaryRepositoryImpl();
     @Override
     public String searchDictionary(String english) {
-        return dictionaryRepository.searchDictionary(english);
+        Map<String,String> dictionaryList = dictionaryRepository.searchDictionary();
+        Set<String> key = dictionaryList.keySet();
+        for (String k: key) {
+            if(english.toLowerCase().equals(k)){
+                return dictionaryList.get(k);
+            }
+        }
+        return null;
     }
 }

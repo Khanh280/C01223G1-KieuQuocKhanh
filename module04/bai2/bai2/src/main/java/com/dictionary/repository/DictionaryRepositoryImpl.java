@@ -19,13 +19,7 @@ public class DictionaryRepositoryImpl implements IDictionaryRepository{
         dictionaryList.put("key","Khóa");
     }
     @Override
-    public String searchDictionary(String english) {
-        Set<String> key = dictionaryList.keySet();
-        for (String k: key) {
-            if(english.toLowerCase().equals(k)){
-                return dictionaryList.get(k);
-            }
-        }
-        return null;
+    public Map<String,String> searchDictionary() {
+        return dictionaryList;
     }
 }
