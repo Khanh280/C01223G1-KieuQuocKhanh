@@ -34,7 +34,7 @@
                     <label for="secondValue">Second Value</label>
                 </td>
                 <td>
-                    <input type="text" name="secondValue" id="secondValue" value="${firstValue}" required>
+                    <input type="text" name="secondValue" id="secondValue" value="${secondValue}" required>
                 </td>
             </tr>
         </table>

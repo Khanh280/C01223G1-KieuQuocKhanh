@@ -22,9 +22,15 @@ public class CaculateController {
                            @RequestParam("operator")String operator,
                            @RequestParam("secondValue")float secondValue){
         float result = caculateService.caculate(firstValue,secondValue,operator);
+        if(Float.isInfinite(result)){
+            model.addAttribute("result","Cannot be divided by 0");
+        } else if (Float.isNaN(result)) {
+            model.addAttribute("result","0 Cannot be divided by 0");
+        } else {
+            model.addAttribute("result",result);
+        }
         model.addAttribute("firstValue",firstValue);
         model.addAttribute("secondValue",secondValue);
-        model.addAttribute("result",result);
         return "/home";
     }
 }

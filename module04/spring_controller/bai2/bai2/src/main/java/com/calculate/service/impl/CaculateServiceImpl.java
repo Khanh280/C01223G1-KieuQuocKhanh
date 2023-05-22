@@ -21,6 +21,8 @@ public class CaculateServiceImpl implements ICaculateService {
             case "/":
                 result = firstValue / secondValue;
                 break;
+            default:
+                result =0;
         }
         return result;
     }

@@ -12,8 +12,9 @@ public class SandwichController {
     public String home(){
         return "/home";
     }
+
     @GetMapping("/home")
-    public String homeRult(){
+    public String homeResult(){
         return "/home";
     }
     @PostMapping("/save")
