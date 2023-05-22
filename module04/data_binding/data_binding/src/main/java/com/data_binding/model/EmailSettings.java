@@ -1,15 +1,15 @@
 package com.data_binding.model;
 
-public class Email {
+public class EmailSettings {
     private  String languasges;
     private String pageSize;
     private Boolean spamsFillter;
     private String signature;
 
-    public Email() {
+    public EmailSettings() {
     }
 
-    public Email(String languasges, String pageSize, Boolean spamsFillter, String signature) {
+    public EmailSettings(String languasges, String pageSize, Boolean spamsFillter, String signature) {
         this.languasges = languasges;
         this.pageSize = pageSize;
         this.spamsFillter = spamsFillter;
