@@ -16,12 +16,12 @@ public class EmailController {
     @Autowired
     private IEmailService emailService;
     @GetMapping("/")
-    public String index(Model model){
+    public String displayOption(Model model){
         model.addAttribute("emailSettings",emailService.getEmail());
         return "/index";
     }
     @GetMapping("/home")
-    public String home(Model model){
+    public String setting(Model model){
         model.addAttribute("emailSettings",new EmailSettings());
         model.addAttribute("languages",emailService.getLanguages());
         model.addAttribute("pageSize",emailService.getPageSize());
@@ -38,7 +38,7 @@ public class EmailController {
         return "/index";
     }
     @GetMapping("/currentConfiguration")
-    public String currentConfiguration(Model model){
+    public String updateSetting(Model model){
         List<String> languages = emailService.getLanguages();
         List<Integer> pageSize = emailService.getPageSize();
         EmailSettings emailSettings = emailService.getEmail();
