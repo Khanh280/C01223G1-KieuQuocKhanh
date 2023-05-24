@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-configuration PUBLIC
+        "-//Hibernate/Hibernate Configuration DTD 3.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+    <session-factory>
+        <!--        Drive của CSDL đang đùng-->
+        <property name="hibernate.connection.driver_class">com.mysql.jdbc.Driver</property>
+        <!--        Đường dẫn đến database cần liên kết-->
+        <property name="hibernate.connection.url">jdbc:mysql://localhost:3306/product_manager?createDatabaseIfNotExist=true</property>
+        <property name="hibernate.connection.username">root</property>
+        <property name="hibernate.connection.password">Khanh@28082001</property>
+        <!--        Hiển thị consolog cái câu lệnh mà các bạn sử dụng.-->
+        <property name="show_sql">true</property>
+        <!--        Nếu như có bất kì sự thay đổi nào ở entity -> thay đổi trong database-->
+        <property name="hbm2ddl.auto">update</property>
+
+        <property name="hibernate.dialect">org.hibernate.dialect.MySQL5Dialect</property>
+        <!--        Mapping với entity-->
+        <mapping class="com.product.model.Product"/>
+    </session-factory>
+</hibernate-configuration>
