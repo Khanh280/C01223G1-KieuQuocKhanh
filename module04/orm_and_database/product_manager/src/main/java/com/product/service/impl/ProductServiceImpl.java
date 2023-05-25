@@ -12,14 +12,6 @@ import java.util.List;
 public class ProductServiceImpl implements IProductService {
     @Autowired
     private IProductRepository productRepository;
-    private static List<Product> productList = new ArrayList<>();
-    static {
-//        productList.add(new Product("IP12","Iphone 12 Pro Max","Mau vang",25d,"Apple"));
-//        productList.add(new Product("IP11","Iphone 11 Pro Max","Mau vang",15d,"Apple"));
-//        productList.add(new Product("IPX","Iphone X","Mau vang",30d,"Apple"));
-//        productList.add(new Product("SS","SamSung s21 ultra","Mau trang",40d,"SamSung"));
-//        productList.add(new Product("VV","Vivo Y21","Mau xanh",20d,"Vivo"));
-    }
     @Override
     public List<Product> getAll() {
         return productRepository.getAll();
