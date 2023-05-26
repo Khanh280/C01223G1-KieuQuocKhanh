@@ -48,6 +48,16 @@
 
                 </div>
                 <div class="fom-control mb-3">
+                  <label for="category"> Category</label>
+                  <select id="category" th:field="*{category}" >
+                    <option th:text="${blog.category.categoryName}" th:value="${blog.category.categoryId}" th:if="${blog.category.delete == true}"></option>
+                    <option th:each="category : ${categoryList}"
+                            th:if="${category.delete != true}"
+                            th:text="${category.categoryName}"
+                            th:value="${category.categoryId}"></option>
+                  </select>
+                </div>
+                <div class="fom-control mb-3">
                   <label for="content">Content</label>
                   <textarea id="content" th:field="*{content}" style="width: 100%; height: 20vh"></textarea>
                 </div>

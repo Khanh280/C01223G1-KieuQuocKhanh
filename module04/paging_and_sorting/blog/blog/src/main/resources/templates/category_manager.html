@@ -79,29 +79,31 @@
         <a class="btn btn-sm btn-primary" th:href="@{/list}" th:text="'Blog List'"></a>
     </div>
 </div>
-<table class="table table-hover" style="margin-top: 5vh">
-    <thead>
-    <tr>
-        <th scope="col">ID</th>
-        <th scope="col">Category Name</th>
-        <th scope="col">Actions</th>
-    </tr>
-    </thead>
-    <tbody>
-    <tr th:each="category : ${categoryList}" th:if="${category.delete != true}">
-        <td th:text="${category.categoryId}"></td>
-        <td th:text="${category.categoryName}"></td>
-        <td>
-            <a th:href="@{/category/update/{categoryId}(categoryId = ${category.categoryId})}">
-                <button class="btn btn-sm btn-warning">Update</button>
-            </a>
-            <button class="btn btn-sm btn-danger" type="button" data-bs-toggle="modal"
-                    data-bs-target="#exampleModal" th:text="Delete"
-                    th:attr="onclick=|deleteCategory(${category.categoryId}, '${category.categoryName}')|"></button>
-        </td>
-    </tr>
-    </tbody>
-</table>
+<div align="center">
+    <table class="table table-hover" style="margin-top: 5vh;width: 50vw">
+        <thead>
+        <tr>
+            <th scope="col">ID</th>
+            <th scope="col">Category Name</th>
+            <th scope="col">Actions</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="category : ${categoryList}" th:if="${category.delete != true}">
+            <td th:text="${category.categoryId}"></td>
+            <td th:text="${category.categoryName}"></td>
+            <td>
+                <a th:href="@{/category/update/{categoryId}(categoryId = ${category.categoryId})}">
+                    <button class="btn btn-sm btn-warning">Update</button>
+                </a>
+                <button class="btn btn-sm btn-danger" type="button" data-bs-toggle="modal"
+                        data-bs-target="#exampleModal" th:text="Delete"
+                        th:attr="onclick=|deleteCategory(${category.categoryId}, '${category.categoryName}')|"></button>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
 
 <!--<div class="btn-group me-2" style="position: fixed;bottom: 0;right: 0" role="group" aria-label="First group">-->
 <!--    <a th:href="@{/list(page=${blogList.number - 1})}" th:if="${blogList.hasPrevious()}"  class="btn btn-primary" style="line-height: 35px">Previous</a>-->

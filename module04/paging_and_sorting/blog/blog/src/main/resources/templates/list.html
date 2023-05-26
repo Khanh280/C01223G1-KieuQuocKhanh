@@ -64,19 +64,31 @@
 </div>
 
 <div class="row mt-5">
-    <form th:action="@{/search}" method="get" class="col-10">
-       <div class="row">
-           <div class="col-11">
-               <input class="form-control form-control-sm" type="text" placeholder="Title"
-                      aria-label=".form-control-sm example" name="title" th:value="${title}">
-           </div>
-           <div class="col-1">
-               <button class="btn btn-sm btn-primary">Search</button>
-           </div>
-       </div>
+    <form th:action="@{/search}" method="get" class="col-8">
+        <div class="row">
+            <div class="col-11">
+                <input class="form-control form-control-sm" type="text" placeholder="Title"
+                       aria-label=".form-control-sm example" name="title" th:value="${title}">
+            </div>
+            <div class="col-1">
+                <button class="btn btn-sm btn-primary">Search</button>
+            </div>
+        </div>
     </form>
     <div class="col-2">
         <a class="btn btn-sm btn-primary" th:href="@{/category/}" th:text="'Category Mangager'"></a>
+    </div>
+    <div class="dropdown col-2">
+        <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Dropdown button
+        </button>
+        <ul class="dropdown-menu ">
+            <li th:each="category : ${categoryList}">
+                <a  class="dropdown-item" th:href="@{/category/(categoryId=${category.categoryId})}"
+                    th:if="${category.delete != true}"
+                   th:text="${category.categoryName}" ></a>
+            </li>
+        </ul>
     </div>
 </div>
 <table class="table table-hover" style="margin-top: 5vh">
@@ -115,12 +127,28 @@
     </tbody>
 </table>
 
-<div class="btn-group me-2" style="position: fixed;bottom: 0;right: 0" role="group" aria-label="First group">
-    <a th:href="@{/list(page=${blogList.number - 1})}" th:if="${blogList.hasPrevious()}"  class="btn btn-primary" style="line-height: 35px">Previous</a>
-    <th:block  class="btn btn-primary" th:each="pageNo : ${#numbers.sequence(0,blogList.getTotalPages()-1)}">
-        <a class="btn btn-primary" th:text="${pageNo + 1}" th:href="@{/list(page = ${pageNo})}" style="color: white; background-color: #0d6efd;width: 40px;text-align: center;line-height: 35px" ></a>
+<div class="btn-group me-2" style="position: fixed;bottom: 0;right: 0" role="group" aria-label="First group"
+     th:if="${searchStatus == false}">
+    <a th:href="@{/list(page=${blogList.number - 1})}" th:if="${blogList.hasPrevious()}" class="btn btn-primary"
+       style="line-height: 35px">Previous</a>
+    <th:block class="btn btn-primary" th:each="pageNo : ${#numbers.sequence(0,blogList.getTotalPages()-1)}">
+        <a class="btn btn-primary" th:text="${pageNo + 1}" th:href="@{/list(page = ${pageNo})}"
+           style="color: white; background-color: #0d6efd;width: 40px;text-align: center;line-height: 35px"></a>
     </th:block>
-    <a  th:href="@{/list(page=${blogList.number + 1})}" th:if="${blogList.hasNext()}"  class="btn btn-primary" style="line-height: 35px">Next</a>
+    <a th:href="@{/list(page=${blogList.number + 1})}" th:if="${blogList.hasNext()}" class="btn btn-primary"
+       style="line-height: 35px">Next</a>
+</div>
+
+<div class="btn-group me-2" style="position: fixed;bottom: 0;right: 0" role="group" aria-label="First group"
+     th:if="${searchStatus == true}">
+    <a th:href="@{/list/search(title = ${title},page=${blogList.number - 1})}" th:if="${blogList.hasPrevious()}"
+       class="btn btn-primary" style="line-height: 35px">Previous</a>
+    <th:block class="btn btn-primary" th:each="pageNo : ${#numbers.sequence(0,blogList.getTotalPages()-1)}">
+        <a class="btn btn-primary" th:text="${pageNo + 1}" th:href="@{/list/search(title = ${title},page = ${pageNo})}"
+           style="color: white; background-color: #0d6efd;width: 40px;text-align: center;line-height: 35px"></a>
+    </th:block>
+    <a th:href="@{/list/search(title = ${title},page=${blogList.number + 1})}" th:if="${blogList.hasNext()}"
+       class="btn btn-primary" style="line-height: 35px">Next</a>
 </div>
 
 <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
