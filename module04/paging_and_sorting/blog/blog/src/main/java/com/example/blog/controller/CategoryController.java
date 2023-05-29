@@ -1,8 +1,12 @@
 package com.example.blog.controller;
 
+import com.example.blog.model.Blog;
 import com.example.blog.model.Category;
 import com.example.blog.service.ICategoryService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -47,4 +51,16 @@ public class CategoryController {
         categoryService.saveCategory(category);
         return "redirect:/category/";
     }
+    @GetMapping("/seeCategory")
+    public String seeCategory(Model model,@RequestParam("categoryName") String categoryName,@RequestParam(value = "page", defaultValue = "0") Integer page) {
+        Pageable pageable = PageRequest.of(page,10);
+        String[] categoryNameSplit = categoryName.split(" -");
+        Page<Blog> blogList = categoryService.findCategoryById(categoryNameSplit[0],pageable);
+        model.addAttribute("blogList",blogList);
+        model.addAttribute("categoryList", categoryService.findAllCategoryName());
+        model.addAttribute("seeCategory",true);
+        model.addAttribute("categoryName",categoryName);
+        return "/list";
+    }
+
 }

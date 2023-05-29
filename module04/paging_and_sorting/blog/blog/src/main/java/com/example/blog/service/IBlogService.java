@@ -9,7 +9,6 @@ import java.util.List;
 public interface IBlogService {
     Page<Blog> getAllPage(Integer page);
     void save(Blog blog);
-    Blog getBlog(Long id);
     Blog findById(Long id);
     boolean delete(Long id);
     Page<Blog> searchBlog(String title, Pageable pageable);

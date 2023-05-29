@@ -28,11 +28,6 @@ public class BlogServiceImpl implements IBlogService {
     }
 
     @Override
-    public Blog getBlog(Long id) {
-        return blogRepository.findById(id).get();
-    }
-
-    @Override
     public Blog findById(Long id) {
         return blogRepository.findById(id).get();
     }

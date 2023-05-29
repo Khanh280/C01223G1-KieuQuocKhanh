@@ -33,7 +33,7 @@ public class BlogController {
     public String displayListBlog(Model model,@RequestParam(value = "page", defaultValue = "0") Integer page) {
         Page<Blog> blogList = blogService.getAllPage(page);
         model.addAttribute("blogList", blogList);
-        model.addAttribute("categoryList", categoryService.findAll());
+        model.addAttribute("categoryList", categoryService.findAllCategoryName());
         model.addAttribute("searchStatus",false);
         return "/list";
     }
@@ -48,12 +48,12 @@ public class BlogController {
     @PostMapping("/create")
     public String save(@ModelAttribute("blog") Blog blog, Model model) {
         blogService.save(blog);
-        return "/home";
+        return "redirect:/list";
     }
 
     @GetMapping("/update/{id}")
     public String updateInfo(@PathVariable("id") Long id, Model model) {
-        Blog blog = blogService.getBlog(id);
+        Blog blog = blogService.findById(id);
         model.addAttribute("categoryList", categoryService.findAll());
         model.addAttribute("blog", blog);
         return "/update";
@@ -86,13 +86,12 @@ public class BlogController {
 
         model.addAttribute("blogList",blogList);
         model.addAttribute("categoryList", categoryService.findAll());
+        model.addAttribute("categoryList", categoryService.findAll());
         if(title.equals("")){
             model.addAttribute("searchStatus",false);
             return "/list";
         }
         model.addAttribute("searchStatus",true);
-        model.addAttribute("categoryList", categoryService.findAll());
-
         model.addAttribute("title",title);
         return "/list";
     }
@@ -106,4 +105,5 @@ public class BlogController {
         model.addAttribute("title",title);
         return "/list";
     }
+
 }

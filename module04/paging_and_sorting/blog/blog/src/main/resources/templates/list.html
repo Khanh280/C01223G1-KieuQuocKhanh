@@ -63,7 +63,30 @@
     </nav>
 </div>
 
-<div class="row mt-5">
+<div class="row mt-5 container-fluid">
+
+    <div class="col-2">
+        <a class="btn btn-sm btn-primary" th:href="@{/category/}" th:text="'Category Mangager'" style="width: 100%"></a>
+    </div>
+
+    <div class="dropdown col-2">
+        <button class="btn btn-sm btn-primary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" style="width: 100%">
+            <th:block th:if="${categoryName == null}" th:text="'Category'"></th:block>
+            <th:block th:if="${categoryName != ''}" th:text="${categoryName}"></th:block>
+        </button>
+        <ul class="dropdown-menu ">
+            <!--            <li th:each="category : ${categoryList}">-->
+            <!--                <a  class="dropdown-item" th:href="@{/category/seeCategory(categoryId=${category.categoryId})}"-->
+            <!--                    th:if="${category.delete != true}"-->
+            <!--                   th:text="${category.categoryName}" ></a>-->
+            <!--            </li>-->
+            <li th:each="category : ${categoryList}">
+                <a  class="dropdown-item" th:href="@{/category/seeCategory(categoryName=${category})}"
+                    th:text="${category}" ></a>
+            </li>
+        </ul>
+    </div>
+
     <form th:action="@{/search}" method="get" class="col-8">
         <div class="row">
             <div class="col-11">
@@ -75,21 +98,7 @@
             </div>
         </div>
     </form>
-    <div class="col-2">
-        <a class="btn btn-sm btn-primary" th:href="@{/category/}" th:text="'Category Mangager'"></a>
-    </div>
-    <div class="dropdown col-2">
-        <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-            Dropdown button
-        </button>
-        <ul class="dropdown-menu ">
-            <li th:each="category : ${categoryList}">
-                <a  class="dropdown-item" th:href="@{/category/(categoryId=${category.categoryId})}"
-                    th:if="${category.delete != true}"
-                   th:text="${category.categoryName}" ></a>
-            </li>
-        </ul>
-    </div>
+
 </div>
 <table class="table table-hover" style="margin-top: 5vh">
     <thead>
@@ -127,51 +136,43 @@
     </tbody>
 </table>
 
-<div class="btn-group me-2" style="position: fixed;bottom: 0;right: 0" role="group" aria-label="First group"
+<div class="btn-group me-2" style="position: fixed;bottom: 2vh;right: 0; height: 30px" role="group" aria-label="First group"
      th:if="${searchStatus == false}">
     <a th:href="@{/list(page=${blogList.number - 1})}" th:if="${blogList.hasPrevious()}" class="btn btn-primary"
-       style="line-height: 35px">Previous</a>
+       style="line-height: 100%">Previous</a>
     <th:block class="btn btn-primary" th:each="pageNo : ${#numbers.sequence(0,blogList.getTotalPages()-1)}">
         <a class="btn btn-primary" th:text="${pageNo + 1}" th:href="@{/list(page = ${pageNo})}"
-           style="color: white; background-color: #0d6efd;width: 40px;text-align: center;line-height: 35px"></a>
+           style="color: white; background-color: #0d6efd;width: 40px;text-align: center;line-height: 100%"></a>
     </th:block>
     <a th:href="@{/list(page=${blogList.number + 1})}" th:if="${blogList.hasNext()}" class="btn btn-primary"
-       style="line-height: 35px">Next</a>
+       style="line-height: 100%">Next</a>
 </div>
 
-<div class="btn-group me-2" style="position: fixed;bottom: 0;right: 0" role="group" aria-label="First group"
+<div class="btn-group me-2" style="position: fixed;bottom: 2vh;right: 0; height: 30px" role="group" aria-label="First group"
      th:if="${searchStatus == true}">
     <a th:href="@{/list/search(title = ${title},page=${blogList.number - 1})}" th:if="${blogList.hasPrevious()}"
-       class="btn btn-primary" style="line-height: 35px">Previous</a>
+       class="btn btn-primary" style="line-height: 100%">Previous</a>
     <th:block class="btn btn-primary" th:each="pageNo : ${#numbers.sequence(0,blogList.getTotalPages()-1)}">
         <a class="btn btn-primary" th:text="${pageNo + 1}" th:href="@{/list/search(title = ${title},page = ${pageNo})}"
-           style="color: white; background-color: #0d6efd;width: 40px;text-align: center;line-height: 35px"></a>
+           style="color: white; background-color: #0d6efd;width: 40px;text-align: center;line-height: 100%"></a>
     </th:block>
     <a th:href="@{/list/search(title = ${title},page=${blogList.number + 1})}" th:if="${blogList.hasNext()}"
-       class="btn btn-primary" style="line-height: 35px">Next</a>
+       class="btn btn-primary" style="line-height: 100%">Next</a>
 </div>
 
-<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h1 class="modal-title fs-5" id="exampleModalLabel" style="width: 100%;text-align: center;">Delete
-                    Blog</h1>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <form action="/delete" method="get">
-                <div class="modal-body" style="width: 100%;text-align: center;">
-                    <input type="text" id="id" name="id" hidden>
-                    Do you want to delete <span class="text-danger" id="title"></span>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">No</button>
-                    <button type="submit" class="btn btn-primary">Yes</button>
-                </div>
-            </form>
-        </div>
-    </div>
+<div class="btn-group me-2" style="position: fixed;bottom: 2vh;right: 0; height: 30px" role="group" aria-label="First group"
+     th:if="${seeCategory == true}">
+    <a th:href="@{/category/seeCategory(categoryName = ${categoryName},page=${blogList.number - 1})}" th:if="${blogList.hasPrevious()}"
+       class="btn btn-primary" style="line-height: 100%">Previous</a>
+    <th:block class="btn btn-primary" th:each="pageNo : ${#numbers.sequence(0,blogList.getTotalPages()-1)}">
+        <a class="btn btn-primary" th:text="${pageNo + 1}" th:href="@{/category/seeCategory(categoryName = ${categoryName},page = ${pageNo})}"
+           style="color: white; background-color: #0d6efd;width: 40px;text-align: center;line-height: 100%"></a>
+    </th:block>
+    <a th:href="@{/category/seeCategory(categoryName = ${categoryName},page=${blogList.number + 1})}" th:if="${blogList.hasNext()}"
+       class="btn btn-primary" style="line-height: 100%">Next</a>
 </div>
+
+
 
 <div class="modal fade" id="exampleModalUpdate" tabindex="-1" aria-labelledby="deleteResultModalLabel"
      aria-hidden="true" th:if="${statusDelete != null}">
@@ -190,9 +191,34 @@
     </div>
 </div>
 
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="exampleModalLabel" style="width: 100%;text-align: center;">Delete
+                    Blog</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <form id="deleteForm" th:action="@{/delete}" method="get">
+                <div class="modal-body" style="width: 100%;text-align: center;">
+                    <input type="text" id="id" name="id" hidden>
+                    Do you want to delete <span class="text-danger" id="title"></span>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">No</button>
+                    <button type="submit" class="btn btn-primary">Yes</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
 <script>
     function deleteBlog(id, title) {
         document.getElementById("id").value = id;
+        // let idValue = +id;
+        // const form = document.getElementById("deleteForm");
+        // form.action = form.action.replace("{id}", idValue);
         document.getElementById("title").innerText = title;
     }
 </script>
