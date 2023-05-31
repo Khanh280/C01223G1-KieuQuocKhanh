@@ -4,20 +4,24 @@ import org.springframework.validation.Errors;
 import org.springframework.validation.Validator;
 
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
 
 
-public class SongDTO implements Validator {
+public class SongDTO {
 
     private Long id;
     @NotBlank(message = "Not empty")
     @Size(max = 800)
+    @Pattern(regexp = "^[A-Za-z0-9 ]{1,800}$",message = "The song title does not contain special characters. Up to 800 characters")
     private String songName;
     @NotBlank(message = "Not empty")
     @Size(max = 300)
+    @Pattern(regexp = "^[A-Za-z0-9 ]{1,300}$", message = "Singer names do not contain special characters. Up to 300 characters" )
     private String singer;
     @NotBlank(message = "Not empty")
     @Size(max = 1000)
+    @Pattern(regexp = "^[A-Za-z0-9, ]{1,1000}$", message = "Music genre names do not contain special characters. Up to 1000 characters")
     private String genres;
 
     public SongDTO() {
@@ -62,26 +66,5 @@ public class SongDTO implements Validator {
         this.genres = genres;
     }
 
-    @Override
-    public boolean supports(Class<?> clazz) {
-        return false;
-    }
-
-    @Override
-    public void validate(Object target, Errors errors) {
-        SongDTO songDTO = (SongDTO) target;
-        String regexSongName = "^[A-Za-z0-9 ]{1,800}$";
-        String regexSinger = "^[A-Za-z0-9 ]{1,300}$";
-        String regexGenres = "^[A-Za-z0-9, ]{1,1000}$";
-        if (!songDTO.songName.matches(regexSongName)) {
-            errors.rejectValue("songName", "", "The song title does not contain special characters. Up to 800 characters");
-        }
-        if (!songDTO.singer.matches(regexSinger)) {
-            errors.rejectValue("singer", "", "Singer names do not contain special characters. Up to 300 characters");
-        }
-        if (!songDTO.genres.matches(regexGenres)) {
-            errors.rejectValue("genres", "", "Music genre names do not contain special characters. Up to 1000 characters");
-        }
-    }
 }
 
