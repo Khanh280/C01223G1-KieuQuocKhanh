@@ -3,23 +3,20 @@ package com.validate_song.dto;
 import org.springframework.validation.Errors;
 import org.springframework.validation.Validator;
 
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
 
 
 public class SongDTO implements Validator {
 
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    @NotEmpty(message = "Not empty")
+    @NotBlank(message = "Not empty")
     @Size(max = 800)
     private String songName;
-    @NotEmpty(message = "Not empty")
+    @NotBlank(message = "Not empty")
     @Size(max = 300)
     private String singer;
-    @NotEmpty(message = "Not empty")
+    @NotBlank(message = "Not empty")
     @Size(max = 1000)
     private String genres;
 

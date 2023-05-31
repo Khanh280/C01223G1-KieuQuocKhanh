@@ -33,7 +33,7 @@ public class UserController {
 
     @PostMapping("/create")
     public String create(@Validated @ModelAttribute("userDTO") UserDTO userDTO, BindingResult bindingResult, Model model, RedirectAttributes redirectAttributes) {
-        new UserDTO().validate(userDTO, bindingResult);
+
         if (bindingResult.hasErrors()) {
             return "/register";
         }else{

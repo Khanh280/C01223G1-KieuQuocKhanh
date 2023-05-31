@@ -5,7 +5,7 @@ import org.springframework.validation.Validator;
 
 import javax.validation.constraints.*;
 
-public class UserDTO implements Validator {
+public class UserDTO  {
     private Long id;
     @NotEmpty(message = "Not Empty")
     @Size(min = 5, max = 45, message = "Names at least 5 in length, up to 45 characters")
@@ -14,6 +14,7 @@ public class UserDTO implements Validator {
     @Size(min = 5, max = 45, message = "Names at least 5 in length, up to 45 characters")
     private String lastName;
     @NotEmpty(message = "Not Empty")
+    @Pattern(regexp = "^0[0-9]{9,10}$",message = "Phone numbers start at 0 and have 10 – 11 numbers")
     private String phoneNumber;
     @Min(value = 18, message = "Age must be from 18")
     @NotNull(message = "Not Empty")
@@ -80,20 +81,6 @@ public class UserDTO implements Validator {
 
     public void setEmail(String email) {
         this.email = email;
-    }
-
-    @Override
-    public boolean supports(Class<?> clazz) {
-        return false;
-    }
-
-    @Override
-    public void validate(Object target, Errors errors) {
-        UserDTO userDTO = (UserDTO) target;
-        String regexPhoneNumber = "^0[0-9]{9,10}$";
-        if (!userDTO.phoneNumber.matches(regexPhoneNumber)) {
-            errors.rejectValue("phoneNumber", "", "Phone numbers start at 0 and have 10 – 11 numbers");
-        }
     }
 }
 

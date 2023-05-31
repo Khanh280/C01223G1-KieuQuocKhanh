@@ -29,7 +29,7 @@ public class SongController {
         return "/create";
     }
     @PostMapping("create")
-    public String save(@Validated @ModelAttribute("songDTO") SongDTO songDTO, BindingResult bindingResult,Model model){
+    public String save(@Validated @ModelAttribute("songDTO") SongDTO songDTO, BindingResult bindingResult,RedirectAttributes redirectAttributes){
         new SongDTO().validate(songDTO,bindingResult);
         if(bindingResult.hasErrors()){
             return "/create";
@@ -37,9 +37,8 @@ public class SongController {
             Song song = new Song();
             BeanUtils.copyProperties(songDTO,song);
             boolean statusSave = iSongService.save(song);
-            model.addAttribute("statusSave",statusSave);
-            model.addAttribute("songList",iSongService.findAll());
-            return "/home";
+            redirectAttributes.addFlashAttribute("statusSave",statusSave);
+            return "redirect:/";
         }
     }
     @GetMapping("/update/{id}")
