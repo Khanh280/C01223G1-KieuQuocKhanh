@@ -3,11 +3,11 @@ package com.shopping_cart.service.impl;
 import com.shopping_cart.model.Product;
 import com.shopping_cart.service.ICartService;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.ModelAttribute;
 
 import java.util.Map;
 @Service
 public class CartServiceImpl implements ICartService {
-
     @Override
     public void addProductCart(Product product, Map<Product, Integer> cart) {
             if (!checkItemInCart(product,cart)) {
@@ -72,5 +72,15 @@ public class CartServiceImpl implements ICartService {
     @Override
     public Integer countProductInCart(Map<Product, Integer> cart) {
         return cart.size();
+    }
+
+    @Override
+    public void deleteItemInCart(Long id,Map<Product,Integer> cart) {
+        for (Map.Entry<Product,Integer> entry : cart.entrySet()){
+            if(entry.getKey().getId().equals(id)){
+                cart.remove(entry.getKey());
+                return;
+            }
+        }
     }
 }

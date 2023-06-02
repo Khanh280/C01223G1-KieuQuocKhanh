@@ -9,6 +9,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.Map;
 import java.util.Optional;
 
@@ -18,7 +19,7 @@ public class ProductController {
 
     @ModelAttribute("cart")
     public Map<Product,Integer> setUpCart() {
-        return new HashMap<>();
+        return new LinkedHashMap<>();
     }
 
     @Autowired

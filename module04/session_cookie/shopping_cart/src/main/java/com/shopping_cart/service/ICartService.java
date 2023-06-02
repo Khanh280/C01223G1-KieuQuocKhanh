@@ -18,4 +18,5 @@ public interface ICartService {
     Integer countItemsInCart(Map<Product, Integer> cart);
 
     Integer countProductInCart(Map<Product, Integer> cart);
+    void deleteItemInCart(Long id, Map<Product,Integer> cart);
 }
