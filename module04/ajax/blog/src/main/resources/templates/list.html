@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <style>
+        .navbar-light .navbar-nav .nav-link {
+            color: #000;
+        }
+
+        a {
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+<!--<div th:replace="header"></div>-->
+<div style="height: 10vh">
+    <nav class="navbar navbar-expand-lg fixed-top bg-light navbar-light">
+        <button
+                class="navbar-toggler"
+                type="button"
+                data-mdb-toggle="collapse"
+                data-mdb-target="#navbarSupportedContent"
+                aria-controls="navbarSupportedContent"
+                aria-expanded="false"
+                aria-label="Toggle navigation"
+        >
+            <i class="fas fa-bars"></i>
+        </button>
+        <div class="container d-flex justify-content-center">
+            <div class="row">
+                <div class="col-12 d-flex justify-content-center mb-3">
+                    <a class="navbar-brand" href="#"
+                    ><img
+                            id="MDB-logo"
+                            src="https://mdbcdn.b-cdn.net/wp-content/uploads/2018/06/logo-mdb-jquery-small.png"
+                            alt="MDB Logo"
+                            draggable="false"
+                            height="30"
+                    /></a>
+                </div>
+                <div class="col-12 d-flex justify-content-center">
+                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                        <ul class="navbar-nav align-items-center mx-auto">
+                            <li class="nav-item">
+                                <a class="nav-link mx-2" th:href="@{/create}">Create</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link mx-2" th:href="@{/list}"><i class="fas fa-bell pe-2"></i>List
+                                    Blog</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link mx-2" href="#"><i class="fas fa-heart pe-2"></i>Trips</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+</div>
+
+<div class="row mt-5 container-fluid">
+
+    <div class="col-2">
+        <a class="btn btn-sm btn-primary" th:href="@{/category/}" th:text="'Category Mangager'" style="width: 100%"></a>
+    </div>
+
+    <div class="dropdown col-2">
+        <button class="btn btn-sm btn-primary dropdown-toggle" type="button" data-bs-toggle="dropdown"
+                aria-expanded="false" style="width: 100%">
+            <th:block th:if="${categoryName == null}" th:text="'Category'"></th:block>
+            <th:block th:if="${categoryName != ''}" th:text="${categoryName}"></th:block>
+        </button>
+        <ul class="dropdown-menu ">
+            <li th:each="category : ${categoryList}">
+                <a class="dropdown-item" th:href="@{/category/seeCategory(categoryName=${category})}"
+                   th:text="${category}"></a>
+            </li>
+        </ul>
+    </div>
+
+    <div class="col-8">
+        <div class="row">
+            <div class="col-11">
+                <input class="form-control form-control-sm" type="text" placeholder="Title"
+                       aria-label=".form-control-sm example" id="titleSearch" name="title" th:value="${title}">
+            </div>
+            <div class="col-1">
+                <button id="search" onclick="searchName()" class="btn btn-sm btn-primary">Search</button>
+            </div>
+        </div>
+    </div>
+
+</div>
+<table id="table-blog" class="table table-hover" style="margin-top: 5vh">
+    <thead>
+    <tr>
+        <th scope="col">ID</th>
+        <th scope="col">Title</th>
+        <th scope="col">Writer</th>
+        <th scope="col">Category</th>
+        <th scope="col">Date Create</th>
+        <th scope="col">Date Update</th>
+    </tr>
+    </thead>
+    <tbody>
+    </tbody>
+</table>
+<button onclick="page()">Tai them</button>
+<!--<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">-->
+<!--    <div class="modal-dialog">-->
+<!--        <div class="modal-content">-->
+<!--            <div class="modal-header">-->
+<!--                <h1 class="modal-title fs-5" id="exampleModalLabel" style="width: 100%;text-align: center;">Delete-->
+<!--                    Blog</h1>-->
+<!--                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>-->
+<!--            </div>-->
+<!--            <form id="deleteForm" th:action="@{/delete}" method="get">-->
+<!--                <div class="modal-body" style="width: 100%;text-align: center;">-->
+<!--                    <input type="text" id="id" name="id" hidden>-->
+<!--                    Do you want to delete <span class="text-danger" id="title"></span>-->
+<!--                </div>-->
+<!--                <div class="modal-footer">-->
+<!--                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">No</button>-->
+<!--                    <button type="submit" class="btn btn-primary">Yes</button>-->
+<!--                </div>-->
+<!--            </form>-->
+<!--        </div>-->
+<!--    </div>-->
+<!--</div>-->
+<script>
+    $(document).ready(function () {
+        $.ajax({
+            headers: {
+                'accept': 'application/json',
+                'Content-Type': 'application/json'
+            },
+            url: 'http://localhost:8080/api/admin/blog/',
+            type: 'GET',
+            success: function (data) {
+                let tableBlog = document.getElementById("table-blog");
+                for (let i = 0; i < data.content.length; i++) {
+                    let row = tableBlog.insertRow(i + 1)
+                    let id = row.insertCell(0);
+                    let title = row.insertCell(1);
+                    let writer = row.insertCell(2);
+                    let category = row.insertCell(3);
+                    let dateCreate = row.insertCell(4);
+                    let dateUpdate = row.insertCell(5);
+                    id.innerHTML = data.content[i].id;
+                    title.innerHTML = data.content[i].title;
+                    writer.innerHTML = data.content[i].writer;
+                    category.innerHTML = data.content[i].category.categoryName;
+                    dateCreate.innerHTML = data.content[i].dateCreate;
+                    dateUpdate.innerHTML = data.content[i].dateUpdate;
+                }
+            },
+            error: function (data) {
+            }
+        })
+    })
+</script>
+<script>
+    let counterPage = 1;
+
+    function page() {
+        $.ajax({
+            headers: {
+                'accept': 'application/json',
+                'Content-Type': 'application/json'
+            },
+            url: 'http://localhost:8080/api/admin/blog?page=' + encodeURIComponent(counterPage++),
+            type: 'GET',
+            success: function (data) {
+                let tableBlog = document.getElementById('table-blog')
+                let tableLength = tableBlog.rows.length;
+                for (let i = 0; i < data.content.length; i++) {
+                    let row = tableBlog.insertRow(tableLength++);
+                    let id = row.insertCell(0);
+                    let title = row.insertCell(1);
+                    let writer = row.insertCell(2);
+                    let category = row.insertCell(3);
+                    let dateCreate = row.insertCell(4);
+                    let dateUpdate = row.insertCell(5);
+                    id.innerHTML = data.content[i].id;
+                    title.innerHTML = data.content[i].title;
+                    writer.innerHTML = data.content[i].writer;
+                    category.innerHTML = data.content[i].category.categoryName;
+                    dateCreate.innerHTML = data.content[i].dateCreate;
+                    dateUpdate.innerHTML = data.content[i].dateUpdate;
+                }
+            }
+        })
+    }
+</script>
+<script>
+    function searchName() {
+        let title = document.getElementById('titleSearch').value;
+        $.ajax({
+            headers: {
+                'accept': 'application/json',
+                'Content-Type': 'application/json'
+            },
+            url: 'http://localhost:8080/api/admin/blog/search?title=' + encodeURIComponent(title),
+            type: 'GET',
+            success: function (data) {
+                let tableBlog = document.getElementById('table-blog');
+                // let blog = '';
+                while (tableBlog.rows.length > 1) {
+                    tableBlog.deleteRow(1);
+                }
+                for (let i = 0; i < data.content.length; i++) {
+                    // blog += `
+                    // <tr>
+                    // <td>${data.content[i].id}</td>
+                    // <td>${data.content[i].title}</td>
+                    // <td>${data.content[i].writer}</td>
+                    // <td>${data.content[i].category.categoryName}</td>
+                    // <td>${data.content[i].dateCreate}</td>
+                    // <td>${data.content[i].dateUpdate}</td>
+                    // </tr>
+                    // `;
+                    let row = tableBlog.insertRow(i + 1);
+                    let id = row.insertCell(0);
+                    let title = row.insertCell(1);
+                    let write = row.insertCell(2);
+                    let category = row.insertCell(3);
+                    let dateCreate = row.insertCell(4);
+                    let dateUpdate = row.insertCell(5);
+                    id.innerText = data.content[i].id;
+                    title.innerText = data.content[i].title;
+                    write.innerText = data.content[i].writer;
+                    category.innerText = data.content[i].category.categoryName;
+                    dateCreate.innerText = data.content[i].dateCreate;
+                    dateUpdate.innerText = data.content[i].dateUpdate;
+                }
+                // $('#table-blog').append(blog)
+            },
+            error: function (data) {
+                console.log(data)
+            }
+        })
+    }
+</script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>

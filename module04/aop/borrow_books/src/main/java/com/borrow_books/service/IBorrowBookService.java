@@ -9,4 +9,5 @@ public interface IBorrowBookService {
     List<BorrowBook> findAll();
     boolean saveBorrowBook(BorrowBook borrowBook);
     BorrowBook returnBook(String codeBorrowBook);
+    String randomCodeborrow();
 }

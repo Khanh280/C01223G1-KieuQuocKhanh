@@ -36,20 +36,8 @@ public class BorrowBookController {
         if (id == 0) {
             throw new RuntimeException("");
         }
+        String codeBorrowBook = iBorrowBookService.randomCodeborrow();
         Book book = iBookService.findBookById(id);
-        String codeBorrowBook;
-        boolean checkCodeBorrowBook;
-        do {
-            checkCodeBorrowBook = true;
-            codeBorrowBook = String.valueOf(Math.round(Math.random() * (99999 - 10000) + 10000));
-            List<BorrowBook> borrowBooks = iBorrowBookService.findAll();
-            for (int i = 0; i < borrowBooks.size(); i++) {
-                if (borrowBooks.get(i).getCodeBorrowBook().equals(codeBorrowBook)) {
-                    checkCodeBorrowBook = false;
-                    break;
-                }
-            }
-        } while (!checkCodeBorrowBook);
         BorrowBook borrowBook = new BorrowBook(book, codeBorrowBook, false);
         boolean statusBorrowBook = iBorrowBookService.saveBorrowBook(borrowBook);
         iBookService.updateBorrow(id);
