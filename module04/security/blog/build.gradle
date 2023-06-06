@@ -17,7 +17,15 @@ dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-thymeleaf'
     implementation 'org.springframework.boot:spring-boot-starter-web'
     runtimeOnly 'com.mysql:mysql-connector-j'
+    implementation group: 'org.springframework.boot', name: 'spring-boot-starter-validation'
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
+
+//    implementation group: 'org.springframework.security', name: 'spring-security-web', version: '5.7.1'
+//    implementation group: 'org.springframework.security', name: 'spring-security-config', version: '5.7.1'
+//    implementation group: 'org.springframework.security', name: 'spring-security-taglibs', version: '5.7.1'
+//    implementation group: 'org.thymeleaf.extras', name: 'thymeleaf-extras-springsecurity5', version: '3.0.4.RELEASE'
+    implementation 'org.springframework.boot:spring-boot-starter-security'
+    implementation 'org.thymeleaf.extras:thymeleaf-extras-springsecurity5'
 }
 
 tasks.named('test') {

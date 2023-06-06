@@ -85,8 +85,8 @@ public class BlogController {
         Page<Blog> blogList = blogService.searchBlog(title,pageable);
 
         model.addAttribute("blogList",blogList);
-        model.addAttribute("categoryList", categoryService.findAll());
-        model.addAttribute("categoryList", categoryService.findAll());
+        model.addAttribute("categoryList", categoryService.findAllCategoryName());
+        model.addAttribute("categoryList", categoryService.findAllCategoryName());
         if(title.equals("")){
             model.addAttribute("searchStatus",false);
             return "/list";
@@ -100,7 +100,7 @@ public class BlogController {
         Pageable pageable = PageRequest.of(page,10);
         Page<Blog> blogList = blogService.searchBlog(title,pageable);
         model.addAttribute("blogList",blogList);
-        model.addAttribute("categoryList", categoryService.findAll());
+        model.addAttribute("categoryList", categoryService.findAllCategoryName());
         model.addAttribute("searchStatus",true);
         model.addAttribute("title",title);
         return "/list";

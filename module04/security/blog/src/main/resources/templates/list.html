@@ -53,7 +53,7 @@
                                     Blog</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link mx-2" href="#"><i class="fas fa-heart pe-2"></i>Trips</a>
+                                <a class="nav-link mx-2" th:href="@{/logout}"><i class="fas fa-heart pe-2"></i>Logout</a>
                             </li>
                         </ul>
                     </div>
@@ -75,15 +75,15 @@
             <th:block th:if="${categoryName != ''}" th:text="${categoryName}"></th:block>
         </button>
         <ul class="dropdown-menu ">
-            <!--            <li th:each="category : ${categoryList}">-->
-            <!--                <a  class="dropdown-item" th:href="@{/category/seeCategory(categoryId=${category.categoryId})}"-->
-            <!--                    th:if="${category.delete != true}"-->
-            <!--                   th:text="${category.categoryName}" ></a>-->
-            <!--            </li>-->
-            <li th:each="category : ${categoryList}">
-                <a  class="dropdown-item" th:href="@{/category/seeCategory(categoryName=${category})}"
-                    th:text="${category}" ></a>
-            </li>
+                        <li th:each="category : ${categoryList}">
+                            <a  class="dropdown-item" th:href="@{/category/seeCategory(categoryName=${category})}"
+                                th:if="${category!= true}"
+                               th:text="${category}" ></a>
+                        </li>
+<!--            <li th:each="category : ${categoryList}">-->
+<!--                <a  class="dropdown-item" th:href="@{/category/seeCategory(categoryName=${category.categoryName})}"-->
+<!--                    th:text="${category.categoryName}" ></a>-->
+<!--            </li>-->
         </ul>
     </div>
 
@@ -127,7 +127,6 @@
             <button class="btn btn-sm btn-danger" type="button" data-bs-toggle="modal"
                     data-bs-target="#exampleModal" th:text="Delete"
                     th:attr="onclick=|deleteBlog(${blog.id}, '${blog.title}')|"></button>
-
             <a class="btn btn-sm btn-info" th:href="@{/detail/{id}(id = ${blog.id})}">
                 Detail
             </a>
