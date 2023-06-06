@@ -111,7 +111,7 @@
     <tbody>
     </tbody>
 </table>
-<button onclick="page()">Tai them</button>
+<button id="load-more" onclick="page()">Load More</button>
 <!--<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">-->
 <!--    <div class="modal-dialog">-->
 <!--        <div class="modal-content">-->
@@ -240,6 +240,7 @@
                     dateUpdate.innerText = data.content[i].dateUpdate;
                 }
                 // $('#table-blog').append(blog)
+               $('#load-more').hide()
             },
             error: function (data) {
                 console.log(data)

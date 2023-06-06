@@ -8,7 +8,7 @@ public class Category {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long categoryId;
     private String categoryName;
-    @Column(name = "is_delete", columnDefinition = "BIT DEFAUTL 0")
+    @Column(name = "is_delete", columnDefinition = "BIT DEFAULT 0")
     private boolean isDelete;
 
     public Category() {
