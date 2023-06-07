@@ -33,18 +33,23 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 //        String password = bCryptPasswordEncoder.encode("123123");
         return bCryptPasswordEncoder;
     }
-
     @Override
     protected void configure(HttpSecurity http) throws Exception {
 
         http.csrf().disable();
+//        http.authorizeRequests()
+//                .antMatchers("*")
+//                .access("hasRole('ROLE_ADMIN')");
 
         // Các trang không yêu cầu login
-        http.authorizeRequests().antMatchers("/list","/","/category/seeCategory","/search","/logoutSuccessful").permitAll();
+//        http.authorizeRequests().antMatchers("/list","/","/category/seeCategory","/search","/logoutSuccessful").permitAll();
 
         // Cấu hình cho Login Form.
         http.authorizeRequests().antMatchers("/login").permitAll()
-                .anyRequest().authenticated()
+                .and().authorizeRequests().antMatchers("/list","/category/seeCategory","/list/search","/search")
+                .access("hasAnyRole('ROLE_USER', 'ROLE_ADMIN')")
+                .anyRequest().access("hasRole('ROLE_ADMIN')")
+                .and().exceptionHandling().accessDeniedPage("/403")
                 .and()
                 .formLogin()//
                 // Submit URL của trang login

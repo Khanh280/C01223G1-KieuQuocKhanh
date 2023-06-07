@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
@@ -65,7 +65,7 @@
 
 <div class="row mt-5 container-fluid">
 
-    <div class="col-2">
+    <div sec:authorize="hasAuthority('ROLE_ADMIN')" class="col-2">
         <a class="btn btn-sm btn-primary" th:href="@{/category/}" th:text="'Category Mangager'" style="width: 100%"></a>
     </div>
 
@@ -121,13 +121,13 @@
         <td th:text="${blog.dateCreate}"></td>
         <td th:text="${blog.dateUpdate}"></td>
         <td>
-            <a th:href="@{/update/{id}(id = ${blog.id})}">
+            <a sec:authorize="hasAuthority('ROLE_ADMIN')" th:href="@{/update/{id}(id = ${blog.id})}">
                 <button class="btn btn-sm btn-warning">Update</button>
             </a>
-            <button class="btn btn-sm btn-danger" type="button" data-bs-toggle="modal"
+            <button sec:authorize="hasAuthority('ROLE_ADMIN')" class="btn btn-sm btn-danger" type="button" data-bs-toggle="modal"
                     data-bs-target="#exampleModal" th:text="Delete"
                     th:attr="onclick=|deleteBlog(${blog.id}, '${blog.title}')|"></button>
-            <a class="btn btn-sm btn-info" th:href="@{/detail/{id}(id = ${blog.id})}">
+            <a sec:authorize="hasAuthority('ROLE_ADMIN')" class="btn btn-sm btn-info" th:href="@{/detail/{id}(id = ${blog.id})}">
                 Detail
             </a>
         </td>

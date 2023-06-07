@@ -19,4 +19,9 @@ public class AuthenticationController {
         model.addAttribute("title", "Logout");
         return "home";
     }
+
+    @RequestMapping(value = "/403", method = RequestMethod.GET)
+    public String goTo403(Model model) {
+        return "403";
+    }
 }
