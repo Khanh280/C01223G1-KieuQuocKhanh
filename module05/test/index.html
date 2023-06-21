@@ -2,9 +2,27 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>$Title$</title>
+    <title>Title</title>
+    <script src="./index.js"></script>
 </head>
 <body>
-$END$
+<div id="root"></div>
+<script>
+    const root = document.getElementById('root')
+    const h1 = document.createElement('h1')
+    const p = document.createElement('p')
+    p.innerText = 'Hello very Body'
+    h1.innerText = 'Hello Wold';
+    h1.id = 'hello';
+    Object.assign(h1.style,{
+        color : 'blue'
+    })
+    Object.assign(p.style,{
+        backgroundColor : 'green'
+    })
+    root.append(h1,p)
+    console.log(h1);
+    console.log(p);
+</script>
 </body>
 </html>
