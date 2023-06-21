@@ -1,0 +1,44 @@
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+.know-more {
+    margin: 0;
+    padding: 0;
+    text-align: center;
+    font-weight: bold;
+    color: #0d6056;
+}
+.know-more:hover{
+    cursor: pointer;
+}
+.title{
+    font-weight: bold;
+}
+.title:hover{
+    color: #0d6056;
+    cursor: pointer;
+}
+.area{
+    font-weight: 400;
+}
+.image{
+    position: relative;
+}
+.book-now{
+    background-color: #0d6056;
+    color: #fff;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    display: none;
+}
+.image:hover .book-now{
+    display: block;
+    color: #fff;
+
+}
