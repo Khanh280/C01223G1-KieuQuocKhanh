@@ -22,10 +22,10 @@ let myList = arr.filter(elem => elem.gender === 'Male')
 let map = myList.map((elem) => <p>Name : {elem.name} Gender: {elem.gender} Address: {elem.address}</p>)
 const container = ReactDOM.createRoot(document.getElementById('root'))
 container.render(map)
-// Tạo component App
-//     function App() {
+// Tạo component StudentInfoComponent
+//     function StudentInfoComponent() {
 //     return (<div><h1>Hello World!</h1> </div>);
 // }
-// Render component App vào "root"
+// Render component StudentInfoComponent vào "root"
 // const root = ReactDOM.createRoot(document.getElementById("root"));
-// root.render(<App />);
+// root.render(<StudentInfoComponent />);
