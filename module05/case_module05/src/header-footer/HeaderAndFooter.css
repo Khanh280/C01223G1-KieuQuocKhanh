@@ -12807,7 +12807,6 @@ body.menu-open .modal-backdrop {
 .shine {
     display: block;
     position: absolute;
-    background-image: url(images/glitter.png);
     background-repeat: no-repeat;
     background-position: center;
     background-size: 100% 100%;
@@ -13810,7 +13809,7 @@ a.link-whatsapp:hover [class*='icon-'] {
 .banner-full {
     position: relative;
     padding: 40px 0;
-    background: url(images/banner-bg.jpg) no-repeat 0 bottom;
+    background:  no-repeat 0 bottom;
 }
 
 .banner-full-text1 {
@@ -13913,7 +13912,7 @@ a.link-whatsapp:hover [class*='icon-'] {
     margin-bottom: 0px;
     max-width: 1420px;
     height: 485px;
-    background: url(images/guestbook-bg.jpg) no-repeat center 0;
+    background: no-repeat center 0;
     overflow: hidden;
     margin-left: -100px;
     margin-right: -100px;
@@ -14344,7 +14343,7 @@ a.link-whatsapp:hover [class*='icon-'] {
 }
 
 .newsletter-card {
-    background: url(images/newsletter-bg.jpg) repeat right center;
+    background:  repeat right center;
     border-top: 4px solid #af3c65;
     overflow: hidden;
     padding: 36px 40px 50px;
@@ -15618,7 +15617,7 @@ iframe.iframe-facebook {
 
 /* slider */
 .slick-loading .slick-list {
-    background: #fff url("images/ajax-loader.gif") center center no-repeat;
+    background: #fff  center center no-repeat;
 }
 
 [class*='-carousel'] {
@@ -17452,5 +17451,6 @@ select#lang_dropdown {
 }
 .sticky-wrapper {
     position: sticky;
-    top: 0px;
+    top: 0;
+    z-index: 100;
 }
