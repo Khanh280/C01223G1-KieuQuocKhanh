@@ -1,8 +1,8 @@
 import logo from './logo.svg';
 import './App.css';
 import React, {useState} from "react";
-import Counter1 from "./Counter1";
-import Counter2 from "./Counter2";
+import Counter1 from "./component/Counter1";
+import Counter2 from "./component/Counter2";
 
 function App() {
     return (

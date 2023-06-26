@@ -1,4 +1,4 @@
-import {useIncrement} from "./useIncrement";
+import {useIncrement} from "../hooks/useIncrement";
 import React from "react";
 
 function Counter1() {
@@ -6,7 +6,7 @@ function Counter1() {
     return(
        <>
             <p>Count: {count}</p>
-            <button onClick={()=> setCount(count + 1)}>Add 1</button>
+            <button onClick={()=> setCount(1)}>Add 1</button>
        </>
     )
 }
