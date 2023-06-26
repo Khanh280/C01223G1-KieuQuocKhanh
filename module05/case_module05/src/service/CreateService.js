@@ -1,4 +1,4 @@
-function Create() {
+function CreateService() {
     return (
         <div className="wrapper d-flex justify-content-center flex-column px-md-5 px-1">
             <div className="h3 text-center font-weight-bold">Create Service</div>
@@ -79,4 +79,4 @@ function Create() {
         </div>
     )
 }
-export  default Create;
+export  default CreateService;

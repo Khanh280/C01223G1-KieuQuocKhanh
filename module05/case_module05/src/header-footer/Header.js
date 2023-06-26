@@ -2,7 +2,7 @@ import React, {useState, useEffect} from 'react'
 import "bootstrap/dist/css/bootstrap-grid.css"
 import "./HeaderAndFooter.css"
 import {Link, Route, Routes} from "react-router-dom";
-import List from "../service/List";
+import Villa from "../service/Villa";
 
 function Header() {
     return (
@@ -333,8 +333,7 @@ function Header() {
                             <ul
                                 id="menu-furama-vi"
                                 className="menu navbar-nav w-100 js-main-menu"
-                                style={{justifyContent: "center"}}
-                            >
+                                style={{justifyContent: "center"}}>
                                 <li
                                     id="nav-menu-item-5006"
                                     className="nav-item menu-item-even menu-item-depth-0 menu-item menu-item-type-post_type menu-item-object-page"
@@ -345,55 +344,45 @@ function Header() {
                                     >THE RESORT</a
                                     >
                                 </li>
-                                <li
-                                    id="nav-menu-item-5007"
-                                    className="nav-item menu-item-even menu-item-depth-0 menu-item menu-item-type-post_type menu-item-object-page"
-                                >
-                                    <Link to="/list"
-                                        className="nav-link main-menu-link"
-                                    >ROOMS & SUITES</Link>
-
-                                </li>
-                                <li
-                                    id="nav-menu-item-5008"
-                                    className="nav-item menu-item-even menu-item-depth-0 menu-item menu-item-type-post_type menu-item-object-page"
-                                >
-                                    <a
-                                        href="#"
-                                        className="nav-link main-menu-link"
-                                    >CULINARY</a
-                                    >
-                                </li>
-                                <li
-                                    id="nav-menu-item-5009"
-                                    className="nav-item menu-item-even menu-item-depth-0 menu-item menu-item-type-post_type menu-item-object-page"
-                                >
-                                    <a
-                                        href="#"
-                                        className="nav-link main-menu-link"
-                                    >MEETING & EVENTS</a
-                                    >
+                                <li id="nav-menu-item-5007 villa"
+                                    className="nav-item menu-item-even menu-item-depth-0 menu-item menu-item-type-post_type menu-item-object-page">
+                                    <Link to="/villa"
+                                          className="nav-link main-menu-link"
+                                    >VILLA</Link>
                                 </li>
                                 <li
                                     id="nav-menu-item-5010"
                                     className="nav-item menu-item-even menu-item-depth-0 menu-item menu-item-type-post_type menu-item-object-page"
                                 >
-                                    <a
-                                        href="#"
-                                        className="nav-link main-menu-link"
-                                    >SPA & FITNIESS</a
-                                    >
+                                    <Link to="/house"
+                                          className="nav-link main-menu-link"
+                                    >HOUSE</Link>
                                 </li>
                                 <li
                                     id="nav-menu-item-5011"
                                     className="nav-item menu-item-even menu-item-depth-0 menu-item menu-item-type-post_type menu-item-object-page"
                                 >
-                                    <a
-                                        href="#"
-                                        className="nav-link main-menu-link"
-                                    >RECREATION</a
-                                    >
+                                    <Link to="/room"
+                                          className="nav-link main-menu-link"
+                                    >ROOMS</Link>
                                 </li>
+                                <li
+                                    id="nav-menu-item-5008"
+                                    className="nav-item menu-item-even menu-item-depth-0 menu-item menu-item-type-post_type menu-item-object-page"
+                                >
+                                    <Link to="/customer"
+                                          className="nav-link main-menu-link"
+                                    >CUSTOMER</Link>
+                                </li>
+                                <li
+                                    id="nav-menu-item-5009"
+                                    className="nav-item menu-item-even menu-item-depth-0 menu-item menu-item-type-post_type menu-item-object-page"
+                                >
+                                    <Link to="/contract"
+                                          className="nav-link main-menu-link"
+                                    >CONTRACT</Link>
+                                </li>
+
                                 <li
                                     id="nav-menu-item-5012"
                                     className="nav-item menu-item-even menu-item-depth-0 menu-item menu-item-type-post_type menu-item-object-page"
@@ -409,7 +398,7 @@ function Header() {
                                     className="nav-item menu-item-even menu-item-depth-0 menu-item menu-item-type-post_type menu-item-object-page"
                                 >
                                     <a href="#"
-                                        className="nav-link main-menu-link"
+                                       className="nav-link main-menu-link"
                                     >SPECIAL OFFERS</a
                                     >
                                 </li>
@@ -419,7 +408,7 @@ function Header() {
                 </div>
             </div>
             <Routes>
-                <Route path="/list" element={<List />}/>
+                <Route path="/list" element={<Villa/>}/>
             </Routes>
         </>
     )

@@ -10,16 +10,19 @@ export interface Villa extends Facility{
     roomStandard: string,
     description: string,
     poolArea: number,
-    floorsNumber: number
+    floorsNumber: number,
+    image: string
 }
 export interface House extends Facility{
     roomStandard: string,
     description: string,
-    floorsNumber: number
+    floorsNumber: number,
+    image: string
 }
 export interface Rooms extends Facility{
     roomStandard: string,
     description: string,
     floorsNumber: number,
-    freeService, string
+    freeService: string,
+    image: string
 }

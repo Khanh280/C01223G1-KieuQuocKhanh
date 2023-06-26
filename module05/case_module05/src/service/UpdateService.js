@@ -1,7 +1,6 @@
 import React from "react";
-import "./crud.css"
-
-function Update() {
+import "../crud.css"
+function UpdateService() {
     return (
         <div className="wrapper d-flex justify-content-center flex-column px-md-5 px-1">
             <div className="h3 text-center font-weight-bold">Update Service</div>
@@ -69,4 +68,4 @@ function Update() {
         </div>
     )
 }
-export default Update;
+export default UpdateService;

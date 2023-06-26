@@ -5,7 +5,7 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import Header from "./header-footer/Header";
 import Footer from "./header-footer/Footer";
-import List from "./service/List";
+import Villa from "./service/Villa";
 import {BrowserRouter} from "react-router-dom";
 
 

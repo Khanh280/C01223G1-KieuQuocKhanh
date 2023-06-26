@@ -1,65 +1,72 @@
-import {House} from "./facility";
-
-export const house: House[] =[
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.rooms = void 0;
+exports.rooms = [
     {
-        name: 'Water Sport House',
-        useArea: 5,
-        rentalCost: 5,
+        name: 'Deluxe Ocean Rooms',
+        useArea: 55,
+        rentalCost: 5000,
         maximumPeople: 5,
-        rentalType: 'string',
+        rentalType: '5 Day',
         roomStandard: 'string',
         description: 'string',
         floorsNumber: 5,
+        freeService: 'string',
         image: 'https://furamavietnam.com/wp-content/uploads/2018/03/Vietnam_Danang_Furama_Ocean-Suite-Feature-768x497.jpg'
     }, {
-        name: 'Water Sport House',
-        useArea: 5,
-        rentalCost: 5,
+        name: 'Deluxe Ocean Rooms',
+        useArea: 55,
+        rentalCost: 5000,
         maximumPeople: 5,
-        rentalType: 'string',
+        rentalType: '5 Day',
         roomStandard: 'string',
         description: 'string',
         floorsNumber: 5,
+        freeService: 'string',
         image: 'https://furamavietnam.com/wp-content/uploads/2018/03/Vietnam_Danang_Furama_Ocean-Suite-Feature-768x497.jpg'
     }, {
-        name: 'Water Sport House',
-        useArea: 5,
-        rentalCost: 5,
+        name: 'Deluxe Ocean Rooms',
+        useArea: 55,
+        rentalCost: 5000,
         maximumPeople: 5,
-        rentalType: 'string',
+        rentalType: '5 Day',
         roomStandard: 'string',
         description: 'string',
         floorsNumber: 5,
+        freeService: 'string',
         image: 'https://furamavietnam.com/wp-content/uploads/2018/03/Vietnam_Danang_Furama_Ocean-Suite-Feature-768x497.jpg'
     }, {
-        name: 'Water Sport House',
-        useArea: 5,
-        rentalCost: 5,
+        name: 'Deluxe Ocean Rooms',
+        useArea: 55,
+        rentalCost: 5000,
         maximumPeople: 5,
-        rentalType: 'string',
+        rentalType: '5 Day',
         roomStandard: 'string',
         description: 'string',
         floorsNumber: 5,
+        freeService: 'string',
         image: 'https://furamavietnam.com/wp-content/uploads/2018/03/Vietnam_Danang_Furama_Ocean-Suite-Feature-768x497.jpg'
     }, {
-        name: 'Water Sport House',
-        useArea: 5,
-        rentalCost: 5,
+        name: 'Deluxe Ocean Rooms',
+        useArea: 55,
+        rentalCost: 5000,
         maximumPeople: 5,
-        rentalType: 'string',
+        rentalType: '5 Day',
         roomStandard: 'string',
         description: 'string',
         floorsNumber: 5,
+        freeService: 'string',
         image: 'https://furamavietnam.com/wp-content/uploads/2018/03/Vietnam_Danang_Furama_Ocean-Suite-Feature-768x497.jpg'
     }, {
-        name: 'Water Sport House',
-        useArea: 5,
-        rentalCost: 5,
+        name: 'Deluxe Ocean Rooms',
+        useArea: 55,
+        rentalCost: 5000,
         maximumPeople: 5,
-        rentalType: 'string',
+        rentalType: '5 Day',
         roomStandard: 'string',
         description: 'string',
         floorsNumber: 5,
+        freeService: 'string',
         image: 'https://furamavietnam.com/wp-content/uploads/2018/03/Vietnam_Danang_Furama_Ocean-Suite-Feature-768x497.jpg'
-    }
-]
+    },
+];

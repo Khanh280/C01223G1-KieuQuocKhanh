@@ -29,8 +29,8 @@ Use it to make something cool, have fun, and share what you've learned with othe
   2.6 Footer
   2.7 Main Slider
   2.8 Main Slider Buttons
-  2.9 Room Card
-  2.10 Service Card
+  2.9 Rooms Card
+  2.10 Villa Card
   2.11 Special Offer Card
   2.12 Fullwidth Banner
   2.13 GuestBook
@@ -17454,3 +17454,9 @@ select#lang_dropdown {
     top: 0;
     z-index: 100;
 }
+
+
+
+
+
+

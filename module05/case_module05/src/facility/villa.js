@@ -1,10 +1,11 @@
-import {Villa} from "./facility";
-
-export const villa: Villa[] =[
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.villa = void 0;
+exports.villa = [
     {
         name: 'Deluxe Ocean Villa',
         useArea: 55,
-        rentalCost: 5000 ,
+        rentalCost: 5000,
         maximumPeople: 5,
         rentalType: '5 Day',
         roomStandard: 'VIP',
@@ -35,7 +36,7 @@ export const villa: Villa[] =[
         description: 'Pro max',
         poolArea: 5,
         floorsNumber: 5,
-        image:'https://furamavietnam.com/wp-content/uploads/2018/03/Furama_Ocean_Deluxe-2-872x563.jpg'
+        image: 'https://furamavietnam.com/wp-content/uploads/2018/03/Furama_Ocean_Deluxe-2-872x563.jpg'
     },
     {
         name: 'Stunning Ocean Villa',
@@ -59,7 +60,7 @@ export const villa: Villa[] =[
         description: 'Pro max',
         poolArea: 5,
         floorsNumber: 5,
-        image:'https://furamavietnam.com/wp-content/uploads/2018/03/Furama_Garden-Deluxe-5-872x563.jpg'
+        image: 'https://furamavietnam.com/wp-content/uploads/2018/03/Furama_Garden-Deluxe-5-872x563.jpg'
     },
     {
         name: 'Abogo Resort Villas',
@@ -71,6 +72,6 @@ export const villa: Villa[] =[
         description: 'Pro max',
         poolArea: 5,
         floorsNumber: 5,
-        image:'https://furamavietnam.com/wp-content/uploads/2018/03/Presidential-Suite-F.jpg'
+        image: 'https://furamavietnam.com/wp-content/uploads/2018/03/Presidential-Suite-F.jpg'
     }
-]
+];
