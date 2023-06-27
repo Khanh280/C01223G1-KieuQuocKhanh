@@ -1,0 +1,16 @@
+{
+  "todo-list": [
+    {
+      "id": 1,
+      "task": "Di Da Lat choi"
+    },
+    {
+      "task": "Di My choi",
+      "id": 2
+    },
+    {
+      "task": "Di My choi",
+      "id": 3
+    }
+  ]
+}
