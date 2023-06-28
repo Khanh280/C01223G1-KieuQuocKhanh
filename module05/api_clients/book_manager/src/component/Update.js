@@ -19,7 +19,7 @@ export function Update() {
             setBook(res)
         }
         findById()
-    }, [])
+    }, [param.id])
 
     // conditional rendering
     if (!book) {
