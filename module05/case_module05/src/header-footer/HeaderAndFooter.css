@@ -12050,6 +12050,7 @@ body.menu-open .modal-backdrop {
     color: black;
 }
 
+
 @media (max-width: 1023px) {
     .header-nav {
         display: none !important;

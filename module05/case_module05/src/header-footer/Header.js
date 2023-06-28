@@ -233,93 +233,93 @@ function Header() {
                                 <button aria-label="Close" className="close" data-dismiss="modal">
                                     <i className="icon-close"></i>CLOSE
                                 </button>
-                                <div className="modal-dialog">
-                                    <ul
-                                        id="menu-furama-vi"
-                                        className="menu navbar-nav w-100 js-main-menu"
-                                    >
-                                        <li
-                                            id="nav-menu-item-5006"
-                                            className="nav-item menu-item-even menu-item-depth-0 menu-item menu-item-type-post_type menu-item-object-page"
-                                        >
-                                            <a
-                                                href="#"
-                                                className="nav-link main-menu-link"
-                                            >GIỚI THIỆU</a
-                                            >
-                                        </li>
-                                        <li
-                                            id="nav-menu-item-5007"
-                                            className="nav-item menu-item-even menu-item-depth-0 menu-item menu-item-type-post_type menu-item-object-page"
-                                        >
-                                            <a
-                                                href="#"
-                                                className="nav-link main-menu-link"
-                                            >LOẠI PHÒNG</a
-                                            >
-                                        </li>
-                                        <li
-                                            id="nav-menu-item-5008"
-                                            className="nav-item menu-item-even menu-item-depth-0 menu-item menu-item-type-post_type menu-item-object-page"
-                                        >
-                                            <a
-                                                href="#"
-                                                className="nav-link main-menu-link"
-                                            >ẨM THỰC</a
-                                            >
-                                        </li>
-                                        <li
-                                            id="nav-menu-item-5009"
-                                            className="nav-item menu-item-even menu-item-depth-0 menu-item menu-item-type-post_type menu-item-object-page"
-                                        >
-                                            <a
-                                                href="#"
-                                                className="nav-link main-menu-link"
-                                            >HỘI NGHỊ VÀ SỰ KIỆN</a
-                                            >
-                                        </li>
-                                        <li
-                                            id="nav-menu-item-5010"
-                                            className="nav-item menu-item-even menu-item-depth-0 menu-item menu-item-type-post_type menu-item-object-page"
-                                        >
-                                            <a
-                                                href="#"
-                                                className="nav-link main-menu-link"
-                                            >SPA</a
-                                            >
-                                        </li>
-                                        <li
-                                            id="nav-menu-item-5011"
-                                            className="nav-item menu-item-even menu-item-depth-0 menu-item menu-item-type-post_type menu-item-object-page"
-                                        >
-                                            <a
-                                                href="#"
-                                                className="nav-link main-menu-link"
-                                            >GIẢI TRÍ</a
-                                            >
-                                        </li>
-                                        <li
-                                            id="nav-menu-item-5012"
-                                            className="nav-item menu-item-even menu-item-depth-0 menu-item menu-item-type-post_type menu-item-object-page"
-                                        >
-                                            <a
-                                                href="#"
-                                                className="nav-link main-menu-link"
-                                            >ĐIỂM ĐẾN</a
-                                            >
-                                        </li>
-                                        <li
-                                            id="nav-menu-item-5013"
-                                            className="nav-item menu-item-even menu-item-depth-0 menu-item menu-item-type-post_type menu-item-object-page"
-                                        >
-                                            <a
-                                                href="#"
-                                                className="nav-link main-menu-link"
-                                            >ƯU ĐÃI</a
-                                            >
-                                        </li>
-                                    </ul>
-                                </div>
+                                {/*<div className="modal-dialog">*/}
+                                {/*    <ul*/}
+                                {/*        id="menu-furama-vi"*/}
+                                {/*        className="menu navbar-nav w-100 js-main-menu"*/}
+                                {/*    >*/}
+                                {/*        <li*/}
+                                {/*            id="nav-menu-item-5006"*/}
+                                {/*            className="nav-item menu-item-even menu-item-depth-0 menu-item menu-item-type-post_type menu-item-object-page"*/}
+                                {/*        >*/}
+                                {/*            <a*/}
+                                {/*                href="#"*/}
+                                {/*                className="nav-link main-menu-link"*/}
+                                {/*            >GIỚI THIỆU</a*/}
+                                {/*            >*/}
+                                {/*        </li>*/}
+                                {/*        <li*/}
+                                {/*            id="nav-menu-item-5007"*/}
+                                {/*            className="nav-item menu-item-even menu-item-depth-0 menu-item menu-item-type-post_type menu-item-object-page"*/}
+                                {/*        >*/}
+                                {/*            <a*/}
+                                {/*                href="#"*/}
+                                {/*                className="nav-link main-menu-link"*/}
+                                {/*            >LOẠI PHÒNG</a*/}
+                                {/*            >*/}
+                                {/*        </li>*/}
+                                {/*        <li*/}
+                                {/*            id="nav-menu-item-5008"*/}
+                                {/*            className="nav-item menu-item-even menu-item-depth-0 menu-item menu-item-type-post_type menu-item-object-page"*/}
+                                {/*        >*/}
+                                {/*            <a*/}
+                                {/*                href="#"*/}
+                                {/*                className="nav-link main-menu-link"*/}
+                                {/*            >ẨM THỰC</a*/}
+                                {/*            >*/}
+                                {/*        </li>*/}
+                                {/*        <li*/}
+                                {/*            id="nav-menu-item-5009"*/}
+                                {/*            className="nav-item menu-item-even menu-item-depth-0 menu-item menu-item-type-post_type menu-item-object-page"*/}
+                                {/*        >*/}
+                                {/*            <a*/}
+                                {/*                href="#"*/}
+                                {/*                className="nav-link main-menu-link"*/}
+                                {/*            >HỘI NGHỊ VÀ SỰ KIỆN</a*/}
+                                {/*            >*/}
+                                {/*        </li>*/}
+                                {/*        <li*/}
+                                {/*            id="nav-menu-item-5010"*/}
+                                {/*            className="nav-item menu-item-even menu-item-depth-0 menu-item menu-item-type-post_type menu-item-object-page"*/}
+                                {/*        >*/}
+                                {/*            <a*/}
+                                {/*                href="#"*/}
+                                {/*                className="nav-link main-menu-link"*/}
+                                {/*            >SPA</a*/}
+                                {/*            >*/}
+                                {/*        </li>*/}
+                                {/*        <li*/}
+                                {/*            id="nav-menu-item-5011"*/}
+                                {/*            className="nav-item menu-item-even menu-item-depth-0 menu-item menu-item-type-post_type menu-item-object-page"*/}
+                                {/*        >*/}
+                                {/*            <a*/}
+                                {/*                href="#"*/}
+                                {/*                className="nav-link main-menu-link"*/}
+                                {/*            >GIẢI TRÍ</a*/}
+                                {/*            >*/}
+                                {/*        </li>*/}
+                                {/*        <li*/}
+                                {/*            id="nav-menu-item-5012"*/}
+                                {/*            className="nav-item menu-item-even menu-item-depth-0 menu-item menu-item-type-post_type menu-item-object-page"*/}
+                                {/*        >*/}
+                                {/*            <a*/}
+                                {/*                href="#"*/}
+                                {/*                className="nav-link main-menu-link"*/}
+                                {/*            >ĐIỂM ĐẾN</a*/}
+                                {/*            >*/}
+                                {/*        </li>*/}
+                                {/*        <li*/}
+                                {/*            id="nav-menu-item-5013"*/}
+                                {/*            className="nav-item menu-item-even menu-item-depth-0 menu-item menu-item-type-post_type menu-item-object-page"*/}
+                                {/*        >*/}
+                                {/*            <a*/}
+                                {/*                href="#"*/}
+                                {/*                className="nav-link main-menu-link"*/}
+                                {/*            >ƯU ĐÃI</a*/}
+                                {/*            >*/}
+                                {/*        </li>*/}
+                                {/*    </ul>*/}
+                                {/*</div>*/}
                             </div>
                         </div>
                     </div>
@@ -401,6 +401,16 @@ function Header() {
                                        className="nav-link main-menu-link"
                                     >SPECIAL OFFERS</a
                                     >
+                                </li>
+                                <li
+                                    id="nav-menu-item-5013"
+                                    className="nav-item menu-item-even menu-item-depth-0 menu-item menu-item-type-post_type menu-item-object-page"
+                                >
+                                    <Link to="create-service"
+                                       id="nav-create"
+                                       className="nav-link main-menu-link"
+                                    >CREATE
+                                    </Link>
                                 </li>
                             </ul>
                         </div>

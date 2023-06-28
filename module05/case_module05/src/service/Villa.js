@@ -1,25 +1,38 @@
 import "bootstrap/dist/css/bootstrap-grid.css"
 import "bootstrap/dist/js/bootstrap.bundle"
 import "./List.css"
-import React from "react";
+import React, {useEffect, useState} from "react";
 import {Link} from "react-router-dom";
-import { villa} from "../facility/villa";
+// import {villa} from "../facility/villa";
+import axios from "axios";
+import {useDispatch, useSelector} from "react-redux";
+import {getAllVilla} from "../redux/actions/villa/villa";
 
 function Villa() {
+    const villa = useSelector(state => state.villa)
+    const dispatch = useDispatch();
+    useEffect(() => {
+        dispatch(getAllVilla())
+    },[])
+    if(!villa) return null;
     return (
         <>
-            <div style={{backgroundImage: "url('https://furamavietnam.com/wp-content/uploads/2018/08/banner01.jpg?id=1433')",
-                backgroundSize: "cover",height: '40vh',position: "relative"}}>
-                <h1 style={{    transform: 'translate(-50%, -50%)',
+            <div style={{
+                backgroundImage: "url('https://furamavietnam.com/wp-content/uploads/2018/08/banner01.jpg?id=1433')",
+                backgroundSize: "cover", height: '40vh', position: "relative"
+            }}>
+                <h1 style={{
+                    transform: 'translate(-50%, -50%)',
                     top: '50%',
                     position: 'absolute',
                     left: '50%',
-                    color: 'white'}}>VILLA & SUITES</h1>
+                    color: 'white'
+                }}>VILLA & SUITES</h1>
             </div>
             <div className="container">
                 <div className="row col-12">
                     {
-                        villa.map(villa =>(
+                        villa.map(villa => (
                             <div className="card col-4 px-2 my-3" style={{border: 0}}>
                                 <div className="image">
                                     <img
@@ -46,7 +59,7 @@ function Villa() {
                                     </div>
                                     <div className="row">
                                         <div className="col-6 d-flex justify-content-center">
-                                            <Link to="/edit-service" className="btn btn-sm btn-warning">Edit</Link>
+                                            <Link to={`/edit-service/${villa.id}`} className="btn btn-sm btn-warning">Edit</Link>
                                         </div>
                                         <div className="col-6 d-flex justify-content-center">
                                             <button
@@ -65,6 +78,7 @@ function Villa() {
                     }
                 </div>
             </div>
+
             <div className="page-content page-container" id="page-content">
                 <div className="padding">
                     <div className="row container d-flex justify-content-center">

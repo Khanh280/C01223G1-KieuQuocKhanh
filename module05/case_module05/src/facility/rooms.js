@@ -68,5 +68,5 @@ exports.rooms = [
         floorsNumber: 5,
         freeService: 'string',
         image: 'https://furamavietnam.com/wp-content/uploads/2018/03/Vietnam_Danang_Furama_Ocean-Suite-Feature-768x497.jpg'
-    },
+    }
 ];
