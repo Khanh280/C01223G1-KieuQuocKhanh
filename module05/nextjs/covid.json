@@ -1,0 +1,74 @@
+{
+  "covid": [
+    {
+      "country":"Viet Nam",
+      "countryCode":"",
+      "Province":"",
+      "city":"",
+      "cityCode":"",
+      "lat":"0",
+      "lon":"0",
+      "confirmed":150,
+      "deaths":1,
+      "recovered":50,
+      "active":100,
+      "date":"2020-01-22"
+    },
+    {
+      "country":"Viet Nam",
+      "countryCode":"",
+      "Province":"",
+      "city":"",
+      "cityCode":"",
+      "lat":"0",
+      "lon":"0",
+      "confirmed":790,
+      "deaths":0,
+      "recovered":190,
+      "active":600,
+      "date":"2020-01-23"
+    },
+    {
+      "country":"Viet Nam",
+      "countryCode":"",
+      "Province":"",
+      "city":"",
+      "cityCode":"",
+      "lat":"0",
+      "lon":"0",
+      "confirmed":230,
+      "deaths":2,
+      "recovered":30,
+      "active":200,
+      "date":"2020-01-28"
+    },
+    {
+      "country":"Viet Nam",
+      "countryCode":"",
+      "Province":"",
+      "city":"",
+      "cityCode":"",
+      "lat":"0",
+      "lon":"0",
+      "confirmed":456,
+      "deaths":0,
+      "recovered":66,
+      "active":390,
+      "date":"2020-04-23"
+    },
+    {
+      "country":"Viet Nam",
+      "countryCode":"",
+      "Province":"",
+      "city":"",
+      "cityCode":"",
+      "lat":"0",
+      "lon":"0",
+      "confirmed":1036,
+      "deaths":5,
+      "recovered":136,
+      "active":900,
+      "date":"2022-02-23"
+    }
+  ]
+}

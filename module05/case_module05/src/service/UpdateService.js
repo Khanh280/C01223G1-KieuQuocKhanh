@@ -1,71 +1,222 @@
-import React from "react";
+import React, {useEffect, useState} from "react";
 import "../crud.css"
+import {useParams, useSearchParams} from "react-router-dom";
+import {createVilla, getVillaById, updateVilla} from "../redux/actions/villa/villa";
+import {createHouse} from "../redux/actions/house/house";
+import {createRoom} from "../redux/actions/room/room";
+import Swal from "sweetalert2";
+import {Field, Form, Formik} from "formik";
+import {useDispatch} from "react-redux";
+import axios from "axios";
+import {useNavigate} from "react-router";
 function UpdateService() {
+    const navigate = useNavigate()
+    const [param] = useSearchParams()
+    const id = param.get('id');
+    const [serviceNow, setServiceNow] = useState()
+    const [service, setService] = useState()
+    const dispatch = useDispatch();
+    const typeService = ()=>{
+        switch (id) {
+            case 1:
+                return "villa"
+            case 2:
+                return "house"
+            case 3:
+                return "room"
+        }
+    }
+    const findById = async ()=>{
+        const res = await axios.get(`http://localhost:8080/${typeService()}`+id)
+        console.log(res.data)
+        setServiceNow(res.data)
+    }
+    useEffect(()=>{
+        findById()
+        // dispatch(getVillaById(id))
+        // console.log(serviceNow)
+    },[])
+    if(!serviceNow) {
+        return null;
+    }
     return (
-        <div className="wrapper d-flex justify-content-center flex-column px-md-5 px-1">
-            <div className="h3 text-center font-weight-bold">Update Service</div>
-            <div className="row my-4">
-                <div className="col-md-6">
-                    <label>Service Name</label> <input type="text" placeholder=""/>
+        <Formik
+            initialValues={{
+                // ...initialValueService
+                id: serviceNow.id,
+                name: serviceNow.name,
+                useArea: serviceNow.useArea,
+                rentalCost: serviceNow.rentalCost,
+                maximumPeople: serviceNow.maximumPeople,
+                rentalType: serviceNow.rentalType,
+                roomStandard: serviceNow.roomStandard,
+                description: serviceNow.description,
+                poolArea: serviceNow.poolArea,
+                floorsNumber: serviceNow.floorsNumber,
+                freeService: serviceNow.freeService,
+                image: serviceNow.image,
+                serviceTypeId: serviceNow.serviceTypeId
+            }}
+            onSubmit={(values, {setSubmitting, resetForm}) => {
+                setSubmitting(false)
+                let actions = null;
+                let statusCreate = true;
+                switch (+values.serviceTypeId) {
+                    case 1:
+                        actions = updateVilla({
+                            id: values.id,
+                            name: values.name,
+                            useArea: values.useArea,
+                            rentalCost: values.rentalCost,
+                            maximumPeople: values.maximumPeople,
+                            rentalType: values.rentalType,
+                            roomStandard: values.roomStandard,
+                            description: values.description,
+                            poolArea: values.poolArea,
+                            floorsNumber: values.floorsNumber,
+                            image: values.image,
+                            serviceTypeId: values.serviceTypeId
+                        })
+                        break;
+                    case 2:
+                        actions = createHouse({
+                            id: '',
+                            name: values.name,
+                            useArea: values.useArea,
+                            rentalCost: values.rentalCost,
+                            maximumPeople: values.maximumPeople,
+                            rentalType: values.rentalType,
+                            roomStandard: values.roomStandard,
+                            description: values.description,
+                            floorsNumber: values.floorsNumber,
+                            image: values.image,
+                            serviceTypeId: values.serviceTypeId
+                        })
+                        break;
+                    case 3:
+                        actions = createRoom({
+                            id: '',
+                            name: values.name,
+                            useArea: values.useArea,
+                            rentalCost: values.rentalCost,
+                            maximumPeople: values.maximumPeople,
+                            rentalType: values.rentalType,
+                            roomStandard: values.roomStandard,
+                            description: values.description,
+                            poolArea: values.poolArea,
+                            floorsNumber: values.floorsNumber,
+                            image: values.image,
+                            serviceTypeId: values.serviceTypeId
+                        })
+                        break;
+                    default:
+                        statusCreate = false
+                        console.log(values)
+                }
+                if (statusCreate && actions != null) {
+                    dispatch(actions)
+                    Swal.fire({
+                        icon: "success",
+                        title: "Update Success",
+                        timer: "2000"
+                    })
+                } else {
+                    Swal.fire({
+                        icon: "error",
+                        title: "Update Fail",
+                        timer: "2000"
+                    })
+                }
+                navigate('/villa')
+            }
+            }>
+
+            <Form>
+                <div className="wrapper d-flex justify-content-center flex-column px-md-5 px-1">
+                    <div className="h3 text-center font-weight-bold">Create Service</div>
+                    <div>
+                        <Field component="select" onClick={(event) => setService(event.target.value)} name="service"
+                               id="service">
+                            <Field component="option" value="1">Villa</Field>
+                            <Field component="option" value="2">House</Field>
+                            <Field component="option" value="3">Room</Field>
+                        </Field>
+                    </div>
+                    <div className="row my-4">
+                        <div className="col-md-6">
+                            <label>Service Name</label> <Field autoFocus name="name" type="text" placeholder=""/>
+                        </div>
+                        <div className="col-md-6 pt-md-0 pt-4">
+                            <label>Usable area</label> <Field name="useArea" type="text" placeholder=""/>
+                        </div>
+                    </div>
+                    <div className="row my-md-4 my-2">
+                        <div className="col-md-6">
+                            <label>Rental cost</label> <Field name="rentalCost" type="text" placeholder=""/>
+                        </div>
+                        <div className="col-md-6 pt-md-0 pt-4">
+                            <label>Maximum number of guests</label>{" "}
+                            <Field name="maximumPeople" type="text" placeholder=""/>
+                        </div>
+                    </div>
+                    <div className="row my-md-4 my-2">
+                        <div className="col-md-6">
+                            <label>
+                                Rental type
+                                <Field component="select" name="rentalType" id="rentalType">
+                                    <Field component="option" value="Year">Year</Field>
+                                    <Field component="option" value="Month">Month</Field>
+                                    <Field component="option" value="Date">Date</Field>
+                                    <Field component="option" value="Hour">Hour</Field>
+                                </Field>
+                            </label>
+                        </div>
+                        <div className="col-md-6 pt-md-0 pt-4">
+                            <label>
+                                Room standard
+                                <Field component="select" name="roomStandard" id="standard">
+                                    <Field component="option" value="5">5</Field>
+                                    <Field component="option" value="4">4</Field>
+                                    <Field component="option" value="3">3</Field>
+                                    <Field component="option" value="2">2</Field>
+                                    <Field component="option" value="1">1</Field>
+                                </Field>
+                            </label>
+                        </div>
+                    </div>
+                    <div className="row my-md-4 my-2">
+                        <div className="col-md-6">
+                            <label>Facility description</label> <Field name="description" type="text" placeholder=""/>
+                        </div>
+                        <div className="col-md-6 pt-md-0 pt-4">
+                            <label>Number of floors</label> <Field name="floorsNumber" type="text" placeholder=""/>
+                        </div>
+                    </div>
+                    <div className="row my-md-4 my-2">
+                        {
+                            service === 'villa' ?
+                                <div className="col-md-6">
+                                    <label>Pool area</label> <Field name="poolArea" type="text" placeholder=""/>
+                                </div>
+                                :
+                                service === 'house' ?
+                                    '' :
+                                    service === 'room' ?
+                                        <div className="col-md-6">
+                                            <label>Free Service</label> <Field name="freeService" type="text"
+                                                                               placeholder=""/>
+                                        </div> : ''
+                        }
+                        <div className="col-md-6 pt-md-0 pt-4">
+                            <label>Image</label> <Field name="image" type="text" placeholder=""/>
+                        </div>
+                    </div>
+                    <div className="d-flex justify-content-end">
+                        <button type="submit" className="btn btn-primary">Update</button>
+                    </div>
                 </div>
-                <div className="col-md-6 pt-md-0 pt-4">
-                    <label>Usable area</label> <input type="text" placeholder=""/>
-                </div>
-            </div>
-            <div className="row my-md-4 my-2">
-                <div className="col-md-6">
-                    <label>Rental cost</label> <input type="text" placeholder=""/>
-                </div>
-                <div className="col-md-6 pt-md-0 pt-4">
-                    <label>Maximum number of guests</label>{" "}
-                    <input type="text" placeholder=""/>
-                </div>
-            </div>
-            <div className="row my-md-4 my-2">
-                <div className="col-md-6">
-                    <label>
-                        Rental type
-                        <select name="country" id="rentalType">
-                            <option value="ind">Year</option>
-                            <option value="us">Month</option>
-                            <option value="uk">Date</option>
-                            standard
-                            <option value="uk">Hour</option>
-                        </select>
-                    </label>
-                </div>
-                <div className="col-md-6 pt-md-0 pt-4">
-                    <label>
-                        Room standard{" "}
-                        <select name="country" id="standard">
-                            <option value="ind">5</option>
-                            <option value="us">4</option>
-                            <option value="uk">3</option>
-                            <option value="aus">2</option>
-                        </select>
-                    </label>
-                </div>
-            </div>
-            <div className="row my-md-4 my-2">
-                <div className="col-md-6">
-                    <label>Facility description</label> <input type="text" placeholder=""/>
-                </div>
-                <div className="col-md-6 pt-md-0 pt-4">
-                    <label>Number of floors</label> <input type="text" placeholder=""/>
-                </div>
-            </div>
-            <div className="row my-md-4 my-2">
-                <div className="col-md-6">
-                    <label>Pool area</label> <input type="text" placeholder=""/>
-                </div>
-                <div className="col-md-6 pt-md-0 pt-4">
-                    <label>Free service included</label> <input type="text" placeholder=""/>
-                </div>
-            </div>
-            <div className="d-flex justify-content-end">
-                <button className="btn btn-primary">Update</button>
-            </div>
-        </div>
+            </Form>
+        </Formik>
     )
 }
 export default UpdateService;

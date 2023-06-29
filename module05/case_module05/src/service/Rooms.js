@@ -1,11 +1,18 @@
 import "bootstrap/dist/css/bootstrap-grid.css"
 import "bootstrap/dist/js/bootstrap.bundle"
 import "./List.css"
-import React from "react";
+import React, {useEffect} from "react";
 import {Link} from "react-router-dom";
-import {rooms} from "../facility/rooms";
+import {useDispatch, useSelector} from "react-redux";
+import {getAllHouse} from "../redux/actions/house/house";
+import {getAllRoom} from "../redux/actions/room/room";
 
 function Rooms() {
+    const rooms = useSelector(state => state.room)
+    const dispatch = useDispatch()
+    useEffect(()=>{
+        dispatch(getAllRoom())
+    },[])
     return (
         <>
             <div style={{backgroundImage: "url('https://furamavietnam.com/wp-content/uploads/2022/01/Exterior_Green_Oasis_Pool_Furama_Danang_Vietnam.jpg?id=17934')",

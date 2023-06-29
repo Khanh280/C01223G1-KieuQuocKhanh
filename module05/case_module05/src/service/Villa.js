@@ -3,18 +3,30 @@ import "bootstrap/dist/js/bootstrap.bundle"
 import "./List.css"
 import React, {useEffect, useState} from "react";
 import {Link} from "react-router-dom";
-// import {villa} from "../facility/villa";
-import axios from "axios";
 import {useDispatch, useSelector} from "react-redux";
-import {getAllVilla} from "../redux/actions/villa/villa";
+import {deleteVillaById, getAllVilla} from "../redux/actions/villa/villa";
+import Swal from "sweetalert2";
 
 function Villa() {
     const villa = useSelector(state => state.villa)
     const dispatch = useDispatch();
+    const [villaDelete, setVilla] = useState({
+        id: '',
+        name: ''
+    })
     useEffect(() => {
         dispatch(getAllVilla())
-    },[])
-    if(!villa) return null;
+    }, [])
+    const deleteVilla = (id) =>{
+        dispatch(deleteVillaById(id))
+        dispatch(getAllVilla())
+        Swal.fire({
+            icon: "success",
+            title: "Create Success",
+            timer: "2000"
+        })
+    }
+    if (!villa) return null;
     return (
         <>
             <div style={{
@@ -59,7 +71,9 @@ function Villa() {
                                     </div>
                                     <div className="row">
                                         <div className="col-6 d-flex justify-content-center">
-                                            <Link to={`/edit-service/${villa.id}`} className="btn btn-sm btn-warning">Edit</Link>
+                                            {/*//fix duong dan*/}
+                                            <Link to={`/edit-service?id=${villa.id}&serviceTypeId=${villa.serviceTypeId}`}
+                                                  className="btn btn-sm btn-warning">Edit</Link>
                                         </div>
                                         <div className="col-6 d-flex justify-content-center">
                                             <button
@@ -67,6 +81,10 @@ function Villa() {
                                                 className="btn btn-sm btn-danger"
                                                 data-bs-toggle="modal"
                                                 data-bs-target="#exampleModal"
+                                                onClick={() => setVilla({
+                                                    id: villa.id,
+                                                    name: villa.name
+                                                })}
                                             >
                                                 Delete
                                             </button>
@@ -145,7 +163,7 @@ function Villa() {
                             />
                         </div>
                         <div className="modal-body">
-                            Do you confirm the removal of the service?
+                            Do you confirm the removal of the <span style={{color: "red"}}>{villaDelete.name}</span>?
                         </div>
                         <div className="modal-footer">
                             <button
@@ -155,7 +173,7 @@ function Villa() {
                             >
                                 No
                             </button>
-                            <button type="button" className="btn btn-danger">
+                            <button onClick={()=> deleteVilla(villaDelete.id)} type="button" data-bs-dismiss="modal" className="btn btn-danger">
                                 Yes
                             </button>
                         </div>

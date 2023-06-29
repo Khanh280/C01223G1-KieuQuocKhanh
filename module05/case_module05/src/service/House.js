@@ -1,11 +1,33 @@
 import "bootstrap/dist/css/bootstrap-grid.css"
 import "bootstrap/dist/js/bootstrap.bundle"
 import "./List.css"
-import React from "react";
+import React, {useEffect, useState} from "react";
 import {Link} from "react-router-dom";
-import { house} from "../facility/house";
+import {useDispatch, useSelector} from "react-redux";
+import {deleteHouseById, getAllHouse} from "../redux/actions/house/house";
+import {deleteVillaById, getAllVilla} from "../redux/actions/villa/villa";
+import Swal from "sweetalert2";
 
 function House() {
+    const house = useSelector(state => state.house)
+    const dispatch = useDispatch();
+    const [houseDelete, setHouse] = useState({
+        id: '',
+        name: ''
+    })
+    useEffect(()=>{
+        dispatch(getAllHouse())
+    },[])
+    const deleteHouse = (id) =>{
+        dispatch(deleteHouseById(id))
+        dispatch(getAllHouse())
+        Swal.fire({
+            icon: "success",
+            title: "Create Success",
+            timer: "2000"
+        })
+    }
+    if(!house) return null
     return (
         <>
             <div style={{backgroundImage: "url('https://furamavietnam.com/wp-content/uploads/2018/10/Vietnam_Danang_Furama_Resort_Exterior-Courtyard-Ocean-Pool.jpg?id=2350')",
@@ -46,7 +68,7 @@ function House() {
                                     </div>
                                     <div className="row">
                                         <div className="col-6 d-flex justify-content-center">
-                                            <Link to="/edit-service" className="btn btn-sm btn-warning">Edit</Link>
+                                            <Link to={`/edit-service/${house.id}/${house.serviceTypeId}`} className="btn btn-sm btn-warning">Edit</Link>
                                         </div>
                                         <div className="col-6 d-flex justify-content-center">
                                             <button
@@ -54,6 +76,11 @@ function House() {
                                                 className="btn btn-sm btn-danger"
                                                 data-bs-toggle="modal"
                                                 data-bs-target="#exampleModal"
+                                                onClick={()=>setHouse({
+                                                    id: house.id,
+                                                    name: house.name
+                                                })
+                                                }
                                             >
                                                 Delete
                                             </button>
@@ -131,7 +158,7 @@ function House() {
                             />
                         </div>
                         <div className="modal-body">
-                            Do you confirm the removal of the service?
+                            Do you confirm the removal of the <span style={{color: "red"}}>{houseDelete.name}</span>?
                         </div>
                         <div className="modal-footer">
                             <button
@@ -141,7 +168,7 @@ function House() {
                             >
                                 No
                             </button>
-                            <button type="button" className="btn btn-danger">
+                            <button type="button" className="btn btn-danger" data-bs-dismiss="modal" onClick={()=> deleteHouse(houseDelete.id)}>
                                 Yes
                             </button>
                         </div>

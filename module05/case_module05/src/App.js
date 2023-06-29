@@ -30,10 +30,9 @@ function App() {
                 <Routes>
                     <Route path="/" element={<Villa/>}/>
                     <Route path="/villa" element={<Villa/>}/>
-                    <Route path="/villa" element={<Villa/>}/>
                     <Route path="/house" element={<House/>}/>
                     <Route path="/room" element={<Rooms/>}/>
-                    <Route path="/edit-service/:id" element={<UpdateService/>}/>
+                    <Route path="/edit-service/:id/:serviceTypeId" element={<UpdateService/>}/>
                     <Route path="/create-service" element={<CreateService/>}/>
                     <Route path="/customer" element={<Customer/>}/>
                     <Route path="/edit-customer" element={<UpdateCustomer/>}/>

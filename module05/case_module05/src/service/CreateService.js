@@ -1,17 +1,36 @@
-import React, {useState} from "react";
+import React, {useEffect, useState} from "react";
 
-import {Formik, Form, Field} from "formik";
+import {Formik, Form, Field, useFormik} from "formik";
+import {useDispatch} from "react-redux";
+import {createVilla} from "../redux/actions/villa/villa";
+import Swal from "sweetalert2";
+import {boolean} from "yup";
+import {createHouse} from "../redux/actions/house/house";
+import {createRoom} from "../redux/actions/room/room";
 
 function CreateService() {
-    const [service, setService] = useState('villa')
-    // const handleService = (value) => {
-    //     setService(value)
-    //     console.log(service)
-    // }
+    const [service, setService] = useState()
+    const dispatch = useDispatch()
+    const [initialValueService, setInitialValueService] = useState()
+    // const initialValueService = {
+    //     id: '',
+    //     name: '',
+    //     useArea: '',
+    //     rentalCost: '',
+    //     maximumPeople: '',
+    //     rentalType: 'Hour',
+    //     roomStandard: '1',
+    //     description: '',
+    //     poolArea: '',
+    //     floorsNumber: '',
+    //     image: '',
+    //     service: 'villa'
+    // };
     return (
         <Formik
             initialValues={{
-                id: 1,
+                // ...initialValueService
+                id: '',
                 name: "",
                 useArea: '',
                 rentalCost: '',
@@ -23,26 +42,100 @@ function CreateService() {
                 floorsNumber: '',
                 freeService: '',
                 image: "",
-                service: service
+                serviceTypeId: 1
             }}
-            onSubmit={values => {
-                console.log(values.service)
-            }
+            onSubmit={(values, {setSubmitting, resetForm}) => {
+                setSubmitting(false)
+                let actions = null;
+                let statusCreate = true;
+                switch (+values.serviceTypeId) {
+                    case 1:
+                        actions = createVilla({
+                            id: '',
+                            name: values.name,
+                            useArea: values.useArea,
+                            rentalCost: values.rentalCost,
+                            maximumPeople: values.maximumPeople,
+                            rentalType: values.rentalType,
+                            roomStandard: values.roomStandard,
+                            description: values.description,
+                            poolArea: values.poolArea,
+                            floorsNumber: values.floorsNumber,
+                            image: values.image,
+                            serviceTypeId: +values.serviceTypeId
+                        })
 
+                        break;
+                    case 2:
+                        actions = createHouse({
+                            id: '',
+                            name: values.name,
+                            useArea: values.useArea,
+                            rentalCost: values.rentalCost,
+                            maximumPeople: values.maximumPeople,
+                            rentalType: values.rentalType,
+                            roomStandard: values.roomStandard,
+                            description: values.description,
+                            floorsNumber: values.floorsNumber,
+                            image: values.image,
+                            serviceTypeId: +values.serviceTypeId
+                        })
+                        break;
+                    case 3:
+                        actions = createRoom({
+                            id: '',
+                            name: values.name,
+                            useArea: values.useArea,
+                            rentalCost: values.rentalCost,
+                            maximumPeople: values.maximumPeople,
+                            rentalType: values.rentalType,
+                            roomStandard: values.roomStandard,
+                            description: values.description,
+                            poolArea: values.poolArea,
+                            floorsNumber: values.floorsNumber,
+                            image: values.image,
+                            serviceTypeId: +values.serviceTypeId
+                        })
+                        break;
+                    default:
+                        statusCreate = false
+                        console.log(values)
+                }
+                if (statusCreate && actions != null) {
+                    dispatch(actions)
+                    Swal.fire({
+                        icon: "success",
+                        title: "Create Success",
+                        timer: "2000"
+                    })
+                    resetForm();
+                } else {
+                    Swal.fire({
+                        icon: "error",
+                        title: "Create Fail",
+                        timer: "2000"
+                    })
+                }
+            }
             }>
+
             <Form>
+                {
+                    console.log(initialValueService)
+                }
                 <div className="wrapper d-flex justify-content-center flex-column px-md-5 px-1">
                     <div className="h3 text-center font-weight-bold">Create Service</div>
                     <div>
-                        <Field component="select" onChange={(event)=> setService(event.target.value)} value={service} name="service" id="service">
-                            <Field component="option" value="villa">Villa</Field>
-                            <Field component="option" value="house">House</Field>
-                            <Field component="option" value="room">Room</Field>
+                        <Field component="select" onClick={(event) => setService(event.target.value)} name="serviceTypeId"
+                               id="service">
+                            <Field component="option" value="1">Villa</Field>
+                            <Field component="option" value="2">House</Field>
+                            <Field component="option" value="3">Room</Field>
                         </Field>
                     </div>
                     <div className="row my-4">
                         <div className="col-md-6">
-                            <label>Service Name</label> <Field name="name" type="text" placeholder=""/>
+                            <label>Service Name</label> <Field autoFocus name="name" type="text" placeholder=""/>
                         </div>
                         <div className="col-md-6 pt-md-0 pt-4">
                             <label>Usable area</label> <Field name="useArea" type="text" placeholder=""/>
@@ -96,30 +189,19 @@ function CreateService() {
                                 <div className="col-md-6">
                                     <label>Pool area</label> <Field name="poolArea" type="text" placeholder=""/>
                                 </div>
-                                : service === 'house' ?
-                                '' : service === 'room' ?
-                                    <div className="col-md-6">
-                                        <label>Free Service</label> <Field name="freeService" type="text"
-                                                                           placeholder=""/>
-                                    </div> : ''
+                                :
+                                service === 'house' ?
+                                    '' :
+                                    service === 'room' ?
+                                        <div className="col-md-6">
+                                            <label>Free Service</label> <Field name="freeService" type="text"
+                                                                               placeholder=""/>
+                                        </div> : ''
                         }
                         <div className="col-md-6 pt-md-0 pt-4">
                             <label>Image</label> <Field name="image" type="text" placeholder=""/>
                         </div>
                     </div>
-                    {/*    <label class="mt-md-0 mt-2">Company Size</label>*/}
-                    {/*    <div class="d-lg-flex justify-content-between align-items-center pb-4">*/}
-                    {/*        <div class="size"><label class="option"> <Field name" type="radio" name="radio">&lt; 250 <span*/}
-                    {/*                class="checkmark"></span> </label></div>*/}
-                    {/*        <div class="size"><label class="option"> <Field name" type="radio" name="radio">251 - 1000 <span*/}
-                    {/*                class="checkmark"></span> </label></div>*/}
-                    {/*        <div class="size"><label class="option"> <Field name" type="radio" name="radio">1001 - 5000 <span*/}
-                    {/*                class="checkmark"></span> </label></div>*/}
-                    {/*        <div class="size"><label class="option"> <Field name" type="radio" name="radio">5001 - 10,000 <span*/}
-                    {/*                class="checkmark"></span> </label></div>*/}
-                    {/*        <div class="size"><label class="option"> <Field name" type="radio" name="radio">&gt; 10,000 <span*/}
-                    {/*                class="checkmark"></span> </label></div>*/}
-                    {/*    </div>*/}
                     <div className="d-flex justify-content-end">
                         <button type="submit" className="btn btn-primary">Create</button>
                     </div>

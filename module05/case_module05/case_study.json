@@ -2,7 +2,7 @@
   "villa": [
     {
       "id": 1,
-      "name": "Deluxe Ocean Villa",
+      "name": "Deluxe Ocean Villaa",
       "useArea": 55,
       "rentalCost": 5000,
       "maximumPeople": 5,
@@ -11,7 +11,8 @@
       "description": "Pro max",
       "poolArea": 5,
       "floorsNumber": 5,
-      "image": "https://furamavietnam.com/wp-content/uploads/2018/03/Vietnam_Danang_Furama_Ocean-Suite-Feature-768x497.jpg"
+      "image": "https://furamavietnam.com/wp-content/uploads/2018/03/Vietnam_Danang_Furama_Ocean-Suite-Feature-768x497.jpg",
+      "serviceTypeId": 1
     },
     {
       "id": 2,
@@ -24,7 +25,8 @@
       "description": "Pro max",
       "poolArea": 5,
       "floorsNumber": 5,
-      "image": "https://furamavietnam.com/wp-content/uploads/2018/03/Vietnam_Danang_Furama_Ocean-Studio-Suite-F.jpg"
+      "image": "https://furamavietnam.com/wp-content/uploads/2018/03/Vietnam_Danang_Furama_Ocean-Studio-Suite-F.jpg",
+      "serviceTypeId": 1
     },
     {
       "id": 3,
@@ -37,7 +39,8 @@
       "description": "Pro max",
       "poolArea": 5,
       "floorsNumber": 5,
-      "image": "https://furamavietnam.com/wp-content/uploads/2018/03/Furama_Ocean_Deluxe-2-872x563.jpg"
+      "image": "https://furamavietnam.com/wp-content/uploads/2018/03/Furama_Ocean_Deluxe-2-872x563.jpg",
+      "serviceTypeId": 1
     },
     {
       "id": 4,
@@ -50,7 +53,8 @@
       "description": "Pro max",
       "poolArea": 5,
       "floorsNumber": 5,
-      "image": "https://furamavietnam.com/wp-content/uploads/2018/03/Vietnam_Danang_Furama_Lagoon-Superior-twin-bed-F.jpg"
+      "image": "https://furamavietnam.com/wp-content/uploads/2018/03/Vietnam_Danang_Furama_Lagoon-Superior-twin-bed-F.jpg",
+      "serviceTypeId": 1
     },
     {
       "id": 5,
@@ -63,7 +67,8 @@
       "description": "Pro max",
       "poolArea": 5,
       "floorsNumber": 5,
-      "image": "https://furamavietnam.com/wp-content/uploads/2018/03/Furama_Garden-Deluxe-5-872x563.jpg"
+      "image": "https://furamavietnam.com/wp-content/uploads/2018/03/Furama_Garden-Deluxe-5-872x563.jpg",
+      "serviceTypeId": 1
     },
     {
       "id": 6,
@@ -76,7 +81,8 @@
       "description": "Pro max",
       "poolArea": 5,
       "floorsNumber": 5,
-      "image": "https://furamavietnam.com/wp-content/uploads/2018/03/Presidential-Suite-F.jpg"
+      "image": "https://furamavietnam.com/wp-content/uploads/2018/03/Presidential-Suite-F.jpg",
+      "serviceTypeId": 1
     }
   ],
   "house": [
@@ -90,10 +96,11 @@
       "roomStandard": "string",
       "description": "string",
       "floorsNumber": 5,
-      "image": "https://furamavietnam.com/wp-content/uploads/2018/03/Vietnam_Danang_Furama_Ocean-Suite-Feature-768x497.jpg"
+      "image": "https://furamavietnam.com/wp-content/uploads/2018/03/Vietnam_Danang_Furama_Ocean-Suite-Feature-768x497.jpg",
+      "serviceTypeId": 2
     },
     {
-      "id": 1,
+      "id": 2,
       "name": "Water Sport House",
       "useArea": 5,
       "rentalCost": 5,
@@ -102,10 +109,11 @@
       "roomStandard": "string",
       "description": "string",
       "floorsNumber": 5,
-      "image": "https://furamavietnam.com/wp-content/uploads/2018/03/Vietnam_Danang_Furama_Ocean-Suite-Feature-768x497.jpg"
+      "image": "https://furamavietnam.com/wp-content/uploads/2018/03/Vietnam_Danang_Furama_Ocean-Suite-Feature-768x497.jpg",
+      "serviceTypeId": 2
     },
     {
-      "id": 1,
+      "id": 3,
       "name": "Water Sport House",
       "useArea": 5,
       "rentalCost": 5,
@@ -114,10 +122,11 @@
       "roomStandard": "string",
       "description": "string",
       "floorsNumber": 5,
-      "image": "https://furamavietnam.com/wp-content/uploads/2018/03/Vietnam_Danang_Furama_Ocean-Suite-Feature-768x497.jpg"
+      "image": "https://furamavietnam.com/wp-content/uploads/2018/03/Vietnam_Danang_Furama_Ocean-Suite-Feature-768x497.jpg",
+      "serviceTypeId": 2
     },
     {
-      "id": 1,
+      "id": 4,
       "name": "Water Sport House",
       "useArea": 5,
       "rentalCost": 5,
@@ -126,10 +135,11 @@
       "roomStandard": "string",
       "description": "string",
       "floorsNumber": 5,
-      "image": "https://furamavietnam.com/wp-content/uploads/2018/03/Vietnam_Danang_Furama_Ocean-Suite-Feature-768x497.jpg"
+      "image": "https://furamavietnam.com/wp-content/uploads/2018/03/Vietnam_Danang_Furama_Ocean-Suite-Feature-768x497.jpg",
+      "serviceTypeId": 2
     },
     {
-      "id": 1,
+      "id": 5,
       "name": "Water Sport House",
       "useArea": 5,
       "rentalCost": 5,
@@ -138,10 +148,11 @@
       "roomStandard": "string",
       "description": "string",
       "floorsNumber": 5,
-      "image": "https://furamavietnam.com/wp-content/uploads/2018/03/Vietnam_Danang_Furama_Ocean-Suite-Feature-768x497.jpg"
+      "image": "https://furamavietnam.com/wp-content/uploads/2018/03/Vietnam_Danang_Furama_Ocean-Suite-Feature-768x497.jpg",
+      "serviceTypeId": 2
     },
     {
-      "id": 1,
+      "id": 6,
       "name": "Water Sport House",
       "useArea": 5,
       "rentalCost": 5,
@@ -150,7 +161,34 @@
       "roomStandard": "string",
       "description": "string",
       "floorsNumber": 5,
-      "image": "https://furamavietnam.com/wp-content/uploads/2018/03/Vietnam_Danang_Furama_Ocean-Suite-Feature-768x497.jpg"
+      "image": "https://furamavietnam.com/wp-content/uploads/2018/03/Vietnam_Danang_Furama_Ocean-Suite-Feature-768x497.jpg",
+      "serviceTypeId": 2
+    },
+    {
+      "id": 8,
+      "name": "",
+      "useArea": "",
+      "rentalCost": "",
+      "maximumPeople": "",
+      "rentalType": "Hour",
+      "roomStandard": "1",
+      "description": "",
+      "floorsNumber": "",
+      "image": "",
+      "serviceTypeId": 2
+    },
+    {
+      "id": 9,
+      "name": "",
+      "useArea": "",
+      "rentalCost": "",
+      "maximumPeople": "",
+      "rentalType": "Hour",
+      "roomStandard": "1",
+      "description": "",
+      "floorsNumber": "",
+      "image": "",
+      "serviceTypeId": 2
     }
   ],
   "room": [
@@ -165,10 +203,11 @@
       "description": "string",
       "floorsNumber": 5,
       "freeService": "string",
-      "image": "https://furamavietnam.com/wp-content/uploads/2018/03/Vietnam_Danang_Furama_Ocean-Suite-Feature-768x497.jpg"
+      "image": "https://furamavietnam.com/wp-content/uploads/2018/03/Vietnam_Danang_Furama_Ocean-Suite-Feature-768x497.jpg",
+      "serviceTypeId": 3
     },
     {
-      "id": 1,
+      "id": 2,
       "name": "Deluxe Ocean Rooms",
       "useArea": 55,
       "rentalCost": 5000,
@@ -178,10 +217,11 @@
       "description": "string",
       "floorsNumber": 5,
       "freeService": "string",
-      "image": "https://furamavietnam.com/wp-content/uploads/2018/03/Vietnam_Danang_Furama_Ocean-Suite-Feature-768x497.jpg"
+      "image": "https://furamavietnam.com/wp-content/uploads/2018/03/Vietnam_Danang_Furama_Ocean-Suite-Feature-768x497.jpg",
+      "serviceTypeId": 3
     },
     {
-      "id": 1,
+      "id": 3,
       "name": "Deluxe Ocean Rooms",
       "useArea": 55,
       "rentalCost": 5000,
@@ -191,10 +231,11 @@
       "description": "string",
       "floorsNumber": 5,
       "freeService": "string",
-      "image": "https://furamavietnam.com/wp-content/uploads/2018/03/Vietnam_Danang_Furama_Ocean-Suite-Feature-768x497.jpg"
+      "image": "https://furamavietnam.com/wp-content/uploads/2018/03/Vietnam_Danang_Furama_Ocean-Suite-Feature-768x497.jpg",
+      "serviceTypeId": 3
     },
     {
-      "id": 1,
+      "id": 4,
       "name": "Deluxe Ocean Rooms",
       "useArea": 55,
       "rentalCost": 5000,
@@ -204,10 +245,11 @@
       "description": "string",
       "floorsNumber": 5,
       "freeService": "string",
-      "image": "https://furamavietnam.com/wp-content/uploads/2018/03/Vietnam_Danang_Furama_Ocean-Suite-Feature-768x497.jpg"
+      "image": "https://furamavietnam.com/wp-content/uploads/2018/03/Vietnam_Danang_Furama_Ocean-Suite-Feature-768x497.jpg",
+      "serviceTypeId": 3
     },
     {
-      "id": 1,
+      "id": 5,
       "name": "Deluxe Ocean Rooms",
       "useArea": 55,
       "rentalCost": 5000,
@@ -217,10 +259,11 @@
       "description": "string",
       "floorsNumber": 5,
       "freeService": "string",
-      "image": "https://furamavietnam.com/wp-content/uploads/2018/03/Vietnam_Danang_Furama_Ocean-Suite-Feature-768x497.jpg"
+      "image": "https://furamavietnam.com/wp-content/uploads/2018/03/Vietnam_Danang_Furama_Ocean-Suite-Feature-768x497.jpg",
+      "serviceTypeId": 3
     },
     {
-      "id": 1,
+      "id": 6,
       "name": "Deluxe Ocean Rooms",
       "useArea": 55,
       "rentalCost": 5000,
@@ -230,7 +273,36 @@
       "description": "string",
       "floorsNumber": 5,
       "freeService": "string",
-      "image": "https://furamavietnam.com/wp-content/uploads/2018/03/Vietnam_Danang_Furama_Ocean-Suite-Feature-768x497.jpg"
+      "image": "https://furamavietnam.com/wp-content/uploads/2018/03/Vietnam_Danang_Furama_Ocean-Suite-Feature-768x497.jpg",
+      "serviceTypeId": 3
+    },
+    {
+      "id": 7,
+      "name": "",
+      "useArea": "",
+      "rentalCost": "",
+      "maximumPeople": "",
+      "rentalType": "Hour",
+      "roomStandard": "1",
+      "description": "",
+      "poolArea": "",
+      "floorsNumber": "",
+      "image": "",
+      "serviceTypeId": 3
+    }
+  ],
+  "serviceType": [
+    {
+      "id": 1,
+      "name": "Villa"
+    },
+    {
+      "id": 2,
+      "name": "House"
+    },
+    {
+      "id": 3,
+      "name": "Room"
     }
   ]
 }
