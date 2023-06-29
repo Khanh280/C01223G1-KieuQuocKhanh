@@ -15,18 +15,19 @@ function House() {
         id: '',
         name: ''
     })
-    useEffect(()=>{
-        dispatch(getAllHouse())
-    },[])
+
     const deleteHouse = (id) =>{
         dispatch(deleteHouseById(id))
         dispatch(getAllHouse())
         Swal.fire({
             icon: "success",
-            title: "Create Success",
+            title: "Delete Success",
             timer: "2000"
         })
     }
+    useEffect(()=>{
+        dispatch(getAllHouse())
+    },[])
     if(!house) return null
     return (
         <>

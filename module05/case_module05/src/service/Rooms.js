@@ -1,32 +1,50 @@
 import "bootstrap/dist/css/bootstrap-grid.css"
 import "bootstrap/dist/js/bootstrap.bundle"
 import "./List.css"
-import React, {useEffect} from "react";
+import React, {useEffect, useState} from "react";
 import {Link} from "react-router-dom";
 import {useDispatch, useSelector} from "react-redux";
-import {getAllHouse} from "../redux/actions/house/house";
-import {getAllRoom} from "../redux/actions/room/room";
+import {deleteRoomById, getAllRoom} from "../redux/actions/room/room";
+import Swal from "sweetalert2";
 
 function Rooms() {
     const rooms = useSelector(state => state.room)
     const dispatch = useDispatch()
-    useEffect(()=>{
+    const [roomDelete, setRoom] = useState({
+        id: '',
+        name: ''
+    })
+
+    const deleteRoom = (id) => {
+        dispatch(deleteRoomById(id))
         dispatch(getAllRoom())
-    },[])
+        Swal.fire({
+            icon: "success",
+            title: "Delete Success",
+            timer: "2000"
+        })
+    }
+    useEffect(() => {
+        dispatch(getAllRoom())
+    }, [])
     return (
         <>
-            <div style={{backgroundImage: "url('https://furamavietnam.com/wp-content/uploads/2022/01/Exterior_Green_Oasis_Pool_Furama_Danang_Vietnam.jpg?id=17934')",
-                backgroundSize: "cover",height: '40vh',position: "relative"}}>
-                <h1 style={{    transform: 'translate(-50%, -50%)',
+            <div style={{
+                backgroundImage: "url('https://furamavietnam.com/wp-content/uploads/2022/01/Exterior_Green_Oasis_Pool_Furama_Danang_Vietnam.jpg?id=17934')",
+                backgroundSize: "cover", height: '40vh', position: "relative"
+            }}>
+                <h1 style={{
+                    transform: 'translate(-50%, -50%)',
                     top: '50%',
                     position: 'absolute',
                     left: '50%',
-                    color: 'white'}}>ROOMS & SUITES</h1>
+                    color: 'white'
+                }}>ROOMS & SUITES</h1>
             </div>
             <div className="container">
                 <div className="row col-12">
                     {
-                        rooms.map(rooms =>(
+                        rooms.map(rooms => (
                             <div className="card col-4 px-2 my-3" style={{border: 0}}>
                                 <div className="image">
                                     <img
@@ -53,7 +71,8 @@ function Rooms() {
                                     </div>
                                     <div className="row">
                                         <div className="col-6 d-flex justify-content-center">
-                                            <Link to="/edit-service" className="btn btn-sm btn-warning">Edit</Link>
+                                            <Link to={`/edit-service/${rooms.id}/${rooms.serviceTypeId}`}
+                                                  className="btn btn-sm btn-warning">Edit</Link>
                                         </div>
                                         <div className="col-6 d-flex justify-content-center">
                                             <button
@@ -61,6 +80,10 @@ function Rooms() {
                                                 className="btn btn-sm btn-danger"
                                                 data-bs-toggle="modal"
                                                 data-bs-target="#exampleModal"
+                                                onClick={() => setRoom({
+                                                    id: rooms.id,
+                                                    name: rooms.name
+                                                })}
                                             >
                                                 Delete
                                             </button>
@@ -138,7 +161,7 @@ function Rooms() {
                             />
                         </div>
                         <div className="modal-body">
-                            Do you confirm the removal of the service?
+                            Do you confirm the removal of the <span style={{color: "red"}}>{roomDelete.name}</span>?
                         </div>
                         <div className="modal-footer">
                             <button
@@ -148,7 +171,8 @@ function Rooms() {
                             >
                                 No
                             </button>
-                            <button type="button" className="btn btn-danger">
+                            <button type="button" className="btn btn-danger" data-bs-dismiss="modal"
+                                    onClick={() => deleteRoom(roomDelete.id)}>
                                 Yes
                             </button>
                         </div>

@@ -1,8 +1,28 @@
 import {Link} from "react-router-dom";
+import {useEffect, useState} from "react";
+import axios from "axios";
 
 function Customer() {
+    const [customers, setCustomer] = useState([])
+    const [typeCustomers, setTypeCustomer] = useState([])
+    const getAllCustomer = async () => {
+        const res = await axios.get("http://localhost:8080/customer")
+        setCustomer(res.data)
+    }
+    const getAllTypeCustomer = async () => {
+        const res = await axios.get("http://localhost:8080/typeCustomer")
+        setTypeCustomer(res.data)
+    }
+    useEffect(() => {
+        getAllTypeCustomer()
+        getAllCustomer()
+    })
     return (
         <>
+            <div align="center">
+                <h1>Customer List</h1>
+                <Link to="/create-customer" className="btn btn-sm btn-primary mb-2">Create</Link>
+            </div>
             <table className="table table-striped table-hover">
                 <thead>
                 <tr>
@@ -18,132 +38,31 @@ function Customer() {
                 </tr>
                 </thead>
                 <tbody>
-                <tr>
-                    <td>Kieu Quoc Khanh</td>
-                    <td>28/08/2001</td>
-                    <td>Male</td>
-                    <td>9999999999</td>
-                    <td>0123221364</td>
-                    <td>Khanhgazz50@gmail.com</td>
-                    <td>Diamond</td>
-                    <td>Duy Xuyen,Quang Nam</td>
-                    <td style={{display: "flex",justifyContent: "space-evenly"}}>
-                        <Link to="/edit-customer" className="btn  btn-warning">Edit</Link>
-                        <button
-                            type="button"
-                            className="btn  btn-danger"
-                            data-bs-toggle="modal"
-                            data-bs-target="#exampleModal"
-                        >
-                            Delete
-                        </button>
-                    </td>
-                </tr>
-                <tr>
-                    <td>Nguyen Duc Thang</td>
-                    <td>28/08/2001</td>
-                    <td>Male</td>
-                    <td>3245342545</td>
-                    <td>0123221364</td>
-                    <td>ducthang50@gmail.com</td>
-                    <td>Diamond</td>
-                    <td>Hoa Xuan,Da Nang</td>
-                    <td style={{display: "flex",justifyContent: "space-evenly"}}>
-                         <Link to="/edit-customer" className="btn  btn-warning">Edit</Link>
-                        <button
-                            type="button"
-                            className="btn btn-sm btn-danger"
-                            data-bs-toggle="modal"
-                            data-bs-target="#exampleModal"
-                        >
-                            Delete
-                        </button>
-                    </td>
-                </tr>
-                <tr>
-                    <td>Huynh Duc Dinh</td>
-                    <td>28/08/2001</td>
-                    <td>Male</td>
-                    <td>7634573848</td>
-                    <td>0123221364</td>
-                    <td>ducdinh50@gmail.com</td>
-                    <td>Diamond</td>
-                    <td>Que Son,Quang Nam</td>
-                    <td style={{display: "flex",justifyContent: "space-evenly"}}>
-                         <Link to="/edit-customer" className="btn  btn-warning">Edit</Link>
-                        <button
-                            type="button"
-                            className="btn btn-sm btn-danger"
-                            data-bs-toggle="modal"
-                            data-bs-target="#exampleModal"
-                        >
-                            Delete
-                        </button>
-                    </td>
-                </tr>
-                <tr>
-                    <td>Phan Vu An Khang</td>
-                    <td>28/08/2001</td>
-                    <td>Male</td>
-                    <td>9999999999</td>
-                    <td>0123221364</td>
-                    <td>ankhang50@gmail.com</td>
-                    <td>Diamond</td>
-                    <td>Hai Chau, Da Nang</td>
-                    <td style={{display: "flex",justifyContent: "space-evenly"}}>
-                         <Link to="/edit-customer" className="btn  btn-warning">Edit</Link>
-                        <button
-                            type="button"
-                            className="btn btn-sm btn-danger"
-                            data-bs-toggle="modal"
-                            data-bs-target="#exampleModal"
-                        >
-                            Delete
-                        </button>
-                    </td>
-                </tr>
-                <tr>
-                    <td>Truong Quoc Hoa</td>
-                    <td>28/08/2001</td>
-                    <td>Male</td>
-                    <td>9999999999</td>
-                    <td>0123221364</td>
-                    <td>quochoa50@gmail.com</td>
-                    <td>Diamond</td>
-                    <td>Hai Chau, Da Nang</td>
-                    <td style={{display: "flex",justifyContent: "space-evenly"}}>
-                         <Link to="/edit-customer" className="btn  btn-warning">Edit</Link>
-                        <button
-                            type="button"
-                            className="btn btn-sm btn-danger"
-                            data-bs-toggle="modal"
-                            data-bs-target="#exampleModal"
-                        >
-                            Delete
-                        </button>
-                    </td>
-                </tr>
-                <tr>
-                    <td>Ho Truong An</td>
-                    <td>28/08/2001</td>
-                    <td>Male</td>
-                    <td>9999999999</td>
-                    <td>0123221364</td>
-                    <td>truonganzz50@gmail.com</td>
-                    <td>Diamond</td>
-                    <td>Da Nang</td>
-                    <td style={{display: "flex",justifyContent: "space-evenly"}}>
-                         <Link to="/edit-customer" className="btn  btn-warning">Edit</Link>
-                        <button
-                            type="button"
-                            className="btn btn-sm btn-danger"
-                            data-bs-toggle="modal"
-                            data-bs-target="#exampleModal"
-                        >
-                            Delete
-                        </button>
-                    </td>
-                </tr>
+                {
+                    customers.map((customer,index) => (
+                        <tr key={index}>
+                            <td>{customer.name}</td>
+                            <td>{customer.birthday}</td>
+                            <td>{customer.gender}</td>
+                            <td>{customer.citizenshipId}</td>
+                            <td>{customer.phoneNumber}</td>
+                            <td>{customer.email}</td>
+                            <td>{typeCustomers.find((type) => type.id === customer.typeCustomerId)?.name}</td>
+                            <td>{customer.address}</td>
+                            <td style={{display: "flex", justifyContent: "space-evenly"}}>
+                                <Link to="/edit-customer" className="btn  btn-warning">Edit</Link>
+                                <button
+                                    type="button"
+                                    className="btn  btn-danger"
+                                    data-bs-toggle="modal"
+                                    data-bs-target="#exampleModal"
+                                >
+                                    Delete
+                                </button>
+                            </td>
+                        </tr>
+                    ))
+                }
                 </tbody>
             </table>
             <div className="page-content page-container" id="page-content">
@@ -223,4 +142,5 @@ function Customer() {
         </>
     )
 }
+
 export default Customer;

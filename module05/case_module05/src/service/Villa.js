@@ -72,7 +72,7 @@ function Villa() {
                                     <div className="row">
                                         <div className="col-6 d-flex justify-content-center">
                                             {/*//fix duong dan*/}
-                                            <Link to={`/edit-service?id=${villa.id}&serviceTypeId=${villa.serviceTypeId}`}
+                                            <Link to={`/edit-service/${villa.id}/${villa.serviceTypeId}`}
                                                   className="btn btn-sm btn-warning">Edit</Link>
                                         </div>
                                         <div className="col-6 d-flex justify-content-center">

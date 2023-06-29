@@ -1,5 +1,5 @@
 import axios from "axios";
-import {CREATE_ROOM, GET_ALL_ROOM} from "../type";
+import {CREATE_ROOM, DELETE_ROOM, GET_ALL_ROOM, GET_ROOM_BY_ID, UPDATE_ROOM} from "../type";
 
 export const getAllRoom = () => async (dispatch) =>{
     try{
@@ -20,6 +20,41 @@ export const createRoom = (room) => async (dispatch) =>{
             payload: res.data
         })
     }catch (e) {
+        console.log(e)
+    }
+}
+export const deleteRoomById = (id) => async (dispatch) => {
+    try {
+        await axios.delete("http://localhost:8080/room/" + id)
+        const res = await axios.get("http://localhost:8080/room")
+        dispatch({
+            type: DELETE_ROOM,
+            payload: res.data
+        })
+    } catch (e) {
+        console.log(e)
+    }
+}
+
+export const getRoomById = (id) => async (dispatch) => {
+    try {
+        const res = await axios.get("http://localhost:8080/room"+id)
+        dispatch({
+            type: GET_ROOM_BY_ID,
+            payload: res.data
+        })
+    } catch (e) {
+        console.log(e)
+    }
+}
+export const updateRoom = (room) => async (dispatch) => {
+    try {
+        const res = await axios.put("http://localhost:8080/room/"+room.id,room)
+        dispatch({
+            type: UPDATE_ROOM,
+            payload: res.data
+        })
+    } catch (e) {
         console.log(e)
     }
 }

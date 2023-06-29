@@ -2,22 +2,22 @@ import React, {useEffect, useState} from "react";
 import "../crud.css"
 import {useParams, useSearchParams} from "react-router-dom";
 import {createVilla, getVillaById, updateVilla} from "../redux/actions/villa/villa";
-import {createHouse} from "../redux/actions/house/house";
-import {createRoom} from "../redux/actions/room/room";
+import {createHouse, updateHouse} from "../redux/actions/house/house";
+import {createRoom, updateRoom} from "../redux/actions/room/room";
 import Swal from "sweetalert2";
 import {Field, Form, Formik} from "formik";
 import {useDispatch} from "react-redux";
 import axios from "axios";
 import {useNavigate} from "react-router";
+
 function UpdateService() {
     const navigate = useNavigate()
-    const [param] = useSearchParams()
-    const id = param.get('id');
+    const {id, serviceTypeId} = useParams();
     const [serviceNow, setServiceNow] = useState()
     const [service, setService] = useState()
     const dispatch = useDispatch();
-    const typeService = ()=>{
-        switch (id) {
+    const typeService = (serviceTypeId) => {
+        switch (+serviceTypeId) {
             case 1:
                 return "villa"
             case 2:
@@ -26,17 +26,16 @@ function UpdateService() {
                 return "room"
         }
     }
-    const findById = async ()=>{
-        const res = await axios.get(`http://localhost:8080/${typeService()}`+id)
+    const findById = async () => {
+        console.log(typeService(serviceTypeId))
+        const res = await axios.get(`http://localhost:8080/` + typeService(serviceTypeId) + `/` + parseInt(id))
         console.log(res.data)
         setServiceNow(res.data)
     }
-    useEffect(()=>{
+    useEffect(() => {
         findById()
-        // dispatch(getVillaById(id))
-        // console.log(serviceNow)
-    },[])
-    if(!serviceNow) {
+    }, [])
+    if (!serviceNow) {
         return null;
     }
     return (
@@ -61,10 +60,11 @@ function UpdateService() {
                 setSubmitting(false)
                 let actions = null;
                 let statusCreate = true;
+                let urlService ='';
                 switch (+values.serviceTypeId) {
                     case 1:
                         actions = updateVilla({
-                            id: values.id,
+                            id: +values.id,
                             name: values.name,
                             useArea: values.useArea,
                             rentalCost: values.rentalCost,
@@ -75,12 +75,13 @@ function UpdateService() {
                             poolArea: values.poolArea,
                             floorsNumber: values.floorsNumber,
                             image: values.image,
-                            serviceTypeId: values.serviceTypeId
+                            serviceTypeId: +values.serviceTypeId
                         })
+                        urlService = '/villa'
                         break;
                     case 2:
-                        actions = createHouse({
-                            id: '',
+                        actions = updateHouse({
+                            id: +values.id,
                             name: values.name,
                             useArea: values.useArea,
                             rentalCost: values.rentalCost,
@@ -90,12 +91,13 @@ function UpdateService() {
                             description: values.description,
                             floorsNumber: values.floorsNumber,
                             image: values.image,
-                            serviceTypeId: values.serviceTypeId
+                            serviceTypeId: +values.serviceTypeId
                         })
+                        urlService = '/house'
                         break;
                     case 3:
-                        actions = createRoom({
-                            id: '',
+                        actions = updateRoom({
+                            id: +values.id,
                             name: values.name,
                             useArea: values.useArea,
                             rentalCost: values.rentalCost,
@@ -106,8 +108,9 @@ function UpdateService() {
                             poolArea: values.poolArea,
                             floorsNumber: values.floorsNumber,
                             image: values.image,
-                            serviceTypeId: values.serviceTypeId
+                            serviceTypeId: +values.serviceTypeId
                         })
+                        urlService = '/room'
                         break;
                     default:
                         statusCreate = false
@@ -127,15 +130,16 @@ function UpdateService() {
                         timer: "2000"
                     })
                 }
-                navigate('/villa')
+                navigate(urlService)
             }
             }>
 
             <Form>
                 <div className="wrapper d-flex justify-content-center flex-column px-md-5 px-1">
-                    <div className="h3 text-center font-weight-bold">Create Service</div>
+                    <div className="h3 text-center font-weight-bold">Update Service</div>
                     <div>
-                        <Field component="select" onClick={(event) => setService(event.target.value)} name="service"
+                        <Field component="select" onClick={(event) => setService(event.target.value)}
+                               name="serviceTypeId"
                                id="service">
                             <Field component="option" value="1">Villa</Field>
                             <Field component="option" value="2">House</Field>
@@ -194,14 +198,14 @@ function UpdateService() {
                     </div>
                     <div className="row my-md-4 my-2">
                         {
-                            service === 'villa' ?
+                            service === '1' ?
                                 <div className="col-md-6">
                                     <label>Pool area</label> <Field name="poolArea" type="text" placeholder=""/>
                                 </div>
                                 :
-                                service === 'house' ?
+                                service === '2' ?
                                     '' :
-                                    service === 'room' ?
+                                    service === '3' ?
                                         <div className="col-md-6">
                                             <label>Free Service</label> <Field name="freeService" type="text"
                                                                                placeholder=""/>
@@ -219,4 +223,5 @@ function UpdateService() {
         </Formik>
     )
 }
+
 export default UpdateService;
