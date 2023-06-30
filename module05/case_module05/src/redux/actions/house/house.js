@@ -1,9 +1,9 @@
 import axios from "axios";
 import {CREATE_HOUSE, DELETE_HOUSE, GET_ALL_HOUSE, GET_HOUSE_BY_ID, UPDATE_HOUSE} from "../type";
 
-export const getAllHouse = () => async (dispatch) =>{
+export const getAllHouse = (page) => async (dispatch) =>{
     try{
-        const res = await axios.get("http://localhost:8080/house")
+        const res = await axios.get(`http://localhost:8080/house?_page=${page || 1}&_limit=8`)
         dispatch({
             type: GET_ALL_HOUSE,
             payload: res.data
@@ -26,7 +26,7 @@ export const createHouse = (house) => async (dispatch) =>{
 export const deleteHouseById = (id) => async (dispatch) => {
     try {
         await axios.delete("http://localhost:8080/house/" + id)
-        const res = await axios.get("http://localhost:8080/house")
+        const res = await axios.get(`http://localhost:8080/house?_page=1&_limit=8`)
         dispatch({
             type: DELETE_HOUSE,
             payload: res.data

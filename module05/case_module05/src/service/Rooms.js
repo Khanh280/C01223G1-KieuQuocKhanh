@@ -6,15 +6,30 @@ import {Link} from "react-router-dom";
 import {useDispatch, useSelector} from "react-redux";
 import {deleteRoomById, getAllRoom} from "../redux/actions/room/room";
 import Swal from "sweetalert2";
+import {getAllHouse} from "../redux/actions/house/house";
+import axios from "axios";
 
 function Rooms() {
     const rooms = useSelector(state => state.room)
     const dispatch = useDispatch()
+    const [page, setPage] = useState()
     const [roomDelete, setRoom] = useState({
         id: '',
         name: ''
     })
-
+    const currentPage = () => {
+        const items = [];
+        for (let i = 1; i <= page; i++) {
+            items.push(
+                <li className="page-item">
+                    <button className="page-link" data-abc="true" onClick={() => dispatch(getAllRoom(i))}>
+                        {i}
+                    </button>
+                </li>
+            )
+        }
+        return items;
+    }
     const deleteRoom = (id) => {
         dispatch(deleteRoomById(id))
         dispatch(getAllRoom())
@@ -25,8 +40,16 @@ function Rooms() {
         })
     }
     useEffect(() => {
+
         dispatch(getAllRoom())
     }, [])
+    useEffect(()=>{
+        const getPage = async () => {
+            const res = await axios.get(`http://localhost:8080/room?_page=1&_limit=8`);
+            setPage(Math.ceil((res.headers['x-total-count']) / 8));
+        };
+        getPage()
+    },[rooms])
     return (
         <>
             <div style={{
@@ -41,16 +64,16 @@ function Rooms() {
                     color: 'white'
                 }}>ROOMS & SUITES</h1>
             </div>
-            <div className="container">
+            <div className="container" style={{height: "83vh"}}>
                 <div className="row col-12">
                     {
                         rooms.map(rooms => (
-                            <div className="card col-4 px-2 my-3" style={{border: 0}}>
-                                <div className="image">
+                            <div className="card col-3 px-2 my-3" style={{border: 0}}>
+                                <div className="image" style={{height: "20.3vh"}}>
                                     <img
                                         src={rooms.image}
                                         className="card-img-top"
-                                        alt="..."
+                                        alt="Image Not Found"
                                     />
                                     <Link to="/create-service" className="btn btn-sm book-now">Book now</Link>
                                 </div>
@@ -107,26 +130,9 @@ function Rooms() {
                                                 <i className="fa fa-angle-left"/>
                                             </a>
                                         </li>
-                                        <li className="page-item active">
-                                            <a className="page-link" href="#" data-abc="true">
-                                                1
-                                            </a>
-                                        </li>
-                                        <li className="page-item">
-                                            <a className="page-link" href="#" data-abc="true">
-                                                2
-                                            </a>
-                                        </li>
-                                        <li className="page-item">
-                                            <a className="page-link" href="#" data-abc="true">
-                                                3
-                                            </a>
-                                        </li>
-                                        <li className="page-item">
-                                            <a className="page-link" href="#" data-abc="true">
-                                                4
-                                            </a>
-                                        </li>
+                                        {
+                                            currentPage()
+                                        }
                                         <li className="page-item">
                                             <a className="page-link" href="#" data-abc="true">
                                                 <i className="fa fa-angle-right"/>

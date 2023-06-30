@@ -1,31 +1,16 @@
 import React, {useEffect, useState} from "react";
 
-import {Formik, Form, Field, useFormik} from "formik";
+import {Formik, Form, Field, useFormik, ErrorMessage} from "formik";
 import {useDispatch} from "react-redux";
 import {createVilla} from "../redux/actions/villa/villa";
 import Swal from "sweetalert2";
-import {boolean} from "yup";
 import {createHouse} from "../redux/actions/house/house";
 import {createRoom} from "../redux/actions/room/room";
+import * as yup from "yup"
 
 function CreateService() {
-    const [service, setService] = useState()
+    const [service, setService] = useState("1")
     const dispatch = useDispatch()
-    const [initialValueService, setInitialValueService] = useState()
-    // const initialValueService = {
-    //     id: '',
-    //     name: '',
-    //     useArea: '',
-    //     rentalCost: '',
-    //     maximumPeople: '',
-    //     rentalType: 'Hour',
-    //     roomStandard: '1',
-    //     description: '',
-    //     poolArea: '',
-    //     floorsNumber: '',
-    //     image: '',
-    //     service: 'villa'
-    // };
     return (
         <Formik
             initialValues={{
@@ -44,6 +29,24 @@ function CreateService() {
                 image: "",
                 serviceTypeId: 1
             }}
+            validationSchema={yup.object({
+                name: yup.string().required('Not Blank')
+                    .matches(/^[A-Za-z]+([A-Za-z]+ )*([A-Za-z]+)*$/),
+                useArea: yup.number().required('Not Blank').min(1),
+                rentalCost: yup.number().required('Not Blank').min(1),
+                maximumPeople: yup.number().required('Not Blank').min(1),
+                rentalType: yup.string().required('Not Blank'),
+                roomStandard: yup.string().required('Not Blank'),
+                description: yup.string().required('Not Blank'),
+                poolArea: yup.number().test('required-if-service-is-1', 'Pool Area > 0', function(value) {
+                    if (service === "1" ) {
+                        return yup.number().required('Not Blank').min(1).isValidSync(value);
+                    }
+                    return true;
+                }),
+                floorsNumber: yup.number().required('Not Blank').min(1),
+                serviceTypeId: yup.string().required('Not Blank')
+            })}
             onSubmit={(values, {setSubmitting, resetForm}) => {
                 setSubmitting(false)
                 let actions = null;
@@ -91,7 +94,6 @@ function CreateService() {
                             rentalType: values.rentalType,
                             roomStandard: values.roomStandard,
                             description: values.description,
-                            poolArea: values.poolArea,
                             floorsNumber: values.floorsNumber,
                             image: values.image,
                             serviceTypeId: +values.serviceTypeId
@@ -109,6 +111,7 @@ function CreateService() {
                         timer: "2000"
                     })
                     resetForm();
+                    setService("1")
                 } else {
                     Swal.fire({
                         icon: "error",
@@ -120,34 +123,37 @@ function CreateService() {
             }>
 
             <Form>
-                {
-                    console.log(initialValueService)
-                }
                 <div className="wrapper d-flex justify-content-center flex-column px-md-5 px-1">
                     <div className="h3 text-center font-weight-bold">Create Service</div>
                     <div>
-                        <Field component="select" onClick={(event) => setService(event.target.value)} name="serviceTypeId"
+                        <Field component="select" onClick={(event) => setService(event.target.value)}
+                               name="serviceTypeId"
                                id="service">
                             <Field component="option" value="1">Villa</Field>
                             <Field component="option" value="2">House</Field>
                             <Field component="option" value="3">Room</Field>
                         </Field>
+                        <ErrorMessage name="serviceTypeId" component="p" style={{color: "red"}}/>
                     </div>
                     <div className="row my-4">
                         <div className="col-md-6">
                             <label>Service Name</label> <Field autoFocus name="name" type="text" placeholder=""/>
+                            <ErrorMessage name="name" component="p" style={{color: "red"}}/>
                         </div>
                         <div className="col-md-6 pt-md-0 pt-4">
                             <label>Usable area</label> <Field name="useArea" type="text" placeholder=""/>
+                            <ErrorMessage name="useArea" component="p" style={{color: "red"}}/>
                         </div>
                     </div>
                     <div className="row my-md-4 my-2">
                         <div className="col-md-6">
                             <label>Rental cost</label> <Field name="rentalCost" type="text" placeholder=""/>
+                            <ErrorMessage name="rentalCost" component="p" style={{color: "red"}}/>
                         </div>
                         <div className="col-md-6 pt-md-0 pt-4">
                             <label>Maximum number of guests</label>{" "}
                             <Field name="maximumPeople" type="text" placeholder=""/>
+                            <ErrorMessage name="maximumPeople" component="p" style={{color: "red"}}/>
                         </div>
                     </div>
                     <div className="row my-md-4 my-2">
@@ -160,6 +166,7 @@ function CreateService() {
                                     <Field component="option" value="Date">Date</Field>
                                     <Field component="option" value="Hour">Hour</Field>
                                 </Field>
+                                <ErrorMessage name="rentalType" component="p" style={{color: "red"}}/>
                             </label>
                         </div>
                         <div className="col-md-6 pt-md-0 pt-4">
@@ -172,27 +179,31 @@ function CreateService() {
                                     <Field component="option" value="2">2</Field>
                                     <Field component="option" value="1">1</Field>
                                 </Field>
+                                <ErrorMessage name="roomStandard" component="p" style={{color: "red"}}/>
                             </label>
                         </div>
                     </div>
                     <div className="row my-md-4 my-2">
                         <div className="col-md-6">
                             <label>Facility description</label> <Field name="description" type="text" placeholder=""/>
+                            <ErrorMessage name="description" component="p" style={{color: "red"}}/>
                         </div>
                         <div className="col-md-6 pt-md-0 pt-4">
                             <label>Number of floors</label> <Field name="floorsNumber" type="text" placeholder=""/>
+                            <ErrorMessage name="floorsNumber" component="p" style={{color: "red"}}/>
                         </div>
                     </div>
                     <div className="row my-md-4 my-2">
                         {
-                            service === 'villa' ?
+                            service === '1' ?
                                 <div className="col-md-6">
                                     <label>Pool area</label> <Field name="poolArea" type="text" placeholder=""/>
+                                    <ErrorMessage name="poolArea" component="p" style={{color: "red"}}/>
                                 </div>
                                 :
-                                service === 'house' ?
+                                service === '2' ?
                                     '' :
-                                    service === 'room' ?
+                                    service === '3' ?
                                         <div className="col-md-6">
                                             <label>Free Service</label> <Field name="freeService" type="text"
                                                                                placeholder=""/>
@@ -200,10 +211,11 @@ function CreateService() {
                         }
                         <div className="col-md-6 pt-md-0 pt-4">
                             <label>Image</label> <Field name="image" type="text" placeholder=""/>
+                            {/*<ErrorMessage name="floorsNumber" component="p" style={{color: "red"}}/>*/}
                         </div>
                     </div>
                     <div className="d-flex justify-content-end">
-                        <button type="submit" className="btn btn-primary">Create</button>
+                        <button type="submit" className="btn btn-info">Create</button>
                     </div>
                 </div>
             </Form>

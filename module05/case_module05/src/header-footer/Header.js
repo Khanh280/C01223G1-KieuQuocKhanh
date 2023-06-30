@@ -409,7 +409,7 @@ function Header() {
                                     <Link to="create-service"
                                        id="nav-create"
                                        className="nav-link main-menu-link"
-                                    >CREATE
+                                    >CREATE SERVICE
                                     </Link>
                                 </li>
                             </ul>

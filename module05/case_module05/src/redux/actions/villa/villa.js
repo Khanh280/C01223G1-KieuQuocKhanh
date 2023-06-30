@@ -1,9 +1,9 @@
 import axios from "axios";
 import {CREATE_VILLA, DELETE_VILLA, GET_ALL_VILLA, GET_VILLA_BY_ID, UPDATE_VILLA} from "../type";
 
-export const getAllVilla = () => async (dispatch) => {
+export const getAllVilla = (page) => async (dispatch) => {
     try {
-        const res = await axios.get("http://localhost:8080/villa")
+        const res = await axios.get(`http://localhost:8080/villa?_page=${page || 1}&_limit=8`)
         dispatch({
             type: GET_ALL_VILLA,
             payload: res.data
@@ -26,7 +26,7 @@ export const createVilla = (villa) => async (dispatch) => {
 export const deleteVillaById = (id) => async (dispatch) => {
     try {
         await axios.delete("http://localhost:8080/villa/" + id)
-        const res = await axios.get("http://localhost:8080/villa")
+        const res = await axios.get(`http://localhost:8080/villa?_page=1&_limit=8`)
         dispatch({
             type: DELETE_VILLA,
             payload: res.data

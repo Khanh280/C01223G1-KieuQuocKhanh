@@ -6,18 +6,42 @@ import {Link} from "react-router-dom";
 import {useDispatch, useSelector} from "react-redux";
 import {deleteVillaById, getAllVilla} from "../redux/actions/villa/villa";
 import Swal from "sweetalert2";
+import axios from "axios";
 
 function Villa() {
     const villa = useSelector(state => state.villa)
     const dispatch = useDispatch();
+    const [page, setPage] = useState()
     const [villaDelete, setVilla] = useState({
         id: '',
         name: ''
     })
+
+    const currentPage = () => {
+        const items = [];
+        for (let i = 1; i <= page; i++) {
+            items.push(
+                <li className="page-item">
+                    <button className="page-link" data-abc="true" onClick={()=> dispatch(getAllVilla(i))}>
+                        {i}
+                    </button>
+                </li>
+            )
+        }
+        return items;
+    }
+
     useEffect(() => {
         dispatch(getAllVilla())
     }, [])
-    const deleteVilla = (id) =>{
+    useEffect(()=>{
+        const getPage = async () => {
+            const res = await axios.get(`http://localhost:8080/villa?_page=1&_limit=8`);
+            setPage(Math.ceil((res.headers['x-total-count']) / 8));
+        };
+        getPage()
+    },[villa])
+    const deleteVilla = (id) => {
         dispatch(deleteVillaById(id))
         dispatch(getAllVilla())
         Swal.fire({
@@ -39,18 +63,19 @@ function Villa() {
                     position: 'absolute',
                     left: '50%',
                     color: 'white'
-                }}>VILLA & SUITES</h1>
+                }}>VILLA & SUITES </h1>
             </div>
-            <div className="container">
+            <div className="container" style={{height: "83vh"}}>
                 <div className="row col-12">
                     {
                         villa.map(villa => (
-                            <div className="card col-4 px-2 my-3" style={{border: 0}}>
-                                <div className="image">
+                            <div className="card col-3 px-2 mt-3" style={{border: 0}}>
+                                <div className="image" style={{height: "20.3vh"}}>
                                     <img
                                         src={villa.image}
                                         className="card-img-top"
-                                        alt="..."
+                                        alt="Image Not Found"
+                                        style={{backgroundSize: "cover"}}
                                     />
                                     <Link to="/create-service" className="btn btn-sm book-now">Book now</Link>
                                 </div>
@@ -98,9 +123,9 @@ function Villa() {
             </div>
 
             <div className="page-content page-container" id="page-content">
-                <div className="padding">
+                <div className="">
                     <div className="row container d-flex justify-content-center">
-                        <div className="col-md-4 col-sm-6 grid-margin stretch-card">
+                        <div className="col-md-4 col-sm-6  stretch-card">
                             <div className="card-body">
                                 <nav>
                                     <ul className="pagination flex-wrap d-flex justify-content-center">
@@ -109,26 +134,9 @@ function Villa() {
                                                 <i className="fa fa-angle-left"/>
                                             </a>
                                         </li>
-                                        <li className="page-item active">
-                                            <a className="page-link" href="#" data-abc="true">
-                                                1
-                                            </a>
-                                        </li>
-                                        <li className="page-item">
-                                            <a className="page-link" href="#" data-abc="true">
-                                                2
-                                            </a>
-                                        </li>
-                                        <li className="page-item">
-                                            <a className="page-link" href="#" data-abc="true">
-                                                3
-                                            </a>
-                                        </li>
-                                        <li className="page-item">
-                                            <a className="page-link" href="#" data-abc="true">
-                                                4
-                                            </a>
-                                        </li>
+                                        {
+                                            currentPage()
+                                        }
                                         <li className="page-item">
                                             <a className="page-link" href="#" data-abc="true">
                                                 <i className="fa fa-angle-right"/>
@@ -173,7 +181,8 @@ function Villa() {
                             >
                                 No
                             </button>
-                            <button onClick={()=> deleteVilla(villaDelete.id)} type="button" data-bs-dismiss="modal" className="btn btn-danger">
+                            <button onClick={() => deleteVilla(villaDelete.id)} type="button" data-bs-dismiss="modal"
+                                    className="btn btn-danger">
                                 Yes
                             </button>
                         </div>

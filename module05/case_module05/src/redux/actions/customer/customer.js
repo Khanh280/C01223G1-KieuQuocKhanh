@@ -1,9 +1,9 @@
 import axios from "axios";
 import {CREATE_CUSTOMER, DELETE_CUSTOMER, GET_ALL_CUSTOMER, GET_CUSTOMER_BY_ID, UPDATE_CUSTOMER} from "../type";
 
-export const getAllCustomer = () => async (dispatch) => {
+export const getAllCustomer = (page) => async (dispatch) => {
     try {
-        const res = await axios.get("http://localhost:8080/customer")
+        const res = await axios.get(`http://localhost:8080/customer?_page=${page || 1}&_limit=6`)
         dispatch({
             type: GET_ALL_CUSTOMER,
             payload: res.data
@@ -26,7 +26,7 @@ export const createCustomer = (customer) => async (dispatch) => {
 export const deleteCustomerById = (id) => async (dispatch) => {
     try {
         await axios.delete("http://localhost:8080/customer/" + id)
-        const res = await axios.get("http://localhost:8080/customer")
+        const res = await axios.get(`http://localhost:8080/customer?_page=1&_limit=6`)
         dispatch({
             type: DELETE_CUSTOMER,
             payload: res.data

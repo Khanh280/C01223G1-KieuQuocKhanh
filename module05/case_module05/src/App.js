@@ -35,10 +35,10 @@ function App() {
                     <Route path="/edit-service/:id/:serviceTypeId" element={<UpdateService/>}/>
                     <Route path="/create-service" element={<CreateService/>}/>
                     <Route path="/customer" element={<Customer/>}/>
-                    <Route path="/edit-customer" element={<UpdateCustomer/>}/>
+                    <Route path="/edit-customer/:id" element={<UpdateCustomer/>}/>
                     <Route path="/create-customer" element={<CreateCustomer/>}/>
                     <Route path="/contract" element={<Contract/>}/>
-                    <Route path="/create-contract" element={<CreateContract/>}/>
+                    <Route path="/create-contract/:id" element={<CreateContract/>}/>
                     <Route path="*" element={<Villa/>}/>
                 </Routes>
                 <Footer/>

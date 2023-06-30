@@ -1,29 +1,61 @@
 import {Link} from "react-router-dom";
-import {useEffect, useState} from "react";
+import React, {useEffect, useState} from "react";
 import axios from "axios";
+import {useDispatch, useSelector} from "react-redux";
+import {deleteCustomerById, getAllCustomer} from "../redux/actions/customer/customer";
+import Swal from "sweetalert2";
+import {getAllRoom} from "../redux/actions/room/room";
+
 
 function Customer() {
-    const [customers, setCustomer] = useState([])
+    const customers = useSelector(state => state.customer)
     const [typeCustomers, setTypeCustomer] = useState([])
-    const getAllCustomer = async () => {
-        const res = await axios.get("http://localhost:8080/customer")
-        setCustomer(res.data)
+    const [customersDelete, setCustomerDelete] = useState({})
+    const dispatch = useDispatch()
+    const [page, setPage] = useState()
+    const deleteCustomer = (id) => {
+        dispatch(deleteCustomerById(id))
+        Swal.fire({
+            icon: "success",
+            title: "Delete Customer Success",
+            timer: "2000"
+        })
+    }
+    const currentPage = () => {
+        const items = [];
+        for (let i = 1; i <= page; i++) {
+            items.push(
+                <li className="page-item">
+                    <button className="page-link" data-abc="true" onClick={() => dispatch(getAllCustomer(i))}>
+                        {i}
+                    </button>
+                </li>
+            )
+        }
+        return items;
     }
     const getAllTypeCustomer = async () => {
         const res = await axios.get("http://localhost:8080/typeCustomer")
         setTypeCustomer(res.data)
     }
     useEffect(() => {
+        dispatch(getAllCustomer())
         getAllTypeCustomer()
-        getAllCustomer()
-    })
+    }, [])
+    useEffect(()=>{
+        const getPage = async () => {
+            const res = await axios.get(`http://localhost:8080/customer?_page=1&_limit=6`);
+            setPage(Math.ceil((res.headers['x-total-count']) / 6));
+        };
+        getPage()
+    },[customers])
     return (
-        <>
+        <div className="" style={{height: "83vh"}}>
             <div align="center">
                 <h1>Customer List</h1>
-                <Link to="/create-customer" className="btn btn-sm btn-primary mb-2">Create</Link>
+                <Link to="/create-customer" className="btn btn-sm btn-info mb-2">Create Customer</Link>
             </div>
-            <table className="table table-striped table-hover">
+            <table className="table table-striped table-hover ">
                 <thead>
                 <tr>
                     <th>Customer Name</th>
@@ -39,7 +71,7 @@ function Customer() {
                 </thead>
                 <tbody>
                 {
-                    customers.map((customer,index) => (
+                    customers.map((customer, index) => (
                         <tr key={index}>
                             <td>{customer.name}</td>
                             <td>{customer.birthday}</td>
@@ -50,15 +82,25 @@ function Customer() {
                             <td>{typeCustomers.find((type) => type.id === customer.typeCustomerId)?.name}</td>
                             <td>{customer.address}</td>
                             <td style={{display: "flex", justifyContent: "space-evenly"}}>
-                                <Link to="/edit-customer" className="btn  btn-warning">Edit</Link>
+                                <Link to={`/edit-customer/${customer.id}`} className="btn  btn-warning ">Edit</Link>
                                 <button
                                     type="button"
-                                    className="btn  btn-danger"
+                                    className="btn  btn-danger "
                                     data-bs-toggle="modal"
                                     data-bs-target="#exampleModal"
+                                    onClick={() => setCustomerDelete({
+                                        id: customer.id,
+                                        name: customer.name
+                                    })}
                                 >
                                     Delete
                                 </button>
+                                <Link to={`/create-contract/${customer.id}`}
+                                    type="button"
+                                    className="btn b btn-info m-0 p-1"
+                                >
+                                    Create Contract
+                                </Link>
                             </td>
                         </tr>
                     ))
@@ -73,26 +115,9 @@ function Customer() {
                                 <i className="fa fa-angle-left"/>
                             </a>
                         </li>
-                        <li className="page-item active">
-                            <a className="page-link" href="#" data-abc="true">
-                                1
-                            </a>
-                        </li>
-                        <li className="page-item">
-                            <a className="page-link" href="#" data-abc="true">
-                                2
-                            </a>
-                        </li>
-                        <li className="page-item">
-                            <a className="page-link" href="#" data-abc="true">
-                                3
-                            </a>
-                        </li>
-                        <li className="page-item">
-                            <a className="page-link" href="#" data-abc="true">
-                                4
-                            </a>
-                        </li>
+                        {
+                            currentPage()
+                        }
                         <li className="page-item">
                             <a className="page-link" href="#" data-abc="true">
                                 <i className="fa fa-angle-right"/>
@@ -122,7 +147,7 @@ function Customer() {
                             />
                         </div>
                         <div className="modal-body">
-                            Do you confirm the removal of the service?
+                            Do you confirm the removal of the <span style={{color: "red"}}>{customersDelete.name}</span>?
                         </div>
                         <div className="modal-footer">
                             <button
@@ -132,14 +157,15 @@ function Customer() {
                             >
                                 No
                             </button>
-                            <button type="button" className="btn btn-danger">
+                            <button type="button" className="btn btn-danger" data-bs-dismiss="modal"
+                                    onClick={() => deleteCustomer(customersDelete.id)}>
                                 Yes
                             </button>
                         </div>
                     </div>
                 </div>
             </div>
-        </>
+        </div>
     )
 }
 

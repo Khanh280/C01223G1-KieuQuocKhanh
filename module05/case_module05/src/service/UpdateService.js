@@ -1,14 +1,15 @@
 import React, {useEffect, useState} from "react";
 import "../crud.css"
 import {useParams, useSearchParams} from "react-router-dom";
-import {createVilla, getVillaById, updateVilla} from "../redux/actions/villa/villa";
-import {createHouse, updateHouse} from "../redux/actions/house/house";
-import {createRoom, updateRoom} from "../redux/actions/room/room";
+import {createVilla, deleteVillaById, getVillaById, updateVilla} from "../redux/actions/villa/villa";
+import {createHouse, deleteHouseById, updateHouse} from "../redux/actions/house/house";
+import {createRoom, deleteRoomById, updateRoom} from "../redux/actions/room/room";
 import Swal from "sweetalert2";
-import {Field, Form, Formik} from "formik";
+import {ErrorMessage, Field, Form, Formik} from "formik";
 import {useDispatch} from "react-redux";
 import axios from "axios";
 import {useNavigate} from "react-router";
+import * as yup from "yup";
 
 function UpdateService() {
     const navigate = useNavigate()
@@ -26,22 +27,21 @@ function UpdateService() {
                 return "room"
         }
     }
-    const findById = async () => {
-        console.log(typeService(serviceTypeId))
+    const findServiceById = async () => {
         const res = await axios.get(`http://localhost:8080/` + typeService(serviceTypeId) + `/` + parseInt(id))
-        console.log(res.data)
+        console.log(res.data.serviceTypeId)
         setServiceNow(res.data)
+        setService(res.data.serviceTypeId)
     }
     useEffect(() => {
-        findById()
-    }, [])
+        findServiceById()
+    }, [id])
     if (!serviceNow) {
         return null;
     }
     return (
         <Formik
             initialValues={{
-                // ...initialValueService
                 id: serviceNow.id,
                 name: serviceNow.name,
                 useArea: serviceNow.useArea,
@@ -56,11 +56,29 @@ function UpdateService() {
                 image: serviceNow.image,
                 serviceTypeId: serviceNow.serviceTypeId
             }}
-            onSubmit={(values, {setSubmitting, resetForm}) => {
+            validationSchema={yup.object({
+                name: yup.string().required('Not Blank')
+                    .matches(/^[A-Za-z]+([A-Za-z]+ )*([A-Za-z]+)*$/),
+                useArea: yup.number().required('Not Blank').min(1),
+                rentalCost: yup.number().required('Not Blank').min(1),
+                maximumPeople: yup.number().required('Not Blank').min(1),
+                rentalType: yup.string().required('Not Blank'),
+                roomStandard: yup.string().required('Not Blank'),
+                description: yup.string().required('Not Blank'),
+                poolArea: yup.number().test('required-if-service-is-1', 'Pool Area > 0', function (value) {
+                    if (service.toString() === "1") {
+                        return yup.number().required('Not Blank').min(1).isValidSync(value);
+                    }
+                    return true;
+                }),
+                floorsNumber: yup.number().required('Not Blank').min(1),
+                serviceTypeId: yup.string().required('Not Blank')
+            })}
+            onSubmit={(values, {setSubmitting}) => {
                 setSubmitting(false)
                 let actions = null;
                 let statusCreate = true;
-                let urlService ='';
+                let urlService = '';
                 switch (+values.serviceTypeId) {
                     case 1:
                         actions = updateVilla({
@@ -105,7 +123,6 @@ function UpdateService() {
                             rentalType: values.rentalType,
                             roomStandard: values.roomStandard,
                             description: values.description,
-                            poolArea: values.poolArea,
                             floorsNumber: values.floorsNumber,
                             image: values.image,
                             serviceTypeId: +values.serviceTypeId
@@ -117,7 +134,72 @@ function UpdateService() {
                         console.log(values)
                 }
                 if (statusCreate && actions != null) {
-                    dispatch(actions)
+                    console.log(+serviceNow.serviceTypeId)
+                    if (+serviceNow.serviceTypeId !== +values.serviceTypeId) {
+                        switch (+values.serviceTypeId) {
+                            case 1:
+                                    actions = createVilla({
+                                        id: '',
+                                        name: values.name,
+                                        useArea: values.useArea,
+                                        rentalCost: values.rentalCost,
+                                        maximumPeople: values.maximumPeople,
+                                        rentalType: values.rentalType,
+                                        roomStandard: values.roomStandard,
+                                        description: values.description,
+                                        poolArea: values.poolArea,
+                                        floorsNumber: values.floorsNumber,
+                                        image: values.image,
+                                        serviceTypeId: +values.serviceTypeId
+                                    })
+                                    break;
+                            case 2:
+                                actions = createHouse({
+                                    id: '',
+                                    name: values.name,
+                                    useArea: values.useArea,
+                                    rentalCost: values.rentalCost,
+                                    maximumPeople: values.maximumPeople,
+                                    rentalType: values.rentalType,
+                                    roomStandard: values.roomStandard,
+                                    description: values.description,
+                                    floorsNumber: values.floorsNumber,
+                                    image: values.image,
+                                    serviceTypeId: +values.serviceTypeId
+                                })
+                                break;
+                            case 3:
+                                actions = createRoom({
+                                    id: '',
+                                    name: values.name,
+                                    useArea: values.useArea,
+                                    rentalCost: values.rentalCost,
+                                    maximumPeople: values.maximumPeople,
+                                    rentalType: values.rentalType,
+                                    roomStandard: values.roomStandard,
+                                    description: values.description,
+                                    floorsNumber: values.floorsNumber,
+                                    image: values.image,
+                                    serviceTypeId: +values.serviceTypeId
+                                })
+                                break;
+                        }
+                        dispatch(actions)
+                        switch (+serviceNow.serviceTypeId) {
+                            case 1:
+                                dispatch(deleteVillaById(+id))
+                                break;
+                            case 2:
+                                dispatch(deleteHouseById(+id))
+                                break;
+                            case 3:
+                                dispatch(deleteRoomById(+id))
+                                break;
+
+                        }
+                    } else {
+                        dispatch(actions)
+                    }
                     Swal.fire({
                         icon: "success",
                         title: "Update Success",
@@ -137,30 +219,38 @@ function UpdateService() {
             <Form>
                 <div className="wrapper d-flex justify-content-center flex-column px-md-5 px-1">
                     <div className="h3 text-center font-weight-bold">Update Service</div>
-                    <div>
-                        <Field component="select" onClick={(event) => setService(event.target.value)}
-                               name="serviceTypeId"
-                               id="service">
-                            <Field component="option" value="1">Villa</Field>
-                            <Field component="option" value="2">House</Field>
-                            <Field component="option" value="3">Room</Field>
-                        </Field>
+                    <div className="row">
+                        <label> Service Type
+                            <Field component="select" onClick={(event) => setService(event.target.value)}
+                                   name="serviceTypeId"
+                                   id="rentalType">
+                                <Field component="option" value="1">Villa</Field>
+                                <Field component="option" value="2">House</Field>
+                                <Field component="option" value="3">Room</Field>
+                            </Field>
+                        </label>
+                        <ErrorMessage name="serviceTypeId" component="p" style={{color: "red"}}/>
                     </div>
                     <div className="row my-4">
                         <div className="col-md-6">
                             <label>Service Name</label> <Field autoFocus name="name" type="text" placeholder=""/>
+                            <ErrorMessage name="name" component="p" style={{color: "red"}}/>
+
                         </div>
                         <div className="col-md-6 pt-md-0 pt-4">
                             <label>Usable area</label> <Field name="useArea" type="text" placeholder=""/>
+                            <ErrorMessage name="useArea" component="p" style={{color: "red"}}/>
                         </div>
                     </div>
                     <div className="row my-md-4 my-2">
                         <div className="col-md-6">
                             <label>Rental cost</label> <Field name="rentalCost" type="text" placeholder=""/>
+                            <ErrorMessage name="rentalCost" component="p" style={{color: "red"}}/>
                         </div>
                         <div className="col-md-6 pt-md-0 pt-4">
                             <label>Maximum number of guests</label>{" "}
                             <Field name="maximumPeople" type="text" placeholder=""/>
+                            <ErrorMessage name="maximumPeople" component="p" style={{color: "red"}}/>
                         </div>
                     </div>
                     <div className="row my-md-4 my-2">
@@ -173,6 +263,7 @@ function UpdateService() {
                                     <Field component="option" value="Date">Date</Field>
                                     <Field component="option" value="Hour">Hour</Field>
                                 </Field>
+                                <ErrorMessage name="rentalType" component="p" style={{color: "red"}}/>
                             </label>
                         </div>
                         <div className="col-md-6 pt-md-0 pt-4">
@@ -185,6 +276,7 @@ function UpdateService() {
                                     <Field component="option" value="2">2</Field>
                                     <Field component="option" value="1">1</Field>
                                 </Field>
+                                <ErrorMessage name="roomStandard" component="p" style={{color: "red"}}/>
                             </label>
                         </div>
                     </div>
@@ -194,18 +286,20 @@ function UpdateService() {
                         </div>
                         <div className="col-md-6 pt-md-0 pt-4">
                             <label>Number of floors</label> <Field name="floorsNumber" type="text" placeholder=""/>
+                            <ErrorMessage name="floorsNumber" component="p" style={{color: "red"}}/>
                         </div>
                     </div>
                     <div className="row my-md-4 my-2">
                         {
-                            service === '1' ?
+                            service.toString() === "1" ?
                                 <div className="col-md-6">
                                     <label>Pool area</label> <Field name="poolArea" type="text" placeholder=""/>
+                                    <ErrorMessage name="poolArea" component="p" style={{color: "red"}}/>
                                 </div>
                                 :
-                                service === '2' ?
+                                service.toString() === "2" ?
                                     '' :
-                                    service === '3' ?
+                                    service.toString() === "3" ?
                                         <div className="col-md-6">
                                             <label>Free Service</label> <Field name="freeService" type="text"
                                                                                placeholder=""/>
@@ -216,7 +310,7 @@ function UpdateService() {
                         </div>
                     </div>
                     <div className="d-flex justify-content-end">
-                        <button type="submit" className="btn btn-primary">Update</button>
+                        <button type="submit" className="btn btn-info">Update</button>
                     </div>
                 </div>
             </Form>

@@ -1,9 +1,11 @@
 import "../crud.css"
 import React, {useEffect, useState} from "react";
 import axios from "axios";
-import {Field, Form, Formik} from "formik";
+import {ErrorMessage, Field, Form, Formik} from "formik";
 import Swal from "sweetalert2";
 import {useDispatch} from "react-redux";
+import {createCustomer} from "../redux/actions/customer/customer";
+import * as yup from "yup"
 
 function CreateCustomer() {
     const [typeCustomers, setTypeCustomer] = useState([])
@@ -20,20 +22,29 @@ function CreateCustomer() {
             <Formik
                 initialValues={{
                     id: "",
-                    name: "khanh",
-                    birthday: "28/08",
-                    gender: "Male",
-                    citizenshipId: "01234",
-                    phoneNumber: "012345",
-                    email: "khanh@gmail.com",
+                    name: "",
+                    birthday: "",
+                    gender: "",
+                    citizenshipId: "",
+                    phoneNumber: "",
+                    email: "",
                     typeCustomerId: 1,
-                    address: "Quang Nam"
+                    address: ""
                 }}
+                validationSchema={yup.object({
+                    name: yup.string().required('Not Blank')
+                        .matches(/^[A-Z][A-Za-z]* ([A-Z][A-Za-z]* )*[A-Z][A-Za-z]*$/,'Ex: Kieu Quoc Khanh'),
+                    phoneNumber: yup.string().required('Not Blank')
+                        .matches(/^(090)|(091)|(\(84\)\+90)|(\(84\)\+91)[0-9]{7}$/,'090XXXXXXX/091XXXXXXX/(84)+90XXXXXXX/(84)+91XXXXXXX'),
+                    citizenshipId: yup.string().required('Not Blank')
+                        .matches(/^[0-9]{9}$/,'XXXXXXXXX (X : 0-9)'),
+                    email: yup.string().required('Not Blank')
+                        .matches(/^[A-Za-z0-9]+@[A-Za-z]{2,}\.[A-Za-z]{2,}$/,'Ex: khanhgazz50@gmail.com'),
+                    birthday: yup.date().required('Not Blank'),
+                    address: yup.string().required('Not Blank')
+                })}
                 onSubmit={(values,{resetForm}) => {
-                    const save = async () => {
-                        await axios.post("http://localhost:8080/customer", values)
-                    }
-                    save()
+                    dispatch(createCustomer({...values,typeCustomerId: +values.typeCustomerId}))
                     resetForm()
                     Swal.fire({
                         icon: "success",
@@ -44,13 +55,15 @@ function CreateCustomer() {
                 }>
                 <Form>
                     <div className="wrapper d-flex justify-content-center flex-column px-md-5 px-1">
-                        <div className="h3 text-center font-weight-bold">CreateService Customer</div>
+                        <div className="h3 text-center font-weight-bold">Create Customer</div>
                         <div className="row my-4">
                             <div className="col-md-6">
                                 <label>Customer Name</label> <Field type="text" name="name" placeholder=""/>
+                                <ErrorMessage style={{color: "red"}} component="p" name="name"/>
                             </div>
                             <div className="col-md-6 pt-md-0 pt-4">
-                                <label>Birthday</label> <Field type="text" name="birthday" placeholder=""/>
+                                <label>Birthday</label> <Field  type="date" name="birthday" placeholder=""/>
+                                <ErrorMessage style={{color: "red"}} component="p" name="birthday"/>
                             </div>
                         </div>
                         <div className="row my-md-4 my-2">
@@ -61,9 +74,11 @@ function CreateCustomer() {
                                         <option value="Female">Female</option>
                                     </Field>
                                 </label>
+                                <ErrorMessage style={{color: "red"}} component="p" name="gender"/>
                             </div>
                             <div className="col-md-6 pt-md-0 pt-4">
                                 <label>Citizenship ID</label> <Field type="text" name="citizenshipId" placeholder=""/>
+                                <ErrorMessage style={{color: "red"}} component="p" name="citizenshipId"/>
                             </div>
                         </div>
                         <div className="row my-md-4 my-2">
@@ -77,22 +92,26 @@ function CreateCustomer() {
                                             ))
                                         }
                                     </Field>
+                                    <ErrorMessage style={{color: "red"}} component="p" name="typeCustomerId"/>
                                 </label>
                             </div>
                             <div className="col-md-6">
                                 <label>Address</label> <Field name="address" type="text" placeholder=""/>
+                                <ErrorMessage style={{color: "red"}} component="p" name="address"/>
                             </div>
                         </div>
                         <div className="row my-md-4 my-2">
                             <div className="col-md-6">
                                 <label>Phone Number</label> <Field name="phoneNumber" type="text" placeholder=""/>
+                                <ErrorMessage style={{color: "red"}} component="p" name="phoneNumber"/>
                             </div>
                             <div className="col-md-6 pt-md-0 pt-4">
                                 <label>Email</label> <Field name="email" type="text" placeholder=""/>
+                                <ErrorMessage style={{color: "red"}} component="p" name="email"/>
                             </div>
                         </div>
                         <div className="d-flex justify-content-end">
-                            <button className="btn btn-primary">Create Customer</button>
+                            <button className="btn btn-info">Create Customer</button>
                         </div>
                     </div>
                 </Form>
