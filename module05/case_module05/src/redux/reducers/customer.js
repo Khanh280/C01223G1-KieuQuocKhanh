@@ -1,4 +1,11 @@
-import {CREATE_CUSTOMER, DELETE_CUSTOMER, GET_ALL_CUSTOMER, GET_CUSTOMER_BY_ID, UPDATE_CUSTOMER} from "../actions/type";
+import {
+    CREATE_CUSTOMER,
+    DELETE_CUSTOMER,
+    GET_ALL_CUSTOMER,
+    GET_CUSTOMER_BY_ID,
+    SEARCH_CUSTOMER,
+    UPDATE_CUSTOMER
+} from "../actions/type";
 
 const initialState = []
 export const customerReducer = (customer = initialState, action) => {
@@ -14,6 +21,8 @@ export const customerReducer = (customer = initialState, action) => {
             return payload
         case UPDATE_CUSTOMER:
             return customer
+        case SEARCH_CUSTOMER:
+            return payload
         default:
             return customer
     }

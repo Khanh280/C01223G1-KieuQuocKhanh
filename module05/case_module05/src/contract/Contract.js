@@ -34,8 +34,11 @@ function Contract() {
         setPage(Math.ceil((res.headers['x-total-count']) / 6));
     };
     const getService = async ()=>{
-        const res = await axios.get("http://localhost:8080/villa")
-        setService(res.data)
+        const villa = await axios.get("http://localhost:8080/villa")
+        const house = await axios.get("http://localhost:8080/house")
+        const room = await axios.get("http://localhost:8080/room")
+        const service = [...villa.data,...house.data,...room.data]
+        setService(service)
     }
     useEffect(() => {
         getPage()
@@ -70,7 +73,8 @@ function Contract() {
                                 customers.find((customer) => customer.id === contract.customerId)?.name
                             }</td>
                             <td>{
-                                services.find((service) => service.id === contract.serviceId)?.name
+                                services.find((service) => (contract.serviceTypeId === service.serviceTypeId &&
+                                service.id === contract.serviceId))?.name
                             }</td>
                             <td>{contract.startDate}</td>
                             <td>{contract.endDate}</td>

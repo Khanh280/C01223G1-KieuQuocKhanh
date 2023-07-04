@@ -1,0 +1,261 @@
+@media only screen and (min-width: 741px) and (max-width:1339px) {
+    .col-l-1 {
+        width: 8.33%;
+    }
+
+    .col-l-2 {
+        width: 16.66%;
+    }
+
+    .col-l-3 {
+        width: 25%;
+    }
+
+    .col-l-4 {
+        width: 33.33%;
+    }
+
+    .col-l-5 {
+        width: 41.66%;
+    }
+
+    .col-l-6 {
+        width: 50%;
+    }
+
+    .col-l-7 {
+        width: 58.33%;
+    }
+
+    .col-l-8 {
+        width: 66.66%;
+    }
+
+    .col-l-9 {
+        width: 75%;
+    }
+
+    .col-l-10 {
+        width: 83.33%;
+    }
+
+    .col-l-11 {
+        width: 91.66%;
+    }
+
+    .col-l-12 {
+        width: 100%;
+    }
+
+    #header-link #nav-list-link {
+        display: none;
+    }
+}
+
+@media only screen and (max-width: 741px) {
+    .col-m-1 {
+        width: 8.33%;
+    }
+
+    .col-m-2 {
+        width: 16.66%;
+    }
+
+    .col-m-3 {
+        width: 25%;
+    }
+
+    .col-m-4 {
+        width: 33.33%;
+    }
+
+    .col-m-5 {
+        width: 41.66%;
+    }
+
+    .col-m-6 {
+        width: 50%;
+    }
+
+    .col-m-7 {
+        width: 58.33%;
+    }
+
+    .col-m-8 {
+        width: 66.66%;
+    }
+
+    .col-m-9 {
+        width: 75%;
+    }
+
+    .col-m-10 {
+        width: 83.33%;
+    }
+
+    .col-m-11 {
+        width: 91.66%;
+    }
+
+    .col-m-12 {
+        width: 100%;
+    }
+
+    #header-link #nav-list-link {
+        display: none;
+    }
+
+    body #content {
+        display: block;
+        height: 700px;
+        margin-bottom: 50px;
+    }
+
+    #content #left-content {
+        height: 50%;
+    }
+
+    #content #left-content .content-left {
+        height: 70%;
+    }
+}
+
+@media only screen and (max-width: 609px) {
+    #header-link ul .link-page {
+        display: none;
+    }
+
+    #header-link #nav-list-link {
+        display: inline;
+        height: 100%;
+        background-color: rgb(229, 229, 229);
+    }
+
+    #header-link #nav-list-link .drop-link a {
+        text-decoration: none;
+    }
+
+    #header-link #nav-list-link .drop-link:not(:last-child)::after {
+        display: none;
+    }
+    #nav-list-link li {
+        display: none;
+        background-color: rgb(229, 229, 229);
+    }
+    #nav-list-link .drop-link {
+        width:200px;
+    }
+    #header-link #bt, .drop-link a {
+        color: #474747;
+    }
+    
+    #nav-list-link:hover #bt ~ li {
+        display:block;
+    }
+    #nav-list-link #bt ~ li:hover {
+        background-color: rgb(255, 255, 255);
+        color: aliceblue;
+    }
+}
+
+* {
+    padding: 0px;
+    margin: 0px;
+    box-sizing: border-box;
+}
+
+#header {
+    position: sticky;
+    top: 0px;
+    height: 50px;
+    background-image: linear-gradient(180deg, rgb(222 249 244), rgb(255 250 245));
+}
+
+#header-link {
+    margin-top: 5px;
+    height: 50px;
+    background-color: rgb(229, 229, 229);
+}
+
+#header-link ul {
+    display: flex;
+    list-style: none;
+    justify-content: center;
+    line-height: 50px;
+}
+
+#header-link ul .link-page a {
+    color: #666666;
+    text-decoration: none;
+    font-weight: 900;
+}
+
+#header-link ul .link-page a:hover {
+    font-size: 120%;
+    color: rgb(0, 0, 0);
+}
+
+#header-link ul li:not(:last-child)::after {
+    text-align: center;
+    content: "|";
+    margin-right: 20px;
+    margin-left: 20px;
+    color: #000;
+}
+
+#content {
+    display: flex;
+    height: 700px;
+    margin-bottom: 50px;
+}
+
+#content #left-content {
+    overflow: scroll;
+}
+
+#left-content {
+    height: 100%;
+}
+
+#right-content {
+    height: 100%;
+}
+
+.content-left {
+    height: 40%;
+    margin-top: 5%;
+    margin-left: 5%;
+    margin-right: 5%;
+}
+
+.left-link {
+    text-decoration: none;
+    color: #000;
+}
+
+.left-link h5,
+p {
+    display: inline-block;
+}
+
+.left-link h3,
+p {
+    color: gray;
+}
+
+.right-content1 {
+    height: 60%;
+    margin: 20px 5px 0px 5px;
+}
+#right-content1 {
+    height: 60%;
+    margin: 20px 5px 0px 5px;
+}
+#footer {
+    position: fixed;
+    bottom: 0px;
+    height: 50px;
+    background-color: rgb(163, 161, 161);
+    line-height: 50px;
+    text-align: center;
+}

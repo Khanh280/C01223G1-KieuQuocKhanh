@@ -61,7 +61,7 @@ function UpdateCustomer() {
                     navigate("/customer")
                     Swal.fire({
                         icon: "success",
-                        title: "Update Customer Success",
+                        title: "UpdateOrder Customer Success",
                         timer: "2000"
                     })
                 }

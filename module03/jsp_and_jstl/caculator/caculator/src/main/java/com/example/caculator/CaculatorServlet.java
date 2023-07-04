@@ -13,30 +13,17 @@ public class CaculatorServlet extends HttpServlet {
         float secondOperator = Float.parseFloat(request.getParameter("secondOperator"));
         String operator = request.getParameter("operator");
         String result = null;
-
-        switch (operator){
-            case "+":
-                result = String.valueOf(firstOperator + secondOperator);
-                break;
-            case "-":
-                result = String.valueOf(firstOperator - secondOperator);
-                break;
-            case "*":
-                result = String.valueOf(firstOperator * secondOperator);
-                break;
-            case "/":
-                if(secondOperator == 0){
-                    result = "ERROR";
-                }else {
-                    result = String.valueOf(firstOperator / secondOperator);
-                }
-                break;
+        try{
+            result = Calculator.calculate(firstOperator,secondOperator,operator);
+        } catch (ArithmeticException e){
+          result = e.getMessage();
+        } finally {
+            request.setAttribute("firstOperator",firstOperator);
+            request.setAttribute("secondOperator",secondOperator);
+            request.setAttribute("result",result);
+            RequestDispatcher requestDispatcher = request.getRequestDispatcher("/caculator.jsp");
+            requestDispatcher.forward(request,response);
         }
-        request.setAttribute("firstOperator",firstOperator);
-        request.setAttribute("secondOperator",secondOperator);
-        request.setAttribute("result",result);
-        RequestDispatcher requestDispatcher = request.getRequestDispatcher("/caculator.jsp");
-        requestDispatcher.forward(request,response);
     }
 
     @Override

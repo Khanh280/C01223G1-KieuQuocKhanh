@@ -2,9 +2,11 @@ import {Link} from "react-router-dom";
 import React, {useEffect, useState} from "react";
 import axios from "axios";
 import {useDispatch, useSelector} from "react-redux";
-import {deleteCustomerById, getAllCustomer} from "../redux/actions/customer/customer";
+import {deleteCustomerById, getAllCustomer, searchCustomer} from "../redux/actions/customer/customer";
 import Swal from "sweetalert2";
 import {getAllRoom} from "../redux/actions/room/room";
+import {Formik, Form, Field} from "formik"
+import "bootstrap/dist/css/bootstrap.css"
 
 
 function Customer() {
@@ -38,22 +40,46 @@ function Customer() {
         const res = await axios.get("http://localhost:8080/typeCustomer")
         setTypeCustomer(res.data)
     }
+    const searchCustomer = async (name)=>{
+        const res = await axios.get(`http://localhost:8080/customer/?name_like=`+name)
+        console.log(res.data)
+    }
+
     useEffect(() => {
         dispatch(getAllCustomer())
         getAllTypeCustomer()
     }, [])
-    useEffect(()=>{
+    useEffect(() => {
         const getPage = async () => {
             const res = await axios.get(`http://localhost:8080/customer?_page=1&_limit=6`);
             setPage(Math.ceil((res.headers['x-total-count']) / 6));
         };
         getPage()
-    },[customers])
+    }, [customers])
     return (
         <div className="" style={{height: "83vh"}}>
             <div align="center">
                 <h1>Customer List</h1>
                 <Link to="/create-customer" className="btn btn-sm btn-info mb-2">Create Customer</Link>
+                {/*<Formik*/}
+                {/*    initialValues={{*/}
+                {/*        name: "dsf"*/}
+                {/*    }}*/}
+                {/*    onSubmit={(values) =>{*/}
+                {/*        searchCustomer(values.name)*/}
+                {/*    }*/}
+                {/*    }>*/}
+                {/*    <Form>*/}
+                {/*        <div className="row">*/}
+                {/*            <div className="col-10">*/}
+                {/*                <Field name="name" className="form-control"/>*/}
+                {/*            </div>*/}
+                {/*            <div className="col-2">*/}
+                {/*                <button type="submit">Search</button>*/}
+                {/*            </div>*/}
+                {/*        </div>*/}
+                {/*    </Form>*/}
+                {/*</Formik>*/}
             </div>
             <table className="table table-striped table-hover ">
                 <thead>
@@ -96,8 +122,8 @@ function Customer() {
                                     Delete
                                 </button>
                                 <Link to={`/create-contract/${customer.id}`}
-                                    type="button"
-                                    className="btn b btn-info m-0 p-1"
+                                      type="button"
+                                      className="btn b btn-info m-0 p-1"
                                 >
                                     Create Contract
                                 </Link>

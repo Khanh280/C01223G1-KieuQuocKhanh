@@ -505,5 +505,195 @@
     }
   ],
   "contract": [
+    {
+      "id": 1,
+      "customerId": 1,
+      "startDate": "2023-07-08",
+      "endDate": "2023-07-20",
+      "deposit": "1",
+      "paymentDeposit": 5,
+      "serviceId": 2,
+      "serviceTypeId": 1
+    },
+    {
+      "id": 2,
+      "customerId": 9,
+      "startDate": "2023-07-16",
+      "endDate": "2023-07-14",
+      "deposit": "1",
+      "paymentDeposit": 5,
+      "serviceId": 5,
+      "serviceTypeId": 1
+    },
+    {
+      "id": 3,
+      "customerId": 9,
+      "startDate": "2023-07-15",
+      "endDate": "2023-07-18",
+      "deposit": "1",
+      "paymentDeposit": 5,
+      "serviceId": 6,
+      "serviceTypeId": 1
+    },
+    {
+      "id": 4,
+      "customerId": 8,
+      "startDate": "2023-07-14",
+      "endDate": "2023-07-13",
+      "deposit": "1",
+      "paymentDeposit": "5",
+      "serviceId": 11,
+      "serviceTypeId": 3
+    },
+    {
+      "id": 5,
+      "customerId": 8,
+      "startDate": "2023-07-29",
+      "endDate": "2023-06-27",
+      "deposit": "6",
+      "paymentDeposit": "1",
+      "serviceId": 13,
+      "serviceTypeId": 1
+    },
+    {
+      "id": 6,
+      "customerId": 1,
+      "startDate": "2023-07-02",
+      "endDate": "2023-07-15",
+      "deposit": "1",
+      "paymentDeposit": 5,
+      "serviceId": 4,
+      "serviceTypeId": 1
+    },
+    {
+      "id": 7,
+      "customerId": 8,
+      "startDate": "2023-07-16",
+      "endDate": "2023-07-21",
+      "deposit": "1",
+      "paymentDeposit": "5",
+      "serviceId": 14,
+      "serviceTypeId": 3
+    },
+    {
+      "id": 8,
+      "customerId": 9,
+      "startDate": "2023-07-15",
+      "endDate": "2023-07-13",
+      "deposit": "1",
+      "paymentDeposit": 5000,
+      "serviceId": 0,
+      "serviceTypeId": 3
+    },
+    {
+      "id": 9,
+      "customerId": 10,
+      "startDate": "2023-07-21",
+      "endDate": "2023-07-14",
+      "deposit": "1",
+      "paymentDeposit": 5000,
+      "serviceId": 0,
+      "serviceTypeId": 3
+    },
+    {
+      "id": 10,
+      "customerId": 7,
+      "startDate": "2023-07-21",
+      "endDate": "2023-07-17",
+      "deposit": "1",
+      "paymentDeposit": 5000,
+      "serviceId": 0,
+      "serviceTypeId": 3
+    },
+    {
+      "id": 11,
+      "customerId": 8,
+      "startDate": "2023-07-06",
+      "endDate": "2023-07-26",
+      "deposit": "1",
+      "paymentDeposit": 5000,
+      "serviceId": 2,
+      "serviceTypeId": 3
+    },
+    {
+      "id": 12,
+      "customerId": 8,
+      "startDate": "2023-07-21",
+      "endDate": "2023-07-18",
+      "deposit": "1",
+      "paymentDeposit": 5000,
+      "serviceId": 1,
+      "serviceTypeId": 3
+    },
+    {
+      "id": 13,
+      "customerId": 10,
+      "startDate": "2023-07-29",
+      "endDate": "2023-07-20",
+      "deposit": "123",
+      "paymentDeposit": 5000,
+      "serviceId": 2,
+      "serviceTypeId": 3
+    },
+    {
+      "id": 14,
+      "customerId": 7,
+      "startDate": "2023-07-05",
+      "endDate": "2023-07-06",
+      "deposit": "1",
+      "paymentDeposit": "5",
+      "serviceId": 11,
+      "serviceTypeId": 3
+    },
+    {
+      "id": 15,
+      "customerId": 9,
+      "startDate": "2023-08-04",
+      "endDate": "2023-07-04",
+      "deposit": "1",
+      "paymentDeposit": null,
+      "serviceId": 4,
+      "serviceTypeId": 3
+    },
+    {
+      "id": 16,
+      "customerId": 7,
+      "startDate": "2023-07-29",
+      "endDate": "2023-07-18",
+      "deposit": "123",
+      "paymentDeposit": "",
+      "serviceId": "",
+      "serviceTypeId": ""
+    },
+    {
+      "id": 17,
+      "customerId": 1,
+      "startDate": "2023-07-28",
+      "endDate": "2023-07-11",
+      "deposit": "123",
+      "paymentDeposit": "",
+      "serviceId": "",
+      "serviceTypeId": ""
+    },
+    {
+      "id": 18,
+      "customerId": 1,
+      "startDate": "2023-07-29",
+      "endDate": "2023-07-18",
+      "deposit": "1",
+      "paymentDeposit": "54321",
+      "serviceId": 13,
+      "serviceTypeId": 2
+    },
+    {
+      "id": 19,
+      "customerId": 8,
+      "startDate": "2023-07-27",
+      "endDate": "2023-07-14",
+      "deposit": "1",
+      "paymentDeposit": "",
+      "serviceId": "",
+      "serviceTypeId": ""
+    }
   ]
 }

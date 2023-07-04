@@ -1,5 +1,12 @@
 import axios from "axios";
-import {CREATE_CUSTOMER, DELETE_CUSTOMER, GET_ALL_CUSTOMER, GET_CUSTOMER_BY_ID, UPDATE_CUSTOMER} from "../type";
+import {
+    CREATE_CUSTOMER,
+    DELETE_CUSTOMER,
+    GET_ALL_CUSTOMER,
+    GET_CUSTOMER_BY_ID,
+    SEARCH_CUSTOMER,
+    UPDATE_CUSTOMER
+} from "../type";
 
 export const getAllCustomer = (page) => async (dispatch) => {
     try {
@@ -52,6 +59,18 @@ export const updateCustomer = (customer) => async (dispatch) => {
         const res = await axios.put("http://localhost:8080/customer/"+customer.id,customer)
         dispatch({
             type: UPDATE_CUSTOMER,
+            payload: res.data
+        })
+    } catch (e) {
+        console.log(e)
+    }
+}
+
+export const searchCustomer = (name) => async (dispatch) => {
+    try {
+        const res = await axios.get(`http://localhost:8080/customer/?name_like=`+name)
+        dispatch({
+            type: SEARCH_CUSTOMER,
             payload: res.data
         })
     } catch (e) {

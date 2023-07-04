@@ -1,0 +1,361 @@
+@media only screen and (min-width: 741px)  {
+    .col-l-1 {
+        width: 8.33%;
+    }
+
+    .col-l-2 {
+        width: 16.66%;
+    }
+
+    .col-l-3 {
+        width: 25%;
+    }
+
+    .col-l-4 {
+        width: 33.33%;
+    }
+
+    .col-l-5 {
+        width: 41.66%;
+    }
+
+    .col-l-6 {
+        width: 50%;
+    }
+
+    .col-l-7 {
+        width: 58.33%;
+    }
+
+    .col-l-8 {
+        width: 66.66%;
+    }
+
+    .col-l-9 {
+        width: 75%;
+    }
+
+    .col-l-10 {
+        width: 83.33%;
+    }
+
+    .col-l-11 {
+        width: 91.66%;
+    }
+
+    .col-l-12 {
+        width: 100%;
+    }
+}
+
+@media only screen and (max-width: 740px) {
+    .col-m-1 {
+        width: 8.33%;
+    }
+
+    .col-m-2 {
+        width: 16.66%;
+    }
+
+    .col-m-3 {
+        width: 25%;
+    }
+
+    .col-m-4 {
+        width: 33.33%;
+    }
+
+    .col-m-5 {
+        width: 41.66%;
+    }
+
+    .col-m-6 {
+        width: 50%;
+    }
+
+    .col-m-7 {
+        width: 58.33%;
+    }
+
+    .col-m-8 {
+        width: 66.66%;
+    }
+
+    .col-m-9 {
+        width: 75%;
+    }
+
+    .col-m-10 {
+        width: 83.33%;
+    }
+
+    .col-m-11 {
+        width: 91.66%;
+    }
+
+    .col-m-12 {
+        width: 100%;
+    }
+
+    #main {
+        height: 500px;
+        margin-top: 50px;
+    }
+
+    .title-content , .content1 , .content2 {
+        text-align: justify;
+        padding: 0px 10px;
+    }
+
+    .left {
+        height: 580px;
+    }
+
+    .right {
+        height: 500px;
+    }
+
+    .right .right-1,
+    .right-2 {
+        height: 50%;
+    }
+
+    .right .right-1 {
+        background-color: rgb(219, 219, 219);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    
+    .right .right-2 {
+        background-color: #ffffff;
+    }
+    .right .right-1 .ads {
+        height: 100%;
+    }
+}
+
+@media only screen and (max-width: 551px) {
+    .col-s-1 {
+        width: 8.33%;
+    }
+
+    .col-s-2 {
+        width: 16.66%;
+    }
+
+    .col-s-3 {
+        width: 25%;
+    }
+
+    .col-s-4 {
+        width: 33.33%;
+    }
+
+    .col-s-5 {
+        width: 41.66%;
+    }
+
+    .col-s-6 {
+        width: 50%;
+    }
+
+    .col-s-7 {
+        width: 58.33%;
+    }
+
+    .col-s-8 {
+        width: 66.66%;
+    }
+
+    .col-s-9 {
+        width: 75%;
+    }
+
+    .col-s-10 {
+        width: 83.33%;
+    }
+
+    .col-s-11 {
+        width: 91.66%;
+    }
+
+    .col-s-12 {
+        width: 100%;
+    }
+
+    #main {
+        height: 500px;
+        margin-top: 50px;
+    }
+
+    .row1 {
+        height: 50%;
+        margin-left: 10px;
+        margin-top: 10px;
+    }
+
+    .row2 {
+        height: 50%;
+        margin-left: 10px;
+        margin-top: 10px;
+    }
+
+    .left {
+        height: 100px;
+    }
+
+    .center {
+        height: 580px;
+    }
+}
+@media only screen and (max-width: 471px) {
+    .left {
+        height: 100px;
+    }
+
+    .center {
+        height: 600px;
+    }
+    #header ul li{
+        display: none;
+    }
+}
+@media only screen and (max-width: 471px) {
+    .left {
+        height: 100px;
+    }
+
+    .center {
+        height: 750px;
+    }
+    #header ul li{
+        display: none;
+    }
+}
+* {
+    padding: 0px;
+    margin: 0px;
+    box-sizing: border-box;
+}
+
+.row {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+#header {
+    position: fixed;
+    top: 0px;
+    background-color: rgb(46, 42, 42);
+    height: 50px;
+}
+
+#header ul {
+    display: flex;
+    color: #9d9d9d;
+    align-items: center;
+    list-style: none;
+    margin-left: 5px;
+}
+#header ul li {
+    cursor: pointer;
+    text-align: center;
+    line-height: 50px;
+    height: 50px;
+    width: 60px;
+}
+
+#header ul li:hover {
+    background-color: #000;
+    color: #fff;
+}
+
+#header #bt-login {
+    background-color: rgb(46, 42, 42);
+    color: #9d9d9d;
+    position: fixed;
+    top:10px;
+    right: 10px;
+    width: 80px;
+    height: 30px;
+    border: solid;
+    border-radius: 30px;
+}
+
+#header #bt-login:hover {
+    background-color: #000;
+    color: #fff;
+    cursor: pointer;
+}
+
+#main {
+    min-height: 100vh;
+    margin-top: 50px;
+}
+  
+.row1 {
+    height: 50%;
+    width: 100%;
+}
+
+.row2 {
+    height: 50%;
+    width: 100%;
+}
+
+.title-content , .content1 , .content2 {
+    text-align: justify;
+    padding: 0px 10px;
+}
+
+.left,
+.right {
+    background-color: rgb(219, 219, 219);
+}
+
+.left ul li {
+    text-align: center;
+    line-height: 30px;
+}
+
+.left ul li a {
+    text-decoration: none;
+    color: rgb(40, 124, 220);
+}
+
+.right .right-1,
+.right-2 {
+    height: 50%;
+}
+
+.right .right-1 .ads {
+    height: 50%;
+    justify-content: center;
+    align-items: center;
+}
+.right .right-1 .ads p:hover {
+    cursor: pointer;
+    background-color: rgb(155, 154, 154);
+}
+.right .right-1 .ads p {
+    background-color: #f8f6f6;
+    height: 100px;
+    width: 130px;
+    text-align: center;
+    line-height: 100px;
+    border: 1px #000 ridge;
+    border-radius: 3px;
+}
+#footer {
+    position: fixed;
+    bottom: 0px;
+    background-color: rgb(122, 121, 121);
+    height: 50px;
+    justify-content: center;
+    align-items: center;
+}
+
+#footer #footer-text {
+    color: #fff;
+}

@@ -202,13 +202,13 @@ function UpdateService() {
                     }
                     Swal.fire({
                         icon: "success",
-                        title: "Update Success",
+                        title: "UpdateOrder Success",
                         timer: "2000"
                     })
                 } else {
                     Swal.fire({
                         icon: "error",
-                        title: "Update Fail",
+                        title: "UpdateOrder Fail",
                         timer: "2000"
                     })
                 }

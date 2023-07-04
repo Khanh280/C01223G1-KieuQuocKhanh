@@ -1,10 +1,12 @@
 import React, {useState, useEffect} from 'react'
 import "bootstrap/dist/css/bootstrap-grid.css"
 import "./HeaderAndFooter.css"
-import {Link, Route, Routes} from "react-router-dom";
+import {Link, NavLink, Route, Routes} from "react-router-dom";
 import Villa from "../service/Villa";
+import {useLocation} from "react-router";
 
 function Header() {
+    const location = useLocation();
     return (
         <>
             <div className="header-mobile-info">
@@ -346,41 +348,71 @@ function Header() {
                                 </li>
                                 <li id="nav-menu-item-5007 villa"
                                     className="nav-item menu-item-even menu-item-depth-0 menu-item menu-item-type-post_type menu-item-object-page">
-                                    <Link to="/villa"
+                                    <NavLink to="/villa"
                                           className="nav-link main-menu-link"
-                                    >VILLA</Link>
+                                             style={({isActive})=>{
+                                                 return{
+                                                     backgroundColor: isActive ? "#addccf" : "",
+                                                     color: isActive ? "black" : ""
+                                                 }
+                                             }}
+                                    >VILLA</NavLink>
                                 </li>
                                 <li
                                     id="nav-menu-item-5010"
                                     className="nav-item menu-item-even menu-item-depth-0 menu-item menu-item-type-post_type menu-item-object-page"
                                 >
-                                    <Link to="/house"
+                                    <NavLink to="/house"
                                           className="nav-link main-menu-link"
-                                    >HOUSE</Link>
+                                             style={({isActive})=>{
+                                                 return{
+                                                     backgroundColor: isActive ? "#addccf" : "",
+                                                     color: isActive ? "black" : ""
+                                                 }
+                                             }}
+                                    >HOUSE</NavLink>
                                 </li>
                                 <li
                                     id="nav-menu-item-5011"
                                     className="nav-item menu-item-even menu-item-depth-0 menu-item menu-item-type-post_type menu-item-object-page"
                                 >
-                                    <Link to="/room"
+                                    <NavLink to="/room"
                                           className="nav-link main-menu-link"
-                                    >ROOMS</Link>
+                                             style={({isActive})=>{
+                                                 return{
+                                                     backgroundColor: isActive ? "#addccf" : "",
+                                                     color: isActive ? "black" : ""
+                                                 }
+                                             }}
+                                    >ROOMS</NavLink>
                                 </li>
                                 <li
                                     id="nav-menu-item-5008"
                                     className="nav-item menu-item-even menu-item-depth-0 menu-item menu-item-type-post_type menu-item-object-page"
                                 >
-                                    <Link to="/customer"
+                                    <NavLink to="/customer"
                                           className="nav-link main-menu-link"
-                                    >CUSTOMER</Link>
+                                             style={({isActive})=>{
+                                                 return{
+                                                     backgroundColor: isActive ? "#addccf" : "",
+                                                     color: isActive ? "black" : ""
+                                                 }
+                                             }}
+                                    >CUSTOMER</NavLink>
                                 </li>
                                 <li
                                     id="nav-menu-item-5009"
                                     className="nav-item menu-item-even menu-item-depth-0 menu-item menu-item-type-post_type menu-item-object-page"
                                 >
-                                    <Link to="/contract"
+                                    <NavLink to="/contract"
                                           className="nav-link main-menu-link"
-                                    >CONTRACT</Link>
+                                             style={({isActive})=>{
+                                                 return{
+                                                     backgroundColor: isActive ? "#addccf" : "",
+                                                     color: isActive ? "black" : ""
+                                                 }
+                                             }}
+                                    >CONTRACT</NavLink>
                                 </li>
 
                                 <li
@@ -406,11 +438,17 @@ function Header() {
                                     id="nav-menu-item-5013"
                                     className="nav-item menu-item-even menu-item-depth-0 menu-item menu-item-type-post_type menu-item-object-page"
                                 >
-                                    <Link to="create-service"
+                                    <NavLink to="create-service"
                                        id="nav-create"
                                        className="nav-link main-menu-link"
+                                             style={({isActive})=>{
+                                                 return{
+                                                     backgroundColor: isActive ? "#addccf" : "",
+                                                     color: isActive ? "black" : ""
+                                                 }
+                                             }}
                                     >CREATE SERVICE
-                                    </Link>
+                                    </NavLink>
                                 </li>
                             </ul>
                         </div>
