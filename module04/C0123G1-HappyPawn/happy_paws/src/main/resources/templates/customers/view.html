@@ -1,0 +1,179 @@
+
+
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <style>
+        .card {
+            border: none;
+            padding: 20px;
+            position: relative;
+            background-color: rgba(255, 255, 255, 0.7);
+            border-radius: 20px;
+        }
+
+        .btn-danger {
+            color: black;
+            background-color: #ffafda;
+            border-color: #ffafda;
+        }
+
+        body {
+            background-image: url("https://img.freepik.com/premium-vector/cute-pastel-pink-paw-pattern-background-pets_654662-181.jpg");
+        }
+
+        @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800&display=swap");
+        body {
+            background-color: #eee;
+            font-family: "Poppins", sans-serif;
+            font-weight: 300
+        }
+
+        .height {
+            height: 100vh
+        }
+
+        .card {
+            border: none;
+            padding: 20px;
+            position: relative
+        }
+
+        .img-logo {
+            position: absolute;
+            left: 54%;
+            transform: translateX(-50%);
+            top: -48px
+        }
+
+        .inputs span {
+            font-size: 14px;
+            font-weight: 500
+        }
+
+        .inputs input {
+            font-size: 13px;
+            height: 44px
+        }
+
+        .inputs input:focus {
+            border-color: #2c1e8e;
+            box-shadow: none
+        }
+
+        .integration {
+            font-size: 14px;
+            height: 44px
+        }
+    </style>
+</head>
+<body>
+
+<br>
+
+
+<div class="container mt-5 mb-5">
+    <div class="row height d-flex justify-content-center align-items-center">
+        <div class="col-md-6">
+            <div class="card px-5 py-4" style="    font-family: cursive;">
+                <div class="img-logo"><img
+                        src="https://th.bing.com/th/id/R.4e870cce2c3c17995f81c45e65210045?rik=KEwdrgIIdO3u8g&pid=ImgRaw&r=0"
+                        width="100" style="margin-right: 3vw"></div>
+                <br>
+                <div style="text-align: center ;color: #ffafda">
+                    <div>
+                        <h2>Detail</h2>
+                    </div>
+                </div>
+
+                <table class="table" style="width: 40vw" align="center">
+                    <tr>
+                        <td><h3>ID</h3></td>
+                        <td><p  th:text="${customer.customerId}"></p></td>
+                    </tr>
+                    <tr>
+                        <td><h3>Name :</h3></td>
+                        <td><p  th:text="${customer.name}"></p></td>
+                    </tr>
+                    <tr>
+                        <td><h3>Email :</h3></td>
+                        <td><p th:text="${customer.email}"></p></td>
+                    </tr>
+                    <tr>
+                        <td><h3>    Phone :</h3></td>
+                        <td><p th:text="${customer.phone}"></p></td>
+                    </tr>
+                    <tr>
+                        <td><h3>Address :</h3></td>
+                        <td><p th:text="${customer.address}"></p></td>
+                    </tr>
+                    <tr>
+                        <td><h3> Username :</h3></td>
+                        <td><p th:text="${customer.account.username}"></p></td>
+                    </tr>
+                    <tr>
+                        <td><h3>   Role :</h3></td>
+                        <td><p th:text="${customer.account.role.nameRole}"></p></td>
+                    </tr>
+                    <tr>
+                        <td><h3>Create time :</h3></td>
+                        <td><p th:text="${customer.createTime}"></p></td>
+                    </tr>
+                    <tr>
+                        <td><h3>Update time  :</h3></td>
+                        <td><p th:text="${customer.updateTime}"></p></td>
+                    </tr>
+
+                </table>
+                <!--                <div sec:authorize="hasAuthority('ADMIN')"><p><a href="/customer/create"></a></p> </div>-->
+
+<!--                <div class="mt-4 inputs"><span>ID</span>-->
+<!--                    <span th:text="${customer.customerId}"></span>-->
+<!--                </div>-->
+<!--                <div class="mt-2 inputs"><span>Name :</span>-->
+<!--                    <span th:text="${customer.name}"></span>-->
+<!--                </div>-->
+
+<!--                <div class="mt-2 inputs"><span> Email :</span>-->
+
+<!--                    <span th:text="${customer.email}"></span>-->
+
+<!--                </div>-->
+
+
+<!--                <div class="mt-2 inputs"><span>     Phone :</span>-->
+<!--                    <span th:text="${customer.phone}"></span>-->
+<!--                </div>-->
+
+<!--                <div class="mt-2 inputs"><span>  Address :</span>-->
+<!--                    <span th:text="${customer.address}"></span>-->
+<!--                </div>-->
+<!--                <div class="mt-2 inputs"><span>  Username :</span>-->
+<!--                    <span th:text="${customer.account.username}"></span>-->
+<!--                </div>-->
+<!--                <div class="mt-2 inputs"><span>    Role :</span>-->
+<!--                    <span th:text="${customer.account.role.nameRole}"></span>-->
+<!--                </div>-->
+<!--                <div class="mt-2 inputs"><span>   Create time :</span>-->
+<!--                    <span th:text="${customer.createTime}"></span>-->
+<!--                </div>-->
+<!--                <div class="mt-2 inputs"><span>     Update time  :</span>-->
+<!--                    <span th:text="${customer.updateTime}"></span>-->
+<!--                </div>-->
+                <div class="text-center mt-4">
+                    <a th:href="@{/customer}">
+                        <button style="     height: 41px;text-align: center;width: 100px;" type="button" class="btn btn-dark">Back</button>
+                    </a>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html style="font-size: 16px;" lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="utf-8">
+    <meta name="keywords" content="Select Your Service">
+    <meta name="description" content="">
+    <title>Product List Template 2</title>
+
+    <meta name="generator" content="Nicepage 5.11.4, nicepage.com">
+    <link id="u-theme-google-font" rel="stylesheet"
+          href="https://fonts.googleapis.com/css?family=Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i|Open+Sans:300,300i,400,400i,500,500i,600,600i,700,700i,800,800i">
+
+
+    <!--    <script type="application/ld+json">{-->
+    <!--		"@context": "http://schema.org",-->
+    <!--		"@type": "Organization",-->
+    <!--		"name": ""-->
+    <!--}</script>-->
+    <meta name="theme-color" content="#478ac9">
+    <meta property="og:title" content="Product List Template 2">
+    <meta property="og:type" content="website">
+    <meta data-intl-tel-input-cdn-path="intlTelInput/">
+
+    <script src="../../../static/happy_paws/assets/css/jquery.js"></script>
+    <link rel="stylesheet" href="../../../static/happy_paws/assets/css/nicepage.css">
+    <script src="../../../static/happy_paws/assets/css/nicepage.js"></script>
+    <link rel="stylesheet" href="../../../static/happy_paws/assets/css/Product-List-Template-2.css">
+</head>
+<body class="u-body u-xl-mode" data-lang="en">
+<section class="u-clearfix u-section-1" id="sec-01a6">
+    <div class="u-clearfix u-sheet u-valign-bottom u-sheet-1">
+        <div class=" u-container-style u-group u-group-1">
+            <div class="u-container-layout u-container-layout-1">
+                <h1 class="u-align-center u-text u-text-palette-2-light-1 u-text-1">Booking Detail</h1>
+                <div th:object=" ${customer}"
+                     class="u-align-center u-container-style u-products-item u-repeater-item u-white u-repeater-item-1">
+                    <div class="u-container-layout u-similar-container u-valign-top u-container-layout-1">
+                        <!--product_image-->
+                        <!--            <img alt="" class="u-expanded-width u-image u-image-default u-product-control u-image-1"-->
+                        <!--                 th:src="${customer.getName()}">&lt;!&ndash;/product_image&ndash;&gt;&lt;!&ndash;product_title&ndash;&gt;-->
+                        <h4 th:text="${customer.name}" class="u-product-control u-text u-text-1">
+                        </h4><!--/product_title--><!--product_price-->
+                        <div class="u-product-control u-product-price u-product-price-1">
+                            <div class="u-price-wrapper u-spacing-10"><!--product_old_price-->
+                                <div class="u-hide-price u-old-price"><!--product_old_price_content--
+
+
+                    <div th:text="${total}" class="u-price u-text-palette-2-base"
+                         style="font-size: 1.25rem; font-weight: 700;">product_regular_price_content-->
+                                    <!--/product_regular_price_content--></div><!--/product_regular_price-->
+                            </div>
+                        </div><!--/product_price--><!--product_button--><!--options_json-->
+                        <!--{"clickType":"add-to-cart","content":""}--><!--/options_json-->
+                        <!--                        <a th:href="@{/booking/add/(petServiceId = ${petService.petServiceId}, bookingServiceId = ${bookingServiceId})}"-->
+                        <!--                           class="u-border-2 u-border-palette-2-light-1 u-btn u-btn-rectangle u-button-style u-palette-2-light-1 u-product-control u-text-hover-black u-text-white u-btn-2">-->
+                        <!--                            &lt;!&ndash;product_button_content&ndash;&gt;Add to Cart&lt;!&ndash;/product_button_content&ndash;&gt;</a>-->
+                        <!--/product_button-->
+                    </div>
+                </div>
+            </div>
+        </div>
+<!--        <div th:object=" ${customer}"-->
+<!--             class="u-align-center u-container-style u-products-item u-repeater-item u-white u-repeater-item-1">-->
+<!--            <div class="u-container-layout u-similar-container u-valign-top u-container-layout-1">-->
+<!--                &lt;!&ndash;product_image&ndash;&gt;-->
+<!--                &lt;!&ndash;            <img alt="" class="u-expanded-width u-image u-image-default u-product-control u-image-1"&ndash;&gt;-->
+<!--                &lt;!&ndash;                 th:src="${customer.getName()}">&lt;!&ndash;/product_image&ndash;&gt;&lt;!&ndash;product_title&ndash;&gt;&ndash;&gt;-->
+<!--                <h4 th:text="${customer.name}" class="u-product-control u-text u-text-1">-->
+<!--                </h4>&lt;!&ndash;/product_title&ndash;&gt;&lt;!&ndash;product_price&ndash;&gt;-->
+<!--                <div class="u-product-control u-product-price u-product-price-1">-->
+<!--                    <div class="u-price-wrapper u-spacing-10">&lt;!&ndash;product_old_price&ndash;&gt;-->
+<!--                        <div class="u-hide-price u-old-price">&lt;!&ndash;product_old_price_content&#45;&#45;-->
+<!--             -->
+<!--        -->
+<!--                    <div th:text="${total}" class="u-price u-text-palette-2-base"-->
+<!--                         style="font-size: 1.25rem; font-weight: 700;">product_regular_price_content&ndash;&gt;-->
+<!--                            &lt;!&ndash;/product_regular_price_content&ndash;&gt;</div>&lt;!&ndash;/product_regular_price&ndash;&gt;-->
+<!--                    </div>-->
+<!--                </div>&lt;!&ndash;/product_price&ndash;&gt;&lt;!&ndash;product_button&ndash;&gt;&lt;!&ndash;options_json&ndash;&gt;-->
+<!--                &lt;!&ndash;{"clickType":"add-to-cart","content":""}&ndash;&gt;&lt;!&ndash;/options_json&ndash;&gt;-->
+<!--                &lt;!&ndash;                        <a th:href="@{/booking/add/(petServiceId = ${petService.petServiceId}, bookingServiceId = ${bookingServiceId})}"&ndash;&gt;-->
+<!--                &lt;!&ndash;                           class="u-border-2 u-border-palette-2-light-1 u-btn u-btn-rectangle u-button-style u-palette-2-light-1 u-product-control u-text-hover-black u-text-white u-btn-2">&ndash;&gt;-->
+<!--                &lt;!&ndash;                            &lt;!&ndash;product_button_content&ndash;&gt;Add to Cart&lt;!&ndash;/product_button_content&ndash;&gt;</a>&ndash;&gt;-->
+<!--                &lt;!&ndash;/product_button&ndash;&gt;-->
+<!--            </div>-->
+
+
+        </div>
+</section>
+<section class="u-align-center u-clearfix u-section-2" id="sec-dc56">
+    <div class="u-clearfix u-sheet u-sheet-1">
+        <!--        <a th:href="@{/api/admin/booking-service/list}"-->
+        <!--           class="u-border-none u-btn u-btn-round u-button-style u-hover-palette-3-base u-palette-2-base u-radius-50 u-btn-1"><span-->
+        <!--                class="u-icon"><svg class="u-svg-content" viewBox="0 0 513.64 513.64" x="0px" y="0px"-->
+        <!--                                    style="width: 1em; height: 1em;"><path-->
+        <!--                d="M499.66,376.96l-71.68-71.68c-25.6-25.6-69.12-15.359-79.36,17.92c-7.68,23.041-33.28,35.841-56.32,30.72 c-51.2-12.8-120.32-79.36-133.12-133.12c-7.68-23.041,7.68-48.641,30.72-56.32c33.28-10.24,43.52-53.76,17.92-79.36l-71.68-71.68 c-20.48-17.92-51.2-17.92-69.12,0l-48.64,48.64c-48.64,51.2,5.12,186.88,125.44,307.2c120.32,120.32,256,176.641,307.2,125.44 l48.64-48.64C517.581,425.6,517.581,394.88,499.66,376.96z"></path></svg></span>&nbsp;Done Reservation-->
+        <!--        </a>&lt;!&ndash;products&ndash;&gt;&lt;!&ndash;products_options_json&ndash;&gt;&lt;!&ndash;{"type":"Recent","source":"","tags":"","count":""}&ndash;&gt;-->
+        <!--/products_options_json-->
+        <div class="u-expanded-width u-products u-products-1">
+            <div class="u-repeater u-repeater-1"><!--product_item-->
+                <div th:each="petService : ${petServiceList}"
+                     class="u-align-center u-container-style u-products-item u-repeater-item u-white u-repeater-item-1">
+                    <div class="u-container-layout u-similar-container u-valign-top u-container-layout-1">
+                        <!--product_image-->
+                        <img alt="" class="u-expanded-width u-image u-image-default u-product-control u-image-1"
+                             th:src="${petService.getImage()}"><!--/product_image--><!--product_title-->
+                        <h4 th:text="${petService.name}" class="u-product-control u-text u-text-1">
+                        </h4><!--/product_title--><!--product_price-->
+                        <div class="u-product-control u-product-price u-product-price-1">
+                            <div class="u-price-wrapper u-spacing-10"><!--product_old_price-->
+                                <div class="u-hide-price u-old-price"><!--product_old_price_content-->$20.00
+                                    <!--/product_old_price_content--></div><!--/product_old_price-->
+                                <!--product_regular_price-->
+                                <div th:text="${petService.price}" class="u-price u-text-palette-2-base"
+                                     style="font-size: 1.25rem; font-weight: 700;"><!--product_regular_price_content-->
+                                    $17.00<!--/product_regular_price_content--></div><!--/product_regular_price-->
+                            </div>
+                        </div><!--/product_price--><!--product_button--><!--options_json-->
+                        <!--{"clickType":"add-to-cart","content":""}--><!--/options_json-->
+                        <!--                        <a th:href="@{/booking/add/(petServiceId = ${petService.petServiceId}, bookingServiceId = ${bookingServiceId})}"-->
+                        <!--                           class="u-border-2 u-border-palette-2-light-1 u-btn u-btn-rectangle u-button-style u-palette-2-light-1 u-product-control u-text-hover-black u-text-white u-btn-2">-->
+                        <!--                            &lt;!&ndash;product_button_content&ndash;&gt;Add to Cart&lt;!&ndash;/product_button_content&ndash;&gt;</a>-->
+                        <!--/product_button-->
+                    </div>
+
+
+                </div><!--/product_item--><!--product_item-->
+
+
+            </div>
+        </div><!--/products-->
+    </div>
+</section>
+
+
+<section class="u-backlink u-clearfix u-grey-80">
+    <a class="u-link" href="https://nicepage.com/website-templates" target="_blank">
+        <span>Website Templates</span>
+    </a>
+    <p class="u-text">
+        <span>created with</span>
+    </p>
+    <a class="u-link" href="" target="_blank">
+        <span>Website Builder Software</span>
+    </a>.
+</section>
+
+</body>
+</html>
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
+<script th:if="${mess  == true}">
+    // let inputId = document.getElementById("inputId");
+    // if (inputId && inputId.innerText) {
+    swal({
+        title: "SUCCESSFULLY",
+        text: "Thank you for choosing",
+        icon: "success",
+        button: "OK",
+    }).then((idOk) => {
+        if (idOk) inputId.innerText = ''
+    });
+    // }
+</script>
+<script th:if="${mess == false}">
+    // let inputId = document.getElementById("inputIdd");
+    // if (inputId && inputId.innerText) {
+    swal({
+        title: "ERROR",
+        text: "It has been in your choice, please try again",
+        icon: "error",
+        button: "OK",
+    }).then((idOk) => {
+        if (idOk) inputId.innerText = ''
+    });
+    // }
+
+</script>

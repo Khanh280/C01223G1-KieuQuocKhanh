@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Bootstrap CRUD Data Table for Database with Modal Form</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto|Varela+Round">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="/static/crud_table.css">
+    <script src="/crud_table.js"></script>
+    <style th:replace="~{fragment.html::css}"></style>
+</head>
+<body>
+<div th:replace="~{fragment.html::header}"></div>
+<div class="container">
+    <div class="table-wrapper" style="height: 83vh">
+        <div class="table-title">
+            <div class="row">
+                <div class="col-sm-6">
+                    <h2>Manage <b>Booking</b></h2>
+<!--                    <h3 style="color: white"><b>Revenue: $</b><b style="color: red" th:text="${revenue}"></b></h3>-->
+                </div>
+                <div class="col-sm-6">
+<!--                    <form th:action="@{/api/admin/booking-service/searchByDate}" method="get">-->
+<!--                        <input required style="color: black" type="date" name="searchDate" th:value="${searchDate}">-->
+<!--                        <button type="submit" class="btn-success">Search</button>-->
+<!--                    </form>-->
+                    <a th:href="@{/api/admin/booking-service/create}" class="btn btn-success" data-toggle="modal"><i
+                            class="material-icons">&#xE147;</i> <span>Add New Booking</span></a>
+<!--                    <a href="#deleteEmployeeModal" class="btn btn-danger" data-toggle="modal"><i class="material-icons">&#xE15C;</i>-->
+<!--                        <span>Delete</span></a>-->
+
+                </div>
+            </div>
+        </div>
+        <div class="row mt-1 container-fluid">
+            <div class="dropdown col-2">
+                <!--                <a class="btn btn-sm btn-primary" th:href="@{/orders}" th:if="${pageSearch}">-->
+                <!--                    Reset Search-->
+                <!--                </a>-->
+            </div>
+
+            <form th:action="@{/api/admin/booking-service/searchByDate}" method="get">
+                <input class="input-group-lg" required style="color: black ; margin-right: 0vw" type="date" name="searchDate" th:value="${searchDate}">
+                <button type="submit" class="btn btn-primary">Search</button>
+                <a class="btn btn-success" style="color: white;display: inline-block" th:href="@{/api/admin/booking-service/list}">
+                   Reset</a>
+            </form>
+
+        </div>
+        <table class="table table-striped table-hover">
+            <thead>
+            <tr>
+
+                <th>ID</th>
+                <th>Customer Name</th>
+                <th>Booking Date</th>
+                <th>Time</th>
+                <th>Total Bill</th>
+                <th>Actions</th>
+            </tr>
+            </thead>
+            <tbody>
+
+            <tr th:each="bookingService :${bookingServicePage.content}">
+
+
+                <td th:text="${bookingService.bookingServiceId}"></td>
+
+                <td><a th:href="@{/api/admin/booking-service/detail/{id}(id=${bookingService.bookingServiceId})}" title="Detail"
+                       th:text="${bookingService.customer.name}"></a></td>
+
+                <td th:text="${bookingService.getBookingDate()}"></td>
+                <td th:text="${bookingService.getBookingTime()}"></td>
+                <td th:text="${bookingService.total}"></td>
+
+
+                <td>
+                    <!--                                        <a th:href="@{/api/admin/booking-service/edit/{id}(id=${petService.getPetServiceId()})}" class="edit"-->
+                    <!--                                           data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i></a>-->
+                    <a href="#deleteEmployeeModal"
+                       th:attr="onclick=|deleteInformation(${bookingService.bookingServiceId},'${bookingService.getCustomer().name}')|"
+                       class="delete" data-toggle="modal"><i class="material-icons" data-toggle="tooltip"
+                                                             title="Delete">&#xE872;</i></a>
+
+
+                </td>
+            </tr>
+            </tr>
+            </tbody>
+        </table>
+        <div th:if="${notFound}">
+            <h3 style="text-align: center;margin-bottom: 25vw; color: red">No service found.</h3>
+        </div>
+        <div class="row" th:if="${bookingServicePage.getTotalPages() > 0}">
+            <div class="col-10" th:if="${search} == false">
+                <a class="btn btn-sm btn-outline-primary"  style="border: 1px solid #007bff"  th:href="@{/api/admin/booking-service/list/(page = ${bookingServicePage.number - 1})}" th:if="${bookingServicePage.hasPrevious()}">Previous</a>
+                <th:block th:each=" pageNo : ${#numbers.sequence(0,bookingServicePage.getTotalPages() -1)}">
+                    <a class="btn btn-sm btn-outline-primary" style="border: 1px solid #007bff"   th:href="@{/api/admin/booking-service/list/(page = ${pageNo})}" th:text="${pageNo +1}" th:classappend="${pageNo == bookingServicePage.number ? 'active' : ''}"></a>
+                </th:block>
+                <a class="btn btn-sm btn-outline-primary" style="border: 1px solid #007bff"  th:href="@{/api/admin/booking-service/list/(page = ${bookingServicePage.number + 1})}" th:if="${bookingServicePage.hasNext()}">Next</a>
+            </div>
+
+            <div class="col-10" th:if="${search} == true">
+                <a class="btn btn-sm btn-outline-primary" style="border: 1px solid #007bff"  th:href="@{/api/admin/booking-service/searchByDate/(searchDate=${searchDate},page = ${bookingServicePage.number - 1})}" th:if="${bookingServicePage.hasPrevious()}">Previous</a>
+                <th:block th:each=" pageNo : ${#numbers.sequence(0,bookingServicePage.getTotalPages() -1)}">
+                    <a class="btn btn-sm btn-outline-primary" style="border: 1px solid #007bff"  th:href="@{/api/admin/booking-service/searchByDate/(searchDate=${searchDate},page = ${pageNo})}" th:text="${pageNo +1}" th:classappend="${pageNo == bookingServicePage.number ? 'active' : ''}"></a>
+                </th:block>
+                <a class="btn btn-sm btn-outline-primary" style="border: 1px solid #007bff"  th:href="@{/api/admin/booking-service/searchByDate/(searchDate=${searchDate}, page = ${bookingServicePage.number + 1})}" th:if="${bookingServicePage.hasNext()}">Next</a>
+            </div>
+
+        </div>
+<!--        <div th:if="${search == false}"  class="clearfix">-->
+<!--            <div class="hint-text">Showing <b th:text="${bookingServicePage.numberOfElements}"></b> out of <b-->
+<!--                    th:text="${bookingServicePage.getTotalElements()}"></b> entries-->
+<!--            </div>-->
+<!--            <ul class="pagination">-->
+<!--                <li class="page-item "><a th:href="@{/api/admin/booking-service/list/(page=0)}"-->
+<!--                                          th:if="${bookingServicePage.hasPrevious()}">First</a></li>-->
+<!--                <li class="page-item" th:if="${bookingServicePage.hasPrevious()}">-->
+<!--                    <a class="page-link"-->
+<!--                       th:href="@{/api/admin/booking-service/list/(page = ${bookingServicePage.number - 1})}">Previous</a>-->
+<!--                </li>-->
+<!--                <li class="page-item" th:if="${bookingServicePage.hasNext()}">-->
+<!--                    <a href="#" class="page-link"-->
+<!--                       th:href="@{/api/admin/booking-service/list/(page = ${bookingServicePage.number + 1})}">Next</a>-->
+<!--                </li>-->
+<!--                <li class="page-item "><a-->
+<!--                        th:href="@{/api/admin/booking-service/list/(page=${bookingServicePage.getTotalPages()-1})}"-->
+<!--                        th:if="${bookingServicePage.hasNext()}">Last</a></li>-->
+<!--            </ul>-->
+<!--        </div>-->
+
+
+
+<!--        <div th:if="${search == true}" class="clearfix">-->
+<!--            <div class="hint-text">Showing <b th:text="${bookingServicePage.numberOfElements}"></b> out of <b-->
+<!--                    th:text="${bookingServicePage.getTotalElements()}"></b> entries-->
+<!--            </div>-->
+<!--            <ul class="pagination">-->
+<!--                <li class="page-item "><a th:href="@{/api/admin/booking-service/searchByDate(searchDate = ${searchDate},page=0)}"-->
+<!--                                          th:if="${bookingServicePage.hasPrevious()}">First</a></li>-->
+<!--                <li class="page-item" th:if="${bookingServicePage.hasPrevious()}">-->
+<!--                    <a href="#" class="page-link"-->
+<!--                       th:href="@{/api/admin/booking-service/searchByDate(searchDate = ${searchDate},page = ${bookingServicePage.number - 1})}">Previous</a>-->
+<!--                </li>-->
+<!--                <li class="page-item" th:if="${bookingServicePage.hasNext()}">-->
+<!--                    <a href="#" class="page-link"-->
+<!--                       th:href="@{/api/admin/booking-service/searchByDate(searchDate = ${searchDate},page = ${bookingServicePage.number + 1})}">Next</a>-->
+<!--                </li>-->
+<!--                <li class="page-item "><a-->
+<!--                        th:href="@{/api/admin/booking-service/searchByDate(searchDate = ${searchDate},page=${bookingServicePage.getTotalPages()-1})}"-->
+<!--                        th:if="${bookingServicePage.hasNext()}">Last</a></li>-->
+<!--            </ul>-->
+<!--        </div>-->
+    </div>
+</div>
+
+<!-- Delete Modal HTML -->
+<div id="deleteEmployeeModal" class="modal fade">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <form th:action="@{/api/admin/booking-service/delete}" method="post">
+                <div class="modal-header">
+                    <h4 class="modal-title">Delete Service</h4>
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                </div>
+
+                <div class="modal-body">
+                    <span>Are you sure you want to delete </span> <span style="color: red"
+                                                                        id="name"></span><span>?</span>
+                    <p class="text-warning"><small>This action cannot be undone.</small></p>
+                    <input type="hidden" id="id" name="id">
+                </div>
+                <div class="modal-footer">
+                    <input type="button" class="btn btn-default" data-dismiss="modal" value="Cancel">
+                    <input type="submit" class="btn btn-danger" value="Delete">
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<script>
+    function deleteInformation(id, name) {
+        document.getElementById("id").value = id;
+        document.getElementById("name").innerText = name;
+    }
+</script>
+
+<script>
+    $(document).ready(function () {
+        // Activate tooltip
+        $('[data-toggle="tooltip"]').tooltip();
+
+        // Select/Deselect checkboxes
+        var checkbox = $('table tbody input[type="checkbox"]');
+        $("#selectAll").click(function () {
+            if (this.checked) {
+                checkbox.each(function () {
+                    this.checked = true;
+                });
+            } else {
+                checkbox.each(function () {
+                    this.checked = false;
+                });
+            }
+        });
+        checkbox.click(function () {
+            if (!this.checked) {
+                $("#selectAll").prop("checked", false);
+            }
+        });
+    });
+</script>
+<div th:replace="~{fragment.html::footer}"></div>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+        crossorigin="anonymous"></script>
+</body>
+</html>

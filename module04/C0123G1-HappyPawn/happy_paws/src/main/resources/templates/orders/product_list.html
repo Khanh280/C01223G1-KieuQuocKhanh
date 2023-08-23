@@ -1,0 +1,449 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto|Varela+Round">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="/static/crud_table.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+          integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
+          crossorigin="anonymous" referrerpolicy="no-referrer"/>
+    <style th:replace="~{fragment.html::css}"></style>
+</head>
+<body>
+<div th:replace="~{fragment.html::header}"></div>
+<div class="container">
+    <div class="table-wrapper" style="height: 105vh">
+        <div class="table-title">
+            <div class="row">
+                <div class="col-sm-6">
+                    <h2><b>List Products</b></h2>
+                </div>
+                <div class="col-sm-6">
+                    <a href="#" class="btn btn-success" data-toggle="modal"><i
+                            class="material-icons">&#xE853;</i>
+                        <span th:text="${customer.name}"></span></a>
+                    <a id="myButton" href="#infoCurrentOrder" class="btn btn-info" data-toggle="modal"><i
+                            class="material-icons">&#xEf6e; </i>
+                        <span th:text="${'Current Order'}"></span>
+                        <sup id="sizeCart" th:if="${session.cart.size() >0}"
+                             th:text="${session.cart.size()}"></sup></a>
+
+                </div>
+                <!--                <div th:each="product : ${session.cart}">-->
+                <!--                    <p th:text="${product.name}"></p>-->
+                <!--                    <p th:text="${product.price}"></p>-->
+                <!--                </div>-->
+            </div>
+        </div>
+        <div class="row mt-1 container-fluid">
+            <div class="dropdown col-2">
+                <button onclick="window.history.back()" class="btn btn-sm btn-primary material-icons"
+                        data-toggle="modal">&#xE5e0;
+                </button>
+                <a th:href="@{/orders}" class="btn btn-sm btn-primary " data-toggle="modal">Home</a>
+            </div>
+            <form th:action="@{/orders/search-product}" method="get" class="col-10">
+                <div class="row">
+                    <div class="col-9">
+                        <input type="text" name="customerId" th:value="${customer.customerId}" hidden>
+                        <input class="form-control form-control-sm" type="text" placeholder="Name"
+                               aria-label=".form-control-sm example" name="name" th:value="${name}">
+                    </div>
+                    <div class="col-2">
+                        <select class="btn btn-sm" style="border: 1px solid gray" name="chosePrice">
+                            <option value="0">Chose Price</option>
+                            <option value="1">1 - 5 $</option>
+                            <option value="2">5 - 10 $</option>
+                            <option value="3">10 - 20 $</option>
+                            <option value="4">20 - 50 $</option>
+                            <option value="5"> > 50 $</option>
+                        </select>
+                    </div>
+                    <div class="col-1">
+                        <button class="btn btn-sm btn-primary">Search</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+        <table class="table table-striped table-hover">
+            <thead>
+            <tr>
+                <th>ID</th>
+                <th>Product Name</th>
+                <th>Origin</th>
+                <th>Image</th>
+                <th>Price</th>
+                <th>Types</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="product: ${productPage}">
+                <td th:text="${product.id}"></td>
+                <td th:text="${product.name}"></td>
+                <td th:text="${product.origin}"></td>
+                <td><img th:src="${product.image}" alt="" width="50vw"></td>
+                <td th:text="${product.price}"></td>
+                <td th:text="${product.productType.nameTypeProduct}"></td>
+                <td>
+                    <a th:attr="onclick=|infoProduct(${product.id},${customer.customerId},${product.price},'${product.name}')|"
+                       href="#addProductModal" class="add" data-toggle="modal"><i class="material-icons"
+                                                                                  data-toggle="tooltip"
+                                                                                  title="Add">&#xE145;</i></a>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+        <div th:if="${notFound}">
+            <h3 style="text-align: center; color: red">No products found.</h3>
+        </div>
+        <div th:if="${productPage.getTotalElements()>0}">
+            <div th:if="${pageList == true}">
+                <a class="btn btn-sm btn-outline-primary" style="border: 1px solid #007bff"
+                   th:href="@{/order-detail/create(customerId = ${customer.customerId},now = ${now},page= ${productPage.number -1})}"
+                   th:if="${productPage.hasPrevious()}">Previous</a>
+                <th:block th:each="pageNo : ${#numbers.sequence(0,productPage.getTotalPages() -1)}">
+                    <a class="btn btn-sm btn-outline-primary" style="border: 1px solid #007bff"
+                       th:href="@{/order-detail/create(customerId = ${customer.customerId},now = ${now},page= ${pageNo})}"
+                       th:text="${pageNo+1}"
+                       th:classappend="${pageNo == productPage.number ? 'active' : ''}"
+                    ></a>
+                </th:block>
+                <a class="btn btn-sm btn-outline-primary" style="border: 1px solid #007bff"
+                   th:href="@{/order-detail/create(customerId = ${customer.customerId},now = ${now},page= ${productPage.number +1})}"
+                   th:if="${productPage.hasNext()}">Next</a>
+            </div>
+            <div th:if="${pageSearch == true}">
+                <a class="btn btn-sm btn-outline-primary" style="border: 1px solid #007bff"
+                   th:href="@{/orders/search-product(now = ${now},name =${name},chosePrice =${chosePrice},customerId = ${customer.customerId} ,page= ${productPage.number -1})}"
+                   th:if="${productPage.hasPrevious()}">Previous</a>
+                <th:block th:each="pageNo : ${#numbers.sequence(0,productPage.getTotalPages() -1)}">
+                    <a class="btn btn-sm btn-outline-primary" style="border: 1px solid #007bff"
+                       th:href="@{/orders/search-product(now = ${now},name =${name},chosePrice =${chosePrice},customerId = ${customer.customerId} ,page= ${pageNo})}"
+                       th:text="${pageNo+1}"
+                       th:classappend="${pageNo == productPage.number ? 'active' : ''}"
+                    ></a>
+                </th:block>
+                <a class="btn btn-sm btn-outline-primary" style="border: 1px solid #007bff"
+                   th:href="@{/orders/search-product(now = ${now},name =${name},chosePrice =${chosePrice},customerId = ${customer.customerId},page= ${productPage.number +1})}"
+                   th:if="${productPage.hasNext()}">Next</a>
+            </div>
+        </div>
+
+    </div>
+</div>
+<!--Product info-->
+<div id="addProductModal" class="modal fade">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <form th:action="@{/order-detail/add-product}" method="post">
+                <div class="modal-header">
+                    <h4 class="modal-title">Add Product</h4>
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                </div>
+                <div class="modal-body">
+                    <input th:if="${orders != null}" name="orderId" th:value="${orders.id}" hidden>
+                    <input type="text" id="productId" name="productId" hidden>
+                    <input type="number" id="customerId" name="customerId" hidden>
+                    <div class="form-group">
+                        <label for="name">Name</label>
+                        <input type="text" id="name" class="form-control" readonly>
+                    </div>
+                    <div class="form-group">
+                        <label for="quantity">Quantity</label>
+                        <input type="text" id="price" hidden>
+                        <input type="number" id="quantity" name="quantity" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                        <label id="" for="name">Total : </label>
+                        <span id="total"></span>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <input type="button" class="btn btn-default" data-dismiss="modal" value="Cancel">
+                    <input id="add" type="submit" class="btn btn-success" value="Add">
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<!-- Current Order-->
+<div id="infoCurrentOrder" class="modal fade">
+    <div class="modal-dialog-sm modal-dialog-scrollable">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">Current Order</h4>
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+            </div>
+            <div class="modal-body">
+                <table class="table">
+                    <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th style="width: 13vw;">Quantity</th>
+                        <th style="width: 13vw;">Price ($)</th>
+                        <th>Action</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr th:each="cart,index : ${session.cart}">
+                        <td th:text="${cart.products.name}" style="width:51vw"></td>
+                        <td class="d-flex" width="">
+                            <a id="delete" style="cursor: pointer">
+                                <input type="text" id="indexDelete" th:value="${index.index}" hidden>
+                                <i class="material-icons"
+                                   data-toggle="tooltip"
+                                   title="Delete">&#xE15b;</i>
+                            </a>
+                            <!--                            <p id="quantityAction" th:text="${cart.quantity}"></p>-->
+                            <input class="form-control text-center me-3" id="quantity-cart" name="quantity"
+                                   type="number"
+                                   style="max-width: 5rem; border: none; background-color: white" th:value="${cart.quantity}" readonly/>
+                            <input type="text" id="price-product" th:value="${cart.products.price}" hidden>
+                            <a id="more" style="cursor: pointer;">
+                                <input type="text" id="indexMore" th:value="${index.index}" hidden>
+                                <i class="material-icons"
+                                   data-toggle="tooltip"
+                                   title="More">&#xE145;</i>
+                            </a>
+                        </td>
+
+                        <td><input type="number" th:value="${cart.price * cart.quantity}"
+                                   class="form-control text-center me-3" id="priceItems" name="price"
+                                   style="max-width: 13vw; border: none;margin: 0;background-color: white;color: black; font-weight: bold" readonly>
+                        </td>
+
+                        <td>
+                            <a id="deleteProduct" class="delete" style="cursor: pointer">
+                                <input type="text" id="index" th:value="${index.index}" hidden>
+                                <i class="material-icons"
+                                   data-toggle="tooltip"
+                                   title="Delete">&#xE872;</i>
+                            </a>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+                <div th:if="${session.cart.size() == 0}">
+                    <h3 style="text-align: center; color: black">No products found.</h3>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <div class="row col-12">
+<!--                    fix lai-->
+                    <div class="col-7">
+                      <div style="float: left">
+                          <h3 style=" color: black;margin: 0;display: inline-block" th:if="${totalPriceCart >0}">Total :
+                              <input th:if="${session.cart.size() >0}" type="text" id="total-cart"
+                                     class="form-control text-center me-3"
+                                     style="max-width: 13vw; border: none;font-size: 23px;display: inline-block; background-color: #ecf0f1;color: black"
+                                     readonly
+                                     th:value="${totalPriceCart}"> $
+                          </h3>
+                          <!--                        <h5 style=" color: black;margin: 0;" th:if="${totalPriceCart == null}"-->
+                          <!--                            th:text="${'Total : 0 $ '}"></h5>-->
+                      </div>
+                    </div>
+                    <div class="col-5">
+                        <input type="button" class="btn btn-default" data-dismiss="modal" value="Cancel">
+                        <a th:if="${session.cart.size() >0}" id="payment"
+                           th:href="@{/order-detail/payment/{customerId}(customerId = ${customer.customerId})}"
+                           class="btn btn-danger" th:text="'Payment'"></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--Modal status add product-->
+<div th:if="${statusSave}">
+    <span hidden id="inputId" th:text="'Successfully'"></span>
+</div>
+<div th:if="${statusSave == false}">
+    <span hidden id="inputId2" th:text="'Fail'"></span>
+</div>
+
+<div th:if="${statusAddCart}">
+    <span hidden id="inputId3" th:text="'Successfully'"></span>
+</div>
+
+<script>
+    function infoProduct(id, customerId, price, name) {
+        document.getElementById('productId').value = id;
+        document.getElementById('customerId').value = customerId;
+        document.getElementById('price').value = price;
+        document.getElementById('name').value = name;
+    }
+</script>
+
+<script>
+    // auto focus on modal
+    $(document).ready(function () {
+        $('#addProductModal').on('shown.bs.modal', function () {
+            $('#quantity').focus();
+        });
+    });
+
+    //check quantity > 0
+    $('#quantity').on('input', function () {
+        let quantity = document.getElementById('quantity').value;
+        let price = document.getElementById('price').value;
+        let total = document.getElementById('total');
+        let add = document.getElementById('add')
+        total.style.color = '';
+        if (quantity <= 0) {
+            total.style.color = 'red';
+            total.innerText = "Quantity greater than 0";
+            add.hidden = true;
+        } else if (quantity > 999) {
+            total.style.color = 'red';
+            total.innerText = "Too large a quantity";
+            add.hidden = true;
+        } else {
+            total.innerText = (quantity * price) + '$';
+            add.hidden = false;
+        }
+    });
+
+    $(document).ready(function () {
+        $(document).on('click', '#delete', function () {
+            let totalCart = parseInt(document.getElementById('total-cart').value);
+            let totalCartNew = $('#total-cart');
+            let currentRow = $(this).closest('tr');
+            let quantityElement = currentRow.find('#quantity-cart');
+            let price = currentRow.find('#priceItems');
+            let quantity = currentRow.find('#quantity-cart').val();
+            let index = currentRow.find('#indexDelete').val();
+            let priceProduct = currentRow.find('#price-product').val();
+            let priceTotal = currentRow.find('#priceItems').val();
+            $.ajax({
+                url: 'http://localhost:8080/order-detail/edit-quantity-cart?index=' + encodeURIComponent(index) + '&action=delete',
+                type: 'GET',
+                success: function (data) {
+                    if (data === 0) {
+                        currentRow.hide();
+                        totalCartNew.val(0);
+                        $('#sizeCart').hide();
+                        $('#payment').prop('disabled', true);
+                        totalCartNew.val(totalCart - (priceTotal / quantity))
+                    } else {
+                        quantityElement.val(data);
+                        price.val((quantity - (quantity - data)) * priceProduct)
+                        totalCartNew.val(totalCart - (priceTotal / quantity))
+                    }
+                }
+            });
+        });
+        $(document).on('click', '#more', function () {
+            let totalCart = parseInt(document.getElementById('total-cart').value);
+            let totalCartNew = $('#total-cart');
+            let currentRow = $(this).closest('tr');
+            let quantityElement = currentRow.find('#quantity-cart');
+            let quantity = currentRow.find('#quantity-cart').val();
+            let index = currentRow.find('#indexMore').val();
+            let priceProduct = currentRow.find('#price-product').val();
+            let priceTotal = currentRow.find('#priceItems').val();
+            let price = currentRow.find('#priceItems');
+            $.ajax({
+                url: 'http://localhost:8080/order-detail/edit-quantity-cart?index=' + encodeURIComponent(index) + '&action=more',
+                type: 'GET',
+                success: function (data) {
+                    quantityElement.val(data);
+                    price.val(data * priceProduct)
+                    totalCartNew.val(totalCart + (priceTotal / quantity))
+                }
+            });
+        });
+        $(document).ready(function () {
+            // Kiểm tra trạng thái modal từ localStorage
+            let isModalShown = localStorage.getItem('isModalShown');
+            if (isModalShown === 'true') {
+                let infoCurrentOrder = document.getElementById('infoCurrentOrder');
+                $(infoCurrentOrder).modal('show');
+            }
+            // Xóa trạng thái modal khỏi localStorage
+            localStorage.removeItem('isModalShown');
+        });
+    });
+</script>
+
+<script>
+    $(document).on('click', '#deleteProduct', function () {
+        let index = $(this).find('#index').val();
+        $.ajax({
+            url: 'http://localhost:8080/order-detail/delete-cart?index=' + encodeURIComponent(index),
+            Type: "DELETE",
+            success: function (data) {
+                location.reload();
+            }
+        })
+    });
+</script>
+
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
+<script th:if="${statusAddCart}">
+    let inputId = document.getElementById("inputId3");
+    if (inputId && inputId.innerText != null) {
+        swal({
+            title: "ADD CART",
+            text: inputId.innerText,
+            icon: "success",
+            button: "OK",
+        }).then((idOk) => {
+            if (idOk) {
+                inputId.innerText = '';
+            }
+        });
+    }
+</script>
+
+<script th:if="${statusSave}">
+    let inputId = document.getElementById("inputId");
+    if (inputId && inputId.innerText != null) {
+        swal({
+            title: "ADD",
+            text: inputId.innerText,
+            icon: "success",
+            button: "OK",
+        }).then((idOk) => {
+            if (idOk) {
+                inputId.innerText = '';
+            }
+        });
+    }
+</script>
+
+<script th:if="${statusSave == false}">
+    let inputId = document.getElementById("inputId2");
+    if (inputId && inputId.innerText != null) {
+        swal({
+            title: "ADD",
+            text: inputId.innerText,
+            icon: "error",
+            button: "OK",
+        }).then((idOk) => {
+            if (idOk) {
+                inputId.innerText = '';
+            }
+        });
+    }
+</script>
+<div th:replace="~{fragment.html::footer}"></div>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+        crossorigin="anonymous"></script>
+</body>
+</html>

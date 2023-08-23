@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto|Varela+Round">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="/static/crud_table.css">
+    <style th:replace="~{fragment.html::css}"></style>
+</head>
+<body style="height: 100vh">
+<div th:replace="~{fragment.html::header}"></div>
+<div class="container">
+    <div class="table-wrapper" style="height: 83vh">
+        <div class="table-title">
+            <div class="row">
+                <div class="col-sm-6">
+                    <h2><b>Manager Orders</b></h2>
+                </div>
+                <div class="col-sm-6">
+                    <a th:href="@{/orders/create}" class="btn btn-success" data-toggle="modal"><i
+                            class="material-icons">&#xE147;</i>
+                        <span>Add New Orders</span></a>
+                </div>
+            </div>
+        </div>
+        <div class="row mt-1 container-fluid">
+            <div class="dropdown col-2">
+                <!--                <a class="btn btn-sm btn-primary" th:href="@{/orders}" th:if="${pageSearch}">-->
+                <!--                    Reset Search-->
+                <!--                </a>-->
+            </div>
+
+            <form th:action="@{/orders/search}" method="get" class="col-10">
+                <div class="row">
+                    <div class="col-8">
+                        <input class="form-control form-control-sm" type="text" placeholder="Name"
+                               aria-label=".form-control-sm example" name="name" th:value="${name}">
+                    </div>
+                    <div class="col-3">
+                        <input class="form-control form-control-sm" type="text" placeholder="Phone"
+                               aria-label=".form-control-sm example" name="phone" th:value="${phone}">
+                    </div>
+                    <div class="col-1">
+                        <button class="btn btn-sm btn-primary">Search</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+        <table class="table table-striped table-hover">
+            <thead>
+            <tr>
+                <th>ID</th>
+                <th>Customer Name</th>
+                <th>Phone</th>
+                <th>Buy Date</th>
+                <th>Total Price</th>
+                <th>Actions</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="order: ${orderDTOPage}">
+                <td th:text="${order.id}"></td>
+                <td th:text="${order.customer.name}"></td>
+                <td th:text="${order.customer.phone}"></td>
+                <td th:text="${order.buyDate}"></td>
+                <td th:text="${order.price + ' $ '}"></td>
+                <td>
+                    <a class="btn btn-sm btn-info" th:href="@{/order-detail(orderId = ${order.id})}">Detail</a>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+        <div th:if="${notFound}" >
+            <h3  style="text-align: center; color: red">No products found.</h3>
+        </div>
+        <div class="row" th:if="${orderDTOPage.getTotalPages() > 0}">
+            <div class="col-10" th:if="${pageList == true}">
+                <a class="btn btn-sm btn-outline-primary" style="border: 1px solid #007bff"
+                   th:href="@{/orders(page = ${orderDTOPage.number - 1})}" th:if="${orderDTOPage.hasPrevious()}">Previous</a>
+                <th:block th:each=" pageNo : ${#numbers.sequence(0,orderDTOPage.getTotalPages() -1)}">
+                    <a class="btn btn-sm btn-outline-primary" style="border: 1px solid #007bff"
+                       th:href="@{/orders(page = ${pageNo})}" th:text="${pageNo +1}"
+                       th:classappend="${pageNo == orderDTOPage.number ? 'active' : ''}"></a>
+                </th:block>
+                <a class="btn btn-sm btn-outline-primary" style="border: 1px solid #007bff"
+                   th:href="@{/orders(page = ${orderDTOPage.number + 1})}" th:if="${orderDTOPage.hasNext()}">Next</a>
+            </div>
+
+            <div class="col-10" th:if="${pageSearch == true}">
+                <a class="btn btn-sm btn-outline-primary" style="border: 1px solid #007bff"
+                   th:href="@{/orders/search(name= ${name},phone = ${phone},page = ${orderDTOPage.number - 1})}"
+                   th:if="${orderDTOPage.hasPrevious()}">Previous</a>
+                <th:block th:each=" pageNo : ${#numbers.sequence(0,orderDTOPage.getTotalPages() -1)}">
+                    <a class="btn btn-sm btn-outline-primary" style="border: 1px solid #007bff"
+                       th:href="@{/orders/search(name= ${name},phone = ${phone},page = ${pageNo})}"
+                       th:text="${pageNo +1}" th:classappend="${pageNo == orderDTOPage.number ? 'active' : ''}"></a>
+                </th:block>
+                <a class="btn btn-sm btn-outline-primary" style="border: 1px solid #007bff"
+                   th:href="@{/orders/search(name= ${name},phone = ${phone},page = ${orderDTOPage.number + 1})}"
+                   th:if="${orderDTOPage.hasNext()}">Next</a>
+            </div>
+            <div class="col-2">
+                <p style="font-weight: bold" th:if="${totalPriceOrderDetail != null}"
+                   th:text="${ 'Total : ' + totalPriceOrderDetail + ' $ '}"></p>
+                <p style="font-weight: bold" th:if="${totalPriceOrderDetail == null}" th:text="${ 'Total : 0 $ '}"></p>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<div th:replace="~{fragment.html::footer}"></div>
+<div th:if="${statusSaveOrderDetail}">
+    <span hidden id="inputId" th:text="'Successfully'"></span>
+</div>
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
+<script th:if="${statusSaveOrderDetail}">
+    let inputId = document.getElementById("inputId");
+    if (inputId && inputId.innerText != null) {
+        swal({
+            title: "Payment",
+            text: inputId.innerText,
+            icon: "success",
+            button: "OK",
+        }).then((idOk) => {
+            if (idOk) {
+                inputId.innerText = '';
+            }
+        });
+    }
+</script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+        crossorigin="anonymous"></script>
+</body>
+</html>

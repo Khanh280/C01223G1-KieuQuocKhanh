@@ -1,0 +1,855 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+
+<head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+    <title>Happy Paws</title>
+    <meta content="" name="description">
+    <meta content="" name="keywords">
+
+    <!-- Favicons -->
+    <!--  <link href="assets/img/favicon.png" rel="icon">-->
+    <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,600;1,700&family=Amatic+SC:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&family=Inter:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap"
+          rel="stylesheet">
+
+    <!-- Vendor CSS Files -->
+    <link href="../../static/happy_paws/assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="../../static/happy_paws/assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+    <link href="../../static/happy_paws/assets/vendor/aos/aos.css" rel="stylesheet">
+    <link href="../../static/happy_paws/assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
+    <link href="../../static/happy_paws/assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+
+    <!-- Template Main CSS File -->
+    <link href="../../static/happy_paws/assets/css/main.css" rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto|Varela+Round">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <!-- =======================================================
+    * Template Name: Yummy
+    * Updated: May 30 2023 with Bootstrap v5.3.0
+    * Template URL: https://bootstrapmade.com/yummy-bootstrap-restaurant-website-template/
+    * Author: BootstrapMade.com
+    * License: https://bootstrapmade.com/license/
+    ======================================================== -->
+</head>
+
+<body>
+
+<!-- ======= Header ======= -->
+<header id="header" class="header fixed-top d-flex align-items-center">
+    <div class="container d-flex align-items-center justify-content-between ">
+        <a href="#" class="logo d-flex align-items-center me-auto me-lg-0">
+
+            <h1>Happy <br> Paws<img
+                    src="https://creazilla-store.fra1.digitaloceanspaces.com/cliparts/19454/cat-s-paw-clipart-md.png"
+                    height="45"
+                    alt="MDB Logo"
+                    loading="lazy" style="transform: rotate(-18deg);margin-top: -5.5vh;margin-left: 2vw"/></h1>
+        </a>
+
+
+        <nav id="navbar" class="navbar">
+            <ul>
+                <li><a href="#hero">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#menu">Menu</a></li>
+                <li><a href="#events">Events</a></li>
+                <li><a href="#chefs">Services</a></li>
+                <li><a href="#gallery">Gallery</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+        <!-- .navbar -->
+
+        <!--        <a class="btn-book-a-table" style="width: 13vw" href="#book-a-table">Book a Table</a>-->
+        <a id="login" style="width: 6vw; text-align: center" class="btn-book-a-table" th:href="@{/account/login}"
+           th:text="'Login'"></a>
+        <a class="btn-book-a-table" style="width: 6vw; text-align: center"
+           sec:authorize="hasAnyRole('ADMIN','CUSTOMER','EMPLOYEE')"
+           th:href="@{/account/logout}">Logout</a>
+        <a class="btn-book-a-table" style=" text-align: center" sec:authorize="hasRole('ADMIN')"
+           th:href="@{/account/}" th:text="'Admin Manager'"></a>
+        <a class="btn-book-a-table" style="width: 10vw; text-align: center" sec:authorize="hasRole('CUSTOMER')"
+           th:text="${#authentication.getName()}"></a>
+        <a sec:authorize="hasRole('CUSTOMER')" th:href="@{/cart(userName = ${#authentication.getName()})}"
+           style="margin-top: 5.5px" data-toggle="modal"><i
+                style="font-size: 30px;
+                border: 1px solid;
+                border-radius: 10px;"
+                class="material-icons" title="Cart">&#xE8cc;</i>
+        </a>
+        <i class="mobile-nav-toggle mobile-nav-show bi bi-list"></i>
+        <i class="mobile-nav-toggle mobile-nav-hide d-none bi bi-x"></i>
+    </div>
+</header><!-- End Header -->
+
+<!-- ======= Hero Section ======= -->
+<section id="hero" class="hero d-flex align-items-center section-bg">
+    <div class="container">
+        <div class="row justify-content-between gy-5">
+            <div class="col-lg-5 order-2 order-lg-1 d-flex flex-column justify-content-center align-items-center align-items-lg-start text-center text-lg-start">
+                <h2 data-aos="fade-up">Providing Compassionate Care for Happy <br>and Healthy Pets</h2>
+                <p data-aos="fade-up" data-aos-delay="100">Pet care services are essential for the well-being and
+                    happiness of our furry friends. These services cater to the diverse needs of pets, providing them
+                    with love, attention, and proper care.</p>
+                <div class="d-flex" data-aos="fade-up" data-aos-delay="200">
+                    <a id="booking-service" th:href="@{/booking/reservation}" class="btn-book-a-table">Book a Service</a>
+                </div>
+
+            </div>
+            <div class="col-lg-5 order-1 order-lg-2 text-center text-lg-start">
+                <img src="https://i.pinimg.com/564x/b2/a1/c3/b2a1c30a79a19adda5ac6b737ec491f8.jpg"
+                     class="img-fluid" alt="" data-aos="zoom-out" data-aos-delay="300" style="border-radius: 30px">
+            </div>
+        </div>
+    </div>
+</section><!-- End Hero Section -->
+
+<main id="main">
+
+    <!-- ======= About Section ======= -->
+    <section id="about" class="about">
+        <div class="container" data-aos="fade-up">
+
+            <div class="section-header">
+                <h2>About Us</h2>
+                <p>Learn More <span>About Us</span></p>
+            </div>
+
+            <div class="row gy-4">
+                <div class="col-lg-7 position-relative about-img"
+                     style="background-image: url(../../static/happy_paws/assets/img/spa-thu-cung-la-gi-26.webp) ;"
+                     data-aos="fade-up"
+                     data-aos-delay="150">
+                    <div class="call-us position-absolute">
+                        <h4>Book a Table</h4>
+                        <p>+84 782.391.943</p>
+                    </div>
+                </div>
+                <div class="col-lg-5 d-flex align-items-end" data-aos="fade-up" data-aos-delay="300">
+                    <div class="content ps-0 ps-lg-5">
+                        <p class="fst-italic">
+                            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
+                            labore et dolore
+                            magna aliqua.
+                        </p>
+                        <ul>
+                            <li><i class="bi bi-check2-all"></i> Ullamco laboris nisi ut aliquip ex ea commodo
+                                consequat.
+                            </li>
+                            <li><i class="bi bi-check2-all"></i> Duis aute irure dolor in reprehenderit in voluptate
+                                velit.
+                            </li>
+                            <li><i class="bi bi-check2-all"></i> Ullamco laboris nisi ut aliquip ex ea commodo
+                                consequat. Duis aute irure dolor in reprehenderit in voluptate trideta storacalaperda
+                                mastiro dolore eu fugiat nulla pariatur.
+                            </li>
+                        </ul>
+                        <p>
+                            Ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in
+                            reprehenderit in voluptate
+                            velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+                            proident
+                        </p>
+
+                        <div class="position-relative mt-4">
+                            <img src="assets/img/about-2.jpg" class="img-fluid" alt="">
+                            <a href="https://www.youtube.com/watch?v=KfFvqImjJBg&embeds_referring_euri=https%3A%2F%2Fdogily.vn%2F&source_ve_path=MjM4NTE&feature=emb_title"
+                               class="glightbox play-btn"></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section><!-- End About Section -->
+
+    <!-- ======= Why Us Section ======= -->
+    <section id="why-us" class="why-us section-bg">
+        <div class="container" data-aos="fade-up">
+
+            <div class="row gy-4">
+
+
+                <div class="col-lg-4" data-aos="fade-up" data-aos-delay="100">
+                    <div class="why-box">
+                        <h3>Why Choose Happy Paws?</h3>
+                        <p>
+                            Professional Expertise: Trained professionals handle various aspects of pet care, ensuring
+                            your pet's well-being.<br>
+                            Convenience and Flexibility: Accommodating busy schedules, frequent travel, or limited
+                            mobility with reliable pet care services.<br>
+                            Personalized Care: Tailoring services to meet the unique needs and preferences of each
+                            pet.<br>
+                            Socialization Opportunities: Offering interactions with other animals for improved
+                            well-being and happiness.<br>
+                            Peace of Mind: Entrusting your pet's care to professionals for their attention, love, and
+                            safety.<br>
+                            Health and Wellness: Prioritizing regular check-ups, grooming, exercise, and early detection
+                            of health issues.<br>
+                            Extra Services: Additional conveniences like pet transportation, sitting, and behavioral
+                            training.<br>
+                        </p>
+                        <div class="text-center">
+                            <a href="#" class="more-btn">Learn More <i class="bx bx-chevron-right"></i></a>
+                        </div>
+                    </div>
+                </div><!-- End Why Box -->
+
+                <div class="col-lg-8 d-flex align-items-center">
+                    <div class="row gy-4">
+
+                        <div class="col-xl-4" data-aos="fade-up" data-aos-delay="200">
+                            <div class="icon-box d-flex flex-column justify-content-center align-items-center">
+                                <i class="bi bi-clipboard-data"></i>
+                                <h4>Corporis voluptates officia eiusmod</h4>
+                                <p>Consequuntur sunt aut quasi enim aliquam quae harum pariatur laboris nisi ut
+                                    aliquip</p>
+                            </div>
+                        </div><!-- End Icon Box -->
+
+                        <div class="col-xl-4" data-aos="fade-up" data-aos-delay="300">
+                            <div class="icon-box d-flex flex-column justify-content-center align-items-center">
+                                <i class="bi bi-gem"></i>
+                                <h4>Ullamco laboris ladore pan</h4>
+                                <p>Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia
+                                    deserunt</p>
+                            </div>
+                        </div><!-- End Icon Box -->
+
+                        <div class="col-xl-4" data-aos="fade-up" data-aos-delay="400">
+                            <div class="icon-box d-flex flex-column justify-content-center align-items-center">
+                                <i class="bi bi-inboxes"></i>
+                                <h4>Labore consequatur incidid dolore</h4>
+                                <p>Aut suscipit aut cum nemo deleniti aut omnis. Doloribus ut maiores omnis facere</p>
+                            </div>
+                        </div><!-- End Icon Box -->
+
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </section><!-- End Why Us Section -->
+
+    <!-- ======= Menu Section ======= -->
+    <section id="menu" class="menu">
+        <div class="container" data-aos="fade-up">
+
+            <div class="section-header">
+                <h2>Our Menu</h2>
+                <p>Check Our <span>Happy Paws Menu</span></p>
+            </div>
+            <ul class="nav nav-tabs d-flex justify-content-center" data-aos="fade-up" data-aos-delay="200">
+
+                <li class="nav-item">
+                    <a class="nav-link active show" data-bs-toggle="tab" data-bs-target="#menu-starters">
+                        <h4>Dog Food</h4>
+                    </a>
+                </li><!-- End tab nav item -->
+
+                <li class="nav-item">
+                    <a class="nav-link" data-bs-toggle="tab" data-bs-target="#menu-breakfast">
+                        <h4>Cat Food</h4>
+                    </a><!-- End tab nav item -->
+
+                <li class="nav-item">
+                    <a class="nav-link" data-bs-toggle="tab" data-bs-target="#menu-lunch">
+                        <h4>Toys</h4>
+                    </a>
+                </li><!-- End tab nav item -->
+
+                <li class="nav-item">
+                    <a class="nav-link" data-bs-toggle="tab" data-bs-target="#menu-dinner">
+                        <h4>Cage</h4>
+                    </a>
+                </li><!-- End tab nav item -->
+
+            </ul>
+            <div class="tab-content" data-aos="fade-up" data-aos-delay="300">
+
+                <div class="tab-pane fade active show" id="menu-starters">
+
+                    <div class="tab-header text-center">
+                        <p>Menu</p>
+                        <h3>Dog Food</h3>
+                    </div>
+                    <div class="row gy-5">
+                        <div class="col-lg-4 menu-item" th:each="product : ${productPage}"
+                             th:if="${product.productType.nameTypeProduct == 'Dog Food'}">
+                            <a th:href="@{/detail/{id}(id=${product.id})}">
+                                <img th:src="${product.image}" class="menu-img img-fluid" style="border-radius: 5px"
+                                     alt="">
+                            </a>
+                            <h4 th:text="${product.name}"></h4>
+                            <p class="ingredients">
+                                Lorem, deren, trataro, filede, nerada
+                            </p>
+                            <p th:text="${'$' + product.price}" class="price"></p>
+
+                        </div>
+                    </div>
+                </div><!-- End Starter Menu Content -->
+
+                <div class="tab-pane fade" id="menu-breakfast">
+                    <div class="tab-header text-center">
+                        <p>Menu</p>
+                        <h3>Cat Food</h3>
+                    </div>
+                    <div class="row gy-5">
+                        <div class="col-lg-4 menu-item" th:each="product : ${productPage}"
+                             th:if="${product.productType.nameTypeProduct == 'Cat Food'}">
+                            <a th:href="@{/detail/{id}(id=${product.id})}">
+                                <img th:src="${product.image}" class="menu-img img-fluid" style="border-radius: 5px"
+                                     alt="">
+                            </a>
+                            <h4 th:text="${product.name}"></h4>
+                            <p class="ingredients">
+                                Lorem, deren, trataro, filede, nerada
+                            </p>
+                            <p th:text="${'$' + product.price}" class="price"></p>
+
+                        </div>
+                    </div>
+                </div><!-- End Breakfast Menu Content -->
+
+                <div class="tab-pane fade" id="menu-lunch">
+                    <div class="tab-header text-center">
+                        <p>Menu</p>
+                        <h3>Toys</h3>
+                    </div>
+                    <div class="row gy-5">
+                        <div class="col-lg-4 menu-item" th:each="product : ${productPage}"
+                             th:if="${product.productType.nameTypeProduct == 'Toys'}">
+                            <a th:href="@{/detail/{id}(id=${product.id})}">
+                                <img th:src="${product.image}" class="menu-img img-fluid" style="border-radius: 5px"
+                                     alt="">
+                            </a>
+                            <h4 th:text="${product.name}"></h4>
+                            <p class="ingredients">
+                                Lorem, deren, trataro, filede, nerada
+                            </p>
+                            <p th:text="${'$' + product.price}" class="price"></p>
+                        </div>
+                    </div>
+                </div><!-- End Lunch Menu Content -->
+
+                <div class="tab-pane fade" id="menu-dinner">
+                    <div class="tab-header text-center">
+                        <p>Menu</p>
+                        <h3>Cage</h3>
+                    </div>
+                    <div class="row gy-5">
+                        <div class="col-lg-4 menu-item" th:each="product : ${productPage}"
+                             th:if="${product.productType.nameTypeProduct == 'Cage'}">
+                            <a th:href="@{/detail/{id}(id=${product.id})}">
+                                <img th:src="${product.image}" class="menu-img img-fluid" style="border-radius: 5px"
+                                     alt="">
+                            </a>
+                            <h4 th:text="${product.name}"></h4>
+                            <p class="ingredients">
+                                Lorem, deren, trataro, filede, nerada
+                            </p>
+                            <p th:text="${'$' + product.price}" class="price"></p>
+
+                        </div>
+                    </div>
+                </div><!-- End Dinner Menu Content -->
+
+            </div>
+
+        </div>
+
+        </div>
+    </section><!-- End Menu Section -->
+
+    <!-- ======= Testimonials Section ======= -->
+    <section id="testimonials" class="testimonials section-bg">
+        <div class="container" data-aos="fade-up">
+
+            <div class="section-header">
+                <h2>Testimonials</h2>
+                <p>What Are They <span>Saying About Us</span></p>
+            </div>
+
+            <div class="slides-1 swiper" data-aos="fade-up" data-aos-delay="100">
+                <div class="swiper-wrapper">
+
+                    <div class="swiper-slide">
+                        <div class="testimonial-item">
+                            <div class="row gy-4 justify-content-center">
+                                <div class="col-lg-6">
+                                    <div class="testimonial-content">
+                                        <p>
+                                            <i class="bi bi-quote quote-icon-left"></i>
+                                            Proin iaculis purus consequat sem cure digni ssim donec porttitora entum
+                                            suscipit rhoncus. Accusantium quam, ultricies eget id, aliquam eget nibh et.
+                                            Maecen aliquam, risus at semper.
+                                            <i class="bi bi-quote quote-icon-right"></i>
+                                        </p>
+                                        <h3>Saul Goodman</h3>
+                                        <h4>Ceo &amp; Founder</h4>
+                                        <div class="stars">
+                                            <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i
+                                                class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i
+                                                class="bi bi-star-fill"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-2 text-center">
+                                    <img src="assets/img/testimonials/testimonials-1.jpg"
+                                         class="img-fluid testimonial-img" alt="">
+                                </div>
+                            </div>
+                        </div>
+                    </div><!-- End testimonial item -->
+
+                    <div class="swiper-slide">
+                        <div class="testimonial-item">
+                            <div class="row gy-4 justify-content-center">
+                                <div class="col-lg-6">
+                                    <div class="testimonial-content">
+                                        <p>
+                                            <i class="bi bi-quote quote-icon-left"></i>
+                                            Export tempor illum tamen malis malis eram quae irure esse labore quem
+                                            cillum quid cillum eram malis quorum velit fore eram velit sunt aliqua
+                                            noster fugiat irure amet legam anim culpa.
+                                            <i class="bi bi-quote quote-icon-right"></i>
+                                        </p>
+                                        <h3>Sara Wilsson</h3>
+                                        <h4>Designer</h4>
+                                        <div class="stars">
+                                            <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i
+                                                class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i
+                                                class="bi bi-star-fill"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-2 text-center">
+                                    <img src="assets/img/testimonials/testimonials-2.jpg"
+                                         class="img-fluid testimonial-img" alt="">
+                                </div>
+                            </div>
+                        </div>
+                    </div><!-- End testimonial item -->
+
+                    <div class="swiper-slide">
+                        <div class="testimonial-item">
+                            <div class="row gy-4 justify-content-center">
+                                <div class="col-lg-6">
+                                    <div class="testimonial-content">
+                                        <p>
+                                            <i class="bi bi-quote quote-icon-left"></i>
+                                            Enim nisi quem export duis labore cillum quae magna enim sint quorum nulla
+                                            quem veniam duis minim tempor labore quem eram duis noster aute amet eram
+                                            fore quis sint minim.
+                                            <i class="bi bi-quote quote-icon-right"></i>
+                                        </p>
+                                        <h3>Jena Karlis</h3>
+                                        <h4>Store Owner</h4>
+                                        <div class="stars">
+                                            <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i
+                                                class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i
+                                                class="bi bi-star-fill"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-2 text-center">
+                                    <img src="assets/img/testimonials/testimonials-3.jpg"
+                                         class="img-fluid testimonial-img" alt="">
+                                </div>
+                            </div>
+                        </div>
+                    </div><!-- End testimonial item -->
+
+                    <div class="swiper-slide">
+                        <div class="testimonial-item">
+                            <div class="row gy-4 justify-content-center">
+                                <div class="col-lg-6">
+                                    <div class="testimonial-content">
+                                        <p>
+                                            <i class="bi bi-quote quote-icon-left"></i>
+                                            Quis quorum aliqua sint quem legam fore sunt eram irure aliqua veniam tempor
+                                            noster veniam enim culpa labore duis sunt culpa nulla illum cillum fugiat
+                                            legam esse veniam culpa fore nisi cillum quid.
+                                            <i class="bi bi-quote quote-icon-right"></i>
+                                        </p>
+                                        <h3>John Larson</h3>
+                                        <h4>Entrepreneur</h4>
+                                        <div class="stars">
+                                            <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i
+                                                class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i
+                                                class="bi bi-star-fill"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-2 text-center">
+                                    <img src="assets/img/testimonials/testimonials-4.jpg"
+                                         class="img-fluid testimonial-img" alt="">
+                                </div>
+                            </div>
+                        </div>
+                    </div><!-- End testimonial item -->
+
+                </div>
+                <div class="swiper-pagination"></div>
+            </div>
+
+        </div>
+    </section><!-- End Testimonials Section -->
+
+    <!-- ======= Events Section ======= -->
+    <section id="events" class="events">
+        <div class="container-fluid" data-aos="fade-up">
+
+            <div class="section-header">
+                <h2>Events</h2>
+                <p>Share <span>Your Moments</span> In Our Restaurant</p>
+            </div>
+
+            <div class="slides-3 swiper" data-aos="fade-up" data-aos-delay="100">
+                <div class="swiper-wrapper">
+
+                    <div class="swiper-slide event-item d-flex flex-column justify-content-end"
+                         style="background-image: url(../../static/happy_paws/assets/img/dog-spa-2.jpg)">
+                        <h3>Custom Parties</h3>
+                        <div class="price align-self-start">$99</div>
+                        <p class="description">
+                            Quo corporis voluptas ea ad. Consectetur inventore sapiente ipsum voluptas eos omnis facere.
+                            Enim facilis veritatis id est rem repudiandae nulla expedita quas.
+                        </p>
+                    </div><!-- End Event item -->
+
+                    <div class="swiper-slide event-item d-flex flex-column justify-content-end"
+                         style="background-image: url(../../static/happy_paws/assets/img/images.jpg)">
+                        <h3>Private Parties</h3>
+                        <div class="price align-self-start">$289</div>
+                        <p class="description">
+                            In delectus sint qui et enim. Et ab repudiandae inventore quaerat doloribus. Facere nemo
+                            vero est ut dolores ea assumenda et. Delectus saepe accusamus aspernatur.
+                        </p>
+                    </div><!-- End Event item -->
+
+                    <div class="swiper-slide event-item d-flex flex-column justify-content-end"
+                         style="background-image: url(../../static/happy_paws/assets/img/spa-thu-cung-la-gi-26.webp)">
+                        <h3>Birthday Parties</h3>
+                        <div class="price align-self-start">$499</div>
+                        <p class="description">
+                            Laborum aperiam atque omnis minus omnis est qui assumenda quos. Quis id sit quibusdam. Esse
+                            quisquam ducimus officia ipsum ut quibusdam maxime. Non enim perspiciatis.
+                        </p>
+                    </div><!-- End Event item -->
+
+                </div>
+                <div class="swiper-pagination"></div>
+            </div>
+
+        </div>
+    </section><!-- End Events Section -->
+
+    <!-- ======= Chefs Section ======= -->
+    <section id="chefs" class="chefs section-bg">
+        <div class="container" data-aos="fade-up">
+
+            <div class="section-header">
+                <h2>Services</h2>
+                <p>Our <span>Proffesional</span> Services</p>
+            </div>
+
+            <div class="row gy-4">
+
+                <div  class="col-lg-4 col-md-6 d-flex align-items-stretch" data-aos="fade-up" data-aos-delay="100"
+                     th:each="petService : ${petServiceList}">
+                        <div class="chef-member" id="service">
+                            <div class="member-img">
+                                <img src="assets/img/chefs/chefs-1.jpg" class="img-fluid" alt="">
+                                <div class="social">
+                                    <a href=""><i class="bi bi-twitter"></i></a>
+                                    <a href=""><i class="bi bi-facebook"></i></a>
+                                    <a href=""><i class="bi bi-instagram"></i></a>
+                                    <a href=""><i class="bi bi-linkedin"></i></a>
+                                </div>
+                            </div>
+                            <div class="member-info">
+                                <h4 th:text="${petService.name}"></h4>
+                                <div style="background-size: cover">
+                                    <img th:src="${petService.image}" alt="" width="100%" style="border-radius: 10px">
+                                </div>
+                                <p th:text="${petService.description}"></p>
+                                <h5 th:text="${ '$'+ petService.price}"></h5>
+                            </div>
+                        </div>
+                </div>
+                <!-- End Chefs Member -->
+            </div>
+        </div>
+    </section><!-- End Chefs Section -->
+
+    <!-- ======= Gallery Section ======= -->
+    <section id="gallery" class="gallery section-bg">
+        <div class="container" data-aos="fade-up">
+
+            <div class="section-header">
+                <h2>gallery</h2>
+                <p>Check <span>Our Gallery</span></p>
+            </div>
+
+            <div class="gallery-slider swiper">
+                <div class="swiper-wrapper align-items-center">
+                    <div class="swiper-slide"><a class="glightbox" data-gallery="images-gallery"
+                                                 href="https://i.pinimg.com/564x/35/ba/10/35ba10dbca0bd134c29cf70987e64f8f.jpg"><img
+                            src="https://i.pinimg.com/564x/35/ba/10/35ba10dbca0bd134c29cf70987e64f8f.jpg"
+                            class="img-fluid" alt=""></a></div>
+                    <div class="swiper-slide"><a class="glightbox" data-gallery="images-gallery"
+                                                 href="https://i.pinimg.com/564x/47/03/ce/4703ce3c1f3ab55093993ec75389f053.jpg"><img
+                            src="https://i.pinimg.com/564x/47/03/ce/4703ce3c1f3ab55093993ec75389f053.jpg"
+                            class="img-fluid" alt=""></a></div>
+                    <div class="swiper-slide"><a class="glightbox" data-gallery="images-gallery"
+                                                 href="https://i.pinimg.com/564x/67/ba/67/67ba670152e841b5ba2495c2ff531605.jpg"><img
+                            src="https://i.pinimg.com/564x/67/ba/67/67ba670152e841b5ba2495c2ff531605.jpg"
+                            class="img-fluid" alt=""></a></div>
+                    <div class="swiper-slide"><a class="glightbox" data-gallery="images-gallery"
+                                                 href="https://i.pinimg.com/564x/5e/78/3f/5e783ffd21b87a1c5bdc04a8e6c380fb.jpg"><img
+                            src="https://i.pinimg.com/564x/5e/78/3f/5e783ffd21b87a1c5bdc04a8e6c380fb.jpg"
+                            class="img-fluid" alt=""></a></div>
+                    <div class="swiper-slide"><a class="glightbox" data-gallery="images-gallery"
+                                                 href="https://i.pinimg.com/564x/65/2d/e0/652de0bced5159259d0b85459afec809.jpg"><img
+                            src="https://i.pinimg.com/564x/65/2d/e0/652de0bced5159259d0b85459afec809.jpg"
+                            class="img-fluid" alt=""></a></div>
+                    <div class="swiper-slide"><a class="glightbox" data-gallery="images-gallery"
+                                                 href="https://i.pinimg.com/564x/3a/dd/4a/3add4afadb6a84f1364d48be7aad91bd.jpg"><img
+                            src="https://i.pinimg.com/564x/3a/dd/4a/3add4afadb6a84f1364d48be7aad91bd.jpg"
+                            class="img-fluid" alt=""></a></div>
+                    <div class="swiper-slide"><a class="glightbox" data-gallery="images-gallery"
+                                                 href="https://i.pinimg.com/564x/8d/d1/b9/8dd1b9e8b287503b474d6c85d952a022.jpg"><img
+                            src="https://i.pinimg.com/564x/8d/d1/b9/8dd1b9e8b287503b474d6c85d952a022.jpg"
+                            class="img-fluid" alt=""></a></div>
+                    <div class="swiper-slide"><a class="glightbox" data-gallery="images-gallery"
+                                                 href="https://i.pinimg.com/564x/03/80/d6/0380d6e3817562d68181f784a288ce13.jpg"><img
+                            src="https://i.pinimg.com/564x/03/80/d6/0380d6e3817562d68181f784a288ce13.jpg"
+                            class="img-fluid" alt=""></a></div>
+                </div>
+                <div class="swiper-pagination"></div>
+            </div>
+
+        </div>
+    </section><!-- End Gallery Section -->
+
+    <!-- ======= Contact Section ======= -->
+    <section id="contact" class="contact">
+        <div class="container" data-aos="fade-up">
+
+            <div class="section-header">
+                <h2>Contact</h2>
+                <p>Need Help? <span>Contact Us</span></p>
+            </div>
+
+            <div class="mb-3">
+                <iframe style="border:0; width: 100%; height: 350px;"
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d981550.4679898163!2d107.56138222715613!3d16.056067821121232!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x314219a486b7f699%3A0xae6269b629a63e82!2zQ29kZUd5bSDEkMOgIE7hurVuZw!5e0!3m2!1sen!2s!4v1686461057056!5m2!1sen!2s"
+                        width="600" height="450" loading="lazy"
+                        referrerpolicy="no-referrer-when-downgrade" frameborder="0" allowfullscreen></iframe>
+            </div><!-- End Google Maps -->
+
+            <div class="row gy-4">
+
+                <div class="col-md-6">
+                    <div class="info-item  d-flex align-items-center">
+                        <i class="icon bi bi-map flex-shrink-0"></i>
+                        <div>
+                            <h3>Our Address</h3>
+                            <p>280 Đ. Trần Hưng Đạo, An Hải Tây, Sơn Trà, Đà Nẵng 550000</p>
+                        </div>
+                    </div>
+                </div><!-- End Info Item -->
+
+                <div class="col-md-6">
+                    <div class="info-item d-flex align-items-center">
+                        <i class="icon bi bi-envelope flex-shrink-0"></i>
+                        <div>
+                            <h3>Email Us</h3>
+                            <p>happypawsC0123G1@gmail.com</p>
+                        </div>
+                    </div>
+                </div><!-- End Info Item -->
+
+                <div class="col-md-6">
+                    <div class="info-item  d-flex align-items-center">
+                        <i class="icon bi bi-telephone flex-shrink-0"></i>
+                        <div>
+                            <h3>Call Us</h3>
+                            <p>+84 782.391.943</p>
+                        </div>
+                    </div>
+                </div><!-- End Info Item -->
+
+                <div class="col-md-6">
+                    <div class="info-item  d-flex align-items-center">
+                        <i class="icon bi bi-share flex-shrink-0"></i>
+                        <div>
+                            <h3>Opening Hours</h3>
+                            <div><strong>Mon-Sat:</strong> 11AM - 23PM;
+                                <strong>Sunday:</strong> Closed
+                            </div>
+                        </div>
+                    </div>
+                </div><!-- End Info Item -->
+
+            </div>
+
+            <form action="../../static/happy_paws/forms/contact.php" method="post" role="form"
+                  class="php-email-form p-3 p-md-4">
+                <div class="row">
+                    <div class="col-xl-6 form-group">
+                        <input type="text" name="name" class="form-control" id="name" placeholder="Your Name" required>
+                    </div>
+                    <div class="col-xl-6 form-group">
+                        <input type="email" class="form-control" name="email" id="email" placeholder="Your Email"
+                               required>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <input type="text" class="form-control" name="subject" id="subject" placeholder="Subject" required>
+                </div>
+                <div class="form-group">
+                    <textarea class="form-control" name="message" rows="5" placeholder="Message" required></textarea>
+                </div>
+                <div class="my-3">
+                    <div class="loading">Loading</div>
+                    <div class="error-message"></div>
+                    <div class="sent-message">Your message has been sent. Thank you!</div>
+                </div>
+                <div class="text-center">
+                    <button type="submit">Send Message</button>
+                </div>
+            </form><!--End Contact Form -->
+
+        </div>
+    </section><!-- End Contact Section -->
+
+</main><!-- End #main -->
+
+<!-- ======= Footer ======= -->
+<footer id="footer" class="footer">
+
+    <div class="container">
+        <div class="row gy-3">
+            <div class="col-lg-3 col-md-6 d-flex">
+                <i class="bi bi-geo-alt icon"></i>
+                <div>
+                    <h4>Address</h4>
+                    <p>
+                        280 Đ. Trần Hưng Đạo<br>
+                        An Hải Tây, Sơn Trà, Đà Nẵng 550000 - VietNam<br>
+                    </p>
+                </div>
+
+            </div>
+
+            <div class="col-lg-3 col-md-6 footer-links d-flex">
+                <i class="bi bi-telephone icon"></i>
+                <div>
+                    <h4>Reservations</h4>
+                    <p>
+                        <strong>Phone:</strong> +84 782.391.943<br>
+                        <strong>Email:</strong>happypawsC0123G1@gmail.com<br>
+                    </p>
+                </div>
+            </div>
+
+            <div class="col-lg-3 col-md-6 footer-links d-flex">
+                <i class="bi bi-clock icon"></i>
+                <div>
+                    <h4>Opening Hours</h4>
+                    <p>
+                        <strong>Mon-Sat: 11AM</strong> - 23PM<br>
+                        Sunday: Closed
+                    </p>
+                </div>
+            </div>
+
+            <div class="col-lg-3 col-md-6 footer-links">
+                <h4>Follow Us</h4>
+                <div class="social-links d-flex">
+                    <a href="#" class="twitter"><i class="bi bi-twitter"></i></a>
+                    <a href="#" class="facebook"><i class="bi bi-facebook"></i></a>
+                    <a href="#" class="instagram"><i class="bi bi-instagram"></i></a>
+                    <a href="#" class="linkedin"><i class="bi bi-linkedin"></i></a>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="copyright">
+            &copy; Copyright <strong><span>Happy Paws</span></strong>. All Rights Reserved
+        </div>
+    </div>
+
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
+    <div th:if="${mess}">
+        <span th:text="${mess}" id="inputId" hidden></span>
+    </div>
+    <script>
+        let inputId = document.getElementById("inputId");
+        if (inputId && inputId.innerText != null) {
+            swal({
+                title: "SUCCESSFULLY",
+                text: inputId.innerText,
+                icon: "success",
+                button: "OK",
+            }).then((idOk) => {
+                if (idOk) {
+                    inputId.innerText = '';
+                }
+            });
+        }
+    </script>
+
+</footer><!-- End Footer -->
+<!-- End Footer -->
+
+<a href="#" class="scroll-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+
+<div id="preloader"></div>
+
+<!-- Vendor JS Files -->
+<script src="../../static/happy_paws/assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+<script src="../../static/happy_paws/assets/vendor/aos/aos.js"></script>
+<script src="../../static/happy_paws/assets/vendor/glightbox/js/glightbox.min.js"></script>
+<script src="../../static/happy_paws/assets/vendor/purecounter/purecounter_vanilla.js"></script>
+<script src="../../static/happy_paws/assets/vendor/swiper/swiper-bundle.min.js"></script>
+<script src="../../static/happy_paws/assets/vendor/php-email-form/validate.js"></script>
+
+<!-- Template Main JS File -->
+<script src="../../static/happy_paws/assets/js/main.js"></script>
+<script>
+    $(document).ready(function() {
+        $(document).on('click', '#service', function() {
+            window.location.href = $('#booking-service').attr('href');
+        });
+    });
+
+</script>
+<div sec:authorize="isAuthenticated()">
+    <script th:inline="javascript">
+        $(document).ready(function () {
+            $('#login').hide();
+        });
+    </script>
+</div>
+</body>
+</html>

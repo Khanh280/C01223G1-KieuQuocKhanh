@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <style>
+        .card {
+            border: none;
+            padding: 20px;
+            position: relative;
+            background-color: rgba(255, 255, 255, 0.7);
+            border-radius: 20px;
+        }
+
+        .btn-danger {
+            color: black;
+            background-color: #ffafda;
+            border-color: #ffafda;
+        }
+
+        body {
+            background-image: url("https://img.freepik.com/premium-vector/cute-pastel-pink-paw-pattern-background-pets_654662-181.jpg");
+        }
+
+        @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800&display=swap");
+        body {
+            background-color: #eee;
+            font-family: "Poppins", sans-serif;
+            font-weight: 300
+        }
+
+        .height {
+            height: 100vh
+        }
+
+        .card {
+            border: none;
+            padding: 20px;
+            position: relative
+        }
+
+        .img-logo {
+            position: absolute;
+            left: 54%;
+            transform: translateX(-50%);
+            top: -48px
+        }
+
+        .inputs span {
+            font-size: 14px;
+            font-weight: 500
+        }
+
+        .inputs input {
+            font-size: 13px;
+            height: 44px
+        }
+
+        .inputs input:focus {
+            border-color: #2c1e8e;
+            box-shadow: none
+        }
+
+        .integration {
+            font-size: 14px;
+            height: 44px
+        }
+    </style>
+</head>
+<body>
+<div class="w3-light-grey">
+    <div id="myBar" class="w3-container w3-green" style="width:33%">33%</div>
+</div>
+<br>
+
+
+<div class="container mt-5 mb-5">
+    <div class="row height d-flex justify-content-center align-items-center">
+        <div class="col-md-6">
+            <div class="card px-5 py-4">
+                <div class="img-logo"><img
+                        src="https://th.bing.com/th/id/R.4e870cce2c3c17995f81c45e65210045?rik=KEwdrgIIdO3u8g&pid=ImgRaw&r=0"
+                        width="100" style="margin-right: 3vw"></div>
+                <br>
+                <div style="text-align: center ;color: #ffafda">
+                    <div>
+                        <h2>HAPPY <b>PAWS</b></h2>
+                    </div>
+                </div>
+                <!--                <div sec:authorize="hasAuthority('ADMIN')"><p><a href="/customer/create"></a></p> </div>-->
+                <form th:action="@{/api/admin/booking-service/save}" method="post"  onsubmit="return validateForm()" name="formSignUp" th:object="${customerDTO}" >
+
+<!--                    <div class="mt-4 inputs"><span>User</span>-->
+<!--                        <input type="text" placeholder="user" class="form-control" th:field="*{accountDTO.username}"-->
+<!--                               required/>-->
+<!--                        <p style="color: red" th:if="${#fields.hasErrors('accountDTO.username')}"-->
+<!--                           th:errors="*{accountDTO.username}"></p>-->
+<!--                    </div>-->
+<!--                    <div class="mt-2 inputs"><span>Password</span>-->
+<!--                        <input type="password" placeholder="password" class="form-control" id="password" name="password"-->
+<!--                               th:field="*{accountDTO.password}" required/>-->
+<!--                        <p style="color: red" th:if="${#fields.hasErrors('accountDTO.password')}"-->
+<!--                           th:errors="*{accountDTO.password}"></p>-->
+<!--                    </div>-->
+
+<!--                    <div class="mt-2 inputs"><span>Confirm Password</span>-->
+<!--                        <input  type="password" placeholder="confirm password" class="form-control" id="confirm" name="confirm"-->
+<!--                               required/>-->
+
+<!--                    </div>-->
+
+
+                    <div class="mt-2 inputs"><span>Name</span>
+                        <input class="form-control" placeholder="Your Name" type="text" th:field="*{name}" required>
+                        <p style="color: red" th:if="${#fields.hasErrors('name')}" th:errors="*{name}"></p>
+                    </div>
+
+                    <div class="mt-2 inputs"><span>Phone</span>
+                        <input class="form-control" placeholder=" phone number " type="text" th:field="*{phone}"
+                               required>
+                        <p style="color: red" th:if="${#fields.hasErrors('phone')}" th:errors="*{phone}"></p>
+                    </div>
+                    <div class="mt-2 inputs"><span>Email</span>
+                        <input class="form-control" placeholder="email " type="email" th:field="*{email}" required>
+                        <p style="color: red" th:if="${#fields.hasErrors('email')}" th:errors="*{email}"></p>
+                    </div>
+                    <div class="mt-2 inputs"><span>Address</span>
+                        <input class="form-control" placeholder=" phone number " type="text" th:field="*{address}"
+                               required>
+                        <p style="color: red" th:if="${#fields.hasErrors('address')}" th:errors="*{address}"></p>
+                    </div>
+                    <div class="text-center mt-4">
+                        <a th:href="@{/api/booking-service/list}">
+                            <button style="  margin-right: 82%;" type="button" class="btn btn-dark">Back</button>
+                        </a>
+                        <button type="submit" class="btn btn-danger integration" onclick="move()"
+                                style="margin-left: 24vw;margin-top: -52px;" value="Save">
+                            Create
+                        </button>
+                    </div>
+                </form>
+
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<div th:if="${mess}">
+    <span th:text="${mess}" id="inputId"></span>
+</div>
+
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+<script>
+    let inputId = document.getElementById("inputId");
+    if (inputId && inputId.innerText != null) {
+        swal({
+            title: "ERROR",
+            text: inputId.innerText,
+            icon: "error",
+            button: "OK",
+        }).then((idOk) => {
+            if (idOk) {
+                inputId.innerText = '';
+            }
+        });
+    }
+</script>
+<script>
+    function validateForm() {
+        const form = document.forms["formSignUp"];
+        const password = form["password"].value;
+        const confirm = form["confirm"].value;
+
+        if (password === confirm){
+            return true;
+        }
+
+        alert('Password does not match')
+        return false
+    }
+</script>
+<script>
+    function move() {
+        var elem = document.getElementById("myBar");
+        var width = 33;
+        var id = setInterval(frame, 10);
+
+        function frame() {
+            if (width >= 66) {
+                clearInterval(id);
+            } else {
+                width++;
+                elem.style.width = width + '%';
+                elem.innerHTML = width * 1 + '%';
+            }
+        }
+    }
+</script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+        crossorigin="anonymous">
+</script>
+
+
+</body>
+</html>

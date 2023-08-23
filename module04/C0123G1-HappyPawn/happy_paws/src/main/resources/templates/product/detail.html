@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Title</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto%7CVarela+Round">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="/static/crud_table.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto|Varela+Round">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <style th:replace="~{fragment.html::css}"></style>
+    <link rel="stylesheet" href="detail.html">
+
+</head>
+<body th:object="${product}" style="margin-top: 1vw">
+<div th:replace="~{fragment.html::header}"></div>
+<div class="container">
+    <div class="row mt-5">
+        <div class="col-lg-7">
+            <div class="card mb-4">
+                <img class="card-img-top" th:src="*{image}" alt="Product Image">
+            </div>
+        </div>
+        <div class="col-lg-5">
+            <div class="card mb-4">
+                <div class="card-body">
+                    <h2 class="card-title" th:text="*{name}"></h2>
+                    <table class="table table-borderless">
+                        <tr>
+                            <td><h5>Code:</h5></td>
+                            <td th:text="*{id}" style="color: black; font-size: 30px"></td>
+                        </tr>
+                        <tr>
+                            <td><h5>Price:</h5></td>
+                            <td th:text="*{'$'+price}" style="color: black; font-size: 30px"></td>
+                        </tr>
+                        <tr>
+                            <td><h5>Create Time:</h5></td>
+                            <td th:text="*{createDate}" style="color: black; font-size: 20px"></td>
+                        </tr>
+                        <tr>
+                            <td><h5>Update Time:</h5></td>
+                            <td th:text="*{updateDate}" style="color: black; font-size: 20px"></td>
+                        </tr>
+                        <tr>
+                            <td><h5>Description:</h5></td>
+                            <td th:text="*{description}" style="color: black; font-size: 20px"></td>
+                        </tr>
+                    </table>
+                </div>
+                <div class="card-footer">
+                    <a th:href="@{/api/admin/product}">
+                        <button style="    width: 100%;height: 55px;border-radius: 0;padding: 13px 0;background-color: black;
+                            border: none;font-weight: 600" type="button" class="btn btn-dark">Back
+                        </button>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div  th:replace="~{fragment.html::footer}"></div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+        crossorigin="anonymous">
+</script>
+</body>
+</html>

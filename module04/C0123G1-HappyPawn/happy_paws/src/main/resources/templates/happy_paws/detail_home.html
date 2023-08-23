@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<head>
+    <title>Happy Paws</title>
+    <meta content="" name="description">
+    <meta content="" name="keywords">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
+    <meta name="description" content=""/>
+    <meta name="author" content=""/>
+    <title>Shop Item - Start Bootstrap Template</title>
+    <!-- Favicon-->
+    <link rel="icon" type="image/x-icon" href="assets/favicon.ico"/>
+    <!-- Bootstrap icons-->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" rel="stylesheet"/>
+    <link rel="stylesheet" href="../../static/happy_paws/assets/css/styles.css">
+    <!-- Core theme CSS (includes Bootstrap)-->
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+
+    <!-- Favicons -->
+    <!--  <link href="assets/img/favicon.png" rel="icon">-->
+    <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,600;1,700&family=Amatic+SC:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&family=Inter:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap"
+          rel="stylesheet">
+
+    <!-- Vendor CSS Files -->
+    <link href="../../static/happy_paws/assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="../../static/happy_paws/assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+    <link href="../../static/happy_paws/assets/vendor/aos/aos.css" rel="stylesheet">
+    <link href="../../static/happy_paws/assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
+    <link href="../../static/happy_paws/assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+<!--    Icon file-->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto|Varela+Round">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <!-- Template Main CSS File -->
+    <link href="../../static/happy_paws/assets/css/main.css" rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+</head>
+<body>
+
+<header id="header" class="header fixed-top d-flex align-items-center">
+    <div class="container d-flex align-items-center justify-content-between ">
+        <a href="#" class="logo d-flex align-items-center me-auto me-lg-0">
+
+            <h1>Happy <br> Paws<img
+                    src="https://creazilla-store.fra1.digitaloceanspaces.com/cliparts/19454/cat-s-paw-clipart-md.png"
+                    height="45"
+                    alt="MDB Logo"
+                    loading="lazy" style="transform: rotate(-18deg);margin-top: -5.5vh;margin-left: 2vw"/></h1>
+        </a>
+
+
+        <nav id="navbar" class="navbar">
+            <ul>
+                <li><a th:href="@{/}">Home</a></li>
+                <li><a th:href="@{/}" >About</a></li>
+                <li><a th:href="@{/}" >Menu</a></li>
+                <li><a th:href="@{/}" >Events</a></li>
+                <li><a th:href="@{/}" >Services</a></li>
+                <li><a th:href="@{/}" >Gallery</a></li>
+                <li><a th:href="@{/}" >Contact</a></li>
+            </ul>
+        </nav>
+        <!-- .navbar -->
+
+        <!--        <a class="btn-book-a-table" style="width: 13vw" href="#book-a-table">Book a Table</a>-->
+        <a id="login" style="width: 6vw; text-align: center" class="btn-book-a-table" th:href="@{/account/login}"
+           th:text="'Login'"></a>
+        <a class="btn-book-a-table" style="width: 6vw; text-align: center"
+           sec:authorize="hasAnyRole('ADMIN','CUSTOMER','EMPLOYEE')"
+           th:href="@{/account/logout}">Logout</a>
+        <a class="btn-book-a-table" style=" text-align: center" sec:authorize="hasRole('ADMIN')"
+           th:href="@{/account/}" th:text="'Admin Manager'"></a>
+        <a class="btn-book-a-table" style=" text-align: center" sec:authorize="hasRole('CUSTOMER')"
+           th:text="${#authentication.getName()}"></a>
+        <a sec:authorize="hasRole('CUSTOMER')" th:href="@{/cart(userName = ${#authentication.getName()})}"
+           style="margin-top: 5.5px" data-toggle="modal"><i
+                style="font-size: 30px;
+                border: 1px solid;
+                border-radius: 10px;"
+                class="material-icons" title="Cart">&#xE8cc;</i>
+        </a>
+        <i class="mobile-nav-toggle mobile-nav-show bi bi-list"></i>
+        <i class="mobile-nav-toggle mobile-nav-hide d-none bi bi-x"></i>
+    </div>
+</header>
+<!-- Navigation-->
+
+<!-- Product section-->
+<section class="py-5">
+    <form th:action="@{/add-cart}" method="get">
+        <div class="container px-4 px-lg-5 my-5">
+            <div class="row gx-4 gx-lg-5 align-items-center">
+                <div class="col-md-6"><img class="card-img-top mb-5 mb-md-0" th:src="${product.image}" alt="..."/></div>
+                <div class="col-md-6">
+                    <div class="small mb-1">SKU: BST-498</div>
+                    <h1 class="display-5 fw-bolder" th:text="${product.name}"></h1>
+                    <div class="fs-5 mb-5">
+                        <span th:text="${product.price}"></span>
+                    </div>
+                    <p class="lead" th:text="${product.description}"></p>
+                    <div class="d-flex">
+                        <input type="text" name="productId" th:value="${product.id}" hidden>
+                        <input type="text" id="userName" name="userName" th:value="${#authentication.getName()}" hidden>
+                        <input class="form-control text-center me-3" id="quantity"  name="quantity" type="number" th:value="1"
+                               style="max-width: 3rem"/>
+                        <button id="checkUser" class="btn btn-outline-dark flex-shrink-0">
+                            <i class="bi-cart-fill me-1"></i>
+                            Add to cart
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+</section>
+<!-- Related items section-->
+<section class="py-5 bg-light">
+    <div class="container px-4 px-lg-5 mt-5">
+        <h2 class="fw-bolder mb-4">Related products</h2>
+        <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
+            <div class="col mb-5" th:each="product : ${productPage}">
+                <div class="card h-100">
+                    <!-- Sale badge-->
+                    <div class="badge bg-dark text-white position-absolute" style="top: 0.5rem; right: 0.5rem">Sale
+                    </div>
+                    <!-- Product image-->
+                    <img class="card-img-top" th:src="${product.image}" alt="..."/>
+                    <!-- Product details-->
+                    <div class="card-body p-4">
+                        <div class="text-center">
+                            <!-- Product name-->
+                            <h5 class="fw-bolder" th:text="${product.name}"></h5>
+                            <!-- Product reviews-->
+                            <div class="d-flex justify-content-center small text-warning mb-2">
+                                <div class="bi-star-fill"></div>
+                                <div class="bi-star-fill"></div>
+                                <div class="bi-star-fill"></div>
+                                <div class="bi-star-fill"></div>
+                                <div class="bi-star-fill"></div>
+                            </div>
+                            <!-- Product price-->
+                            <span th:text="${product.price}"></span>
+                        </div>
+                    </div>
+                    <!-- Product actions-->
+                    <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
+                        <div class="text-center"><a th:href="@{/add-cart(productId = ${product.id},userName = ${#authentication.getName()})}" class="btn btn-outline-dark flex-shrink-0">
+                            <i class="bi-cart-fill me-1"></i>
+                            Add to cart
+                        </a></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- Footer-->
+<footer id="footer" class="footer">
+
+    <div class="container">
+        <div class="row gy-3">
+            <div class="col-lg-3 col-md-6 d-flex">
+                <i class="bi bi-geo-alt icon"></i>
+                <div>
+                    <h4>Address</h4>
+                    <p>
+                        280 Đ. Trần Hưng Đạo<br>
+                        An Hải Tây, Sơn Trà, Đà Nẵng 550000 - VietNam<br>
+                    </p>
+                </div>
+
+            </div>
+
+            <div class="col-lg-3 col-md-6 footer-links d-flex">
+                <i class="bi bi-telephone icon"></i>
+                <div>
+                    <h4>Reservations</h4>
+                    <p>
+                        <strong>Phone:</strong> +84 782.391.943<br>
+                        <strong>Email:</strong>happypawsC0123G1@gmail.com<br>
+                    </p>
+                </div>
+            </div>
+
+            <div class="col-lg-3 col-md-6 footer-links d-flex">
+                <i class="bi bi-clock icon"></i>
+                <div>
+                    <h4>Opening Hours</h4>
+                    <p>
+                        <strong>Mon-Sat: 11AM</strong> - 23PM<br>
+                        Sunday: Closed
+                    </p>
+                </div>
+            </div>
+
+            <div class="col-lg-3 col-md-6 footer-links">
+                <h4>Follow Us</h4>
+                <div class="social-links d-flex">
+                    <a href="#" class="twitter"><i class="bi bi-twitter"></i></a>
+                    <a href="#" class="facebook"><i class="bi bi-facebook"></i></a>
+                    <a href="#" class="instagram"><i class="bi bi-instagram"></i></a>
+                    <a href="#" class="linkedin"><i class="bi bi-linkedin"></i></a>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="copyright">
+            &copy; Copyright <strong><span>Happy Paws</span></strong>. All Rights Reserved
+        </div>
+    </div>
+
+</footer>
+
+<div th:if="${statusQuantity}">
+    <span hidden id="inputId1" th:text="'Quantity greater than 0'"></span>
+</div>
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+<script th:if="${statusQuantity}">
+    let inputId = document.getElementById("inputId1");
+    if (inputId && inputId.innerText != null) {
+        swal({
+            title: "Add To Cart",
+            text: inputId.innerText,
+            icon: "error",
+            button: "OK",
+        }).then((idOk) => {
+            if (idOk) {
+                inputId.innerText = '';
+            }
+        });
+    }
+</script>
+
+<script>
+    $(document).ready(function (){
+        $(document).on('input','#quantity',function (){
+          let quantity = $('#quantity').val();
+          if(quantity<=0 || quantity > 20){
+              $('#checkUser').hide();
+          }else{
+              $('#checkUser').show();
+          }
+        })
+    })
+</script>
+<!-- Bootstrap core JS-->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+<!-- Core theme JS-->
+<script src="js/scripts.js"></script>
+
+<script src="../../static/happy_paws/assets/js/main.js"></script>
+<div sec:authorize="isAuthenticated()">
+    <script th:inline="javascript">
+        $(document).ready(function () {
+            $('#login').hide();
+        });
+    </script>
+</div>
+</body>
+</html>

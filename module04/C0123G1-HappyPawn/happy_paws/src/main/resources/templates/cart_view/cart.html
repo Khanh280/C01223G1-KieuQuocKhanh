@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="../lib/w3.css">
+    <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+          integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
+          crossorigin="anonymous" referrerpolicy="no-referrer"/>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto|Varela+Round">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="/static/crud_table.css">
+    <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,600;1,700&family=Amatic+SC:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&family=Inter:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap"
+          rel="stylesheet">
+    <link href="../../static/happy_paws/assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="../../static/happy_paws/assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+    <link href="../../static/happy_paws/assets/vendor/aos/aos.css" rel="stylesheet">
+    <link href="../../static/happy_paws/assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
+    <link href="../../static/happy_paws/assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+    <link href="../../static/happy_paws/assets/css/main.css" rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+<!-- ======= Header ======= -->
+<header id="header" class="header fixed-top d-flex align-items-center">
+    <div class="container d-flex align-items-center justify-content-between ">
+        <a href="#" class="logo d-flex align-items-center me-auto me-lg-0">
+
+            <h1>Happy <br> Paws<img
+                    src="https://creazilla-store.fra1.digitaloceanspaces.com/cliparts/19454/cat-s-paw-clipart-md.png"
+                    height="45"
+                    alt="MDB Logo"
+                    loading="lazy" style="transform: rotate(-18deg);margin-top: -5.5vh;margin-left: 2vw"/></h1>
+        </a>
+
+
+        <nav id="navbar" class="navbar">
+            <ul>
+                <li><a th:href="@{/}">Home</a></li>
+                <li><a th:href="@{/}" >About</a></li>
+                <li><a th:href="@{/}" >Menu</a></li>
+                <li><a th:href="@{/}" >Events</a></li>
+                <li><a th:href="@{/}" >Services</a></li>
+                <li><a th:href="@{/}" >Gallery</a></li>
+                <li><a th:href="@{/}" >Contact</a></li>
+            </ul>
+        </nav>
+        <!-- .navbar -->
+
+        <!--        <a class="btn-book-a-table" style="width: 13vw" href="#book-a-table">Book a Table</a>-->
+        <a id="login" style="width: 6vw; text-align: center" class="btn-book-a-table" th:href="@{/account/login}"
+           th:text="'Login'"></a>
+        <a class="btn-book-a-table" style="width: 6vw; text-align: center"
+           sec:authorize="hasAnyRole('ADMIN','CUSTOMER','EMPLOYEE')"
+           th:href="@{/account/logout}">Logout</a>
+        <a class="btn-book-a-table" style=" text-align: center" sec:authorize="hasRole('ADMIN')"
+           th:href="@{/account/}" th:text="'Admin Manager'"></a>
+        <a class="btn-book-a-table" style="width: 15vw; text-align: center" sec:authorize="hasRole('CUSTOMER')"
+           th:text="${#authentication.getName()}"></a>
+        <i class="mobile-nav-toggle mobile-nav-show bi bi-list"></i>
+        <i class="mobile-nav-toggle mobile-nav-hide d-none bi bi-x"></i>
+    </div>
+</header><!-- End Header -->
+<section  style="background-color: #fbfbfb; margin-top: 5vh">
+    <div class="container h-100">
+        <div class="row d-flex justify-content-center align-items-center h-100">
+            <div class="col">
+                <p><span class="h2">Shopping Cart </span><span class="h4"></span></p>
+                <div class="card mb-4" style="background-color: #ffc0cb26" th:each="cart: ${cartList}">
+                    <div class="card-body p-4">
+                        <div class="row align-items-center">
+                            <div class="col-md-2">
+                                <img th:src="${cart.product.image}"
+                                     class="img-fluid" alt="Generic placeholder image">
+                            </div>
+                            <div class="col-md-1 d-flex justify-content-center">
+                                <div>
+                                    <p class="small text-muted mb-4 pb-2">ID</p>
+                                    <p class="lead fw-normal mb-0" th:text="${cart.cartId}"></p>
+                                </div>
+                            </div>
+                            <div class="col-md-2 d-flex justify-content-center">
+                                <div>
+                                    <p class="small text-muted mb-4 pb-2">Name</p>
+                                    <p class="lead fw-normal mb-0" th:text="${cart.product.name}"></p>
+                                </div>
+                            </div>
+                            <div class="col-md-2 d-flex justify-content-center">
+                                <div>
+                                    <p class="small text-muted mb-4 pb-2">Quantity</p>
+                                    <a th:href="@{/reduce/{id}(id=${cart.cartId},customerId = ${customerId})}" class="delete">
+                                        <i class="material-icons"
+                                           data-toggle="tooltip"
+                                           title="Delete">&#xE15b;</i>
+                                    </a>
+                                    <span th:text="${cart.quantity}"></span>
+                                    <a id="increase_button" th:href="@{/add/{id}(id=${cart.cartId},customerId = ${customerId})}"
+                                       style="color: cornflowerblue;text-decoration: none"
+                                       class="add"> <i class="material-icons"
+                                                            data-toggle="tooltip"
+                                                            title="Add">&#xE145;</i></a>
+                                </div>
+                            </div>
+                            <div class="col-md-2 d-flex justify-content-center">
+                                <div>
+                                    <p class="small text-muted mb-4 pb-2">Unit Price</p>
+                                    <p class="lead fw-normal mb-0" th:text="'$'+${cart.product.price}"></p>
+                                </div>
+                            </div>
+                            <div class="col-md-2 d-flex justify-content-center">
+                                <div>
+                                    <p class="small text-muted mb-4 pb-2">Total</p>
+                                    <p class="lead fw-normal mb-0"
+                                       th:text="'$'+${cart.product.price * cart.quantity}"></p>
+                                </div>
+                            </div>
+                            <!-- Button trigger modal -->
+                            <div class="col-md-1 d-flex justify-content-center">
+                                <a data-bs-toggle="modal" data-bs-target="#exampleModal"
+                                   th:attr="onclick=|deleteByID(${cart.cartId},'${cart.product.name}')|">
+                                    <span class="fa-solid fa-xmark fa-2xl" style="color: #af79aa;"></span><span></span></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card mb-5">
+                    <div class="card-body p-4">
+
+                        <div class="float-end">
+                            <p class="mb-0 me-5 d-flex align-items-center">
+                                <span class="small text-muted me-2">Number of Item:</span> <span
+                                    class="lead fw-normal" th:text="${totalItem}"></span>
+                            </p>
+                            <p class="mb-0 me-5 d-flex align-items-center">
+                                <span class="small text-muted me-2">Order total:</span>
+                                <span class="lead fw-normal" th:if="${totalBill == null}" th:text="'$0'"></span>
+                                <span class="lead fw-normal" th:if="${totalBill  != null}" th:text="'$'+${totalBill}"></span>
+                            </p>
+                        </div>
+
+                    </div>
+                </div>
+
+                <div class="d-flex justify-content-end">
+                    <a th:href="@{/}" class="btn btn-light btn-lg me-2">Continue shopping</a>
+                    <button th:if="${cartList.size() > 0}" id="payment" type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#paymentModal">
+                        Payment
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Remove confirmation</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <form th:action="@{/delete-product}" method="get">
+                <div class="modal-body">
+                    <input type="text" name="userName" th:value="${#authentication.getName()}" hidden>
+                    <input type="text" id="id" name="id" hidden>
+                    Do you want to delete <span style="color: red" id="name"></span>?
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-danger">Delete</button>
+                </div>
+            </form>
+
+        </div>
+    </div>
+</div>
+<!-- Modal Payment -->
+<div class="modal fade" id="paymentModal" tabindex="-1" aria-labelledby="ModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="ModalLabel">Purchase confirmation</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                This move can not return or undo ! please contact to Shop for futher Helping !
+                Please click the "Accept Button" if your payment is certain !
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">No</button>
+                <a th:href="@{/order-detail/payment-cart/{customerId}(customerId = ${customerId})}" class="btn btn-primary">Accept</a>
+            </div>
+        </div>
+    </div>
+</div>
+<footer id="footer" class="footer">
+    <div class="container"  style="margin-top: 10vh">
+        <div class="row gy-3">
+            <div class="col-lg-3 col-md-6 d-flex">
+                <i class="bi bi-geo-alt icon"></i>
+                <div>
+                    <h4>Address</h4>
+                    <p>
+                        280 Đ. Trần Hưng Đạo<br>
+                        An Hải Tây, Sơn Trà, Đà Nẵng 550000 - VietNam<br>
+                    </p>
+                </div>
+
+            </div>
+
+            <div class="col-lg-3 col-md-6 footer-links d-flex">
+                <i class="bi bi-telephone icon"></i>
+                <div>
+                    <h4>Reservations</h4>
+                    <p>
+                        <strong>Phone:</strong> +84 782.391.943<br>
+                        <strong>Email:</strong>happypawsC0123G1@gmail.com<br>
+                    </p>
+                </div>
+            </div>
+
+            <div class="col-lg-3 col-md-6 footer-links d-flex">
+                <i class="bi bi-clock icon"></i>
+                <div>
+                    <h4>Opening Hours</h4>
+                    <p>
+                        <strong>Mon-Sat: 11AM</strong> - 23PM<br>
+                        Sunday: Closed
+                    </p>
+                </div>
+            </div>
+
+            <div class="col-lg-3 col-md-6 footer-links">
+                <h4>Follow Us</h4>
+                <div class="social-links d-flex">
+                    <a href="#" class="twitter"><i class="bi bi-twitter"></i></a>
+                    <a href="#" class="facebook"><i class="bi bi-facebook"></i></a>
+                    <a href="#" class="instagram"><i class="bi bi-instagram"></i></a>
+                    <a href="#" class="linkedin"><i class="bi bi-linkedin"></i></a>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="copyright">
+            &copy; Copyright <strong><span>Happy Paws</span></strong>. All Rights Reserved
+        </div>
+    </div>
+</footer><!-- End Footer -->
+<!-- End Footer -->
+<script>
+    function deleteByID(id, name) {
+        document.getElementById("id").value = id;
+        document.getElementById("name").innerText = name;
+    }
+</script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe"
+        crossorigin="anonymous"></script>
+<script src="../../static/happy_paws/assets/js/main.js"></script>
+
+<div th:if="${statusPayment}">
+    <span hidden id="inputId" th:text="'Successfully'"></span>
+</div>
+
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+<script th:if="${statusPayment}">
+    let inputId = document.getElementById("inputId");
+    if (inputId && inputId.innerText != null) {
+        swal({
+            title: "Payment",
+            text: inputId.innerText,
+            icon: "success",
+            button: "OK",
+        }).then((idOk) => {
+            if (idOk) {
+                inputId.innerText = '';
+            }
+        });
+    }
+</script>
+<div sec:authorize="isAuthenticated()">
+    <script th:inline="javascript">
+        $(document).ready(function () {
+            $('#login').hide();
+        });
+    </script>
+</div>
+</body>
+</html>

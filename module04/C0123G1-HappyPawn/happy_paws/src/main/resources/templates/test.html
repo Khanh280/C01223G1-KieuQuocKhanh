@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<ul class="nav nav-tabs d-flex justify-content-center" data-aos="fade-up" data-aos-delay="200">
+  <li class="nav-item">
+    <a class="nav-link active show" data-bs-toggle="tab" data-bs-target="#Dog">
+      <h4>Dog Food</h4>
+    </a>
+  </li><!-- End tab nav item -->
+  <li class="nav-item">
+    <a class="nav-link active show" data-bs-toggle="tab" data-bs-target="#Cat">
+      <h4>Cat Food</h4>
+    </a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link active show" data-bs-toggle="tab" data-bs-target="#Toys">
+      <h4>Toys</h4>
+    </a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link active show" data-bs-toggle="tab" data-bs-target="#Cage">
+      <h4>Cage</h4>
+    </a>
+  </li>
+  <!--                <li class="nav-item">-->
+  <!--                    <a class="nav-link" data-bs-toggle="tab" data-bs-target="#menu-breakfast">-->
+  <!--                        <h4>Breakfast</h4>-->
+  <!--                    </a>&lt;!&ndash; End tab nav item &ndash;&gt;-->
+
+  <!--                <li class="nav-item">-->
+  <!--                    <a class="nav-link" data-bs-toggle="tab" data-bs-target="#menu-lunch">-->
+  <!--                        <h4>Lunch</h4>-->
+  <!--                    </a>-->
+  <!--                </li>&lt;!&ndash; End tab nav item &ndash;&gt;-->
+
+  <!--                <li class="nav-item">-->
+  <!--                    <a class="nav-link" data-bs-toggle="tab" data-bs-target="#menu-dinner">-->
+  <!--                        <h4>Dinner</h4>-->
+  <!--                    </a>-->
+  <!--                </li>&lt;!&ndash; End tab nav item &ndash;&gt;-->
+</ul>
+<div class="tab-content" data-aos="fade-up" data-aos-delay="300">
+
+  <div class="tab-pane fade active show" id="Dog">
+    <div class="tab-header text-center">
+      <p>Menu</p>
+      <h3>Dog Food</h3>
+    </div>
+    <div class="row gy-5">
+      <div th:each="product : ${productPage}"
+           th:if="${product.productType.nameTypeProduct == 'Dog Food'}">
+        <div class="col-lg-4 menu-item">
+          <a th:href="${product.image}" class="glightbox">
+            <img th:src="${product.image}" class="menu-img img-fluid" alt="">
+          </a>
+          <h4 th:text="${product.name}"></h4>
+          <p class="ingredients">
+            Lorem, deren, trataro, filede, nerada
+          </p>
+          <p th:text="${'$' + product.price}" class="price"></p>
+        </div><!-- Menu Item -->
+      </div>
+    </div><!-- End Starter Menu Content -->
+    <div class="tab-pane fade" id="Cat">
+      <div class="tab-header text-center">
+        <p>Menu</p>
+        <h3>Cat Food</h3>
+      </div>
+
+      <div class="row gy-5">
+        <div class="col-lg-4 menu-item" th:each="product :${productPage}" th:if="${product.productType.nameTypeProduct == 'Cat Food'}">
+          <a th:href="${product.image}" class="glightbox"><img
+                  th:src="${product.image}" class="menu-img img-fluid" alt=""></a>
+          <h4 th:text="${product.name}"></h4>
+          <p class="ingredients">
+            Lorem, deren, trataro, filede, nerada
+          </p>
+          <p th:text="${'$'+ product.price}" class="price">
+          </p>
+        </div><!-- Menu Item -->
+      </div>
+    </div><!-- End Breakfast Menu Content -->
+
+    <div class="tab-pane fade" id="Toys">
+
+      <div class="tab-header text-center">
+        <p>Menu</p>
+        <h3>Toys</h3>
+      </div>
+      <div class="row gy-5">
+        <div class="col-lg-4 menu-item" th:each="product :${productPage}" th:if="${product.productType.nameTypeProduct == 'Toys'}">
+          <div th:if="${product.productType.nameTypeProduct == 'Toys'}">
+            <a th:href="${product.image}" class="glightbox"><img
+                    th:src="${product.image}" class="menu-img img-fluid" alt=""></a>
+            <h4 th:text="${product.name}"></h4>
+            <p class="ingredients">
+              Lorem, deren, trataro, filede, nerada
+            </p>
+            <p th:text="${'$'+ product.price}" class="price">
+            </p>
+          </div>
+        </div><!-- Menu Item -->
+      </div>
+    </div><!-- End Lunch Menu Content -->
+
+    <div class="tab-pane fade" id="Cage">
+      <div class="tab-header text-center">
+        <p>Menu</p>
+        <h3>Cage</h3>
+      </div>
+
+      <div class="row gy-5">
+        <div class="col-lg-4 menu-item" th:each="product :${productPage}" th:if="${product.productType.nameTypeProduct == 'Cage'}">
+          <div th:if="${product.productType.nameTypeProduct == 'Cage'}">
+            <a th:href="${product.image}" class="glightbox"><img
+                    th:src="${product.image}" class="menu-img img-fluid" alt=""></a>
+            <h4 th:text="${product.name}"></h4>
+            <p class="ingredients">
+              Lorem, deren, trataro, filede, nerada
+            </p>
+            <p th:text="${'$'+ product.price}" class="price">
+            </p>
+          </div>
+        </div><!-- Menu Item -->
+      </div>
+    </div><!-- End Dinner Menu Content -->
+
+  </div>
+</div>
+</body>
+</html>

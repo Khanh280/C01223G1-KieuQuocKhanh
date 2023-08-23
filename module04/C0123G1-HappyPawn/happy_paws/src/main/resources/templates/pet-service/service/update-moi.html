@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css"
+          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <style>
+        body {
+            background: #ddd;
+            min-height: 100vh;
+            vertical-align: middle;
+            display: flex;
+
+        }
+
+        .card {
+            margin: auto;
+            width: 600px;
+            padding: 3rem 3.5rem;
+            box-shadow: 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+        }
+
+        .mt-50 {
+            margin-top: 50px
+        }
+
+        .mb-50 {
+            margin-bottom: 50px
+        }
+
+
+        @media (max-width: 767px) {
+            .card {
+                width: 90%;
+                padding: 1.5rem;
+            }
+        }
+
+        @media (height: 1366px) {
+            .card {
+                width: 90%;
+                padding: 8vh;
+            }
+        }
+
+        .card-title {
+            font-weight: 700;
+            font-size: 2.5em;
+        }
+
+        .nav {
+            display: flex;
+        }
+
+        .nav ul {
+            list-style-type: none;
+            display: flex;
+            padding-inline-start: unset;
+            margin-bottom: 6vh;
+        }
+
+        .nav li {
+            padding: 1rem;
+        }
+
+        .nav li a {
+            color: black;
+            text-decoration: none;
+        }
+
+        .active {
+            border-bottom: 2px solid black;
+            font-weight: bold;
+        }
+
+        input {
+            border: none;
+            outline: none;
+            font-size: 1rem;
+            font-weight: 600;
+            color: #000;
+            width: 100%;
+            min-width: unset;
+            background-color: transparent;
+            border-color: transparent;
+            margin: 0;
+        }
+
+        form a {
+            color: grey;
+            text-decoration: none;
+            font-size: 0.87rem;
+            font-weight: bold;
+        }
+
+        form a:hover {
+            color: grey;
+            text-decoration: none;
+        }
+
+        form .row {
+            margin: 0;
+            overflow: hidden;
+        }
+
+        form .row-1 {
+            border: 1px solid rgba(0, 0, 0, 0.137);
+            padding: 0.5rem;
+            outline: none;
+            width: 100%;
+            min-width: unset;
+            border-radius: 5px;
+            background-color: rgba(221, 228, 236, 0.301);
+            border-color: rgba(221, 228, 236, 0.459);
+            margin: 2vh 0;
+            overflow: hidden;
+        }
+
+        form .row-2 {
+            border: none;
+            outline: none;
+            background-color: transparent;
+            margin: 0;
+            padding: 0 0.8rem;
+        }
+
+        form .row .row-2 {
+            border: none;
+            outline: none;
+            background-color: transparent;
+            margin: 0;
+            padding: 0 0.8rem;
+        }
+
+        form .row .col-2, .col-7, .col-3 {
+            display: flex;
+            align-items: center;
+            text-align: center;
+            padding: 0 1vh;
+        }
+
+        form .row .col-2 {
+            padding-right: 0;
+        }
+
+        #card-header {
+            font-weight: bold;
+            font-size: 0.9rem;
+        }
+
+        #card-inner {
+            font-size: 0.7rem;
+            color: gray;
+        }
+
+        .three .col-7 {
+            padding-left: 0;
+        }
+
+        .three {
+            overflow: hidden;
+            justify-content: space-between;
+        }
+
+        .three .col-2 {
+            border: 1px solid rgba(0, 0, 0, 0.137);
+            padding: 0.5rem;
+            outline: none;
+            width: 100%;
+            min-width: unset;
+            border-radius: 5px;
+            background-color: rgba(221, 228, 236, 0.301);
+            border-color: rgba(221, 228, 236, 0.459);
+            margin: 2vh 0;
+            width: fit-content;
+            overflow: hidden;
+        }
+
+        .three .col-2 input {
+            font-size: 0.7rem;
+            margin-left: 1vh;
+        }
+
+        .btn {
+            width: 100%;
+            background-color: rgb(65, 202, 127);
+            border-color: rgb(65, 202, 127);
+            color: white;
+            justify-content: center;
+            padding: 2vh 0;
+            margin-top: 3vh;
+        }
+
+        .btn:focus {
+            box-shadow: none;
+            outline: none;
+            box-shadow: none;
+            color: white;
+            -webkit-box-shadow: none;
+            -webkit-user-select: none;
+            transition: none;
+        }
+
+        .btn:hover {
+            color: white;
+        }
+
+        input:focus::-webkit-input-placeholder {
+            color: transparent;
+        }
+
+        input:focus:-moz-placeholder {
+            color: transparent;
+        }
+
+        input:focus::-moz-placeholder {
+            color: transparent;
+        }
+
+        input:focus:-ms-input-placeholder {
+            color: transparent;
+        }
+
+        body {
+            background-color: #e8cfd2
+        }
+    </style>
+</head>
+<body>
+<div class="card mt-50 mb-50">
+    <div class="card-title mx-auto">
+        UPDATE SERVICE
+    </div>
+
+    <form th:action="@{/api/admin/pet-service/edit}" method="post" th:object="${petServiceDTO}">
+        <span>Service Name</span>
+        <input th:field="*{petServiceId}" type="hidden"/>
+        <div class="row-1">
+            <div class="row row-2">
+                <input type="text" th:field="*{name}">
+            </div>
+            <p style="color: red" th:if="${#fields.hasErrors('name')}" th:errors="*{name}"></p>
+
+        </div>
+        <span>Price</span>
+        <div class="row-1">
+            <div class="row row-2">
+                <input type="text" th:field="*{price}">
+            </div>
+            <p style="color: red" th:if="${#fields.hasErrors('price')}" th:errors="*{price}"></p>
+
+        </div>
+
+        <span>Description</span>
+        <div class="row-1">
+            <div class="row row-2">
+                <textarea type="text" class="form-control" th:field="*{description}"></textarea>
+            </div>
+            <p style="color: red" th:if="${#fields.hasErrors('description')}" th:errors="*{description}"></p>
+
+        </div>
+        <span >Image</span>
+        <div>
+
+            <div class="row row-2">
+                <div class="form-group">
+                    <input type="hidden" id="thumbnailURL" th:field="*{image}" />
+                    <input id="btnThumbnailURL" type="file" class="form-control row-1" />
+                    <progress id="uploader" value="0" max="100">0%</progress>
+                    <img id="previewImage" src="" alt="Preview Image" style="display: none; width: 20vw;height: auto" />
+                    <img id="newImage" src="" alt="New Image" style="display: none; width: 20vw;height: auto" />
+                </div>
+            </div>
+            <button id="createButton" style="background:#f8b8be; display: none;" class="btn d-flex mx-auto" ><b>Update</b></button>
+            <a th:href="@{/api/admin/pet-service/list}">
+                <button style="background: black" type="button" class="btn btn-dark">Back</button>
+            </a>
+        </div>
+    </form>
+</div>
+<script src="https://www.gstatic.com/firebasejs/3.7.4/firebase.js"></script>
+<script>
+    const firebaseConfig = {
+        apiKey: "AIzaSyDpLFDgziCMcgvUDrE64kNuoYiKvU3PeKg",
+        authDomain: "paws-image.firebaseapp.com",
+        projectId: "paws-image",
+        storageBucket: "paws-image.appspot.com",
+        messagingSenderId: "939502564406",
+        appId: "1:939502564406:web:a127764d05552a5bb3d497",
+        measurementId: "G-QQV6T9DTSD"
+    };
+
+    // Initialize Firebase
+    firebase.initializeApp(firebaseConfig);
+
+    let uploader = document.getElementById('uploader');
+    let fileButton = document.getElementById('btnThumbnailURL');
+    let previewImage = document.getElementById('previewImage');
+    let newImage = document.getElementById('newImage');
+    let thumbnailURL = document.getElementById('thumbnailURL').value;
+
+    if (thumbnailURL) {
+        previewImage.src = thumbnailURL;
+        previewImage.style.display = 'block';
+    }
+
+    fileButton.addEventListener('change', function (e) {
+        let file = e.target.files[0];
+        let storageRef = firebase.storage().ref('img/' + file.name);
+        let task = storageRef.put(file);
+
+        task.on('state_changed', function progress(snapshot) {
+            let percentage = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+            uploader.value = percentage;
+
+            if (percentage === 100) {
+                document.getElementById('createButton').removeAttribute('disabled');
+            } else {
+                document.getElementById('createButton').setAttribute('disabled', 'disabled');
+            }
+        });
+
+        task.then(snapshot => snapshot.ref.getDownloadURL())
+            .then(url => {
+                document.getElementById('thumbnailURL').setAttribute("value", url);
+                previewImage.style.display = 'none';
+                newImage.src = url;
+                newImage.style.display = 'block';
+            });
+    });
+</script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe"
+        crossorigin="anonymous"></script>
+</body>
+</html>
