@@ -1,0 +1,520 @@
+Index: src/main/java/controller/AccessoryServlet.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package controller;\r\n\r\nimport models.model.Product;\r\nimport models.service.IAccessoryService;\r\nimport models.service.impl.AccessoryService;\r\n\r\nimport javax.servlet.ServletException;\r\nimport javax.servlet.annotation.WebServlet;\r\nimport javax.servlet.http.HttpServlet;\r\nimport javax.servlet.http.HttpServletRequest;\r\nimport javax.servlet.http.HttpServletResponse;\r\nimport java.io.IOException;\r\nimport java.util.List;\r\n\r\n@WebServlet(name = \"AccessoryServlet\",urlPatterns = \"/accessory\")\r\npublic class AccessoryServlet extends HttpServlet {\r\n    private IAccessoryService accessoryService = new AccessoryService();\r\n    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {\r\n        String action = request.getParameter(\"action\");\r\n        List<Product> productList;\r\n        if (action == null) {\r\n            action = \"\";\r\n        }\r\n        switch (action) {\r\n            case \"create\":\r\n                showCreateForm(request, response);\r\n                break;\r\n            case \"edit\":\r\n                showEditForm(request, response);\r\n                break;\r\n            case \"displayPageUser\":\r\n                int pageUser = Integer.parseInt(request.getParameter(\"page\"));\r\n                productList = accessoryService.getList();\r\n                for (int i = 1; i <= Math.ceil((double) productList.size() / 15); i++) {\r\n                    if (pageUser == i) {\r\n                        displayPageUser(request, response, productList, pageUser);\r\n                        break;\r\n                    }\r\n                }\r\n            default:\r\n                showList(request, response);\r\n        }\r\n    }\r\n\r\n    private static void displayPageUser(HttpServletRequest request, HttpServletResponse response, List<Product> productsList, int page) throws ServletException, IOException {\r\n        int max = page * 15;\r\n        int start = max - 15;\r\n        int end = Math.min(max, productsList.size());\r\n        List<Product> limitList = productsList.subList(start, end);\r\n        request.setAttribute(\"productList\", limitList);\r\n        request.setAttribute(\"productListSize\", productsList.size());\r\n        request.getRequestDispatcher(\"/users/home.jsp\").forward(request, response);\r\n    }\r\n\r\n    private void showEditForm(HttpServletRequest request, HttpServletResponse response) {\r\n        int id = Integer.parseInt(request.getParameter(\"id\"));\r\n        Product product = accessoryService.findById(id);\r\n        request.setAttribute(\"product\", product);\r\n        try {\r\n            request.getRequestDispatcher(\"view/accessorys/edit.jsp\").forward(request, response);\r\n\r\n        } catch (ServletException e) {\r\n            e.printStackTrace();\r\n        } catch (IOException e) {\r\n            e.printStackTrace();\r\n        }\r\n    }\r\n\r\n    private void showCreateForm(HttpServletRequest request, HttpServletResponse response) {\r\n        try {\r\n            request.getRequestDispatcher(\"view/accessorys/create.jsp\").forward(request, response);\r\n        } catch (ServletException e) {\r\n            e.printStackTrace();\r\n        } catch (IOException e) {\r\n            e.printStackTrace();\r\n        }\r\n    }\r\n\r\n    private void showList(HttpServletRequest request, HttpServletResponse response) {\r\n        List<Product> productList = accessoryService.getList();\r\n        request.setAttribute(\"productList\", productList);\r\n        try {\r\n            request.getRequestDispatcher(\"view/accessorys/list.jsp\").forward(request, response);\r\n        } catch (ServletException e) {\r\n            e.printStackTrace();\r\n        } catch (IOException e) {\r\n            e.printStackTrace();\r\n        }\r\n    }\r\n\r\n    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {\r\n        String action = request.getParameter(\"action\");\r\n        if (action == null) {\r\n            action = \"\";\r\n        }\r\n        switch (action) {\r\n            case \"create\":\r\n                createProduct(request, response);\r\n                break;\r\n            case \"delete\":\r\n                removeProduct(request, response);\r\n                break;\r\n            case \"edit\":\r\n                editProduct(request, response);\r\n                break;\r\n            case \"search\":\r\n                seachProduct(request, response);\r\n                break;\r\n            case \"searchUser\":\r\n                String productName = request.getParameter(\"productName\");\r\n                if (productName.equals(\"\")) {\r\n                    List<Product> productList = accessoryService.getList();\r\n                    List<Product> limitList = productList.subList(0, Math.min(15, productList.size()));\r\n                    request.setAttribute(\"productList\", limitList);\r\n                    request.setAttribute(\"productListSize\", productList.size());\r\n                } else {\r\n                    List<Product> productList = accessoryService.searchUser(productName);\r\n                    request.setAttribute(\"productList\", productList);\r\n                }\r\n                request.getRequestDispatcher(\"/users/home.jsp\").forward(request, response);\r\n                break;\r\n        }\r\n    }\r\n\r\n    private void seachProduct(HttpServletRequest request, HttpServletResponse response) {\r\n        String name = request.getParameter(\"name\");\r\n        int price = Integer.parseInt(request.getParameter(\"price\"));\r\n        List<Product> searchProductList = null;\r\n        switch (price) {\r\n            case 1:\r\n                searchProductList=accessoryService.search(name,0,1000000);\r\n                break;\r\n            case 2:\r\n                searchProductList = accessoryService.search(name, 0, 1000000);\r\n                break;\r\n            case 3:\r\n                searchProductList = accessoryService.search(name, 1000001, 3000000);\r\n                break;\r\n            case 4:\r\n                searchProductList = accessoryService.search(name, 3000001, 5000000);\r\n                break;\r\n            case 5:\r\n                searchProductList = accessoryService.search(name, 5000001, 10000000);\r\n                break;\r\n        }\r\n        request.setAttribute(\"productList\", searchProductList);\r\n        try {\r\n            request.getRequestDispatcher(\"view/accessorys/list.jsp\").forward(request, response);\r\n        } catch (ServletException e) {\r\n            e.printStackTrace();\r\n        } catch (IOException e) {\r\n            e.printStackTrace();\r\n        }\r\n    }\r\n\r\n    private void editProduct(HttpServletRequest request, HttpServletResponse response) {\r\n        int id = Integer.parseInt(request.getParameter(\"id\"));\r\n        String name = request.getParameter(\"name\");\r\n        int productType = Integer.parseInt(request.getParameter(\"productType\"));\r\n        String describe = request.getParameter(\"describe\");\r\n        double price = Double.parseDouble(((request.getParameter(\"price\"))));\r\n        String productImage = request.getParameter(\"productImage\");\r\n        Product product = new Product(id, name, productType, describe, price, productImage);\r\n        boolean checkEdit = accessoryService.edit(product);\r\n        String mess;\r\n        if (checkEdit) {\r\n            mess = \"Chỉnh sửa thành công!\";\r\n        } else {\r\n            mess = \"Chỉnh sửa thất bại!\";\r\n        }\r\n        request.setAttribute(\"mess\", mess);\r\n        showList(request, response);\r\n    }\r\n\r\n    private void removeProduct(HttpServletRequest request, HttpServletResponse response) {\r\n        int id = Integer.parseInt(request.getParameter(\"id\"));\r\n        boolean checkRemove = accessoryService.remove(id);\r\n        String mess;\r\n        if (checkRemove) {\r\n            mess = \"Xóa thành công\";\r\n        } else {\r\n            mess = \"Xóa thất bại\";\r\n\r\n        }\r\n        request.setAttribute(\"mess\", mess);\r\n        showList(request, response);\r\n    }\r\n\r\n    private void createProduct(HttpServletRequest request, HttpServletResponse response) {\r\n        String name = request.getParameter(\"name\");\r\n        int productType = Integer.parseInt(request.getParameter(\"productType\"));\r\n        String describe = request.getParameter(\"describe\");\r\n        double price = Double.parseDouble(((request.getParameter(\"price\"))));\r\n        String productImage = request.getParameter(\"productImage\");\r\n        Product product = new Product(name, productType, describe, price, productImage);\r\n        accessoryService.createAt(product);\r\n        showList(request, response);\r\n        boolean checkCreate = accessoryService.createAt(product);\r\n        String mess;\r\n        if (checkCreate) {\r\n            mess = \"Thêm mới thành công!\";\r\n        } else {\r\n            mess = \"Thêm mới thất bại!\";\r\n        }\r\n        request.setAttribute(\"mess\", mess);\r\n        try {\r\n            request.getRequestDispatcher(\"view/accessorys/create.jsp\").forward(request,response);\r\n        } catch (ServletException e) {\r\n            e.printStackTrace();\r\n        } catch (IOException e) {\r\n            e.printStackTrace();\r\n        }\r\n\r\n    }\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- src/main/java/controller/AccessoryServlet.java	(revision 23290a0cf9544c953fcecdfdeca3714678ed1f03)
++++ src/main/java/controller/AccessoryServlet.java	(date 1684070180772)
+@@ -37,6 +37,7 @@
+                         break;
+                     }
+                 }
++                break;
+             default:
+                 showList(request, response);
+         }
+@@ -119,6 +120,7 @@
+                 }
+                 request.getRequestDispatcher("/users/home.jsp").forward(request, response);
+                 break;
++
+         }
+     }
+ 
+@@ -127,20 +129,22 @@
+         int price = Integer.parseInt(request.getParameter("price"));
+         List<Product> searchProductList = null;
+         switch (price) {
++            case 6:
++                searchProductList = accessoryService.search(name, 0, 1000000000);
+             case 1:
+-                searchProductList=accessoryService.search(name,0,1000000);
++                searchProductList = accessoryService.search(name, 0, 100000);
+                 break;
+             case 2:
+-                searchProductList = accessoryService.search(name, 0, 1000000);
++                searchProductList = accessoryService.search(name, 100001, 500000);
+                 break;
+             case 3:
+-                searchProductList = accessoryService.search(name, 1000001, 3000000);
++                searchProductList = accessoryService.search(name, 500001, 1000000);
+                 break;
+             case 4:
+-                searchProductList = accessoryService.search(name, 3000001, 5000000);
++                searchProductList = accessoryService.search(name, 1000001, 5000000);
+                 break;
+             case 5:
+-                searchProductList = accessoryService.search(name, 5000001, 10000000);
++                searchProductList = accessoryService.search(name, 5000001, 1000000000);
+                 break;
+         }
+         request.setAttribute("productList", searchProductList);
+@@ -164,9 +168,9 @@
+         boolean checkEdit = accessoryService.edit(product);
+         String mess;
+         if (checkEdit) {
+-            mess = "Chỉnh sửa thành công!";
++            mess = "Chỉnh sửa thành công";
+         } else {
+-            mess = "Chỉnh sửa thất bại!";
++            mess = "Chinh sửa thất bại";
+         }
+         request.setAttribute("mess", mess);
+         showList(request, response);
+@@ -175,11 +179,14 @@
+     private void removeProduct(HttpServletRequest request, HttpServletResponse response) {
+         int id = Integer.parseInt(request.getParameter("id"));
+         boolean checkRemove = accessoryService.remove(id);
++        if (checkRemove) {
++            checkRemove = accessoryService.remove(id);
++        }
+         String mess;
+         if (checkRemove) {
+-            mess = "Xóa thành công";
+-        } else {
+             mess = "Xóa thất bại";
++        } else {
++            mess = "Xóa thành công";
+ 
+         }
+         request.setAttribute("mess", mess);
+@@ -195,21 +202,6 @@
+         Product product = new Product(name, productType, describe, price, productImage);
+         accessoryService.createAt(product);
+         showList(request, response);
+-        boolean checkCreate = accessoryService.createAt(product);
+-        String mess;
+-        if (checkCreate) {
+-            mess = "Thêm mới thành công!";
+-        } else {
+-            mess = "Thêm mới thất bại!";
+-        }
+-        request.setAttribute("mess", mess);
+-        try {
+-            request.getRequestDispatcher("view/accessorys/create.jsp").forward(request,response);
+-        } catch (ServletException e) {
+-            e.printStackTrace();
+-        } catch (IOException e) {
+-            e.printStackTrace();
+-        }
++    }
+ 
+-    }
+ }
+Index: src/main/webapp/view/accessorys/edit.jsp
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><%--\r\n  Created by IntelliJ IDEA.\r\n  User: LENOVO\r\n  Date: 5/12/2023\r\n  Time: 12:36 AM\r\n  To change this template use File | Settings | File Templates.\r\n--%>\r\n<%@ page contentType=\"text/html;charset=UTF-8\" language=\"java\" %>\r\n<%@ taglib uri=\"http://java.sun.com/jsp/jstl/core\" prefix=\"c\" %>\r\n<html>\r\n<head>\r\n    <title>Title</title>\r\n    <link href=\"https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css\" rel=\"stylesheet\"\r\n          integrity=\"sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3\" crossorigin=\"anonymous\">\r\n    <script src=\"https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js\"\r\n            integrity=\"sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p\"\r\n            crossorigin=\"anonymous\"></script>\r\n    <style>\r\n        #imageContainer {\r\n            width: 50px;\r\n            height: 50px;\r\n        }\r\n\r\n        #ig1-user-page {\r\n            color: black;\r\n        }\r\n\r\n        #ig1-user-page:hover {\r\n            color: white;\r\n        }\r\n\r\n        #navbarSupportedContent ul li:hover a {\r\n            color: white;\r\n        }\r\n\r\n        #navbarSupportedContent ul li a {\r\n            color: black;\r\n        }\r\n\r\n\r\n    </style>\r\n</head>\r\n<body>\r\n<nav class=\"navbar navbar-expand-lg bg-body-tertiary\" style=\"background-color: orange\">\r\n    <div class=\"container-fluid\">\r\n        <a id=\"ig1-user-page\" href=\"/accessory\" class=\"navbar-brand\">IG1 Store</a>\r\n        <div class=\"collapse navbar-collapse\" id=\"navbarSupportedContent\">\r\n            <ul class=\"navbar-nav me-auto mb-2 mb-lg-0\">\r\n                <li clx ass=\"nav-item\">\r\n                    <a class=\"nav-link active\" aria-current=\"page\" href=\"/admin/admin.jsp\">Trang chủ</a>\r\n                </li>\r\n                <li class=\"nav-item dropdown\">\r\n                    <a class=\"nav-link dropdown-toggle\" href=\"#\" role=\"button\" data-bs-toggle=\"dropdown\"\r\n                       aria-expanded=\"false\">\r\n                        Quản lý\r\n                    </a>\r\n                    <ul class=\"dropdown-menu\">\r\n                        <li><a class=\"dropdown-item\" style=\"color: black\" href=\"/accessory\">Phụ kiện</a></li>\r\n                        <li><a class=\"dropdown-item\" style=\"color: black\" href=\"/product\">Sản phẩm</a></li>\r\n                        <li><a class=\"dropdown-item\" style=\"color: black\" href=\"/customer-servlet\">Customers</a></li>\r\n                        <li><a class=\"dropdown-item\" style=\"color: black\" href=\"/order-servlet\">Order</a></li>\r\n                    </ul>\r\n                </li>\r\n            </ul>\r\n        </div>\r\n    </div>\r\n</nav>\r\n<br>\r\n<div class=\"container col-md-5\">\r\n    <div class=\"card border-5\">\r\n        <div class=\"card-body\">\r\n            <form  method=\"post\" action=\"/accessory?action=edit\">\r\n                <caption>\r\n                    <h2 style=\"text-align: center\">\r\n                        CHỈNH SỬA THÔNG TIN\r\n                    </h2>\r\n                </caption>\r\n                <c:if test=\"${product != null}\">\r\n                    <input class=\"form-control\" type=\"hidden\" name=\"id\" value=\"${product.getId()}\"/><br>\r\n                </c:if>\r\n                <fieldset class=\"form-group\">\r\n                    <label>Tên sản phẩm :</label><input class=\"form-control\" type=\"text\" name=\"name\"\r\n                                                        value=\"${product.getName()}\" required><br>\r\n                </fieldset>\r\n\r\n                <fieldset class=\"form-group\">\r\n                    <label hidden>Loại :</label> <select hidden class=\"form-control\" name=\"productType\" id=\"\"  value=\"${product.getName()}\">\r\n                    <option value=\"2\">Accessory</option>\r\n                </select>\r\n                </fieldset>\r\n\r\n                <fieldset class=\"form-group\">\r\n                    <label>Mô tả :</label><input class=\"form-control\" type=\"text\" name=\"describe\"\r\n                                                 value=\"${product.getDescribe()}\" required><br>\r\n                </fieldset>\r\n\r\n                <fieldset class=\"form-group\">\r\n                    <label>Giá(VNĐ) :</label><input class=\"form-control\" type=\"number\" name=\"price\"\r\n                                                    value=\"${product.getPrice()}\" required><br>\r\n                </fieldset>\r\n\r\n                <fieldset class=\"form-group\">\r\n                    <label>Ảnh :</label>\r\n                    <div>\r\n                        <input class=\"form-control\" name=\"productImage\" type=\"text\" id=\"imageUrlInput\"\r\n                               placeholder=\"Nhập URL hình ảnh\" value=\"${product.getProductImage()}\"\r\n                               oninput=\"showImage()\" required>\r\n                    </div>\r\n                    <div id=\"imageContainer\"></div>\r\n                </fieldset>\r\n                <button type=\"submit\" class=\"btn btn-outline-primary \" onclick=\"window.location.href='/accessory'\">Quay\r\n                    lại\r\n                </button>\r\n                <button type=\"submit\" class=\"btn btn-success\" style=\"margin-left: 26vw\" value=\"Save\">Lưu</button>\r\n            </form>\r\n        </div>\r\n    </div>\r\n</div>\r\n<script>\r\n    function showImage() {\r\n        var imageUrl = document.getElementById(\"imageUrlInput\").value;\r\n        var imageContainer = document.getElementById(\"imageContainer\");\r\n        var imgElement = document.createElement(\"img\");\r\n        imgElement.src = imageUrl;\r\n        imgElement.alt = \"Hình ảnh\";\r\n        imgElement.style.width = \"100px\";\r\n        imgElement.style.height = \"100px\";\r\n        imageContainer.innerHTML = \"\";\r\n        imageContainer.appendChild(imgElement);\r\n    }\r\n</script>\r\n</body>\r\n</html>\r\n\r\n\r\n\r\n<%--<head>--%>\r\n<%--    <title>Title</title>--%>\r\n<%--    <link href=\"https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css\" rel=\"stylesheet\"--%>\r\n<%--          integrity=\"sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3\" crossorigin=\"anonymous\">--%>\r\n<%--    <script src=\"https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js\"--%>\r\n<%--            integrity=\"sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p\"--%>\r\n<%--            crossorigin=\"anonymous\"></script>--%>\r\n<%--</head>--%>\r\n<%--<body>--%>\r\n<%--<jsp:include page=\"/header_footer/header.jsp\"></jsp:include>--%>\r\n<%--<div class=\"container-fluid\">--%>\r\n<%--    <div class=\"row \">--%>\r\n<%--        <div class=\"justify-content-center\">--%>\r\n<%--            <h2>Edit Accessory</h2>--%>\r\n<%--        </div>--%>\r\n<%--    </div>--%>\r\n<%--    <div class=\"row\">--%>\r\n<%--        <div class=\"col-3\">--%>\r\n<%--        </div>--%>\r\n<%--        <div class=\"col-6\">--%>\r\n<%--            <h4 style=\"color: blue; font-weight: bold\">${mess}</h4>--%>\r\n<%--            <form method=\"post\" action=\"/accessory?action=edit\">--%>\r\n<%--                <label>ID</label>--%>\r\n<%--                <input class=\"form-control\" type=\"hidden\" name=\"id\" value=\"${product.getId()}\"/><br>--%>\r\n<%--                <label>Name</label>--%>\r\n<%--                <input class=\"form-control\" type=\"text\" name=\"name\" value=\"${product.getName()}\" required><br>--%>\r\n<%--                <label>Type</label>--%>\r\n<%--                <select class=\"form-control\" name=\"productType\" id=\"\">--%>\r\n<%--                    <option value=\"2\">Accessory</option>--%>\r\n<%--                </select><br>--%>\r\n<%--                <label>Describe</label>--%>\r\n<%--                <input class=\"form-control\" type=\"text\" name=\"describe\" value=\"${product.getDescribe()}\" required><br>--%>\r\n<%--                <label>Price</label>--%>\r\n<%--                <input class=\"form-control\" type=\"number\" name=\"price\" value=\"${product.getPrice()}\" required><br>--%>\r\n<%--                <label>Image</label>--%>\r\n<%--                <input class=\"form-control\" type=\"text\" name=\"productImage\" value=\"${product.getProductImage()}\"--%>\r\n<%--                       required><br>--%>\r\n<%--                <input class=\"btn btn-success\" type=\"submit\" value=\"Save\"/>--%>\r\n<%--            </form>--%>\r\n<%--            <p style=\"color: blue;font-weight: bold;justify-content: center\">${mess}</p>--%>\r\n<%--        </div>--%>\r\n<%--        <div class=\"col-3\">--%>\r\n<%--        </div>--%>\r\n<%--    </div>--%>\r\n<%--</div>--%>\r\n<%--<jsp:include page=\"/header_footer/footer.jsp\"></jsp:include>--%>\r\n<%--</body>--%>\r\n<%--</html>--%>\r\n\r\n\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- src/main/webapp/view/accessorys/edit.jsp	(revision 23290a0cf9544c953fcecdfdeca3714678ed1f03)
++++ src/main/webapp/view/accessorys/edit.jsp	(date 1684070180774)
+@@ -1,10 +1,3 @@
+-<%--
+-  Created by IntelliJ IDEA.
+-  User: LENOVO
+-  Date: 5/12/2023
+-  Time: 12:36 AM
+-  To change this template use File | Settings | File Templates.
+---%>
+ <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+ <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+ <html>
+@@ -79,7 +72,7 @@
+                     <input class="form-control" type="hidden" name="id" value="${product.getId()}"/><br>
+                 </c:if>
+                 <fieldset class="form-group">
+-                    <label>Tên sản phẩm :</label><input class="form-control" type="text" name="name"
++                    <label>Tên phụ kiện :</label><input class="form-control" type="text" name="name"
+                                                         value="${product.getName()}" required><br>
+                 </fieldset>
+ 
+@@ -131,56 +124,3 @@
+ </script>
+ </body>
+ </html>
+-
+-
+-
+-<%--<head>--%>
+-<%--    <title>Title</title>--%>
+-<%--    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"--%>
+-<%--          integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">--%>
+-<%--    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"--%>
+-<%--            integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"--%>
+-<%--            crossorigin="anonymous"></script>--%>
+-<%--</head>--%>
+-<%--<body>--%>
+-<%--<jsp:include page="/header_footer/header.jsp"></jsp:include>--%>
+-<%--<div class="container-fluid">--%>
+-<%--    <div class="row ">--%>
+-<%--        <div class="justify-content-center">--%>
+-<%--            <h2>Edit Accessory</h2>--%>
+-<%--        </div>--%>
+-<%--    </div>--%>
+-<%--    <div class="row">--%>
+-<%--        <div class="col-3">--%>
+-<%--        </div>--%>
+-<%--        <div class="col-6">--%>
+-<%--            <h4 style="color: blue; font-weight: bold">${mess}</h4>--%>
+-<%--            <form method="post" action="/accessory?action=edit">--%>
+-<%--                <label>ID</label>--%>
+-<%--                <input class="form-control" type="hidden" name="id" value="${product.getId()}"/><br>--%>
+-<%--                <label>Name</label>--%>
+-<%--                <input class="form-control" type="text" name="name" value="${product.getName()}" required><br>--%>
+-<%--                <label>Type</label>--%>
+-<%--                <select class="form-control" name="productType" id="">--%>
+-<%--                    <option value="2">Accessory</option>--%>
+-<%--                </select><br>--%>
+-<%--                <label>Describe</label>--%>
+-<%--                <input class="form-control" type="text" name="describe" value="${product.getDescribe()}" required><br>--%>
+-<%--                <label>Price</label>--%>
+-<%--                <input class="form-control" type="number" name="price" value="${product.getPrice()}" required><br>--%>
+-<%--                <label>Image</label>--%>
+-<%--                <input class="form-control" type="text" name="productImage" value="${product.getProductImage()}"--%>
+-<%--                       required><br>--%>
+-<%--                <input class="btn btn-success" type="submit" value="Save"/>--%>
+-<%--            </form>--%>
+-<%--            <p style="color: blue;font-weight: bold;justify-content: center">${mess}</p>--%>
+-<%--        </div>--%>
+-<%--        <div class="col-3">--%>
+-<%--        </div>--%>
+-<%--    </div>--%>
+-<%--</div>--%>
+-<%--<jsp:include page="/header_footer/footer.jsp"></jsp:include>--%>
+-<%--</body>--%>
+-<%--</html>--%>
+-
+-
+Index: src/main/webapp/view/accessorys/create.jsp
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><%--\r\n  Created by IntelliJ IDEA.\r\n  User: LENOVO\r\n  Date: 5/12/2023\r\n  Time: 12:36 AM\r\n  To change this template use File | Settings | File Templates.\r\n--%>\r\n<%@ page contentType=\"text/html;charset=UTF-8\" language=\"java\" %>\r\n<html>\r\n<head>\r\n    <title>Title</title>\r\n\r\n    <link href=\"https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css\" rel=\"stylesheet\"\r\n          integrity=\"sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3\" crossorigin=\"anonymous\">\r\n    <script src=\"https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js\"\r\n            integrity=\"sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p\"\r\n            crossorigin=\"anonymous\"></script>\r\n    <style>\r\n\r\n\r\n        #imageContainer {\r\n            width: 50px;\r\n            height: 50px;\r\n        }\r\n\r\n        #ig1-user-page {\r\n            color: black;\r\n        }\r\n\r\n        #ig1-user-page:hover {\r\n            color: white;\r\n        }\r\n\r\n        #navbarSupportedContent ul li:hover a {\r\n            color: white;\r\n        }\r\n\r\n        #navbarSupportedContent ul li a {\r\n            color: black;\r\n        }\r\n\r\n\r\n    </style>\r\n</head>\r\n<body>\r\n<nav class=\"navbar navbar-expand-lg bg-body-tertiary\" style=\"background-color: orange\">\r\n    <div class=\"container-fluid\">\r\n        <a id=\"ig1-user-page\" href=\"/accessory\" class=\"navbar-brand\">IG1 Store</a>\r\n        <div class=\"collapse navbar-collapse\" id=\"navbarSupportedContent\">\r\n            <ul class=\"navbar-nav me-auto mb-2 mb-lg-0\">\r\n                <li clx ass=\"nav-item\">\r\n                    <a class=\"nav-link active\" aria-current=\"page\" href=\"/admin/admin.jsp\">Trang chủ</a>\r\n                </li>\r\n                <li class=\"nav-item dropdown\">\r\n                    <a class=\"nav-link dropdown-toggle\" href=\"#\" role=\"button\" data-bs-toggle=\"dropdown\"\r\n                       aria-expanded=\"false\">\r\n                        Quản lý\r\n                    </a>\r\n                    <ul class=\"dropdown-menu\">\r\n                        <li><a class=\"dropdown-item\" style=\"color: black\" href=\"/accessory\">Phụ kiện</a></li>\r\n                        <li><a class=\"dropdown-item\" style=\"color: black\" href=\"/product\">Sản phẩm</a></li>\r\n                        <li><a class=\"dropdown-item\" style=\"color: black\" href=\"/customer-servlet\">Customers</a></li>\r\n                        <li><a class=\"dropdown-item\" style=\"color: black\" href=\"/order-servlet\">Order</a></li>\r\n                    </ul>\r\n                </li>\r\n            </ul>\r\n        </div>\r\n    </div>\r\n</nav>\r\n<br>\r\n<div class=\"container col-md-5\">\r\n    <div class=\"card border-5\">\r\n        <div class=\"card-body\">\r\n            <form action=\"/accessory?action=create\" method=\"post\">\r\n                <caption>\r\n                    <h2 style=\"text-align: center\">\r\n                        THÊM MỚI SẢN PHẨM\r\n                    </h2>\r\n                    <div style=\"text-align: center; color: green ;font-size: 30px\" >${mess}</div>\r\n                </caption>\r\n                <fieldset class=\"form-group\">\r\n                    <label>Tên sản phẩm :</label> <input class=\"form-control\" type=\"text\" name=\"name\" required><br>\r\n                </fieldset>\r\n\r\n                <fieldset class=\"form-group\">\r\n                    <label hidden>Loại :</label> <select hidden class=\"form-control\" name=\"productType\" id=\"\">\r\n                    <option value=\"2\">Accessory</option>\r\n                </select>\r\n                </fieldset>\r\n\r\n                <fieldset class=\"form-group\">\r\n                    <label>Mô tả :</label><input class=\"form-control\" type=\"text\" name=\"describe\" required><br>\r\n                </fieldset>\r\n\r\n                <fieldset class=\"form-group\">\r\n                    <label>Giá(VNĐ) :</label> <input class=\"form-control\" type=\"number\" name=\"price\" required><br>\r\n                </fieldset>\r\n\r\n                <fieldset class=\"form-group\">\r\n                    <label>Ảnh :</label>\r\n                    <div>\r\n                        <input class=\"form-control\" name=\"productImage\" type=\"text\" id=\"imageUrlInput\"\r\n                               placeholder=\"Nhập URL hình ảnh\" oninput=\"showImage()\" required>\r\n                    </div>\r\n                    <div id=\"imageContainer\"></div>\r\n\r\n                </fieldset>\r\n                <div>\r\n                    <button type=\"submit\" class=\"btn btn-outline-primary \" onclick=\"window.location.href='/accessory'\">Quay lại</button>\r\n                    <button type=\"submit\" class=\"btn btn-success\" style=\"margin-left: 25vw\">Thêm</button>\r\n                </div>\r\n            </form>\r\n        </div>\r\n    </div>\r\n</div>\r\n<script>\r\n    function showImage() {\r\n        var imageUrl = document.getElementById(\"imageUrlInput\").value;\r\n        var imageContainer = document.getElementById(\"imageContainer\");\r\n        var imgElement = document.createElement(\"img\");\r\n        imgElement.src = imageUrl;\r\n        imgElement.alt = \"Hình ảnh\";\r\n        imgElement.style.width = \"100px\";\r\n        imgElement.style.height = \"100px\";\r\n        imageContainer.innerHTML = \"\";\r\n        imageContainer.appendChild(imgElement);\r\n    }\r\n</script>\r\n</body>\r\n</html>\r\n\r\n\r\n\r\n\r\n<%--<title>Title</title>--%>\r\n<%--<link href=\"https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css\" rel=\"stylesheet\"--%>\r\n<%--      integrity=\"sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3\" crossorigin=\"anonymous\">--%>\r\n<%--<script src=\"https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js\"--%>\r\n<%--        integrity=\"sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p\"--%>\r\n<%--        crossorigin=\"anonymous\"></script>--%>\r\n<%--</head>--%>\r\n<%--<body>--%>\r\n<%--<jsp:include page=\"/header_footer/header.jsp\"></jsp:include>--%>\r\n<%--<div class=\"container-fluid\">--%>\r\n<%--    <div class=\"row \">--%>\r\n<%--        <div class=\"justify-content-center\">--%>\r\n<%--            <h2>Create New Accessory</h2>--%>\r\n<%--        </div>--%>\r\n<%--    </div>--%>\r\n<%--    <div class=\"row\">--%>\r\n<%--        <div class=\"col-3\">--%>\r\n<%--        </div>--%>\r\n<%--        <div class=\"col-6\">--%>\r\n<%--            <h4 style=\"color: blue; font-weight: bold\">${mess}</h4>--%>\r\n<%--            <form method=\"post\" action=\"/accessory?action=create\">--%>\r\n<%--                <label>Name</label>--%>\r\n<%--                <input class=\"form-control\" type=\"text\" name=\"name\" required><br>--%>\r\n<%--                <label>Type</label>--%>\r\n<%--                <select class=\"form-control\" name=\"productType\" id=\"\">--%>\r\n<%--                    <option value=\"2\">Accessory</option>--%>\r\n<%--                </select><br>--%>\r\n<%--                <label>Describe</label>--%>\r\n<%--                <input class=\"form-control\" type=\"text\" name=\"describe\" required><br>--%>\r\n<%--                <label>Price</label>--%>\r\n<%--                <input class=\"form-control\" type=\"number\" name=\"price\" required><br>--%>\r\n<%--                <label>Image</label>--%>\r\n<%--                <input class=\"form-control\" type=\"text\" name=\"productImage\" required><br>--%>\r\n<%--                <button class=\"btn btn-success\">Create</button>--%>\r\n<%--            </form>--%>\r\n<%--            <p style=\"color: blue;font-weight: bold;justify-content: center\">${mess}</p>--%>\r\n<%--        </div>--%>\r\n<%--        <div class=\"col-3\">--%>\r\n<%--        </div>--%>\r\n<%--    </div>--%>\r\n<%--</div>--%>\r\n<%--<jsp:include page=\"/header_footer/footer.jsp\"></jsp:include>--%>\r\n<%--</body>--%>\r\n<%--</html>--%>\r\n\r\n\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- src/main/webapp/view/accessorys/create.jsp	(revision 23290a0cf9544c953fcecdfdeca3714678ed1f03)
++++ src/main/webapp/view/accessorys/create.jsp	(date 1684070180773)
+@@ -1,10 +1,4 @@
+-<%--
+-  Created by IntelliJ IDEA.
+-  User: LENOVO
+-  Date: 5/12/2023
+-  Time: 12:36 AM
+-  To change this template use File | Settings | File Templates.
+---%>
++<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+ <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+ <html>
+ <head>
+@@ -74,12 +68,12 @@
+             <form action="/accessory?action=create" method="post">
+                 <caption>
+                     <h2 style="text-align: center">
+-                        THÊM MỚI SẢN PHẨM
++                        THÊM MỚI PHỤ KIỆN
+                     </h2>
+-                    <div style="text-align: center; color: green ;font-size: 30px" >${mess}</div>
++                    <div style="text-align: center; color: green ;font-size: 30px">${mess}</div>
+                 </caption>
+                 <fieldset class="form-group">
+-                    <label>Tên sản phẩm :</label> <input class="form-control" type="text" name="name" required><br>
++                    <label>Tên phụ kiện :</label> <input class="form-control" type="text" name="name" required><br>
+                 </fieldset>
+ 
+                 <fieldset class="form-group">
+@@ -102,12 +96,21 @@
+                         <input class="form-control" name="productImage" type="text" id="imageUrlInput"
+                                placeholder="Nhập URL hình ảnh" oninput="showImage()" required>
+                     </div>
+-                    <div id="imageContainer"></div>
+-
+-                </fieldset>
+-                <div>
+-                    <button type="submit" class="btn btn-outline-primary " onclick="window.location.href='/accessory'">Quay lại</button>
+-                    <button type="submit" class="btn btn-success" style="margin-left: 25vw">Thêm</button>
++                    <br>
++                </fieldset>
++                <div class="row">
++                    <div class="col-4" style="display: inline-block">
++                        <button type="submit" class="btn btn-outline-primary "
++                                onclick="window.location.href='/accessory'">
++                            Quay lại
++                        </button>
++                    </div>
++                    <div class="col-4" style="display: inline-block">
++                        <div id="imageContainer"></div>
++                    </div>
++                    <div class="col-4" style="display: inline-block;">
++                        <button type="submit" class="btn btn-success">Thêm</button>
++                    </div>
+                 </div>
+             </form>
+         </div>
+@@ -116,65 +119,16 @@
+ <script>
+     function showImage() {
+         var imageUrl = document.getElementById("imageUrlInput").value;
+-        var imageContainer = document.getElementById("imageContainer");
++        var imageConstainer = document.getElementById("imageContainer");
+         var imgElement = document.createElement("img");
+         imgElement.src = imageUrl;
+         imgElement.alt = "Hình ảnh";
++        imgElement.style.margin = "5px";
+         imgElement.style.width = "100px";
+-        imgElement.style.height = "100px";
++        imgElement.style.height = "50px";
+         imageContainer.innerHTML = "";
+         imageContainer.appendChild(imgElement);
+     }
+ </script>
+ </body>
+ </html>
+-
+-
+-
+-
+-<%--<title>Title</title>--%>
+-<%--<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"--%>
+-<%--      integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">--%>
+-<%--<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"--%>
+-<%--        integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"--%>
+-<%--        crossorigin="anonymous"></script>--%>
+-<%--</head>--%>
+-<%--<body>--%>
+-<%--<jsp:include page="/header_footer/header.jsp"></jsp:include>--%>
+-<%--<div class="container-fluid">--%>
+-<%--    <div class="row ">--%>
+-<%--        <div class="justify-content-center">--%>
+-<%--            <h2>Create New Accessory</h2>--%>
+-<%--        </div>--%>
+-<%--    </div>--%>
+-<%--    <div class="row">--%>
+-<%--        <div class="col-3">--%>
+-<%--        </div>--%>
+-<%--        <div class="col-6">--%>
+-<%--            <h4 style="color: blue; font-weight: bold">${mess}</h4>--%>
+-<%--            <form method="post" action="/accessory?action=create">--%>
+-<%--                <label>Name</label>--%>
+-<%--                <input class="form-control" type="text" name="name" required><br>--%>
+-<%--                <label>Type</label>--%>
+-<%--                <select class="form-control" name="productType" id="">--%>
+-<%--                    <option value="2">Accessory</option>--%>
+-<%--                </select><br>--%>
+-<%--                <label>Describe</label>--%>
+-<%--                <input class="form-control" type="text" name="describe" required><br>--%>
+-<%--                <label>Price</label>--%>
+-<%--                <input class="form-control" type="number" name="price" required><br>--%>
+-<%--                <label>Image</label>--%>
+-<%--                <input class="form-control" type="text" name="productImage" required><br>--%>
+-<%--                <button class="btn btn-success">Create</button>--%>
+-<%--            </form>--%>
+-<%--            <p style="color: blue;font-weight: bold;justify-content: center">${mess}</p>--%>
+-<%--        </div>--%>
+-<%--        <div class="col-3">--%>
+-<%--        </div>--%>
+-<%--    </div>--%>
+-<%--</div>--%>
+-<%--<jsp:include page="/header_footer/footer.jsp"></jsp:include>--%>
+-<%--</body>--%>
+-<%--</html>--%>
+-
+-
+Index: src/main/webapp/view/accessorys/list.jsp
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><%--\r\n  Created by IntelliJ IDEA.\r\n  User: LENOVO\r\n  Date: 5/12/2023\r\n  Time: 12:36 AM\r\n  To change this template use File | Settings | File Templates.\r\n--%>\r\n<%@ page contentType=\"text/html;charset=UTF-8\" language=\"java\" %>\r\n<%@ taglib uri=\"http://java.sun.com/jsp/jstl/core\" prefix=\"c\" %>\r\n<html>\r\n<head>\r\n    <title>List of Accessory</title>\r\n    <link rel=\"stylesheet\" href=\"/bootstrap520/css/bootstrap.css\"/>\r\n    <link rel=\"stylesheet\" href=\"datatables/css/dataTables.bootstrap5.min.css\"/>\r\n    <link href=\"https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css\" rel=\"stylesheet\"\r\n          integrity=\"sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3\" crossorigin=\"anonymous\">\r\n    <style>\r\n        #ig1-user-page {\r\n            color: black;\r\n        }\r\n\r\n        #ig1-user-page:hover {\r\n            color: white;\r\n        }\r\n\r\n        #navbarSupportedContent ul li:hover a {\r\n            color: white;\r\n        }\r\n\r\n        #navbarSupportedContent ul li a {\r\n            color: black;\r\n        }\r\n    </style>\r\n\r\n</head>\r\n<body>\r\n<nav class=\"navbar navbar-expand-lg bg-body-tertiary\" style=\"background-color: orange\">\r\n    <div class=\"container-fluid\">\r\n        <a id=\"ig1-user-page\" href=\"/product\" class=\"navbar-brand\">IG1 Store</a>\r\n        <div class=\"collapse navbar-collapse\" id=\"navbarSupportedContent\">\r\n            <ul class=\"navbar-nav me-auto mb-2 mb-lg-0\">\r\n                <li clx ass=\"nav-item\">\r\n                    <a class=\"nav-link active\" aria-current=\"page\" href=\"/admin/admin.jsp\">Trang chủ</a>\r\n                </li>\r\n                <li class=\"nav-item dropdown\">\r\n                    <a class=\"nav-link dropdown-toggle\" href=\"#\" role=\"button\" data-bs-toggle=\"dropdown\"\r\n                       aria-expanded=\"false\">\r\n                        Quản lý\r\n                    </a>\r\n                    <ul class=\"dropdown-menu\">\r\n                        <li><a class=\"dropdown-item\" style=\"color: black\" href=\"/accessory\">Phụ kiện</a></li>\r\n                        <li><a class=\"dropdown-item\" style=\"color: black\" href=\"/product\">Sản phẩm</a></li>\r\n                        <li><a class=\"dropdown-item\" style=\"color: black\" href=\"/customer-servlet\">Customers</a></li>\r\n                        <li><a class=\"dropdown-item\" style=\"color: black\" href=\"/order-servlet\">Order</a></li>\r\n                    </ul>\r\n                </li>\r\n            </ul>\r\n            <form class=\"d-flex m-0\" role=\"search\" action=\"/accessory?action=search\" method=\"post\">\r\n                <input class=\"form-control me-2\" type=\"search\" placeholder=\"Nhập tên sản phẩm\" aria-label=\"Search\"\r\n                       name=\"name\" id=\"searchInput\" oninput=\"saveSearchInput()\">\r\n                <select name=\"price\" id=\"\" class=\"form-control me-2\">\r\n                    <option value=\"1\">--Chọn giá--</option>\r\n                    <option value=\"1\">Dưới 100.000</option>\r\n                    <option value=\"2\">Từ 100.000-500.000</option>\r\n                    <option value=\"3\">500.000-1 triệu</option>\r\n                    <option value=\"4\">Trên 1 triệu</option>\r\n\r\n                </select>\r\n                <button type=\"submit\" class=\"btn btn-outline-primary\"\r\n                        style=\"background: white; width: 200px;height: auto; color: black\">\r\n                    Tìm kiếm\r\n                </button>\r\n            </form>\r\n        </div>\r\n    </div>\r\n</nav>\r\n<br>\r\n\r\n\r\n<div class=\"row\">\r\n    <div class=\"container-fluid my-lg-2\">\r\n        <div class=\"row\">\r\n            <div class=\"col-1\"></div>\r\n            <div class=\"col-10\">\r\n                <h3 class=\"text-center\">DANH SÁCH PHỤ KIỆN</h3>\r\n                <hr>\r\n                <div class=\"container text-left\">\r\n\r\n                    <button type=\"button\" class=\"btn btn-success btn-rounded\"\r\n                            onclick=\"window.location.href='/accessory?action=create'\">Thêm sản phẩm\r\n                    </button>\r\n                    <div style=\"text-align: center; color: green ;font-size: 30px\" >${mess}</div>\r\n                </div>\r\n                <div class=\"container text-left\">\r\n                    <table id=\"tableProduct\" class=\"table table-striped table-bordered\"\r\n                           style=\"width:100%; margin-top: 20px\">\r\n                        <thead>\r\n                        <tr>\r\n                            <th scope=\"col\">STT</th>\r\n                            <th scope=\"col\">Tên</th>\r\n                            <th scope=\"col\">Loại</th>\r\n                            <th scope=\"col\" hidden>Mô tả</th>\r\n                            <th scope=\"col\">Giá(VNĐ)</th>\r\n                            <th scope=\"col\" hidden>Ảnh</th>\r\n                            <th scope=\"col\">Ngày tạo</th>\r\n                            <th scope=\"col\">Ngày cập nhật</th>\r\n                            <th scope=\"col\">Thao tác</th>\r\n                        </tr>\r\n                        </thead>\r\n                        <tbody>\r\n                        <c:forEach var=\"product\" items=\"${productList}\">\r\n                            <td>${product.getId()}</td>\r\n                            <td>${product.getName()}</td>\r\n                            <td>\r\n                                <c:if test=\"${product.getProductType() == 2}\">\r\n                                    Accessory\r\n                                </c:if>\r\n                            </td>\r\n                            <td hidden>${product.getDescribe()}</td>\r\n                            <td>${product.getPrice()}</td>\r\n                            <td hidden>${product.getProductImage()}</td>\r\n                            <td>${product.getCreatAt()}</td>\r\n                            <td>${product.getUpdateAt()}</td>\r\n                            <td>\r\n                                <button class=\"btn btn-warning\"\r\n                                        onclick=\"window.location.href='/accessory?action=edit&id=${product.getId()}'\">\r\n                                    Sửa\r\n                                </button>\r\n                                <button type=\"submit\" class=\"btn btn-danger\" data-bs-toggle=\"modal\"\r\n                                        data-bs-target=\"#exampleModal\"\r\n                                        onclick=\"deleteProduct('${product.getId()}','${product.getName()}')\">\r\n                                    Xóa\r\n                                </button>\r\n                            </td>\r\n                            </tr>\r\n                        </c:forEach>\r\n                        </tbody>\r\n                    </table>\r\n                </div>\r\n                <div class=\"col-1\"></div>\r\n            </div>\r\n        </div>\r\n        <footer class=\"text-center text-lg-start bg-light text-muted\" style=\" bottom: 0;right: 0;left: 0\">\r\n            <div class=\"text-center p-4\" style=\"background-color: orange; color: black\">\r\n                © 2023 Copyright:\r\n                <a class=\"text-reset fw-bold\" href=\"https://mdbootstrap.com/\">ig1store.com</a>\r\n            </div>\r\n        </footer>\r\n        <div class=\"modal fade\" id=\"exampleModal\" tabindex=\"-1\" aria-labelledby=\"exampleModalLabel\" aria-hidden=\"true\">\r\n            <div class=\"modal-dialog\">\r\n                <div class=\"modal-content\">\r\n                    <div class=\"modal-header\">\r\n                        <h1 class=\"modal-title fs-5\" id=\"exampleModalLabel\">XÓA SẢN PHẨM</h1>\r\n                        <button type=\"button\" class=\"btn-close\" data-bs-dismiss=\"modal\" aria-label=\"Close\"></button>\r\n                    </div>\r\n                    <form action=\"/accessory\" method=\"post\">\r\n                        <div class=\"modal-body\">\r\n                            <input type=\"text\" name=\"action\" value=\"delete\" hidden>\r\n                            <input type=\"text\" id=\"id\" name=\"id\" hidden>\r\n                            Bạn có chắc chắn muốn xóa phụ kiện <span style=\"color: red\" id=\"name\"></span> này không ?\r\n                        </div>\r\n                        <div class=\"modal-footer\">\r\n                            <button type=\"button\" class=\"btn btn-secondary\" data-bs-dismiss=\"modal\">Đóng</button>\r\n                            <button type=\"submit\" class=\"btn btn-primary\" style=\"background: red\"\r\n                                    onclick=\"showDeleteSuccessAlert()\">Đồng ý\r\n                            </button>\r\n                        </div>\r\n                    </form>\r\n                </div>\r\n            </div>\r\n        </div>\r\n    </div>\r\n</div>\r\n<script>\r\n    function deleteProduct(id, name) {\r\n        document.getElementById(\"id\").value = id;\r\n        document.getElementById(\"name\").innerText = name;\r\n    }\r\n\r\n    function showDeleteSuccessAlert() {\r\n        // Thực hiện xóa sản phẩm thành công ở đây\r\n\r\n        // Hiển thị thông báo thành công\r\n        alert(\"Phụ kiện đã được xóa thành công!\");\r\n    }\r\n</script>\r\n<script>\r\n    // Lấy giá trị từ localStorage (nếu có)\r\n    window.addEventListener('load', function () {\r\n        var searchInput = localStorage.getItem('searchInput');\r\n        if (searchInput) {\r\n            document.getElementById('searchInput').value = searchInput;\r\n        }\r\n    });\r\n\r\n    // Lưu giá trị khi người dùng nhập vào\r\n    function saveSearchInput() {\r\n        var input = document.getElementById('searchInput').value;\r\n        localStorage.setItem('searchInput', input);\r\n    }\r\n</script>\r\n<script src=\"https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js\"\r\n        integrity=\"sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p\"\r\n        crossorigin=\"anonymous\"></script>\r\n<script src=\"jquery/jquery-3.5.1.min.js\"></script>\r\n<script src=\"datatables/js/jquery.dataTables.min.js\"></script>\r\n<script src=\"datatables/js/dataTables.bootstrap5.min.js\"></script>\r\n<script>\r\n    $(document).ready(function () {\r\n        $('#tableProduct').dataTable({\r\n            \"dom\": 'lrtip',\r\n            \"lengthChange\": false,\r\n            \"pageLength\": 10,\r\n            \"language\": {\r\n                \"paginate\": {\r\n                    \"previous\": \"Trước\",\r\n                    \"next\": \"Sau\"\r\n                }\r\n            }\r\n        });\r\n    });\r\n</script>\r\n\r\n</body>\r\n</html>\r\n\r\n\r\n\r\n\r\n<%--<title>Title</title>--%>\r\n<%--<link rel=\"stylesheet\" href=\"/bootstrap520/css/bootstrap.css\"/>--%>\r\n<%--<link rel=\"stylesheet\" href=\"datatables/css/dataTables.bootstrap5.min.css\"/>--%>\r\n<%--<link href=\"https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css\" rel=\"stylesheet\"--%>\r\n<%--      integrity=\"sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3\" crossorigin=\"anonymous\">--%>\r\n<%--</head>--%>\r\n<%--<body>--%>\r\n<%--<jsp:include page=\"/header_footer/header.jsp\"></jsp:include>--%>\r\n<%--<nav class=\"navbar navbar-light bg-light\" style=\"position: sticky;top:0;left: 0;right: 0\">--%>\r\n<%--    <div class=\"container-fluid\">--%>\r\n<%--        <div style=\"display: flex; margin: 8px;position: relative\">--%>\r\n<%--            <div>--%>\r\n<%--                <button type=\"button\" class=\"btn btn-success btn-rounded\"--%>\r\n<%--                        onclick=\"window.location.href='/accessory?action=create'\">New accessory--%>\r\n<%--                </button>--%>\r\n<%--            </div>--%>\r\n<%--        </div>--%>\r\n<%--        <p style=\"color: #31b131;font-weight: bolder;font-size: large\">${mess}</p>--%>\r\n<%--        <form action=\"/accessory?action=search\" method=\"post\" class=\"d-flex my-0\">--%>\r\n<%--            <input type=\"hidden\" name=\"action\" value=\"search\">--%>\r\n<%--            <input class=\"form-control me-2\" type=\"text\" placeholder=\"Enter name customer\" aria-label=\"Search\"--%>\r\n<%--                   name=\"name\">--%>\r\n<%--            <select name=\"price\" id=\"\" class=\"form-select\" aria-label=\"Default select example\">--%>\r\n<%--                <option value=\"1\">choose price</option>--%>\r\n<%--                <option value=\"2\">Less than 100.000</option>--%>\r\n<%--                <option value=\"3\">From 100.000-500.000</option>--%>\r\n<%--                <option value=\"4\">From 500.000-1.000.000</option>--%>\r\n<%--                <option value=\"5\">Over 10.000.000</option>--%>\r\n<%--            </select>--%>\r\n<%--            <button class=\"btn btn-outline-primary\" type=\"submit\">Find</button>--%>\r\n<%--        </form>--%>\r\n<%--    </div>--%>\r\n<%--</nav>--%>\r\n\r\n\r\n\r\n<%--<div class=\"container-fluid my-lg-2\">--%>\r\n<%--    <div class=\"row\">--%>\r\n<%--        <div class=\"col-1\"></div>--%>\r\n<%--        <div class=\"col-10\">--%>\r\n<%--            <div>--%>\r\n<%--                <h3>List customer</h3>--%>\r\n<%--            </div>--%>\r\n<%--            <table id=\"tableCustomer\" class=\"table table-hover\">--%>\r\n<%--                <thead>--%>\r\n<%--                <tr>--%>\r\n<%--                    <th scope=\"col\">Product ID</th>--%>\r\n<%--                    <th scope=\"col\">Name</th>--%>\r\n<%--                    <th scope=\"col\">Type</th>--%>\r\n<%--                    <th scope=\"col\" hidden>Describe</th>--%>\r\n<%--                    <th scope=\"col\">Price(VND)</th>--%>\r\n<%--                    <th scope=\"col\" hidden>Image</th>--%>\r\n<%--                    <th scope=\"col\">Create At</th>--%>\r\n<%--                    <th scope=\"col\">Update At</th>--%>\r\n<%--                    <th scope=\"col\">Manipulate</th>--%>\r\n<%--                </tr>--%>\r\n<%--                </thead>--%>\r\n<%--                <tbody>--%>\r\n<%--                <c:forEach var=\"product\" items=\"${productList}\">--%>\r\n<%--                    <td>${product.getId()}</td>--%>\r\n<%--                    <td>${product.getName()}</td>--%>\r\n<%--                    <td>--%>\r\n<%--                        <c:if test=\"${product.getProductType() == 1}\">--%>\r\n<%--                            Phone--%>\r\n<%--                        </c:if>--%>\r\n<%--                        <c:if test=\"${product.getProductType() == 2}\">--%>\r\n<%--                            Accessory--%>\r\n<%--                        </c:if>--%>\r\n<%--                    </td>--%>\r\n<%--                    <td hidden>${product.getDescribe()}</td>--%>\r\n<%--                    <td>${product.getPrice()}</td>--%>\r\n<%--                    <td hidden>${product.getProductImage()}</td>--%>\r\n<%--                    <td>${product.getCreatAt()}</td>--%>\r\n<%--                    <td>${product.getUpdateAt()}</td>--%>\r\n<%--                    <td>--%>\r\n<%--                        <button type=\"submit\" class=\"btn btn-danger\" data-bs-toggle=\"modal\"--%>\r\n<%--                                data-bs-target=\"#exampleModal\"--%>\r\n<%--                                onclick=\"deleteProduct('${product.getId()}','${product.getName()}')\">--%>\r\n<%--                            Delete--%>\r\n<%--                        </button>--%>\r\n<%--                        <button class=\"btn btn-warning\"--%>\r\n<%--                                onclick=\"window.location.href='/accessory?action=edit&id=${product.getId()}'\">--%>\r\n<%--                            Update--%>\r\n<%--                        </button>--%>\r\n<%--                    </td>--%>\r\n<%--                    </tr>--%>\r\n<%--                </c:forEach>--%>\r\n<%--                </tbody>--%>\r\n<%--            </table>--%>\r\n<%--        </div>--%>\r\n<%--        <div class=\"col-1\"></div>--%>\r\n<%--    </div>--%>\r\n<%--</div>--%>\r\n<%--<div class=\"modal fade\" id=\"exampleModal\" tabindex=\"-1\"--%>\r\n<%--     aria-labelledby=\"exampleModalLabel\" aria-hidden=\"true\">--%>\r\n<%--    <div class=\"modal-dialog\">--%>\r\n<%--        <div class=\"modal-content\">--%>\r\n<%--            <div class=\"modal-header\">--%>\r\n<%--                <h1 class=\"modal-title fs-5\" id=\"exampleModalLabel\">Delete Product</h1>--%>\r\n<%--                <button type=\"button\" class=\"btn-close\" data-bs-dismiss=\"modal\"--%>\r\n<%--                        aria-label=\"Close\"></button>--%>\r\n<%--            </div>--%>\r\n<%--            <form action=\"/accessory\" method=\"post\">--%>\r\n<%--                <div class=\"modal-body\">--%>\r\n<%--                    <input type=\"text\" name=\"action\" value=\"delete\" hidden>--%>\r\n<%--                    <input type=\"text\" id=\"id\" name=\"id\" hidden>--%>\r\n<%--                    Do you want to delete the product <span id=\"name\"></span> ?--%>\r\n<%--                </div>--%>\r\n<%--                <div class=\"modal-footer\">--%>\r\n<%--                    <button type=\"button\" class=\"btn btn-secondary\" data-bs-dismiss=\"modal\">No</button>--%>\r\n<%--                    <button type=\"submit\" class=\"btn btn-primary\">--%>\r\n<%--                        Yes--%>\r\n<%--                    </button>--%>\r\n<%--                </div>--%>\r\n<%--            </form>--%>\r\n<%--        </div>--%>\r\n<%--    </div>--%>\r\n<%--</div>--%>\r\n<%--<script>--%>\r\n<%--    function deleteProduct(id, name) {--%>\r\n<%--        document.getElementById(\"id\").value = id;--%>\r\n<%--        document.getElementById(\"name\").innerText = name;--%>\r\n<%--    }--%>\r\n<%--</script>--%>\r\n<%--&lt;%&ndash;Modal detail&ndash;%&gt;--%>\r\n<%--<div class=\"modal\" id=\"deleteModal1\" tabindex=\"-1\"--%>\r\n<%--     aria-labelledby=\"exampleModalLabel\"--%>\r\n<%--     aria-hidden=\"true\">--%>\r\n<%--    <div class=\"modal-dialog\">--%>\r\n<%--        <div class=\"modal-content\">--%>\r\n<%--            <div class=\"modal-header\">--%>\r\n<%--                <h5 class=\"modal-title\" id=\"exampleModalLabel1\">Chi tiết khách hàng</h5>--%>\r\n<%--                <button type=\"button\" class=\"btn-close\" data-bs-dismiss=\"modal\"--%>\r\n<%--                        aria-label=\"Close\"></button>--%>\r\n<%--            </div>--%>\r\n<%--            <form action=\"/customer?action=delete\" method=\"post\">--%>\r\n<%--                <div class=\"modal-body\">--%>\r\n<%--                    <p>ID customer: <span id=\"customerIdDetail\"></span></p>--%>\r\n<%--                    <p>Name customer: <span id=\"customerNameDetail\"></span></p>--%>\r\n<%--                    <p>Create Datetime: <span id=\"customerCreateAtDetail\"></span></p>--%>\r\n<%--                    <p>Update Datetime: <span id=\"customerUpdateAtDetail\"></span></p>--%>\r\n<%--                </div>--%>\r\n<%--            </form>--%>\r\n<%--        </div>--%>\r\n<%--    </div>--%>\r\n<%--</div>--%>\r\n<%--<footer style=\"margin-top: 50px\">--%>\r\n<%--    <jsp:include page=\"/header_footer/footer.jsp\"></jsp:include>--%>\r\n<%--</footer>--%>\r\n<%--<script>--%>\r\n<%--    function infoDelete(id, name, account) {--%>\r\n<%--        document.getElementById(\"customerId\").value = id;--%>\r\n<%--        document.getElementById(\"nameAccount\").value = account;--%>\r\n<%--        document.getElementById(\"deleteName\").innerText = name;--%>\r\n<%--    }--%>\r\n\r\n<%--    function infoDetail(id, name, createAt, updateAt) {--%>\r\n<%--        document.getElementById(\"customerIdDetail\").innerText = id;--%>\r\n<%--        document.getElementById(\"customerNameDetail\").innerText = name;--%>\r\n<%--        document.getElementById(\"customerCreateAtDetail\").innerText = createAt;--%>\r\n<%--        document.getElementById(\"customerUpdateAtDetail\").innerText = updateAt;--%>\r\n<%--    }--%>\r\n<%--</script>--%>\r\n<%--<script src=\"https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js\"--%>\r\n<%--        integrity=\"sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p\"--%>\r\n<%--        crossorigin=\"anonymous\"></script>--%>\r\n<%--<script src=\"jquery/jquery-3.5.1.min.js\"></script>--%>\r\n<%--<script src=\"datatables/js/jquery.dataTables.min.js\"></script>--%>\r\n<%--<script src=\"datatables/js/dataTables.bootstrap5.min.js\"></script>--%>\r\n<%--<script>--%>\r\n<%--    $(document).ready(function () {--%>\r\n<%--        $('#tableCustomer').dataTable({--%>\r\n<%--            \"dom\": 'lrtip',--%>\r\n<%--            \"lengthChange\": false,--%>\r\n<%--            \"pageLength\": 10--%>\r\n<%--        });--%>\r\n<%--    });--%>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- src/main/webapp/view/accessorys/list.jsp	(revision 23290a0cf9544c953fcecdfdeca3714678ed1f03)
++++ src/main/webapp/view/accessorys/list.jsp	(date 1684070180774)
+@@ -223,184 +223,3 @@
+ 
+ </body>
+ </html>
+-
+-
+-
+-
+-<%--<title>Title</title>--%>
+-<%--<link rel="stylesheet" href="/bootstrap520/css/bootstrap.css"/>--%>
+-<%--<link rel="stylesheet" href="datatables/css/dataTables.bootstrap5.min.css"/>--%>
+-<%--<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"--%>
+-<%--      integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">--%>
+-<%--</head>--%>
+-<%--<body>--%>
+-<%--<jsp:include page="/header_footer/header.jsp"></jsp:include>--%>
+-<%--<nav class="navbar navbar-light bg-light" style="position: sticky;top:0;left: 0;right: 0">--%>
+-<%--    <div class="container-fluid">--%>
+-<%--        <div style="display: flex; margin: 8px;position: relative">--%>
+-<%--            <div>--%>
+-<%--                <button type="button" class="btn btn-success btn-rounded"--%>
+-<%--                        onclick="window.location.href='/accessory?action=create'">New accessory--%>
+-<%--                </button>--%>
+-<%--            </div>--%>
+-<%--        </div>--%>
+-<%--        <p style="color: #31b131;font-weight: bolder;font-size: large">${mess}</p>--%>
+-<%--        <form action="/accessory?action=search" method="post" class="d-flex my-0">--%>
+-<%--            <input type="hidden" name="action" value="search">--%>
+-<%--            <input class="form-control me-2" type="text" placeholder="Enter name customer" aria-label="Search"--%>
+-<%--                   name="name">--%>
+-<%--            <select name="price" id="" class="form-select" aria-label="Default select example">--%>
+-<%--                <option value="1">choose price</option>--%>
+-<%--                <option value="2">Less than 100.000</option>--%>
+-<%--                <option value="3">From 100.000-500.000</option>--%>
+-<%--                <option value="4">From 500.000-1.000.000</option>--%>
+-<%--                <option value="5">Over 10.000.000</option>--%>
+-<%--            </select>--%>
+-<%--            <button class="btn btn-outline-primary" type="submit">Find</button>--%>
+-<%--        </form>--%>
+-<%--    </div>--%>
+-<%--</nav>--%>
+-
+-
+-
+-<%--<div class="container-fluid my-lg-2">--%>
+-<%--    <div class="row">--%>
+-<%--        <div class="col-1"></div>--%>
+-<%--        <div class="col-10">--%>
+-<%--            <div>--%>
+-<%--                <h3>List customer</h3>--%>
+-<%--            </div>--%>
+-<%--            <table id="tableCustomer" class="table table-hover">--%>
+-<%--                <thead>--%>
+-<%--                <tr>--%>
+-<%--                    <th scope="col">Product ID</th>--%>
+-<%--                    <th scope="col">Name</th>--%>
+-<%--                    <th scope="col">Type</th>--%>
+-<%--                    <th scope="col" hidden>Describe</th>--%>
+-<%--                    <th scope="col">Price(VND)</th>--%>
+-<%--                    <th scope="col" hidden>Image</th>--%>
+-<%--                    <th scope="col">Create At</th>--%>
+-<%--                    <th scope="col">Update At</th>--%>
+-<%--                    <th scope="col">Manipulate</th>--%>
+-<%--                </tr>--%>
+-<%--                </thead>--%>
+-<%--                <tbody>--%>
+-<%--                <c:forEach var="product" items="${productList}">--%>
+-<%--                    <td>${product.getId()}</td>--%>
+-<%--                    <td>${product.getName()}</td>--%>
+-<%--                    <td>--%>
+-<%--                        <c:if test="${product.getProductType() == 1}">--%>
+-<%--                            Phone--%>
+-<%--                        </c:if>--%>
+-<%--                        <c:if test="${product.getProductType() == 2}">--%>
+-<%--                            Accessory--%>
+-<%--                        </c:if>--%>
+-<%--                    </td>--%>
+-<%--                    <td hidden>${product.getDescribe()}</td>--%>
+-<%--                    <td>${product.getPrice()}</td>--%>
+-<%--                    <td hidden>${product.getProductImage()}</td>--%>
+-<%--                    <td>${product.getCreatAt()}</td>--%>
+-<%--                    <td>${product.getUpdateAt()}</td>--%>
+-<%--                    <td>--%>
+-<%--                        <button type="submit" class="btn btn-danger" data-bs-toggle="modal"--%>
+-<%--                                data-bs-target="#exampleModal"--%>
+-<%--                                onclick="deleteProduct('${product.getId()}','${product.getName()}')">--%>
+-<%--                            Delete--%>
+-<%--                        </button>--%>
+-<%--                        <button class="btn btn-warning"--%>
+-<%--                                onclick="window.location.href='/accessory?action=edit&id=${product.getId()}'">--%>
+-<%--                            Update--%>
+-<%--                        </button>--%>
+-<%--                    </td>--%>
+-<%--                    </tr>--%>
+-<%--                </c:forEach>--%>
+-<%--                </tbody>--%>
+-<%--            </table>--%>
+-<%--        </div>--%>
+-<%--        <div class="col-1"></div>--%>
+-<%--    </div>--%>
+-<%--</div>--%>
+-<%--<div class="modal fade" id="exampleModal" tabindex="-1"--%>
+-<%--     aria-labelledby="exampleModalLabel" aria-hidden="true">--%>
+-<%--    <div class="modal-dialog">--%>
+-<%--        <div class="modal-content">--%>
+-<%--            <div class="modal-header">--%>
+-<%--                <h1 class="modal-title fs-5" id="exampleModalLabel">Delete Product</h1>--%>
+-<%--                <button type="button" class="btn-close" data-bs-dismiss="modal"--%>
+-<%--                        aria-label="Close"></button>--%>
+-<%--            </div>--%>
+-<%--            <form action="/accessory" method="post">--%>
+-<%--                <div class="modal-body">--%>
+-<%--                    <input type="text" name="action" value="delete" hidden>--%>
+-<%--                    <input type="text" id="id" name="id" hidden>--%>
+-<%--                    Do you want to delete the product <span id="name"></span> ?--%>
+-<%--                </div>--%>
+-<%--                <div class="modal-footer">--%>
+-<%--                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">No</button>--%>
+-<%--                    <button type="submit" class="btn btn-primary">--%>
+-<%--                        Yes--%>
+-<%--                    </button>--%>
+-<%--                </div>--%>
+-<%--            </form>--%>
+-<%--        </div>--%>
+-<%--    </div>--%>
+-<%--</div>--%>
+-<%--<script>--%>
+-<%--    function deleteProduct(id, name) {--%>
+-<%--        document.getElementById("id").value = id;--%>
+-<%--        document.getElementById("name").innerText = name;--%>
+-<%--    }--%>
+-<%--</script>--%>
+-<%--&lt;%&ndash;Modal detail&ndash;%&gt;--%>
+-<%--<div class="modal" id="deleteModal1" tabindex="-1"--%>
+-<%--     aria-labelledby="exampleModalLabel"--%>
+-<%--     aria-hidden="true">--%>
+-<%--    <div class="modal-dialog">--%>
+-<%--        <div class="modal-content">--%>
+-<%--            <div class="modal-header">--%>
+-<%--                <h5 class="modal-title" id="exampleModalLabel1">Chi tiết khách hàng</h5>--%>
+-<%--                <button type="button" class="btn-close" data-bs-dismiss="modal"--%>
+-<%--                        aria-label="Close"></button>--%>
+-<%--            </div>--%>
+-<%--            <form action="/customer?action=delete" method="post">--%>
+-<%--                <div class="modal-body">--%>
+-<%--                    <p>ID customer: <span id="customerIdDetail"></span></p>--%>
+-<%--                    <p>Name customer: <span id="customerNameDetail"></span></p>--%>
+-<%--                    <p>Create Datetime: <span id="customerCreateAtDetail"></span></p>--%>
+-<%--                    <p>Update Datetime: <span id="customerUpdateAtDetail"></span></p>--%>
+-<%--                </div>--%>
+-<%--            </form>--%>
+-<%--        </div>--%>
+-<%--    </div>--%>
+-<%--</div>--%>
+-<%--<footer style="margin-top: 50px">--%>
+-<%--    <jsp:include page="/header_footer/footer.jsp"></jsp:include>--%>
+-<%--</footer>--%>
+-<%--<script>--%>
+-<%--    function infoDelete(id, name, account) {--%>
+-<%--        document.getElementById("customerId").value = id;--%>
+-<%--        document.getElementById("nameAccount").value = account;--%>
+-<%--        document.getElementById("deleteName").innerText = name;--%>
+-<%--    }--%>
+-
+-<%--    function infoDetail(id, name, createAt, updateAt) {--%>
+-<%--        document.getElementById("customerIdDetail").innerText = id;--%>
+-<%--        document.getElementById("customerNameDetail").innerText = name;--%>
+-<%--        document.getElementById("customerCreateAtDetail").innerText = createAt;--%>
+-<%--        document.getElementById("customerUpdateAtDetail").innerText = updateAt;--%>
+-<%--    }--%>
+-<%--</script>--%>
+-<%--<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"--%>
+-<%--        integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"--%>
+-<%--        crossorigin="anonymous"></script>--%>
+-<%--<script src="jquery/jquery-3.5.1.min.js"></script>--%>
+-<%--<script src="datatables/js/jquery.dataTables.min.js"></script>--%>
+-<%--<script src="datatables/js/dataTables.bootstrap5.min.js"></script>--%>
+-<%--<script>--%>
+-<%--    $(document).ready(function () {--%>
+-<%--        $('#tableCustomer').dataTable({--%>
+-<%--            "dom": 'lrtip',--%>
+-<%--            "lengthChange": false,--%>
+-<%--            "pageLength": 10--%>
+-<%--        });--%>
+-<%--    });--%>
+\ No newline at end of file

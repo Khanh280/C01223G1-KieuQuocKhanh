@@ -1,0 +1,67 @@
+Index: .idea/workspace.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/workspace.xml b/.idea/workspace.xml
+--- a/.idea/workspace.xml	
++++ b/.idea/workspace.xml	
+@@ -28,20 +28,7 @@
+     </select>
+   </component>
+   <component name="ChangeListManager">
+-    <list default="true" id="3f656102-5da8-4523-8e54-f4cbce5e1009" name="Changes" comment="update">
+-      <change beforePath="$PROJECT_DIR$/.gradle/7.5.1/executionHistory/executionHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/7.5.1/executionHistory/executionHistory.lock" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/.gradle/7.5.1/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/7.5.1/fileHashes/fileHashes.lock" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/.gradle/file-system.probe" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/file-system.probe" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/.idea/webContexts.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/webContexts.xml" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/src/main/java/controller/OrderDetailServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/OrderDetailServlet.java" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/src/main/java/controller/OrderServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/OrderServlet.java" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/src/main/webapp/admin/order.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/admin/order.jsp" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/src/main/webapp/admin/order_detail.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/admin/order_detail.jsp" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/src/main/webapp/users/order_detail.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/users/order_detail.jsp" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/src/main/webapp/users/product.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/users/product.jsp" afterDir="false" />
+-    </list>
++    <list default="true" id="3f656102-5da8-4523-8e54-f4cbce5e1009" name="Changes" comment="update" />
+     <option name="SHOW_DIALOG" value="false" />
+     <option name="HIGHLIGHT_CONFLICTS" value="true" />
+     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+@@ -228,7 +215,7 @@
+       <workItem from="1683952925449" duration="19351000" />
+       <workItem from="1683978722924" duration="6304000" />
+       <workItem from="1683988831901" duration="5711000" />
+-      <workItem from="1684030303987" duration="5814000" />
++      <workItem from="1684030303987" duration="6117000" />
+     </task>
+     <task id="LOCAL-00001" summary="update">
+       <created>1683994527087</created>
+@@ -237,7 +224,14 @@
+       <option name="project" value="LOCAL" />
+       <updated>1683994527087</updated>
+     </task>
+-    <option name="localTasksCounter" value="2" />
++    <task id="LOCAL-00002" summary="update">
++      <created>1684036446240</created>
++      <option name="number" value="00002" />
++      <option name="presentableId" value="LOCAL-00002" />
++      <option name="project" value="LOCAL" />
++      <updated>1684036446240</updated>
++    </task>
++    <option name="localTasksCounter" value="3" />
+     <servers />
+   </component>
+   <component name="TypeScriptGeneratedFilesManager">
+@@ -282,11 +276,6 @@
+           <url>file://$PROJECT_DIR$/src/main/webapp/customer/edit.jsp</url>
+           <line>35</line>
+           <option name="timeStamp" value="11" />
+-        </line-breakpoint>
+-        <line-breakpoint enabled="true" type="java-line">
+-          <url>file://$PROJECT_DIR$/src/main/java/controller/AccountServlet.java</url>
+-          <line>44</line>
+-          <option name="timeStamp" value="27" />
+         </line-breakpoint>
+       </breakpoints>
+     </breakpoint-manager>

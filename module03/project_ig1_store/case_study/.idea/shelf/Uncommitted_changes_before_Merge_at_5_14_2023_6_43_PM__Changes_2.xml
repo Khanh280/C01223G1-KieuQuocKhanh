@@ -1,0 +1,24 @@
+<changelist name="Uncommitted_changes_before_Merge_at_5_14_2023_6_43_PM_[Changes]2" date="1684064636412" recycled="true" deleted="true">
+  <option name="PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Merge_at_5_14_2023_6_43_PM_[Changes]2/shelved.patch" />
+  <option name="DESCRIPTION" value="Uncommitted changes before Merge at 5/14/2023 6:43 PM [Changes]" />
+  <binary>
+    <option name="BEFORE_PATH" value=".gradle/buildOutputCleanup/buildOutputCleanup.lock" />
+    <option name="AFTER_PATH" value=".gradle/buildOutputCleanup/buildOutputCleanup.lock" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Merge_at_5_14_2023_6_43_PM_[Changes]2/buildOutputCleanup.lock" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value=".gradle/7.5.1/executionHistory/executionHistory.lock" />
+    <option name="AFTER_PATH" value=".gradle/7.5.1/executionHistory/executionHistory.lock" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Merge_at_5_14_2023_6_43_PM_[Changes]2/executionHistory.lock" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value=".gradle/file-system.probe" />
+    <option name="AFTER_PATH" value=".gradle/file-system.probe" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Merge_at_5_14_2023_6_43_PM_[Changes]2/file-system.probe" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value=".gradle/7.5.1/fileHashes/fileHashes.lock" />
+    <option name="AFTER_PATH" value=".gradle/7.5.1/fileHashes/fileHashes.lock" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Merge_at_5_14_2023_6_43_PM_[Changes]2/fileHashes.lock" />
+  </binary>
+</changelist>

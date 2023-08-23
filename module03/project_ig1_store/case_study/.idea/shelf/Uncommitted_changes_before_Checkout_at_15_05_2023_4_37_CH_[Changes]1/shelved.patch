@@ -1,0 +1,33 @@
+Index: src/main/java/models/repository/Impl/ProductRepository.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/java/models/repository/Impl/ProductRepository.java b/src/main/java/models/repository/Impl/ProductRepository.java
+--- a/src/main/java/models/repository/Impl/ProductRepository.java	
++++ b/src/main/java/models/repository/Impl/ProductRepository.java	
+@@ -14,7 +14,7 @@
+ import java.util.List;
+ 
+ public class ProductRepository implements IProductRepostory {
+-    private static final String GET_ALL = "SELECT * FROM products WHERE product_type_id=1;";
++    private static final String GET_ALL = "SELECT * FROM products;";
+     private static final String GET_BY_ID = "SELECT * FROM products WHERE product_id=?;";
+     private static final String INSERT_INTO = "INSERT INTO products (product_name, product_type_id, `describe`,price,product_image_url) VALUES (?,?,?,?,?);";
+     private static final String DELETE_BY_ID = "DELETE FROM products WHERE product_id=?;";
+Index: src/main/webapp/account/register_form.jsp
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/webapp/account/register_form.jsp b/src/main/webapp/account/register_form.jsp
+--- a/src/main/webapp/account/register_form.jsp	
++++ b/src/main/webapp/account/register_form.jsp	
+@@ -114,7 +114,6 @@
+     </div>
+ </section>
+ 
+-
+ <div class="modal fade" id="deleteResultModal4" tabindex="-1" aria-labelledby="deleteResultModalLabel"
+      aria-hidden="true">
+     <div class="modal-dialog">

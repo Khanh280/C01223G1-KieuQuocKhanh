@@ -1,0 +1,16 @@
+Index: src/main/webapp/home.jsp
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/webapp/home.jsp b/src/main/webapp/home.jsp
+--- a/src/main/webapp/home.jsp	
++++ b/src/main/webapp/home.jsp	
+@@ -12,7 +12,6 @@
+             integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+             crossorigin="anonymous"></script>
+     <style>
+-        <style>
+         .carousel {
+             width: 100%;
+             position: relative;

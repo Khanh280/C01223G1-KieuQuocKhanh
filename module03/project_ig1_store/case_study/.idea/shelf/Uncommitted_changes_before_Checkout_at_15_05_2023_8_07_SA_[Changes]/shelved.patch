@@ -1,0 +1,161 @@
+Index: .idea/workspace.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/workspace.xml b/.idea/workspace.xml
+--- a/.idea/workspace.xml	
++++ b/.idea/workspace.xml	
+@@ -33,30 +33,22 @@
+       <change beforePath="$PROJECT_DIR$/.gradle/7.5.1/executionHistory/executionHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/7.5.1/executionHistory/executionHistory.lock" afterDir="false" />
+       <change beforePath="$PROJECT_DIR$/.gradle/7.5.1/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/7.5.1/fileHashes/fileHashes.bin" afterDir="false" />
+       <change beforePath="$PROJECT_DIR$/.gradle/7.5.1/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/7.5.1/fileHashes/fileHashes.lock" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/.gradle/7.5.1/fileHashes/resourceHashesCache.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/7.5.1/fileHashes/resourceHashesCache.bin" afterDir="false" />
+       <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/cc7a99f0-dc3a-47ae-8925-cca6ec6f750f.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/cc7a99f0-dc3a-47ae-8925-cca6ec6f750f.xml" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/.gradle/file-system.probe" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/file-system.probe" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_14_05_2023_7_12_CH__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_14_05_2023_7_12_CH__Changes_.xml" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_14_05_2023_7_13_CH__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_14_05_2023_7_13_CH__Changes_.xml" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_14_05_2023_7_13_CH__Changes_1.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_14_05_2023_7_13_CH__Changes_1.xml" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_14_05_2023_7_14_CH__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_14_05_2023_7_14_CH__Changes_.xml" afterDir="false" />
+       <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_5_14_2023_7_30_PM__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_5_14_2023_7_30_PM__Changes_.xml" afterDir="false" />
+       <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_5_14_2023_7_30_PM__Changes_1.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_5_14_2023_7_30_PM__Changes_1.xml" afterDir="false" />
+       <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Merge_at_5_14_2023_12_27_AM__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Merge_at_5_14_2023_12_27_AM__Changes_.xml" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Merge_at_5_14_2023_6_43_PM__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Merge_at_5_14_2023_6_43_PM__Changes_.xml" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Merge_at_5_14_2023_6_43_PM__Changes_1.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Merge_at_5_14_2023_6_43_PM__Changes_1.xml" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Merge_at_5_14_2023_6_43_PM__Changes_2.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Merge_at_5_14_2023_6_43_PM__Changes_2.xml" afterDir="false" />
+       <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Merge_at_5_14_2023_8_15_PM__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Merge_at_5_14_2023_8_15_PM__Changes_.xml" afterDir="false" />
+       <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Merge_at_5_14_2023_8_16_PM__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Merge_at_5_14_2023_8_16_PM__Changes_.xml" afterDir="false" />
+       <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Merge_at_5_14_2023_8_16_PM__Changes_1.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Merge_at_5_14_2023_8_16_PM__Changes_1.xml" afterDir="false" />
+       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/models/repository/BaseRepository.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/models/repository/BaseRepository.class" afterDir="false" />
+       <change beforePath="$PROJECT_DIR$/build/libs/case_study-1.0-SNAPSHOT.war" beforeDir="false" afterPath="$PROJECT_DIR$/build/libs/case_study-1.0-SNAPSHOT.war" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/build/tmp/compileJava/previous-compilation-data.bin" beforeDir="false" afterPath="$PROJECT_DIR$/build/tmp/compileJava/previous-compilation-data.bin" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/src/main/java/controller/AccountServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/AccountServlet.java" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/src/main/java/models/repository/BaseRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/models/repository/BaseRepository.java" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/src/main/java/models/repository/ICustomerRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/models/repository/ICustomerRepository.java" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/src/main/java/models/repository/Impl/CustomerRepositoryImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/models/repository/Impl/CustomerRepositoryImpl.java" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/src/main/java/models/service/ICustomerService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/models/service/ICustomerService.java" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/src/main/java/models/service/impl/CustomerServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/models/service/impl/CustomerServiceImpl.java" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/src/main/webapp/account/register_form.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/account/register_form.jsp" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/src/main/webapp/home.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/home.jsp" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/../database/database_case_study_03.sql" beforeDir="false" afterPath="$PROJECT_DIR$/../database/database_case_study_03.sql" afterDir="false" />
+     </list>
+     <option name="SHOW_DIALOG" value="false" />
+     <option name="HIGHLIGHT_CONFLICTS" value="true" />
+@@ -84,6 +76,11 @@
+     <option name="BRANCH" value="origin/main" />
+   </component>
+   <component name="Git.Settings">
++    <option name="RECENT_BRANCH_BY_REPOSITORY">
++      <map>
++        <entry key="$PROJECT_DIR$/.." value="main" />
++      </map>
++    </option>
+     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+   </component>
+   <component name="HighlightingSettingsPerFile">
+@@ -107,16 +104,16 @@
+     <option name="hideEmptyMiddlePackages" value="true" />
+     <option name="showLibraryContents" value="true" />
+   </component>
+-  <component name="PropertiesComponent"><![CDATA[{
+-  "keyToString": {
+-    "RunOnceActivity.OpenProjectViewOnStart": "true",
+-    "RunOnceActivity.ShowReadmeOnStart": "true",
+-    "WebServerToolWindowFactoryState": "false",
+-    "node.js.detected.package.eslint": "true",
+-    "node.js.selected.package.eslint": "(autodetect)",
+-    "node.js.selected.package.tslint": "(autodetect)"
++  <component name="PropertiesComponent">{
++  &quot;keyToString&quot;: {
++    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
++    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
++    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
++    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
++    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
++    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;
+   }
+-}]]></component>
++}</component>
+   <component name="RecentsManager">
+     <key name="CopyFile.RECENT_KEYS">
+       <recent name="E:\Group1\C0123G1-Repo-BE\case_study\src\main\java\models\repository" />
+@@ -239,6 +236,7 @@
+       <workItem from="1683983360630" duration="2947000" />
+       <workItem from="1684066008607" duration="2410000" />
+       <workItem from="1684077022720" duration="2933000" />
++      <workItem from="1684112362929" duration="165000" />
+     </task>
+     <task id="LOCAL-00001" summary="update new">
+       <created>1684037943301</created>
+Index: ../database/database_case_study_03.sql
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/../database/database_case_study_03.sql b/../database/database_case_study_03.sql
+--- a/../database/database_case_study_03.sql	
++++ b/../database/database_case_study_03.sql	
+@@ -60,7 +60,7 @@
+     FOREIGN KEY(product_id) REFERENCES products(product_id)
+ );
+ INSERT INTO product_type (product_type_name) VALUES ("Phone"), ("Accessory");
+-INSERT INTO products (product_name, product_typee_id,`describe`,price,product_image_url)
++INSERT INTO products (product_name, product_type_id,`describe`,price,product_image_url)
+ VALUES ("Iphone X", 1,"Cấu hình:
+ -Màn hình: 5.8”, Super Retina Oled
+ -Camera: 12MP
+@@ -222,4 +222,33 @@
+ ("Nguyễn Anh Tuấn","anhtuan@gmail.com", "0123456023","Đà Nẵng", 23),
+ ("Ngô Thị Ánh Tuyết","anhtuyet@gmail.com", "0123456024","Quảng Nam", 24),
+ ("Trương Hà Mai","hamai@gmail.com", "0123456025","Nghệ An", 25),
+-("Nguyễn Thảo Mai","thaomai@gmail.com", "0123456026","Thái Bình", 26);
+\ No newline at end of file
++("Nguyễn Thảo Mai","thaomai@gmail.com", "0123456026","Thái Bình", 26);
++
++SET SQL_SAFE_UPDATES =0;
++DELETE FROM customers WHERE customer_id = 26;
++
++
++
++SELECT od.order_detail_id,od.quantity,p.product_name,p.product_type_id,p.product_id,p.product_image_url,p.describe,p.price,od.order_detail_date,p.updateAt
++            FROM order_detail AS od 
++            INNER JOIN orders AS o ON od.order_id = o.order_id
++            INNER JOIN customers AS c ON o.customer_id = c.customer_id
++            INNER JOIN products AS p ON od.product_id = p.product_id
++            WHERE od.order_detail_id = 1 ;
++UPDATE order_detail SET quantity = 4 WHERE order_detail_id =1;
++
++SELECT  DISTINCT c.*, o.order_date
++            FROM order_detail AS od 
++            INNER JOIN orders AS o ON od.order_id = o.order_id
++            INNER JOIN customers AS c ON o.customer_id = c.customer_id
++            WHERE c.customer_name LIKE "%%" AND c.phone_number LIKE "%0123456001%";
++
++SELECT*FROM account_users WHERE user_name= "thang";
++
++SELECT *
++            FROM customers AS c
++            INNER JOIN account_users AS ac ON c.account_id = ac.account_id
++            WHERE ac.account_id = 42;
++
++
++
+Index: .idea/webContexts.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/webContexts.xml b/.idea/webContexts.xml
+--- a/.idea/webContexts.xml	
++++ b/.idea/webContexts.xml	
+@@ -5,6 +5,7 @@
+       <map>
+         <entry key="file://$PROJECT_DIR$/src/main/webapp/account/register_form.jsp" value="file://$PROJECT_DIR$/src/main/webapp/account" />
+         <entry key="file://$PROJECT_DIR$/src/main/webapp/admin/order.jsp" value="file://$PROJECT_DIR$/src/main/webapp/admin" />
++        <entry key="file://$PROJECT_DIR$/src/main/webapp/home.jsp" value="file://$PROJECT_DIR$/src/main/webapp" />
+         <entry key="file://$PROJECT_DIR$/src/main/webapp/users/create.jsp" value="file://$PROJECT_DIR$/src/main/webapp/users" />
+         <entry key="file://$PROJECT_DIR$/src/main/webapp/users/order_detail.jsp" value="file://$PROJECT_DIR$/src/main/webapp/users" />
+         <entry key="file://$PROJECT_DIR$/src/main/webapp/view/accessorys/list.jsp" value="file://$PROJECT_DIR$/src/main/webapp/view/accessorys" />

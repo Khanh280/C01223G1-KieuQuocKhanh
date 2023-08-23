@@ -1,0 +1,990 @@
+Index: src/main/java/controller/AccessoryServlet.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package controller;\r\nimport models.model.Product;\r\nimport models.service.impl.accessory.IAccessoryService;\r\nimport models.service.impl.accessory.impl.AccessoryService;\r\n\r\n\r\nimport javax.servlet.ServletException;\r\nimport javax.servlet.annotation.WebServlet;\r\nimport javax.servlet.http.HttpServlet;\r\nimport javax.servlet.http.HttpServletRequest;\r\nimport javax.servlet.http.HttpServletResponse;\r\nimport java.io.IOException;\r\nimport java.util.List;\r\n\r\n@WebServlet(name = \"AccessoryServlet\",urlPatterns = \"/accessory\")\r\npublic class AccessoryServlet extends HttpServlet {\r\n    private IAccessoryService accessoryService = new AccessoryService();\r\n    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {\r\n        String action = request.getParameter(\"action\");\r\n        if (action == null) {\r\n            action = \"\";\r\n        }\r\n        switch (action) {\r\n            case \"create\":\r\n                showCreateForm(request, response);\r\n                break;\r\n            case \"edit\":\r\n                showEditForm(request, response);\r\n                break;\r\n            default:\r\n                showList(request, response);\r\n        }\r\n    }\r\n\r\n    private void showEditForm(HttpServletRequest request, HttpServletResponse response) {\r\n        int id = Integer.parseInt(request.getParameter(\"id\"));\r\n        Product product = accessoryService.findById(id);\r\n        request.setAttribute(\"product\", product);\r\n        try {\r\n            request.getRequestDispatcher(\"view/accessorys/edit.jsp\").forward(request, response);\r\n\r\n        } catch (ServletException e) {\r\n            e.printStackTrace();\r\n        } catch (IOException e) {\r\n            e.printStackTrace();\r\n        }\r\n    }\r\n\r\n    private void showCreateForm(HttpServletRequest request, HttpServletResponse response) {\r\n        try {\r\n            request.getRequestDispatcher(\"view/accessorys/create.jsp\").forward(request, response);\r\n        } catch (ServletException e) {\r\n            e.printStackTrace();\r\n        } catch (IOException e) {\r\n            e.printStackTrace();\r\n        }\r\n    }\r\n\r\n    private void showList(HttpServletRequest request, HttpServletResponse response) {\r\n        List<Product> productList = accessoryService.getList();\r\n        request.setAttribute(\"productList\", productList);\r\n        try {\r\n            request.getRequestDispatcher(\"view/accessorys/list.jsp\").forward(request, response);\r\n        } catch (ServletException e) {\r\n            e.printStackTrace();\r\n        } catch (IOException e) {\r\n            e.printStackTrace();\r\n        }\r\n    }\r\n\r\n    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {\r\n        String action = request.getParameter(\"action\");\r\n        if (action == null) {\r\n            action = \"\";\r\n        }\r\n        switch (action) {\r\n            case \"create\":\r\n                createProduct(request, response);\r\n                break;\r\n            case \"delete\":\r\n                removeProduct(request, response);\r\n                break;\r\n            case \"edit\":\r\n                editProduct(request, response);\r\n                break;\r\n            case \"search\":\r\n                seachProduct(request, response);\r\n                break;\r\n\r\n        }\r\n    }\r\n\r\n    private void seachProduct(HttpServletRequest request, HttpServletResponse response) {\r\n        String name = request.getParameter(\"name\");\r\n        int price = Integer.parseInt(request.getParameter(\"price\"));\r\n        List<Product> searchProductList = null;\r\n        switch (price) {\r\n            case 1:\r\n                searchProductList=accessoryService.search(name,0,1000000);\r\n                break;\r\n            case 2:\r\n                searchProductList = accessoryService.search(name, 0, 1000000);\r\n                break;\r\n            case 3:\r\n                searchProductList = accessoryService.search(name, 1000001, 3000000);\r\n                break;\r\n            case 4:\r\n                searchProductList = accessoryService.search(name, 3000001, 5000000);\r\n                break;\r\n            case 5:\r\n                searchProductList = accessoryService.search(name, 5000001, 10000000);\r\n                break;\r\n        }\r\n        request.setAttribute(\"productList\", searchProductList);\r\n        try {\r\n            request.getRequestDispatcher(\"view/accessorys/list.jsp\").forward(request, response);\r\n        } catch (ServletException e) {\r\n            e.printStackTrace();\r\n        } catch (IOException e) {\r\n            e.printStackTrace();\r\n        }\r\n    }\r\n\r\n    private void editProduct(HttpServletRequest request, HttpServletResponse response) {\r\n        int id = Integer.parseInt(request.getParameter(\"id\"));\r\n        String name = request.getParameter(\"name\");\r\n        int productType = Integer.parseInt(request.getParameter(\"productType\"));\r\n        String describe = request.getParameter(\"describe\");\r\n        double price = Double.parseDouble(((request.getParameter(\"price\"))));\r\n        String productImage = request.getParameter(\"productImage\");\r\n        Product product = new Product(id, name, productType, describe, price, productImage);\r\n        boolean checkEdit = accessoryService.edit(product);\r\n        String mess;\r\n        if (checkEdit) {\r\n            mess = \"Editing is successful\";\r\n        } else {\r\n            mess = \"Deletion failed\";\r\n        }\r\n        request.setAttribute(\"mess\", mess);\r\n        showList(request, response);\r\n    }\r\n\r\n    private void removeProduct(HttpServletRequest request, HttpServletResponse response) {\r\n        int id = Integer.parseInt(request.getParameter(\"id\"));\r\n        boolean checkRemove = accessoryService.remove(id);\r\n        if (checkRemove) {\r\n            checkRemove = accessoryService.remove(id);\r\n        }\r\n        String mess;\r\n        if (checkRemove) {\r\n            mess = \"Deletion failed\";\r\n        } else {\r\n            mess = \"Delete successfully\";\r\n\r\n        }\r\n        request.setAttribute(\"mess\", mess);\r\n        showList(request, response);\r\n    }\r\n\r\n    private void createProduct(HttpServletRequest request, HttpServletResponse response) {\r\n        String name = request.getParameter(\"name\");\r\n        int productType = Integer.parseInt(request.getParameter(\"productType\"));\r\n        String describe = request.getParameter(\"describe\");\r\n        double price = Double.parseDouble(((request.getParameter(\"price\"))));\r\n        String productImage = request.getParameter(\"productImage\");\r\n        Product product = new Product(name, productType, describe, price, productImage);\r\n        accessoryService.createAt(product);\r\n        showList(request, response);\r\n    }\r\n\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- src/main/java/controller/AccessoryServlet.java	(revision 9517c1239aea59d7ec28626c7e70c6f949b048f2)
++++ src/main/java/controller/AccessoryServlet.java	(date 1684067403025)
+@@ -1,9 +1,9 @@
+ package controller;
++
+ import models.model.Product;
+ import models.service.impl.accessory.IAccessoryService;
+ import models.service.impl.accessory.impl.AccessoryService;
+ 
+-
+ import javax.servlet.ServletException;
+ import javax.servlet.annotation.WebServlet;
+ import javax.servlet.http.HttpServlet;
+@@ -17,6 +17,7 @@
+     private IAccessoryService accessoryService = new AccessoryService();
+     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+         String action = request.getParameter("action");
++        List<Product> productList;
+         if (action == null) {
+             action = "";
+         }
+@@ -26,12 +27,32 @@
+                 break;
+             case "edit":
+                 showEditForm(request, response);
++                break;
++            case "displayPageUser":
++                int pageUser = Integer.parseInt(request.getParameter("page"));
++                productList = accessoryService.getList();
++                for (int i = 1; i <= Math.ceil((double) productList.size() / 15); i++) {
++                    if (pageUser == i) {
++                        displayPageUser(request, response, productList, pageUser);
++                        break;
++                    }
++                }
+                 break;
+             default:
+                 showList(request, response);
+         }
+     }
+ 
++    private static void displayPageUser(HttpServletRequest request, HttpServletResponse response, List<Product> productsList, int page) throws ServletException, IOException {
++        int max = page * 15;
++        int start = max - 15;
++        int end = Math.min(max, productsList.size());
++        List<Product> limitList = productsList.subList(start, end);
++        request.setAttribute("productList", limitList);
++        request.setAttribute("productListSize", productsList.size());
++        request.getRequestDispatcher("/users/home.jsp").forward(request, response);
++    }
++
+     private void showEditForm(HttpServletRequest request, HttpServletResponse response) {
+         int id = Integer.parseInt(request.getParameter("id"));
+         Product product = accessoryService.findById(id);
+@@ -86,6 +107,19 @@
+             case "search":
+                 seachProduct(request, response);
+                 break;
++            case "searchUser":
++                String productName = request.getParameter("productName");
++                if (productName.equals("")) {
++                    List<Product> productList = accessoryService.getList();
++                    List<Product> limitList = productList.subList(0, Math.min(15, productList.size()));
++                    request.setAttribute("productList", limitList);
++                    request.setAttribute("productListSize", productList.size());
++                } else {
++                    List<Product> productList = accessoryService.searchUser(productName);
++                    request.setAttribute("productList", productList);
++                }
++                request.getRequestDispatcher("/users/home.jsp").forward(request, response);
++                break;
+ 
+         }
+     }
+@@ -95,20 +129,22 @@
+         int price = Integer.parseInt(request.getParameter("price"));
+         List<Product> searchProductList = null;
+         switch (price) {
++            case 6:
++                searchProductList = accessoryService.search(name, 0, 1000000000);
+             case 1:
+-                searchProductList=accessoryService.search(name,0,1000000);
++                searchProductList = accessoryService.search(name, 0, 100000);
+                 break;
+             case 2:
+-                searchProductList = accessoryService.search(name, 0, 1000000);
++                searchProductList = accessoryService.search(name, 100001, 500000);
+                 break;
+             case 3:
+-                searchProductList = accessoryService.search(name, 1000001, 3000000);
++                searchProductList = accessoryService.search(name, 500001, 1000000);
+                 break;
+             case 4:
+-                searchProductList = accessoryService.search(name, 3000001, 5000000);
++                searchProductList = accessoryService.search(name, 1000001, 5000000);
+                 break;
+             case 5:
+-                searchProductList = accessoryService.search(name, 5000001, 10000000);
++                searchProductList = accessoryService.search(name, 5000001, 1000000000);
+                 break;
+         }
+         request.setAttribute("productList", searchProductList);
+@@ -132,9 +168,9 @@
+         boolean checkEdit = accessoryService.edit(product);
+         String mess;
+         if (checkEdit) {
+-            mess = "Editing is successful";
++            mess = "Chỉnh sửa thành công";
+         } else {
+-            mess = "Deletion failed";
++            mess = "Chinh sửa thất bại";
+         }
+         request.setAttribute("mess", mess);
+         showList(request, response);
+@@ -148,9 +184,9 @@
+         }
+         String mess;
+         if (checkRemove) {
+-            mess = "Deletion failed";
++            mess = "Xóa thất bại";
+         } else {
+-            mess = "Delete successfully";
++            mess = "Xóa thành công";
+ 
+         }
+         request.setAttribute("mess", mess);
+Index: .idea/misc.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<project version=\"4\">\r\n  <component name=\"ExternalStorageConfigurationManager\" enabled=\"true\" />\r\n  <component name=\"FrameworkDetectionExcludesConfiguration\">\r\n    <file type=\"web\" url=\"file://$PROJECT_DIR$\" />\r\n  </component>\r\n  <component name=\"ProjectRootManager\" version=\"2\" languageLevel=\"JDK_1_8\" default=\"true\" project-jdk-name=\"1.8\" project-jdk-type=\"JavaSDK\">\r\n    <output url=\"file://$PROJECT_DIR$/out\" />\r\n  </component>\r\n</project>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- .idea/misc.xml	(revision 9517c1239aea59d7ec28626c7e70c6f949b048f2)
++++ .idea/misc.xml	(date 1684049211184)
+@@ -4,6 +4,9 @@
+   <component name="FrameworkDetectionExcludesConfiguration">
+     <file type="web" url="file://$PROJECT_DIR$" />
+   </component>
++  <component name="JavaScriptSettings">
++    <option name="languageLevel" value="ES6" />
++  </component>
+   <component name="ProjectRootManager" version="2" languageLevel="JDK_1_8" default="true" project-jdk-name="1.8" project-jdk-type="JavaSDK">
+     <output url="file://$PROJECT_DIR$/out" />
+   </component>
+Index: src/main/webapp/view/accessorys/create.jsp
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><%--\r\n  Created by IntelliJ IDEA.\r\n  User: LENOVO\r\n  Date: 5/12/2023\r\n  Time: 12:36 AM\r\n  To change this template use File | Settings | File Templates.\r\n--%>\r\n<%@ page contentType=\"text/html;charset=UTF-8\" language=\"java\" %>\r\n<html>\r\n<head>\r\n    <title>Title</title>\r\n    <link href=\"https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css\" rel=\"stylesheet\"\r\n          integrity=\"sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3\" crossorigin=\"anonymous\">\r\n    <script src=\"https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js\"\r\n            integrity=\"sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p\"\r\n            crossorigin=\"anonymous\"></script>\r\n</head>\r\n<body>\r\n<jsp:include page=\"/header_footer/header.jsp\"></jsp:include>\r\n<div class=\"container-fluid\">\r\n    <div class=\"row \">\r\n        <div class=\"justify-content-center\">\r\n            <h2>Create New Accessory</h2>\r\n        </div>\r\n    </div>\r\n    <div class=\"row\">\r\n        <div class=\"col-3\">\r\n        </div>\r\n        <div class=\"col-6\">\r\n            <h4 style=\"color: blue; font-weight: bold\">${mess}</h4>\r\n            <form method=\"post\" action=\"/accessory?action=create\">\r\n                <label>Name</label>\r\n                <input class=\"form-control\" type=\"text\" name=\"name\" required><br>\r\n                <label>Type</label>\r\n                <select class=\"form-control\" name=\"productType\" id=\"\">\r\n                    <option value=\"2\">Accessory</option>\r\n                </select><br>\r\n                <label>Describe</label>\r\n                <input class=\"form-control\" type=\"text\" name=\"describe\" required><br>\r\n                <label>Price</label>\r\n                <input class=\"form-control\" type=\"number\" name=\"price\" required><br>\r\n                <label>Image</label>\r\n                <input class=\"form-control\" type=\"text\" name=\"productImage\" required><br>\r\n                <button class=\"btn btn-success\">Create</button>\r\n            </form>\r\n            <p style=\"color: blue;font-weight: bold;justify-content: center\">${mess}</p>\r\n        </div>\r\n        <div class=\"col-3\">\r\n        </div>\r\n    </div>\r\n</div>\r\n<jsp:include page=\"/header_footer/footer.jsp\"></jsp:include>\r\n</body>\r\n</html>\r\n\r\n\r\n\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- src/main/webapp/view/accessorys/create.jsp	(revision 9517c1239aea59d7ec28626c7e70c6f949b048f2)
++++ src/main/webapp/view/accessorys/create.jsp	(date 1684053004069)
+@@ -1,57 +1,134 @@
+-<%--
+-  Created by IntelliJ IDEA.
+-  User: LENOVO
+-  Date: 5/12/2023
+-  Time: 12:36 AM
+-  To change this template use File | Settings | File Templates.
+---%>
++<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+ <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+ <html>
+ <head>
+     <title>Title</title>
++
+     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+           integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+             integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+             crossorigin="anonymous"></script>
++    <style>
++
++
++        #imageContainer {
++            width: 50px;
++            height: 50px;
++        }
++
++        #ig1-user-page {
++            color: black;
++        }
++
++        #ig1-user-page:hover {
++            color: white;
++        }
++
++        #navbarSupportedContent ul li:hover a {
++            color: white;
++        }
++
++        #navbarSupportedContent ul li a {
++            color: black;
++        }
++
++
++    </style>
+ </head>
+ <body>
+-<jsp:include page="/header_footer/header.jsp"></jsp:include>
+-<div class="container-fluid">
+-    <div class="row ">
+-        <div class="justify-content-center">
+-            <h2>Create New Accessory</h2>
++<nav class="navbar navbar-expand-lg bg-body-tertiary" style="background-color: orange">
++    <div class="container-fluid">
++        <a id="ig1-user-page" href="/accessory" class="navbar-brand">IG1 Store</a>
++        <div class="collapse navbar-collapse" id="navbarSupportedContent">
++            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
++                <li clx ass="nav-item">
++                    <a class="nav-link active" aria-current="page" href="/admin/admin.jsp">Trang chủ</a>
++                </li>
++                <li class="nav-item dropdown">
++                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
++                       aria-expanded="false">
++                        Quản lý
++                    </a>
++                    <ul class="dropdown-menu">
++                        <li><a class="dropdown-item" style="color: black" href="/accessory">Phụ kiện</a></li>
++                        <li><a class="dropdown-item" style="color: black" href="/product">Sản phẩm</a></li>
++                        <li><a class="dropdown-item" style="color: black" href="/customer-servlet">Customers</a></li>
++                        <li><a class="dropdown-item" style="color: black" href="/order-servlet">Order</a></li>
++                    </ul>
++                </li>
++            </ul>
+         </div>
+     </div>
+-    <div class="row">
+-        <div class="col-3">
+-        </div>
+-        <div class="col-6">
+-            <h4 style="color: blue; font-weight: bold">${mess}</h4>
+-            <form method="post" action="/accessory?action=create">
+-                <label>Name</label>
+-                <input class="form-control" type="text" name="name" required><br>
+-                <label>Type</label>
+-                <select class="form-control" name="productType" id="">
+-                    <option value="2">Accessory</option>
+-                </select><br>
+-                <label>Describe</label>
+-                <input class="form-control" type="text" name="describe" required><br>
+-                <label>Price</label>
+-                <input class="form-control" type="number" name="price" required><br>
+-                <label>Image</label>
+-                <input class="form-control" type="text" name="productImage" required><br>
+-                <button class="btn btn-success">Create</button>
+-            </form>
+-            <p style="color: blue;font-weight: bold;justify-content: center">${mess}</p>
+-        </div>
+-        <div class="col-3">
++</nav>
++<br>
++<div class="container col-md-5">
++    <div class="card border-5">
++        <div class="card-body">
++            <form action="/accessory?action=create" method="post">
++                <caption>
++                    <h2 style="text-align: center">
++                        THÊM MỚI PHỤ KIỆN
++                    </h2>
++                    <div style="text-align: center; color: green ;font-size: 30px">${mess}</div>
++                </caption>
++                <fieldset class="form-group">
++                    <label>Tên phụ kiện :</label> <input class="form-control" type="text" name="name" required><br>
++                </fieldset>
++
++                <fieldset class="form-group">
++                    <label hidden>Loại :</label> <select hidden class="form-control" name="productType" id="">
++                    <option value="2">Accessory</option>
++                </select>
++                </fieldset>
++
++                <fieldset class="form-group">
++                    <label>Mô tả :</label><input class="form-control" type="text" name="describe" required><br>
++                </fieldset>
++
++                <fieldset class="form-group">
++                    <label>Giá(VNĐ) :</label> <input class="form-control" type="number" name="price" required><br>
++                </fieldset>
++
++                <fieldset class="form-group">
++                    <label>Ảnh :</label>
++                    <div>
++                        <input class="form-control" name="productImage" type="text" id="imageUrlInput"
++                               placeholder="Nhập URL hình ảnh" oninput="showImage()" required>
++                    </div>
++                    <br>
++                </fieldset>
++                <div class="row">
++                    <div class="col-4" style="display: inline-block">
++                        <button type="submit" class="btn btn-outline-primary "
++                                onclick="window.location.href='/accessory'">
++                            Quay lại
++                        </button>
++                    </div>
++                    <div class="col-4" style="display: inline-block">
++                        <div id="imageContainer"></div>
++                    </div>
++                    <div class="col-4" style="display: inline-block;">
++                        <button type="submit" class="btn btn-success">Thêm</button>
++                    </div>
++                </div>
++            </form>
+         </div>
+     </div>
+ </div>
+-<jsp:include page="/header_footer/footer.jsp"></jsp:include>
++<script>
++    function showImage() {
++        var imageUrl = document.getElementById("imageUrlInput").value;
++        var imageConstainer = document.getElementById("imageContainer");
++        var imgElement = document.createElement("img");
++        imgElement.src = imageUrl;
++        imgElement.alt = "Hình ảnh";
++        imgElement.style.margin = "5px";
++        imgElement.style.width = "100px";
++        imgElement.style.height = "50px";
++        imageContainer.innerHTML = "";
++        imageContainer.appendChild(imgElement);
++    }
++</script>
+ </body>
+ </html>
+-
+-
+-
+Index: src/main/webapp/view/accessorys/list.jsp
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><%--\r\n  Created by IntelliJ IDEA.\r\n  User: LENOVO\r\n  Date: 5/12/2023\r\n  Time: 12:36 AM\r\n  To change this template use File | Settings | File Templates.\r\n--%>\r\n<%@ page contentType=\"text/html;charset=UTF-8\" language=\"java\" %>\r\n<%@ taglib uri=\"http://java.sun.com/jsp/jstl/core\" prefix=\"c\" %>\r\n<html>\r\n<head>\r\n    <title>Title</title>\r\n    <link rel=\"stylesheet\" href=\"/bootstrap520/css/bootstrap.css\"/>\r\n    <link rel=\"stylesheet\" href=\"datatables/css/dataTables.bootstrap5.min.css\"/>\r\n    <link href=\"https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css\" rel=\"stylesheet\"\r\n          integrity=\"sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3\" crossorigin=\"anonymous\">\r\n</head>\r\n<body>\r\n<jsp:include page=\"/header_footer/header.jsp\"></jsp:include>\r\n<nav class=\"navbar navbar-light bg-light\" style=\"position: sticky;top:0;left: 0;right: 0\">\r\n    <div class=\"container-fluid\">\r\n        <div style=\"display: flex; margin: 8px;position: relative\">\r\n            <div>\r\n                <button type=\"button\" class=\"btn btn-success btn-rounded\"\r\n                        onclick=\"window.location.href='/accessory?action=create'\">New accessory\r\n                </button>\r\n            </div>\r\n        </div>\r\n        <p style=\"color: #31b131;font-weight: bolder;font-size: large\">${mess}</p>\r\n        <form action=\"/accessory?action=search\" method=\"post\" class=\"d-flex my-0\">\r\n            <input type=\"hidden\" name=\"action\" value=\"search\">\r\n            <input class=\"form-control me-2\" type=\"text\" placeholder=\"Enter name customer\" aria-label=\"Search\"\r\n                   name=\"name\">\r\n            <select name=\"price\" id=\"\" class=\"form-select\" aria-label=\"Default select example\">\r\n                <option value=\"1\">choose price</option>\r\n                <option value=\"2\">Less than 100.000</option>\r\n                <option value=\"3\">From 100.000-500.000</option>\r\n                <option value=\"4\">From 500.000-1.000.000</option>\r\n                <option value=\"5\">Over 10.000.000</option>\r\n            </select>\r\n            <button class=\"btn btn-outline-primary\" type=\"submit\">Find</button>\r\n        </form>\r\n    </div>\r\n</nav>\r\n\r\n\r\n\r\n<div class=\"container-fluid my-lg-2\">\r\n    <div class=\"row\">\r\n        <div class=\"col-1\"></div>\r\n        <div class=\"col-10\">\r\n            <div>\r\n                <h3>List customer</h3>\r\n            </div>\r\n            <table id=\"tableCustomer\" class=\"table table-hover\">\r\n                <thead>\r\n                <tr>\r\n                    <th scope=\"col\">Product ID</th>\r\n                    <th scope=\"col\">Name</th>\r\n                    <th scope=\"col\">Type</th>\r\n                    <th scope=\"col\" hidden>Describe</th>\r\n                    <th scope=\"col\">Price(VND)</th>\r\n                    <th scope=\"col\" hidden>Image</th>\r\n                    <th scope=\"col\">Create At</th>\r\n                    <th scope=\"col\">Update At</th>\r\n                    <th scope=\"col\">Manipulate</th>\r\n                </tr>\r\n                </thead>\r\n                <tbody>\r\n                <c:forEach var=\"product\" items=\"${productList}\">\r\n                    <td>${product.getId()}</td>\r\n                    <td>${product.getName()}</td>\r\n                    <td>\r\n                        <c:if test=\"${product.getProductType() == 1}\">\r\n                            Phone\r\n                        </c:if>\r\n                        <c:if test=\"${product.getProductType() == 2}\">\r\n                            Accessory\r\n                        </c:if>\r\n                    </td>\r\n                    <td hidden>${product.getDescribe()}</td>\r\n                    <td>${product.getPrice()}</td>\r\n                    <td hidden>${product.getProductImage()}</td>\r\n                    <td>${product.getCreatAt()}</td>\r\n                    <td>${product.getUpdateAt()}</td>\r\n                    <td>\r\n                        <button type=\"submit\" class=\"btn btn-danger\" data-bs-toggle=\"modal\"\r\n                                data-bs-target=\"#exampleModal\"\r\n                                onclick=\"deleteProduct('${product.getId()}','${product.getName()}')\">\r\n                            Delete\r\n                        </button>\r\n                        <button class=\"btn btn-warning\"\r\n                                onclick=\"window.location.href='/accessory?action=edit&id=${product.getId()}'\">\r\n                            Update\r\n                        </button>\r\n                    </td>\r\n                    </tr>\r\n                </c:forEach>\r\n                </tbody>\r\n            </table>\r\n        </div>\r\n        <div class=\"col-1\"></div>\r\n    </div>\r\n</div>\r\n<div class=\"modal fade\" id=\"exampleModal\" tabindex=\"-1\"\r\n     aria-labelledby=\"exampleModalLabel\" aria-hidden=\"true\">\r\n    <div class=\"modal-dialog\">\r\n        <div class=\"modal-content\">\r\n            <div class=\"modal-header\">\r\n                <h1 class=\"modal-title fs-5\" id=\"exampleModalLabel\">Delete Product</h1>\r\n                <button type=\"button\" class=\"btn-close\" data-bs-dismiss=\"modal\"\r\n                        aria-label=\"Close\"></button>\r\n            </div>\r\n            <form action=\"/accessory\" method=\"post\">\r\n                <div class=\"modal-body\">\r\n                    <input type=\"text\" name=\"action\" value=\"delete\" hidden>\r\n                    <input type=\"text\" id=\"id\" name=\"id\" hidden>\r\n                    Do you want to delete the product <span id=\"name\"></span> ?\r\n                </div>\r\n                <div class=\"modal-footer\">\r\n                    <button type=\"button\" class=\"btn btn-secondary\" data-bs-dismiss=\"modal\">No</button>\r\n                    <button type=\"submit\" class=\"btn btn-primary\">\r\n                        Yes\r\n                    </button>\r\n                </div>\r\n            </form>\r\n        </div>\r\n    </div>\r\n</div>\r\n<script>\r\n    function deleteProduct(id, name) {\r\n        document.getElementById(\"id\").value = id;\r\n        document.getElementById(\"name\").innerText = name;\r\n    }\r\n</script>\r\n<%--Modal detail--%>\r\n<div class=\"modal\" id=\"deleteModal1\" tabindex=\"-1\"\r\n     aria-labelledby=\"exampleModalLabel\"\r\n     aria-hidden=\"true\">\r\n    <div class=\"modal-dialog\">\r\n        <div class=\"modal-content\">\r\n            <div class=\"modal-header\">\r\n                <h5 class=\"modal-title\" id=\"exampleModalLabel1\">Chi tiết khách hàng</h5>\r\n                <button type=\"button\" class=\"btn-close\" data-bs-dismiss=\"modal\"\r\n                        aria-label=\"Close\"></button>\r\n            </div>\r\n            <form action=\"/customer?action=delete\" method=\"post\">\r\n                <div class=\"modal-body\">\r\n                    <p>ID customer: <span id=\"customerIdDetail\"></span></p>\r\n                    <p>Name customer: <span id=\"customerNameDetail\"></span></p>\r\n                    <p>Create Datetime: <span id=\"customerCreateAtDetail\"></span></p>\r\n                    <p>Update Datetime: <span id=\"customerUpdateAtDetail\"></span></p>\r\n                </div>\r\n            </form>\r\n        </div>\r\n    </div>\r\n</div>\r\n<footer style=\"margin-top: 50px\">\r\n    <jsp:include page=\"/header_footer/footer.jsp\"></jsp:include>\r\n</footer>\r\n<script>\r\n    function infoDelete(id, name, account) {\r\n        document.getElementById(\"customerId\").value = id;\r\n        document.getElementById(\"nameAccount\").value = account;\r\n        document.getElementById(\"deleteName\").innerText = name;\r\n    }\r\n\r\n    function infoDetail(id, name, createAt, updateAt) {\r\n        document.getElementById(\"customerIdDetail\").innerText = id;\r\n        document.getElementById(\"customerNameDetail\").innerText = name;\r\n        document.getElementById(\"customerCreateAtDetail\").innerText = createAt;\r\n        document.getElementById(\"customerUpdateAtDetail\").innerText = updateAt;\r\n    }\r\n</script>\r\n<script src=\"https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js\"\r\n        integrity=\"sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p\"\r\n        crossorigin=\"anonymous\"></script>\r\n<script src=\"jquery/jquery-3.5.1.min.js\"></script>\r\n<script src=\"datatables/js/jquery.dataTables.min.js\"></script>\r\n<script src=\"datatables/js/dataTables.bootstrap5.min.js\"></script>\r\n<script>\r\n    $(document).ready(function () {\r\n        $('#tableCustomer').dataTable({\r\n            \"dom\": 'lrtip',\r\n            \"lengthChange\": false,\r\n            \"pageLength\": 10\r\n        });\r\n    });\r\n</script>\r\n</body>\r\n</html>\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- src/main/webapp/view/accessorys/list.jsp	(revision 9517c1239aea59d7ec28626c7e70c6f949b048f2)
++++ src/main/webapp/view/accessorys/list.jsp	(date 1684054614003)
+@@ -1,129 +1,166 @@
+-<%--
+-  Created by IntelliJ IDEA.
+-  User: LENOVO
+-  Date: 5/12/2023
+-  Time: 12:36 AM
+-  To change this template use File | Settings | File Templates.
+---%>
+ <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+ <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+ <html>
+ <head>
+-    <title>Title</title>
++    <title>List of Producs</title>
+     <link rel="stylesheet" href="/bootstrap520/css/bootstrap.css"/>
+     <link rel="stylesheet" href="datatables/css/dataTables.bootstrap5.min.css"/>
+     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+           integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
++    <style>
++        #ig1-user-page {
++            color: black;
++        }
++
++        #ig1-user-page:hover {
++            color: white;
++        }
++
++        #navbarSupportedContent ul li:hover a {
++            color: white;
++        }
++
++        #navbarSupportedContent ul li a {
++            color: black;
++        }
++    </style>
++
+ </head>
+ <body>
+-<jsp:include page="/header_footer/header.jsp"></jsp:include>
+-<nav class="navbar navbar-light bg-light" style="position: sticky;top:0;left: 0;right: 0">
++<nav class="navbar navbar-expand-lg bg-body-tertiary" style="background-color: orange">
+     <div class="container-fluid">
+-        <div style="display: flex; margin: 8px;position: relative">
+-            <div>
+-                <button type="button" class="btn btn-success btn-rounded"
+-                        onclick="window.location.href='/accessory?action=create'">New accessory
+-                </button>
+-            </div>
+-        </div>
+-        <p style="color: #31b131;font-weight: bolder;font-size: large">${mess}</p>
+-        <form action="/accessory?action=search" method="post" class="d-flex my-0">
+-            <input type="hidden" name="action" value="search">
+-            <input class="form-control me-2" type="text" placeholder="Enter name customer" aria-label="Search"
+-                   name="name">
+-            <select name="price" id="" class="form-select" aria-label="Default select example">
+-                <option value="1">choose price</option>
+-                <option value="2">Less than 100.000</option>
+-                <option value="3">From 100.000-500.000</option>
+-                <option value="4">From 500.000-1.000.000</option>
+-                <option value="5">Over 10.000.000</option>
+-            </select>
+-            <button class="btn btn-outline-primary" type="submit">Find</button>
+-        </form>
++        <a id="ig1-user-page" href="/accessory" class="navbar-brand">IG1 Store</a>
++        <div class="collapse navbar-collapse" id="navbarSupportedContent">
++            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
++                <li clx ass="nav-item">
++                    <a class="nav-link active" aria-current="page" href="/admin/admin.jsp">Trang chủ</a>
++                </li>
++                <li class="nav-item dropdown">
++                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
++                       aria-expanded="false">
++                        Quản lý
++                    </a>
++                    <ul class="dropdown-menu">
++                        <li><a class="dropdown-item" style="color: black" href="/accessory">Phụ kiện</a></li>
++                        <li><a class="dropdown-item" style="color: black" href="/product">Sản phẩm</a></li>
++                        <li><a class="dropdown-item" style="color: black" href="/customer-servlet">Customers</a></li>
++                        <li><a class="dropdown-item" style="color: black" href="/order-servlet">Order</a></li>
++                    </ul>
++                </li>
++            </ul>
++            <form class="d-flex m-0" role="search" action="/accessory?action=search" method="post">
++                <input class="form-control me-2" type="search" placeholder="Nhập tên sản phẩm" aria-label="Search"
++                       name="name" id="searchInput" oninput="saveSearchInput()">
++                <select name="price" id="" class="form-control me-2">
++                    <option value="6">--Chọn giá--</option>
++                    <option value="1">Dưới 100.000</option>
++                    <option value="2">Từ 100.000 đến 500.000</option>
++                    <option value="3">Từ 500.000 đến 1 triệu</option>
++                    <option value="4">Từ 1 triệu đến 5 triệu</option>
++                    <option value="5">Trên 5 triệu</option>
++                </select>
++                <button type="submit" class="btn btn-outline-primary"
++                        style="background: white; width: 200px;height: auto; color: black">
++                    Tìm kiếm
++                </button>
++            </form>
++        </div>
+     </div>
+ </nav>
++<br>
+ 
+ 
+-
+-<div class="container-fluid my-lg-2">
+-    <div class="row">
+-        <div class="col-1"></div>
+-        <div class="col-10">
+-            <div>
+-                <h3>List customer</h3>
+-            </div>
+-            <table id="tableCustomer" class="table table-hover">
+-                <thead>
+-                <tr>
+-                    <th scope="col">Product ID</th>
+-                    <th scope="col">Name</th>
+-                    <th scope="col">Type</th>
+-                    <th scope="col" hidden>Describe</th>
+-                    <th scope="col">Price(VND)</th>
+-                    <th scope="col" hidden>Image</th>
+-                    <th scope="col">Create At</th>
+-                    <th scope="col">Update At</th>
+-                    <th scope="col">Manipulate</th>
+-                </tr>
+-                </thead>
+-                <tbody>
+-                <c:forEach var="product" items="${productList}">
+-                    <td>${product.getId()}</td>
+-                    <td>${product.getName()}</td>
+-                    <td>
+-                        <c:if test="${product.getProductType() == 1}">
+-                            Phone
+-                        </c:if>
+-                        <c:if test="${product.getProductType() == 2}">
+-                            Accessory
+-                        </c:if>
+-                    </td>
+-                    <td hidden>${product.getDescribe()}</td>
+-                    <td>${product.getPrice()}</td>
+-                    <td hidden>${product.getProductImage()}</td>
+-                    <td>${product.getCreatAt()}</td>
+-                    <td>${product.getUpdateAt()}</td>
+-                    <td>
+-                        <button type="submit" class="btn btn-danger" data-bs-toggle="modal"
+-                                data-bs-target="#exampleModal"
+-                                onclick="deleteProduct('${product.getId()}','${product.getName()}')">
+-                            Delete
+-                        </button>
+-                        <button class="btn btn-warning"
+-                                onclick="window.location.href='/accessory?action=edit&id=${product.getId()}'">
+-                            Update
+-                        </button>
+-                    </td>
+-                    </tr>
+-                </c:forEach>
+-                </tbody>
+-            </table>
+-        </div>
+-        <div class="col-1"></div>
+-    </div>
+-</div>
+-<div class="modal fade" id="exampleModal" tabindex="-1"
+-     aria-labelledby="exampleModalLabel" aria-hidden="true">
+-    <div class="modal-dialog">
+-        <div class="modal-content">
+-            <div class="modal-header">
+-                <h1 class="modal-title fs-5" id="exampleModalLabel">Delete Product</h1>
+-                <button type="button" class="btn-close" data-bs-dismiss="modal"
+-                        aria-label="Close"></button>
+-            </div>
+-            <form action="/accessory" method="post">
+-                <div class="modal-body">
+-                    <input type="text" name="action" value="delete" hidden>
+-                    <input type="text" id="id" name="id" hidden>
+-                    Do you want to delete the product <span id="name"></span> ?
+-                </div>
+-                <div class="modal-footer">
+-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">No</button>
+-                    <button type="submit" class="btn btn-primary">
+-                        Yes
+-                    </button>
+-                </div>
+-            </form>
++<div class="row">
++    <div class="container-fluid my-lg-2">
++        <div class="row">
++            <div class="col-1"></div>
++            <div class="col-10">
++                <h3 class="text-center">DANH SÁCH PHỤ KIỆN</h3>
++                <hr>
++                <div class="container text-left">
++
++                    <button type="button" class="btn btn-success btn-rounded"
++                            onclick="window.location.href='/accessory?action=create'">Thêm phụ kiện
++                    </button>
++                    <div style="text-align: center; color: green ;font-size: 30px">${mess}</div>
++                </div>
++                <div class="container text-left">
++                    <table id="tableProduct" class="table table-striped table-bordered"
++                           style="width:100%; margin-top: 20px">
++                        <thead>
++                        <tr>
++                            <th scope="col">STT</th>
++                            <th scope="col">Tên</th>
++                            <th scope="col">Loại</th>
++                            <th scope="col" hidden>Mô tả</th>
++                            <th scope="col">Giá(VNĐ)</th>
++                            <th scope="col" hidden>Ảnh</th>
++                            <th scope="col">Ngày tạo</th>
++                            <th scope="col">Ngày cập nhật</th>
++                            <th scope="col">Thao tác</th>
++                        </tr>
++                        </thead>
++                        <tbody>
++                        <c:forEach var="product" items="${productList}">
++                            <td>${product.getId()}</td>
++                            <td>${product.getName()}</td>
++                            <td>
++                                <c:if test="${product.getProductType() == 2}">
++                                    Accessory
++                                </c:if>
++                            </td>
++                            <td hidden>${product.getDescribe()}</td>
++                            <td>${product.getPrice()}</td>
++                            <td hidden>${product.getProductImage()}</td>
++                            <td>${product.getCreatAt()}</td>
++                            <td>${product.getUpdateAt()}</td>
++                            <td>
++                                <button class="btn btn-warning"
++                                        onclick="window.location.href='/accessory?action=edit&id=${product.getId()}'">
++                                    Sửa
++                                </button>
++                                <button type="submit" class="btn btn-danger" data-bs-toggle="modal"
++                                        data-bs-target="#exampleModal"
++                                        onclick="deleteProduct('${product.getId()}','${product.getName()}')">
++                                    Xóa
++                                </button>
++                            </td>
++                            </tr>
++                        </c:forEach>
++                        </tbody>
++                    </table>
++                </div>
++                <div class="col-1"></div>
++            </div>
++        </div>
++        <footer class="text-center text-lg-start bg-light text-muted" style=" bottom: 0;right: 0;left: 0">
++            <div class="text-center p-4" style="background-color: orange; color: black">
++                © 2023 Copyright:
++                <a class="text-reset fw-bold" href="https://mdbootstrap.com/">ig1store.com</a>
++            </div>
++        </footer>
++        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
++            <div class="modal-dialog">
++                <div class="modal-content">
++                    <div class="modal-header">
++                        <h1 class="modal-title fs-5" id="exampleModalLabel">XÓA PHỤ KIỆN</h1>
++                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
++                    </div>
++                    <form action="/accessory" method="post">
++                        <div class="modal-body">
++                            <input type="text" name="action" value="delete" hidden>
++                            <input type="text" id="id" name="id" hidden>
++                            Bạn có chắc chắn muốn xóa sản phẩm <span style="color: red" id="name"></span> không ?
++                        </div>
++                        <div class="modal-footer">
++                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Đóng</button>
++                            <button type="submit" class="btn btn-primary" style="background: red"
++                                    onclick="showDeleteSuccessAlert()">Đồng ý
++                            </button>
++                        </div>
++                    </form>
++                </div>
++            </div>
+         </div>
+     </div>
+ </div>
+@@ -132,44 +169,27 @@
+         document.getElementById("id").value = id;
+         document.getElementById("name").innerText = name;
+     }
++
++    function showDeleteSuccessAlert() {
++        // Thực hiện xóa sản phẩm thành công ở đây
++
++        // Hiển thị thông báo thành công
++        alert("Phụ kiện đã được xóa thành công!");
++    }
+ </script>
+-<%--Modal detail--%>
+-<div class="modal" id="deleteModal1" tabindex="-1"
+-     aria-labelledby="exampleModalLabel"
+-     aria-hidden="true">
+-    <div class="modal-dialog">
+-        <div class="modal-content">
+-            <div class="modal-header">
+-                <h5 class="modal-title" id="exampleModalLabel1">Chi tiết khách hàng</h5>
+-                <button type="button" class="btn-close" data-bs-dismiss="modal"
+-                        aria-label="Close"></button>
+-            </div>
+-            <form action="/customer?action=delete" method="post">
+-                <div class="modal-body">
+-                    <p>ID customer: <span id="customerIdDetail"></span></p>
+-                    <p>Name customer: <span id="customerNameDetail"></span></p>
+-                    <p>Create Datetime: <span id="customerCreateAtDetail"></span></p>
+-                    <p>Update Datetime: <span id="customerUpdateAtDetail"></span></p>
+-                </div>
+-            </form>
+-        </div>
+-    </div>
+-</div>
+-<footer style="margin-top: 50px">
+-    <jsp:include page="/header_footer/footer.jsp"></jsp:include>
+-</footer>
+ <script>
+-    function infoDelete(id, name, account) {
+-        document.getElementById("customerId").value = id;
+-        document.getElementById("nameAccount").value = account;
+-        document.getElementById("deleteName").innerText = name;
+-    }
++    // Lấy giá trị từ localStorage (nếu có)
++    window.addEventListener('load', function () {
++        var searchInput = localStorage.getItem('searchInput');
++        if (searchInput) {
++            document.getElementById('searchInput').value = searchInput;
++        }
++    });
+ 
+-    function infoDetail(id, name, createAt, updateAt) {
+-        document.getElementById("customerIdDetail").innerText = id;
+-        document.getElementById("customerNameDetail").innerText = name;
+-        document.getElementById("customerCreateAtDetail").innerText = createAt;
+-        document.getElementById("customerUpdateAtDetail").innerText = updateAt;
++    // Lưu giá trị khi người dùng nhập vào
++    function saveSearchInput() {
++        var input = document.getElementById('searchInput').value;
++        localStorage.setItem('searchInput', input);
+     }
+ </script>
+ <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+@@ -180,12 +200,18 @@
+ <script src="datatables/js/dataTables.bootstrap5.min.js"></script>
+ <script>
+     $(document).ready(function () {
+-        $('#tableCustomer').dataTable({
++        $('#tableProduct').dataTable({
+             "dom": 'lrtip',
+             "lengthChange": false,
+-            "pageLength": 10
++            "pageLength": 10,
++            "language": {
++                "paginate": {
++                    "previous": "Trước",
++                    "next": "Sau"
++                }
++            }
+         });
+     });
+ </script>
+ </body>
+-</html>
++</html>
+\ No newline at end of file
+Index: src/main/webapp/view/accessorys/edit.jsp
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><%--\r\n  Created by IntelliJ IDEA.\r\n  User: LENOVO\r\n  Date: 5/12/2023\r\n  Time: 12:36 AM\r\n  To change this template use File | Settings | File Templates.\r\n--%>\r\n<%@ page contentType=\"text/html;charset=UTF-8\" language=\"java\" %>\r\n<%@ taglib uri=\"http://java.sun.com/jsp/jstl/core\" prefix=\"c\" %>\r\n<html>\r\n<head>\r\n    <title>Title</title>\r\n    <link href=\"https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css\" rel=\"stylesheet\"\r\n          integrity=\"sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3\" crossorigin=\"anonymous\">\r\n    <script src=\"https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js\"\r\n            integrity=\"sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p\"\r\n            crossorigin=\"anonymous\"></script>\r\n</head>\r\n<body>\r\n<jsp:include page=\"/header_footer/header.jsp\"></jsp:include>\r\n<div class=\"container-fluid\">\r\n    <div class=\"row \">\r\n        <div class=\"justify-content-center\">\r\n            <h2>Edit Accessory</h2>\r\n        </div>\r\n    </div>\r\n    <div class=\"row\">\r\n        <div class=\"col-3\">\r\n        </div>\r\n        <div class=\"col-6\">\r\n            <h4 style=\"color: blue; font-weight: bold\">${mess}</h4>\r\n            <form method=\"post\" action=\"/accessory?action=edit\">\r\n                <label>ID</label>\r\n                <input class=\"form-control\" type=\"hidden\" name=\"id\" value=\"${product.getId()}\"/><br>\r\n                <label>Name</label>\r\n                <input class=\"form-control\" type=\"text\" name=\"name\" value=\"${product.getName()}\" required><br>\r\n                <label>Type</label>\r\n                <select class=\"form-control\" name=\"productType\" id=\"\">\r\n                    <option value=\"2\">Accessory</option>\r\n                </select><br>\r\n                <label>Describe</label>\r\n                <input class=\"form-control\" type=\"text\" name=\"describe\" value=\"${product.getDescribe()}\" required><br>\r\n                <label>Price</label>\r\n                <input class=\"form-control\" type=\"number\" name=\"price\" value=\"${product.getPrice()}\" required><br>\r\n                <label>Image</label>\r\n                <input class=\"form-control\" type=\"text\" name=\"productImage\" value=\"${product.getProductImage()}\"\r\n                       required><br>\r\n                <input class=\"btn btn-success\" type=\"submit\" value=\"Save\"/>\r\n            </form>\r\n            <p style=\"color: blue;font-weight: bold;justify-content: center\">${mess}</p>\r\n        </div>\r\n        <div class=\"col-3\">\r\n        </div>\r\n    </div>\r\n</div>\r\n<jsp:include page=\"/header_footer/footer.jsp\"></jsp:include>\r\n</body>\r\n</html>\r\n\r\n\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- src/main/webapp/view/accessorys/edit.jsp	(revision 9517c1239aea59d7ec28626c7e70c6f949b048f2)
++++ src/main/webapp/view/accessorys/edit.jsp	(date 1684053153536)
+@@ -1,10 +1,3 @@
+-<%--
+-  Created by IntelliJ IDEA.
+-  User: LENOVO
+-  Date: 5/12/2023
+-  Time: 12:36 AM
+-  To change this template use File | Settings | File Templates.
+---%>
+ <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+ <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+ <html>
+@@ -15,46 +8,119 @@
+     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+             integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+             crossorigin="anonymous"></script>
++    <style>
++        #imageContainer {
++            width: 50px;
++            height: 50px;
++        }
++
++        #ig1-user-page {
++            color: black;
++        }
++
++        #ig1-user-page:hover {
++            color: white;
++        }
++
++        #navbarSupportedContent ul li:hover a {
++            color: white;
++        }
++
++        #navbarSupportedContent ul li a {
++            color: black;
++        }
++
++
++    </style>
+ </head>
+ <body>
+-<jsp:include page="/header_footer/header.jsp"></jsp:include>
+-<div class="container-fluid">
+-    <div class="row ">
+-        <div class="justify-content-center">
+-            <h2>Edit Accessory</h2>
++<nav class="navbar navbar-expand-lg bg-body-tertiary" style="background-color: orange">
++    <div class="container-fluid">
++        <a id="ig1-user-page" href="/accessory" class="navbar-brand">IG1 Store</a>
++        <div class="collapse navbar-collapse" id="navbarSupportedContent">
++            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
++                <li clx ass="nav-item">
++                    <a class="nav-link active" aria-current="page" href="/admin/admin.jsp">Trang chủ</a>
++                </li>
++                <li class="nav-item dropdown">
++                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
++                       aria-expanded="false">
++                        Quản lý
++                    </a>
++                    <ul class="dropdown-menu">
++                        <li><a class="dropdown-item" style="color: black" href="/accessory">Phụ kiện</a></li>
++                        <li><a class="dropdown-item" style="color: black" href="/product">Sản phẩm</a></li>
++                        <li><a class="dropdown-item" style="color: black" href="/customer-servlet">Customers</a></li>
++                        <li><a class="dropdown-item" style="color: black" href="/order-servlet">Order</a></li>
++                    </ul>
++                </li>
++            </ul>
+         </div>
+     </div>
+-    <div class="row">
+-        <div class="col-3">
+-        </div>
+-        <div class="col-6">
+-            <h4 style="color: blue; font-weight: bold">${mess}</h4>
+-            <form method="post" action="/accessory?action=edit">
+-                <label>ID</label>
+-                <input class="form-control" type="hidden" name="id" value="${product.getId()}"/><br>
+-                <label>Name</label>
+-                <input class="form-control" type="text" name="name" value="${product.getName()}" required><br>
+-                <label>Type</label>
+-                <select class="form-control" name="productType" id="">
++</nav>
++<br>
++<div class="container col-md-5">
++    <div class="card border-5">
++        <div class="card-body">
++            <form  method="post" action="/accessory?action=edit">
++                <caption>
++                    <h2 style="text-align: center">
++                        CHỈNH SỬA THÔNG TIN
++                    </h2>
++                </caption>
++                <c:if test="${product != null}">
++                    <input class="form-control" type="hidden" name="id" value="${product.getId()}"/><br>
++                </c:if>
++                <fieldset class="form-group">
++                    <label>Tên phụ kiện :</label><input class="form-control" type="text" name="name"
++                                                        value="${product.getName()}" required><br>
++                </fieldset>
++
++                <fieldset class="form-group">
++                    <label hidden>Loại :</label> <select hidden class="form-control" name="productType" id=""  value="${product.getName()}">
+                     <option value="2">Accessory</option>
+-                </select><br>
+-                <label>Describe</label>
+-                <input class="form-control" type="text" name="describe" value="${product.getDescribe()}" required><br>
+-                <label>Price</label>
+-                <input class="form-control" type="number" name="price" value="${product.getPrice()}" required><br>
+-                <label>Image</label>
+-                <input class="form-control" type="text" name="productImage" value="${product.getProductImage()}"
+-                       required><br>
+-                <input class="btn btn-success" type="submit" value="Save"/>
++                </select>
++                </fieldset>
++
++                <fieldset class="form-group">
++                    <label>Mô tả :</label><input class="form-control" type="text" name="describe"
++                                                 value="${product.getDescribe()}" required><br>
++                </fieldset>
++
++                <fieldset class="form-group">
++                    <label>Giá(VNĐ) :</label><input class="form-control" type="number" name="price"
++                                                    value="${product.getPrice()}" required><br>
++                </fieldset>
++
++                <fieldset class="form-group">
++                    <label>Ảnh :</label>
++                    <div>
++                        <input class="form-control" name="productImage" type="text" id="imageUrlInput"
++                               placeholder="Nhập URL hình ảnh" value="${product.getProductImage()}"
++                               oninput="showImage()" required>
++                    </div>
++                    <div id="imageContainer"></div>
++                </fieldset>
++                <button type="submit" class="btn btn-outline-primary " onclick="window.location.href='/accessory'">Quay
++                    lại
++                </button>
++                <button type="submit" class="btn btn-success" style="margin-left: 26vw" value="Save">Lưu</button>
+             </form>
+-            <p style="color: blue;font-weight: bold;justify-content: center">${mess}</p>
+         </div>
+-        <div class="col-3">
+-        </div>
+     </div>
+ </div>
+-<jsp:include page="/header_footer/footer.jsp"></jsp:include>
++<script>
++    function showImage() {
++        var imageUrl = document.getElementById("imageUrlInput").value;
++        var imageContainer = document.getElementById("imageContainer");
++        var imgElement = document.createElement("img");
++        imgElement.src = imageUrl;
++        imgElement.alt = "Hình ảnh";
++        imgElement.style.width = "100px";
++        imgElement.style.height = "100px";
++        imageContainer.innerHTML = "";
++        imageContainer.appendChild(imgElement);
++    }
++</script>
+ </body>
+ </html>
+-
+-
+Index: src/main/java/models/service/impl/accessory/IAccessoryService.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package models.service.impl.accessory;\r\n\r\n\r\nimport models.model.Product;\r\n\r\nimport java.util.List;\r\n\r\npublic interface IAccessoryService {\r\n    List<Product> getList();\r\n    Product findById(int id);\r\n    boolean createAt(Product product);\r\n    boolean remove(int id);\r\n    boolean edit(Product product);\r\n    List<Product> search(String name, int startPrice, int endPrice);\r\n}\r\n
+===================================================================
+--- src/main/java/models/service/impl/accessory/IAccessoryService.java	(revision 9517c1239aea59d7ec28626c7e70c6f949b048f2)
++++ src/main/java/models/service/impl/accessory/IAccessoryService.java	(date 1684050331972)
+@@ -12,4 +12,5 @@
+     boolean remove(int id);
+     boolean edit(Product product);
+     List<Product> search(String name, int startPrice, int endPrice);
++    List<Product> searchUser(String productName);
+ }
+Index: src/main/java/models/repository/accessory/AccessoryRepository.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package models.repository.accessory;\r\n\r\n\r\nimport models.model.Product;\r\nimport models.repository.BaseRepository;\r\nimport models.repository.IAccessoryRepository;\r\n\r\nimport java.sql.Connection;\r\nimport java.sql.PreparedStatement;\r\nimport java.sql.ResultSet;\r\nimport java.sql.SQLException;\r\nimport java.util.ArrayList;\r\nimport java.util.List;\r\n\r\npublic class AccessoryRepository implements IAccessoryRepository {\r\n    private static final String GET_ALL = \"SELECT * FROM products where product_type_id = 2;\";\r\n    private static final String GET_BY_ID = \"SELECT * FROM products WHERE product_id=?;\";\r\n    private static final String INSERT_INTO = \"INSERT INTO products (product_name, product_type_id, `describe`,price,product_image_url) VALUES (?,?,?,?,?);\";\r\n    private static final String DELETE_BY_ID = \"DELETE FROM products WHERE product_id=?;\";\r\n    private static final String UPDATE_BY_ID = \"UPDATE products SET product_name=?, product_type_id=?, `describe`=?,price=?,product_image_url=?,updateAt=current_timestamp() Where product_id=?;\";\r\n    private static final String SEARCH_PRODUCT = \"SELECT * FROM products  WHERE product_type_id =2 AND (product_name LIKE ? AND price BETWEEN ? and ?);\";\r\n\r\n    @Override\r\n    public List<Product> getList() {\r\n        List<Product> productList = new ArrayList<>();\r\n        Connection connection = BaseRepository.getConnectDB();\r\n        try {\r\n            PreparedStatement preparedStatement = connection.prepareStatement(GET_ALL);\r\n            ResultSet resultSet = preparedStatement.executeQuery();\r\n            while (resultSet.next()) {\r\n                int id = resultSet.getInt(\"product_id\");\r\n                String name = resultSet.getString(\"product_name\");\r\n                int productType = resultSet.getInt(\"product_type_id\");\r\n                String describe = resultSet.getString(\"describe\");\r\n                double price = resultSet.getDouble(\"price\");\r\n                String productImage = resultSet.getString(\"product_image_url\");\r\n                String createAt = resultSet.getString(\"createAt\");\r\n                String updateAt = resultSet.getString(\"updateAt\");\r\n                productList.add(new Product(id, name, productType, describe, price, productImage, createAt, updateAt));\r\n            }\r\n        } catch (SQLException e) {\r\n            e.printStackTrace();\r\n        }\r\n        return productList;\r\n    }\r\n\r\n    @Override\r\n    public Product findById(int id) {\r\n        Product product = null;\r\n        Connection connection = BaseRepository.getConnectDB();\r\n        try {\r\n            PreparedStatement preparedStatement = connection.prepareStatement(GET_BY_ID);\r\n            preparedStatement.setInt(1, id);\r\n            ResultSet resultSet = preparedStatement.executeQuery();\r\n            while (resultSet.next()) {\r\n                int idBase = resultSet.getInt(\"product_id\");\r\n                String name = resultSet.getString(\"product_name\");\r\n                int productType = resultSet.getInt(\"product_type_id\");\r\n                String describe = resultSet.getString(\"describe\");\r\n                double price = resultSet.getDouble(\"price\");\r\n                String productImage = resultSet.getString(\"product_image_url\");\r\n                String updateAt = resultSet.getString(\"updateAt\");\r\n                product = new Product(idBase, name, productType, describe, price, productImage, updateAt);\r\n            }\r\n        } catch (SQLException e) {\r\n            e.printStackTrace();\r\n        }\r\n        return product;\r\n    }\r\n\r\n    @Override\r\n    public boolean createAt(Product product) {\r\n        Connection connection = BaseRepository.getConnectDB();\r\n        try {\r\n            PreparedStatement preparedStatement = connection.prepareStatement(INSERT_INTO);\r\n            preparedStatement.setString(1, product.getName());\r\n            preparedStatement.setInt(2, product.getProductType());\r\n            preparedStatement.setString(3, product.getDescribe());\r\n            preparedStatement.setDouble(4, product.getPrice());\r\n            preparedStatement.setString(5, product.getProductImage());\r\n            return preparedStatement.executeUpdate() > 0;\r\n        } catch (SQLException e) {\r\n            e.printStackTrace();\r\n        }\r\n        return false;\r\n    }\r\n\r\n    @Override\r\n    public boolean remove(int id) {\r\n        Connection connection = BaseRepository.getConnectDB();\r\n        try {\r\n            PreparedStatement preparedStatement = connection.prepareStatement(DELETE_BY_ID);\r\n            preparedStatement.setInt(1, id);\r\n            return preparedStatement.executeUpdate() > 0;\r\n        } catch (SQLException e) {\r\n            e.printStackTrace();\r\n        }\r\n        return false;\r\n    }\r\n\r\n    @Override\r\n    public boolean edit(Product product) {\r\n        Connection connection = BaseRepository.getConnectDB();\r\n        try {\r\n            PreparedStatement preparedStatement = connection.prepareStatement(UPDATE_BY_ID);\r\n            preparedStatement.setString(1, product.getName());\r\n            preparedStatement.setInt(2, product.getProductType());\r\n            preparedStatement.setString(3, product.getDescribe());\r\n            preparedStatement.setDouble(4, product.getPrice());\r\n            preparedStatement.setString(5, product.getProductImage());\r\n            preparedStatement.setInt(6, product.getId());\r\n            return preparedStatement.executeUpdate() > 0;\r\n        } catch (SQLException e) {\r\n            e.printStackTrace();\r\n        }\r\n        return false;\r\n    }\r\n\r\n    @Override\r\n    public List<Product> search(String name, int startPrice, int endPricee) {\r\n        List<Product> productList = new ArrayList<>();\r\n        Connection connection = BaseRepository.getConnectDB();\r\n        try {\r\n            PreparedStatement preparedStatement = connection.prepareStatement(SEARCH_PRODUCT);\r\n            preparedStatement.setString(1, '%' + name + '%');\r\n            preparedStatement.setDouble(2, startPrice);\r\n            preparedStatement.setDouble(3, endPricee);\r\n            ResultSet resultSet = preparedStatement.executeQuery();\r\n            while (resultSet.next()) {\r\n                int id = resultSet.getInt(\"product_id\");\r\n                String nameProduct = resultSet.getString(\"product_name\");\r\n                int productType = resultSet.getInt(\"product_type_id\");\r\n                String describe = resultSet.getString(\"describe\");\r\n                double price = resultSet.getDouble(\"price\");\r\n                String productImage = resultSet.getString(\"product_image_url\");\r\n                String createAt = resultSet.getString(\"createAt\");\r\n                String updateAt = resultSet.getString(\"updateAt\");\r\n                Product product = new Product(id, nameProduct, productType, describe, price, productImage, createAt, updateAt);\r\n                productList.add(product);\r\n            }\r\n        } catch (SQLException e) {\r\n            e.printStackTrace();\r\n        }\r\n        return productList;\r\n    }\r\n}\r\n
+===================================================================
+--- src/main/java/models/repository/accessory/AccessoryRepository.java	(revision 9517c1239aea59d7ec28626c7e70c6f949b048f2)
++++ src/main/java/models/repository/accessory/AccessoryRepository.java	(date 1684050331972)
+@@ -19,7 +19,7 @@
+     private static final String DELETE_BY_ID = "DELETE FROM products WHERE product_id=?;";
+     private static final String UPDATE_BY_ID = "UPDATE products SET product_name=?, product_type_id=?, `describe`=?,price=?,product_image_url=?,updateAt=current_timestamp() Where product_id=?;";
+     private static final String SEARCH_PRODUCT = "SELECT * FROM products  WHERE product_type_id =2 AND (product_name LIKE ? AND price BETWEEN ? and ?);";
+-
++    private static final String SEARCH_PRODUCT_USER = "SELECT * FROM products WHERE product_name LIKE ?;";
+     @Override
+     public List<Product> getList() {
+         List<Product> productList = new ArrayList<>();
+@@ -143,4 +143,30 @@
+         }
+         return productList;
+     }
++    @Override
++    public List<Product> searchUser(String productName) {
++        List<Product> productList = new ArrayList<>();
++        Connection connection = BaseRepository.getConnectDB();
++        try {
++            PreparedStatement preparedStatement = connection.prepareStatement(SEARCH_PRODUCT_USER);
++            preparedStatement.setString(1, '%' + productName + '%');
++            ResultSet resultSet = preparedStatement.executeQuery();
++            while (resultSet.next()) {
++                int id = resultSet.getInt("product_id");
++                String nameProduct = resultSet.getString("product_name");
++                int productType = resultSet.getInt("product_type_id");
++                String describe = resultSet.getString("describe");
++                double price = resultSet.getDouble("price");
++                String productImage = resultSet.getString("product_image_url");
++                String createAt = resultSet.getString("createAt");
++                String updateAt = resultSet.getString("updateAt");
++                Product product = new Product(id, nameProduct, productType, describe, price, productImage, createAt, updateAt);
++                productList.add(product);
++            }
++            return productList;
++        } catch (SQLException e) {
++            e.printStackTrace();
++        }
++        return null;
++    }
+ }
+Index: src/main/java/models/repository/IAccessoryRepository.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package models.repository;\r\nimport models.model.Product;\r\n\r\nimport java.util.List;\r\n\r\npublic interface IAccessoryRepository {\r\n    List<Product> getList();\r\n    Product findById(int id);\r\n    boolean createAt(Product product);\r\n    boolean remove(int id);\r\n    boolean edit(Product product);\r\n    List<Product> search(String name, int startPrice, int endPrice);\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- src/main/java/models/repository/IAccessoryRepository.java	(revision 9517c1239aea59d7ec28626c7e70c6f949b048f2)
++++ src/main/java/models/repository/IAccessoryRepository.java	(date 1684050331972)
+@@ -10,4 +10,6 @@
+     boolean remove(int id);
+     boolean edit(Product product);
+     List<Product> search(String name, int startPrice, int endPrice);
++    List<Product> searchUser(String productName);
++
+ }
+Index: src/main/java/models/service/impl/accessory/impl/AccessoryService.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package models.service.impl.accessory.impl;\r\n\r\nimport models.model.Product;\r\nimport models.repository.IAccessoryRepository;\r\nimport models.repository.accessory.AccessoryRepository;\r\nimport models.service.impl.accessory.IAccessoryService;\r\n\r\n\r\nimport java.util.List;\r\n\r\npublic class AccessoryService implements IAccessoryService {\r\n    private IAccessoryRepository accessoryRepository = new AccessoryRepository();\r\n\r\n    @Override\r\n    public List<Product> getList() {\r\n        return accessoryRepository.getList();\r\n    }\r\n\r\n    @Override\r\n    public Product findById(int id) {\r\n        return accessoryRepository.findById(id);\r\n    }\r\n\r\n    @Override\r\n    public boolean createAt(Product product) {\r\n        return accessoryRepository.createAt(product);\r\n    }\r\n\r\n    @Override\r\n    public boolean remove(int id) {\r\n        return accessoryRepository.remove(id);\r\n    }\r\n\r\n    @Override\r\n    public boolean edit(Product product) {\r\n        return accessoryRepository.edit(product);\r\n    }\r\n\r\n    @Override\r\n    public List<Product> search(String name, int startPrice, int endPrice) {\r\n        return accessoryRepository.search(name, startPrice, endPrice);\r\n    }\r\n}\r\n
+===================================================================
+--- src/main/java/models/service/impl/accessory/impl/AccessoryService.java	(revision 9517c1239aea59d7ec28626c7e70c6f949b048f2)
++++ src/main/java/models/service/impl/accessory/impl/AccessoryService.java	(date 1684050331987)
+@@ -5,7 +5,6 @@
+ import models.repository.accessory.AccessoryRepository;
+ import models.service.impl.accessory.IAccessoryService;
+ 
+-
+ import java.util.List;
+ 
+ public class AccessoryService implements IAccessoryService {
+@@ -40,4 +39,9 @@
+     public List<Product> search(String name, int startPrice, int endPrice) {
+         return accessoryRepository.search(name, startPrice, endPrice);
+     }
++
++    @Override
++    public List<Product> searchUser(String productName) {
++        return accessoryRepository.searchUser(productName);
++    }
+ }
+diff --git .idea/shelf/Uncommitted_changes_before_Merge_at_5_12_2023_10_51_PM__Changes_.xml .idea/shelf/Uncommitted_changes_before_Merge_at_5_12_2023_10_51_PM__Changes_.xml
+diff --git .idea/shelf/Uncommitted_changes_before_Merge_at_5_12_2023_1_46_PM__Default_Changelist_1.xml .idea/shelf/Uncommitted_changes_before_Merge_at_5_12_2023_1_46_PM__Default_Changelist_1.xml
+diff --git .idea/shelf/Uncommitted_changes_before_rebase__Changes_.xml .idea/shelf/Uncommitted_changes_before_rebase__Changes_.xml
+diff --git .idea/shelf/Uncommitted_changes_before_Merge_at_12_05_2023_2_37_CH__Changes_.xml .idea/shelf/Uncommitted_changes_before_Merge_at_12_05_2023_2_37_CH__Changes_.xml
+diff --git .idea/shelf/Uncommitted_changes_before_Checkout_at_11_05_2023_3_50_CH__Changes_.xml .idea/shelf/Uncommitted_changes_before_Checkout_at_11_05_2023_3_50_CH__Changes_.xml
+diff --git .idea/shelf/Uncommitted_changes_before_Merge_at_5_12_2023_1_46_PM__Default_Changelist_.xml .idea/shelf/Uncommitted_changes_before_Merge_at_5_12_2023_1_46_PM__Default_Changelist_.xml
+diff --git .idea/shelf/Uncommitted_changes_before_Merge_at_10_05_2023_8_03_SA__Changes_.xml .idea/shelf/Uncommitted_changes_before_Merge_at_10_05_2023_8_03_SA__Changes_.xml
+diff --git .idea/shelf/Uncommitted_changes_before_Merge_at_10_05_2023_11_25_SA__Changes_.xml .idea/shelf/Uncommitted_changes_before_Merge_at_10_05_2023_11_25_SA__Changes_.xml
+diff --git .idea/shelf/Uncommitted_changes_before_Merge_at_10_05_2023_8_04_SA__Changes_.xml .idea/shelf/Uncommitted_changes_before_Merge_at_10_05_2023_8_04_SA__Changes_.xml

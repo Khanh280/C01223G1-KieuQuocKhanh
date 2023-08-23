@@ -1,0 +1,982 @@
+Index: src/main/webapp/account/register_css.css
+===================================================================
+diff --git a/src/main/webapp/account/register_css.css b/src/main/webapp/account/register_css.css
+deleted file mode 100644
+--- a/src/main/webapp/account/register_css.css	(revision a74d225a7d8d649a564aeec1f4e10862237da126)
++++ /dev/null	(revision a74d225a7d8d649a564aeec1f4e10862237da126)
+@@ -1,20 +0,0 @@
+-.gradient-custom-3 {
+-    /* fallback for old browsers */
+-    background: #84fab0;
+-
+-    /* Chrome 10-25, Safari 5.1-6 */
+-    background: -webkit-linear-gradient(to right, rgba(132, 250, 176, 0.5), rgba(143, 211, 244, 0.5));
+-
+-    /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+-    background: linear-gradient(to right, rgba(132, 250, 176, 0.5), rgba(143, 211, 244, 0.5))
+-}
+-.gradient-custom-4 {
+-    /* fallback for old browsers */
+-    background: #84fab0;
+-
+-    /* Chrome 10-25, Safari 5.1-6 */
+-    background: -webkit-linear-gradient(to right, rgba(132, 250, 176, 1), rgba(143, 211, 244, 1));
+-
+-    /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+-    background: linear-gradient(to right, rgba(132, 250, 176, 1), rgba(143, 211, 244, 1))
+-}
+\ No newline at end of file
+Index: src/main/java/connection/BaseRepository.java
+===================================================================
+diff --git a/src/main/java/connection/BaseRepository.java b/src/main/java/connection/BaseRepository.java
+deleted file mode 100644
+--- a/src/main/java/connection/BaseRepository.java	(revision a74d225a7d8d649a564aeec1f4e10862237da126)
++++ /dev/null	(revision a74d225a7d8d649a564aeec1f4e10862237da126)
+@@ -1,21 +0,0 @@
+-package connection;
+-
+-import java.sql.Connection;
+-import java.sql.DriverManager;
+-import java.sql.SQLException;
+-
+-public class BaseRepository {
+-    private static final String URL ="jdbc:mysql://localhost:3306/ig1_store"; // sửa lại tên của csdl
+-    private static final String USER ="root";// mặc định của mysql
+-    private static final String PASS ="Trungthien@123";// do cài đặt khi cài đặt mysql
+-    public static Connection getConnectDB(){
+-        Connection connection = null;
+-        try {
+-            Class.forName("com.mysql.cj.jdbc.Driver");
+-            connection= DriverManager.getConnection(URL,USER,PASS);
+-        } catch (ClassNotFoundException | SQLException e) {
+-            e.printStackTrace();
+-        }
+-        return connection;
+-    }
+-}
+Index: src/main/webapp/index.jsp
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><%@ page contentType=\"text/html; charset=UTF-8\" pageEncoding=\"UTF-8\" %>\r\n<%@taglib prefix=\"c\" uri=\"http://java.sun.com/jsp/jstl/core\" %>\r\n<!DOCTYPE html>\r\n<html>\r\n<head>\r\n    <title>IG1 Store</title>\r\n    <link rel=\"stylesheet\" href=\"index.css\">\r\n    <link href=\"https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css\" rel=\"stylesheet\"\r\n          integrity=\"sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC\" crossorigin=\"anonymous\">\r\n    <style>\r\n        #bg-img {\r\n            height: 100vh;\r\n        }\r\n    </style>\r\n</head>\r\n<body>\r\n<c:redirect url=\"/customer\"></c:redirect>\r\n<%--<div id=\"bg-img\" class=\"d-flex align-items-center\">--%>\r\n<%--    <div class=\"container-fluid d-flex justify-content-center align-items-center\">--%>\r\n<%--        <div class=\"row main-content bg-success text-center\">--%>\r\n<%--            <div class=\"col-md-4 text-center company__info\">--%>\r\n<%--                <img src=\"IG1 (1).gif\" alt=\"\" style=\"border-radius: 30px\">--%>\r\n<%--            </div>--%>\r\n<%--            <div class=\"col-md-8 col-xs-12 col-sm-12 login_form \">--%>\r\n<%--                <div class=\"container-fluid\">--%>\r\n<%--                    <div class=\"row\">--%>\r\n<%--                        <h2>Log In</h2>--%>\r\n<%--                    </div>--%>\r\n<%--                    <div class=\"row\">--%>\r\n<%--                        <form action=\"/account-servlet\" method=\"post\" control=\"\" class=\"form-group\">--%>\r\n<%--                            <input type=\"text\" name=\"action\" value=\"login\" hidden>--%>\r\n<%--                            <div class=\"row\">--%>\r\n<%--                                <input type=\"text\" name=\"userName\" id=\"username\" class=\"form__input\"--%>\r\n<%--                                       placeholder=\"Username\"--%>\r\n<%--                                       value=\"${userName}\">--%>\r\n<%--                            </div>--%>\r\n<%--                            <div class=\"row\">--%>\r\n<%--                                <input type=\"password\" name=\"password\" id=\"password\" class=\"form__input\"--%>\r\n<%--                                       placeholder=\"Password\" value=\"${password}\">--%>\r\n<%--                                <small id=\"statusLogin\" class=\"text-danger\"></small>--%>\r\n<%--                            </div>--%>\r\n<%--                            <div class=\"row\">--%>\r\n<%--                                <label>--%>\r\n<%--                                    <input type=\"checkbox\" name=\"remember_me\" id=\"remember_me\" class=\"\">--%>\r\n<%--                                    Remember Me!--%>\r\n<%--                                </label>--%>\r\n<%--                            </div>--%>\r\n<%--                            <div class=\"row\">--%>\r\n<%--                                <input type=\"submit\" value=\"Submit\" class=\"btn\">--%>\r\n<%--                            </div>--%>\r\n<%--                        </form>--%>\r\n<%--                    </div>--%>\r\n<%--                    <div class=\"row\">--%>\r\n<%--                        <p>Don't have an account? <a href=\"/account/register_form.jsp\">Register Here</a></p>--%>\r\n<%--                    </div>--%>\r\n<%--                </div>--%>\r\n<%--            </div>--%>\r\n<%--        </div>--%>\r\n<%--    </div>--%>\r\n<%--    <input id=\"status\" value=\"${status}\" hidden>--%>\r\n<%--    <div id=\"canh-bao\" style=\"display: none;\"></div>--%>\r\n<%--</div>--%>\r\n<%--<script src=\"https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js\"--%>\r\n<%--        integrity=\"sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM\"--%>\r\n<%--        crossorigin=\"anonymous\"></script>--%>\r\n<%--<script>--%>\r\n<%--    function statusLogin() {--%>\r\n<%--        document.getElementById(\"statusLogin\").innerText = \"Incorrect username or password\";--%>\r\n<%--    }--%>\r\n\r\n<%--    let checkLogin = document.getElementById(\"status\").value;--%>\r\n<%--    if (checkLogin === \"fail\") {--%>\r\n<%--        statusLogin()--%>\r\n<%--    }--%>\r\n<%--</script>--%>\r\n</body>\r\n</html>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/webapp/index.jsp b/src/main/webapp/index.jsp
+--- a/src/main/webapp/index.jsp	(revision a74d225a7d8d649a564aeec1f4e10862237da126)
++++ b/src/main/webapp/index.jsp	(date 1683692727425)
+@@ -14,64 +14,64 @@
+     </style>
+ </head>
+ <body>
+-<c:redirect url="/customer"></c:redirect>
+-<%--<div id="bg-img" class="d-flex align-items-center">--%>
+-<%--    <div class="container-fluid d-flex justify-content-center align-items-center">--%>
+-<%--        <div class="row main-content bg-success text-center">--%>
+-<%--            <div class="col-md-4 text-center company__info">--%>
+-<%--                <img src="IG1 (1).gif" alt="" style="border-radius: 30px">--%>
+-<%--            </div>--%>
+-<%--            <div class="col-md-8 col-xs-12 col-sm-12 login_form ">--%>
+-<%--                <div class="container-fluid">--%>
+-<%--                    <div class="row">--%>
+-<%--                        <h2>Log In</h2>--%>
+-<%--                    </div>--%>
+-<%--                    <div class="row">--%>
+-<%--                        <form action="/account-servlet" method="post" control="" class="form-group">--%>
+-<%--                            <input type="text" name="action" value="login" hidden>--%>
+-<%--                            <div class="row">--%>
+-<%--                                <input type="text" name="userName" id="username" class="form__input"--%>
+-<%--                                       placeholder="Username"--%>
+-<%--                                       value="${userName}">--%>
+-<%--                            </div>--%>
+-<%--                            <div class="row">--%>
+-<%--                                <input type="password" name="password" id="password" class="form__input"--%>
+-<%--                                       placeholder="Password" value="${password}">--%>
+-<%--                                <small id="statusLogin" class="text-danger"></small>--%>
+-<%--                            </div>--%>
+-<%--                            <div class="row">--%>
+-<%--                                <label>--%>
+-<%--                                    <input type="checkbox" name="remember_me" id="remember_me" class="">--%>
+-<%--                                    Remember Me!--%>
+-<%--                                </label>--%>
+-<%--                            </div>--%>
+-<%--                            <div class="row">--%>
+-<%--                                <input type="submit" value="Submit" class="btn">--%>
+-<%--                            </div>--%>
+-<%--                        </form>--%>
+-<%--                    </div>--%>
+-<%--                    <div class="row">--%>
+-<%--                        <p>Don't have an account? <a href="/account/register_form.jsp">Register Here</a></p>--%>
+-<%--                    </div>--%>
+-<%--                </div>--%>
+-<%--            </div>--%>
+-<%--        </div>--%>
+-<%--    </div>--%>
+-<%--    <input id="status" value="${status}" hidden>--%>
+-<%--    <div id="canh-bao" style="display: none;"></div>--%>
+-<%--</div>--%>
+-<%--<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"--%>
+-<%--        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"--%>
+-<%--        crossorigin="anonymous"></script>--%>
+-<%--<script>--%>
+-<%--    function statusLogin() {--%>
+-<%--        document.getElementById("statusLogin").innerText = "Incorrect username or password";--%>
+-<%--    }--%>
++<%--<c:redirect url="/customer"></c:redirect>--%>
++<div id="bg-img" class="d-flex align-items-center">
++    <div class="container-fluid d-flex justify-content-center align-items-center">
++        <div class="row main-content bg-success text-center">
++            <div class="col-md-4 text-center company__info">
++                <img src="IG1 (1).gif" alt="" style="border-radius: 30px">
++            </div>
++            <div class="col-md-8 col-xs-12 col-sm-12 login_form ">
++                <div class="container-fluid">
++                    <div class="row">
++                        <h2>Log In</h2>
++                    </div>
++                    <div class="row">
++                        <form action="/account-servlet" method="post" control="" class="form-group">
++                            <input type="text" name="action" value="login" hidden>
++                            <div class="row">
++                                <input type="text" name="userName" id="username" class="form__input"
++                                       placeholder="Username"
++                                       value="${userName}">
++                            </div>
++                            <div class="row">
++                                <input type="password" name="password" id="password" class="form__input"
++                                       placeholder="Password" value="${password}">
++                                <small id="statusLogin" class="text-danger"></small>
++                            </div>
++                            <div class="row">
++                                <label>
++                                    <input type="checkbox" name="remember_me" id="remember_me" class="">
++                                    Remember Me!
++                                </label>
++                            </div>
++                            <div class="row">
++                                <input type="submit" value="Submit" class="btn">
++                            </div>
++                        </form>
++                    </div>
++                    <div class="row">
++                        <p>Don't have an account? <a href="/account/register_form.jsp">Register Here</a></p>
++                    </div>
++                </div>
++            </div>
++        </div>
++    </div>
++    <input id="status" value="${status}" hidden>
++    <div id="canh-bao" style="display: none;"></div>
++</div>
++<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
++        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
++        crossorigin="anonymous"></script>
++<script>
++    function statusLogin() {
++        document.getElementById("statusLogin").innerText = "Incorrect username or password";
++    }
+ 
+-<%--    let checkLogin = document.getElementById("status").value;--%>
+-<%--    if (checkLogin === "fail") {--%>
+-<%--        statusLogin()--%>
+-<%--    }--%>
+-<%--</script>--%>
++    let checkLogin = document.getElementById("status").value;
++    if (checkLogin === "fail") {
++        statusLogin()
++    }
++</script>
+ </body>
+ </html>
+\ No newline at end of file
+Index: src/main/webapp/admin/admin.jsp
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><%--\r\n  Created by IntelliJ IDEA.\r\n  User: Admin\r\n  Date: 02/05/2023\r\n  Time: 8:51 SA\r\n  To change this template use File | Settings | File Templates.\r\n--%>\r\n<%@ page contentType=\"text/html;charset=UTF-8\" language=\"java\" %>\r\n<%@taglib prefix=\"c\" uri=\"http://java.sun.com/jsp/jstl/core\" %>\r\n<html>\r\n<head>\r\n    <title>IG1 Store</title>\r\n    <link href=\"https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css\" rel=\"stylesheet\"\r\n          integrity=\"sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC\" crossorigin=\"anonymous\">\r\n    <style>\r\n        #ig1-user-page{\r\n            color: black;\r\n        }\r\n        #ig1-user-page:hover{\r\n            color: white;\r\n        }\r\n    </style>\r\n</head>\r\n<body>\r\n<%--<nav class=\"navbar bg-body-tertiary\">--%>\r\n<div class=\"\" style=\"text-align: center; width: 100vw\">\r\n    <form class=\"d-flex form-control bg-secondary\" role=\"search\" action=\"/products-servlet\" method=\"get\">\r\n        <a id=\"ig1-user-page\" href=\"/products-servlet?action=displayUser\" class=\"nav-link\">IG1 Store</a>\r\n        <input type=\"text\" name=\"action\" value=\"searchAdmin\" hidden>\r\n        <input class=\"form-control me-2\" type=\"search\" placeholder=\"Search\" aria-label=\"Search\"\r\n               name=\"productName\" style=\"width: 73vw\">\r\n        <button class=\"btn btn-success \" type=\"submit\">Search</button>\r\n        <button type=\"button\" class=\"btn btn-primary mx-2\" onclick=\"window.location.href='/products/create_product.jsp'\">Create Product\r\n        </button>\r\n    </form>\r\n</div>\r\n<div>\r\n    <table class=\"table table-hover\">\r\n        <thead>\r\n        <tr>\r\n            <th scope=\"col\">Product ID</th>\r\n            <th scope=\"col\">Name</th>\r\n            <th scope=\"col\">Type</th>\r\n            <th scope=\"col\">Describe</th>\r\n            <th scope=\"col\">Price(VND)</th>\r\n            <th scope=\"col\">Manipulate</th>\r\n        </tr>\r\n        </thead>\r\n        <tbody>\r\n        <c:forEach var=\"productList\" items=\"${productList}\">\r\n            <tr>\r\n                <td>${productList.getProductId()}</td>\r\n                <td>${productList.getProductName()}</td>\r\n                <td>\r\n                    <c:if test=\"${productList.getProductType() == 1}\">\r\n                        Iphone\r\n                    </c:if>\r\n                    <c:if test=\"${productList.getProductType() == 2}\">\r\n                        SamSung\r\n                    </c:if>\r\n                    <c:if test=\"${productList.getProductType() == 3}\">\r\n                        Vivo\r\n                    </c:if>\r\n                </td>\r\n                <td>${productList.getDescribe()}</td>\r\n                <td>${productList.getPrice()}</td>\r\n                <td>\r\n                    <button type=\"submit\" class=\"btn btn-danger\" data-bs-toggle=\"modal\"\r\n                            data-bs-target=\"#exampleModal\"\r\n                            onclick=\"deleteProduct('${productList.getProductId()}','${productList.getProductName()}')\">\r\n                        Delete\r\n                    </button>\r\n                    <button class=\"btn btn-warning\"\r\n                            onclick=\"window.location.href='/products-servlet?action=update&productId=${productList.getProductId()}'\">\r\n                        Update\r\n                    </button>\r\n                    <button class=\"btn btn-info\">Detail</button>\r\n                </td>\r\n            </tr>\r\n        </c:forEach>\r\n        </tbody>\r\n    </table>\r\n</div>\r\n<div class=\"modal fade\" id=\"exampleModal\" tabindex=\"-1\"\r\n     aria-labelledby=\"exampleModalLabel\" aria-hidden=\"true\">\r\n    <div class=\"modal-dialog\">\r\n        <div class=\"modal-content\">\r\n            <div class=\"modal-header\">\r\n                <h1 class=\"modal-title fs-5\" id=\"exampleModalLabel\">Delete Product</h1>\r\n                <button type=\"button\" class=\"btn-close\" data-bs-dismiss=\"modal\"\r\n                        aria-label=\"Close\"></button>\r\n            </div>\r\n            <form action=\"/products-servlet\" method=\"post\">\r\n                <div class=\"modal-body\">\r\n                    <input type=\"text\" name=\"action\" value=\"delete\" hidden>\r\n                    <input type=\"text\" id=\"productId\" name=\"productId\" hidden>\r\n                    Do you want to delete the product <span id=\"productName\"></span> ?\r\n                </div>\r\n                <div class=\"modal-footer\">\r\n                    <button type=\"button\" class=\"btn btn-secondary\" data-bs-dismiss=\"modal\">No</button>\r\n                    <button type=\"submit\" class=\"btn btn-primary\">\r\n                        Yes\r\n                    </button>\r\n                </div>\r\n            </form>\r\n        </div>\r\n    </div>\r\n</div>\r\n<nav aria-label=\"Page navigation example\">\r\n    <ul class=\"pagination justify-content-end\">\r\n        <li class=\"page-item\">\r\n            <a class=\"page-link\" href=\"#\">Previous</a>\r\n        </li>\r\n        <c:forEach varStatus=\"i\" begin=\"1\" end=\"${Math.ceil(productListSize/10.0)}\">\r\n            <li class=\"page-item\"><a class=\"page-link\"\r\n                                     href=\"/products-servlet?action=displayPageAdmin&page=${i.count}\">${i.count}</a>\r\n            </li>\r\n        </c:forEach>\r\n        <li class=\"page-item\">\r\n            <a class=\"page-link\" href=\"#\">Next</a>\r\n        </li>\r\n    </ul>\r\n</nav>\r\n<script>\r\n    function deleteProduct(id, name) {\r\n        document.getElementById(\"productId\").value = id;\r\n        document.getElementById(\"productName\").innerText = name;\r\n    }\r\n</script>\r\n</body>\r\n<script src=\"https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js\"\r\n        integrity=\"sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM\"\r\n        crossorigin=\"anonymous\"></script>\r\n</html>\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/webapp/admin/admin.jsp b/src/main/webapp/admin/admin.jsp
+--- a/src/main/webapp/admin/admin.jsp	(revision a74d225a7d8d649a564aeec1f4e10862237da126)
++++ b/src/main/webapp/admin/admin.jsp	(date 1683692727424)
+@@ -19,20 +19,48 @@
+         #ig1-user-page:hover{
+             color: white;
+         }
++        #navbarSupportedContent ul li:hover a{
++            color: white;
++        }
++
++        #navbarSupportedContent ul li a {
++            color: black;
++        }
+     </style>
+ </head>
+ <body>
+-<%--<nav class="navbar bg-body-tertiary">--%>
+-<div class="" style="text-align: center; width: 100vw">
+-    <form class="d-flex form-control bg-secondary" role="search" action="/products-servlet" method="get">
+-        <a id="ig1-user-page" href="/products-servlet?action=displayUser" class="nav-link">IG1 Store</a>
+-        <input type="text" name="action" value="searchAdmin" hidden>
+-        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search"
+-               name="productName" style="width: 73vw">
+-        <button class="btn btn-success " type="submit">Search</button>
+-        <button type="button" class="btn btn-primary mx-2" onclick="window.location.href='/products/create_product.jsp'">Create Product
+-        </button>
+-    </form>
++
++<nav class="navbar navbar-expand-lg bg-body-tertiary" style="background-color: #f58a1c" >
++    <div class="container-fluid">
++        <a id="ig1-user-page" href="/products-servlet?action=displayUser" class="navbar-brand">IG1 Store</a>
++        <div class="collapse navbar-collapse" id="navbarSupportedContent">
++            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
++                <li class="nav-item">
++                    <a class="nav-link active" aria-current="page" href="#">Home</a>
++                </li>
++                <li class="nav-item dropdown">
++                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
++                        Manager
++                    </a>
++                    <ul class="dropdown-menu">
++                        <li><a class="dropdown-item" style="color: black" href="#">Products</a></li>
++                        <li><a class="dropdown-item" style="color: black" href="#">Accessory</a></li>
++                        <li><a class="dropdown-item" style="color: black" href="#">Customers</a></li>
++                        <li><a class="dropdown-item" style="color: black" href="#">Order</a></li>
++                    </ul>
++                </li>
++            </ul>
++            <form class="d-flex m-0" role="search" action="/products-servlet" method="get">
++                <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" name="productName">
++                <button class="btn btn-outline-dark" type="submit">Search</button>
++            </form>
++        </div>
++    </div>
++</nav>
++
++<div class="my-3">
++    <button type="button" class="btn btn-primary mx-2" onclick="window.location.href='/products/create_product.jsp'">Create Product
++    </button>
+ </div>
+ <div>
+     <table class="table table-hover">
+Index: .idea/workspace.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<project version=\"4\">\r\n  <component name=\"AutoImportSettings\">\r\n    <option name=\"autoReloadType\" value=\"SELECTIVE\" />\r\n  </component>\r\n  <component name=\"ChangeListManager\">\r\n    <list default=\"true\" id=\"8d25cb45-a8d5-4581-a71e-26e1995f3533\" name=\"Changes\" comment=\"edit project\">\r\n      <change afterPath=\"$PROJECT_DIR$/.idea/uiDesigner.xml\" afterDir=\"false\" />\r\n      <change afterPath=\"$PROJECT_DIR$/src/main/java/controller/CustomerServlet.java\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/.idea/workspace.xml\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/.idea/workspace.xml\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/src/main/java/controller/AccountServlet.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/main/java/controller/AccountServlet.java\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/src/main/java/models/model/Admin.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/main/java/models/model/Account.java\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/src/main/java/models/model/Customer.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/main/java/models/model/Customer.java\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/src/main/java/models/repository/BaseRepository.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/main/java/connection/BaseRepository.java\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/src/main/java/models/repository/ICustomerRepository.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/main/java/models/repository/ICustomerRepository.java\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/src/main/java/models/repository/Impl/AdminRepositoryImpl.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/main/java/models/repository/Impl/AdminRepositoryImpl.java\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/src/main/java/models/repository/Impl/CustomerRepositoryImpl.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/main/java/models/repository/Impl/CustomerRepositoryImpl.java\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/src/main/java/models/service/ICustomerService.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/main/java/models/service/ICustomerService.java\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/src/main/java/models/service/impl/CustomerServiceImpl.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/main/java/models/service/impl/CustomerServiceImpl.java\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/src/main/webapp/index.jsp\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/main/webapp/index.jsp\" afterDir=\"false\" />\r\n    </list>\r\n    <option name=\"SHOW_DIALOG\" value=\"false\" />\r\n    <option name=\"HIGHLIGHT_CONFLICTS\" value=\"true\" />\r\n    <option name=\"HIGHLIGHT_NON_ACTIVE_CHANGELIST\" value=\"false\" />\r\n    <option name=\"LAST_RESOLUTION\" value=\"IGNORE\" />\r\n  </component>\r\n  <component name=\"ExternalProjectsData\">\r\n    <projectState path=\"$PROJECT_DIR$\">\r\n      <ProjectState />\r\n    </projectState>\r\n  </component>\r\n  <component name=\"ExternalProjectsManager\">\r\n    <system id=\"GRADLE\">\r\n      <state>\r\n        <projects_view>\r\n          <tree_state>\r\n            <expand />\r\n            <select />\r\n          </tree_state>\r\n        </projects_view>\r\n      </state>\r\n    </system>\r\n  </component>\r\n  <component name=\"FileTemplateManagerImpl\">\r\n    <option name=\"RECENT_TEMPLATES\">\r\n      <list>\r\n        <option value=\"Jsp File\" />\r\n      </list>\r\n    </option>\r\n  </component>\r\n  <component name=\"Git.Settings\">\r\n    <option name=\"RECENT_GIT_ROOT_PATH\" value=\"$PROJECT_DIR$/..\" />\r\n  </component>\r\n  <component name=\"LogFilters\">\r\n    <option name=\"FILTER_ERRORS\" value=\"false\" />\r\n    <option name=\"FILTER_WARNINGS\" value=\"false\" />\r\n    <option name=\"FILTER_INFO\" value=\"true\" />\r\n    <option name=\"FILTER_DEBUG\" value=\"true\" />\r\n    <option name=\"CUSTOM_FILTER\" />\r\n  </component>\r\n  <component name=\"MarkdownSettingsMigration\">\r\n    <option name=\"stateVersion\" value=\"1\" />\r\n  </component>\r\n  <component name=\"ProjectId\" id=\"2PXFlzZ75R4JKdwNoswoe3IuFQD\" />\r\n  <component name=\"ProjectLevelVcsManager\" settingsEditedManually=\"true\" />\r\n  <component name=\"ProjectViewState\">\r\n    <option name=\"hideEmptyMiddlePackages\" value=\"true\" />\r\n    <option name=\"showLibraryContents\" value=\"true\" />\r\n  </component>\r\n  <component name=\"PropertiesComponent\">{\r\n  &quot;keyToString&quot;: {\r\n    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,\r\n    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,\r\n    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,\r\n    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,\r\n    &quot;last_opened_file_path&quot;: &quot;E:/C0123G1-Repo-BE/case_study&quot;\r\n  }\r\n}</component>\r\n  <component name=\"RunManager\">\r\n    <configuration name=\"Tomcat 9.0.74\" type=\"#com.intellij.j2ee.web.tomcat.TomcatRunConfigurationFactory\" factoryName=\"Local\" APPLICATION_SERVER_NAME=\"Tomcat 9.0.74\" ALTERNATIVE_JRE_ENABLED=\"false\">\r\n      <option name=\"OPEN_IN_BROWSER_URL\" value=\"http://localhost:8080\" />\r\n      <option name=\"UPDATING_POLICY\" value=\"hot-swap-classes\" />\r\n      <deployment>\r\n        <artifact name=\"Gradle : com.example : case_study-1.0-SNAPSHOT.war\">\r\n          <settings>\r\n            <option name=\"CONTEXT_PATH\" value=\"\" />\r\n          </settings>\r\n        </artifact>\r\n      </deployment>\r\n      <server-settings>\r\n        <option name=\"BASE_DIRECTORY_NAME\" value=\"bfb25561-f8b9-4e29-8b2d-86580d7c123f\" />\r\n      </server-settings>\r\n      <predefined_log_file enabled=\"true\" id=\"Tomcat\" />\r\n      <predefined_log_file enabled=\"true\" id=\"Tomcat Catalina\" />\r\n      <predefined_log_file id=\"Tomcat Manager\" />\r\n      <predefined_log_file id=\"Tomcat Host Manager\" />\r\n      <predefined_log_file id=\"Tomcat Localhost Access\" />\r\n      <RunnerSettings RunnerId=\"Debug\">\r\n        <option name=\"DEBUG_PORT\" value=\"53687\" />\r\n      </RunnerSettings>\r\n      <ConfigurationWrapper VM_VAR=\"JAVA_OPTS\" RunnerId=\"Cover\">\r\n        <option name=\"USE_ENV_VARIABLES\" value=\"true\" />\r\n        <STARTUP>\r\n          <option name=\"USE_DEFAULT\" value=\"true\" />\r\n          <option name=\"SCRIPT\" value=\"\" />\r\n          <option name=\"VM_PARAMETERS\" value=\"\" />\r\n          <option name=\"PROGRAM_PARAMETERS\" value=\"\" />\r\n        </STARTUP>\r\n        <SHUTDOWN>\r\n          <option name=\"USE_DEFAULT\" value=\"true\" />\r\n          <option name=\"SCRIPT\" value=\"\" />\r\n          <option name=\"VM_PARAMETERS\" value=\"\" />\r\n          <option name=\"PROGRAM_PARAMETERS\" value=\"\" />\r\n        </SHUTDOWN>\r\n      </ConfigurationWrapper>\r\n      <ConfigurationWrapper VM_VAR=\"JAVA_OPTS\" RunnerId=\"Debug\">\r\n        <option name=\"USE_ENV_VARIABLES\" value=\"true\" />\r\n        <STARTUP>\r\n          <option name=\"USE_DEFAULT\" value=\"true\" />\r\n          <option name=\"SCRIPT\" value=\"\" />\r\n          <option name=\"VM_PARAMETERS\" value=\"\" />\r\n          <option name=\"PROGRAM_PARAMETERS\" value=\"\" />\r\n        </STARTUP>\r\n        <SHUTDOWN>\r\n          <option name=\"USE_DEFAULT\" value=\"true\" />\r\n          <option name=\"SCRIPT\" value=\"\" />\r\n          <option name=\"VM_PARAMETERS\" value=\"\" />\r\n          <option name=\"PROGRAM_PARAMETERS\" value=\"\" />\r\n        </SHUTDOWN>\r\n      </ConfigurationWrapper>\r\n      <ConfigurationWrapper VM_VAR=\"JAVA_OPTS\" RunnerId=\"Profile\">\r\n        <option name=\"USE_ENV_VARIABLES\" value=\"true\" />\r\n        <STARTUP>\r\n          <option name=\"USE_DEFAULT\" value=\"true\" />\r\n          <option name=\"SCRIPT\" value=\"\" />\r\n          <option name=\"VM_PARAMETERS\" value=\"\" />\r\n          <option name=\"PROGRAM_PARAMETERS\" value=\"\" />\r\n        </STARTUP>\r\n        <SHUTDOWN>\r\n          <option name=\"USE_DEFAULT\" value=\"true\" />\r\n          <option name=\"SCRIPT\" value=\"\" />\r\n          <option name=\"VM_PARAMETERS\" value=\"\" />\r\n          <option name=\"PROGRAM_PARAMETERS\" value=\"\" />\r\n        </SHUTDOWN>\r\n      </ConfigurationWrapper>\r\n      <ConfigurationWrapper VM_VAR=\"JAVA_OPTS\" RunnerId=\"Run\">\r\n        <option name=\"USE_ENV_VARIABLES\" value=\"true\" />\r\n        <STARTUP>\r\n          <option name=\"USE_DEFAULT\" value=\"true\" />\r\n          <option name=\"SCRIPT\" value=\"\" />\r\n          <option name=\"VM_PARAMETERS\" value=\"\" />\r\n          <option name=\"PROGRAM_PARAMETERS\" value=\"\" />\r\n        </STARTUP>\r\n        <SHUTDOWN>\r\n          <option name=\"USE_DEFAULT\" value=\"true\" />\r\n          <option name=\"SCRIPT\" value=\"\" />\r\n          <option name=\"VM_PARAMETERS\" value=\"\" />\r\n          <option name=\"PROGRAM_PARAMETERS\" value=\"\" />\r\n        </SHUTDOWN>\r\n      </ConfigurationWrapper>\r\n      <method v=\"2\">\r\n        <option name=\"Make\" enabled=\"true\" />\r\n        <option name=\"BuildArtifacts\" enabled=\"true\">\r\n          <artifact name=\"Gradle : com.example : case_study-1.0-SNAPSHOT.war\" />\r\n        </option>\r\n      </method>\r\n    </configuration>\r\n  </component>\r\n  <component name=\"SpellCheckerSettings\" RuntimeDictionaries=\"0\" Folders=\"0\" CustomDictionaries=\"0\" DefaultDictionary=\"application-level\" UseSingleDictionary=\"true\" transferred=\"true\" />\r\n  <component name=\"TaskManager\">\r\n    <task active=\"true\" id=\"Default\" summary=\"Default task\">\r\n      <changelist id=\"8d25cb45-a8d5-4581-a71e-26e1995f3533\" name=\"Changes\" comment=\"\" />\r\n      <created>1683595679545</created>\r\n      <option name=\"number\" value=\"Default\" />\r\n      <option name=\"presentableId\" value=\"Default\" />\r\n      <updated>1683595679545</updated>\r\n      <workItem from=\"1683595680853\" duration=\"1348000\" />\r\n      <workItem from=\"1683625845743\" duration=\"1884000\" />\r\n      <workItem from=\"1683631056310\" duration=\"7671000\" />\r\n      <workItem from=\"1683640138570\" duration=\"4409000\" />\r\n    </task>\r\n    <servers />\r\n  </component>\r\n  <component name=\"TypeScriptGeneratedFilesManager\">\r\n    <option name=\"version\" value=\"3\" />\r\n  </component>\r\n  <component name=\"VcsManagerConfiguration\">\r\n    <MESSAGE value=\"Merge branch 'main' of https://github.com/C0123G1-Group1/C0123G1-Repo-BE into thientt&#10;&#10;# Conflicts:&#10;#&#9;README.md\" />\r\n    <MESSAGE value=\"edit project\" />\r\n    <option name=\"LAST_COMMIT_MESSAGE\" value=\"edit project\" />\r\n  </component>\r\n  <component name=\"XDebuggerManager\">\r\n    <breakpoint-manager>\r\n      <breakpoints>\r\n        <line-breakpoint enabled=\"true\" type=\"java-line\">\r\n          <url>file://$PROJECT_DIR$/src/main/java/controller/CustomerServlet.java</url>\r\n          <line>64</line>\r\n          <option name=\"timeStamp\" value=\"8\" />\r\n        </line-breakpoint>\r\n        <line-breakpoint enabled=\"true\" type=\"java-line\">\r\n          <url>file://$PROJECT_DIR$/src/main/java/models/service/impl/CustomerServiceImpl.java</url>\r\n          <line>21</line>\r\n          <option name=\"timeStamp\" value=\"10\" />\r\n        </line-breakpoint>\r\n        <line-breakpoint enabled=\"true\" type=\"java-line\">\r\n          <url>file://$PROJECT_DIR$/src/main/java/models/repository/Impl/CustomerRepositoryImpl.java</url>\r\n          <line>57</line>\r\n          <option name=\"timeStamp\" value=\"11\" />\r\n        </line-breakpoint>\r\n        <line-breakpoint enabled=\"true\" type=\"java-line\">\r\n          <url>file://$PROJECT_DIR$/src/main/java/models/repository/Impl/CustomerRepositoryImpl.java</url>\r\n          <line>70</line>\r\n          <option name=\"timeStamp\" value=\"13\" />\r\n        </line-breakpoint>\r\n      </breakpoints>\r\n    </breakpoint-manager>\r\n  </component>\r\n</project>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/workspace.xml b/.idea/workspace.xml
+--- a/.idea/workspace.xml	(revision a74d225a7d8d649a564aeec1f4e10862237da126)
++++ b/.idea/workspace.xml	(date 1683692727419)
+@@ -4,20 +4,24 @@
+     <option name="autoReloadType" value="SELECTIVE" />
+   </component>
+   <component name="ChangeListManager">
+-    <list default="true" id="8d25cb45-a8d5-4581-a71e-26e1995f3533" name="Changes" comment="edit project">
+-      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/src/main/java/controller/CustomerServlet.java" afterDir="false" />
++    <list default="true" id="30d49f66-aeaf-4ae0-8a4a-172d7ebbd5d0" name="Changes" comment="">
++      <change afterPath="$PROJECT_DIR$/src/main/java/models/repository/IAccountRepository.java" afterDir="false" />
++      <change afterPath="$PROJECT_DIR$/src/main/java/models/repository/Impl/AccountRepositoryImpl.java" afterDir="false" />
++      <change afterPath="$PROJECT_DIR$/src/main/java/models/service/IAccountService.java" afterDir="false" />
++      <change afterPath="$PROJECT_DIR$/src/main/java/models/service/impl/AccountServiceImpl.java" afterDir="false" />
++      <change afterPath="$PROJECT_DIR$/src/main/webapp/account/register.css" afterDir="false" />
++      <change afterPath="$PROJECT_DIR$/src/main/webapp/admin/home.jsp" afterDir="false" />
++      <change afterPath="$PROJECT_DIR$/src/main/webapp/users/shopping_cart.jsp" afterDir="false" />
+       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/src/main/java/connection/BaseRepository.java" beforeDir="false" />
+       <change beforePath="$PROJECT_DIR$/src/main/java/controller/AccountServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/AccountServlet.java" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/src/main/java/models/model/Admin.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/models/model/Account.java" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/src/main/java/models/model/Customer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/models/model/Customer.java" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/src/main/java/models/repository/BaseRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/connection/BaseRepository.java" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/src/main/java/models/repository/ICustomerRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/models/repository/ICustomerRepository.java" afterDir="false" />
+       <change beforePath="$PROJECT_DIR$/src/main/java/models/repository/Impl/AdminRepositoryImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/models/repository/Impl/AdminRepositoryImpl.java" afterDir="false" />
+       <change beforePath="$PROJECT_DIR$/src/main/java/models/repository/Impl/CustomerRepositoryImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/models/repository/Impl/CustomerRepositoryImpl.java" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/src/main/java/models/service/ICustomerService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/models/service/ICustomerService.java" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/src/main/java/models/service/impl/CustomerServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/models/service/impl/CustomerServiceImpl.java" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/src/main/webapp/account/register_css.css" beforeDir="false" />
++      <change beforePath="$PROJECT_DIR$/src/main/webapp/account/register_form.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/account/register_form.jsp" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/src/main/webapp/admin/admin.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/admin/admin.jsp" afterDir="false" />
+       <change beforePath="$PROJECT_DIR$/src/main/webapp/index.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/index.jsp" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/../database/database_case_study_03.sql" beforeDir="false" afterPath="$PROJECT_DIR$/../database/database_case_study_03.sql" afterDir="false" />
+     </list>
+     <option name="SHOW_DIALOG" value="false" />
+     <option name="HIGHLIGHT_CONFLICTS" value="true" />
+@@ -67,19 +71,19 @@
+     <option name="hideEmptyMiddlePackages" value="true" />
+     <option name="showLibraryContents" value="true" />
+   </component>
+-  <component name="PropertiesComponent">{
+-  &quot;keyToString&quot;: {
+-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+-    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+-    &quot;last_opened_file_path&quot;: &quot;E:/C0123G1-Repo-BE/case_study&quot;
++  <component name="PropertiesComponent"><![CDATA[{
++  "keyToString": {
++    "RunOnceActivity.OpenProjectViewOnStart": "true",
++    "RunOnceActivity.ShowReadmeOnStart": "true",
++    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
++    "WebServerToolWindowFactoryState": "false",
++    "last_opened_file_path": "E:/C0123G1-Repo-BE/case_study",
++    "node.js.selected.package.tslint": "(autodetect)"
+   }
+-}</component>
++}]]></component>
+   <component name="RunManager">
+-    <configuration name="Tomcat 9.0.74" type="#com.intellij.j2ee.web.tomcat.TomcatRunConfigurationFactory" factoryName="Local" APPLICATION_SERVER_NAME="Tomcat 9.0.74" ALTERNATIVE_JRE_ENABLED="false">
+-      <option name="OPEN_IN_BROWSER_URL" value="http://localhost:8080" />
+-      <option name="UPDATING_POLICY" value="hot-swap-classes" />
++    <configuration name="Tomcat 9.0.745" type="#com.intellij.j2ee.web.tomcat.TomcatRunConfigurationFactory" factoryName="Local" APPLICATION_SERVER_NAME="Tomcat 9.0.745" ALTERNATIVE_JRE_ENABLED="false" nameIsGenerated="true">
++      <option name="UPDATING_POLICY" value="restart-server" />
+       <deployment>
+         <artifact name="Gradle : com.example : case_study-1.0-SNAPSHOT.war">
+           <settings>
+@@ -88,7 +92,7 @@
+         </artifact>
+       </deployment>
+       <server-settings>
+-        <option name="BASE_DIRECTORY_NAME" value="bfb25561-f8b9-4e29-8b2d-86580d7c123f" />
++        <option name="BASE_DIRECTORY_NAME" value="d7d94bf0-5cda-4d84-9e59-c03d2d8cc24b" />
+       </server-settings>
+       <predefined_log_file enabled="true" id="Tomcat" />
+       <predefined_log_file enabled="true" id="Tomcat Catalina" />
+@@ -96,7 +100,7 @@
+       <predefined_log_file id="Tomcat Host Manager" />
+       <predefined_log_file id="Tomcat Localhost Access" />
+       <RunnerSettings RunnerId="Debug">
+-        <option name="DEBUG_PORT" value="53687" />
++        <option name="DEBUG_PORT" value="60344" />
+       </RunnerSettings>
+       <ConfigurationWrapper VM_VAR="JAVA_OPTS" RunnerId="Cover">
+         <option name="USE_ENV_VARIABLES" value="true" />
+@@ -183,6 +187,17 @@
+   </component>
+   <component name="TypeScriptGeneratedFilesManager">
+     <option name="version" value="3" />
++  </component>
++  <component name="Vcs.Log.Tabs.Properties">
++    <option name="TAB_STATES">
++      <map>
++        <entry key="MAIN">
++          <value>
++            <State />
++          </value>
++        </entry>
++      </map>
++    </option>
+   </component>
+   <component name="VcsManagerConfiguration">
+     <MESSAGE value="Merge branch 'main' of https://github.com/C0123G1-Group1/C0123G1-Repo-BE into thientt&#10;&#10;# Conflicts:&#10;#&#9;README.md" />
+@@ -192,25 +207,20 @@
+   <component name="XDebuggerManager">
+     <breakpoint-manager>
+       <breakpoints>
+-        <line-breakpoint enabled="true" type="java-line">
+-          <url>file://$PROJECT_DIR$/src/main/java/controller/CustomerServlet.java</url>
+-          <line>64</line>
+-          <option name="timeStamp" value="8" />
+-        </line-breakpoint>
+-        <line-breakpoint enabled="true" type="java-line">
+-          <url>file://$PROJECT_DIR$/src/main/java/models/service/impl/CustomerServiceImpl.java</url>
+-          <line>21</line>
+-          <option name="timeStamp" value="10" />
+-        </line-breakpoint>
+         <line-breakpoint enabled="true" type="java-line">
+           <url>file://$PROJECT_DIR$/src/main/java/models/repository/Impl/CustomerRepositoryImpl.java</url>
+           <line>57</line>
+           <option name="timeStamp" value="11" />
++        </line-breakpoint>
++        <line-breakpoint enabled="true" type="java-line">
++          <url>file://$PROJECT_DIR$/src/main/java/controller/CustomerServlet.java</url>
++          <line>21</line>
++          <option name="timeStamp" value="14" />
+         </line-breakpoint>
+         <line-breakpoint enabled="true" type="java-line">
+           <url>file://$PROJECT_DIR$/src/main/java/models/repository/Impl/CustomerRepositoryImpl.java</url>
+-          <line>70</line>
+-          <option name="timeStamp" value="13" />
++          <line>41</line>
++          <option name="timeStamp" value="16" />
+         </line-breakpoint>
+       </breakpoints>
+     </breakpoint-manager>
+Index: src/main/java/controller/AccountServlet.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package controller;\r\n\r\n\r\nimport models.model.Customer;\r\nimport models.service.IAdminService;\r\nimport models.service.ICustomerService;\r\nimport models.service.impl.AdminServiceImpl;\r\nimport models.service.impl.CustomerServiceImpl;\r\n\r\nimport javax.servlet.ServletException;\r\nimport javax.servlet.annotation.WebServlet;\r\nimport javax.servlet.http.HttpServlet;\r\nimport javax.servlet.http.HttpServletRequest;\r\nimport javax.servlet.http.HttpServletResponse;\r\nimport java.io.IOException;\r\n\r\n\r\n@WebServlet(name = \"AccountServlet\", value = \"/account-servlet\")\r\npublic class AccountServlet extends HttpServlet {\r\n    ICustomerService customerService = new CustomerServiceImpl();\r\n    IAdminService adminService = new AdminServiceImpl();\r\n\r\n    @Override\r\n    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {\r\n        request.getRequestDispatcher(\"/index.jsp\").forward(request, response);\r\n    }\r\n\r\n    @Override\r\n    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {\r\n        String action = request.getParameter(\"action\");\r\n        switch (action) {\r\n            case \"register\":\r\n                Customer customer =new Customer();\r\n                boolean statusRegister = customerService.saveCustomer(customer);\r\n                request.setAttribute(\"statusRegister\", statusRegister);\r\n                request.getRequestDispatcher(\"/account/register_form.jsp\").forward(request, response);\r\n                break;\r\n            case \"login\":\r\n                String userName = request.getParameter(\"userName\");\r\n                String password = request.getParameter(\"password\");\r\n                if (userName.equals(\"admin\")) {\r\n                    boolean result = adminService.checkAccountAdmin(userName, password);\r\n                    if (result) {\r\n\r\n                        request.getRequestDispatcher(\"/admin/admin.jsp\").forward(request, response);\r\n                    } else {\r\n                        request.setAttribute(\"userName\", userName);\r\n                        request.setAttribute(\"action\", \"fail\");\r\n                        request.getRequestDispatcher(\"/index.jsp\").forward(request, response);\r\n                    }\r\n                } else {\r\n////                    boolean result = customerService.checkAccount(userName, password);\r\n//                    if (result) {\r\n//                        request.getRequestDispatcher(\"/users/user.jsp\").forward(request, response);\r\n//                    } else {\r\n//                        request.setAttribute(\"userName\", userName);\r\n//                        request.setAttribute(\"status\", \"fail\");\r\n//                        request.getRequestDispatcher(\"/index.jsp\").forward(request, response);\r\n//                    }\r\n                }\r\n        }\r\n\r\n    }\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/java/controller/AccountServlet.java b/src/main/java/controller/AccountServlet.java
+--- a/src/main/java/controller/AccountServlet.java	(revision a74d225a7d8d649a564aeec1f4e10862237da126)
++++ b/src/main/java/controller/AccountServlet.java	(date 1683692727420)
+@@ -2,8 +2,10 @@
+ 
+ 
+ import models.model.Customer;
++import models.service.IAccountService;
+ import models.service.IAdminService;
+ import models.service.ICustomerService;
++import models.service.impl.AccountServiceImpl;
+ import models.service.impl.AdminServiceImpl;
+ import models.service.impl.CustomerServiceImpl;
+ 
+@@ -19,6 +21,7 @@
+ public class AccountServlet extends HttpServlet {
+     ICustomerService customerService = new CustomerServiceImpl();
+     IAdminService adminService = new AdminServiceImpl();
++    IAccountService accountService = new AccountServiceImpl();
+ 
+     @Override
+     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+@@ -39,24 +42,24 @@
+                 String userName = request.getParameter("userName");
+                 String password = request.getParameter("password");
+                 if (userName.equals("admin")) {
+-                    boolean result = adminService.checkAccountAdmin(userName, password);
+-                    if (result) {
++                    boolean checkAccount = accountService.checkAccount(userName, password);
++                    if (checkAccount) {
+ 
+                         request.getRequestDispatcher("/admin/admin.jsp").forward(request, response);
+                     } else {
+                         request.setAttribute("userName", userName);
+-                        request.setAttribute("action", "fail");
++                        request.setAttribute("status", "fail");
+                         request.getRequestDispatcher("/index.jsp").forward(request, response);
+                     }
+                 } else {
+-////                    boolean result = customerService.checkAccount(userName, password);
+-//                    if (result) {
+-//                        request.getRequestDispatcher("/users/user.jsp").forward(request, response);
+-//                    } else {
+-//                        request.setAttribute("userName", userName);
+-//                        request.setAttribute("status", "fail");
+-//                        request.getRequestDispatcher("/index.jsp").forward(request, response);
+-//                    }
++                    boolean checkAccount = accountService.checkAccount(userName, password);
++                    if (checkAccount) {
++                        request.getRequestDispatcher("/users/shopping_cart.jsp").forward(request, response);
++                    } else {
++                        request.setAttribute("userName", userName);
++                        request.setAttribute("status", "fail");
++                        request.getRequestDispatcher("/index.jsp").forward(request, response);
++                    }
+                 }
+         }
+ 
+Index: src/main/webapp/admin/home.jsp
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/webapp/admin/home.jsp b/src/main/webapp/admin/home.jsp
+new file mode 100644
+--- /dev/null	(date 1683692727425)
++++ b/src/main/webapp/admin/home.jsp	(date 1683692727425)
+@@ -0,0 +1,134 @@
++<%--
++  Created by IntelliJ IDEA.
++  User: Admin
++  Date: 02/05/2023
++  Time: 8:51 SA
++  To change this template use File | Settings | File Templates.
++--%>
++<%@ page contentType="text/html;charset=UTF-8" language="java" %>
++<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
++<html>
++<head>
++  <title>IG1 Store</title>
++  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
++        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
++  <style>
++    #ig1-user-page{
++      color: black;
++    }
++    #ig1-user-page:hover{
++      color: white;
++    }
++  </style>
++</head>
++<body>
++<%--<nav class="navbar bg-body-tertiary">--%>
++<div class="" style="text-align: center; width: 100vw">
++  <form class="d-flex form-control bg-secondary" role="search" action="/products-servlet" method="get">
++    <a id="ig1-user-page" href="/products-servlet?action=displayUser" class="nav-link">IG1 Store</a>
++    <input type="text" name="action" value="searchAdmin" hidden>
++    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search"
++           name="productName" style="width: 80vw">
++    <button class="btn btn-success " type="submit">Search</button>
++            <button type="button" class="btn btn-primary mx-2" onclick="window.location.href='/products/create_product.jsp'">Create Product
++    </button>
++  </form>
++</div>
++<div>
++    <table class="table table-hover">
++        <thead>
++        <tr>
++            <th scope="col">Product ID</th>
++            <th scope="col">Name</th>
++            <th scope="col">Type</th>
++            <th scope="col">Describe</th>
++            <th scope="col">Price(VND)</th>
++            <th scope="col">Manipulate</th>
++        </tr>
++        </thead>
++        <tbody>
++        <c:forEach var="productList" items="${productList}">
++            <tr>
++                <td>${productList.getProductId()}</td>
++                <td>${productList.getProductName()}</td>
++                <td>
++                    <c:if test="${productList.getProductType() == 1}">
++                        Iphone
++                    </c:if>
++                    <c:if test="${productList.getProductType() == 2}">
++                        SamSung
++                    </c:if>
++                    <c:if test="${productList.getProductType() == 3}">
++                        Vivo
++                    </c:if>
++                </td>
++                <td>${productList.getDescribe()}</td>
++                <td>${productList.getPrice()}</td>
++                <td>
++                    <button type="submit" class="btn btn-danger" data-bs-toggle="modal"
++                            data-bs-target="#exampleModal"
++                            onclick="deleteProduct('${productList.getProductId()}','${productList.getProductName()}')">
++                        Delete
++                    </button>
++                    <button class="btn btn-warning"
++                            onclick="window.location.href='/products-servlet?action=update&productId=${productList.getProductId()}'">
++                        Update
++                    </button>
++                    <button class="btn btn-info">Detail</button>
++                </td>
++            </tr>
++        </c:forEach>
++        </tbody>
++    </table>
++</div>
++<div class="modal fade" id="exampleModal" tabindex="-1"
++     aria-labelledby="exampleModalLabel" aria-hidden="true">
++    <div class="modal-dialog">
++        <div class="modal-content">
++            <div class="modal-header">
++                <h1 class="modal-title fs-5" id="exampleModalLabel">Delete Product</h1>
++                <button type="button" class="btn-close" data-bs-dismiss="modal"
++                        aria-label="Close"></button>
++            </div>
++            <form action="/products-servlet" method="post">
++                <div class="modal-body">
++                    <input type="text" name="action" value="delete" hidden>
++                    <input type="text" id="productId" name="productId" hidden>
++                    Do you want to delete the product <span id="productName"></span> ?
++                </div>
++                <div class="modal-footer">
++                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">No</button>
++                    <button type="submit" class="btn btn-primary">
++                        Yes
++                    </button>
++                </div>
++            </form>
++        </div>
++    </div>
++</div>
++<nav aria-label="Page navigation example">
++    <ul class="pagination justify-content-end">
++        <li class="page-item">
++            <a class="page-link" href="#">Previous</a>
++        </li>
++        <c:forEach varStatus="i" begin="1" end="${Math.ceil(productListSize/10.0)}">
++            <li class="page-item"><a class="page-link"
++                                     href="/products-servlet?action=displayPageAdmin&page=${i.count}">${i.count}</a>
++            </li>
++        </c:forEach>
++        <li class="page-item">
++            <a class="page-link" href="#">Next</a>
++        </li>
++    </ul>
++</nav>
++<script>
++  function deleteProduct(id, name) {
++    document.getElementById("productId").value = id;
++    document.getElementById("productName").innerText = name;
++  }
++</script>
++</body>
++<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
++        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
++        crossorigin="anonymous"></script>
++</html>
+Index: ../database/database_case_study_03.sql
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>CREATE DATABASE ig1_store;\r\nUSE ig1_store;\r\n\r\nCREATE TABLE roles (\r\n\trole_id INT PRIMARY KEY AUTO_INCREMENT,\r\n    role_name VARCHAR(50) NOT NULL\r\n);\r\n\r\nCREATE TABLE account_users(\r\n\taccount_id INT PRIMARY KEY AUTO_INCREMENT,\r\n    user_name VARCHAR(50) UNIQUE NOT NULL,\r\n    `password` VARCHAR(50) NOT NULL\r\n);\r\nCREATE TABLE users_role (\r\n\trole_id INT,\r\n    account_id INT,\r\n    PRIMARY KEY(role_id, account_id),\r\n    FOREIGN KEY (role_id) REFERENCES roles(role_id),\r\n    FOREIGN KEY(account_id) REFERENCES account_users(account_id)\r\n);\r\n\r\nCREATE TABLE customers(\r\n\tcustomer_id INT PRIMARY KEY AUTO_INCREMENT,\r\n    customer_name VARCHAR(50) NOT NULL,\r\n    email VARCHAR(50) UNIQUE NOT NULL,\r\n    phone_number VARCHAR(11) UNIQUE NOT NULL,\r\n    address TEXT NOT NULL,\r\n    account_id INT,\r\n    create_at DATETIME DEFAULT CURRENT_TIMESTAMP,\r\n    update_at DATETIME DEFAULT CURRENT_TIMESTAMP,\r\n    FOREIGN KEY (account_id) REFERENCES account_users(account_id)\r\n);\r\n\r\nCREATE TABLE product_type(\r\n\tproduct_type_id INT PRIMARY KEY AUTO_INCREMENT,\r\n    product_type_name VARCHAR(50) NOT NUll\r\n);\r\n\r\nCREATE TABLE products(\r\n\tproduct_id INT PRIMARY KEY AUTO_INCREMENT,\r\n    product_name VARCHAR(50) NOT NULL,\r\n\tproduct_type_id INT,\r\n    `describe` TEXT NOT NULL,\r\n    price LONG CHECK(price > 0),\r\n    product_image_url TEXT NOT NULL,\r\n    createAt DATETIME DEFAULT CURRENT_TIMESTAMP,\r\n    updateAt DATETIME DEFAULT CURRENT_TIMESTAMP,\r\n    FOREIGN KEY(product_type_id) REFERENCES product_type(product_type_id)\r\n);\r\nCREATE TABLE accessory(\r\n\taccessory_id INT PRIMARY KEY AUTO_INCREMENT,\r\n    accessory_name VARCHAR(50) NOT NULL,\r\n    accessory_price DOUBLE CHECK(accessory_price > 0),\r\n    image_accessory TEXT NOT NULL,\r\n    create_at DATETIME DEFAULT CURRENT_TIMESTAMP,\r\n    update_at DATETIME DEFAULT CURRENT_TIMESTAMP\r\n);\r\n\r\nCREATE TABLE `order`(\r\n\torder_id INT PRIMARY KEY AUTO_INCREMENT,\r\n    order_date DATETIME,\r\n    customer_id INT,\r\n    product_id INT,\r\n    price_order LONG ,\r\n    FOREIGN KEY(customer_id) REFERENCES customers(customer_id),\r\n    FOREIGN KEY(product_id) REFERENCES products(product_id)\r\n);\r\n\r\nCREATE TABLE order_detail(\r\n\torder_detail_id INT PRIMARY KEY AUTO_INCREMENT,\r\n    order_id INT,\r\n\torder_detail_date DATETIME,\r\n    accessory_id INT,\r\n    FOREIGN KEY(order_id) REFERENCES `order`(order_id),\r\n    FOREIGN KEY(accessory_id) REFERENCES accessory(accessory_id)\r\n);\r\n\r\nINSERT INTO account_users (user_name,`password`) VALUES (\"khanh\", \"khanh123\"), (\"thien\", \"thien123\"), (\"khang\", \"khang123\"), (\"hai\", \"hai123\"),(\"admin\", \"admin123\");\r\nINSERT INTO customers (customer_name, email,phone_number,address,account_id) \r\nVALUES (\"khanh\",\"khanh@gmail.com\", \"0123456789\",\"Quang Nam\", 1),\r\n(\"khang\",\"khang@gmail.com\", \"1123456789\",\"Quang Nam\", 3),\r\n(\"thien\",\"thien@gmail.com\", \"0223456789\",\"Quang Nam\", 2),\r\n(\"hai\",\"hai@gmail.com\", \"0123456789\",\"Quang Nam\", 4);\r\nINSERT INTO product_type (product_type_name) VALUES (\"Iphone\"), (\"SamSung\"), (\"Vivo\"), (\"Asus\");\r\n\r\n\r\n\r\n\r\n\r\n\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/../database/database_case_study_03.sql b/../database/database_case_study_03.sql
+--- a/../database/database_case_study_03.sql	(revision a74d225a7d8d649a564aeec1f4e10862237da126)
++++ b/../database/database_case_study_03.sql	(date 1683692727425)
+@@ -58,7 +58,7 @@
+ 
+ CREATE TABLE `order`(
+ 	order_id INT PRIMARY KEY AUTO_INCREMENT,
+-    order_date DATETIME,
++    order_date DATETIME DEFAULT CURRENT_TIMESTAMP,
+     customer_id INT,
+     product_id INT,
+     price_order LONG ,
+@@ -69,7 +69,7 @@
+ CREATE TABLE order_detail(
+ 	order_detail_id INT PRIMARY KEY AUTO_INCREMENT,
+     order_id INT,
+-	order_detail_date DATETIME,
++	order_detail_date DATETIME DEFAULT CURRENT_TIMESTAMP,
+     accessory_id INT,
+     FOREIGN KEY(order_id) REFERENCES `order`(order_id),
+     FOREIGN KEY(accessory_id) REFERENCES accessory(accessory_id)
+@@ -80,11 +80,46 @@
+ VALUES ("khanh","khanh@gmail.com", "0123456789","Quang Nam", 1),
+ ("khang","khang@gmail.com", "1123456789","Quang Nam", 3),
+ ("thien","thien@gmail.com", "0223456789","Quang Nam", 2),
+-("hai","hai@gmail.com", "0123456789","Quang Nam", 4);
++("hai","hai@gmail.com", "2223456789","Quang Nam", 4);
+ INSERT INTO product_type (product_type_name) VALUES ("Iphone"), ("SamSung"), ("Vivo"), ("Asus");
+-
+-
++INSERT INTO products (product_name,product_type_id, `describe`, price, product_image_url) 
++VALUES ("Iphone", 1, "Mau xanh", 20, "abc"),
++	("Iphone X", 1, "Mau xanh", 20, "abc"),
++	("Iphone 13", 1, "Mau xanh", 20, "abc"),
++	("Samsung", 2, "Mau xanh", 20, "abc"),
++	("Vivo", 3, "Mau xanh", 20, "abc");
++    
++INSERT INTO accessory (accessory_name, accessory_price, image_accessory) 
++VALUES ("Tai nghe khong day",12,"image"),
++("Tai nghe co day",12,"image"),
++("Cuc sac iphone 100W",12,"image"),
++("Op lung dien thoai iphone",12,"image")
++ ;
++    
++INSERT INTO `order` (customer_id,product_id, price_order) 
++VALUES (1,2,20),
++(1,3,20),
++(1,4,20),
++(2,2,20),
++(2,1,20);
+ 
++INSERT INTO order_detail (order_id,accessory_id) 
++VALUES (1,1),
++(1,2),
++(2,1),
++(2,3)
++;
++  
++SELECT p.product_name, o.price_order,-- , SUM(o.price_order + ifnull(ac.accessory_price, 0)) as tong_tien
++FROM `order` AS o 
++INNER JOIN products as p on o.product_id = p.product_id 
++INNER JOIN customers as c on o.customer_id = c.customer_id
++LEFT JOIN order_detail as od on o.order_id = od.order_id
++Left join accessory as ac on od.accessory_id = ac.accessory_id
++WHERE c.customer_id = 1
++GROUP BY o.customer_id-- ,p.product_id
++HAVING sum(tong_tien);
++SELECT * from account_users WHERE user_name = "khanh" AND `password` = "khanh123";
+ 
+ 
+ 
+Index: src/main/java/models/service/IAccountService.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/java/models/service/IAccountService.java b/src/main/java/models/service/IAccountService.java
+new file mode 100644
+--- /dev/null	(date 1683692727423)
++++ b/src/main/java/models/service/IAccountService.java	(date 1683692727423)
+@@ -0,0 +1,5 @@
++package models.service;
++
++public interface IAccountService {
++    boolean checkAccount(String userName, String password);
++}
+Index: src/main/webapp/users/shopping_cart.jsp
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/webapp/users/shopping_cart.jsp b/src/main/webapp/users/shopping_cart.jsp
+new file mode 100644
+--- /dev/null	(date 1683692727425)
++++ b/src/main/webapp/users/shopping_cart.jsp	(date 1683692727425)
+@@ -0,0 +1,18 @@
++<%--
++  Created by IntelliJ IDEA.
++  User: Admin
++  Date: 09/05/2023
++  Time: 10:44 CH
++  To change this template use File | Settings | File Templates.
++--%>
++<%@ page contentType="text/html;charset=UTF-8" language="java" %>
++<html>
++<head>
++    <title>Title</title>
++</head>
++<body>
++    <table>
++        tr*2>td*
++    </table>
++</body>
++</html>
+Index: src/main/java/models/service/impl/AccountServiceImpl.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/java/models/service/impl/AccountServiceImpl.java b/src/main/java/models/service/impl/AccountServiceImpl.java
+new file mode 100644
+--- /dev/null	(date 1683692727423)
++++ b/src/main/java/models/service/impl/AccountServiceImpl.java	(date 1683692727423)
+@@ -0,0 +1,13 @@
++package models.service.impl;
++
++import models.repository.IAccountRepository;
++import models.repository.Impl.AccountRepositoryImpl;
++import models.service.IAccountService;
++
++public class AccountServiceImpl implements IAccountService {
++    IAccountRepository accountRepository = new AccountRepositoryImpl();
++    @Override
++    public boolean checkAccount(String userName, String password) {
++        return accountRepository.checkAccount(userName,password);
++    }
++}
+Index: src/main/webapp/account/register.css
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/webapp/account/register.css b/src/main/webapp/account/register.css
+new file mode 100644
+--- /dev/null	(date 1683692727423)
++++ b/src/main/webapp/account/register.css	(date 1683692727423)
+@@ -0,0 +1,10 @@
++.gradient-custom-3 {
++    background: #ef9c63;
++    background: -webkit-linear-gradient(to right, rgba(246, 118, 44, 0.69), rgba(255, 187, 137, 0.63));
++    background: linear-gradient(to right, rgba(246, 118, 44, 0.69), rgba(255, 187, 137, 0.63))
++}
++.gradient-custom-4 {
++    background: #ef8b2e;
++    background: -webkit-linear-gradient(to right, rgb(255, 193, 68), rgb(245, 118, 39));
++    background: linear-gradient(to right, rgb(255, 193, 68), rgb(245, 118, 39))
++}
+\ No newline at end of file
+Index: src/main/java/models/repository/IAccountRepository.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/java/models/repository/IAccountRepository.java b/src/main/java/models/repository/IAccountRepository.java
+new file mode 100644
+--- /dev/null	(date 1683692727420)
++++ b/src/main/java/models/repository/IAccountRepository.java	(date 1683692727420)
+@@ -0,0 +1,5 @@
++package models.repository;
++
++public interface IAccountRepository {
++    boolean checkAccount(String userName, String password);
++}
+Index: src/main/webapp/account/register_form.jsp
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><%--\r\n  Created by IntelliJ IDEA.\r\n  User: Admin\r\n  Date: 30/04/2023\r\n  Time: 8:18 CH\r\n  To change this template use File | Settings | File Templates.\r\n--%>\r\n<%@ page contentType=\"text/html;charset=UTF-8\" language=\"java\" %>\r\n<%@taglib prefix=\"c\" uri=\"http://java.sun.com/jsp/jstl/core\" %>\r\n<html>\r\n<head>\r\n    <title>IG1 Store</title>\r\n    <link rel=\"stylesheet\" href=\"register_css.css\">\r\n    <link href=\"https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css\" rel=\"stylesheet\" integrity=\"sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC\" crossorigin=\"anonymous\">\r\n\r\n</head>\r\n<body>\r\n\r\n    <section class=\"vh-100 bg-image\"\r\n             style=\"background-image: url('https://mdbcdn.b-cdn.net/img/Photos/new-templates/search-box/img4.webp');\">\r\n        <div class=\"mask d-flex align-items-center h-100 gradient-custom-3\">\r\n            <div class=\"container h-100\">\r\n                <div class=\"row d-flex justify-content-center align-items-center h-100\">\r\n                    <div class=\"col-12 col-md-9 col-lg-7 col-xl-6\">\r\n                        <div class=\"card\" style=\"border-radius: 15px;\">\r\n                            <div class=\"card-body p-5\" style=\"height: 100vh\">\r\n                                <h4 class=\"text-uppercase text-center mb-2\">Create an account</h4>\r\n                                <c:if test=\"${statusRegister}\">\r\n                                    <h5>Dang ky thanh cong</h5>\r\n                                </c:if>\r\n                                <c:if test=\"${!statusRegister}\">\r\n                                    <h5>Dang ky that bai</h5>\r\n                                </c:if>\r\n                                <form action=\"/account-servlet\" method=\"post\">\r\n                                    <input type=\"text\" name=\"action\" value=\"register\" hidden>\r\n                                    <div class=\"form-outline mb-2\">\r\n                                        <label class=\"form-label\" for=\"form3Example1cg\">User Name</label>\r\n                                        <input type=\"text\" id=\"form3Example1cg\" class=\"form-control form-control-lg\" name=\"customerName\" />\r\n                                    </div>\r\n\r\n                                    <div class=\"form-outline mb-2\">\r\n                                        <label class=\"form-label\" for=\"form3Example2cg\">Your Email</label>\r\n                                        <input type=\"email\" id=\"form3Example2cg\" class=\"form-control form-control-lg\" name=\"email\"/>\r\n                                    </div>\r\n                                    <div class=\"form-outline mb-2\">\r\n                                        <label class=\"form-label\" for=\"form3Example3cg\">Phone number</label>\r\n                                        <input type=\"text\" id=\"form3Example3cg\" class=\"form-control form-control-lg\" name=\"phoneNumber\"/>\r\n                                    </div>\r\n                                    <div class=\"form-outline mb-2\">\r\n                                        <label class=\"form-label\" for=\"form3Example4cg\">Address</label>\r\n                                        <input type=\"text\" id=\"form3Example4cg\" class=\"form-control form-control-lg\" name=\"address\"/>\r\n                                    </div>\r\n\r\n                                    <div class=\"form-outline mb-2\">\r\n                                        <label class=\"form-label\" for=\"form3Example5cg\">Password</label>\r\n                                        <input oninput=\"checkPassword()\" type=\"password\" id=\"form3Example5cg\" class=\"form-control form-control-lg\"/>\r\n                                    </div>\r\n\r\n                                    <div class=\"form-outline mb-2\">\r\n                                        <label class=\"form-label\" for=\"form3Example6cdg\">Repeat your password</label>\r\n                                        <input oninput=\"checkPassword()\" type=\"password\" id=\"form3Example6cdg\" class=\"form-control form-control-lg\" name=\"password\"/>\r\n                                        <small id=\"check\"></small>\r\n                                    </div>\r\n\r\n                                    <div class=\"d-flex justify-content-center\">\r\n                                        <button type=\"submit\"\r\n                                                class=\"btn btn-success btn-block btn-lg gradient-custom-4 text-body\">Register</button>\r\n                                    </div>\r\n\r\n                                    <p class=\"text-center text-muted mt-5 mb-0\">Have already an account? <a href=\"../index.jsp\" class=\"fw-bold text-body\"><u>Login here</u></a></p>\r\n                                </form>\r\n\r\n                            </div>\r\n                        </div>\r\n                    </div>\r\n                </div>\r\n            </div>\r\n        </div>\r\n    </section>\r\n    <script>\r\n        // function checkPassword() {\r\n        //     let passwordFirst = document.getElementById(\"form3Example5cg\").value;\r\n        //     let passwordLast = document.getElementById(\"form3Example6cdg\").value;\r\n        //     if(passwordLast !== \"\"){\r\n        //         if(passwordFirst === passwordLast){\r\n        //             document.getElementById(\"check\").innerText = \"Trung khop\";\r\n        //         }else {\r\n        //             document.getElementById(\"check\").innerText = \"khong trung\";\r\n        //         }\r\n        //     }\r\n        // }\r\n    </script>\r\n</body>\r\n<script src=\"https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js\" integrity=\"sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM\" crossorigin=\"anonymous\"></script>\r\n</html>\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/webapp/account/register_form.jsp b/src/main/webapp/account/register_form.jsp
+--- a/src/main/webapp/account/register_form.jsp	(revision a74d225a7d8d649a564aeec1f4e10862237da126)
++++ b/src/main/webapp/account/register_form.jsp	(date 1683692727424)
+@@ -10,12 +10,10 @@
+ <html>
+ <head>
+     <title>IG1 Store</title>
+-    <link rel="stylesheet" href="register_css.css">
+     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+-
++    <link rel="stylesheet" href="register.css">
+ </head>
+ <body>
+-
+     <section class="vh-100 bg-image"
+              style="background-image: url('https://mdbcdn.b-cdn.net/img/Photos/new-templates/search-box/img4.webp');">
+         <div class="mask d-flex align-items-center h-100 gradient-custom-3">
+@@ -26,16 +24,17 @@
+                             <div class="card-body p-5" style="height: 100vh">
+                                 <h4 class="text-uppercase text-center mb-2">Create an account</h4>
+                                 <c:if test="${statusRegister}">
+-                                    <h5>Dang ky thanh cong</h5>
++                                    <h5>Dang ky thang cong</h5>
+                                 </c:if>
+-                                <c:if test="${!statusRegister}">
+-                                    <h5>Dang ky that bai</h5>
++                                <c:if test="${statusRegister}">
++                                    <h5 class="text-danger">Dang ky that bai</h5>
+                                 </c:if>
++<%--                                <h6 id="statusRegister"></h6>--%>
+                                 <form action="/account-servlet" method="post">
+                                     <input type="text" name="action" value="register" hidden>
+                                     <div class="form-outline mb-2">
+                                         <label class="form-label" for="form3Example1cg">User Name</label>
+-                                        <input type="text" id="form3Example1cg" class="form-control form-control-lg" name="customerName" />
++                                        <input type="text" id="form3Example1cg" class="form-control form-control-lg" name="userName" />
+                                     </div>
+ 
+                                     <div class="form-outline mb-2">
+@@ -77,6 +76,7 @@
+             </div>
+         </div>
+     </section>
++    <c:set var="status" value="${statusRegister}"></c:set>
+     <script>
+         // function checkPassword() {
+         //     let passwordFirst = document.getElementById("form3Example5cg").value;
+@@ -89,6 +89,12 @@
+         //         }
+         //     }
+         // }
++        // function checkRegister(){
++        //     document.getElementById("statusRegister").innerText = "Dang ky thanh cong";
++        // }
++        // if(status){
++        //     checkRegister();
++        // }
+     </script>
+ </body>
+ <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+Index: src/main/java/models/repository/Impl/AccountRepositoryImpl.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/java/models/repository/Impl/AccountRepositoryImpl.java b/src/main/java/models/repository/Impl/AccountRepositoryImpl.java
+new file mode 100644
+--- /dev/null	(date 1683692727421)
++++ b/src/main/java/models/repository/Impl/AccountRepositoryImpl.java	(date 1683692727421)
+@@ -0,0 +1,35 @@
++package models.repository.Impl;
++
++import models.repository.BaseRepository;
++import models.repository.IAccountRepository;
++
++import java.sql.Connection;
++import java.sql.PreparedStatement;
++import java.sql.ResultSet;
++import java.sql.SQLException;
++
++public class AccountRepositoryImpl implements IAccountRepository {
++    private final String SELECT_ACCOUNT = "SELECT * from account_users;";
++    @Override
++    public boolean checkAccount(String userName, String password) {
++        Connection connection = BaseRepository.getConnectDB();
++        try {
++            PreparedStatement preparedStatement = connection.prepareStatement(SELECT_ACCOUNT);
++            ResultSet resultSet = preparedStatement.executeQuery();
++            while (resultSet.next()){
++                String userNameBase = resultSet.getString("user_name");
++                if(userNameBase.equals(userName)){
++                    String passwordBase = resultSet.getString("password");
++                    if(passwordBase.equals(password)){
++                        return true;
++                    } else {
++                        return false;
++                    }
++                }
++            }
++        } catch (SQLException e) {
++            e.printStackTrace();
++        }
++        return false;
++    }
++}
+Index: src/main/java/models/repository/Impl/AdminRepositoryImpl.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package models.repository.Impl;\r\n\r\nimport models.model.Account;\r\nimport models.repository.IAdminRepository;\r\n\r\nimport java.util.ArrayList;\r\nimport java.util.List;\r\n\r\npublic class AdminRepositoryImpl implements IAdminRepository {\r\n    private static List<Account> accountList = new ArrayList<>();\r\n    static {\r\n        accountList.add(new Account(\"admin\",\"admin2808\"));\r\n    }\r\n    @Override\r\n    public boolean checkAccountAdmin(String userName, String password) {\r\n        for (int i = 0; i < accountList.size(); i++) {\r\n            if(userName.equals(accountList.get(i).getUserName())){\r\n                return password.equals(accountList.get(i).getPassword());\r\n            } else {\r\n                return false;\r\n            }\r\n        }\r\n        return false;\r\n    }\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/java/models/repository/Impl/AdminRepositoryImpl.java b/src/main/java/models/repository/Impl/AdminRepositoryImpl.java
+--- a/src/main/java/models/repository/Impl/AdminRepositoryImpl.java	(revision a74d225a7d8d649a564aeec1f4e10862237da126)
++++ b/src/main/java/models/repository/Impl/AdminRepositoryImpl.java	(date 1683692727422)
+@@ -1,24 +1,37 @@
+ package models.repository.Impl;
+ 
+ import models.model.Account;
++import models.repository.BaseRepository;
+ import models.repository.IAdminRepository;
+ 
++import java.sql.Connection;
++import java.sql.PreparedStatement;
++import java.sql.ResultSet;
++import java.sql.SQLException;
+ import java.util.ArrayList;
+ import java.util.List;
+ 
+ public class AdminRepositoryImpl implements IAdminRepository {
+-    private static List<Account> accountList = new ArrayList<>();
+-    static {
+-        accountList.add(new Account("admin","admin2808"));
+-    }
++    private final String SELECT_ACCOUNT = "SELECT * from account_users;";
+     @Override
+     public boolean checkAccountAdmin(String userName, String password) {
+-        for (int i = 0; i < accountList.size(); i++) {
+-            if(userName.equals(accountList.get(i).getUserName())){
+-                return password.equals(accountList.get(i).getPassword());
+-            } else {
+-                return false;
++        Connection connection = BaseRepository.getConnectDB();
++        try {
++            PreparedStatement preparedStatement = connection.prepareStatement(SELECT_ACCOUNT);
++            ResultSet resultSet = preparedStatement.executeQuery();
++            while (resultSet.next()){
++                String userNameBase = resultSet.getString("user_name");
++                if(userNameBase.equals(userName)){
++                    String passwordBase = resultSet.getString("password");
++                    if(passwordBase.equals(password)){
++                        return true;
++                    } else {
++                        return false;
++                    }
++                }
+             }
++        } catch (SQLException e) {
++            e.printStackTrace();
+         }
+         return false;
+     }
+Index: src/main/java/models/repository/Impl/CustomerRepositoryImpl.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package models.repository.Impl;\r\n\r\nimport connection.BaseRepository;\r\nimport models.model.Account;\r\nimport models.model.Customer;\r\nimport models.repository.ICustomerRepository;\r\n\r\nimport java.sql.Connection;\r\nimport java.sql.PreparedStatement;\r\nimport java.sql.ResultSet;\r\nimport java.sql.SQLException;\r\nimport java.util.ArrayList;\r\nimport java.util.List;\r\n\r\npublic class CustomerRepositoryImpl implements ICustomerRepository {\r\n    private final String SELECT_ALL_CUSTOMER = \"SELECT c.*,ac.user_name,ac.password FROM customers AS c INNER JOIN account_users AS ac ON c.account_id=ac.account_id;\";\r\n    private final String INSERT_CUSTOMER = \"INSERT INTO customers(customer_name, email, phone_number, address, account_id) VALUES (?,?,?,?,?);\";\r\n    private final String INSERT_ACCOUNT=\"INSERT INTO account_users (user_name,password) VALUE(?,?);\";\r\n    private final String SELECT_ACCOUNT=\"SELECT*FROM account_users;\";\r\n\r\n\r\n    @Override\r\n    public List<Customer> getAllCustomer() {\r\n        List<Customer> customerList = new ArrayList<>();\r\n        Connection connection = BaseRepository.getConnectDB();\r\n        try {\r\n            PreparedStatement preparedStatement = connection.prepareStatement(SELECT_ALL_CUSTOMER);\r\n            ResultSet resultSet = preparedStatement.executeQuery();\r\n            while (resultSet.next()) {\r\n                int customerId = resultSet.getInt(\"customer_id\");\r\n                String name = resultSet.getString(\"customer_name\");\r\n                String email = resultSet.getString(\"email\");\r\n                String phoneNumber = resultSet.getString(\"phone_number\");\r\n                String address = resultSet.getString(\"address\");\r\n                int accountId = resultSet.getInt(\"account_id\");\r\n                String createAt = resultSet.getString(\"create_at\");\r\n                String updateAt = resultSet.getString(\"update_at\");\r\n                String userName = resultSet.getString(\"user_name\");\r\n                String password = resultSet.getString(\"password\");\r\n                Account account = new Account(accountId, userName, password);\r\n                Customer customer =new Customer(customerId, name, email, phoneNumber, address, account, createAt, updateAt);\r\n                customerList.add(customer);\r\n            }\r\n            return customerList;\r\n        } catch (SQLException e) {\r\n            e.printStackTrace();\r\n        }\r\n        return null;\r\n    }\r\n    @Override\r\n    public boolean saveCustomer(Customer customer) {\r\n        Connection connection = BaseRepository.getConnectDB();\r\n        try {\r\n            connection.setAutoCommit(false);\r\n            PreparedStatement preparedStatement = connection.prepareStatement(INSERT_ACCOUNT);\r\n            preparedStatement.setString(1, customer.getAccount().getUserName());\r\n            preparedStatement.setString(2, customer.getAccount().getPassword());\r\n            int transaction = preparedStatement.executeUpdate();\r\n            if (transaction > 0) {\r\n                preparedStatement = connection.prepareStatement(SELECT_ACCOUNT);\r\n                ResultSet resultSet = preparedStatement.executeQuery();\r\n                while (resultSet.next()) {\r\n                    if (resultSet.getString(\"user_name\").equals(customer.getAccount().getUserName())) {\r\n                        int accountId = resultSet.getInt(\"account_id\");\r\n                        preparedStatement = connection.prepareStatement(INSERT_CUSTOMER);\r\n                        preparedStatement.setString(1, customer.getName());\r\n                        preparedStatement.setString(2, customer.getEmail());\r\n                        preparedStatement.setString(3, customer.getPhoneNumber());\r\n                        preparedStatement.setString(4, customer.getAddress());\r\n                        preparedStatement.setInt(5, accountId);\r\n                        transaction += preparedStatement.executeUpdate();\r\n                        break;\r\n                    }\r\n                }\r\n            }\r\n            if (transaction == 2) {\r\n                connection.commit();\r\n                return true;\r\n            } else {\r\n                connection.rollback();\r\n            }\r\n        } catch (SQLException e) {\r\n            e.printStackTrace();\r\n        }\r\n        return false;\r\n    }\r\n\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/java/models/repository/Impl/CustomerRepositoryImpl.java b/src/main/java/models/repository/Impl/CustomerRepositoryImpl.java
+--- a/src/main/java/models/repository/Impl/CustomerRepositoryImpl.java	(revision a74d225a7d8d649a564aeec1f4e10862237da126)
++++ b/src/main/java/models/repository/Impl/CustomerRepositoryImpl.java	(date 1683692727422)
+@@ -1,8 +1,8 @@
+ package models.repository.Impl;
+ 
+-import connection.BaseRepository;
+ import models.model.Account;
+ import models.model.Customer;
++import models.repository.BaseRepository;
+ import models.repository.ICustomerRepository;
+ 
+ import java.sql.Connection;

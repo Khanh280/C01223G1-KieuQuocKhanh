@@ -1,0 +1,105 @@
+Index: .idea/workspace.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/workspace.xml b/.idea/workspace.xml
+--- a/.idea/workspace.xml	
++++ b/.idea/workspace.xml	
+@@ -5,33 +5,8 @@
+   </component>
+   <component name="ChangeListManager">
+     <list default="true" id="30d49f66-aeaf-4ae0-8a4a-172d7ebbd5d0" name="Changes" comment="edit project">
+-      <change afterPath="$PROJECT_DIR$/src/main/java/models/model/OrderDetail.java" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/src/main/java/models/repository/IOrderDetailRepository.java" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/src/main/java/models/repository/Impl/OrderDetailRepositoryImpl.java" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/src/main/java/models/service/IOrderDetailSevice.java" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/src/main/java/models/service/impl/OrderDetailServiceImpl.java" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/src/main/webapp/coollogo_com-32663401.png" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/src/main/webapp/test.jsp" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/src/main/webapp/users/create.jsp" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/src/main/webapp/users/order_detail.jsp" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/src/main/webapp/users/product.jsp" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/src/main/java/controller/AccountServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/AccountServlet.java" afterDir="false" />
+       <change beforePath="$PROJECT_DIR$/src/main/java/controller/OrderServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/OrderServlet.java" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/src/main/java/models/model/Customer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/models/model/Customer.java" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/src/main/java/models/repository/IAccountRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/models/repository/IAccountRepository.java" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/src/main/java/models/repository/ICustomerRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/models/repository/ICustomerRepository.java" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/src/main/java/models/repository/IOrderRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/models/repository/IOrderRepository.java" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/src/main/java/models/repository/IProductRepostory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/models/repository/IProductRepostory.java" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/src/main/java/models/repository/Impl/AccountRepositoryImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/models/repository/Impl/AccountRepositoryImpl.java" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/src/main/java/models/repository/Impl/CustomerRepositoryImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/models/repository/Impl/CustomerRepositoryImpl.java" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/src/main/java/models/repository/Impl/OrderRepositoryImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/models/repository/Impl/OrderRepositoryImpl.java" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/src/main/java/models/service/IAccountService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/models/service/IAccountService.java" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/src/main/java/models/service/ICustomerService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/models/service/ICustomerService.java" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/src/main/java/models/service/IOrderService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/models/service/IOrderService.java" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/src/main/java/models/service/impl/AccountReposiroryImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/models/service/impl/AccountReposiroryImpl.java" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/src/main/java/models/service/impl/CustomerServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/models/service/impl/CustomerServiceImpl.java" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/src/main/java/models/service/impl/OrderServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/models/service/impl/OrderServiceImpl.java" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/src/main/webapp/test.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/test.jsp" afterDir="false" />
+       <change beforePath="$PROJECT_DIR$/src/main/webapp/users/home.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/users/home.jsp" afterDir="false" />
+     </list>
+     <option name="SHOW_DIALOG" value="false" />
+@@ -214,7 +189,7 @@
+       <workItem from="1683726011252" duration="1124000" />
+       <workItem from="1683729670813" duration="7740000" />
+       <workItem from="1683766942526" duration="13790000" />
+-      <workItem from="1683782504832" duration="3429000" />
++      <workItem from="1683782504832" duration="7425000" />
+     </task>
+     <servers />
+   </component>
+Index: src/main/webapp/test.jsp
+===================================================================
+diff --git a/src/main/webapp/test.jsp b/src/main/webapp/test.jsp
+--- a/src/main/webapp/test.jsp	
++++ b/src/main/webapp/test.jsp	
+@@ -727,7 +727,10 @@
+     </style>
+ </head>
+ <body>
+-<%--<c:set var="customerId" value="<%=((Customer)session.getAttribute("userSession")).getId()%>"></c:set>--%>
++<%
++    Customer userSession = (Customer)session.getAttribute("userSession");
++    int customerId = userSession.getId();
++%>
+ <header class="sticky-top">
+     <input type="checkbox" name="" id="chk1">
+     <img src="coollogo_com-32663401.png">
+Index: src/main/webapp/users/home.jsp
+===================================================================
+diff --git a/src/main/webapp/users/home.jsp b/src/main/webapp/users/home.jsp
+--- a/src/main/webapp/users/home.jsp	
++++ b/src/main/webapp/users/home.jsp	
+@@ -172,10 +172,6 @@
+             </tr>
+         </c:forEach>
+     </table>
+-</div>
+-<button class="btn btn-success" onclick="window.location.href='/customer/create.jsp'">Create</button>
+-<button class="btn btn-success" onclick="window.location.href='/customer?action=sort'">Sort</button>
+-</div>
+ 
+ <%--<div class="modal fade" id="exampleModal" tabindex="-1"--%>
+ <%--     aria-labelledby="exampleModalLabel" aria-hidden="true">--%>
+Index: src/main/java/controller/OrderServlet.java
+===================================================================
+diff --git a/src/main/java/controller/OrderServlet.java b/src/main/java/controller/OrderServlet.java
+--- a/src/main/java/controller/OrderServlet.java	
++++ b/src/main/java/controller/OrderServlet.java	
+@@ -70,9 +70,11 @@
+                     request.getRequestDispatcher("/users/order_detail.jsp").forward(request,response);
+                 break;
+             default:
+-                List<Order> orderList = orderService.getAll();
+-                request.setAttribute("orderList", orderList);
+-                request.getRequestDispatcher("/orders/list.jsp").forward(request, response);
++                List<Customer> customerList = customerService.getAllCustomer();
++                request.setAttribute("customerList", customerList);
++//                List<Order> orderList = orderService.getAll();
++//                request.setAttribute("orderList", orderList);
++                request.getRequestDispatcher("/users/home.jsp").forward(request, response);
+         }
+     }
+ 
