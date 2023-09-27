@@ -1,0 +1,45 @@
+.cartContent {
+  margin: 3rem 0;
+}
+
+.titlePopular {
+  margin-bottom: 2rem;
+}
+
+.titlePopular > * {
+  font-weight: 700;
+  display: flex;
+  justify-content: center;
+}
+
+.subTitlePopular {
+  color: #a4a9b5;
+}
+
+.cart {
+  position: relative;
+  height: 20rem;
+  overflow: hidden;
+  justify-content: center;
+  display: flex;
+  border-radius: 5px;
+  padding: 0 !important;
+  transition: transform 0.3s;
+}
+
+.cart:hover {
+  transform: translateY(-5px);
+  box-shadow: 0px 16px 17px -5px rgba(128, 128, 128, 0.4);
+}
+
+.cartImage {
+  height: 100%;
+}
+
+.cartTitle {
+  position: absolute;
+  bottom: 0.5rem;
+  color: #fff;
+}
+
+/*# sourceMappingURL=popular.module.css.map */

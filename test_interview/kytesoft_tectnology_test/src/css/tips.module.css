@@ -1,0 +1,21 @@
+.subContent {
+  padding: 0 1rem;
+}
+
+.subContent > * > * {
+  margin: 1rem 0;
+}
+
+.subContentCart {
+  color: #a4a9b5;
+}
+
+.subContentCart:hover {
+  color: #000;
+}
+
+.readMore {
+  bottom: 0;
+}
+
+/*# sourceMappingURL=tips.module.css.map */

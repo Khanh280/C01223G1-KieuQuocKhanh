@@ -1,0 +1,50 @@
+.footer > * {
+  background-color: black;
+  text-align: center;
+  //padding: 1rem 1rem;
+}
+
+.content {
+  color: #fff;
+  background-color: black;
+  width: 100%;
+  padding: 0 1rem;
+}
+.imageGroup{
+  display: flex;
+  justify-content: center;
+}
+.imageFooter {
+  margin: 5px 5px;
+  width: 95%;
+  height: auto;
+  border-radius: 5px;
+}
+
+.iconFooter > * {
+  font-size: 3rem !important;
+  margin: 0 5px;
+  background-color: #ffffff;
+  border-radius: 50%;
+}
+
+.facebookIcon {
+  background-color: #1260a7;
+}
+
+.twitterIcon {
+  background-color: #4ac0f8;
+}
+
+.youtubeIcon {
+  background-color: #d91d3a;
+}
+
+.pinterestIcon {
+  background-color: #a1182e;
+
+}
+
+.instagramIcon {
+  background-color: #3b49d4;
+}

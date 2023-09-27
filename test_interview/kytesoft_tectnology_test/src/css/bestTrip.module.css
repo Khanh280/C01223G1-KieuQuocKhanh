@@ -1,0 +1,83 @@
+.priceSale {
+  background-color: #FF4A52;
+  position: absolute;
+  left: 0;
+  padding: 0 1rem;
+  transition: 0.3s;
+  transform: scale(1);
+}
+
+.priceSale h5 span {
+  font-weight: 400;
+  margin-right: 5px;
+  text-decoration: line-through;
+  opacity: 0.6;
+  font-size: 13px;
+}
+
+.saleIcon {
+  background-color: #1EC6B6;
+  position: absolute;
+  top: -1rem;
+  right: -1rem;
+  height: 3rem;
+  width: 3rem;
+  padding: 0 1rem;
+  transition: 0.3s;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+}
+
+.saleIcon p {
+  margin: 0;
+  color: #fff;
+  font-weight: 600;
+}
+
+.cardBestTrip {
+  border-radius: 5px;
+  padding: 0 !important;
+  transition: transform 0.3s;
+  border: 1px solid rgba(189, 189, 189, 0.68);
+}
+
+.cardBestTrip:hover {
+  transform: translateY(-5px);
+  box-shadow: 0px 16px 17px -5px rgba(128, 128, 128, 0.4);
+}
+
+.cardBestTrip:hover .priceSale {
+  transform: scale(1.1);
+}
+
+.cardImage {
+  position: relative;
+  justify-content: center;
+  padding: 0 !important;
+}
+
+.cardImage img {
+  width: 100%;
+}
+
+.subContent {
+  padding: 0 1rem;
+}
+
+.subContentCart {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.subContentCart .rating {
+  display: flex;
+}
+
+.rating .starIcon {
+  color: #1EC6B6;
+}
+
+/*# sourceMappingURL=bestTrip.module.css.map */

@@ -1,0 +1,191 @@
+.header {
+  width: 100%;
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 5rem;
+  height: 4rem;
+  z-index: 1;
+}
+
+.imageHeader {
+  height: 1.5rem;
+}
+
+.navigateHeader {
+  display: flex;
+  list-style: none;
+  margin: 0;
+}
+
+@media screen and (max-width: 960px) {
+  .navigateHeader {
+    display: none;
+  }
+}
+
+.navigateHeader li {
+  margin: 0 1rem;
+  color: #fff;
+  font-weight: 500;
+}
+
+.optionsHeader {
+  display: flex;
+  width: 4rem;
+  justify-content: space-evenly;
+  color: #fff;
+}
+
+.cartIconHeader {
+  position: relative;
+}
+
+.cartIconHeader p {
+  display: flex;
+  position: absolute;
+  top: -0.4rem;
+  right: -0.8rem;
+  background-color: #FF4A52;
+  width: 1rem;
+  justify-content: center;
+  height: 1rem;
+  align-items: center;
+  border-radius: 50%;
+}
+
+.navigateTitle {
+  display: flex;
+  margin: 0;
+}
+
+.navigateOption {
+  position: absolute;
+  padding: 0;
+  background-color: #fff;
+  border-radius: 5px;
+  display: none;
+}
+
+.navigateHeader li:hover .navigateOption {
+  display: block;
+}
+
+.navigateOption li {
+  list-style: none;
+  color: #000;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  max-width: 20rem;
+  min-width: 15rem;
+}
+
+.navigateOption li:not(:last-child) {
+  border-bottom: 1px solid #c9c5c5;
+}
+
+.navigateOption li:hover {
+  color: #FF4A52;
+}
+
+.closeButton {
+  justify-content: end;
+  display: flex;
+}
+
+.closeIcon {
+  font-size: 3rem !important;
+  color: #FF4A52;
+}
+
+.navigateList {
+  list-style: none;
+}
+
+.navigateList li b {
+  font-size: 2rem;
+  transition: 0.8s;
+}
+
+.navigateList li:hover b {
+  color: #FF4A52;
+}
+
+.boxNavigate {
+  //height: 100%;
+  min-width: 30rem !important;
+}
+
+.imageSidebarHeader img {
+  border-radius: 5px;
+}
+
+.imageSidebarHeader {
+  margin: 1rem 0;
+  padding: 0 2rem !important;
+  position: relative;
+}
+
+.imageSidebarHeaderPrice {
+  position: absolute;
+  left: 2rem;
+  bottom: 50%;
+  color: #fff;
+  background-color: #FF4A52;
+  padding: 0 1rem;
+  font-weight: 600;
+  margin: 0;
+  display: flex;
+  align-items: center;
+}
+
+.imageSidebarHeaderPrice span {
+
+}
+
+.imageSidebarHeader div {
+  position: absolute;
+  left: 3rem;
+  bottom: 0.5rem;
+  color: #fff;
+}
+
+.iconSocialmedia {
+  display: flex;
+  justify-content: center;
+  margin: 1rem 0;
+}
+
+.iconSocialmedia > * {
+  font-size: 3rem !important;
+  margin: 0 5px;
+  background-color: #ffffff;
+  border-radius: 50%;
+  color: #fff;
+}
+
+.iconSocialmedia > *:hover {
+  background-color: #FF4A52;
+}
+
+.facebookIcon {
+  background-color: #1260a7;
+}
+
+.twitterIcon {
+  background-color: #4ac0f8;
+}
+
+.youtubeIcon {
+  background-color: #d91d3a;
+}
+
+.pinterestIcon {
+  background-color: #a1182e;
+
+}
+
+.instagramIcon {
+  background-color: #3b49d4;
+}

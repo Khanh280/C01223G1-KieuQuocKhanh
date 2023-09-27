@@ -1,0 +1,18 @@
+
+.subContent{
+  padding: 0 1rem;
+  //position: relative;
+}
+.subContent >* > *{
+  margin: 1rem 0;
+}
+.subContentCart{
+  color: #a4a9b5;
+}
+.subContentCart:hover{
+  color: #000;
+}
+.readMore{
+  //position: absolute;
+  bottom: 0;
+}
