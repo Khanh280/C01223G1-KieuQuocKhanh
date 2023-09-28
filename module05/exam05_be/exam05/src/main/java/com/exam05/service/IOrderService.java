@@ -10,4 +10,5 @@ public interface IOrderService {
     boolean deleteOrder(Long id);
     Orders findById(Long id);
     void updateOrder(Orders orders);
+    List<Orders> searchOrder(String startDate,String endDate,String productId);
 }

@@ -1,0 +1,12 @@
+
+Z	java:S106"9Replace this use of System.out or System.err by a logger.(¡ş™¯ûÿÿÿÿ8¹±°1
+]	java:S125"<This block of commented-out lines of code should be removed.(·ÔÅèùÿÿÿÿ8¹±°1
+]	java:S125"<This block of commented-out lines of code should be removed.(°úÏÈşÿÿÿÿ8¹±°1
+X	java:S125"<This block of commented-out lines of code should be removed.( Á—£8¹±°1
+]	java:S125F"<This block of commented-out lines of code should be removed.(éØ†úıÿÿÿÿ8¹±°1
+]	java:S125T"<This block of commented-out lines of code should be removed.(äãÈÜøÿÿÿÿ8¹±°1
+X	java:S125{"<This block of commented-out lines of code should be removed.(‰ÖÂÓ8¹±°1
+^	java:S125Ç"<This block of commented-out lines of code should be removed.( ˆİÖøÿÿÿÿ8¹±°1
+^	java:S125Ø"<This block of commented-out lines of code should be removed.(ï°§ñûÿÿÿÿ8¹±°1
+R
+java:S1128"0Remove this unused import 'java.io.IOException'.(ªº»Úıÿÿÿÿ8¡¼µ°1

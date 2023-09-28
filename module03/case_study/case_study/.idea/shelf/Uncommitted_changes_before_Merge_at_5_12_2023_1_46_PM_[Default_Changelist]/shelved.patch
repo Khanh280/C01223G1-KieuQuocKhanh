@@ -1,0 +1,396 @@
+Index: src/main/webapp/index.jsp
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><%@ page contentType=\"text/html; charset=UTF-8\" pageEncoding=\"UTF-8\" %>\r\n<%@taglib prefix=\"c\" uri=\"http://java.sun.com/jsp/jstl/core\" %>\r\n<!DOCTYPE html>\r\n<html>\r\n<head>\r\n    <title>IG1 Store</title>\r\n    <link rel=\"stylesheet\" href=\"index.css\">\r\n    <link href=\"https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css\" rel=\"stylesheet\"\r\n          integrity=\"sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC\" crossorigin=\"anonymous\">\r\n    <style>\r\n        #bg-img {\r\n            height: 100vh;\r\n        }\r\n    </style>\r\n</head>\r\n<body>\r\n<div id=\"bg-img\" class=\"d-flex align-items-center\">\r\n    <div class=\"container-fluid d-flex justify-content-center align-items-center\">\r\n        <div class=\"row main-content bg-success text-center\">\r\n            <div class=\"col-md-4 text-center company__info\">\r\n                <img src=\"IG1 (1).gif\" alt=\"\" style=\"border-radius: 30px\">\r\n            </div>\r\n            <div class=\"col-md-8 col-xs-12 col-sm-12 login_form \">\r\n                <div class=\"container-fluid\">\r\n                    <div class=\"row\">\r\n                        <h2>Log In</h2>\r\n                    </div>\r\n                    <div class=\"row\">\r\n                        <form action=\"/account-servlet\" method=\"post\" control=\"\" class=\"form-group\">\r\n                            <input type=\"text\" name=\"action\" value=\"login\" hidden>\r\n                            <div class=\"row\">\r\n                                <input type=\"text\" name=\"userName\" id=\"username\" class=\"form__input\"\r\n                                       placeholder=\"Username\"\r\n                                       value=\"${userName}\">\r\n                            </div>\r\n                            <div class=\"row\">\r\n                                <input type=\"password\" name=\"password\" id=\"password\" class=\"form__input\"\r\n                                       placeholder=\"Password\" value=\"${password}\">\r\n                                <small id=\"statusLogin\" class=\"text-danger\"></small>\r\n                            </div>\r\n                            <div class=\"row\">\r\n                                <label>\r\n                                    <input type=\"checkbox\" name=\"remember_me\" id=\"remember_me\" class=\"\">\r\n                                    Remember Me!\r\n                                </label>\r\n                            </div>\r\n                            <div class=\"row\">\r\n                                <input type=\"submit\" value=\"Submit\" class=\"btn\">\r\n                            </div>\r\n                        </form>\r\n                    </div>\r\n                    <div class=\"row\">\r\n                        <p>Don't have an account? <a href=\"/account/register_form.jsp\">Register Here</a></p>\r\n                    </div>\r\n                </div>\r\n            </div>\r\n        </div>\r\n    </div>\r\n    <input id=\"status\" value=\"${status}\" hidden>\r\n    <div id=\"canh-bao\" style=\"display: none;\"></div>\r\n</div>\r\n<script src=\"https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js\"\r\n        integrity=\"sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM\"\r\n        crossorigin=\"anonymous\"></script>\r\n<script>\r\n    function statusLogin() {\r\n        document.getElementById(\"statusLogin\").innerText = \"Incorrect username or password\";\r\n    }\r\n\r\n    let checkLogin = document.getElementById(\"status\").value;\r\n    if (checkLogin === \"fail\") {\r\n        statusLogin()\r\n    }\r\n</script>\r\n</body>\r\n</html>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- src/main/webapp/index.jsp	(revision 0150944eb37b6098c2e675c2bb4826e06697d90d)
++++ src/main/webapp/index.jsp	(date 1683873963345)
+@@ -14,6 +14,9 @@
+     </style>
+ </head>
+ <body>
++
++<%--<c:redirect url="/admin/admin.jsp"></c:redirect>--%>
++<%--<c:redirect url="/users/home.jsp"></c:redirect>--%>
+ <div id="bg-img" class="d-flex align-items-center">
+     <div class="container-fluid d-flex justify-content-center align-items-center">
+         <div class="row main-content bg-success text-center">
+Index: ../.idea/misc.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<project version=\"4\">\r\n  <component name=\"JavaScriptSettings\">\r\n    <option name=\"languageLevel\" value=\"ES6\" />\r\n  </component>\r\n</project>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- ../.idea/misc.xml	(revision 0150944eb37b6098c2e675c2bb4826e06697d90d)
++++ ../.idea/misc.xml	(date 1683873963321)
+@@ -1,6 +1,6 @@
+ <?xml version="1.0" encoding="UTF-8"?>
+ <project version="4">
+-  <component name="JavaScriptSettings">
+-    <option name="languageLevel" value="ES6" />
++  <component name="ProjectRootManager">
++    <output url="file://$PROJECT_DIR$/out" />
+   </component>
+ </project>
+\ No newline at end of file
+Index: .idea/uiDesigner.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<project version=\"4\">\r\n  <component name=\"Palette2\">\r\n    <group name=\"Swing\">\r\n      <item class=\"com.intellij.uiDesigner.HSpacer\" tooltip-text=\"Horizontal Spacer\" icon=\"/com/intellij/uiDesigner/icons/hspacer.png\" removable=\"false\" auto-create-binding=\"false\" can-attach-label=\"false\">\r\n        <default-constraints vsize-policy=\"1\" hsize-policy=\"6\" anchor=\"0\" fill=\"1\" />\r\n      </item>\r\n      <item class=\"com.intellij.uiDesigner.VSpacer\" tooltip-text=\"Vertical Spacer\" icon=\"/com/intellij/uiDesigner/icons/vspacer.png\" removable=\"false\" auto-create-binding=\"false\" can-attach-label=\"false\">\r\n        <default-constraints vsize-policy=\"6\" hsize-policy=\"1\" anchor=\"0\" fill=\"2\" />\r\n      </item>\r\n      <item class=\"javax.swing.JPanel\" icon=\"/com/intellij/uiDesigner/icons/panel.png\" removable=\"false\" auto-create-binding=\"false\" can-attach-label=\"false\">\r\n        <default-constraints vsize-policy=\"3\" hsize-policy=\"3\" anchor=\"0\" fill=\"3\" />\r\n      </item>\r\n      <item class=\"javax.swing.JScrollPane\" icon=\"/com/intellij/uiDesigner/icons/scrollPane.png\" removable=\"false\" auto-create-binding=\"false\" can-attach-label=\"true\">\r\n        <default-constraints vsize-policy=\"7\" hsize-policy=\"7\" anchor=\"0\" fill=\"3\" />\r\n      </item>\r\n      <item class=\"javax.swing.JButton\" icon=\"/com/intellij/uiDesigner/icons/button.png\" removable=\"false\" auto-create-binding=\"true\" can-attach-label=\"false\">\r\n        <default-constraints vsize-policy=\"0\" hsize-policy=\"3\" anchor=\"0\" fill=\"1\" />\r\n        <initial-values>\r\n          <property name=\"text\" value=\"Button\" />\r\n        </initial-values>\r\n      </item>\r\n      <item class=\"javax.swing.JRadioButton\" icon=\"/com/intellij/uiDesigner/icons/radioButton.png\" removable=\"false\" auto-create-binding=\"true\" can-attach-label=\"false\">\r\n        <default-constraints vsize-policy=\"0\" hsize-policy=\"3\" anchor=\"8\" fill=\"0\" />\r\n        <initial-values>\r\n          <property name=\"text\" value=\"RadioButton\" />\r\n        </initial-values>\r\n      </item>\r\n      <item class=\"javax.swing.JCheckBox\" icon=\"/com/intellij/uiDesigner/icons/checkBox.png\" removable=\"false\" auto-create-binding=\"true\" can-attach-label=\"false\">\r\n        <default-constraints vsize-policy=\"0\" hsize-policy=\"3\" anchor=\"8\" fill=\"0\" />\r\n        <initial-values>\r\n          <property name=\"text\" value=\"CheckBox\" />\r\n        </initial-values>\r\n      </item>\r\n      <item class=\"javax.swing.JLabel\" icon=\"/com/intellij/uiDesigner/icons/label.png\" removable=\"false\" auto-create-binding=\"false\" can-attach-label=\"false\">\r\n        <default-constraints vsize-policy=\"0\" hsize-policy=\"0\" anchor=\"8\" fill=\"0\" />\r\n        <initial-values>\r\n          <property name=\"text\" value=\"Label\" />\r\n        </initial-values>\r\n      </item>\r\n      <item class=\"javax.swing.JTextField\" icon=\"/com/intellij/uiDesigner/icons/textField.png\" removable=\"false\" auto-create-binding=\"true\" can-attach-label=\"true\">\r\n        <default-constraints vsize-policy=\"0\" hsize-policy=\"6\" anchor=\"8\" fill=\"1\">\r\n          <preferred-size width=\"150\" height=\"-1\" />\r\n        </default-constraints>\r\n      </item>\r\n      <item class=\"javax.swing.JPasswordField\" icon=\"/com/intellij/uiDesigner/icons/passwordField.png\" removable=\"false\" auto-create-binding=\"true\" can-attach-label=\"true\">\r\n        <default-constraints vsize-policy=\"0\" hsize-policy=\"6\" anchor=\"8\" fill=\"1\">\r\n          <preferred-size width=\"150\" height=\"-1\" />\r\n        </default-constraints>\r\n      </item>\r\n      <item class=\"javax.swing.JFormattedTextField\" icon=\"/com/intellij/uiDesigner/icons/formattedTextField.png\" removable=\"false\" auto-create-binding=\"true\" can-attach-label=\"true\">\r\n        <default-constraints vsize-policy=\"0\" hsize-policy=\"6\" anchor=\"8\" fill=\"1\">\r\n          <preferred-size width=\"150\" height=\"-1\" />\r\n        </default-constraints>\r\n      </item>\r\n      <item class=\"javax.swing.JTextArea\" icon=\"/com/intellij/uiDesigner/icons/textArea.png\" removable=\"false\" auto-create-binding=\"true\" can-attach-label=\"true\">\r\n        <default-constraints vsize-policy=\"6\" hsize-policy=\"6\" anchor=\"0\" fill=\"3\">\r\n          <preferred-size width=\"150\" height=\"50\" />\r\n        </default-constraints>\r\n      </item>\r\n      <item class=\"javax.swing.JTextPane\" icon=\"/com/intellij/uiDesigner/icons/textPane.png\" removable=\"false\" auto-create-binding=\"true\" can-attach-label=\"true\">\r\n        <default-constraints vsize-policy=\"6\" hsize-policy=\"6\" anchor=\"0\" fill=\"3\">\r\n          <preferred-size width=\"150\" height=\"50\" />\r\n        </default-constraints>\r\n      </item>\r\n      <item class=\"javax.swing.JEditorPane\" icon=\"/com/intellij/uiDesigner/icons/editorPane.png\" removable=\"false\" auto-create-binding=\"true\" can-attach-label=\"true\">\r\n        <default-constraints vsize-policy=\"6\" hsize-policy=\"6\" anchor=\"0\" fill=\"3\">\r\n          <preferred-size width=\"150\" height=\"50\" />\r\n        </default-constraints>\r\n      </item>\r\n      <item class=\"javax.swing.JComboBox\" icon=\"/com/intellij/uiDesigner/icons/comboBox.png\" removable=\"false\" auto-create-binding=\"true\" can-attach-label=\"true\">\r\n        <default-constraints vsize-policy=\"0\" hsize-policy=\"2\" anchor=\"8\" fill=\"1\" />\r\n      </item>\r\n      <item class=\"javax.swing.JTable\" icon=\"/com/intellij/uiDesigner/icons/table.png\" removable=\"false\" auto-create-binding=\"true\" can-attach-label=\"false\">\r\n        <default-constraints vsize-policy=\"6\" hsize-policy=\"6\" anchor=\"0\" fill=\"3\">\r\n          <preferred-size width=\"150\" height=\"50\" />\r\n        </default-constraints>\r\n      </item>\r\n      <item class=\"javax.swing.JList\" icon=\"/com/intellij/uiDesigner/icons/list.png\" removable=\"false\" auto-create-binding=\"true\" can-attach-label=\"false\">\r\n        <default-constraints vsize-policy=\"6\" hsize-policy=\"2\" anchor=\"0\" fill=\"3\">\r\n          <preferred-size width=\"150\" height=\"50\" />\r\n        </default-constraints>\r\n      </item>\r\n      <item class=\"javax.swing.JTree\" icon=\"/com/intellij/uiDesigner/icons/tree.png\" removable=\"false\" auto-create-binding=\"true\" can-attach-label=\"false\">\r\n        <default-constraints vsize-policy=\"6\" hsize-policy=\"6\" anchor=\"0\" fill=\"3\">\r\n          <preferred-size width=\"150\" height=\"50\" />\r\n        </default-constraints>\r\n      </item>\r\n      <item class=\"javax.swing.JTabbedPane\" icon=\"/com/intellij/uiDesigner/icons/tabbedPane.png\" removable=\"false\" auto-create-binding=\"true\" can-attach-label=\"false\">\r\n        <default-constraints vsize-policy=\"3\" hsize-policy=\"3\" anchor=\"0\" fill=\"3\">\r\n          <preferred-size width=\"200\" height=\"200\" />\r\n        </default-constraints>\r\n      </item>\r\n      <item class=\"javax.swing.JSplitPane\" icon=\"/com/intellij/uiDesigner/icons/splitPane.png\" removable=\"false\" auto-create-binding=\"false\" can-attach-label=\"false\">\r\n        <default-constraints vsize-policy=\"3\" hsize-policy=\"3\" anchor=\"0\" fill=\"3\">\r\n          <preferred-size width=\"200\" height=\"200\" />\r\n        </default-constraints>\r\n      </item>\r\n      <item class=\"javax.swing.JSpinner\" icon=\"/com/intellij/uiDesigner/icons/spinner.png\" removable=\"false\" auto-create-binding=\"true\" can-attach-label=\"true\">\r\n        <default-constraints vsize-policy=\"0\" hsize-policy=\"6\" anchor=\"8\" fill=\"1\" />\r\n      </item>\r\n      <item class=\"javax.swing.JSlider\" icon=\"/com/intellij/uiDesigner/icons/slider.png\" removable=\"false\" auto-create-binding=\"true\" can-attach-label=\"false\">\r\n        <default-constraints vsize-policy=\"0\" hsize-policy=\"6\" anchor=\"8\" fill=\"1\" />\r\n      </item>\r\n      <item class=\"javax.swing.JSeparator\" icon=\"/com/intellij/uiDesigner/icons/separator.png\" removable=\"false\" auto-create-binding=\"false\" can-attach-label=\"false\">\r\n        <default-constraints vsize-policy=\"6\" hsize-policy=\"6\" anchor=\"0\" fill=\"3\" />\r\n      </item>\r\n      <item class=\"javax.swing.JProgressBar\" icon=\"/com/intellij/uiDesigner/icons/progressbar.png\" removable=\"false\" auto-create-binding=\"true\" can-attach-label=\"false\">\r\n        <default-constraints vsize-policy=\"0\" hsize-policy=\"6\" anchor=\"0\" fill=\"1\" />\r\n      </item>\r\n      <item class=\"javax.swing.JToolBar\" icon=\"/com/intellij/uiDesigner/icons/toolbar.png\" removable=\"false\" auto-create-binding=\"false\" can-attach-label=\"false\">\r\n        <default-constraints vsize-policy=\"0\" hsize-policy=\"6\" anchor=\"0\" fill=\"1\">\r\n          <preferred-size width=\"-1\" height=\"20\" />\r\n        </default-constraints>\r\n      </item>\r\n      <item class=\"javax.swing.JToolBar$Separator\" icon=\"/com/intellij/uiDesigner/icons/toolbarSeparator.png\" removable=\"false\" auto-create-binding=\"false\" can-attach-label=\"false\">\r\n        <default-constraints vsize-policy=\"0\" hsize-policy=\"0\" anchor=\"0\" fill=\"1\" />\r\n      </item>\r\n      <item class=\"javax.swing.JScrollBar\" icon=\"/com/intellij/uiDesigner/icons/scrollbar.png\" removable=\"false\" auto-create-binding=\"true\" can-attach-label=\"false\">\r\n        <default-constraints vsize-policy=\"6\" hsize-policy=\"0\" anchor=\"0\" fill=\"2\" />\r\n      </item>\r\n    </group>\r\n  </component>\r\n</project>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- .idea/uiDesigner.xml	(revision 0150944eb37b6098c2e675c2bb4826e06697d90d)
++++ .idea/uiDesigner.xml	(date 1683873963330)
+@@ -2,121 +2,121 @@
+ <project version="4">
+   <component name="Palette2">
+     <group name="Swing">
+-      <item class="com.intellij.uiDesigner.HSpacer" tooltip-text="Horizontal Spacer" icon="/com/intellij/uiDesigner/icons/hspacer.png" removable="false" auto-create-binding="false" can-attach-label="false">
++      <item class="com.intellij.uiDesigner.HSpacer" tooltip-text="Horizontal Spacer" icon="/com/intellij/uiDesigner/icons/hspacer.svg" removable="false" auto-create-binding="false" can-attach-label="false">
+         <default-constraints vsize-policy="1" hsize-policy="6" anchor="0" fill="1" />
+       </item>
+-      <item class="com.intellij.uiDesigner.VSpacer" tooltip-text="Vertical Spacer" icon="/com/intellij/uiDesigner/icons/vspacer.png" removable="false" auto-create-binding="false" can-attach-label="false">
++      <item class="com.intellij.uiDesigner.VSpacer" tooltip-text="Vertical Spacer" icon="/com/intellij/uiDesigner/icons/vspacer.svg" removable="false" auto-create-binding="false" can-attach-label="false">
+         <default-constraints vsize-policy="6" hsize-policy="1" anchor="0" fill="2" />
+       </item>
+-      <item class="javax.swing.JPanel" icon="/com/intellij/uiDesigner/icons/panel.png" removable="false" auto-create-binding="false" can-attach-label="false">
++      <item class="javax.swing.JPanel" icon="/com/intellij/uiDesigner/icons/panel.svg" removable="false" auto-create-binding="false" can-attach-label="false">
+         <default-constraints vsize-policy="3" hsize-policy="3" anchor="0" fill="3" />
+       </item>
+-      <item class="javax.swing.JScrollPane" icon="/com/intellij/uiDesigner/icons/scrollPane.png" removable="false" auto-create-binding="false" can-attach-label="true">
++      <item class="javax.swing.JScrollPane" icon="/com/intellij/uiDesigner/icons/scrollPane.svg" removable="false" auto-create-binding="false" can-attach-label="true">
+         <default-constraints vsize-policy="7" hsize-policy="7" anchor="0" fill="3" />
+       </item>
+-      <item class="javax.swing.JButton" icon="/com/intellij/uiDesigner/icons/button.png" removable="false" auto-create-binding="true" can-attach-label="false">
++      <item class="javax.swing.JButton" icon="/com/intellij/uiDesigner/icons/button.svg" removable="false" auto-create-binding="true" can-attach-label="false">
+         <default-constraints vsize-policy="0" hsize-policy="3" anchor="0" fill="1" />
+         <initial-values>
+           <property name="text" value="Button" />
+         </initial-values>
+       </item>
+-      <item class="javax.swing.JRadioButton" icon="/com/intellij/uiDesigner/icons/radioButton.png" removable="false" auto-create-binding="true" can-attach-label="false">
++      <item class="javax.swing.JRadioButton" icon="/com/intellij/uiDesigner/icons/radioButton.svg" removable="false" auto-create-binding="true" can-attach-label="false">
+         <default-constraints vsize-policy="0" hsize-policy="3" anchor="8" fill="0" />
+         <initial-values>
+           <property name="text" value="RadioButton" />
+         </initial-values>
+       </item>
+-      <item class="javax.swing.JCheckBox" icon="/com/intellij/uiDesigner/icons/checkBox.png" removable="false" auto-create-binding="true" can-attach-label="false">
++      <item class="javax.swing.JCheckBox" icon="/com/intellij/uiDesigner/icons/checkBox.svg" removable="false" auto-create-binding="true" can-attach-label="false">
+         <default-constraints vsize-policy="0" hsize-policy="3" anchor="8" fill="0" />
+         <initial-values>
+           <property name="text" value="CheckBox" />
+         </initial-values>
+       </item>
+-      <item class="javax.swing.JLabel" icon="/com/intellij/uiDesigner/icons/label.png" removable="false" auto-create-binding="false" can-attach-label="false">
++      <item class="javax.swing.JLabel" icon="/com/intellij/uiDesigner/icons/label.svg" removable="false" auto-create-binding="false" can-attach-label="false">
+         <default-constraints vsize-policy="0" hsize-policy="0" anchor="8" fill="0" />
+         <initial-values>
+           <property name="text" value="Label" />
+         </initial-values>
+       </item>
+-      <item class="javax.swing.JTextField" icon="/com/intellij/uiDesigner/icons/textField.png" removable="false" auto-create-binding="true" can-attach-label="true">
++      <item class="javax.swing.JTextField" icon="/com/intellij/uiDesigner/icons/textField.svg" removable="false" auto-create-binding="true" can-attach-label="true">
+         <default-constraints vsize-policy="0" hsize-policy="6" anchor="8" fill="1">
+           <preferred-size width="150" height="-1" />
+         </default-constraints>
+       </item>
+-      <item class="javax.swing.JPasswordField" icon="/com/intellij/uiDesigner/icons/passwordField.png" removable="false" auto-create-binding="true" can-attach-label="true">
++      <item class="javax.swing.JPasswordField" icon="/com/intellij/uiDesigner/icons/passwordField.svg" removable="false" auto-create-binding="true" can-attach-label="true">
+         <default-constraints vsize-policy="0" hsize-policy="6" anchor="8" fill="1">
+           <preferred-size width="150" height="-1" />
+         </default-constraints>
+       </item>
+-      <item class="javax.swing.JFormattedTextField" icon="/com/intellij/uiDesigner/icons/formattedTextField.png" removable="false" auto-create-binding="true" can-attach-label="true">
++      <item class="javax.swing.JFormattedTextField" icon="/com/intellij/uiDesigner/icons/formattedTextField.svg" removable="false" auto-create-binding="true" can-attach-label="true">
+         <default-constraints vsize-policy="0" hsize-policy="6" anchor="8" fill="1">
+           <preferred-size width="150" height="-1" />
+         </default-constraints>
+       </item>
+-      <item class="javax.swing.JTextArea" icon="/com/intellij/uiDesigner/icons/textArea.png" removable="false" auto-create-binding="true" can-attach-label="true">
++      <item class="javax.swing.JTextArea" icon="/com/intellij/uiDesigner/icons/textArea.svg" removable="false" auto-create-binding="true" can-attach-label="true">
+         <default-constraints vsize-policy="6" hsize-policy="6" anchor="0" fill="3">
+           <preferred-size width="150" height="50" />
+         </default-constraints>
+       </item>
+-      <item class="javax.swing.JTextPane" icon="/com/intellij/uiDesigner/icons/textPane.png" removable="false" auto-create-binding="true" can-attach-label="true">
++      <item class="javax.swing.JTextPane" icon="/com/intellij/uiDesigner/icons/textPane.svg" removable="false" auto-create-binding="true" can-attach-label="true">
+         <default-constraints vsize-policy="6" hsize-policy="6" anchor="0" fill="3">
+           <preferred-size width="150" height="50" />
+         </default-constraints>
+       </item>
+-      <item class="javax.swing.JEditorPane" icon="/com/intellij/uiDesigner/icons/editorPane.png" removable="false" auto-create-binding="true" can-attach-label="true">
++      <item class="javax.swing.JEditorPane" icon="/com/intellij/uiDesigner/icons/editorPane.svg" removable="false" auto-create-binding="true" can-attach-label="true">
+         <default-constraints vsize-policy="6" hsize-policy="6" anchor="0" fill="3">
+           <preferred-size width="150" height="50" />
+         </default-constraints>
+       </item>
+-      <item class="javax.swing.JComboBox" icon="/com/intellij/uiDesigner/icons/comboBox.png" removable="false" auto-create-binding="true" can-attach-label="true">
++      <item class="javax.swing.JComboBox" icon="/com/intellij/uiDesigner/icons/comboBox.svg" removable="false" auto-create-binding="true" can-attach-label="true">
+         <default-constraints vsize-policy="0" hsize-policy="2" anchor="8" fill="1" />
+       </item>
+-      <item class="javax.swing.JTable" icon="/com/intellij/uiDesigner/icons/table.png" removable="false" auto-create-binding="true" can-attach-label="false">
++      <item class="javax.swing.JTable" icon="/com/intellij/uiDesigner/icons/table.svg" removable="false" auto-create-binding="true" can-attach-label="false">
+         <default-constraints vsize-policy="6" hsize-policy="6" anchor="0" fill="3">
+           <preferred-size width="150" height="50" />
+         </default-constraints>
+       </item>
+-      <item class="javax.swing.JList" icon="/com/intellij/uiDesigner/icons/list.png" removable="false" auto-create-binding="true" can-attach-label="false">
++      <item class="javax.swing.JList" icon="/com/intellij/uiDesigner/icons/list.svg" removable="false" auto-create-binding="true" can-attach-label="false">
+         <default-constraints vsize-policy="6" hsize-policy="2" anchor="0" fill="3">
+           <preferred-size width="150" height="50" />
+         </default-constraints>
+       </item>
+-      <item class="javax.swing.JTree" icon="/com/intellij/uiDesigner/icons/tree.png" removable="false" auto-create-binding="true" can-attach-label="false">
++      <item class="javax.swing.JTree" icon="/com/intellij/uiDesigner/icons/tree.svg" removable="false" auto-create-binding="true" can-attach-label="false">
+         <default-constraints vsize-policy="6" hsize-policy="6" anchor="0" fill="3">
+           <preferred-size width="150" height="50" />
+         </default-constraints>
+       </item>
+-      <item class="javax.swing.JTabbedPane" icon="/com/intellij/uiDesigner/icons/tabbedPane.png" removable="false" auto-create-binding="true" can-attach-label="false">
++      <item class="javax.swing.JTabbedPane" icon="/com/intellij/uiDesigner/icons/tabbedPane.svg" removable="false" auto-create-binding="true" can-attach-label="false">
+         <default-constraints vsize-policy="3" hsize-policy="3" anchor="0" fill="3">
+           <preferred-size width="200" height="200" />
+         </default-constraints>
+       </item>
+-      <item class="javax.swing.JSplitPane" icon="/com/intellij/uiDesigner/icons/splitPane.png" removable="false" auto-create-binding="false" can-attach-label="false">
++      <item class="javax.swing.JSplitPane" icon="/com/intellij/uiDesigner/icons/splitPane.svg" removable="false" auto-create-binding="false" can-attach-label="false">
+         <default-constraints vsize-policy="3" hsize-policy="3" anchor="0" fill="3">
+           <preferred-size width="200" height="200" />
+         </default-constraints>
+       </item>
+-      <item class="javax.swing.JSpinner" icon="/com/intellij/uiDesigner/icons/spinner.png" removable="false" auto-create-binding="true" can-attach-label="true">
++      <item class="javax.swing.JSpinner" icon="/com/intellij/uiDesigner/icons/spinner.svg" removable="false" auto-create-binding="true" can-attach-label="true">
+         <default-constraints vsize-policy="0" hsize-policy="6" anchor="8" fill="1" />
+       </item>
+-      <item class="javax.swing.JSlider" icon="/com/intellij/uiDesigner/icons/slider.png" removable="false" auto-create-binding="true" can-attach-label="false">
++      <item class="javax.swing.JSlider" icon="/com/intellij/uiDesigner/icons/slider.svg" removable="false" auto-create-binding="true" can-attach-label="false">
+         <default-constraints vsize-policy="0" hsize-policy="6" anchor="8" fill="1" />
+       </item>
+-      <item class="javax.swing.JSeparator" icon="/com/intellij/uiDesigner/icons/separator.png" removable="false" auto-create-binding="false" can-attach-label="false">
++      <item class="javax.swing.JSeparator" icon="/com/intellij/uiDesigner/icons/separator.svg" removable="false" auto-create-binding="false" can-attach-label="false">
+         <default-constraints vsize-policy="6" hsize-policy="6" anchor="0" fill="3" />
+       </item>
+-      <item class="javax.swing.JProgressBar" icon="/com/intellij/uiDesigner/icons/progressbar.png" removable="false" auto-create-binding="true" can-attach-label="false">
++      <item class="javax.swing.JProgressBar" icon="/com/intellij/uiDesigner/icons/progressbar.svg" removable="false" auto-create-binding="true" can-attach-label="false">
+         <default-constraints vsize-policy="0" hsize-policy="6" anchor="0" fill="1" />
+       </item>
+-      <item class="javax.swing.JToolBar" icon="/com/intellij/uiDesigner/icons/toolbar.png" removable="false" auto-create-binding="false" can-attach-label="false">
++      <item class="javax.swing.JToolBar" icon="/com/intellij/uiDesigner/icons/toolbar.svg" removable="false" auto-create-binding="false" can-attach-label="false">
+         <default-constraints vsize-policy="0" hsize-policy="6" anchor="0" fill="1">
+           <preferred-size width="-1" height="20" />
+         </default-constraints>
+       </item>
+-      <item class="javax.swing.JToolBar$Separator" icon="/com/intellij/uiDesigner/icons/toolbarSeparator.png" removable="false" auto-create-binding="false" can-attach-label="false">
++      <item class="javax.swing.JToolBar$Separator" icon="/com/intellij/uiDesigner/icons/toolbarSeparator.svg" removable="false" auto-create-binding="false" can-attach-label="false">
+         <default-constraints vsize-policy="0" hsize-policy="0" anchor="0" fill="1" />
+       </item>
+-      <item class="javax.swing.JScrollBar" icon="/com/intellij/uiDesigner/icons/scrollbar.png" removable="false" auto-create-binding="true" can-attach-label="false">
++      <item class="javax.swing.JScrollBar" icon="/com/intellij/uiDesigner/icons/scrollbar.svg" removable="false" auto-create-binding="true" can-attach-label="false">
+         <default-constraints vsize-policy="6" hsize-policy="0" anchor="0" fill="2" />
+       </item>
+     </group>
+Index: ../database/database_case_study_03.sql
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>CREATE DATABASE ig1_store;\r\nUSE ig1_store;\r\n\r\nCREATE TABLE roles (\r\n\trole_id INT PRIMARY KEY AUTO_INCREMENT,\r\n    role_name VARCHAR(50) NOT NULL\r\n);\r\n\r\nCREATE TABLE account_users(\r\n\taccount_id INT PRIMARY KEY AUTO_INCREMENT,\r\n    user_name VARCHAR(50) UNIQUE NOT NULL,\r\n    `password` VARCHAR(50) NOT NULL\r\n);\r\nCREATE TABLE users_role (\r\n\trole_id INT,\r\n    account_id INT,\r\n    PRIMARY KEY(role_id, account_id),\r\n    FOREIGN KEY (role_id) REFERENCES roles(role_id),\r\n    FOREIGN KEY(account_id) REFERENCES account_users(account_id)\r\n);\r\n\r\nCREATE TABLE customers(\r\n\tcustomer_id INT PRIMARY KEY AUTO_INCREMENT,\r\n    customer_name VARCHAR(50) NOT NULL,\r\n    email VARCHAR(50) UNIQUE NOT NULL,\r\n    phone_number VARCHAR(11) UNIQUE NOT NULL,\r\n    address TEXT NOT NULL,\r\n    account_id INT,\r\n    create_at DATETIME DEFAULT CURRENT_TIMESTAMP,\r\n    update_at DATETIME DEFAULT CURRENT_TIMESTAMP,\r\n    FOREIGN KEY (account_id) REFERENCES account_users(account_id)\r\n);\r\n\r\nCREATE TABLE product_type(\r\n\tproduct_type_id INT PRIMARY KEY AUTO_INCREMENT,\r\n    product_type_name VARCHAR(50) NOT NUll\r\n);\r\n\r\nCREATE TABLE products(\r\n\tproduct_id INT PRIMARY KEY AUTO_INCREMENT,\r\n    product_name VARCHAR(50) NOT NULL,\r\n\tproduct_type_id INT,\r\n    `describe` TEXT NOT NULL,\r\n    price LONG CHECK(price > 0),\r\n    product_image_url TEXT NOT NULL,\r\n    createAt DATETIME DEFAULT CURRENT_TIMESTAMP,\r\n    updateAt DATETIME DEFAULT CURRENT_TIMESTAMP,\r\n    FOREIGN KEY(product_type_id) REFERENCES product_type(product_type_id)\r\n);\r\nCREATE TABLE accessory(\r\n\taccessory_id INT PRIMARY KEY AUTO_INCREMENT,\r\n    accessory_name VARCHAR(50) NOT NULL,\r\n    accessory_price DOUBLE CHECK(accessory_price > 0),\r\n    image_accessory TEXT NOT NULL,\r\n    create_at DATETIME DEFAULT CURRENT_TIMESTAMP,\r\n    update_at DATETIME DEFAULT CURRENT_TIMESTAMP\r\n);\r\n\r\nCREATE TABLE `order`(\r\n\torder_id INT PRIMARY KEY AUTO_INCREMENT,\r\n    order_date DATETIME,\r\n    customer_id INT,\r\n    product_id INT,\r\n    price_order LONG ,\r\n    FOREIGN KEY(customer_id) REFERENCES customers(customer_id),\r\n    FOREIGN KEY(product_id) REFERENCES products(product_id)\r\n);\r\n\r\nCREATE TABLE order_detail(\r\n\torder_detail_id INT PRIMARY KEY AUTO_INCREMENT,\r\n    order_id INT,\r\n\torder_detail_date DATETIME,\r\n    accessory_id INT,\r\n    FOREIGN KEY(order_id) REFERENCES `order`(order_id),\r\n    FOREIGN KEY(accessory_id) REFERENCES accessory(accessory_id)\r\n);\r\n\r\nINSERT INTO account_users (user_name,`password`) VALUES (\"khanh\", \"khanh123\"), (\"thien\", \"thien123\"), (\"khang\", \"khang123\"), (\"hai\", \"hai123\"),(\"admin\", \"admin123\");\r\nINSERT INTO customers (customer_name, email,phone_number,address,account_id) \r\nVALUES (\"khanh\",\"khanh@gmail.com\", \"0123456789\",\"Quang Nam\", 1),\r\n(\"khang\",\"khang@gmail.com\", \"1123456789\",\"Quang Nam\", 3),\r\n(\"thien\",\"thien@gmail.com\", \"0223456789\",\"Quang Nam\", 2),\r\n(\"hai\",\"hai@gmail.com\", \"0123456789\",\"Quang Nam\", 4);\r\nINSERT INTO product_type (product_type_name) VALUES (\"Iphone\"), (\"SamSung\"), (\"Vivo\"), (\"Asus\");\r\n\r\n\r\n\r\n\r\n\r\n\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- ../database/database_case_study_03.sql	(revision 0150944eb37b6098c2e675c2bb4826e06697d90d)
++++ ../database/database_case_study_03.sql	(date 1683873963348)
+@@ -36,7 +36,7 @@
+     product_type_name VARCHAR(50) NOT NUll
+ );
+ 
+-CREATE TABLE products(
++CREATE TABLE products( 
+ 	product_id INT PRIMARY KEY AUTO_INCREMENT,
+     product_name VARCHAR(50) NOT NULL,
+ 	product_type_id INT,
+@@ -47,32 +47,24 @@
+     updateAt DATETIME DEFAULT CURRENT_TIMESTAMP,
+     FOREIGN KEY(product_type_id) REFERENCES product_type(product_type_id)
+ );
+-CREATE TABLE accessory(
+-	accessory_id INT PRIMARY KEY AUTO_INCREMENT,
+-    accessory_name VARCHAR(50) NOT NULL,
+-    accessory_price DOUBLE CHECK(accessory_price > 0),
+-    image_accessory TEXT NOT NULL,
+-    create_at DATETIME DEFAULT CURRENT_TIMESTAMP,
+-    update_at DATETIME DEFAULT CURRENT_TIMESTAMP
+-);
+ 
+-CREATE TABLE `order`(
++CREATE TABLE `orders`(
+ 	order_id INT PRIMARY KEY AUTO_INCREMENT,
+-    order_date DATETIME,
++    order_date DATETIME DEFAULT CURRENT_TIMESTAMP,
+     customer_id INT,
+-    product_id INT,
+-    price_order LONG ,
+-    FOREIGN KEY(customer_id) REFERENCES customers(customer_id),
+-    FOREIGN KEY(product_id) REFERENCES products(product_id)
++    FOREIGN KEY(customer_id) REFERENCES customers(customer_id)
+ );
+ 
+ CREATE TABLE order_detail(
+ 	order_detail_id INT PRIMARY KEY AUTO_INCREMENT,
+     order_id INT,
+-	order_detail_date DATETIME,
+-    accessory_id INT,
+-    FOREIGN KEY(order_id) REFERENCES `order`(order_id),
+-    FOREIGN KEY(accessory_id) REFERENCES accessory(accessory_id)
++    product_id INT NOT NULL,
++	product_type_id INT NOT NULL,
++    price DOUBLE CHECK(price >0),
++    quantity INT check(quantity >0),
++    order_detail_date DATETIME DEFAULT CURRENT_TIMESTAMP,
++    FOREIGN KEY(order_id) REFERENCES `orders`(order_id),
++    FOREIGN KEY(product_id) REFERENCES products(product_id)
+ );
+ 
+ INSERT INTO account_users (user_name,`password`) VALUES ("khanh", "khanh123"), ("thien", "thien123"), ("khang", "khang123"), ("hai", "hai123"),("admin", "admin123");
+@@ -80,10 +72,62 @@
+ VALUES ("khanh","khanh@gmail.com", "0123456789","Quang Nam", 1),
+ ("khang","khang@gmail.com", "1123456789","Quang Nam", 3),
+ ("thien","thien@gmail.com", "0223456789","Quang Nam", 2),
+-("hai","hai@gmail.com", "0123456789","Quang Nam", 4);
+-INSERT INTO product_type (product_type_name) VALUES ("Iphone"), ("SamSung"), ("Vivo"), ("Asus");
++("hai","hai@gmail.com", "0523456789","Quang Nam", 4);
++INSERT INTO product_type (product_type_name) VALUES ("Phone"), ("Accessory");
++INSERT INTO products (product_name, product_type_id, `describe`,price,product_image_url) 
++VALUES ('Iphone X',1,'asd',123,'asd'),
++('Iphone XS',1,'asd',123,'asd'),
++('Tai nghe',2,'asd',123,'asd');
++INSERT into `orders` (customer_id) VALUES (1);
++INSERT INTO order_detail (order_id, product_id, product_type_id, price, quantity )
++ VALUES (1,1,1,123,1),
++ (1,2,1,123,1);
++
++SELECT o.order_id, c.customer_id ,c.customer_name, SUM(od.price) as price_total , o.order_date
++from customers as c 
++inner join `orders` as o on c.customer_id = o.customer_id
++INNER join order_detail as od on o.order_id = od.order_id
++WHERE c.customer_id = 1
++GROUP BY o.order_id;
++-- INNER join products as p on od.product_id = p.product_id
++
++SELECT * FROM account_users;
++
++SELECT * FROM customers WHERE customer_id = 1;
++
++INSERT INTO order_detail ()
+ 
++SELECT * FROM orders WHERE customer_id = 8;
+ 
++
++SELECT p.* 
++FROM order_detail AS od 
++INNER JOIN orders AS o ON od.order_id = o.order_id
++INNER JOIN customers AS c ON o.customer_id = c.customer_id
++INNER JOIN products AS p ON od.product_id = p.product_id
++WHERE c.customer_id = 1;
++
++
++SELECT r.role_name 
++FROM users_role  AS u
++INNER JOIN account_users AS ac ON u.account_id = ac.account_id
++INNER JOIN roles AS r ON u.role_id = r.role_id
++WHERE ac.account_id = 1;
++
++SELECT c.*,ac.user_name, ac.password
++FROM customers AS c
++INNER JOIN account_users AS ac ON c.account_id = ac.account_id
++WHERE customer_id = 1;
++
++INSERT INTO `ig1_store`.`roles` (`role_id`, `role_name`) VALUES ('1', 'users');
++INSERT INTO `ig1_store`.`roles` (`role_id`, `role_name`) VALUES ('2', 'admin');
++
++
++INSERT INTO `ig1_store`.`users_role` (`role_id`, `account_id`) VALUES ('1', '1');
++INSERT INTO `ig1_store`.`users_role` (`role_id`, `account_id`) VALUES ('1', '2');
++INSERT INTO `ig1_store`.`users_role` (`role_id`, `account_id`) VALUES ('1', '3');
++INSERT INTO `ig1_store`.`users_role` (`role_id`, `account_id`) VALUES ('1', '4');
++INSERT INTO `ig1_store`.`users_role` (`role_id`, `account_id`) VALUES ('2', '5');
+ 
+ 
+ 
+Index: src/main/java/models/service/impl/ProductServiceImpl.java
+===================================================================
+--- src/main/java/models/service/impl/ProductServiceImpl.java	(date 1683873963344)
++++ src/main/java/models/service/impl/ProductServiceImpl.java	(date 1683873963344)
+@@ -0,0 +1,43 @@
++package models.service.impl;
++
++
++import models.model.Product;
++import models.repository.IProductRepostory;
++import models.repository.Impl.ProductRepository;
++import models.service.IProductService;
++
++
++import java.util.List;
++
++public class ProductServiceImpl implements IProductService {
++    private IProductRepostory productRepostory=new ProductRepository();
++    @Override
++    public List<Product> getList() {
++        return productRepostory.getList();
++    }
++
++    @Override
++    public Product findById(int id) {
++        return productRepostory.findByID(id);
++    }
++
++    @Override
++    public boolean createAt(Product product) {
++        return productRepostory.createAt(product);
++    }
++
++    @Override
++    public boolean remove(int id) {
++        return productRepostory.remove(id);
++    }
++
++    @Override
++    public boolean edit(Product product) {
++        return productRepostory.edit(product);
++    }
++
++    @Override
++    public List<Product> search(String name,int startPrice, int endPrice) {
++        return productRepostory.search(name,startPrice,endPrice);
++    }
++}
+Index: src/main/java/models/service/impl/AccountReposiroryImpl.java
+===================================================================
+--- src/main/java/models/service/impl/AccountReposiroryImpl.java	(date 1683873963343)
++++ src/main/java/models/service/impl/AccountReposiroryImpl.java	(date 1683873963343)
+@@ -0,0 +1,21 @@
++package models.service.impl;
++
++import models.model.Account;
++import models.repository.IAccountRepository;
++import models.repository.Impl.AccountRepositoryImpl;
++import models.service.IAccountService;
++
++import java.util.List;
++
++public class AccountReposiroryImpl implements IAccountService {
++    IAccountRepository accountRepository = new AccountRepositoryImpl();
++    @Override
++    public String checkRole(int id) {
++        return accountRepository.checkRole(id);
++    }
++
++    @Override
++    public List<Account> getAllAccount() {
++        return accountRepository.getAllAccount();
++    }
++}

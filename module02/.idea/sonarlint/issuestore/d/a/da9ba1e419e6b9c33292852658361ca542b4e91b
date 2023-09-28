@@ -1,0 +1,17 @@
+
+z	java:S135/"YReduce the total number of break and continue statements in this loop to use at most one.(ªœãÚüÿÿÿÿ8‘Òµ¯¤1
+r	java:S117@"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(õÃ÷ìüÿÿÿÿ8 Òµ¯¤1
+X	java:S125"<This block of commented-out lines of code should be removed.(¢ŸÀÒ8ò×µ¯¤1
+Z	java:S106"9Replace this use of System.out or System.err by a logger.(¾¶Ï•ûÿÿÿÿ8ù×µ¯¤1
+X	java:S125"<This block of commented-out lines of code should be removed.(§¾Œ8‰Øµ¯¤1
+W
+java:S1172";Remove these unused method parameters "crossword", "words".(¥Ô
+8¢öµ¯¤1
+t
+java:S3776$"RRefactor this method to reduce its Cognitive Complexity from 18 to the 15 allowed.(À‹æ÷ûÿÿÿÿ8¹öµ¯¤1
+J
+java:S1172$"(Remove this unused method parameter "m".(À‹æ÷ûÿÿÿÿ8¿öµ¯¤1
+Z	java:S106;"9Replace this use of System.out or System.err by a logger.(³ğ¸ûÿÿÿÿ8Ôöµ¯¤1
+^
+java:S1126i"AReplace this if-then-else statement by a single return statement.(ì¨ŸÃ8şöµ¯¤1
+]	java:S125o"<This block of commented-out lines of code should be removed.(†‡Á›üÿÿÿÿ8‚÷µ¯¤1

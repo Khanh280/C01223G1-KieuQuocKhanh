@@ -50,9 +50,6 @@ function Villa() {
             timer: "2000"
         })
     }
-    const radoms = ()=>{
-        alert(Math.floor(Math.random()*55))
-    }
     if (!villa) return null;
     return (
         <>
@@ -66,7 +63,7 @@ function Villa() {
                     position: 'absolute',
                     left: '50%',
                     color: 'white'
-                }}>VILLA & SUITES <button onClick={radoms}>radom</button></h1>
+                }}>VILLA & SUITES </h1>
             </div>
             <div className="container" style={{height: "83vh"}}>
                 <div className="row col-12">

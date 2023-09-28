@@ -1,0 +1,223 @@
+Index: .idea/workspace.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<project version=\"4\">\r\n  <component name=\"AutoImportSettings\">\r\n    <option name=\"autoReloadType\" value=\"SELECTIVE\" />\r\n  </component>\r\n  <component name=\"BranchesTreeState\">\r\n    <expand>\r\n      <path>\r\n        <item name=\"ROOT\" type=\"e8cecc67:BranchNodeDescriptor\" />\r\n        <item name=\"LOCAL_ROOT\" type=\"e8cecc67:BranchNodeDescriptor\" />\r\n      </path>\r\n      <path>\r\n        <item name=\"ROOT\" type=\"e8cecc67:BranchNodeDescriptor\" />\r\n        <item name=\"REMOTE_ROOT\" type=\"e8cecc67:BranchNodeDescriptor\" />\r\n      </path>\r\n      <path>\r\n        <item name=\"ROOT\" type=\"e8cecc67:BranchNodeDescriptor\" />\r\n        <item name=\"REMOTE_ROOT\" type=\"e8cecc67:BranchNodeDescriptor\" />\r\n        <item name=\"GROUP_NODE:origin\" type=\"e8cecc67:BranchNodeDescriptor\" />\r\n      </path>\r\n    </expand>\r\n    <select>\r\n      <path>\r\n        <item name=\"ROOT\" type=\"e8cecc67:BranchNodeDescriptor\" />\r\n        <item name=\"LOCAL_ROOT\" type=\"e8cecc67:BranchNodeDescriptor\" />\r\n        <item name=\"BRANCH:haidoan\" type=\"e8cecc67:BranchNodeDescriptor\" />\r\n      </path>\r\n    </select>\r\n  </component>\r\n  <component name=\"ChangeListManager\">\r\n    <list default=\"true\" id=\"3f656102-5da8-4523-8e54-f4cbce5e1009\" name=\"Changes\" comment=\"\">\r\n      <change beforePath=\"$PROJECT_DIR$/.gradle/7.5.1/executionHistory/executionHistory.lock\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/.gradle/7.5.1/executionHistory/executionHistory.lock\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/.idea/workspace.xml\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/.idea/workspace.xml\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/src/main/webapp/view/accessorys/edit.jsp\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/main/webapp/view/accessorys/edit.jsp\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/src/main/webapp/view/accessorys/list.jsp\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/main/webapp/view/accessorys/list.jsp\" afterDir=\"false\" />\r\n    </list>\r\n    <option name=\"SHOW_DIALOG\" value=\"false\" />\r\n    <option name=\"HIGHLIGHT_CONFLICTS\" value=\"true\" />\r\n    <option name=\"HIGHLIGHT_NON_ACTIVE_CHANGELIST\" value=\"false\" />\r\n    <option name=\"LAST_RESOLUTION\" value=\"IGNORE\" />\r\n  </component>\r\n  <component name=\"ExternalProjectsData\">\r\n    <projectState path=\"$PROJECT_DIR$\">\r\n      <ProjectState />\r\n    </projectState>\r\n  </component>\r\n  <component name=\"ExternalProjectsManager\">\r\n    <system id=\"GRADLE\">\r\n      <state>\r\n        <projects_view>\r\n          <tree_state>\r\n            <expand />\r\n            <select />\r\n          </tree_state>\r\n        </projects_view>\r\n      </state>\r\n    </system>\r\n  </component>\r\n  <component name=\"FileTemplateManagerImpl\">\r\n    <option name=\"RECENT_TEMPLATES\">\r\n      <list>\r\n        <option value=\"Class\" />\r\n        <option value=\"Jsp File\" />\r\n      </list>\r\n    </option>\r\n  </component>\r\n  <component name=\"Git.Settings\">\r\n    <option name=\"RECENT_BRANCH_BY_REPOSITORY\">\r\n      <map>\r\n        <entry key=\"$PROJECT_DIR$/..\" value=\"haidoan\" />\r\n      </map>\r\n    </option>\r\n    <option name=\"RECENT_GIT_ROOT_PATH\" value=\"$PROJECT_DIR$/..\" />\r\n    <option name=\"RESET_MODE\" value=\"SOFT\" />\r\n  </component>\r\n  <component name=\"LogFilters\">\r\n    <option name=\"FILTER_ERRORS\" value=\"false\" />\r\n    <option name=\"FILTER_WARNINGS\" value=\"false\" />\r\n    <option name=\"FILTER_INFO\" value=\"true\" />\r\n    <option name=\"FILTER_DEBUG\" value=\"true\" />\r\n    <option name=\"CUSTOM_FILTER\" />\r\n  </component>\r\n  <component name=\"MarkdownSettingsMigration\">\r\n    <option name=\"stateVersion\" value=\"1\" />\r\n  </component>\r\n  <component name=\"ProjectId\" id=\"2Pa2H6HLMZaryRkGjW3TGEXHiKl\" />\r\n  <component name=\"ProjectLevelVcsManager\" settingsEditedManually=\"true\" />\r\n  <component name=\"ProjectViewState\">\r\n    <option name=\"hideEmptyMiddlePackages\" value=\"true\" />\r\n    <option name=\"showLibraryContents\" value=\"true\" />\r\n  </component>\r\n  <component name=\"PropertiesComponent\">\r\n    <property name=\"RunOnceActivity.OpenProjectViewOnStart\" value=\"true\" />\r\n    <property name=\"RunOnceActivity.ShowReadmeOnStart\" value=\"true\" />\r\n    <property name=\"WebServerToolWindowFactoryState\" value=\"false\" />\r\n    <property name=\"aspect.path.notification.shown\" value=\"true\" />\r\n    <property name=\"last_opened_file_path\" value=\"$PROJECT_DIR$\" />\r\n    <property name=\"node.js.detected.package.eslint\" value=\"true\" />\r\n    <property name=\"node.js.detected.package.tslint\" value=\"true\" />\r\n    <property name=\"node.js.path.for.package.eslint\" value=\"project\" />\r\n    <property name=\"node.js.path.for.package.tslint\" value=\"project\" />\r\n    <property name=\"node.js.selected.package.eslint\" value=\"(autodetect)\" />\r\n    <property name=\"node.js.selected.package.tslint\" value=\"(autodetect)\" />\r\n  </component>\r\n  <component name=\"RecentsManager\">\r\n    <key name=\"CopyClassDialog.RECENTS_KEY\">\r\n      <recent name=\"models.model\" />\r\n      <recent name=\"controller\" />\r\n    </key>\r\n    <key name=\"CopyFile.RECENT_KEYS\">\r\n      <recent name=\"D:\\case_study_2\\C0123G1-Repo-BE\\case_study\\src\\main\\java\\models\\repository\" />\r\n      <recent name=\"D:\\CodeGym\\Group1\\C0123G1-Repo-BE\\case_study\\src\\main\\webapp\" />\r\n      <recent name=\"D:\\CodeGym\\Group1\\C0123G1-Repo-BE\\case_study\\src\\main\\webapp\\view\" />\r\n      <recent name=\"D:\\CodeGym\\Group1\\C0123G1-Repo-BE\\case_study\\src\\main\\java\\models\\service\" />\r\n      <recent name=\"D:\\CodeGym\\Group1\\C0123G1-Repo-BE\\case_study\\src\\main\\java\\models\\repository\" />\r\n    </key>\r\n  </component>\r\n  <component name=\"RunManager\">\r\n    <configuration name=\"Tomcat 9.0.74\" type=\"#com.intellij.j2ee.web.tomcat.TomcatRunConfigurationFactory\" factoryName=\"Local\" APPLICATION_SERVER_NAME=\"Tomcat 9.0.74\" ALTERNATIVE_JRE_ENABLED=\"false\" nameIsGenerated=\"true\">\r\n      <option name=\"UPDATING_POLICY\" value=\"restart-server\" />\r\n      <deployment>\r\n        <artifact name=\"Gradle : com.example : case_study-1.0-SNAPSHOT.war\">\r\n          <settings>\r\n            <option name=\"CONTEXT_PATH\" value=\"\" />\r\n          </settings>\r\n        </artifact>\r\n      </deployment>\r\n      <server-settings>\r\n        <option name=\"BASE_DIRECTORY_NAME\" value=\"cebfe3af-cf99-489b-aef3-b9bb1f0cc754\" />\r\n      </server-settings>\r\n      <predefined_log_file enabled=\"true\" id=\"Tomcat\" />\r\n      <predefined_log_file enabled=\"true\" id=\"Tomcat Catalina\" />\r\n      <predefined_log_file id=\"Tomcat Manager\" />\r\n      <predefined_log_file id=\"Tomcat Host Manager\" />\r\n      <predefined_log_file id=\"Tomcat Localhost Access\" />\r\n      <RunnerSettings RunnerId=\"Debug\">\r\n        <option name=\"DEBUG_PORT\" value=\"51525\" />\r\n      </RunnerSettings>\r\n      <ConfigurationWrapper VM_VAR=\"JAVA_OPTS\" RunnerId=\"Cover\">\r\n        <option name=\"USE_ENV_VARIABLES\" value=\"true\" />\r\n        <STARTUP>\r\n          <option name=\"USE_DEFAULT\" value=\"true\" />\r\n          <option name=\"SCRIPT\" value=\"\" />\r\n          <option name=\"VM_PARAMETERS\" value=\"\" />\r\n          <option name=\"PROGRAM_PARAMETERS\" value=\"\" />\r\n        </STARTUP>\r\n        <SHUTDOWN>\r\n          <option name=\"USE_DEFAULT\" value=\"true\" />\r\n          <option name=\"SCRIPT\" value=\"\" />\r\n          <option name=\"VM_PARAMETERS\" value=\"\" />\r\n          <option name=\"PROGRAM_PARAMETERS\" value=\"\" />\r\n        </SHUTDOWN>\r\n      </ConfigurationWrapper>\r\n      <ConfigurationWrapper VM_VAR=\"JAVA_OPTS\" RunnerId=\"Debug\">\r\n        <option name=\"USE_ENV_VARIABLES\" value=\"true\" />\r\n        <STARTUP>\r\n          <option name=\"USE_DEFAULT\" value=\"true\" />\r\n          <option name=\"SCRIPT\" value=\"\" />\r\n          <option name=\"VM_PARAMETERS\" value=\"\" />\r\n          <option name=\"PROGRAM_PARAMETERS\" value=\"\" />\r\n        </STARTUP>\r\n        <SHUTDOWN>\r\n          <option name=\"USE_DEFAULT\" value=\"true\" />\r\n          <option name=\"SCRIPT\" value=\"\" />\r\n          <option name=\"VM_PARAMETERS\" value=\"\" />\r\n          <option name=\"PROGRAM_PARAMETERS\" value=\"\" />\r\n        </SHUTDOWN>\r\n      </ConfigurationWrapper>\r\n      <ConfigurationWrapper VM_VAR=\"JAVA_OPTS\" RunnerId=\"Profile\">\r\n        <option name=\"USE_ENV_VARIABLES\" value=\"true\" />\r\n        <STARTUP>\r\n          <option name=\"USE_DEFAULT\" value=\"true\" />\r\n          <option name=\"SCRIPT\" value=\"\" />\r\n          <option name=\"VM_PARAMETERS\" value=\"\" />\r\n          <option name=\"PROGRAM_PARAMETERS\" value=\"\" />\r\n        </STARTUP>\r\n        <SHUTDOWN>\r\n          <option name=\"USE_DEFAULT\" value=\"true\" />\r\n          <option name=\"SCRIPT\" value=\"\" />\r\n          <option name=\"VM_PARAMETERS\" value=\"\" />\r\n          <option name=\"PROGRAM_PARAMETERS\" value=\"\" />\r\n        </SHUTDOWN>\r\n      </ConfigurationWrapper>\r\n      <ConfigurationWrapper VM_VAR=\"JAVA_OPTS\" RunnerId=\"Run\">\r\n        <option name=\"USE_ENV_VARIABLES\" value=\"true\" />\r\n        <STARTUP>\r\n          <option name=\"USE_DEFAULT\" value=\"true\" />\r\n          <option name=\"SCRIPT\" value=\"\" />\r\n          <option name=\"VM_PARAMETERS\" value=\"\" />\r\n          <option name=\"PROGRAM_PARAMETERS\" value=\"\" />\r\n        </STARTUP>\r\n        <SHUTDOWN>\r\n          <option name=\"USE_DEFAULT\" value=\"true\" />\r\n          <option name=\"SCRIPT\" value=\"\" />\r\n          <option name=\"VM_PARAMETERS\" value=\"\" />\r\n          <option name=\"PROGRAM_PARAMETERS\" value=\"\" />\r\n        </SHUTDOWN>\r\n      </ConfigurationWrapper>\r\n      <method v=\"2\">\r\n        <option name=\"Make\" enabled=\"true\" />\r\n        <option name=\"BuildArtifacts\" enabled=\"true\">\r\n          <artifact name=\"Gradle : com.example : case_study-1.0-SNAPSHOT.war\" />\r\n        </option>\r\n      </method>\r\n    </configuration>\r\n  </component>\r\n  <component name=\"SpellCheckerSettings\" BundledDictionaries=\"0\" RuntimeDictionaries=\"0\" Folders=\"0\" CustomDictionaries=\"0\" Dictionaries=\"0\" CorrectionsLimit=\"5\" DefaultDictionary=\"application-level\" UseSingleDictionary=\"true\" />\r\n  <component name=\"SvnConfiguration\">\r\n    <configuration />\r\n  </component>\r\n  <component name=\"TaskManager\">\r\n    <task active=\"true\" id=\"Default\" summary=\"Default task\">\r\n      <changelist id=\"3f656102-5da8-4523-8e54-f4cbce5e1009\" name=\"Changes\" comment=\"\" />\r\n      <created>1683680780986</created>\r\n      <option name=\"number\" value=\"Default\" />\r\n      <option name=\"presentableId\" value=\"Default\" />\r\n      <updated>1683680780986</updated>\r\n      <workItem from=\"1683680782394\" duration=\"22000\" />\r\n      <workItem from=\"1683691438107\" duration=\"1306000\" />\r\n      <workItem from=\"1683721847620\" duration=\"279000\" />\r\n      <workItem from=\"1683793001095\" duration=\"2157000\" />\r\n      <workItem from=\"1683806009253\" duration=\"93000\" />\r\n      <workItem from=\"1683806346141\" duration=\"179000\" />\r\n      <workItem from=\"1683806723118\" duration=\"45000\" />\r\n      <workItem from=\"1683859619753\" duration=\"938000\" />\r\n      <workItem from=\"1683861622930\" duration=\"3754000\" />\r\n      <workItem from=\"1683998422665\" duration=\"3171000\" />\r\n      <workItem from=\"1684001650369\" duration=\"122000\" />\r\n      <workItem from=\"1684001787902\" duration=\"22000\" />\r\n      <workItem from=\"1684001903100\" duration=\"3070000\" />\r\n      <workItem from=\"1684005176251\" duration=\"815000\" />\r\n    </task>\r\n    <servers />\r\n  </component>\r\n  <component name=\"TypeScriptGeneratedFilesManager\">\r\n    <option name=\"version\" value=\"2\" />\r\n  </component>\r\n  <component name=\"Vcs.Log.Tabs.Properties\">\r\n    <option name=\"TAB_STATES\">\r\n      <map>\r\n        <entry key=\"MAIN\">\r\n          <value>\r\n            <State>\r\n              <option name=\"FILTERS\">\r\n                <map>\r\n                  <entry key=\"branch\">\r\n                    <value>\r\n                      <list>\r\n                        <option value=\"haidoan\" />\r\n                      </list>\r\n                    </value>\r\n                  </entry>\r\n                </map>\r\n              </option>\r\n            </State>\r\n          </value>\r\n        </entry>\r\n      </map>\r\n    </option>\r\n    <option name=\"oldMeFiltersMigrated\" value=\"true\" />\r\n  </component>\r\n  <component name=\"WindowStateProjectService\">\r\n    <state x=\"549\" y=\"163\" key=\"FileChooserDialogImpl\" timestamp=\"1684001808656\">\r\n      <screen x=\"0\" y=\"0\" width=\"1536\" height=\"816\" />\r\n    </state>\r\n    <state x=\"549\" y=\"163\" key=\"FileChooserDialogImpl/0.0.1536.816@0.0.1536.816\" timestamp=\"1684001808656\" />\r\n    <state width=\"1024\" height=\"236\" key=\"GridCell.Tab.0.bottom\" timestamp=\"1684005997930\">\r\n      <screen x=\"0\" y=\"0\" width=\"1536\" height=\"816\" />\r\n    </state>\r\n    <state width=\"1024\" height=\"236\" key=\"GridCell.Tab.0.bottom/0.0.1536.816@0.0.1536.816\" timestamp=\"1684005997930\" />\r\n    <state width=\"1024\" height=\"236\" key=\"GridCell.Tab.0.center\" timestamp=\"1684005997930\">\r\n      <screen x=\"0\" y=\"0\" width=\"1536\" height=\"816\" />\r\n    </state>\r\n    <state width=\"1024\" height=\"236\" key=\"GridCell.Tab.0.center/0.0.1536.816@0.0.1536.816\" timestamp=\"1684005997930\" />\r\n    <state width=\"1024\" height=\"236\" key=\"GridCell.Tab.0.left\" timestamp=\"1684005997930\">\r\n      <screen x=\"0\" y=\"0\" width=\"1536\" height=\"816\" />\r\n    </state>\r\n    <state width=\"1024\" height=\"236\" key=\"GridCell.Tab.0.left/0.0.1536.816@0.0.1536.816\" timestamp=\"1684005997930\" />\r\n    <state width=\"1024\" height=\"236\" key=\"GridCell.Tab.0.right\" timestamp=\"1684005997930\">\r\n      <screen x=\"0\" y=\"0\" width=\"1536\" height=\"816\" />\r\n    </state>\r\n    <state width=\"1024\" height=\"236\" key=\"GridCell.Tab.0.right/0.0.1536.816@0.0.1536.816\" timestamp=\"1684005997930\" />\r\n    <state width=\"1024\" height=\"236\" key=\"GridCell.Tab.1.bottom\" timestamp=\"1684005997931\">\r\n      <screen x=\"0\" y=\"0\" width=\"1536\" height=\"816\" />\r\n    </state>\r\n    <state width=\"1024\" height=\"236\" key=\"GridCell.Tab.1.bottom/0.0.1536.816@0.0.1536.816\" timestamp=\"1684005997931\" />\r\n    <state width=\"1024\" height=\"236\" key=\"GridCell.Tab.1.center\" timestamp=\"1684005997930\">\r\n      <screen x=\"0\" y=\"0\" width=\"1536\" height=\"816\" />\r\n    </state>\r\n    <state width=\"1024\" height=\"236\" key=\"GridCell.Tab.1.center/0.0.1536.816@0.0.1536.816\" timestamp=\"1684005997930\" />\r\n    <state width=\"1024\" height=\"236\" key=\"GridCell.Tab.1.left\" timestamp=\"1684005997930\">\r\n      <screen x=\"0\" y=\"0\" width=\"1536\" height=\"816\" />\r\n    </state>\r\n    <state width=\"1024\" height=\"236\" key=\"GridCell.Tab.1.left/0.0.1536.816@0.0.1536.816\" timestamp=\"1684005997930\" />\r\n    <state width=\"1024\" height=\"236\" key=\"GridCell.Tab.1.right\" timestamp=\"1684005997931\">\r\n      <screen x=\"0\" y=\"0\" width=\"1536\" height=\"816\" />\r\n    </state>\r\n    <state width=\"1024\" height=\"236\" key=\"GridCell.Tab.1.right/0.0.1536.816@0.0.1536.816\" timestamp=\"1684005997931\" />\r\n    <state width=\"1024\" height=\"236\" key=\"GridCell.Tab.2.bottom\" timestamp=\"1684005997931\">\r\n      <screen x=\"0\" y=\"0\" width=\"1536\" height=\"816\" />\r\n    </state>\r\n    <state width=\"1024\" height=\"236\" key=\"GridCell.Tab.2.bottom/0.0.1536.816@0.0.1536.816\" timestamp=\"1684005997931\" />\r\n    <state width=\"1024\" height=\"236\" key=\"GridCell.Tab.2.center\" timestamp=\"1684005997931\">\r\n      <screen x=\"0\" y=\"0\" width=\"1536\" height=\"816\" />\r\n    </state>\r\n    <state width=\"1024\" height=\"236\" key=\"GridCell.Tab.2.center/0.0.1536.816@0.0.1536.816\" timestamp=\"1684005997931\" />\r\n    <state width=\"1024\" height=\"236\" key=\"GridCell.Tab.2.left\" timestamp=\"1684005997931\">\r\n      <screen x=\"0\" y=\"0\" width=\"1536\" height=\"816\" />\r\n    </state>\r\n    <state width=\"1024\" height=\"236\" key=\"GridCell.Tab.2.left/0.0.1536.816@0.0.1536.816\" timestamp=\"1684005997931\" />\r\n    <state width=\"1024\" height=\"236\" key=\"GridCell.Tab.2.right\" timestamp=\"1684005997931\">\r\n      <screen x=\"0\" y=\"0\" width=\"1536\" height=\"816\" />\r\n    </state>\r\n    <state width=\"1024\" height=\"236\" key=\"GridCell.Tab.2.right/0.0.1536.816@0.0.1536.816\" timestamp=\"1684005997931\" />\r\n    <state x=\"142\" y=\"110\" width=\"1339\" height=\"687\" key=\"MergeDialog\" timestamp=\"1683998880194\">\r\n      <screen x=\"0\" y=\"0\" width=\"1536\" height=\"816\" />\r\n    </state>\r\n    <state x=\"142\" y=\"110\" width=\"1339\" height=\"687\" key=\"MergeDialog/0.0.1536.816@0.0.1536.816\" timestamp=\"1683998880194\" />\r\n    <state x=\"501\" y=\"140\" key=\"Vcs.Push.Dialog.v2\" timestamp=\"1683875686634\">\r\n      <screen x=\"0\" y=\"0\" width=\"1536\" height=\"816\" />\r\n    </state>\r\n    <state x=\"501\" y=\"140\" key=\"Vcs.Push.Dialog.v2/0.0.1536.816@0.0.1536.816\" timestamp=\"1683875686634\" />\r\n    <state x=\"557\" y=\"121\" key=\"git4idea.branch.GitSmartOperationDialog\" timestamp=\"1683998859075\">\r\n      <screen x=\"0\" y=\"0\" width=\"1536\" height=\"816\" />\r\n    </state>\r\n    <state x=\"557\" y=\"121\" key=\"git4idea.branch.GitSmartOperationDialog/0.0.1536.816@0.0.1536.816\" timestamp=\"1683998859075\" />\r\n    <state x=\"452\" y=\"197\" key=\"git4idea.merge.GitPullDialog\" timestamp=\"1683998509339\">\r\n      <screen x=\"0\" y=\"0\" width=\"1536\" height=\"816\" />\r\n    </state>\r\n    <state x=\"452\" y=\"197\" key=\"git4idea.merge.GitPullDialog/0.0.1536.816@0.0.1536.816\" timestamp=\"1683998509339\" />\r\n  </component>\r\n</project>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- .idea/workspace.xml	(revision 23290a0cf9544c953fcecdfdeca3714678ed1f03)
++++ .idea/workspace.xml	(date 1684070180745)
+@@ -23,14 +23,36 @@
+       <path>
+         <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+         <item name="LOCAL_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+-        <item name="BRANCH:haidoan" type="e8cecc67:BranchNodeDescriptor" />
++        <item name="BRANCH:main" type="e8cecc67:BranchNodeDescriptor" />
+       </path>
+     </select>
+   </component>
+   <component name="ChangeListManager">
+     <list default="true" id="3f656102-5da8-4523-8e54-f4cbce5e1009" name="Changes" comment="">
++      <change beforePath="$PROJECT_DIR$/.gradle/7.5.1/executionHistory/executionHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/7.5.1/executionHistory/executionHistory.bin" afterDir="false" />
+       <change beforePath="$PROJECT_DIR$/.gradle/7.5.1/executionHistory/executionHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/7.5.1/executionHistory/executionHistory.lock" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/.gradle/7.5.1/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/7.5.1/fileHashes/fileHashes.bin" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/.gradle/7.5.1/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/7.5.1/fileHashes/fileHashes.lock" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/.gradle/7.5.1/fileHashes/resourceHashesCache.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/7.5.1/fileHashes/resourceHashesCache.bin" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/outputFiles.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/outputFiles.bin" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/.gradle/file-system.probe" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/file-system.probe" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_11_05_2023_3_50_CH__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_11_05_2023_3_50_CH__Changes_.xml" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Merge_at_10_05_2023_11_25_SA__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Merge_at_10_05_2023_11_25_SA__Changes_.xml" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Merge_at_10_05_2023_8_03_SA__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Merge_at_10_05_2023_8_03_SA__Changes_.xml" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Merge_at_10_05_2023_8_04_SA__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Merge_at_10_05_2023_8_04_SA__Changes_.xml" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Merge_at_12_05_2023_2_37_CH__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Merge_at_12_05_2023_2_37_CH__Changes_.xml" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Merge_at_5_12_2023_10_51_PM__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Merge_at_5_12_2023_10_51_PM__Changes_.xml" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Merge_at_5_12_2023_1_46_PM__Default_Changelist_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Merge_at_5_12_2023_1_46_PM__Default_Changelist_.xml" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Merge_at_5_12_2023_1_46_PM__Default_Changelist_1.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Merge_at_5_12_2023_1_46_PM__Default_Changelist_1.xml" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Merge_at_5_14_2023_12_27_AM__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Merge_at_5_14_2023_12_27_AM__Changes_.xml" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_rebase__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_rebase__Changes_.xml" afterDir="false" />
+       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/build/classes/java/main/controller/AccessoryServlet.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/controller/AccessoryServlet.class" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/build/libs/case_study-1.0-SNAPSHOT.war" beforeDir="false" afterPath="$PROJECT_DIR$/build/libs/case_study-1.0-SNAPSHOT.war" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/build/tmp/compileJava/previous-compilation-data.bin" beforeDir="false" afterPath="$PROJECT_DIR$/build/tmp/compileJava/previous-compilation-data.bin" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/src/main/java/controller/AccessoryServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/AccessoryServlet.java" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/src/main/webapp/view/accessorys/create.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/view/accessorys/create.jsp" afterDir="false" />
+       <change beforePath="$PROJECT_DIR$/src/main/webapp/view/accessorys/edit.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/view/accessorys/edit.jsp" afterDir="false" />
+       <change beforePath="$PROJECT_DIR$/src/main/webapp/view/accessorys/list.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/view/accessorys/list.jsp" afterDir="false" />
+     </list>
+@@ -67,7 +89,7 @@
+   <component name="Git.Settings">
+     <option name="RECENT_BRANCH_BY_REPOSITORY">
+       <map>
+-        <entry key="$PROJECT_DIR$/.." value="haidoan" />
++        <entry key="$PROJECT_DIR$/.." value="main" />
+       </map>
+     </option>
+     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+@@ -94,7 +116,7 @@
+     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+     <property name="WebServerToolWindowFactoryState" value="false" />
+     <property name="aspect.path.notification.shown" value="true" />
+-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
++    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/main/webapp/view/accessorys" />
+     <property name="node.js.detected.package.eslint" value="true" />
+     <property name="node.js.detected.package.tslint" value="true" />
+     <property name="node.js.path.for.package.eslint" value="project" />
+@@ -104,15 +126,15 @@
+   </component>
+   <component name="RecentsManager">
+     <key name="CopyClassDialog.RECENTS_KEY">
+-      <recent name="models.model" />
+       <recent name="controller" />
++      <recent name="models.model" />
+     </key>
+     <key name="CopyFile.RECENT_KEYS">
++      <recent name="E:\Group1\C0123G1-Repo-BE\case_study\src\main\webapp\view\accessorys" />
+       <recent name="D:\case_study_2\C0123G1-Repo-BE\case_study\src\main\java\models\repository" />
+       <recent name="D:\CodeGym\Group1\C0123G1-Repo-BE\case_study\src\main\webapp" />
+       <recent name="D:\CodeGym\Group1\C0123G1-Repo-BE\case_study\src\main\webapp\view" />
+       <recent name="D:\CodeGym\Group1\C0123G1-Repo-BE\case_study\src\main\java\models\service" />
+-      <recent name="D:\CodeGym\Group1\C0123G1-Repo-BE\case_study\src\main\java\models\repository" />
+     </key>
+   </component>
+   <component name="RunManager">
+@@ -229,6 +251,7 @@
+       <workItem from="1684001787902" duration="22000" />
+       <workItem from="1684001903100" duration="3070000" />
+       <workItem from="1684005176251" duration="815000" />
++      <workItem from="1684069473261" duration="342000" />
+     </task>
+     <servers />
+   </component>
+@@ -246,7 +269,7 @@
+                   <entry key="branch">
+                     <value>
+                       <list>
+-                        <option value="haidoan" />
++                        <option value="main" />
+                       </list>
+                     </value>
+                   </entry>
+@@ -260,58 +283,74 @@
+     <option name="oldMeFiltersMigrated" value="true" />
+   </component>
+   <component name="WindowStateProjectService">
+-    <state x="549" y="163" key="FileChooserDialogImpl" timestamp="1684001808656">
++    <state x="549" y="163" key="FileChooserDialogImpl" timestamp="1684068504225">
++      <screen x="0" y="0" width="1536" height="816" />
++    </state>
++    <state x="549" y="163" key="FileChooserDialogImpl/0.0.1536.816@0.0.1536.816" timestamp="1684068504225" />
++    <state width="1024" height="337" key="GridCell.Tab.0.bottom" timestamp="1684070008303">
+       <screen x="0" y="0" width="1536" height="816" />
+     </state>
+-    <state x="549" y="163" key="FileChooserDialogImpl/0.0.1536.816@0.0.1536.816" timestamp="1684001808656" />
+-    <state width="1024" height="236" key="GridCell.Tab.0.bottom" timestamp="1684005997930">
++    <state width="1024" height="337" key="GridCell.Tab.0.bottom/0.0.1536.816@0.0.1536.816" timestamp="1684070008303" />
++    <state width="1024" height="337" key="GridCell.Tab.0.center" timestamp="1684070008303">
+       <screen x="0" y="0" width="1536" height="816" />
+     </state>
+-    <state width="1024" height="236" key="GridCell.Tab.0.bottom/0.0.1536.816@0.0.1536.816" timestamp="1684005997930" />
+-    <state width="1024" height="236" key="GridCell.Tab.0.center" timestamp="1684005997930">
++    <state width="1024" height="337" key="GridCell.Tab.0.center/0.0.1536.816@0.0.1536.816" timestamp="1684070008303" />
++    <state width="1024" height="337" key="GridCell.Tab.0.left" timestamp="1684070008303">
+       <screen x="0" y="0" width="1536" height="816" />
+     </state>
+-    <state width="1024" height="236" key="GridCell.Tab.0.center/0.0.1536.816@0.0.1536.816" timestamp="1684005997930" />
+-    <state width="1024" height="236" key="GridCell.Tab.0.left" timestamp="1684005997930">
++    <state width="1024" height="337" key="GridCell.Tab.0.left/0.0.1536.816@0.0.1536.816" timestamp="1684070008303" />
++    <state width="1024" height="337" key="GridCell.Tab.0.right" timestamp="1684070008303">
+       <screen x="0" y="0" width="1536" height="816" />
+     </state>
+-    <state width="1024" height="236" key="GridCell.Tab.0.left/0.0.1536.816@0.0.1536.816" timestamp="1684005997930" />
+-    <state width="1024" height="236" key="GridCell.Tab.0.right" timestamp="1684005997930">
++    <state width="1024" height="337" key="GridCell.Tab.0.right/0.0.1536.816@0.0.1536.816" timestamp="1684070008303" />
++    <state width="1024" height="337" key="GridCell.Tab.1.bottom" timestamp="1684070008303">
+       <screen x="0" y="0" width="1536" height="816" />
+     </state>
+-    <state width="1024" height="236" key="GridCell.Tab.0.right/0.0.1536.816@0.0.1536.816" timestamp="1684005997930" />
+-    <state width="1024" height="236" key="GridCell.Tab.1.bottom" timestamp="1684005997931">
++    <state width="1024" height="337" key="GridCell.Tab.1.bottom/0.0.1536.816@0.0.1536.816" timestamp="1684070008303" />
++    <state width="1024" height="337" key="GridCell.Tab.1.center" timestamp="1684070008303">
+       <screen x="0" y="0" width="1536" height="816" />
+     </state>
+-    <state width="1024" height="236" key="GridCell.Tab.1.bottom/0.0.1536.816@0.0.1536.816" timestamp="1684005997931" />
+-    <state width="1024" height="236" key="GridCell.Tab.1.center" timestamp="1684005997930">
++    <state width="1024" height="337" key="GridCell.Tab.1.center/0.0.1536.816@0.0.1536.816" timestamp="1684070008303" />
++    <state width="1024" height="337" key="GridCell.Tab.1.left" timestamp="1684070008303">
+       <screen x="0" y="0" width="1536" height="816" />
+     </state>
+-    <state width="1024" height="236" key="GridCell.Tab.1.center/0.0.1536.816@0.0.1536.816" timestamp="1684005997930" />
+-    <state width="1024" height="236" key="GridCell.Tab.1.left" timestamp="1684005997930">
++    <state width="1024" height="337" key="GridCell.Tab.1.left/0.0.1536.816@0.0.1536.816" timestamp="1684070008303" />
++    <state width="1024" height="337" key="GridCell.Tab.1.right" timestamp="1684070008303">
+       <screen x="0" y="0" width="1536" height="816" />
+     </state>
+-    <state width="1024" height="236" key="GridCell.Tab.1.left/0.0.1536.816@0.0.1536.816" timestamp="1684005997930" />
+-    <state width="1024" height="236" key="GridCell.Tab.1.right" timestamp="1684005997931">
++    <state width="1024" height="337" key="GridCell.Tab.1.right/0.0.1536.816@0.0.1536.816" timestamp="1684070008303" />
++    <state width="1024" height="337" key="GridCell.Tab.2.bottom" timestamp="1684070007954">
+       <screen x="0" y="0" width="1536" height="816" />
+     </state>
+-    <state width="1024" height="236" key="GridCell.Tab.1.right/0.0.1536.816@0.0.1536.816" timestamp="1684005997931" />
+-    <state width="1024" height="236" key="GridCell.Tab.2.bottom" timestamp="1684005997931">
++    <state width="1024" height="337" key="GridCell.Tab.2.bottom/0.0.1536.816@0.0.1536.816" timestamp="1684070007954" />
++    <state width="1024" height="337" key="GridCell.Tab.2.center" timestamp="1684070007954">
+       <screen x="0" y="0" width="1536" height="816" />
+     </state>
+-    <state width="1024" height="236" key="GridCell.Tab.2.bottom/0.0.1536.816@0.0.1536.816" timestamp="1684005997931" />
+-    <state width="1024" height="236" key="GridCell.Tab.2.center" timestamp="1684005997931">
++    <state width="1024" height="337" key="GridCell.Tab.2.center/0.0.1536.816@0.0.1536.816" timestamp="1684070007954" />
++    <state width="1024" height="337" key="GridCell.Tab.2.left" timestamp="1684070007954">
+       <screen x="0" y="0" width="1536" height="816" />
+     </state>
+-    <state width="1024" height="236" key="GridCell.Tab.2.center/0.0.1536.816@0.0.1536.816" timestamp="1684005997931" />
+-    <state width="1024" height="236" key="GridCell.Tab.2.left" timestamp="1684005997931">
++    <state width="1024" height="337" key="GridCell.Tab.2.left/0.0.1536.816@0.0.1536.816" timestamp="1684070007954" />
++    <state width="1024" height="337" key="GridCell.Tab.2.right" timestamp="1684070007954">
+       <screen x="0" y="0" width="1536" height="816" />
+     </state>
+-    <state width="1024" height="236" key="GridCell.Tab.2.left/0.0.1536.816@0.0.1536.816" timestamp="1684005997931" />
+-    <state width="1024" height="236" key="GridCell.Tab.2.right" timestamp="1684005997931">
++    <state width="1024" height="337" key="GridCell.Tab.2.right/0.0.1536.816@0.0.1536.816" timestamp="1684070007954" />
++    <state width="1024" height="337" key="GridCell.Tab.3.bottom" timestamp="1684070007954">
+       <screen x="0" y="0" width="1536" height="816" />
+     </state>
+-    <state width="1024" height="236" key="GridCell.Tab.2.right/0.0.1536.816@0.0.1536.816" timestamp="1684005997931" />
++    <state width="1024" height="337" key="GridCell.Tab.3.bottom/0.0.1536.816@0.0.1536.816" timestamp="1684070007954" />
++    <state width="1024" height="337" key="GridCell.Tab.3.center" timestamp="1684070007954">
++      <screen x="0" y="0" width="1536" height="816" />
++    </state>
++    <state width="1024" height="337" key="GridCell.Tab.3.center/0.0.1536.816@0.0.1536.816" timestamp="1684070007954" />
++    <state width="1024" height="337" key="GridCell.Tab.3.left" timestamp="1684070007954">
++      <screen x="0" y="0" width="1536" height="816" />
++    </state>
++    <state width="1024" height="337" key="GridCell.Tab.3.left/0.0.1536.816@0.0.1536.816" timestamp="1684070007954" />
++    <state width="1024" height="337" key="GridCell.Tab.3.right" timestamp="1684070007954">
++      <screen x="0" y="0" width="1536" height="816" />
++    </state>
++    <state width="1024" height="337" key="GridCell.Tab.3.right/0.0.1536.816@0.0.1536.816" timestamp="1684070007954" />
+     <state x="142" y="110" width="1339" height="687" key="MergeDialog" timestamp="1683998880194">
+       <screen x="0" y="0" width="1536" height="816" />
+     </state>
+@@ -329,4 +368,20 @@
+     </state>
+     <state x="452" y="197" key="git4idea.merge.GitPullDialog/0.0.1536.816@0.0.1536.816" timestamp="1683998509339" />
+   </component>
++  <component name="XDebuggerManager">
++    <breakpoint-manager>
++      <breakpoints>
++        <line-breakpoint enabled="true" type="java-line">
++          <url>file://$PROJECT_DIR$/src/main/java/controller/AccountServlet.java</url>
++          <line>28</line>
++          <option name="timeStamp" value="2" />
++        </line-breakpoint>
++        <line-breakpoint enabled="true" type="java-line">
++          <url>file://$PROJECT_DIR$/src/main/java/controller/AccountServlet.java</url>
++          <line>76</line>
++          <option name="timeStamp" value="4" />
++        </line-breakpoint>
++      </breakpoints>
++    </breakpoint-manager>
++  </component>
+ </project>
+\ No newline at end of file

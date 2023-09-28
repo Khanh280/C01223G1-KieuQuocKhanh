@@ -1,0 +1,7 @@
+
+|
+java:S1149"_Replace the synchronized class "StringBuffer" by an unsynchronized one such as "StringBuilder".(‰³œî8‘‰ÅÂ1
+]	java:S125"<This block of commented-out lines of code should be removed.(¸ÃÙÛøÿÿÿÿ8şüÃÂ1
+]	java:S125"<This block of commented-out lines of code should be removed.(“Ê¡õıÿÿÿÿ8ĞŞÄÂ1
+Z	java:S106"9Replace this use of System.out or System.err by a logger.(ù—ƒ¤ûÿÿÿÿ8‘‰ÅÂ1
+Z	java:S106!"9Replace this use of System.out or System.err by a logger.(é¬÷ıÿÿÿÿ8‘‰ÅÂ1

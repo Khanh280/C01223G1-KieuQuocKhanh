@@ -1,0 +1,16 @@
+Index: src/main/java/controller/OrderServlet.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/java/controller/OrderServlet.java b/src/main/java/controller/OrderServlet.java
+--- a/src/main/java/controller/OrderServlet.java	
++++ b/src/main/java/controller/OrderServlet.java	
+@@ -12,7 +12,6 @@
+ import models.service.impl.CustomerServiceImpl;
+ import models.service.impl.OrderDetailServiceImpl;
+ import models.service.impl.OrderServiceImpl;
+-import models.service.impl.ProductServiceImpl;
+ 
+ import javax.servlet.*;
+ import javax.servlet.http.*;

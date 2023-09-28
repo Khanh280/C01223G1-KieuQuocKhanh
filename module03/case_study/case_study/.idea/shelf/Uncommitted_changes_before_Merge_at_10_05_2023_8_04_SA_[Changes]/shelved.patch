@@ -1,0 +1,861 @@
+Index: src/main/java/models/model/Customer.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package models.model;\r\n\r\npublic class Customer {\r\n    private int id_customer;\r\n    private String customer_name;\r\n    private String email;\r\n    private String address;\r\n    private String password;\r\n\r\n    public Customer() {\r\n    }\r\n\r\n    public Customer(int id_customer, String customer_name, String email, String address, String password) {\r\n        this.id_customer = id_customer;\r\n        this.customer_name = customer_name;\r\n        this.email = email;\r\n        this.address = address;\r\n        this.password = password;\r\n    }\r\n\r\n    public int getId_customer() {\r\n        return id_customer;\r\n    }\r\n\r\n    public void setId_customer(int id_customer) {\r\n        this.id_customer = id_customer;\r\n    }\r\n\r\n    public String getCustomer_name() {\r\n        return customer_name;\r\n    }\r\n\r\n    public void setCustomer_name(String customer_name) {\r\n        this.customer_name = customer_name;\r\n    }\r\n\r\n    public String getEmail() {\r\n        return email;\r\n    }\r\n\r\n    public void setEmail(String email) {\r\n        this.email = email;\r\n    }\r\n\r\n    public String getAddress() {\r\n        return address;\r\n    }\r\n\r\n    public void setAddress(String address) {\r\n        this.address = address;\r\n    }\r\n\r\n    public String getPassword() {\r\n        return password;\r\n    }\r\n\r\n    public void setPassword(String password) {\r\n        this.password = password;\r\n    }\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/java/models/model/Customer.java b/src/main/java/models/model/Customer.java
+--- a/src/main/java/models/model/Customer.java	(revision f1902e5e94da375c89ce7c9f76ba2c64815caa2b)
++++ b/src/main/java/models/model/Customer.java	(date 1683680689456)
+@@ -1,37 +1,37 @@
+ package models.model;
+ 
+ public class Customer {
+-    private int id_customer;
+-    private String customer_name;
++    private int customerId;
++    private String customerName;
+     private String email;
+     private String address;
+-    private String password;
++    private Account account;
+ 
+     public Customer() {
+     }
+ 
+-    public Customer(int id_customer, String customer_name, String email, String address, String password) {
+-        this.id_customer = id_customer;
+-        this.customer_name = customer_name;
++    public Customer(int customerId, String customerName, String email, String address, Account account) {
++        this.customerId = customerId;
++        this.customerName = customerName;
+         this.email = email;
+         this.address = address;
+-        this.password = password;
++        this.account = account;
+     }
+ 
+-    public int getId_customer() {
+-        return id_customer;
++    public int getCustomerId() {
++        return customerId;
+     }
+ 
+-    public void setId_customer(int id_customer) {
+-        this.id_customer = id_customer;
++    public void setCustomerId(int customerId) {
++        this.customerId = customerId;
+     }
+ 
+-    public String getCustomer_name() {
+-        return customer_name;
++    public String getCustomerName() {
++        return customerName;
+     }
+ 
+-    public void setCustomer_name(String customer_name) {
+-        this.customer_name = customer_name;
++    public void setCustomerName(String customerName) {
++        this.customerName = customerName;
+     }
+ 
+     public String getEmail() {
+@@ -50,11 +50,11 @@
+         this.address = address;
+     }
+ 
+-    public String getPassword() {
+-        return password;
++    public Account getAccount() {
++        return account;
+     }
+ 
+-    public void setPassword(String password) {
+-        this.password = password;
++    public void setAccount(Account account) {
++        this.account = account;
+     }
+ }
+Index: src/main/java/models/repository/Impl/CustomerRepositoryImpl.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package models.repository.Impl;\r\n\r\nimport models.model.Customer;\r\nimport models.repository.BaseRepository;\r\nimport models.repository.ICustomerRepository;\r\n\r\nimport javax.servlet.http.HttpServletRequest;\r\nimport javax.servlet.http.HttpServletResponse;\r\nimport java.sql.Connection;\r\nimport java.sql.PreparedStatement;\r\nimport java.sql.ResultSet;\r\nimport java.sql.SQLException;\r\n\r\npublic class CustomerRepositoryImpl implements ICustomerRepository {\r\n    private final String INSER_ACCOUNT = \"INSERT INTO account_customer (user_name,`password`) VALUES (?,?);\";\r\n    private final String INSER_CUSTOMER = \"INSERT INTO customers(customer_name, email, phone_number, address, account_id,createAt, updateAt ) VALUES (?, ?,?,?,?,current_timestamp(),current_timestamp());\";\r\n    private final String SELECT_ACCOUNT = \"SELECT * from account_customer;\";\r\n\r\n\r\n    @Override\r\n    public boolean saveCustomer(HttpServletRequest request, HttpServletResponse response) {\r\n        String customerName = request.getParameter(\"customerName\");\r\n        String email = request.getParameter(\"email\");\r\n        String phoneNumber = request.getParameter(\"phoneNumber\");\r\n        String address = request.getParameter(\"address\");\r\n        String password = request.getParameter(\"password\");\r\n        Connection connection = BaseRepository.getConnectDB();\r\n        try {\r\n            connection.setAutoCommit(false);\r\n            PreparedStatement preparedStatement = connection.prepareStatement(INSER_ACCOUNT);\r\n            preparedStatement.setString(1, customerName);\r\n            preparedStatement.setString(2, password);\r\n            int transction = preparedStatement.executeUpdate();\r\n            if (transction > 0) {\r\n                preparedStatement = connection.prepareStatement(SELECT_ACCOUNT);\r\n                ResultSet resultSet = preparedStatement.executeQuery();\r\n                while (resultSet.next()) {\r\n                    if (resultSet.getString(\"user_name\").equals(customerName)) {\r\n                        int account_id = resultSet.getInt(\"account_id\");\r\n                        preparedStatement = connection.prepareStatement(INSER_CUSTOMER);\r\n                        preparedStatement.setString(1, customerName);\r\n                        preparedStatement.setString(2, email);\r\n                        preparedStatement.setString(3, phoneNumber);\r\n                        preparedStatement.setString(4, address);\r\n                        preparedStatement.setInt(5, account_id);\r\n                        transction += preparedStatement.executeUpdate();\r\n                        break;\r\n                    }\r\n                }\r\n            }\r\n            if(transction == 2){\r\n                connection.commit();\r\n                return true;\r\n            } else {\r\n                connection.rollback();\r\n            }\r\n        } catch (SQLException e) {\r\n            e.printStackTrace();\r\n        }\r\n        return false;\r\n    }\r\n\r\n    @Override\r\n    public boolean checkAccount(String userName, String password) {\r\n//        for (int i = 0; i < customerList.size(); i++) {\r\n//            if(userName.equals(customerList.get(i).getCustomer_name())){\r\n//                if(password.equals(customerList.get(i).getPassword())){\r\n//                    return true;\r\n//                }\r\n//            }\r\n//        }\r\n        return false;\r\n    }\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/java/models/repository/Impl/CustomerRepositoryImpl.java b/src/main/java/models/repository/Impl/CustomerRepositoryImpl.java
+--- a/src/main/java/models/repository/Impl/CustomerRepositoryImpl.java	(revision f1902e5e94da375c89ce7c9f76ba2c64815caa2b)
++++ b/src/main/java/models/repository/Impl/CustomerRepositoryImpl.java	(date 1683680689460)
+@@ -12,14 +12,14 @@
+ import java.sql.SQLException;
+ 
+ public class CustomerRepositoryImpl implements ICustomerRepository {
+-    private final String INSER_ACCOUNT = "INSERT INTO account_customer (user_name,`password`) VALUES (?,?);";
+-    private final String INSER_CUSTOMER = "INSERT INTO customers(customer_name, email, phone_number, address, account_id,createAt, updateAt ) VALUES (?, ?,?,?,?,current_timestamp(),current_timestamp());";
+-    private final String SELECT_ACCOUNT = "SELECT * from account_customer;";
++    private final String INSER_ACCOUNT = "INSERT INTO account_users (user_name,`password`) VALUES (?,?);";
++    private final String INSER_CUSTOMER = "INSERT INTO customers(customer_name, email, phone_number, address, account_id) VALUES (?,?,?,?,?);";
++    private final String SELECT_ACCOUNT = "SELECT * from account_users;";
+ 
+ 
+     @Override
+     public boolean saveCustomer(HttpServletRequest request, HttpServletResponse response) {
+-        String customerName = request.getParameter("customerName");
++        String userName = request.getParameter("userName");
+         String email = request.getParameter("email");
+         String phoneNumber = request.getParameter("phoneNumber");
+         String address = request.getParameter("address");
+@@ -28,27 +28,27 @@
+         try {
+             connection.setAutoCommit(false);
+             PreparedStatement preparedStatement = connection.prepareStatement(INSER_ACCOUNT);
+-            preparedStatement.setString(1, customerName);
++            preparedStatement.setString(1, userName);
+             preparedStatement.setString(2, password);
+-            int transction = preparedStatement.executeUpdate();
+-            if (transction > 0) {
++            int transaction = preparedStatement.executeUpdate();
++            if (transaction > 0) {
+                 preparedStatement = connection.prepareStatement(SELECT_ACCOUNT);
+                 ResultSet resultSet = preparedStatement.executeQuery();
+                 while (resultSet.next()) {
+-                    if (resultSet.getString("user_name").equals(customerName)) {
+-                        int account_id = resultSet.getInt("account_id");
++                    if (resultSet.getString("user_name").equals(userName)) {
++                        int accountId = resultSet.getInt("account_id");
+                         preparedStatement = connection.prepareStatement(INSER_CUSTOMER);
+-                        preparedStatement.setString(1, customerName);
++                        preparedStatement.setString(1, userName);
+                         preparedStatement.setString(2, email);
+                         preparedStatement.setString(3, phoneNumber);
+                         preparedStatement.setString(4, address);
+-                        preparedStatement.setInt(5, account_id);
+-                        transction += preparedStatement.executeUpdate();
++                        preparedStatement.setInt(5, accountId);
++                        transaction += preparedStatement.executeUpdate();
+                         break;
+                     }
+                 }
+             }
+-            if(transction == 2){
++            if(transaction == 2){
+                 connection.commit();
+                 return true;
+             } else {
+@@ -60,15 +60,26 @@
+         return false;
+     }
+ 
+-    @Override
+-    public boolean checkAccount(String userName, String password) {
+-//        for (int i = 0; i < customerList.size(); i++) {
+-//            if(userName.equals(customerList.get(i).getCustomer_name())){
+-//                if(password.equals(customerList.get(i).getPassword())){
+-//                    return true;
++//    @Override
++//    public boolean checkAccount(String userName, String password) {
++//        Connection connection = BaseRepository.getConnectDB();
++//        try {
++//            PreparedStatement preparedStatement = connection.prepareStatement(SELECT_ACCOUNT);
++//            ResultSet resultSet = preparedStatement.executeQuery();
++//            while (resultSet.next()){
++//                String userNameBase = resultSet.getString("user_name");
++//                if(userNameBase.equals(userName)){
++//                    String passwordBase = resultSet.getString("password");
++//                    if(passwordBase.equals(password)){
++//                        return true;
++//                    } else {
++//                        return false;
++//                    }
+ //                }
+ //            }
++//        } catch (SQLException e) {
++//            e.printStackTrace();
+ //        }
+-        return false;
+-    }
++//        return false;
++//    }
+ }
+Index: src/main/webapp/account/register_css.css
+===================================================================
+diff --git a/src/main/webapp/account/register_css.css b/src/main/webapp/account/register_css.css
+deleted file mode 100644
+--- a/src/main/webapp/account/register_css.css	(revision f1902e5e94da375c89ce7c9f76ba2c64815caa2b)
++++ /dev/null	(revision f1902e5e94da375c89ce7c9f76ba2c64815caa2b)
+@@ -1,20 +0,0 @@
+-.gradient-custom-3 {
+-    /* fallback for old browsers */
+-    background: #84fab0;
+-
+-    /* Chrome 10-25, Safari 5.1-6 */
+-    background: -webkit-linear-gradient(to right, rgba(132, 250, 176, 0.5), rgba(143, 211, 244, 0.5));
+-
+-    /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+-    background: linear-gradient(to right, rgba(132, 250, 176, 0.5), rgba(143, 211, 244, 0.5))
+-}
+-.gradient-custom-4 {
+-    /* fallback for old browsers */
+-    background: #84fab0;
+-
+-    /* Chrome 10-25, Safari 5.1-6 */
+-    background: -webkit-linear-gradient(to right, rgba(132, 250, 176, 1), rgba(143, 211, 244, 1));
+-
+-    /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+-    background: linear-gradient(to right, rgba(132, 250, 176, 1), rgba(143, 211, 244, 1))
+-}
+\ No newline at end of file
+Index: src/main/java/models/repository/IAccountRepository.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/java/models/repository/IAccountRepository.java b/src/main/java/models/repository/IAccountRepository.java
+new file mode 100644
+--- /dev/null	(date 1683680689457)
++++ b/src/main/java/models/repository/IAccountRepository.java	(date 1683680689457)
+@@ -0,0 +1,5 @@
++package models.repository;
++
++public interface IAccountRepository {
++    boolean checkAccount(String userName, String password);
++}
+Index: .idea/uiDesigner.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/uiDesigner.xml b/.idea/uiDesigner.xml
+new file mode 100644
+--- /dev/null	(date 1683680689455)
++++ b/.idea/uiDesigner.xml	(date 1683680689455)
+@@ -0,0 +1,124 @@
++<?xml version="1.0" encoding="UTF-8"?>
++<project version="4">
++  <component name="Palette2">
++    <group name="Swing">
++      <item class="com.intellij.uiDesigner.HSpacer" tooltip-text="Horizontal Spacer" icon="/com/intellij/uiDesigner/icons/hspacer.svg" removable="false" auto-create-binding="false" can-attach-label="false">
++        <default-constraints vsize-policy="1" hsize-policy="6" anchor="0" fill="1" />
++      </item>
++      <item class="com.intellij.uiDesigner.VSpacer" tooltip-text="Vertical Spacer" icon="/com/intellij/uiDesigner/icons/vspacer.svg" removable="false" auto-create-binding="false" can-attach-label="false">
++        <default-constraints vsize-policy="6" hsize-policy="1" anchor="0" fill="2" />
++      </item>
++      <item class="javax.swing.JPanel" icon="/com/intellij/uiDesigner/icons/panel.svg" removable="false" auto-create-binding="false" can-attach-label="false">
++        <default-constraints vsize-policy="3" hsize-policy="3" anchor="0" fill="3" />
++      </item>
++      <item class="javax.swing.JScrollPane" icon="/com/intellij/uiDesigner/icons/scrollPane.svg" removable="false" auto-create-binding="false" can-attach-label="true">
++        <default-constraints vsize-policy="7" hsize-policy="7" anchor="0" fill="3" />
++      </item>
++      <item class="javax.swing.JButton" icon="/com/intellij/uiDesigner/icons/button.svg" removable="false" auto-create-binding="true" can-attach-label="false">
++        <default-constraints vsize-policy="0" hsize-policy="3" anchor="0" fill="1" />
++        <initial-values>
++          <property name="text" value="Button" />
++        </initial-values>
++      </item>
++      <item class="javax.swing.JRadioButton" icon="/com/intellij/uiDesigner/icons/radioButton.svg" removable="false" auto-create-binding="true" can-attach-label="false">
++        <default-constraints vsize-policy="0" hsize-policy="3" anchor="8" fill="0" />
++        <initial-values>
++          <property name="text" value="RadioButton" />
++        </initial-values>
++      </item>
++      <item class="javax.swing.JCheckBox" icon="/com/intellij/uiDesigner/icons/checkBox.svg" removable="false" auto-create-binding="true" can-attach-label="false">
++        <default-constraints vsize-policy="0" hsize-policy="3" anchor="8" fill="0" />
++        <initial-values>
++          <property name="text" value="CheckBox" />
++        </initial-values>
++      </item>
++      <item class="javax.swing.JLabel" icon="/com/intellij/uiDesigner/icons/label.svg" removable="false" auto-create-binding="false" can-attach-label="false">
++        <default-constraints vsize-policy="0" hsize-policy="0" anchor="8" fill="0" />
++        <initial-values>
++          <property name="text" value="Label" />
++        </initial-values>
++      </item>
++      <item class="javax.swing.JTextField" icon="/com/intellij/uiDesigner/icons/textField.svg" removable="false" auto-create-binding="true" can-attach-label="true">
++        <default-constraints vsize-policy="0" hsize-policy="6" anchor="8" fill="1">
++          <preferred-size width="150" height="-1" />
++        </default-constraints>
++      </item>
++      <item class="javax.swing.JPasswordField" icon="/com/intellij/uiDesigner/icons/passwordField.svg" removable="false" auto-create-binding="true" can-attach-label="true">
++        <default-constraints vsize-policy="0" hsize-policy="6" anchor="8" fill="1">
++          <preferred-size width="150" height="-1" />
++        </default-constraints>
++      </item>
++      <item class="javax.swing.JFormattedTextField" icon="/com/intellij/uiDesigner/icons/formattedTextField.svg" removable="false" auto-create-binding="true" can-attach-label="true">
++        <default-constraints vsize-policy="0" hsize-policy="6" anchor="8" fill="1">
++          <preferred-size width="150" height="-1" />
++        </default-constraints>
++      </item>
++      <item class="javax.swing.JTextArea" icon="/com/intellij/uiDesigner/icons/textArea.svg" removable="false" auto-create-binding="true" can-attach-label="true">
++        <default-constraints vsize-policy="6" hsize-policy="6" anchor="0" fill="3">
++          <preferred-size width="150" height="50" />
++        </default-constraints>
++      </item>
++      <item class="javax.swing.JTextPane" icon="/com/intellij/uiDesigner/icons/textPane.svg" removable="false" auto-create-binding="true" can-attach-label="true">
++        <default-constraints vsize-policy="6" hsize-policy="6" anchor="0" fill="3">
++          <preferred-size width="150" height="50" />
++        </default-constraints>
++      </item>
++      <item class="javax.swing.JEditorPane" icon="/com/intellij/uiDesigner/icons/editorPane.svg" removable="false" auto-create-binding="true" can-attach-label="true">
++        <default-constraints vsize-policy="6" hsize-policy="6" anchor="0" fill="3">
++          <preferred-size width="150" height="50" />
++        </default-constraints>
++      </item>
++      <item class="javax.swing.JComboBox" icon="/com/intellij/uiDesigner/icons/comboBox.svg" removable="false" auto-create-binding="true" can-attach-label="true">
++        <default-constraints vsize-policy="0" hsize-policy="2" anchor="8" fill="1" />
++      </item>
++      <item class="javax.swing.JTable" icon="/com/intellij/uiDesigner/icons/table.svg" removable="false" auto-create-binding="true" can-attach-label="false">
++        <default-constraints vsize-policy="6" hsize-policy="6" anchor="0" fill="3">
++          <preferred-size width="150" height="50" />
++        </default-constraints>
++      </item>
++      <item class="javax.swing.JList" icon="/com/intellij/uiDesigner/icons/list.svg" removable="false" auto-create-binding="true" can-attach-label="false">
++        <default-constraints vsize-policy="6" hsize-policy="2" anchor="0" fill="3">
++          <preferred-size width="150" height="50" />
++        </default-constraints>
++      </item>
++      <item class="javax.swing.JTree" icon="/com/intellij/uiDesigner/icons/tree.svg" removable="false" auto-create-binding="true" can-attach-label="false">
++        <default-constraints vsize-policy="6" hsize-policy="6" anchor="0" fill="3">
++          <preferred-size width="150" height="50" />
++        </default-constraints>
++      </item>
++      <item class="javax.swing.JTabbedPane" icon="/com/intellij/uiDesigner/icons/tabbedPane.svg" removable="false" auto-create-binding="true" can-attach-label="false">
++        <default-constraints vsize-policy="3" hsize-policy="3" anchor="0" fill="3">
++          <preferred-size width="200" height="200" />
++        </default-constraints>
++      </item>
++      <item class="javax.swing.JSplitPane" icon="/com/intellij/uiDesigner/icons/splitPane.svg" removable="false" auto-create-binding="false" can-attach-label="false">
++        <default-constraints vsize-policy="3" hsize-policy="3" anchor="0" fill="3">
++          <preferred-size width="200" height="200" />
++        </default-constraints>
++      </item>
++      <item class="javax.swing.JSpinner" icon="/com/intellij/uiDesigner/icons/spinner.svg" removable="false" auto-create-binding="true" can-attach-label="true">
++        <default-constraints vsize-policy="0" hsize-policy="6" anchor="8" fill="1" />
++      </item>
++      <item class="javax.swing.JSlider" icon="/com/intellij/uiDesigner/icons/slider.svg" removable="false" auto-create-binding="true" can-attach-label="false">
++        <default-constraints vsize-policy="0" hsize-policy="6" anchor="8" fill="1" />
++      </item>
++      <item class="javax.swing.JSeparator" icon="/com/intellij/uiDesigner/icons/separator.svg" removable="false" auto-create-binding="false" can-attach-label="false">
++        <default-constraints vsize-policy="6" hsize-policy="6" anchor="0" fill="3" />
++      </item>
++      <item class="javax.swing.JProgressBar" icon="/com/intellij/uiDesigner/icons/progressbar.svg" removable="false" auto-create-binding="true" can-attach-label="false">
++        <default-constraints vsize-policy="0" hsize-policy="6" anchor="0" fill="1" />
++      </item>
++      <item class="javax.swing.JToolBar" icon="/com/intellij/uiDesigner/icons/toolbar.svg" removable="false" auto-create-binding="false" can-attach-label="false">
++        <default-constraints vsize-policy="0" hsize-policy="6" anchor="0" fill="1">
++          <preferred-size width="-1" height="20" />
++        </default-constraints>
++      </item>
++      <item class="javax.swing.JToolBar$Separator" icon="/com/intellij/uiDesigner/icons/toolbarSeparator.svg" removable="false" auto-create-binding="false" can-attach-label="false">
++        <default-constraints vsize-policy="0" hsize-policy="0" anchor="0" fill="1" />
++      </item>
++      <item class="javax.swing.JScrollBar" icon="/com/intellij/uiDesigner/icons/scrollbar.svg" removable="false" auto-create-binding="true" can-attach-label="false">
++        <default-constraints vsize-policy="6" hsize-policy="0" anchor="0" fill="2" />
++      </item>
++    </group>
++  </component>
++</project>
+\ No newline at end of file
+Index: src/main/webapp/account/register.css
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/webapp/account/register.css b/src/main/webapp/account/register.css
+new file mode 100644
+--- /dev/null	(date 1683680689461)
++++ b/src/main/webapp/account/register.css	(date 1683680689461)
+@@ -0,0 +1,10 @@
++.gradient-custom-3 {
++    background: #ef9c63;
++    background: -webkit-linear-gradient(to right, rgba(246, 118, 44, 0.69), rgba(255, 187, 137, 0.63));
++    background: linear-gradient(to right, rgba(246, 118, 44, 0.69), rgba(255, 187, 137, 0.63))
++}
++.gradient-custom-4 {
++    background: #ef8b2e;
++    background: -webkit-linear-gradient(to right, rgb(255, 193, 68), rgb(245, 118, 39));
++    background: linear-gradient(to right, rgb(255, 193, 68), rgb(245, 118, 39))
++}
+\ No newline at end of file
+Index: src/main/java/models/repository/Impl/AccountRepositoryImpl.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/java/models/repository/Impl/AccountRepositoryImpl.java b/src/main/java/models/repository/Impl/AccountRepositoryImpl.java
+new file mode 100644
+--- /dev/null	(date 1683680689458)
++++ b/src/main/java/models/repository/Impl/AccountRepositoryImpl.java	(date 1683680689458)
+@@ -0,0 +1,35 @@
++package models.repository.Impl;
++
++import models.repository.BaseRepository;
++import models.repository.IAccountRepository;
++
++import java.sql.Connection;
++import java.sql.PreparedStatement;
++import java.sql.ResultSet;
++import java.sql.SQLException;
++
++public class AccountRepositoryImpl implements IAccountRepository {
++    private final String SELECT_ACCOUNT = "SELECT * from account_users;";
++    @Override
++    public boolean checkAccount(String userName, String password) {
++        Connection connection = BaseRepository.getConnectDB();
++        try {
++            PreparedStatement preparedStatement = connection.prepareStatement(SELECT_ACCOUNT);
++            ResultSet resultSet = preparedStatement.executeQuery();
++            while (resultSet.next()){
++                String userNameBase = resultSet.getString("user_name");
++                if(userNameBase.equals(userName)){
++                    String passwordBase = resultSet.getString("password");
++                    if(passwordBase.equals(password)){
++                        return true;
++                    } else {
++                        return false;
++                    }
++                }
++            }
++        } catch (SQLException e) {
++            e.printStackTrace();
++        }
++        return false;
++    }
++}
+Index: src/main/java/models/model/Account.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/java/models/model/Account.java b/src/main/java/models/model/Account.java
+new file mode 100644
+--- /dev/null	(date 1683680689456)
++++ b/src/main/java/models/model/Account.java	(date 1683680689456)
+@@ -0,0 +1,45 @@
++package models.model;
++
++public class Account {
++    private int id;
++    private String userName;
++    private String password;
++
++    public Account() {
++    }
++
++    public Account(int id, String userName, String password) {
++        this.id = id;
++        this.userName = userName;
++        this.password = password;
++    }
++
++    public Account(String userName, String password) {
++        this.userName = userName;
++        this.password = password;
++    }
++
++    public int getId() {
++        return id;
++    }
++
++    public void setId(int id) {
++        this.id = id;
++    }
++
++    public String getUserName() {
++        return userName;
++    }
++
++    public void setUserName(String userName) {
++        this.userName = userName;
++    }
++
++    public String getPassword() {
++        return password;
++    }
++
++    public void setPassword(String password) {
++        this.password = password;
++    }
++}
+Index: src/main/java/models/service/impl/CustomerServiceImpl.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package models.service.impl;\r\n\r\nimport models.repository.ICustomerRepository;\r\nimport models.repository.Impl.CustomerRepositoryImpl;\r\nimport models.service.ICustomerService;\r\n\r\nimport javax.servlet.http.HttpServletRequest;\r\nimport javax.servlet.http.HttpServletResponse;\r\n\r\npublic class CustomerServiceImpl implements ICustomerService {\r\n    ICustomerRepository customerRepository = new CustomerRepositoryImpl();\r\n\r\n\r\n    @Override\r\n    public boolean saveCustomer(HttpServletRequest request, HttpServletResponse response) {\r\n       return customerRepository.saveCustomer(request,response);\r\n    }\r\n\r\n    @Override\r\n    public boolean checkAccount(String userName, String password) {\r\n        return customerRepository.checkAccount(userName, password);\r\n    }\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/java/models/service/impl/CustomerServiceImpl.java b/src/main/java/models/service/impl/CustomerServiceImpl.java
+--- a/src/main/java/models/service/impl/CustomerServiceImpl.java	(revision f1902e5e94da375c89ce7c9f76ba2c64815caa2b)
++++ b/src/main/java/models/service/impl/CustomerServiceImpl.java	(date 1683680689461)
+@@ -16,8 +16,8 @@
+        return customerRepository.saveCustomer(request,response);
+     }
+ 
+-    @Override
+-    public boolean checkAccount(String userName, String password) {
+-        return customerRepository.checkAccount(userName, password);
+-    }
++//    @Override
++//    public boolean checkAccount(String userName, String password) {
++//        return customerRepository.checkAccount(userName, password);
++//    }
+ }
+Index: src/main/webapp/users/shopping_cart.jsp
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/webapp/users/shopping_cart.jsp b/src/main/webapp/users/shopping_cart.jsp
+new file mode 100644
+--- /dev/null	(date 1683680689462)
++++ b/src/main/webapp/users/shopping_cart.jsp	(date 1683680689462)
+@@ -0,0 +1,18 @@
++<%--
++  Created by IntelliJ IDEA.
++  User: Admin
++  Date: 09/05/2023
++  Time: 10:44 CH
++  To change this template use File | Settings | File Templates.
++--%>
++<%@ page contentType="text/html;charset=UTF-8" language="java" %>
++<html>
++<head>
++    <title>Title</title>
++</head>
++<body>
++    <table>
++        tr*2>td*
++    </table>
++</body>
++</html>
+Index: src/main/java/controller/AccountServlet.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package controller;\r\n\r\n\r\nimport models.service.IAdminService;\r\nimport models.service.ICustomerService;\r\n\r\nimport models.service.impl.AdminServiceImpl;\r\nimport models.service.impl.CustomerServiceImpl;\r\n\r\n\r\nimport javax.servlet.*;\r\nimport javax.servlet.http.*;\r\nimport javax.servlet.annotation.*;\r\nimport java.io.IOException;\r\n\r\n\r\n\r\n@WebServlet(name = \"AccountServlet\", value = \"/account-servlet\")\r\npublic class AccountServlet extends HttpServlet {\r\n    ICustomerService customerService = new CustomerServiceImpl();\r\n    IAdminService adminService = new AdminServiceImpl();\r\n\r\n    @Override\r\n    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {\r\n        request.getRequestDispatcher(\"/index.jsp\").forward(request,response);\r\n    }\r\n\r\n    @Override\r\n    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {\r\n        String action = request.getParameter(\"action\");\r\n        switch (action) {\r\n            case \"register\":\r\n                boolean statusRegister = customerService.saveCustomer(request, response);\r\n                request.setAttribute(\"statusRegister\",statusRegister);\r\n                request.getRequestDispatcher(\"/account/register_form.jsp\").forward(request, response);\r\n                break;\r\n            case \"login\":\r\n                String userName = request.getParameter(\"userName\");\r\n                String password = request.getParameter(\"password\");\r\n                if (userName.equals(\"admin\")) {\r\n                    boolean result = adminService.checkAccountAdmin(userName, password);\r\n                    if (result) {\r\n\r\n                        request.getRequestDispatcher(\"/admin/admin.jsp\").forward(request, response);\r\n                    } else {\r\n                        request.setAttribute(\"userName\", userName);\r\n                        request.setAttribute(\"action\", \"fail\");\r\n                        request.getRequestDispatcher(\"/index.jsp\").forward(request, response);\r\n                    }\r\n                } else {\r\n                    boolean result = customerService.checkAccount(userName, password);\r\n                    if (result) {\r\n                        request.getRequestDispatcher(\"/users/user.jsp\").forward(request, response);\r\n                    } else {\r\n                        request.setAttribute(\"userName\", userName);\r\n                        request.setAttribute(\"status\", \"fail\");\r\n                        request.getRequestDispatcher(\"/index.jsp\").forward(request, response);\r\n                    }\r\n                }\r\n        }\r\n    }\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/java/controller/AccountServlet.java b/src/main/java/controller/AccountServlet.java
+--- a/src/main/java/controller/AccountServlet.java	(revision f1902e5e94da375c89ce7c9f76ba2c64815caa2b)
++++ b/src/main/java/controller/AccountServlet.java	(date 1683680689456)
+@@ -1,9 +1,11 @@
+ package controller;
+ 
+ 
++import models.service.IAccountService;
+ import models.service.IAdminService;
+ import models.service.ICustomerService;
+ 
++import models.service.impl.AccountServiceImpl;
+ import models.service.impl.AdminServiceImpl;
+ import models.service.impl.CustomerServiceImpl;
+ 
+@@ -19,6 +21,7 @@
+ public class AccountServlet extends HttpServlet {
+     ICustomerService customerService = new CustomerServiceImpl();
+     IAdminService adminService = new AdminServiceImpl();
++    IAccountService accountService = new AccountServiceImpl();
+ 
+     @Override
+     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+@@ -38,19 +41,19 @@
+                 String userName = request.getParameter("userName");
+                 String password = request.getParameter("password");
+                 if (userName.equals("admin")) {
+-                    boolean result = adminService.checkAccountAdmin(userName, password);
+-                    if (result) {
++                    boolean checkAccount = accountService.checkAccount(userName, password);
++                    if (checkAccount) {
+ 
+                         request.getRequestDispatcher("/admin/admin.jsp").forward(request, response);
+                     } else {
+                         request.setAttribute("userName", userName);
+-                        request.setAttribute("action", "fail");
++                        request.setAttribute("status", "fail");
+                         request.getRequestDispatcher("/index.jsp").forward(request, response);
+                     }
+                 } else {
+-                    boolean result = customerService.checkAccount(userName, password);
+-                    if (result) {
+-                        request.getRequestDispatcher("/users/user.jsp").forward(request, response);
++                    boolean checkAccount = accountService.checkAccount(userName, password);
++                    if (checkAccount) {
++                        request.getRequestDispatcher("/users/shopping_cart.jsp").forward(request, response);
+                     } else {
+                         request.setAttribute("userName", userName);
+                         request.setAttribute("status", "fail");
+Index: src/main/java/models/service/IAccountService.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/java/models/service/IAccountService.java b/src/main/java/models/service/IAccountService.java
+new file mode 100644
+--- /dev/null	(date 1683680689460)
++++ b/src/main/java/models/service/IAccountService.java	(date 1683680689460)
+@@ -0,0 +1,5 @@
++package models.service;
++
++public interface IAccountService {
++    boolean checkAccount(String userName, String password);
++}
+Index: ../database/database_case_study_03.sql
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>CREATE DATABASE ig1_store;\r\nUSE ig1_store;\r\n\r\nCREATE TABLE roles (\r\n\trole_id INT PRIMARY KEY AUTO_INCREMENT,\r\n    role_name VARCHAR(50) NOT NULL\r\n);\r\n\r\nCREATE TABLE account_users(\r\n\taccount_id INT PRIMARY KEY AUTO_INCREMENT,\r\n    user_name VARCHAR(50) UNIQUE NOT NULL,\r\n    `password` VARCHAR(50) NOT NULL\r\n);\r\nCREATE TABLE users_role (\r\n\trole_id INT,\r\n    account_id INT,\r\n    PRIMARY KEY(role_id, account_id),\r\n    FOREIGN KEY (role_id) REFERENCES roles(role_id),\r\n    FOREIGN KEY(account_id) REFERENCES account_users(account_id)\r\n);\r\n\r\nCREATE TABLE customers(\r\n\tcustomer_id INT PRIMARY KEY AUTO_INCREMENT,\r\n    customer_name VARCHAR(50) NOT NULL,\r\n    email VARCHAR(50) UNIQUE NOT NULL,\r\n    phone_number VARCHAR(11) UNIQUE NOT NULL,\r\n    address TEXT NOT NULL,\r\n    account_id INT,\r\n    create_at DATETIME DEFAULT CURRENT_TIMESTAMP,\r\n    update_at DATETIME DEFAULT CURRENT_TIMESTAMP,\r\n    FOREIGN KEY (account_id) REFERENCES account_users(account_id)\r\n);\r\n\r\nCREATE TABLE product_type(\r\n\tproduct_type_id INT PRIMARY KEY AUTO_INCREMENT,\r\n    product_type_name VARCHAR(50) NOT NUll\r\n);\r\n\r\nCREATE TABLE products(\r\n\tproduct_id INT PRIMARY KEY AUTO_INCREMENT,\r\n    product_name VARCHAR(50) NOT NULL,\r\n\tproduct_type_id INT,\r\n    `describe` TEXT NOT NULL,\r\n    price LONG CHECK(price > 0),\r\n    product_image_url TEXT NOT NULL,\r\n    createAt DATETIME DEFAULT CURRENT_TIMESTAMP,\r\n    updateAt DATETIME DEFAULT CURRENT_TIMESTAMP,\r\n    FOREIGN KEY(product_type_id) REFERENCES product_type(product_type_id)\r\n);\r\nCREATE TABLE accessory(\r\n\taccessory_id INT PRIMARY KEY AUTO_INCREMENT,\r\n    accessory_name VARCHAR(50) NOT NULL,\r\n    accessory_price DOUBLE CHECK(accessory_price > 0),\r\n    image_accessory TEXT NOT NULL,\r\n    create_at DATETIME DEFAULT CURRENT_TIMESTAMP,\r\n    update_at DATETIME DEFAULT CURRENT_TIMESTAMP\r\n);\r\n\r\nCREATE TABLE `order`(\r\n\torder_id INT PRIMARY KEY AUTO_INCREMENT,\r\n    order_date DATETIME,\r\n    customer_id INT,\r\n    product_id INT,\r\n    price_order LONG ,\r\n    FOREIGN KEY(customer_id) REFERENCES customers(customer_id),\r\n    FOREIGN KEY(product_id) REFERENCES products(product_id)\r\n);\r\n\r\nCREATE TABLE order_detail(\r\n\torder_detail_id INT PRIMARY KEY AUTO_INCREMENT,\r\n    order_id INT,\r\n\torder_detail_date DATETIME,\r\n    accessory_id INT,\r\n    FOREIGN KEY(order_id) REFERENCES `order`(order_id),\r\n    FOREIGN KEY(accessory_id) REFERENCES accessory(accessory_id)\r\n);\r\n\r\nINSERT INTO account_users (user_name,`password`) VALUES (\"khanh\", \"khanh123\"), (\"thien\", \"thien123\"), (\"khang\", \"khang123\"), (\"hai\", \"hai123\"),(\"admin\", \"admin123\");\r\nINSERT INTO customers (customer_name, email,phone_number,address,account_id) \r\nVALUES (\"khanh\",\"khanh@gmail.com\", \"0123456789\",\"Quang Nam\", 1),\r\n(\"khang\",\"khang@gmail.com\", \"1123456789\",\"Quang Nam\", 3),\r\n(\"thien\",\"thien@gmail.com\", \"0223456789\",\"Quang Nam\", 2),\r\n(\"hai\",\"hai@gmail.com\", \"0123456789\",\"Quang Nam\", 4);\r\nINSERT INTO product_type (product_type_name) VALUES (\"Iphone\"), (\"SamSung\"), (\"Vivo\"), (\"Asus\");\r\n\r\n\r\n\r\n\r\n\r\n\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/../database/database_case_study_03.sql b/../database/database_case_study_03.sql
+--- a/../database/database_case_study_03.sql	(revision f1902e5e94da375c89ce7c9f76ba2c64815caa2b)
++++ b/../database/database_case_study_03.sql	(date 1683680689463)
+@@ -58,7 +58,7 @@
+ 
+ CREATE TABLE `order`(
+ 	order_id INT PRIMARY KEY AUTO_INCREMENT,
+-    order_date DATETIME,
++    order_date DATETIME DEFAULT CURRENT_TIMESTAMP,
+     customer_id INT,
+     product_id INT,
+     price_order LONG ,
+@@ -69,7 +69,7 @@
+ CREATE TABLE order_detail(
+ 	order_detail_id INT PRIMARY KEY AUTO_INCREMENT,
+     order_id INT,
+-	order_detail_date DATETIME,
++	order_detail_date DATETIME DEFAULT CURRENT_TIMESTAMP,
+     accessory_id INT,
+     FOREIGN KEY(order_id) REFERENCES `order`(order_id),
+     FOREIGN KEY(accessory_id) REFERENCES accessory(accessory_id)
+@@ -80,11 +80,46 @@
+ VALUES ("khanh","khanh@gmail.com", "0123456789","Quang Nam", 1),
+ ("khang","khang@gmail.com", "1123456789","Quang Nam", 3),
+ ("thien","thien@gmail.com", "0223456789","Quang Nam", 2),
+-("hai","hai@gmail.com", "0123456789","Quang Nam", 4);
++("hai","hai@gmail.com", "2223456789","Quang Nam", 4);
+ INSERT INTO product_type (product_type_name) VALUES ("Iphone"), ("SamSung"), ("Vivo"), ("Asus");
+-
+-
++INSERT INTO products (product_name,product_type_id, `describe`, price, product_image_url) 
++VALUES ("Iphone", 1, "Mau xanh", 20, "abc"),
++	("Iphone X", 1, "Mau xanh", 20, "abc"),
++	("Iphone 13", 1, "Mau xanh", 20, "abc"),
++	("Samsung", 2, "Mau xanh", 20, "abc"),
++	("Vivo", 3, "Mau xanh", 20, "abc");
++    
++INSERT INTO accessory (accessory_name, accessory_price, image_accessory) 
++VALUES ("Tai nghe khong day",12,"image"),
++("Tai nghe co day",12,"image"),
++("Cuc sac iphone 100W",12,"image"),
++("Op lung dien thoai iphone",12,"image")
++ ;
++    
++INSERT INTO `order` (customer_id,product_id, price_order) 
++VALUES (1,2,20),
++(1,3,20),
++(1,4,20),
++(2,2,20),
++(2,1,20);
+ 
++INSERT INTO order_detail (order_id,accessory_id) 
++VALUES (1,1),
++(1,2),
++(2,1),
++(2,3)
++;
++  
++SELECT p.product_name, o.price_order,-- , SUM(o.price_order + ifnull(ac.accessory_price, 0)) as tong_tien
++FROM `order` AS o 
++INNER JOIN products as p on o.product_id = p.product_id 
++INNER JOIN customers as c on o.customer_id = c.customer_id
++LEFT JOIN order_detail as od on o.order_id = od.order_id
++Left join accessory as ac on od.accessory_id = ac.accessory_id
++WHERE c.customer_id = 1
++GROUP BY o.customer_id-- ,p.product_id
++HAVING sum(tong_tien);
++SELECT * from account_users WHERE user_name = "khanh" AND `password` = "khanh123";
+ 
+ 
+ 
+Index: src/main/java/models/service/impl/AccountServiceImpl.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/java/models/service/impl/AccountServiceImpl.java b/src/main/java/models/service/impl/AccountServiceImpl.java
+new file mode 100644
+--- /dev/null	(date 1683680689461)
++++ b/src/main/java/models/service/impl/AccountServiceImpl.java	(date 1683680689461)
+@@ -0,0 +1,13 @@
++package models.service.impl;
++
++import models.repository.IAccountRepository;
++import models.repository.Impl.AccountRepositoryImpl;
++import models.service.IAccountService;
++
++public class AccountServiceImpl implements IAccountService {
++    IAccountRepository accountRepository = new AccountRepositoryImpl();
++    @Override
++    public boolean checkAccount(String userName, String password) {
++        return accountRepository.checkAccount(userName,password);
++    }
++}
+Index: src/main/java/models/repository/ICustomerRepository.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package models.repository;\r\n\r\nimport javax.servlet.http.HttpServletRequest;\r\nimport javax.servlet.http.HttpServletResponse;\r\n\r\npublic interface ICustomerRepository {\r\n    boolean saveCustomer(HttpServletRequest request, HttpServletResponse response);\r\n    boolean checkAccount(String userName, String password);\r\n\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/java/models/repository/ICustomerRepository.java b/src/main/java/models/repository/ICustomerRepository.java
+--- a/src/main/java/models/repository/ICustomerRepository.java	(revision f1902e5e94da375c89ce7c9f76ba2c64815caa2b)
++++ b/src/main/java/models/repository/ICustomerRepository.java	(date 1683680689457)
+@@ -5,6 +5,6 @@
+ 
+ public interface ICustomerRepository {
+     boolean saveCustomer(HttpServletRequest request, HttpServletResponse response);
+-    boolean checkAccount(String userName, String password);
++//    boolean checkAccount(String userName, String password);
+ 
+ }
+Index: src/main/java/models/service/ICustomerService.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package models.service;\r\n\r\nimport javax.servlet.http.HttpServletRequest;\r\nimport javax.servlet.http.HttpServletResponse;\r\n\r\npublic interface ICustomerService {\r\n    boolean saveCustomer(HttpServletRequest request, HttpServletResponse response);\r\n    boolean checkAccount(String userName, String password);\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/java/models/service/ICustomerService.java b/src/main/java/models/service/ICustomerService.java
+--- a/src/main/java/models/service/ICustomerService.java	(revision f1902e5e94da375c89ce7c9f76ba2c64815caa2b)
++++ b/src/main/java/models/service/ICustomerService.java	(date 1683680689460)
+@@ -5,5 +5,5 @@
+ 
+ public interface ICustomerService {
+     boolean saveCustomer(HttpServletRequest request, HttpServletResponse response);
+-    boolean checkAccount(String userName, String password);
++//    boolean checkAccount(String userName, String password);
+ }
+Index: src/main/webapp/account/register_form.jsp
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><%--\r\n  Created by IntelliJ IDEA.\r\n  User: Admin\r\n  Date: 30/04/2023\r\n  Time: 8:18 CH\r\n  To change this template use File | Settings | File Templates.\r\n--%>\r\n<%@ page contentType=\"text/html;charset=UTF-8\" language=\"java\" %>\r\n<%@taglib prefix=\"c\" uri=\"http://java.sun.com/jsp/jstl/core\" %>\r\n<html>\r\n<head>\r\n    <title>IG1 Store</title>\r\n    <link rel=\"stylesheet\" href=\"register_css.css\">\r\n    <link href=\"https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css\" rel=\"stylesheet\" integrity=\"sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC\" crossorigin=\"anonymous\">\r\n\r\n</head>\r\n<body>\r\n\r\n    <section class=\"vh-100 bg-image\"\r\n             style=\"background-image: url('https://mdbcdn.b-cdn.net/img/Photos/new-templates/search-box/img4.webp');\">\r\n        <div class=\"mask d-flex align-items-center h-100 gradient-custom-3\">\r\n            <div class=\"container h-100\">\r\n                <div class=\"row d-flex justify-content-center align-items-center h-100\">\r\n                    <div class=\"col-12 col-md-9 col-lg-7 col-xl-6\">\r\n                        <div class=\"card\" style=\"border-radius: 15px;\">\r\n                            <div class=\"card-body p-5\" style=\"height: 100vh\">\r\n                                <h4 class=\"text-uppercase text-center mb-2\">Create an account</h4>\r\n                                <c:if test=\"${statusRegister}\">\r\n                                    <h5>Dang ky thanh cong</h5>\r\n                                </c:if>\r\n                                <c:if test=\"${!statusRegister}\">\r\n                                    <h5>Dang ky that bai</h5>\r\n                                </c:if>\r\n                                <form action=\"/account-servlet\" method=\"post\">\r\n                                    <input type=\"text\" name=\"action\" value=\"register\" hidden>\r\n                                    <div class=\"form-outline mb-2\">\r\n                                        <label class=\"form-label\" for=\"form3Example1cg\">User Name</label>\r\n                                        <input type=\"text\" id=\"form3Example1cg\" class=\"form-control form-control-lg\" name=\"customerName\" />\r\n                                    </div>\r\n\r\n                                    <div class=\"form-outline mb-2\">\r\n                                        <label class=\"form-label\" for=\"form3Example2cg\">Your Email</label>\r\n                                        <input type=\"email\" id=\"form3Example2cg\" class=\"form-control form-control-lg\" name=\"email\"/>\r\n                                    </div>\r\n                                    <div class=\"form-outline mb-2\">\r\n                                        <label class=\"form-label\" for=\"form3Example3cg\">Phone number</label>\r\n                                        <input type=\"text\" id=\"form3Example3cg\" class=\"form-control form-control-lg\" name=\"phoneNumber\"/>\r\n                                    </div>\r\n                                    <div class=\"form-outline mb-2\">\r\n                                        <label class=\"form-label\" for=\"form3Example4cg\">Address</label>\r\n                                        <input type=\"text\" id=\"form3Example4cg\" class=\"form-control form-control-lg\" name=\"address\"/>\r\n                                    </div>\r\n\r\n                                    <div class=\"form-outline mb-2\">\r\n                                        <label class=\"form-label\" for=\"form3Example5cg\">Password</label>\r\n                                        <input oninput=\"checkPassword()\" type=\"password\" id=\"form3Example5cg\" class=\"form-control form-control-lg\"/>\r\n                                    </div>\r\n\r\n                                    <div class=\"form-outline mb-2\">\r\n                                        <label class=\"form-label\" for=\"form3Example6cdg\">Repeat your password</label>\r\n                                        <input oninput=\"checkPassword()\" type=\"password\" id=\"form3Example6cdg\" class=\"form-control form-control-lg\" name=\"password\"/>\r\n                                        <small id=\"check\"></small>\r\n                                    </div>\r\n\r\n                                    <div class=\"d-flex justify-content-center\">\r\n                                        <button type=\"submit\"\r\n                                                class=\"btn btn-success btn-block btn-lg gradient-custom-4 text-body\">Register</button>\r\n                                    </div>\r\n\r\n                                    <p class=\"text-center text-muted mt-5 mb-0\">Have already an account? <a href=\"../index.jsp\" class=\"fw-bold text-body\"><u>Login here</u></a></p>\r\n                                </form>\r\n\r\n                            </div>\r\n                        </div>\r\n                    </div>\r\n                </div>\r\n            </div>\r\n        </div>\r\n    </section>\r\n    <script>\r\n        // function checkPassword() {\r\n        //     let passwordFirst = document.getElementById(\"form3Example5cg\").value;\r\n        //     let passwordLast = document.getElementById(\"form3Example6cdg\").value;\r\n        //     if(passwordLast !== \"\"){\r\n        //         if(passwordFirst === passwordLast){\r\n        //             document.getElementById(\"check\").innerText = \"Trung khop\";\r\n        //         }else {\r\n        //             document.getElementById(\"check\").innerText = \"khong trung\";\r\n        //         }\r\n        //     }\r\n        // }\r\n    </script>\r\n</body>\r\n<script src=\"https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js\" integrity=\"sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM\" crossorigin=\"anonymous\"></script>\r\n</html>\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/webapp/account/register_form.jsp b/src/main/webapp/account/register_form.jsp
+--- a/src/main/webapp/account/register_form.jsp	(revision f1902e5e94da375c89ce7c9f76ba2c64815caa2b)
++++ b/src/main/webapp/account/register_form.jsp	(date 1683680689462)
+@@ -10,12 +10,10 @@
+ <html>
+ <head>
+     <title>IG1 Store</title>
+-    <link rel="stylesheet" href="register_css.css">
+     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+-
++    <link rel="stylesheet" href="register.css">
+ </head>
+ <body>
+-
+     <section class="vh-100 bg-image"
+              style="background-image: url('https://mdbcdn.b-cdn.net/img/Photos/new-templates/search-box/img4.webp');">
+         <div class="mask d-flex align-items-center h-100 gradient-custom-3">
+@@ -26,16 +24,17 @@
+                             <div class="card-body p-5" style="height: 100vh">
+                                 <h4 class="text-uppercase text-center mb-2">Create an account</h4>
+                                 <c:if test="${statusRegister}">
+-                                    <h5>Dang ky thanh cong</h5>
++                                    <h5>Dang ky thang cong</h5>
+                                 </c:if>
+-                                <c:if test="${!statusRegister}">
+-                                    <h5>Dang ky that bai</h5>
++                                <c:if test="${statusRegister}">
++                                    <h5 class="text-danger">Dang ky that bai</h5>
+                                 </c:if>
++<%--                                <h6 id="statusRegister"></h6>--%>
+                                 <form action="/account-servlet" method="post">
+                                     <input type="text" name="action" value="register" hidden>
+                                     <div class="form-outline mb-2">
+                                         <label class="form-label" for="form3Example1cg">User Name</label>
+-                                        <input type="text" id="form3Example1cg" class="form-control form-control-lg" name="customerName" />
++                                        <input type="text" id="form3Example1cg" class="form-control form-control-lg" name="userName" />
+                                     </div>
+ 
+                                     <div class="form-outline mb-2">
+@@ -77,6 +76,7 @@
+             </div>
+         </div>
+     </section>
++    <c:set var="status" value="${statusRegister}"></c:set>
+     <script>
+         // function checkPassword() {
+         //     let passwordFirst = document.getElementById("form3Example5cg").value;
+@@ -89,6 +89,12 @@
+         //         }
+         //     }
+         // }
++        // function checkRegister(){
++        //     document.getElementById("statusRegister").innerText = "Dang ky thanh cong";
++        // }
++        // if(status){
++        //     checkRegister();
++        // }
+     </script>
+ </body>
+ <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+Index: src/main/java/models/repository/Impl/AdminRepositoryImpl.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package models.repository.Impl;\r\n\r\nimport models.model.Admin;\r\nimport models.repository.IAdminRepository;\r\n\r\nimport java.util.ArrayList;\r\nimport java.util.List;\r\n\r\npublic class AdminRepositoryImpl implements IAdminRepository {\r\n    private static List<Admin> adminList = new ArrayList<>();\r\n    static {\r\n        adminList.add(new Admin(\"admin\",\"admin2808\"));\r\n    }\r\n    @Override\r\n    public boolean checkAccountAdmin(String userName, String password) {\r\n        for (int i = 0; i < adminList.size(); i++) {\r\n            if(userName.equals(adminList.get(i).getUserName())){\r\n                return password.equals(adminList.get(i).getPassword());\r\n            } else {\r\n                return false;\r\n            }\r\n        }\r\n        return false;\r\n    }\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/java/models/repository/Impl/AdminRepositoryImpl.java b/src/main/java/models/repository/Impl/AdminRepositoryImpl.java
+--- a/src/main/java/models/repository/Impl/AdminRepositoryImpl.java	(revision f1902e5e94da375c89ce7c9f76ba2c64815caa2b)
++++ b/src/main/java/models/repository/Impl/AdminRepositoryImpl.java	(date 1683680689458)
+@@ -1,24 +1,37 @@
+ package models.repository.Impl;
+ 
+ import models.model.Admin;
++import models.repository.BaseRepository;
+ import models.repository.IAdminRepository;
+ 
++import java.sql.Connection;
++import java.sql.PreparedStatement;
++import java.sql.ResultSet;
++import java.sql.SQLException;
+ import java.util.ArrayList;
+ import java.util.List;
+ 
+ public class AdminRepositoryImpl implements IAdminRepository {
+-    private static List<Admin> adminList = new ArrayList<>();
+-    static {
+-        adminList.add(new Admin("admin","admin2808"));
+-    }
++    private final String SELECT_ACCOUNT = "SELECT * from account_users;";
+     @Override
+     public boolean checkAccountAdmin(String userName, String password) {
+-        for (int i = 0; i < adminList.size(); i++) {
+-            if(userName.equals(adminList.get(i).getUserName())){
+-                return password.equals(adminList.get(i).getPassword());
+-            } else {
+-                return false;
++        Connection connection = BaseRepository.getConnectDB();
++        try {
++            PreparedStatement preparedStatement = connection.prepareStatement(SELECT_ACCOUNT);
++            ResultSet resultSet = preparedStatement.executeQuery();
++            while (resultSet.next()){
++                String userNameBase = resultSet.getString("user_name");
++                if(userNameBase.equals(userName)){
++                    String passwordBase = resultSet.getString("password");
++                    if(passwordBase.equals(password)){
++                        return true;
++                    } else {
++                        return false;
++                    }
++                }
+             }
++        } catch (SQLException e) {
++            e.printStackTrace();
+         }
+         return false;
+     }

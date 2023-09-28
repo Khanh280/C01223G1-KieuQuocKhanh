@@ -5,30 +5,204 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="43f64375-b3de-4fae-83d0-9f4130853951" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/access_modifier_static/TestA.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/ClassB.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/ClassC.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/InterfaceA.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/TestB.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/module02/case_study_furama/controllers/FuramaController.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/module02/case_study_furama/controllers/FuramaController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/module02/case_study_furama/data/FuramaData.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/module02/case_study_furama/data/FuramaData.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/module02/case_study_furama/models/Booking.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/module02/case_study_furama/models/Booking.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/module02/case_study_furama/models/Contract.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/module02/case_study_furama/models/Contract.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/module02/case_study_furama/models/facility/Facility.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/module02/case_study_furama/models/facility/Facility.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/module02/case_study_furama/models/facility/House.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/module02/case_study_furama/models/facility/House.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/module02/case_study_furama/models/facility/Room.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/module02/case_study_furama/models/facility/Room.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/module02/case_study_furama/models/facility/Villa.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/module02/case_study_furama/models/facility/Villa.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/module02/case_study_furama/models/person/Customer.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/module02/case_study_furama/models/person/Customer.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/module02/case_study_furama/models/person/Employee.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/module02/case_study_furama/models/person/Employee.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/module02/case_study_furama/models/person/Person.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/module02/case_study_furama/models/person/Person.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/module02/case_study_furama/services/facility_service/IHouseService.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/module02/case_study_furama/services/facility_service/IHouseService.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/module02/case_study_furama/services/facility_service/IRoomService.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/module02/case_study_furama/services/facility_service/IRoomService.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/module02/case_study_furama/services/facility_service/IVillaService.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/module02/case_study_furama/services/facility_service/IVillaService.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/module02/case_study_furama/services/facility_service/impl_service/HouseServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/module02/case_study_furama/services/facility_service/impl_service/HouseServiceImpl.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/module02/case_study_furama/services/facility_service/impl_service/RoomServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/module02/case_study_furama/services/facility_service/impl_service/RoomServiceImpl.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/module02/case_study_furama/services/facility_service/impl_service/VillaServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/module02/case_study_furama/services/facility_service/impl_service/VillaServiceImpl.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/module02/case_study_furama/services/person_service/impl_service/CustomerServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/module02/case_study_furama/services/person_service/impl_service/CustomerServiceImpl.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/module02/case_study_furama/services/person_service/impl_service/EmployeeServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/module02/case_study_furama/services/person_service/impl_service/EmployeeServiceImpl.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/case_study_furama/models/Booking.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/case_study_furama/models/Booking.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test_lap/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test_lap/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test_lap/ThuatToan2.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test_lap/ThuatToan2.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/module02/test_lap/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/module02/test_lap/Main.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/hacker_rank/HackerRank.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/hacker_rank/HackerRank.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/hacker_rank/Test.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/hacker_rank/Test.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/resentation/Bmw.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/resentation/Bmw.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/resentation/Cars.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/resentation/Cars.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/resentation/DemoString.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/resentation/DemoString.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/resentation/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/resentation/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/resentation/inheritance/Bike.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/resentation/inheritance/Bike.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/resentation/inheritance/CInterface.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/resentation/inheritance/CInterface.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/resentation/inheritance/Car.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/resentation/inheritance/Car.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/resentation/inheritance/Inheritance.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/resentation/inheritance/Inheritance.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/resentation/inheritance/Vehicle.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/resentation/inheritance/Vehicle.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test_all/Test.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test_all/Test.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../module03/project_ig1_store/case_study/.idea/dataSources/cc7a99f0-dc3a-47ae-8925-cca6ec6f750f.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../module03/project_ig1_store/case_study/.idea/dataSources/cc7a99f0-dc3a-47ae-8925-cca6ec6f750f.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../module03/project_ig1_store/case_study/.idea/shelf/Uncommitted_changes_before_Checkout_at_14_05_2023_11_04_CH_[Changes]1/BaseRepository.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../module03/project_ig1_store/case_study/.idea/shelf/Uncommitted_changes_before_Checkout_at_14_05_2023_11_04_CH_[Changes]1/buildOutputCleanup.lock" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../module03/project_ig1_store/case_study/.idea/shelf/Uncommitted_changes_before_Checkout_at_14_05_2023_11_04_CH_[Changes]1/case_study-1.0-SNAPSHOT.war" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../module03/project_ig1_store/case_study/.idea/shelf/Uncommitted_changes_before_Checkout_at_14_05_2023_11_04_CH_[Changes]1/executionHistory.bin" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../module03/project_ig1_store/case_study/.idea/shelf/Uncommitted_changes_before_Checkout_at_14_05_2023_11_04_CH_[Changes]1/executionHistory.lock" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../module03/project_ig1_store/case_study/.idea/shelf/Uncommitted_changes_before_Checkout_at_14_05_2023_11_04_CH_[Changes]1/fileHashes.bin" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../module03/project_ig1_store/case_study/.idea/shelf/Uncommitted_changes_before_Checkout_at_14_05_2023_11_04_CH_[Changes]1/fileHashes.lock" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../module03/project_ig1_store/case_study/.idea/shelf/Uncommitted_changes_before_Checkout_at_14_05_2023_11_04_CH_[Changes]1/previous-compilation-data.bin" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../module03/project_ig1_store/case_study/.idea/shelf/Uncommitted_changes_before_Checkout_at_14_05_2023_11_04_CH_[Changes]1/shelved.patch" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../module03/project_ig1_store/case_study/.idea/shelf/Uncommitted_changes_before_Checkout_at_14_05_2023_11_04_CH__Changes_1.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../module03/project_ig1_store/case_study/.idea/shelf/Uncommitted_changes_before_Checkout_at_14_05_2023_11_05_CH_[Changes]1/buildOutputCleanup.lock" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../module03/project_ig1_store/case_study/.idea/shelf/Uncommitted_changes_before_Checkout_at_14_05_2023_11_05_CH_[Changes]1/case_study-1.0-SNAPSHOT.war" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../module03/project_ig1_store/case_study/.idea/shelf/Uncommitted_changes_before_Checkout_at_14_05_2023_11_05_CH_[Changes]1/executionHistory.bin" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../module03/project_ig1_store/case_study/.idea/shelf/Uncommitted_changes_before_Checkout_at_14_05_2023_11_05_CH_[Changes]1/executionHistory.lock" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../module03/project_ig1_store/case_study/.idea/shelf/Uncommitted_changes_before_Checkout_at_14_05_2023_11_05_CH_[Changes]1/fileHashes.bin" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../module03/project_ig1_store/case_study/.idea/shelf/Uncommitted_changes_before_Checkout_at_14_05_2023_11_05_CH_[Changes]1/fileHashes.lock" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../module03/project_ig1_store/case_study/.idea/shelf/Uncommitted_changes_before_Checkout_at_14_05_2023_11_05_CH_[Changes]1/previous-compilation-data.bin" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../module03/project_ig1_store/case_study/.idea/shelf/Uncommitted_changes_before_Checkout_at_14_05_2023_11_05_CH_[Changes]1/shelved.patch" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../module03/project_ig1_store/case_study/.idea/shelf/Uncommitted_changes_before_Checkout_at_14_05_2023_11_05_CH__Changes_1.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../module03/project_ig1_store/case_study/.idea/shelf/Uncommitted_changes_before_Checkout_at_14_05_2023_11_06_CH_[Changes]1/BaseRepository.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../module03/project_ig1_store/case_study/.idea/shelf/Uncommitted_changes_before_Checkout_at_14_05_2023_11_06_CH_[Changes]1/buildOutputCleanup.lock" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../module03/project_ig1_store/case_study/.idea/shelf/Uncommitted_changes_before_Checkout_at_14_05_2023_11_06_CH_[Changes]1/case_study-1.0-SNAPSHOT.war" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../module03/project_ig1_store/case_study/.idea/shelf/Uncommitted_changes_before_Checkout_at_14_05_2023_11_06_CH_[Changes]1/executionHistory.bin" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../module03/project_ig1_store/case_study/.idea/shelf/Uncommitted_changes_before_Checkout_at_14_05_2023_11_06_CH_[Changes]1/executionHistory.lock" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../module03/project_ig1_store/case_study/.idea/shelf/Uncommitted_changes_before_Checkout_at_14_05_2023_11_06_CH_[Changes]1/file-system.probe" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../module03/project_ig1_store/case_study/.idea/shelf/Uncommitted_changes_before_Checkout_at_14_05_2023_11_06_CH_[Changes]1/fileHashes.bin" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../module03/project_ig1_store/case_study/.idea/shelf/Uncommitted_changes_before_Checkout_at_14_05_2023_11_06_CH_[Changes]1/fileHashes.lock" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../module03/project_ig1_store/case_study/.idea/shelf/Uncommitted_changes_before_Checkout_at_14_05_2023_11_06_CH_[Changes]1/previous-compilation-data.bin" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../module03/project_ig1_store/case_study/.idea/shelf/Uncommitted_changes_before_Checkout_at_14_05_2023_11_06_CH_[Changes]1/shelved.patch" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../module03/project_ig1_store/case_study/.idea/shelf/Uncommitted_changes_before_Checkout_at_14_05_2023_11_06_CH__Changes_1.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../module03/project_ig1_store/case_study/.idea/shelf/Uncommitted_changes_before_Checkout_at_14_05_2023_7_12_CH_[Changes]/file-system.probe" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../module03/project_ig1_store/case_study/.idea/shelf/Uncommitted_changes_before_Checkout_at_14_05_2023_7_12_CH_[Changes]/shelved.patch" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../module03/project_ig1_store/case_study/.idea/shelf/Uncommitted_changes_before_Checkout_at_14_05_2023_7_12_CH__Changes_.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../module03/project_ig1_store/case_study/.idea/shelf/Uncommitted_changes_before_Checkout_at_14_05_2023_7_13_CH_[Changes]1/buildOutputCleanup.lock" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../module03/project_ig1_store/case_study/.idea/shelf/Uncommitted_changes_before_Checkout_at_14_05_2023_7_13_CH_[Changes]1/executionHistory.lock" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../module03/project_ig1_store/case_study/.idea/shelf/Uncommitted_changes_before_Checkout_at_14_05_2023_7_13_CH_[Changes]1/file-system.probe" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../module03/project_ig1_store/case_study/.idea/shelf/Uncommitted_changes_before_Checkout_at_14_05_2023_7_13_CH_[Changes]1/fileHashes.lock" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../module03/project_ig1_store/case_study/.idea/shelf/Uncommitted_changes_before_Checkout_at_14_05_2023_7_13_CH_[Changes]1/shelved.patch" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../module03/project_ig1_store/case_study/.idea/shelf/Uncommitted_changes_before_Checkout_at_14_05_2023_7_13_CH__Changes_1.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../module03/project_ig1_store/case_study/.idea/shelf/Uncommitted_changes_before_Checkout_at_14_05_2023_7_14_CH_[Changes]/buildOutputCleanup.lock" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../module03/project_ig1_store/case_study/.idea/shelf/Uncommitted_changes_before_Checkout_at_14_05_2023_7_14_CH_[Changes]/case_study-1.0-SNAPSHOT.war" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../module03/project_ig1_store/case_study/.idea/shelf/Uncommitted_changes_before_Checkout_at_14_05_2023_7_14_CH_[Changes]/executionHistory.bin" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../module03/project_ig1_store/case_study/.idea/shelf/Uncommitted_changes_before_Checkout_at_14_05_2023_7_14_CH_[Changes]/executionHistory.lock" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../module03/project_ig1_store/case_study/.idea/shelf/Uncommitted_changes_before_Checkout_at_14_05_2023_7_14_CH_[Changes]/fileHashes.bin" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../module03/project_ig1_store/case_study/.idea/shelf/Uncommitted_changes_before_Checkout_at_14_05_2023_7_14_CH_[Changes]/fileHashes.lock" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../module03/project_ig1_store/case_study/.idea/shelf/Uncommitted_changes_before_Checkout_at_14_05_2023_7_14_CH_[Changes]/previous-compilation-data.bin" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../module03/project_ig1_store/case_study/.idea/shelf/Uncommitted_changes_before_Checkout_at_14_05_2023_7_14_CH_[Changes]/resourceHashesCache.bin" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../module03/project_ig1_store/case_study/.idea/shelf/Uncommitted_changes_before_Checkout_at_14_05_2023_7_14_CH_[Changes]/shelved.patch" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../module03/project_ig1_store/case_study/.idea/shelf/Uncommitted_changes_before_Checkout_at_14_05_2023_7_14_CH__Changes_.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../module03/project_ig1_store/case_study/.idea/shelf/Uncommitted_changes_before_Checkout_at_15_05_2023_11_47_SA_[Changes]/buildOutputCleanup.lock" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../module03/project_ig1_store/case_study/.idea/shelf/Uncommitted_changes_before_Checkout_at_15_05_2023_11_47_SA_[Changes]/executionHistory.lock" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../module03/project_ig1_store/case_study/.idea/shelf/Uncommitted_changes_before_Checkout_at_15_05_2023_11_47_SA_[Changes]/file-system.probe" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../module03/project_ig1_store/case_study/.idea/shelf/Uncommitted_changes_before_Checkout_at_15_05_2023_11_47_SA_[Changes]/fileHashes.lock" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../module03/project_ig1_store/case_study/.idea/shelf/Uncommitted_changes_before_Checkout_at_15_05_2023_11_47_SA_[Changes]/shelved.patch" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../module03/project_ig1_store/case_study/.idea/shelf/Uncommitted_changes_before_Checkout_at_15_05_2023_11_47_SA__Changes_.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../module03/project_ig1_store/case_study/.idea/shelf/Uncommitted_changes_before_Checkout_at_15_05_2023_4_37_CH_[Changes]1/buildOutputCleanup.lock" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../module03/project_ig1_store/case_study/.idea/shelf/Uncommitted_changes_before_Checkout_at_15_05_2023_4_37_CH_[Changes]1/case_study-1.0-SNAPSHOT.war" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../module03/project_ig1_store/case_study/.idea/shelf/Uncommitted_changes_before_Checkout_at_15_05_2023_4_37_CH_[Changes]1/executionHistory.bin" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../module03/project_ig1_store/case_study/.idea/shelf/Uncommitted_changes_before_Checkout_at_15_05_2023_4_37_CH_[Changes]1/executionHistory.lock" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../module03/project_ig1_store/case_study/.idea/shelf/Uncommitted_changes_before_Checkout_at_15_05_2023_4_37_CH_[Changes]1/fileHashes.bin" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../module03/project_ig1_store/case_study/.idea/shelf/Uncommitted_changes_before_Checkout_at_15_05_2023_4_37_CH_[Changes]1/fileHashes.lock" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../module03/project_ig1_store/case_study/.idea/shelf/Uncommitted_changes_before_Checkout_at_15_05_2023_4_37_CH_[Changes]1/previous-compilation-data.bin" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../module03/project_ig1_store/case_study/.idea/shelf/Uncommitted_changes_before_Checkout_at_15_05_2023_4_37_CH_[Changes]1/resourceHashesCache.bin" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../module03/project_ig1_store/case_study/.idea/shelf/Uncommitted_changes_before_Checkout_at_15_05_2023_4_37_CH_[Changes]1/shelved.patch" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../module03/project_ig1_store/case_study/.idea/shelf/Uncommitted_changes_before_Checkout_at_15_05_2023_4_37_CH__Changes_1.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../module03/project_ig1_store/case_study/.idea/shelf/Uncommitted_changes_before_Checkout_at_15_05_2023_8_07_SA_[Changes]1/buildOutputCleanup.lock" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../module03/project_ig1_store/case_study/.idea/shelf/Uncommitted_changes_before_Checkout_at_15_05_2023_8_07_SA_[Changes]1/case_study-1.0-SNAPSHOT.war" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../module03/project_ig1_store/case_study/.idea/shelf/Uncommitted_changes_before_Checkout_at_15_05_2023_8_07_SA_[Changes]1/executionHistory.bin" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../module03/project_ig1_store/case_study/.idea/shelf/Uncommitted_changes_before_Checkout_at_15_05_2023_8_07_SA_[Changes]1/executionHistory.lock" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../module03/project_ig1_store/case_study/.idea/shelf/Uncommitted_changes_before_Checkout_at_15_05_2023_8_07_SA_[Changes]1/file-system.probe" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../module03/project_ig1_store/case_study/.idea/shelf/Uncommitted_changes_before_Checkout_at_15_05_2023_8_07_SA_[Changes]1/fileHashes.bin" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../module03/project_ig1_store/case_study/.idea/shelf/Uncommitted_changes_before_Checkout_at_15_05_2023_8_07_SA_[Changes]1/fileHashes.lock" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../module03/project_ig1_store/case_study/.idea/shelf/Uncommitted_changes_before_Checkout_at_15_05_2023_8_07_SA_[Changes]1/shelved.patch" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../module03/project_ig1_store/case_study/.idea/shelf/Uncommitted_changes_before_Checkout_at_15_05_2023_8_07_SA__Changes_1.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../module03/project_ig1_store/case_study/.idea/shelf/Uncommitted_changes_before_Checkout_at_15_05_2023_8_09_SA_[Changes]1/BaseRepository.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../module03/project_ig1_store/case_study/.idea/shelf/Uncommitted_changes_before_Checkout_at_15_05_2023_8_09_SA_[Changes]1/buildOutputCleanup.lock" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../module03/project_ig1_store/case_study/.idea/shelf/Uncommitted_changes_before_Checkout_at_15_05_2023_8_09_SA_[Changes]1/case_study-1.0-SNAPSHOT.war" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../module03/project_ig1_store/case_study/.idea/shelf/Uncommitted_changes_before_Checkout_at_15_05_2023_8_09_SA_[Changes]1/executionHistory.bin" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../module03/project_ig1_store/case_study/.idea/shelf/Uncommitted_changes_before_Checkout_at_15_05_2023_8_09_SA_[Changes]1/executionHistory.lock" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../module03/project_ig1_store/case_study/.idea/shelf/Uncommitted_changes_before_Checkout_at_15_05_2023_8_09_SA_[Changes]1/file-system.probe" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../module03/project_ig1_store/case_study/.idea/shelf/Uncommitted_changes_before_Checkout_at_15_05_2023_8_09_SA_[Changes]1/fileHashes.bin" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../module03/project_ig1_store/case_study/.idea/shelf/Uncommitted_changes_before_Checkout_at_15_05_2023_8_09_SA_[Changes]1/fileHashes.lock" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../module03/project_ig1_store/case_study/.idea/shelf/Uncommitted_changes_before_Checkout_at_15_05_2023_8_09_SA_[Changes]1/previous-compilation-data.bin" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../module03/project_ig1_store/case_study/.idea/shelf/Uncommitted_changes_before_Checkout_at_15_05_2023_8_09_SA_[Changes]1/resourceHashesCache.bin" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../module03/project_ig1_store/case_study/.idea/shelf/Uncommitted_changes_before_Checkout_at_15_05_2023_8_09_SA_[Changes]1/shelved.patch" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../module03/project_ig1_store/case_study/.idea/shelf/Uncommitted_changes_before_Checkout_at_15_05_2023_8_09_SA__Changes_1.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../module03/project_ig1_store/case_study/.idea/shelf/Uncommitted_changes_before_Checkout_at_15_05_2023_9_38_SA_[Changes]/buildOutputCleanup.lock" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../module03/project_ig1_store/case_study/.idea/shelf/Uncommitted_changes_before_Checkout_at_15_05_2023_9_38_SA_[Changes]/case_study-1.0-SNAPSHOT.war" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../module03/project_ig1_store/case_study/.idea/shelf/Uncommitted_changes_before_Checkout_at_15_05_2023_9_38_SA_[Changes]/executionHistory.bin" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../module03/project_ig1_store/case_study/.idea/shelf/Uncommitted_changes_before_Checkout_at_15_05_2023_9_38_SA_[Changes]/executionHistory.lock" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../module03/project_ig1_store/case_study/.idea/shelf/Uncommitted_changes_before_Checkout_at_15_05_2023_9_38_SA_[Changes]/file-system.probe" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../module03/project_ig1_store/case_study/.idea/shelf/Uncommitted_changes_before_Checkout_at_15_05_2023_9_38_SA_[Changes]/fileHashes.bin" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../module03/project_ig1_store/case_study/.idea/shelf/Uncommitted_changes_before_Checkout_at_15_05_2023_9_38_SA_[Changes]/fileHashes.lock" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../module03/project_ig1_store/case_study/.idea/shelf/Uncommitted_changes_before_Checkout_at_15_05_2023_9_38_SA_[Changes]/shelved.patch" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../module03/project_ig1_store/case_study/.idea/shelf/Uncommitted_changes_before_Checkout_at_15_05_2023_9_38_SA__Changes_.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../module03/project_ig1_store/case_study/.idea/shelf/Uncommitted_changes_before_Checkout_at_5_14_2023_7_30_PM_[Changes]1/AccessoryRepository.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../module03/project_ig1_store/case_study/.idea/shelf/Uncommitted_changes_before_Checkout_at_5_14_2023_7_30_PM_[Changes]1/AccessoryService.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../module03/project_ig1_store/case_study/.idea/shelf/Uncommitted_changes_before_Checkout_at_5_14_2023_7_30_PM_[Changes]1/AccessoryServlet.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../module03/project_ig1_store/case_study/.idea/shelf/Uncommitted_changes_before_Checkout_at_5_14_2023_7_30_PM_[Changes]1/BaseRepository.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../module03/project_ig1_store/case_study/.idea/shelf/Uncommitted_changes_before_Checkout_at_5_14_2023_7_30_PM_[Changes]1/IAccessoryRepository.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../module03/project_ig1_store/case_study/.idea/shelf/Uncommitted_changes_before_Checkout_at_5_14_2023_7_30_PM_[Changes]1/IAccessoryService.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../module03/project_ig1_store/case_study/.idea/shelf/Uncommitted_changes_before_Checkout_at_5_14_2023_7_30_PM_[Changes]1/buildOutputCleanup.lock" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../module03/project_ig1_store/case_study/.idea/shelf/Uncommitted_changes_before_Checkout_at_5_14_2023_7_30_PM_[Changes]1/case_study-1.0-SNAPSHOT.war" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../module03/project_ig1_store/case_study/.idea/shelf/Uncommitted_changes_before_Checkout_at_5_14_2023_7_30_PM_[Changes]1/executionHistory.bin" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../module03/project_ig1_store/case_study/.idea/shelf/Uncommitted_changes_before_Checkout_at_5_14_2023_7_30_PM_[Changes]1/executionHistory.lock" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../module03/project_ig1_store/case_study/.idea/shelf/Uncommitted_changes_before_Checkout_at_5_14_2023_7_30_PM_[Changes]1/file-system.probe" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../module03/project_ig1_store/case_study/.idea/shelf/Uncommitted_changes_before_Checkout_at_5_14_2023_7_30_PM_[Changes]1/fileHashes.bin" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../module03/project_ig1_store/case_study/.idea/shelf/Uncommitted_changes_before_Checkout_at_5_14_2023_7_30_PM_[Changes]1/fileHashes.lock" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../module03/project_ig1_store/case_study/.idea/shelf/Uncommitted_changes_before_Checkout_at_5_14_2023_7_30_PM_[Changes]1/outputFiles.bin" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../module03/project_ig1_store/case_study/.idea/shelf/Uncommitted_changes_before_Checkout_at_5_14_2023_7_30_PM_[Changes]1/previous-compilation-data.bin" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../module03/project_ig1_store/case_study/.idea/shelf/Uncommitted_changes_before_Checkout_at_5_14_2023_7_30_PM_[Changes]1/resourceHashesCache.bin" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../module03/project_ig1_store/case_study/.idea/shelf/Uncommitted_changes_before_Checkout_at_5_14_2023_7_30_PM_[Changes]1/shelved.patch" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../module03/project_ig1_store/case_study/.idea/shelf/Uncommitted_changes_before_Checkout_at_5_14_2023_7_30_PM__Changes_1.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../module03/project_ig1_store/case_study/.idea/shelf/Uncommitted_changes_before_Merge_at_10_05_2023_11_25_SA_[Changes]/shelved.patch" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../module03/project_ig1_store/case_study/.idea/shelf/Uncommitted_changes_before_Merge_at_10_05_2023_11_25_SA__Changes_.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../module03/project_ig1_store/case_study/.idea/shelf/Uncommitted_changes_before_Merge_at_10_05_2023_8_03_SA_[Changes]/shelved.patch" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../module03/project_ig1_store/case_study/.idea/shelf/Uncommitted_changes_before_Merge_at_10_05_2023_8_03_SA__Changes_.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../module03/project_ig1_store/case_study/.idea/shelf/Uncommitted_changes_before_Merge_at_10_05_2023_8_04_SA_[Changes]/shelved.patch" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../module03/project_ig1_store/case_study/.idea/shelf/Uncommitted_changes_before_Merge_at_10_05_2023_8_04_SA__Changes_.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../module03/project_ig1_store/case_study/.idea/shelf/Uncommitted_changes_before_Merge_at_14_05_2023_10_57_SA_[Changes]1/case_study-1.0-SNAPSHOT.war" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../module03/project_ig1_store/case_study/.idea/shelf/Uncommitted_changes_before_Merge_at_14_05_2023_10_57_SA_[Changes]1/executionHistory.bin" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../module03/project_ig1_store/case_study/.idea/shelf/Uncommitted_changes_before_Merge_at_14_05_2023_10_57_SA_[Changes]1/fileHashes.bin" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../module03/project_ig1_store/case_study/.idea/shelf/Uncommitted_changes_before_Merge_at_14_05_2023_10_57_SA_[Changes]1/resourceHashesCache.bin" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../module03/project_ig1_store/case_study/.idea/shelf/Uncommitted_changes_before_Merge_at_14_05_2023_10_57_SA_[Changes]1/shelved.patch" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../module03/project_ig1_store/case_study/.idea/shelf/Uncommitted_changes_before_Merge_at_14_05_2023_10_57_SA__Changes_1.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../module03/project_ig1_store/case_study/.idea/shelf/Uncommitted_changes_before_Merge_at_5_12_2023_10_51_PM_[Changes]/shelved.patch" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../module03/project_ig1_store/case_study/.idea/shelf/Uncommitted_changes_before_Merge_at_5_12_2023_10_51_PM__Changes_.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../module03/project_ig1_store/case_study/.idea/shelf/Uncommitted_changes_before_Merge_at_5_12_2023_1_46_PM_[Default_Changelist]1/coollogo_com-32663401.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../module03/project_ig1_store/case_study/.idea/shelf/Uncommitted_changes_before_Merge_at_5_12_2023_1_46_PM_[Default_Changelist]1/shelved.patch" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../module03/project_ig1_store/case_study/.idea/shelf/Uncommitted_changes_before_Merge_at_5_12_2023_1_46_PM__Default_Changelist_1.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../module03/project_ig1_store/case_study/.idea/shelf/Uncommitted_changes_before_Merge_at_5_14_2023_12_27_AM_[Changes]/shelved.patch" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../module03/project_ig1_store/case_study/.idea/shelf/Uncommitted_changes_before_Merge_at_5_14_2023_12_27_AM__Changes_.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../module03/project_ig1_store/case_study/.idea/shelf/Uncommitted_changes_before_Merge_at_5_14_2023_6_43_PM_[Changes]/file-system.probe" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../module03/project_ig1_store/case_study/.idea/shelf/Uncommitted_changes_before_Merge_at_5_14_2023_6_43_PM_[Changes]/shelved.patch" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../module03/project_ig1_store/case_study/.idea/shelf/Uncommitted_changes_before_Merge_at_5_14_2023_6_43_PM_[Changes]2/buildOutputCleanup.lock" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../module03/project_ig1_store/case_study/.idea/shelf/Uncommitted_changes_before_Merge_at_5_14_2023_6_43_PM_[Changes]2/executionHistory.lock" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../module03/project_ig1_store/case_study/.idea/shelf/Uncommitted_changes_before_Merge_at_5_14_2023_6_43_PM_[Changes]2/file-system.probe" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../module03/project_ig1_store/case_study/.idea/shelf/Uncommitted_changes_before_Merge_at_5_14_2023_6_43_PM_[Changes]2/fileHashes.lock" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../module03/project_ig1_store/case_study/.idea/shelf/Uncommitted_changes_before_Merge_at_5_14_2023_6_43_PM_[Changes]2/shelved.patch" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../module03/project_ig1_store/case_study/.idea/shelf/Uncommitted_changes_before_Merge_at_5_14_2023_6_43_PM__Changes_.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../module03/project_ig1_store/case_study/.idea/shelf/Uncommitted_changes_before_Merge_at_5_14_2023_6_43_PM__Changes_2.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../module03/project_ig1_store/case_study/.idea/shelf/Uncommitted_changes_before_Merge_at_5_14_2023_8_15_PM_[Changes]/AccessoryServlet.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../module03/project_ig1_store/case_study/.idea/shelf/Uncommitted_changes_before_Merge_at_5_14_2023_8_15_PM_[Changes]/buildOutputCleanup.lock" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../module03/project_ig1_store/case_study/.idea/shelf/Uncommitted_changes_before_Merge_at_5_14_2023_8_15_PM_[Changes]/case_study-1.0-SNAPSHOT.war" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../module03/project_ig1_store/case_study/.idea/shelf/Uncommitted_changes_before_Merge_at_5_14_2023_8_15_PM_[Changes]/executionHistory.bin" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../module03/project_ig1_store/case_study/.idea/shelf/Uncommitted_changes_before_Merge_at_5_14_2023_8_15_PM_[Changes]/executionHistory.lock" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../module03/project_ig1_store/case_study/.idea/shelf/Uncommitted_changes_before_Merge_at_5_14_2023_8_15_PM_[Changes]/file-system.probe" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../module03/project_ig1_store/case_study/.idea/shelf/Uncommitted_changes_before_Merge_at_5_14_2023_8_15_PM_[Changes]/fileHashes.bin" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../module03/project_ig1_store/case_study/.idea/shelf/Uncommitted_changes_before_Merge_at_5_14_2023_8_15_PM_[Changes]/fileHashes.lock" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../module03/project_ig1_store/case_study/.idea/shelf/Uncommitted_changes_before_Merge_at_5_14_2023_8_15_PM_[Changes]/outputFiles.bin" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../module03/project_ig1_store/case_study/.idea/shelf/Uncommitted_changes_before_Merge_at_5_14_2023_8_15_PM_[Changes]/previous-compilation-data.bin" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../module03/project_ig1_store/case_study/.idea/shelf/Uncommitted_changes_before_Merge_at_5_14_2023_8_15_PM_[Changes]/resourceHashesCache.bin" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../module03/project_ig1_store/case_study/.idea/shelf/Uncommitted_changes_before_Merge_at_5_14_2023_8_15_PM_[Changes]/shelved.patch" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../module03/project_ig1_store/case_study/.idea/shelf/Uncommitted_changes_before_Merge_at_5_14_2023_8_15_PM__Changes_.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../module03/project_ig1_store/case_study/.idea/shelf/Uncommitted_changes_before_Merge_at_5_14_2023_8_16_PM_[Changes]1/AccessoryServlet.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../module03/project_ig1_store/case_study/.idea/shelf/Uncommitted_changes_before_Merge_at_5_14_2023_8_16_PM_[Changes]1/buildOutputCleanup.lock" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../module03/project_ig1_store/case_study/.idea/shelf/Uncommitted_changes_before_Merge_at_5_14_2023_8_16_PM_[Changes]1/case_study-1.0-SNAPSHOT.war" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../module03/project_ig1_store/case_study/.idea/shelf/Uncommitted_changes_before_Merge_at_5_14_2023_8_16_PM_[Changes]1/executionHistory.bin" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../module03/project_ig1_store/case_study/.idea/shelf/Uncommitted_changes_before_Merge_at_5_14_2023_8_16_PM_[Changes]1/executionHistory.lock" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../module03/project_ig1_store/case_study/.idea/shelf/Uncommitted_changes_before_Merge_at_5_14_2023_8_16_PM_[Changes]1/file-system.probe" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../module03/project_ig1_store/case_study/.idea/shelf/Uncommitted_changes_before_Merge_at_5_14_2023_8_16_PM_[Changes]1/fileHashes.bin" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../module03/project_ig1_store/case_study/.idea/shelf/Uncommitted_changes_before_Merge_at_5_14_2023_8_16_PM_[Changes]1/fileHashes.lock" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../module03/project_ig1_store/case_study/.idea/shelf/Uncommitted_changes_before_Merge_at_5_14_2023_8_16_PM_[Changes]1/outputFiles.bin" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../module03/project_ig1_store/case_study/.idea/shelf/Uncommitted_changes_before_Merge_at_5_14_2023_8_16_PM_[Changes]1/previous-compilation-data.bin" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../module03/project_ig1_store/case_study/.idea/shelf/Uncommitted_changes_before_Merge_at_5_14_2023_8_16_PM_[Changes]1/resourceHashesCache.bin" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../module03/project_ig1_store/case_study/.idea/shelf/Uncommitted_changes_before_Merge_at_5_14_2023_8_16_PM_[Changes]1/shelved.patch" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../module03/project_ig1_store/case_study/.idea/shelf/Uncommitted_changes_before_Merge_at_5_14_2023_8_16_PM__Changes_1.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../module03/project_ig1_store/case_study/.idea/shelf/Uncommitted_changes_before_rebase_[Changes]1/shelved.patch" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../module03/project_ig1_store/case_study/.idea/shelf/Uncommitted_changes_before_rebase__Changes_1.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../module03/project_ig1_store/case_study/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../module03/project_ig1_store/case_study/.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../module03/project_ig1_store/case_study/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../module03/project_ig1_store/case_study/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../module05/case_module05/src/service/Villa.js" beforeDir="false" afterPath="$PROJECT_DIR$/../module05/case_module05/src/service/Villa.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../module05/exam05_be/exam05/src/main/java/com/exam05/dto/OrderDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/../module05/exam05_be/exam05/src/main/java/com/exam05/dto/OrderDTO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../module05/exam05_be/exam05/src/main/java/com/exam05/repository/IOrderRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/../module05/exam05_be/exam05/src/main/java/com/exam05/repository/IOrderRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../module05/exam05_be/exam05/src/main/java/com/exam05/rest_controller/OrdersRestController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../module05/exam05_be/exam05/src/main/java/com/exam05/rest_controller/OrdersRestController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../module05/exam05_be/exam05/src/main/java/com/exam05/service/IOrderService.java" beforeDir="false" afterPath="$PROJECT_DIR$/../module05/exam05_be/exam05/src/main/java/com/exam05/service/IOrderService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../module05/exam05_be/exam05/src/main/java/com/exam05/service/OrderServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/../module05/exam05_be/exam05/src/main/java/com/exam05/service/OrderServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../module05/exam05_fe/src/component/Orders.js" beforeDir="false" afterPath="$PROJECT_DIR$/../module05/exam05_fe/src/component/Orders.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -43,6 +217,7 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
+        <option value="FxmlFile" />
         <option value="Interface" />
         <option value="Class" />
       </list>
@@ -53,6 +228,7 @@
   </component>
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$PROJECT_DIR$/src/array_java/GopMang.java" root0="SKIP_INSPECTION" />
+    <setting file="file://$PROJECT_DIR$/src/hacker_rank/Test.java" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/introduction_to_java/bai_tap/NumberToString.java" root0="SKIP_HIGHLIGHTING" />
   </component>
   <component name="MarkdownSettingsMigration">
@@ -67,29 +243,32 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;Downloaded.Files.Path.Enabled&quot;: &quot;false&quot;,
-    &quot;Repository.Attach.Annotations&quot;: &quot;false&quot;,
-    &quot;Repository.Attach.JavaDocs&quot;: &quot;false&quot;,
-    &quot;Repository.Attach.Sources&quot;: &quot;false&quot;,
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;deletionFromPopupRequiresConfirmation&quot;: &quot;false&quot;,
-    &quot;last.edited.regexp&quot;: &quot;Quoc Khanh&quot;,
-    &quot;last_opened_file_path&quot;: &quot;D:/Codegym/bai_tap/module02&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.editor&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Downloaded.Files.Path.Enabled": "false",
+    "Repository.Attach.Annotations": "false",
+    "Repository.Attach.JavaDocs": "false",
+    "Repository.Attach.Sources": "false",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "deletionFromPopupRequiresConfirmation": "false",
+    "last.edited.regexp": "Quoc Khanh",
+    "last_opened_file_path": "D:/Codegym/bai_tap/module02",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "settings.editor.selected.configurable": "preferences.lookFeel"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CreateClassDialog.RecentsKey">
       <recent name="string_and_regex" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\Codegym\bai_tap\module02\src\resentation" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="D:\Codegym\bai_tap\module02\src\io_file\test1" />
@@ -99,13 +278,13 @@
       <recent name="test_lap.hash_map.test_lap.hash_map" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.Main">
-    <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="test_lap.Main" />
+  <component name="RunManager" selected="Application.hacker_rank.Test">
+    <configuration name="ClassB" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="test.ClassB" />
       <module name="module02" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="test_lap.*" />
+          <option name="PATTERN" value="test.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -113,12 +292,51 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="ThuatToan2" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="test_lap.ThuatToan2" />
+    <configuration name="HackerRank" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="hacker_rank.HackerRank" />
       <module name="module02" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="test_lap.*" />
+          <option name="PATTERN" value="hacker_rank.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Inheritance" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="resentation.inheritance.Inheritance" />
+      <module name="module02" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="resentation.inheritance.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="TestB" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="test.TestB" />
+      <module name="module02" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="test.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="hacker_rank.Test" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="hacker_rank.Test" />
+      <module name="module02" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="hacker_rank.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -128,8 +346,11 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.Main" />
-        <item itemvalue="Application.ThuatToan2" />
+        <item itemvalue="Application.hacker_rank.Test" />
+        <item itemvalue="Application.TestB" />
+        <item itemvalue="Application.ClassB" />
+        <item itemvalue="Application.HackerRank" />
+        <item itemvalue="Application.Inheritance" />
       </list>
     </recent_temporary>
   </component>
@@ -297,6 +518,38 @@
       <workItem from="1681912448716" duration="364000" />
       <workItem from="1682235259305" duration="114000" />
       <workItem from="1682237267799" duration="54000" />
+      <workItem from="1690942682827" duration="240000" />
+      <workItem from="1690946069994" duration="496000" />
+      <workItem from="1690963746364" duration="3403000" />
+      <workItem from="1690977128528" duration="6203000" />
+      <workItem from="1691025581468" duration="1000" />
+      <workItem from="1691051406151" duration="1897000" />
+      <workItem from="1691455897510" duration="7610000" />
+      <workItem from="1691464131393" duration="4313000" />
+      <workItem from="1691473201539" duration="13383000" />
+      <workItem from="1691489167987" duration="827000" />
+      <workItem from="1691497149439" duration="2894000" />
+      <workItem from="1691512279287" duration="1301000" />
+      <workItem from="1691542332338" duration="41000" />
+      <workItem from="1691544712441" duration="2263000" />
+      <workItem from="1692277909832" duration="7055000" />
+      <workItem from="1692329367862" duration="371000" />
+      <workItem from="1692340149699" duration="12457000" />
+      <workItem from="1692582837430" duration="2282000" />
+      <workItem from="1692926373730" duration="793000" />
+      <workItem from="1692944968641" duration="12163000" />
+      <workItem from="1693205399508" duration="25000" />
+      <workItem from="1693357893052" duration="5977000" />
+      <workItem from="1693377967665" duration="14771000" />
+      <workItem from="1693400897645" duration="24000" />
+      <workItem from="1693465260669" duration="2729000" />
+      <workItem from="1693899463388" duration="493000" />
+      <workItem from="1693967912841" duration="391000" />
+      <workItem from="1694069969067" duration="237000" />
+      <workItem from="1694075885342" duration="204000" />
+      <workItem from="1694420041299" duration="874000" />
+      <workItem from="1694653103364" duration="30000" />
+      <workItem from="1695728912019" duration="842000" />
     </task>
     <servers />
   </component>
@@ -342,6 +595,41 @@
           <url>file://$PROJECT_DIR$/src/io_binary_file/product_manager/utils/ReadAndWriteDataBinaryFile.java</url>
           <line>16</line>
           <option name="timeStamp" value="12" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/test_all/Test.java</url>
+          <line>112</line>
+          <option name="timeStamp" value="38" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/test_all/Test.java</url>
+          <line>220</line>
+          <option name="timeStamp" value="40" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/hacker_rank/HackerRank.java</url>
+          <line>76</line>
+          <option name="timeStamp" value="57" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/hacker_rank/HackerRank.java</url>
+          <line>115</line>
+          <option name="timeStamp" value="60" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/hacker_rank/HackerRank.java</url>
+          <line>41</line>
+          <option name="timeStamp" value="64" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/hacker_rank/HackerRank.java</url>
+          <line>49</line>
+          <option name="timeStamp" value="66" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/hacker_rank/HackerRank.java</url>
+          <line>104</line>
+          <option name="timeStamp" value="67" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-method">
           <url>file://$PROJECT_DIR$/src/introduction_to_java/bai_tap/NumberToString.java</url>

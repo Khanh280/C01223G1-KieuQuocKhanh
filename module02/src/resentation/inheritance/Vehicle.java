@@ -1,4 +1,4 @@
-package inheritance;
+package resentation.inheritance;
 
 public class Vehicle {
     void move() {

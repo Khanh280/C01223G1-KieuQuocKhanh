@@ -8,9 +8,10 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 @Service
-public class OrderServiceImpl implements IOrderService{
+public class OrderServiceImpl implements IOrderService {
     @Autowired
     private IOrderRepository iOrderRepository;
+
     @Override
     public List<Orders> findAll() {
         return iOrderRepository.findAllOrder();
@@ -18,7 +19,7 @@ public class OrderServiceImpl implements IOrderService{
 
     @Override
     public boolean saveOrder(Orders orders) {
-        iOrderRepository.createOrder(orders.getBuyDate(),orders.getProduct().getPrice(),orders.getQuantity(),orders.getTotalPrice(),orders.getProduct().getId());
+        iOrderRepository.createOrder(orders.getBuyDate(), orders.getProduct().getPrice(), orders.getQuantity(), orders.getTotalPrice(), orders.getProduct().getId());
         return true;
     }
 
@@ -35,9 +36,12 @@ public class OrderServiceImpl implements IOrderService{
 
     @Override
     public void updateOrder(Orders orders) {
-//        Long abc = orders.getQuantity();
-//        System.out.println(abc);
-        iOrderRepository.updateOrder(orders.getBuyDate(),orders.getProduct().getPrice(),+orders.getQuantity(),orders.getTotalPrice(),orders.getProduct().getId(),orders.getId());
+        iOrderRepository.updateOrder(orders.getBuyDate(), orders.getProduct().getPrice(), +orders.getQuantity(), orders.getTotalPrice(), orders.getProduct().getId(), orders.getId());
+    }
+
+    @Override
+    public List<Orders> searchOrder(String startDate, String endDate, String productName) {
+        return iOrderRepository.searchOrder(startDate,  endDate, '%' + productName + '%');
     }
 
 }

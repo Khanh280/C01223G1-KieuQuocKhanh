@@ -1,2 +1,6 @@
-package test;public class ClassB {
+package test;
+
+public class ClassB {
+    public ClassB() {
+    }
 }

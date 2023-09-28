@@ -1,0 +1,9 @@
+
+]	java:S125"<This block of commented-out lines of code should be removed.(ª¾àŠÿÿÿÿÿ8Á±ÙŠ­1
+Z	java:S106"9Replace this use of System.out or System.err by a logger.(İ«œÇşÿÿÿÿ8Ë…ÕŠ­1
+M
+java:S1128"0Remove this unused import 'java.util.ArrayList'.(÷‰îƒ8ÁÔŠ­1
+M
+java:S1128"+Remove this unused import 'java.util.List'.(Õë±Äøÿÿÿÿ8ÁÔŠ­1
+Q
+java:S1128"4Remove this unused import 'java.util.stream.Stream'.(ó÷”8ÁÔŠ­1

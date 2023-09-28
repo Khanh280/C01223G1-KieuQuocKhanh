@@ -1,4 +1,4 @@
-package inheritance;
+package resentation.inheritance;
 
 public class Inheritance {
     public static void main(String[] args) {

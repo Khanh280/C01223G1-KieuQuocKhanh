@@ -38,6 +38,17 @@ export default function Orders() {
     //         console.log(error)
     //     })
     // }
+
+    const getAllProduct = async () => {
+        await axios.get("http://localhost:8080/api/admin/product")
+            .then(res => {
+                setProduct(res.data)
+            })
+            .catch(error => {
+                console.log(error)
+            })
+    }
+
     const deleteOrder = async (id) => {
         axios.delete("http://localhost:8080/api/admin/order/" + id)
             .then(res => {
@@ -56,7 +67,7 @@ export default function Orders() {
         })
         // getOrder()
         // getAllOrder()
-        // getAllProduct()
+        getAllProduct()
     }, [])
     return (
         <>
@@ -68,19 +79,20 @@ export default function Orders() {
                     initialValues={{
                         startDate: '',
                         endDate: '',
-                        productId: ''
+                        productName: ''
                     }}
                     onSubmit={(values) => {
                         const searchOrder = async () => {
-                            const res = (await axios.get("http://localhost:8080/orders?buyDate_lte=" + values.buyDate
-                                + "&buyDate_gte=" + values.endDate
-                                + "&productId_like=" + values.productId)).data
+                            const res = (await axios.get("http://localhost:8080/api/admin/order/search?startDate="
+                                + values.startDate
+                                + "&endDate=" + values.endDate
+                                + "&productName=" + values.productName)).data
                             // for (let order of res) {
                             //     order.product = products.filter(p => p.id === order.productId)[0];
                             // }
                             //
                             // res.sort((o1, o2) => o1.product.price - o2.product.price)
-                            // setOrder(res);
+                            setOrder(res);
                         }
                         searchOrder()
                     }}>
@@ -91,20 +103,20 @@ export default function Orders() {
 
                             <div className="col-2">
                                 <span>Start Date</span>
-                                <Field className="form-control" name="endDate" type="date"/>
+                                <Field className="form-control" name="startDate" type="date"/>
                             </div>
                             <div className="col-2">
                                 <span>End Date</span>
-                                <Field className="form-control" name="buyDate" type="date"/>
+                                <Field className="form-control" name="endDate" type="date"/>
                             </div>
 
                             <div className="col-3">
                                 <span>Product</span>
-                                <Field type="text" as="select" name="productId" className="form-control">
+                                <Field type="text" as="select" name="productName" className="form-control">
                                     <option value="">Select Product</option>
                                     {
                                         products.map((product, index) =>
-                                            <option key={index} value={product.id}>{product.name}</option>
+                                            <option key={index} value={product.name}>{product.name}</option>
                                         )
                                     }
                                 </Field>

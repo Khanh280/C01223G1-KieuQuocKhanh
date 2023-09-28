@@ -32,4 +32,7 @@ public interface IOrderRepository extends JpaRepository<Orders, Long> {
     @Transactional
     void updateOrder(@Param("buyDate") String buyDate, @Param("productPrice") Double productPrice, @Param("quantity") Long quantity,
                      @Param("totalPrice") Double totalPrice, @Param("productId") Long productId, @Param("orderId") Long orderId);
+
+    @Query(value = "select * from orders o inner join product p on o.product_id = p.id where (o.buy_date between :startDate and :endDate or (:startDate is null and :endDate is null)) and p.name like :productName", nativeQuery = true)
+    List<Orders> searchOrder(@Param("startDate") String startDate, @Param("endDate") String endDate, @Param("productName") String productName);
 }
